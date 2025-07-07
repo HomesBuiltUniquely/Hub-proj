@@ -1,0 +1,277 @@
+'use client';
+
+import { useEffect, useRef, useState } from "react";
+import {NavBar} from "./Navbar"
+
+export default function Header() {
+  const images = ["1.svg", "2.png", "3.svg", "4.jpg"];
+  const extendedImages = [images[images.length - 1], ...images, images[0]];
+
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const touchStartXRef = useRef(0);
+  const touchEndXRef = useRef(0);
+  const mouseDownRef = useRef(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      goToNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleTransitionEnd = () => {
+    if (currentIndex === extendedImages.length - 1) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(1);
+      }, 0);
+    } else if (currentIndex === 0) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(images.length);
+      }, 0);
+    }
+  };
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      // Trigger transition back ON after resetting position
+      requestAnimationFrame(() => {
+        setIsTransitioning(true);
+      });
+    }
+  }, [isTransitioning]);
+
+  const handleTouchStart = (e: any) => {
+    if (!isTransitioning) return;
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: any) => {
+    if (!isTransitioning) return;
+    touchEndXRef.current = e.changedTouches[0].clientX;
+    const distance = touchStartXRef.current - touchEndXRef.current;
+    if (distance > 50) goToNext();
+    else if (distance < -50) goToPrevious();
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!isTransitioning) return;
+    mouseDownRef.current = true;
+    touchStartXRef.current = e.clientX;
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (!isTransitioning || !mouseDownRef.current) return;
+    mouseDownRef.current = false;
+    touchEndXRef.current = e.clientX;
+    const distance = touchStartXRef.current - touchEndXRef.current;
+    if (distance > 50) goToNext();
+    else if (distance < -50) goToPrevious();
+  };
+
+  const handleMouseLeave = () => {
+    mouseDownRef.current = false;
+  };
+
+  const goToNext = () => {
+    if (!isTransitioning) return;
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const goToPrevious = () => {
+    if (!isTransitioning) return;
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  const getTransform = () => {
+    return `translateX(-${currentIndex * 100}%)`;
+  };
+
+  return (
+    <div className="relative w-full h-[850px] overflow-hidden bg-black">
+      <NavBar />
+      <div
+        className="w-full h-full relative"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        style={{ cursor: "grab", userSelect: "none" }}
+      >
+        {/* Left Arrow */}
+        <button
+          onClick={goToPrevious}
+          aria-label="Previous slide"
+          className="absolute top-1/2 left-4 z-10 transform -translate-y-1/2 bg-white hover:bg-opacity-90 rounded-full w-12 h-12 flex items-center justify-center shadow-md text-2xl"
+          style={{ outline: "none" }}
+          disabled={!isTransitioning}
+        >
+          &#8592;
+        </button>
+
+        {/* Right Arrow */}
+        <button
+          onClick={goToNext}
+          aria-label="Next slide"
+          className="absolute top-1/2 right-4 z-10 transform -translate-y-1/2 bg-white hover:bg-opacity-90 rounded-full w-12 h-12 flex items-center justify-center shadow-md text-2xl"
+          style={{ outline: "none" }}
+          disabled={!isTransitioning}
+        >
+          &#8594;
+        </button>
+
+        {/* Carousel */}
+        <div
+          className={`flex h-full w-full ${
+            isTransitioning ? "transition-transform duration-[1500ms] ease-in-out" : ""
+          }`}
+          style={{ transform: getTransform() }}
+          onTransitionEnd={handleTransitionEnd}
+        >
+          {extendedImages.map((src, idx) => (
+            <img
+              key={idx}
+              src={src}
+              alt={`Slide ${idx}`}
+              className="w-full h-full object-cover flex-shrink-0"
+              draggable={false}
+              style={{ minWidth: "100%", minHeight: "100%" }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+'use client';
+
+import { useEffect, useRef, useState } from "react";
+import {NavBar} from "./Navbar"
+
+export default function Header() {
+  const images = ["1.svg", "2.png", "3.svg", "4.jpg"];
+  const extendedImages = [images[images.length - 1], ...images, images[0]];
+
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const touchStartXRef = useRef(0);
+  const touchEndXRef = useRef(0);
+  const mouseDownRef = useRef(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      goToNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleTransitionEnd = () => {
+    if (currentIndex === extendedImages.length - 1) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(1);
+      }, 0);
+    } else if (currentIndex === 0) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(images.length);
+      }, 0);
+    }
+  };
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      requestAnimationFrame(() => {
+        setIsTransitioning(true);
+      });
+    }
+  }, [isTransitioning]);
+
+  const handleTouchStart = (e: any) => {
+    if (!isTransitioning) return;
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: any) => {
+    if (!isTransitioning) return;
+    touchEndXRef.current = e.changedTouches[0].clientX;
+    const distance = touchStartXRef.current - touchEndXRef.current;
+    if (distance > 50) goToNext();
+    else if (distance < -50) goToPrevious();
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!isTransitioning) return;
+    mouseDownRef.current = true;
+    touchStartXRef.current = e.clientX;
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (!isTransitioning || !mouseDownRef.current) return;
+    mouseDownRef.current = false;
+    touchEndXRef.current = e.clientX;
+    const distance = touchStartXRef.current - touchEndXRef.current;
+    if (distance > 50) goToNext();
+    else if (distance < -50) goToPrevious();
+  };
+
+  const handleMouseLeave = () => {
+    mouseDownRef.current = false;
+  };
+
+  const goToNext = () => {
+    if (!isTransitioning) return;
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const goToPrevious = () => {
+    if (!isTransitioning) return;
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  const getTransform = () => {
+    return `translateX(-${currentIndex * 100}%)`;
+  };
+
+  return (
+    <div className="relative w-full h-[850px] overflow-hidden bg-black">
+      <NavBar />
+      <div
+        className="w-full h-full relative"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        style={{ cursor: "grab", userSelect: "none" }}
+      >
+        {/* Carousel without navigation arrows */}
+        <div
+          className={`flex h-full w-full ${
+            isTransitioning ? "transition-transform duration-[1500ms] ease-in-out" : ""
+          }`}
+          style={{ transform: getTransform() }}
+          onTransitionEnd={handleTransitionEnd}
+        >
+          {extendedImages.map((src, idx) => (
+            <img
+              key={idx}
+              src={src}
+              alt={`Slide ${idx}`}
+              className="w-full h-full object-cover flex-shrink-0"
+              draggable={false}
+              style={{ minWidth: "100%", minHeight: "100%" }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
