@@ -34,7 +34,7 @@ export function CxSection() {
   };
 
   return (
-    <div className="min-h-[600px] flex flex-col items-center bg-[#F1F2F6] py-10 sm:py-10 px-4 sm:px-6">
+    <div className="min-h-[600px] flex flex-col items-center bg-[#F1F2F6] py-10 mt-10 sm:py-10 px-4 sm:px-6">
       <div className="text-center mb-10 sm:mb-12">
         <h1 className="text-2xl lg:mr-5 sm:text-3xl md:text-4xl font-light gilda-display-regular text-amber-950 mb-4">
           Testimonials

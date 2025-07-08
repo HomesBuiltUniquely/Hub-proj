@@ -52,7 +52,7 @@ export default function BrandCarousel() {
 
   return (
     <div className="w-full bg-[#F1F2F6] overflow-hidden">
-      <h2 className="text-center mb-8 text-2xl sm:text-4xl font-light gilda-display-regular text-amber-950 tracking-wider">
+      <h2 className="text-center mb-16 text-2xl sm:text-4xl font-light gilda-display-regular text-amber-950 tracking-wider">
         Trusted Partners
       </h2>
 

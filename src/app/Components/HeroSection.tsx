@@ -24,20 +24,20 @@ export function HeroSection(){
             {/* Mobile/Tablet View (hidden on lg) */}
             <div className="lg:hidden h-[600px] sm:h-[700px] mt-22 flex flex-col items-center justify-start pt-12" style={{backgroundColor: '#F1F2F6'}}>
                 <div className="w-full max-w-4xl px-4">
-                    <h1 className="text-3xl sm:text-4xl font-semibold text-amber-950 text-center tracking-wider gilda-display-regular mb-4">
+                    <h1 className="text-3xl sm:text-4xl font-semibold text-amber-950 text-center tracking-wider gilda-display-regular mb-10">
                         Homes, Uniquely Built
                     </h1>
-                    <p className="text-center text-base sm:text-lg font-semibold text-amber-950 mb-9 mt-10">
+                    <p className="text-center text-base sm:text-lg font-semibold text-amber-950 mb-9 mt-16">
                         Your Home Deserves More Than Just Design — it deserves the story only your home can tell
                     </p>
-                    <div className="flex justify-center mb-8">
+                    <div className="flex justify-center">
                         <Link href="/Contact">
-                            <div className="w-[150px] h-[45px] bg-[#DDCDC1] text-center pt-2.5 rounded-full gilda-display-regular">
+                            <div className="w-[150px] h-[45px] bg-[#DDCDC1] text-center pt-2.5 rounded-full gilda-display-regular mt-5">
                                 Get Consultation
                             </div>
                         </Link>
                     </div>
-                    <div className="w-full flex justify-center">
+                    <div className="w-full flex justify-center mt-20">
                         <video
                             src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
                             className="w-full rounded-2xl shadow-lg"

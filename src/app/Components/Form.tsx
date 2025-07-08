@@ -94,12 +94,12 @@ export function Form() {
   });
 
   return (
-    <div className="min-h-screen lg:py-30 px-4 lg:px-8 lg:ml-30 bg-[#F1F2F6] hide-scrollbar">
+    <div className="min-h-screen lg:py-30 py-25 px-4 lg:px-8 lg:ml-30 bg-[#F1F2F6] hide-scrollbar">
       <h1 className="text-2xl lg:text-4xl font-extrabold text-amber-950 tracking-wider gilda-display-regular mb-8 lg:mb-15 sm:text-left lg:text-left">
         The Features You Need, The Simplicity You Want
       </h1>
 
-      <div className="flex flex-col lg:flex-row mt-15">
+      <div className="flex flex-col lg:flex-row mt-16">
         <div className="lg:hidden mb-10 flex overflow-x-auto gap-3 hide-scrollbar">
           {roomTypes.map((room) => (
             <button
