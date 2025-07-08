@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect} from 'react';
 import Image from 'next/image';
 
 type RoomType = 'Living Room' | 'Kitchen Room' | 'BedRoom' | 'Kids Room' | 'Devotional Room';
