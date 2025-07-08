@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
-export default function BrandCarousel() {  // Changed to default export
+export default function BrandCarousel() {
   const logos = [
     { src: '/Bulm1.webp', alt: 'Blum' },
     { src: '/ebco1.png', alt: 'Ebco' },
@@ -13,6 +13,16 @@ export default function BrandCarousel() {  // Changed to default export
     { src: '/Rehau1.png', alt: 'Rehau' },
     { src: '/AsainPaints.png', alt: 'Asian Paints' },
   ];
+
+  const brandStyles: Record<string, string> = {
+    'Blum': 'bg-transparent p-6 rounded-xl',
+    'Ebco': 'bg-transparent p-6 rounded-xl',
+    'Elica': 'bg-transparent p-6 rounded-lg',
+    'Faber': 'bg-transparent p-6 rounded-lg',
+    'Hettich': 'bg-transparent p-6 rounded-lg',
+    'Rehau': 'bg-transparent p-6 rounded-xl',
+    'Asian Paints': 'bg-transparent p-6 rounded-full',
+  };
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -38,11 +48,11 @@ export default function BrandCarousel() {  // Changed to default export
     return () => clearInterval(scrollInterval);
   }, []);
 
-  const allLogos = [...logos, ...logos];
+  const allLogos = [...logos, ...logos]; 
 
-  return ( 
-    <div className="w-full bg-[#F1F2F6] overflow-hidden ">
-      <h2 className="text-center mb-10 text-3xl sm:text-4xl font-light gilda-display-regular text-amber-950 tracking-wider">
+  return (
+    <div className="w-full bg-[#F1F2F6] overflow-hidden">
+      <h2 className="text-center mb-8 text-2xl sm:text-4xl font-light gilda-display-regular text-amber-950 tracking-wider">
         Trusted Partners
       </h2>
 
@@ -53,7 +63,7 @@ export default function BrandCarousel() {  // Changed to default export
         {allLogos.map((logo, idx) => (
           <div
             key={`${logo.src}-${idx}`}
-            className="inline-flex flex-shrink-0 px-10 py-10 items-center justify-center"
+            className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt] || ''}`}
           >
             <Image
               src={logo.src}

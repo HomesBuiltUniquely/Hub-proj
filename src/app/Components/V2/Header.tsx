@@ -206,6 +206,7 @@ export default function Header() {
               placeholder="Name"
               value={form.name}
               onChange={handleChange}
+              required
               className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none"
             />
             <input
@@ -214,6 +215,7 @@ export default function Header() {
               placeholder="Phone Number"
               value={form.phone}
               onChange={handleChange}
+              required
               className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none"
             />
             <input
@@ -222,6 +224,7 @@ export default function Header() {
               placeholder="Email"
               value={form.email}
               onChange={handleChange}
+              required
               className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none"
             />
             <input
@@ -230,11 +233,18 @@ export default function Header() {
               placeholder="Pincode"
               value={form.pincode}
               onChange={handleChange}
+              required
               className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none"
             />
+
+            <label htmlFor="confirm-details" className="flex items-center gap-2 ml-10">
+              <input required id="confirm-details" type="checkbox" />
+              Yes, every detail is correct
+            </label>
+
             <button
               type="submit"
-              className="w-full bg-[#DDCDC1] hover:bg-red-300 text-black py-2 rounded-xl font-semibold transition"
+              className="w-full bg-[#DDCDC1] hover:bg-red-500 text-black py-2 rounded-xl font-semibold transition"
             >
               Submit
             </button>
