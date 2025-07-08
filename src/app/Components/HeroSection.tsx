@@ -59,11 +59,14 @@ export function HeroSection(){
                     <div className="text-center text-[18px] font-semibold text-amber-950 pl-10 pt-2">
                         Your Home Deserves More Than Just Design — it deserves the story only your home can tell
                     </div>
-                    <Link href="/Contact">
-                        <div className="w-[150px] h-[45px] bg-[#DDCDC1] ml-165 mt-10 text-center pt-2.5 rounded-full gilda-display-regular">
+                    <div className="flex justify-center mt-10">
+                        <Link href="/Contact">
+                            <div className="w-[150px] h-[45px] bg-[#DDCDC1] text-center pt-2.5 rounded-full gilda-display-regular">
                             Get Consultation
-                        </div>
-                    </Link>
+                            </div>
+                        </Link>
+                    </div>
+
                     <div className="flex justify-center items-start">
                         {/* Left column */}
                         <div className="flex flex-col flex-shrink-0 flex-grow-0 w-[350px]">
