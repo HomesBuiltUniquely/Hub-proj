@@ -13,7 +13,7 @@ export function Form() {
   const [hoveredRoom, setHoveredRoom] = useState<RoomType | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  // const carouselRef = useRef<HTMLDivElement>(null);
 
   const roomData: Record<RoomType, RoomItem[]> = {
     'Living Room': [

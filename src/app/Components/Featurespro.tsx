@@ -10,7 +10,7 @@ export function Featurespro() {
                 {/* 10-Years Warranty */}
                 <div className="border-2 border-[#DDCDC1] w-full lg:w-[600px] h-auto min-h-[280px] rounded-3xl p-6 sm:p-8">
                     <div className="flex justify-between items-start">
-                        <div className="text-xl sm:text-2xl font-bold">"10-Years Warranty"</div>
+                        <div className="text-xl sm:text-2xl font-bold">10-Years Warranty</div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
                              className="size-8 sm:size-10 fill-[#DDCDC1]">
                             <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clipRule="evenodd" />
