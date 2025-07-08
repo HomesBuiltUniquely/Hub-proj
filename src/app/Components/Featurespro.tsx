@@ -1,12 +1,12 @@
 export function Featurespro() {
     return (
-      <div className="min-h-[800px] lg:py-27 sm:px-6 lg:px-10 lg:ml-20">
+      <div className="min-h-[800px] lg:py-27 sm:px-6 lg:px-20">
         <h1 className="text-2xl  lg:text-4xl text-center lg:text-left gilda-display-regular mb-15 sm:mb-12 lg:mb-20 text-amber-950 lg:ml-105">
           Why Choose HUB Interiors?
         </h1>
   
         {/* First Row */}
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mb-6 lg:mb-8">
+        <div className="flex flex-col lg:flex-row gap-6 mb-6 lg:mb-8">
           {/* 10-Years Warranty */}
           <div className="border-2 border-[#DDCDC1] w-[90%] sm:w-[95%] lg:w-[600px] h-auto min-h-[200px] sm:min-h-[250px] lg:min-h-[280px] rounded-3xl p-6 sm:p-8 mx-auto">
             <div className="flex justify-between items-start">
