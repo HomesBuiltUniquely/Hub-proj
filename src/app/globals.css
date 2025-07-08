@@ -22,6 +22,15 @@ body {
     font-style: normal;
   }
 
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+
   @keyframes scroll-left {
     0% {
       transform: translateX(0%);
@@ -71,6 +80,15 @@ body {
 
 .border-anim-box:hover svg rect {
   animation: border-animate 2s linear infinite;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
 
   
