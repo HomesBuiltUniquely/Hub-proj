@@ -211,7 +211,7 @@ export default function Header() {
           Get in Touch
         </h2>
         {submitted ? (
-          <p className="text-green-600 text-center">Thank you! We'll contact you soon.</p>
+          <p className="text-green-600 text-center">Thank you! We&rsquo;ll contact you soon.</p>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
             <input
