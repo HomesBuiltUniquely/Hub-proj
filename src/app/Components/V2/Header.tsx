@@ -23,19 +23,28 @@ export default function Header() {
   const touchEndXRef = useRef(0);
   const mouseDownRef = useRef(false);
 
-  // Adjust carousel speed based on screen size
+  // Adjust carousel speed and height based on screen size
   const [carouselSpeed, setCarouselSpeed] = useState(3000);
+  const [carouselHeight, setCarouselHeight] = useState("h-[900px]");
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 640) {
         setCarouselSpeed(4000);
+        setCarouselHeight("h-[400px]");
+      } else if (window.innerWidth < 768) {
+        setCarouselSpeed(4000);
+        setCarouselHeight("h-[450px]");
       } else if (window.innerWidth < 1024) {
         setCarouselSpeed(3500);
+        setCarouselHeight("h-[600px]");
       } else {
         setCarouselSpeed(3000);
+        setCarouselHeight("h-[800px]");
       }
     };
+    
+    // Initialize on mount
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -139,7 +148,7 @@ export default function Header() {
     <>
       <NavBar />
 
-      <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[900px] overflow-hidden bg-black">
+      <div className={`relative w-full ${carouselHeight} overflow-hidden bg-black`}>
         <div
           className="w-full h-full relative"
           onTouchStart={handleTouchStart}
@@ -164,6 +173,7 @@ export default function Header() {
                   loading={idx < 2 ? "eager" : "lazy"}
                   priority={idx < 2}
                   draggable={false}
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
                 />
               </div>
             ))}
@@ -171,18 +181,18 @@ export default function Header() {
         </div>
 
         {/* Form - Desktop */}
-        <div className="hidden lg:block absolute top-1/2 right-12 transform -translate-y-1/2 z-20 w-[90%] max-w-sm backdrop-blur-lg bg-white/30 border border-white/30 text-white rounded-3xl shadow-2xl p-6">
+        <div className="hidden lg:block absolute top-1/2 right-4 xl:right-12 transform -translate-y-1/2 z-20 w-[90%] max-w-sm backdrop-blur-lg bg-white/30 border border-white/30 text-white rounded-3xl shadow-2xl p-6">
           {renderForm()}
         </div>
 
         {/* Form - Tablet */}
-        <div className="hidden md:block lg:hidden absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-[90%] max-w-md backdrop-blur-sm bg-white/20 border border-white/20 text-white rounded-2xl shadow-xl p-4">
+        <div className="hidden sm:block lg:hidden absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-[90%] max-w-md backdrop-blur-sm bg-white/20 border border-white/20 text-white rounded-2xl shadow-xl p-4">
           {renderForm('md')}
         </div>
       </div>
 
       {/* Form - Mobile */}
-      <div className="block md:hidden w-full bg-[#f1f2f6] text-black py-6 px-4">
+      <div className="block sm:hidden w-full bg-[#f1f2f6] text-black py-6 px-4">
         <div className="max-w-md mx-auto bg-white rounded-xl shadow-md p-5">
           {renderForm('sm')}
         </div>
@@ -190,16 +200,20 @@ export default function Header() {
     </>
   );
 
-  function renderForm(size = 'lg') {
+  function renderForm(size: 'sm' | 'md' | 'lg' = 'lg') {
     return (
       <div className={size === 'sm' ? 'space-y-3' : 'space-y-4'}>
-        <h2 className={`${size === 'sm' ? 'text-xl' : 'text-2xl'} font-bold mb-3 text-center`}>
+        <h2 className={`${
+          size === 'sm' ? 'text-xl' : 
+          size === 'md' ? 'text-xl md:text-2xl' : 
+          'text-2xl'
+        } font-bold mb-3 text-center`}>
           Get in Touch
         </h2>
         {submitted ? (
-          <p className="text-green-600 text-center">Thank you! We&apos;ll contact you soon.</p>
+          <p className="text-green-600 text-center">Thank you! We'll contact you soon.</p>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
             <input
               type="text"
               name="name"
@@ -207,7 +221,7 @@ export default function Header() {
               value={form.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none"
+              className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="tel"
@@ -216,7 +230,7 @@ export default function Header() {
               value={form.phone}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none"
+              className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="email"
@@ -225,7 +239,7 @@ export default function Header() {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none"
+              className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="text"
@@ -234,21 +248,28 @@ export default function Header() {
               value={form.pincode}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none"
+              className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
-            <label htmlFor="confirm-details" className="flex items-center gap-2 ml-10">
-              <input required id="confirm-details" type="checkbox" />
-              Yes, every detail is correct
-            </label>
+            <div className="flex items-center gap-2 text-sm md:text-base">
+              <input 
+                required 
+                id="confirm-details" 
+                type="checkbox" 
+                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              />
+              <label htmlFor="confirm-details">Yes, every detail is correct</label>
+            </div>
 
             <button
               type="submit"
-              className="w-full bg-[#DDCDC1] hover:bg-red-500 text-black py-2 rounded-xl font-semibold transition"
+              className={`w-full ${
+                size === 'sm' ? 'py-2 text-sm' : 'py-3'
+              } bg-[#DDCDC1] hover:bg-red-500 text-black font-semibold rounded-xl transition duration-300 transform hover:scale-105`}
             >
               Submit
             </button>
-            {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+            {error && <p className="text-red-500 text-center mt-2 text-sm">{error}</p>}
           </form>
         )}
       </div>

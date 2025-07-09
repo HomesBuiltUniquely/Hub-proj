@@ -1,4 +1,4 @@
-import { HeroSection } from "./Components/HeroSection";
+import  {HeroSection} from "./Components/HeroSection";
 import  BrandCorosal  from "./Components/BrandCorosal";
 import {NavBar} from "./Components/NavBar"
 import  {Form}  from "./Components/Form";

@@ -7,16 +7,43 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
+  // Responsive logo size calculations
+  const getLogoSize = () => {
+    if (windowWidth < 1024) {
+      return scrolled ? { width: 85, height: 41 } : { width: 120, height: 50 };
+    }
+    if (windowWidth < 1280) {
+      return scrolled ? { width: 100, height: 48 } : { width: 140, height: 60 };
+    }
+    if (windowWidth < 1920) {
+      return scrolled ? { width: 110, height: 53 } : { width: 160, height: 70 };
+    }
+    return scrolled ? { width: 120, height: 58 } : { width: 180, height: 80 };
+  };
+
+  const logoSize = getLogoSize();
+
   return (
-    <div className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-transparent' : 'bg-[#F1F2F6]'}`}>
-      <nav className="w-full transition-all duration-300 py-4 px-4 sm:px-6">
+    <div className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? '' : 'bg-[#F1F2F6]'}`}>
+      <nav className="w-full transition-all duration-300 py-3 sm:py-4 px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
         {/* Mobile Header */}
         <div className="lg:hidden flex justify-between items-center">
           <Link href="/">
@@ -24,9 +51,9 @@ export function NavBar() {
               loading="lazy"
               src="/hub.png"
               alt="Logo"
-              width={scrolled ? 85 : 120}
-              height={scrolled ? 41 : 50}
-              className="cursor-pointer transition-all duration-300"
+              width={logoSize.width}
+              height={logoSize.height}
+              className="cursor-pointer transition-all duration-300 object-contain"
             />
           </Link>
           <button 
@@ -38,29 +65,63 @@ export function NavBar() {
           </button>
         </div>
 
-        {/* Desktop Header (unchanged from your original) */}
-        <div className={`hidden lg:flex max-w-7xl mx-auto items-center transition-all duration-300 ${scrolled ? 'justify-center bg-white/30 backdrop-blur-md shadow-md w-[800px] rounded-2xl' : 'justify-between'}`}>
+        {/* Desktop Header */}
+        <div className={`hidden lg:flex mx-auto items-center transition-all duration-300 ${
+          scrolled ? 'justify-center bg-white/30 backdrop-blur-md shadow-md rounded-2xl px-6 py-2' : 'justify-between px-4'
+        }`} style={{
+          maxWidth: scrolled ? '800px' : 'none',
+          width: scrolled ? (windowWidth >= 1920 ? '900px' : '800px') : 'auto'
+        }}>
           <Link href="/">
             <Image
               loading="lazy"
               src="/hub.png"
               alt="Logo"
-              width={150}
-              height={60}
-              className={`cursor-pointer transition-all duration-300 ${
-                scrolled ? 'w-[85px] h-[41px] mr-2' : 'w-[150px] h-[60px] mb-5'
-              }`}
+              width={logoSize.width}
+              height={logoSize.height}
+              className="cursor-pointer transition-all duration-300 object-contain hover:opacity-90"
             />
           </Link>
 
-          <div className={`flex items-center space-x-6 text-amber-950 transition-all duration-300 ${scrolled ? 'ml-8 mt-4' : ''}`}>
-            <ul className="flex space-x-6 text-amber-950 pb-3">
-              <li><Link href="/" className="hover:text-blue-500 font-medium text-[16px]">Home</Link></li>
-              <li><Link href="/Services" className="hover:text-blue-500 text-[16px] font-medium">Services</Link></li>
-              <li><Link href="/Explore-Rooms" className="hover:text-blue-500 text-[16px] font-medium mr-8">Explore Rooms</Link></li>
+          <div className={`flex items-center space-x-6 xl:space-x-8 2xl:space-x-10 text-amber-950 transition-all duration-300 ${
+            scrolled ? 'ml-8' : ''
+          }`}>
+            <ul className="flex space-x-6 xl:space-x-8 2xl:space-x-10 text-amber-950">
+              <li>
+                <Link 
+                  href="/" 
+                  className={`hover:text-amber-700 font-medium transition-colors ${
+                    scrolled ? 'py-2 text-base manrope-semibold' : 'py-4 text-xm manrope-medium'
+                  }`}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/Services" 
+                  className={`hover:text-amber-700 font-medium transition-colors ${
+                    scrolled ? 'py-2 text-base manrope-semibold' : 'py-4 text-xm manrope-medium'
+                  }`}
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/Explore-Rooms" 
+                  className={`hover:text-amber-700 font-medium transition-colors ${
+                    scrolled ? 'py-2 text-base manrope-semibold' : 'py-4 text-xm manrope-medium'
+                  }`}
+                >
+                  Explore Rooms
+                </Link>
+              </li>
             </ul>
             <Link href="/Contact">
-              <div className="text-amber-950 w-[200px] h-[40px] font-bold text-center pt-2 rounded-4xl mb-3 bg-[#DDCDC1] gilda-display-regular hover:bg-[#c9b9ad] transition-colors">
+              <div className={`text-amber-950 font-medium text-center rounded-full bg-[#DDCDC1] hover:bg-red-500 transition-colors duration-300 ${
+                scrolled ? 'w-[180px] h-[36px] pt-1.5 text-sm manrope-semibold' : 'w-[200px] h-[40px] pt-2 text-xm manrope-medium'
+              }`}>
                 Get Free Estimate
               </div>
             </Link>
@@ -69,12 +130,12 @@ export function NavBar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white/95 backdrop-blur-sm mt-4 p-6 rounded-xl shadow-lg">
-            <ul className="flex flex-col space-y-6">
+          <div className="lg:hidden bg-white/95 backdrop-blur-sm mt-3 p-6 rounded-xl shadow-lg animate-fade-in">
+            <ul className="flex flex-col space-y-4">
               <li>
                 <Link 
                   href="/" 
-                  className="block py-2 font-medium text-lg text-amber-950 hover:text-blue-500"
+                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Home
@@ -83,7 +144,7 @@ export function NavBar() {
               <li>
                 <Link 
                   href="/Services" 
-                  className="block py-2 font-medium text-lg text-amber-950 hover:text-blue-500"
+                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
@@ -92,7 +153,7 @@ export function NavBar() {
               <li>
                 <Link 
                   href="/Explore-Rooms" 
-                  className="block py-2 font-medium text-lg text-amber-950 hover:text-blue-500"
+                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Explore Rooms
@@ -104,7 +165,7 @@ export function NavBar() {
                   className="block"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <div className="text-amber-950 w-full h-[48px] font-bold text-center pt-3 rounded-4xl bg-[#DDCDC1] gilda-display-regular hover:bg-[#c9b9ad] transition-colors">
+                  <div className="text-amber-950 w-full h-[48px] font-medium text-center pt-3 rounded-full bg-[#DDCDC1] hover:bg-red-500 transition-colors manrope-medium">
                     Get Free Estimate
                   </div>
                 </Link>

@@ -15,10 +15,11 @@ body {
     font-style: normal;
   }
 
-.manrope-uniquifier {
+
+  .manrope-semibold {
     font-family: "Manrope", sans-serif;
     font-optical-sizing: auto;
-    font-weight: weight;
+    font-weight: 600;
     font-style: normal;
   }
 

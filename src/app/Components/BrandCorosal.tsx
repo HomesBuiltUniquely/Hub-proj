@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function BrandCarousel() {
   const logos = [
@@ -15,25 +15,47 @@ export default function BrandCarousel() {
   ];
 
   const brandStyles: Record<string, string> = {
-    'Blum': 'bg-transparent p-6 rounded-xl',
-    'Ebco': 'bg-transparent p-6 rounded-xl',
-    'Elica': 'bg-transparent p-6 rounded-lg',
-    'Faber': 'bg-transparent p-6 rounded-lg',
-    'Hettich': 'bg-transparent p-6 rounded-lg',
-    'Rehau': 'bg-transparent p-6 rounded-xl',
-    'Asian Paints': 'bg-transparent p-6 rounded-full',
+    'Blum': 'bg-transparent p-4 sm:p-6 rounded-xl',
+    'Ebco': 'bg-transparent p-4 sm:p-6 rounded-xl',
+    'Elica': 'bg-transparent p-4 mt-2 sm:p-6 rounded-lg',
+    'Faber': 'bg-transparent p-4 mt-4 sm:p-6 rounded-lg',
+    'Hettich': 'bg-transparent p-4 mb-4 sm:p-6 rounded-lg',
+    'Rehau': 'bg-transparent p-4 sm:p-6 rounded-xl',
+    'Asian Paints': 'bg-transparent p-4 sm:p-6 rounded-full',
   };
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    // Set initial width
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     let scrollAmount = 0;
-    const scrollSpeed = 1;
+    let scrollSpeed = 1;
+    let animationFrameId: number;
 
-    const scrollInterval = setInterval(() => {
+    // Adjust speed based on window size
+    if (windowWidth < 640) {
+      scrollSpeed = 0.5; // Slower on mobile
+    } else if (windowWidth < 1024) {
+      scrollSpeed = 0.8; // Medium on tablet
+    } else {
+      scrollSpeed = 1.2; // Faster on desktop
+    }
+
+    const scroll = () => {
       if (container) {
         scrollAmount += scrollSpeed;
         container.scrollLeft += scrollSpeed;
@@ -43,35 +65,49 @@ export default function BrandCarousel() {
           scrollAmount = 0;
         }
       }
-    }, 20);
+      animationFrameId = requestAnimationFrame(scroll);
+    };
 
-    return () => clearInterval(scrollInterval);
-  }, []);
+    animationFrameId = requestAnimationFrame(scroll);
 
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [windowWidth]);
+
+  // Double the logos for seamless looping
   const allLogos = [...logos, ...logos]; 
 
   return (
-    <div className="w-full bg-[#F1F2F6] overflow-hidden">
-      <h2 className="text-center mb-16 text-2xl sm:text-4xl font-light gilda-display-regular text-amber-950 tracking-wider">
+    <div className="w-full bg-[#F1F2F6] overflow-hidden mb-20">
+      <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-4xl font-light gilda-display-regular text-amber-950 tracking-wider">
         Trusted Partners
       </h2>
 
       <div
         ref={containerRef}
         className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
+        style={{ scrollbarWidth: 'none' }} // For Firefox
       >
         {allLogos.map((logo, idx) => (
           <div
             key={`${logo.src}-${idx}`}
-            className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt] || ''}`}
+            className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${
+              brandStyles[logo.alt] || ''
+            }`}
           >
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={120}
-              height={60}
-              className="object-contain h-[60px] w-auto"
+              width={0}
+              height={0}
+              sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
+              className="object-contain h-[40px] sm:h-[50px] md:h-[60px] w-auto"
               loading="lazy"
+              style={{
+                width: 'auto',
+                height: '100%',
+              }}
             />
           </div>
         ))}
