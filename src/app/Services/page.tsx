@@ -34,14 +34,14 @@ export default function Services() {
   };
 
   return (
-    <div className="relative w-[1200px] h-[700px] border-2 border-white ml-35 mt-20 rounded-2xl overflow-hidden shadow-lg">
+    <div className="relative w-full max-w-[1200px] aspect-video mx-auto mt-16 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
       <video
         ref={videoRef}
         autoPlay
         muted
         playsInline
         onClick={handleVideoClick}
-        className="w-full h-full object-cover cursor-pointer rounded-2xl"
+        className="w-full h-full object-cover cursor-pointer"
       >
         <source
           src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//errorpage.mp4"
@@ -50,25 +50,23 @@ export default function Services() {
         Your browser does not support the video tag.
       </video>
 
-      {/* THUMBNAIL OVERLAY WITH TEXT & PLAY BUTTON */}
       {!userInteracted && (
         <div
           className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center px-6 z-10 cursor-pointer"
           onClick={handleVideoClick}
         >
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl manrope drop-shadow-xl mb-10">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl manrope drop-shadow-xl mb-10">
             #CHANGEISGOOD
           </h1>
           <button
             className="p-4 bg-white bg-opacity-80 rounded-full animate-pulse"
             aria-label="Play video"
           >
-            {/* ▶️ Play Icon SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
-              className="w-12 h-12"
+              className="w-10 h-10 sm:w-12 sm:h-12"
             >
               <path d="M8 5v14l11-7z" />
             </svg>
