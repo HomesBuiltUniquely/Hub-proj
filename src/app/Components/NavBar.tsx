@@ -109,7 +109,7 @@ export function NavBar() {
               </li>
               <li>
                 <Link 
-                  href="/Explore-Rooms" 
+                  href="/Services" 
                   className={`hover:text-amber-700 font-medium transition-colors ${
                     scrolled ? 'py-2 text-base manrope' : 'py-4 text-xm manrope'
                   }`}
@@ -152,7 +152,7 @@ export function NavBar() {
               </li>
               <li>
                 <Link 
-                  href="/Explore-Rooms" 
+                  href="/Services" 
                   className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope"
                   onClick={() => setMobileMenuOpen(false)}
                 >
