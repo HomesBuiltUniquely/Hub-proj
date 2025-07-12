@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function BrandCarousel() {
   const logos = [
-    { src: '/Bulm1.webp', alt: 'Blum' },
-    { src: '/ebco1.png', alt: 'Ebco' },
-    { src: '/elica1.png', alt: 'Elica' },
-    { src: '/Faber1.png', alt: 'Faber' },
-    { src: '/Hetich1.png', alt: 'Hettich' },
-    { src: '/Rehau1.png', alt: 'Rehau' },
-    { src: '/AsainPaints.png', alt: 'Asian Paints' },
+    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Bulm1.webp', alt: 'Blum' },
+    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//ebco1.png', alt: 'Ebco' },
+    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//elica1.png', alt: 'Elica' },
+    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Faber1.png', alt: 'Faber' },
+    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Hetich1.png', alt: 'Hettich' },
+    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Rehau1.png', alt: 'Rehau' },
+    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//AsainPaints.png', alt: 'Asian Paints' },
   ];
 
   const brandStyles: Record<string, string> = {
@@ -75,19 +75,18 @@ export default function BrandCarousel() {
     };
   }, [windowWidth]);
 
-  // Double the logos for seamless looping
   const allLogos = [...logos, ...logos]; 
 
   return (
     <div className="w-full bg-[#F1F2F6] overflow-hidden mb-20">
-      <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-4xl font-light gilda-display-regular text-amber-950 tracking-wider">
+      <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-4xl font-light wulkan-display-bold text-amber-950 tracking-wider">
         Trusted Partners
       </h2>
 
       <div
         ref={containerRef}
         className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
-        style={{ scrollbarWidth: 'none' }} // For Firefox
+        style={{ scrollbarWidth: 'none' }}
       >
         {allLogos.map((logo, idx) => (
           <div

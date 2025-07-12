@@ -91,7 +91,7 @@ export function NavBar() {
                 <Link 
                   href="/" 
                   className={`hover:text-amber-700 font-medium transition-colors ${
-                    scrolled ? 'py-2 text-base manrope-semibold' : 'py-4 text-xm manrope-medium'
+                    scrolled ? 'py-2 text-base manrope font-bold' : 'py-4 text-xm manrope'
                   }`}
                 >
                   Home
@@ -101,7 +101,7 @@ export function NavBar() {
                 <Link 
                   href="/Services" 
                   className={`hover:text-amber-700 font-medium transition-colors ${
-                    scrolled ? 'py-2 text-base manrope-semibold' : 'py-4 text-xm manrope-medium'
+                    scrolled ? 'py-2 text-base manrope' : 'py-4 text-xm manrope'
                   }`}
                 >
                   Services
@@ -111,7 +111,7 @@ export function NavBar() {
                 <Link 
                   href="/Explore-Rooms" 
                   className={`hover:text-amber-700 font-medium transition-colors ${
-                    scrolled ? 'py-2 text-base manrope-semibold' : 'py-4 text-xm manrope-medium'
+                    scrolled ? 'py-2 text-base manrope' : 'py-4 text-xm manrope'
                   }`}
                 >
                   Explore Rooms
@@ -120,7 +120,7 @@ export function NavBar() {
             </ul>
             <Link href="/Contact">
               <div className={`text-amber-950 font-medium text-center rounded-full bg-[#DDCDC1] hover:bg-red-500 transition-colors duration-300 ${
-                scrolled ? 'w-[180px] h-[36px] pt-1.5 text-sm manrope-semibold' : 'w-[200px] h-[40px] pt-2 text-xm manrope-medium'
+                scrolled ? 'w-[180px] h-[36px] pt-1.5 text-sm manrope' : 'w-[200px] h-[40px] pt-2 text-xm manrope'
               }`}>
                 Get Free Estimate
               </div>
@@ -135,7 +135,7 @@ export function NavBar() {
               <li>
                 <Link 
                   href="/" 
-                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope-medium"
+                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Home
@@ -144,7 +144,7 @@ export function NavBar() {
               <li>
                 <Link 
                   href="/Services" 
-                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope-medium"
+                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
@@ -153,7 +153,7 @@ export function NavBar() {
               <li>
                 <Link 
                   href="/Explore-Rooms" 
-                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope-medium"
+                  className="block py-3 font-medium text-lg text-amber-950 hover:text-blue-500 transition-colors manrope"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Explore Rooms
@@ -165,7 +165,7 @@ export function NavBar() {
                   className="block"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <div className="text-amber-950 w-full h-[48px] font-medium text-center pt-3 rounded-full bg-[#DDCDC1] hover:bg-red-500 transition-colors manrope-medium">
+                  <div className="text-amber-950 w-full h-[48px] font-medium text-center pt-3 rounded-full bg-[#DDCDC1] hover:bg-red-500 transition-colors manrope">
                     Get Free Estimate
                   </div>
                 </Link>

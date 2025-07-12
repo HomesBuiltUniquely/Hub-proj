@@ -77,7 +77,7 @@ export function CxSection() {
   return (
     <div className="min-h-[500px] sm:min-h-[700px] flex flex-col items-center bg-[#F1F2F6] sm:py-12 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-2xl sm:text-2xl md:text-4xl lg:text-4xl tracking-wider gilda-display-regular text-amber-950 mb-4">
+        <h1 className="text-2xl sm:text-2xl md:text-4xl lg:text-4xl tracking-wider wulkan-display-bold text-amber-950 mb-20">
           Testimonials
         </h1>
       </div>

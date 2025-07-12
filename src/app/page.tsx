@@ -6,6 +6,7 @@ import { CxSection } from "./Components/CxSection";
 import { Featurespro } from "./Components/Featurespro";
 import { QAsection } from "./Components/QAsection";
 import { Footer } from "./Components/Footer";
+import { Stepsection } from "./Components/StepSections";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Form/>
       <BrandCorosal/>
       <CxSection/>
+      <Stepsection/>
       <Featurespro/>
       <QAsection/>
       <Footer/>

@@ -60,11 +60,11 @@ export function QAsection() {
   return (
     <div className="min-h-screen bg-[#F1F2F6] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-48 py-16 md:py-20">
       <div className="max-w-screen-xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl lg:text-4xl mb-15 sm:mb-10 text-amber-950 font-semibold gilda-display-regular text-center">
+        <h1 className="text-3xl sm:text-4xl lg:text-4xl mb-15 sm:mb-10 text-amber-950 wulkan-display-bold text-center tracking-wider">
           Frequently Asked Questions
         </h1>
 
-        <div className="space-y-4 sm:space-y-6 mt-16 sm:mt-25">
+        <div className="space-y-4 sm:space-y-6 mt-16 sm:mt-25 manrope-medium">
           {faqData.map((item, index) => (
             <div key={index} className="pb-4 sm:pb-6">
               <div

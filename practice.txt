@@ -1822,5 +1822,1209 @@ export function HeroSection(){
 
 
 
+
+"use client"
+import { useEffect, useState } from "react";
+import Link from 'next/link';
+import Image from 'next/image'
+
+export function HeroSection(){
+    const [videoSize, setVideoSize] = useState({ width: 800, height: 450 });
+
+    useEffect(() => {
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            const maxScroll = 500;
+            const progress = Math.min(scrollY / maxScroll, 1);
+            
+            // Responsive video sizing based on screen width
+            const screenWidth = window.innerWidth;
+            let baseWidth, maxWidth, baseHeight, maxHeight;
+            
+            if (screenWidth < 1280) { // Smaller screens
+                baseWidth = 600;
+                maxWidth = 800;
+                baseHeight = 338;
+                maxHeight = 450;
+            } else { // Large screens
+                baseWidth = 800;
+                maxWidth = 1200;
+                baseHeight = 450;
+                maxHeight = 675;
+            }
+            
+            const width = baseWidth + (maxWidth - baseWidth) * progress;
+            const height = baseHeight + (maxHeight - baseHeight) * progress;
+            setVideoSize({ width, height });
+        }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    return (
+        <div>
+            {/* Mobile/Tablet View (hidden on lg) */}
+            <div className="lg:hidden h-[600px] sm:h-[700px] mt-22 flex flex-col items-center justify-start pt-12" style={{backgroundColor: '#F1F2F6'}}>
+                <div className="w-full max-w-4xl px-4">
+                    <h1 className="text-3xl sm:text-4xl font-semibold text-amber-950 text-center tracking-wider wulkan-display tracking-wider mb-10">
+                        Homes, Uniquely Built
+                    </h1>
+                    <p className="text-center text-base sm:text-lg font-medium text-amber-950 mb-9 mt-16 manrope">
+                        Your Home Deserves More Than Just Design — it deserves the story only your home can tell
+                    </p>
+                    <div className="flex justify-center">
+                        <Link href="/Contact">
+                            <div
+                                className="manrope w-[150px] h-[45px] bg-[#DDCDC1] flex items-center justify-center rounded-full mt-5 shadow-lg border-b-4 border-[#b8a48c] transition duration-150 active:translate-y-1 active:shadow hover:shadow-2xl cursor-pointer select-none text-base font-medium manrope tracking-tight"
+                            >
+                                Get Consultation
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="w-full flex justify-center mt-20">
+                        <video
+                            src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+                            className="w-full rounded-2xl shadow-lg"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                        />
+                    </div>
+                </div>
+            </div>
+
+            {/* Desktop Layout (lg and above) - Responsive sizing */}
+            <div className="hidden lg:block h-[1000px] xl:h-[1100px] 2xl:h-[1200px]" style={{backgroundColor: '#F1F2F6'}}>
+                <div className="max-w-7xl mx-auto px-4 xl:px-8 2xl:px-12">
+                    <div className="wulkan-display text-xl lg:text-5xl xl:text-4xl 2xl:text-7xl mt-16 lg:mt-20 xl:mt-24 mb-4 font-medium text-amber-950 text-center tracking-wider pl-8 pt-10 gilda-display-regular">
+                        <span className="manrope">HOMES,</span> uniquely <span className="manrope">BUILT</span>
+                    </div>
+                    <div className="text-center text-base lg:text-lg xl:text-xl 2xl:text-2xl font-medium text-amber-950 pl-10 pt-2 manrope">
+                        Your Home Deserves More Than Just Design — it deserves the story only your home can tell
+                    </div>
+                    <div className="flex justify-center mt-8 lg:mt-10 xl:mt-12">
+                        <Link href="/Contact">
+                            <div
+                                className="manrope w-[140px] lg:w-[150px] xl:w-[160px] h-[40px] lg:h-[45px] xl:h-[50px] bg-[#DDCDC1] flex items-center justify-center rounded-full shadow-lg border-b-4 border-[#b8a48c] transition duration-150 active:translate-y-1 active:shadow hover:shadow-2xl cursor-pointer select-none text-base font-medium tracking-tight"
+                            >
+                                Get Consultation
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className="flex justify-center items-start mt-8 lg:mt-6 xl:mt-8 2xl:mt-10">
+                        {/* Left column */}
+                        <div className="flex flex-col flex-shrink-0 flex-grow-0 w-[280px] lg:w-[320px] xl:w-[350px] 2xl:w-[400px]">
+                            <div className="w-full h-[160px] lg:h-[180px] xl:h-[200px] 2xl:h-[220px] ml-8 lg:ml-12 xl:ml-16 2xl:ml-20 rounded-2xl relative shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
+                                <Image 
+                                    loading="lazy" 
+                                    src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img1.jpg" 
+                                    alt="" 
+                                    width={400} 
+                                    height={220} 
+                                    className="object-cover rounded-2xl w-full h-full"
+                                />
+                            </div>
+                            <div className="w-[120px] lg:w-[130px] xl:w-[150px] 2xl:w-[160px] h-[120px] lg:h-[140px] xl:h-[170px] 2xl:h-[180px] rounded-2xl mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 ml-20 lg:ml-24 xl:ml-28 2xl:ml-32 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
+                                <Image 
+                                    loading="lazy" 
+                                    src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img3.jpg" 
+                                    alt="" 
+                                    width={160} 
+                                    height={180} 
+                                    className="object-cover rounded-2xl w-full h-full"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Center column */}
+                        <div className="relative flex flex-col items-center justify-start flex-shrink-0 flex-grow-0 w-[600px] lg:w-[700px] xl:w-[800px] 2xl:w-[900px] min-w-0">
+                            <div
+                                className="-ml-1 rounded-2xl flex items-center justify-center"
+                                style={{
+                                    position: 'absolute',
+                                    left: '50%',
+                                    top: '100px',
+                                    transform: 'translateX(-50%)',
+                                    width: videoSize.width,
+                                    height: videoSize.height,
+                                    zIndex: 20,
+                                    transition: 'width 0.3s, height 0.3s',
+                                    boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+                                    pointerEvents: 'none',
+                                    maxWidth: 'none',
+                                }}
+                            >
+                                <video
+                                    src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '1rem' }}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                />
+                            </div>
+                        </div>
+
+                        {/* Right column */}
+                        <div className="w-[200px] lg:w-[220px] xl:w-[270px] 2xl:w-[300px] h-[250px] lg:h-[280px] xl:h-[350px] 2xl:h-[380px] rounded-2xl mr-8 lg:mr-12 xl:mr-16 2xl:mr-20 ml-2 lg:ml-6 xl:ml-4 flex-shrink-0 flex-grow-0 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
+                            <Image 
+                                loading="lazy" 
+                                src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img2.jpg" 
+                                alt="" 
+                                width={300} 
+                                height={380} 
+                                className="object-cover rounded-2xl w-full h-full"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+
+}
+
+
+"use client";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useSwipeable } from "react-swipeable";
+
+type RoomType =
+  | "Living Room"
+  | "Kitchen Room"
+  | "Bed Room"
+  | "Kids Room"
+  | "Devotional Room";
+
+interface RoomItem {
+  image: string;
+}
+
+export function Form() {
+  const [activeRoom, setActiveRoom] = useState<RoomType>("Living Room");
+  const [hoveredRoom, setHoveredRoom] = useState<RoomType | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const roomData: Record<RoomType, RoomItem[]> = {
+    "Living Room": [
+      { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img1.jpg" },
+      { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img2.jpg" },
+      { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img3.jpg" },
+      { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img4.jpg" },
+      { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img5.jpg" },
+      { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img6.jpg" }
+    ],
+    "Kitchen Room": [ { image: "/kitchen1.jpg" }, { image: "/kitchen2.jpg" }, { image: "/kitchen3.jpg" }, { image: "/kitchen4.jpg" }, { image: "/kitchen5.jpg" }, { image: "/kitchen6.jpg" } ],
+    "Bed Room": [ { image: "/bed1.jpg" }, { image: "/bed2.jpg" }, { image: "/bed3.jpg" }, { image: "/bed4.jpg" }, { image: "/bed5.jpg" }, { image: "/bed6.jpg" } ],
+    "Kids Room": [ { image: "/kids1.jpg" }, { image: "/kids2.jpg" }, { image: "/kids3.jpg" }, { image: "/kids4.jpg" }, { image: "/kids5.jpg" }, { image: "/kids6.jpg" } ],
+    "Devotional Room": [ { image: "/pooja1.jpg" }, { image: "/pooja2.jpg" }, { image: "/pooja3.jpg" }, { image: "/pooja4.jpg" }, { image: "/pooja5.jpg" }, { image: "/pooja6.jpg" } ]
+  };
+
+  const roomTypes = Object.keys(roomData) as RoomType[];
+
+  useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+    if (!isAutoPlaying) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % roomData[activeRoom].length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [activeRoom, isAutoPlaying]);
+
+  const goToNext = () => {
+    setIsAutoPlaying(false);
+    setCurrentIndex((prev) => (prev + 1) % roomData[activeRoom].length);
+  };
+
+  const goToPrev = () => {
+    setIsAutoPlaying(false);
+    setCurrentIndex(
+      (prev) => (prev - 1 + roomData[activeRoom].length) % roomData[activeRoom].length
+    );
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: goToNext,
+    onSwipedRight: goToPrev,
+    preventScrollOnSwipe: true,
+    trackMouse: false
+  });
+
+  return (
+    <div className="w-full bg-[#F1F2F6] py-35 px-6 sm:px-6 lg:px-12">
+      <div className="max-w-[1440px] mx-auto">
+        <h1 className="wulkan-display-bold text-2xl md:text-3xl lg:text-[40px] text-amber-950 lg:ml-16 tracking-wider lg:mb-25 mb-10  lg:text-left">
+          Every space has a story, start yours here
+        </h1>
+
+        <div className="flex flex-col lg:flex-row gap-10 manrope ">
+          {/* Sidebar (Desktop) */}
+          <div className="hidden lg:flex flex-col w-[240px] flex-shrink-0 sticky top-20 self-start">
+            {roomTypes.map((room) => (
+              <div
+                key={room}
+                className="relative h-[50px] mb-6 cursor-pointer"
+                onMouseEnter={() => setHoveredRoom(room)}
+                onMouseLeave={() => setHoveredRoom(null)}
+                onClick={() => setActiveRoom(room)}
+              >
+                <div
+                  className={`absolute inset-0 rounded-3xl transition-all duration-300 z-0 ${
+                    hoveredRoom === room ? "bg-[#DDCDC1] opacity-100 w-[190px] ml-14 " : "opacity-0"
+                  }`}
+                />
+                <h1 className="manrope-semibold relative z-10 text-left text-lg h-full flex items-center pl-18">
+                  {room}
+                </h1>
+              </div>
+            ))}
+          </div>
+
+          {/* Tabs (Mobile) */}
+          <div className="lg:hidden mb-6 flex overflow-x-auto gap-3 hide-scrollbar">
+            {roomTypes.map((room) => (
+              <button
+                key={room}
+                onClick={() => {
+                  setActiveRoom(room);
+                  setCurrentIndex(0);
+                  setIsAutoPlaying(true);
+                }}
+                className={`px-4 py-2 rounded-full whitespace-nowrap ${
+                  activeRoom === room
+                    ? "bg-[#DDCDC1] text-amber-950 .manrope-semibold"
+                    : "bg-white text-gray-700 .manrope-semibold"
+                }`}
+              >
+                {room}
+              </button>
+            ))}
+          </div>
+
+          {/* Image Grid (Desktop) */}
+          <div className="hidden lg:flex flex-wrap gap-6 flex-1 justify-center">
+            {roomData[activeRoom].map((item, index) => (
+              <div
+                key={`${activeRoom}-${index}`}
+                className="w-[280px] h-[320px] rounded-2xl overflow-hidden shadow-md"
+              >
+                <Image
+                  src={item.image}
+                  alt={`${activeRoom} design ${index + 1}`}
+                  width={280}
+                  height={320}
+                  className="object-cover w-full h-full"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Swipe Carousel (Mobile) */}
+          <div className="lg:hidden relative" {...swipeHandlers}>
+            <div className="relative h-[300px] w-full rounded-2xl overflow-hidden">
+              <Image
+                src={roomData[activeRoom][currentIndex].image}
+                alt={`${activeRoom} design ${currentIndex + 1}`}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {/* Controls */}
+            <button
+              onClick={goToPrev}
+              className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 text-amber-900 p-3 rounded-full shadow-md"
+            >
+              ◀
+            </button>
+            <button
+              onClick={goToNext}
+              className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 text-amber-900 p-3 rounded-full shadow-md"
+            >
+              ▶
+            </button>
+
+            {/* Indicators */}
+            <div className="flex justify-center mt-4 gap-2">
+              {roomData[activeRoom].map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    setIsAutoPlaying(false);
+                  }}
+                  className={`w-3 h-3 rounded-full ${
+                    index === currentIndex ? "bg-[#DDCDC1]" : "bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+"use client"
+import { useEffect, useState } from "react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion, AnimatePresence } from "framer-motion";
+
+export function HeroSection() {
+  const [videoSize, setVideoSize] = useState({ width: 800, height: 450 });
+  const [currentFontIndex, setCurrentFontIndex] = useState(0);
+  const [showMainTitle, setShowMainTitle] = useState(false);
+  const [startFontAnimation, setStartFontAnimation] = useState(false);
+  const [showSubtext, setShowSubtext] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+
+  const fonts = [
+    'font-serif italic text-amber-950',
+    'font-mono font-bold text-amber-950',
+    'font-sans font-extrabold italic text-amber-950',
+    'wulkan-display text-amber-950'
+  ];
+
+  useEffect(() => {
+    let mounted = true;
+    const timeouts: NodeJS.Timeout[] = [];
+
+    const runAnimation = async () => {
+      try {
+        // Step 1: Show main title
+        if (mounted) {
+          const timeout1 = setTimeout(() => {
+            if (mounted) setShowMainTitle(true);
+          }, 300);
+          timeouts.push(timeout1);
+        }
+
+        // Step 2: Start font animation
+        if (mounted) {
+          const timeout2 = setTimeout(() => {
+            if (mounted) setStartFontAnimation(true);
+          }, 1200);
+          timeouts.push(timeout2);
+        }
+
+        // Step 3: Cycle through fonts
+        if (mounted) {
+          const timeout3 = setTimeout(() => {
+            if (!mounted) return;
+            
+            let fontIndex = 0;
+            const fontInterval = setInterval(() => {
+              if (!mounted) {
+                clearInterval(fontInterval);
+                return;
+              }
+              
+              fontIndex++;
+              if (fontIndex >= fonts.length) {
+                clearInterval(fontInterval);
+                
+                // Step 4: Show subtext
+                const timeout4 = setTimeout(() => {
+                  if (mounted) setShowSubtext(true);
+                }, 500);
+                timeouts.push(timeout4);
+                
+                // Step 5: Show button
+                const timeout5 = setTimeout(() => {
+                  if (mounted) setShowButton(true);
+                }, 1000);
+                timeouts.push(timeout5);
+                
+                return;
+              }
+              
+              setCurrentFontIndex(fontIndex);
+            }, 600);
+            
+            timeouts.push(fontInterval);
+          }, 1300);
+          timeouts.push(timeout3);
+        }
+      } catch (error) {
+        console.error('Animation error:', error);
+      }
+    };
+
+    runAnimation();
+
+    return () => {
+      mounted = false;
+      timeouts.forEach(timeout => {
+        if (typeof timeout === 'number') {
+          clearTimeout(timeout);
+        } else {
+          clearInterval(timeout);
+        }
+      });
+    };
+  }, [fonts.length]);
+
+  useEffect(() => {
+    let mounted = true;
+    
+    const handleScroll = () => {
+      if (!mounted) return;
+      
+      try {
+        const scrollY = window.scrollY;
+        const maxScroll = 500;
+        const progress = Math.min(scrollY / maxScroll, 1);
+        
+        const screenWidth = window.innerWidth;
+        let baseWidth, maxWidth, baseHeight, maxHeight;
+        
+        if (screenWidth < 1280) {
+          baseWidth = 600;
+          maxWidth = 800;
+          baseHeight = 338;
+          maxHeight = 450;
+        } else {
+          baseWidth = 800;
+          maxWidth = 1200;
+          baseHeight = 450;
+          maxHeight = 675;
+        }
+        
+        if (mounted) {
+          setVideoSize({
+            width: baseWidth + (maxWidth - baseWidth) * progress,
+            height: baseHeight + (maxHeight - baseHeight) * progress
+          });
+        }
+      } catch (error) {
+        console.error('Scroll handler error:', error);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => {
+      mounted = false;
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleVideoError = () => {
+    setVideoError(true);
+  };
+
+  return (
+    <div>
+      {/* Mobile/Tablet View */}
+      <div className="lg:hidden h-[600px] sm:h-[700px] mt-22 flex flex-col items-center justify-start pt-12 bg-[#F1F2F6]">
+        <div className="w-full max-w-4xl px-4">
+          <div className="relative overflow-hidden">
+            <motion.h1 
+              initial={{ y: 100, opacity: 0 }}
+              animate={showMainTitle ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-3xl sm:text-4xl font-semibold text-amber-950 text-center tracking-wider wulkan-display mb-10"
+            >
+              <span className="manrope-semibold">Homes</span>{' '}
+              {startFontAnimation ? (
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentFontIndex}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.4 }}
+                    className={`inline-block ${fonts[currentFontIndex]}`}
+                  >
+                    Uniquely
+                  </motion.span>
+                </AnimatePresence>
+              ) : (
+                <span className="wulkan-display text-amber-950">Uniquely</span>
+              )}{' '}
+              <span className="manrope-semibold">Built</span>
+            </motion.h1>
+          </div>
+
+          <AnimatePresence>
+            {showSubtext && (
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-center text-base sm:text-lg font-medium text-amber-950 mb-9 manrope"
+              >
+                Your Home Deserves More Than Just Design — it deserves the story only your home can tell
+              </motion.p>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {showButton && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                transition={{ duration: 0.6, type: 'spring', stiffness: 100, damping: 20 }}
+                className="flex justify-center"
+              >
+                <Link href="/Contact">
+                  <div className="manrope w-[150px] h-[45px] bg-[#DDCDC1] flex items-center justify-center rounded-full mt-5 shadow-lg border-b-4 border-[#b8a48c] transition duration-150 active:translate-y-1 active:shadow hover:shadow-2xl cursor-pointer select-none text-base font-medium tracking-tight">
+                    Get Consultation
+                  </div>
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="w-full flex justify-center mt-20">
+            {videoError ? (
+              <div className="w-full h-[200px] bg-gray-200 rounded-2xl flex items-center justify-center">
+                <p>Video preview unavailable</p>
+              </div>
+            ) : (
+              <video
+                src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+                className="w-full rounded-2xl shadow-lg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                onError={handleVideoError}
+                preload="metadata"
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop View */}
+      <div className="hidden lg:block h-[1000px] xl:h-[1100px] 2xl:h-[1200px] bg-[#F1F2F6]">
+        <div className="max-w-7xl mx-auto px-4 xl:px-8 2xl:px-12">
+          <div className="relative overflow-hidden">
+            <motion.div 
+              initial={{ y: 150, opacity: 0 }}
+              animate={showMainTitle ? { y: 0, opacity: 1 } : { y: 150, opacity: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="wulkan-display text-xl lg:text-[45px] xl:text-[50px] 2xl:text-7xl mt-16 lg:mt-20 xl:mt-15 mb-4 font-light text-amber-950 text-center pl-8 pt-15"
+            >
+              <span className="manrope text-[40px]">HOMES</span>{' '}
+              {startFontAnimation ? (
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentFontIndex}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.4 }}
+                    className={`inline-block ${fonts[currentFontIndex]}`}
+                  >
+                    uniquely
+                  </motion.span>
+                </AnimatePresence>
+              ) : (
+                <span className="wulkan-display text-amber-950">uniquely</span>
+              )}{' '}
+              <span className="manrope text-[40px]">BUILT</span>
+            </motion.div>
+          </div>
+
+          <AnimatePresence>
+            {showSubtext && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-center text-base lg:text-lg xl:text-xl 2xl:text-2xl manrope-medium text-amber-950 pl-10 pt-[4px] "
+              >
+                Your Home Deserves More Than Just Design — it deserves the story only your home can tell
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {showButton && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: -30 }}
+                transition={{ duration: 0.6, type: 'spring', stiffness: 100, damping: 20 }}
+                className="flex justify-center mt-8 lg:mt-10 xl:mt-8"
+              >
+                <Link href="/Contact">
+                  <div className="w-[140px] lg:w-[200px] xl:w-[200px] h-[40px] lg:h-[45px] xl:h-[50px] bg-[#DDCDC1] flex items-center justify-center rounded-full shadow-lg border-b-4 border-[#b8a48c] transition duration-150 active:translate-y-1 active:shadow hover:shadow-2xl cursor-pointer select-none text-base font-medium tracking-tight">
+                    Get Consultation
+                  </div>
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Rest of desktop layout */}
+          <div className="flex justify-center items-start mt-8 lg:mt-6 xl:mt-8 2xl:mt-10">
+            {/* Left column */}
+            <div className="flex flex-col flex-shrink-0 flex-grow-0 w-[280px] lg:w-[320px] xl:w-[350px] 2xl:w-[400px]">
+              <Image 
+                loading="eager"
+                src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img1.jpg" 
+                alt="Home design example" 
+                width={400} 
+                height={220} 
+                className="w-full h-[160px] lg:h-[180px] xl:h-[200px] 2xl:h-[220px] ml-8 lg:ml-12 xl:ml-16 2xl:ml-20 rounded-2xl shadow-2xl hover:shadow-3xl transition hover:-translate-y-1 object-cover"
+              />
+              <Image 
+                loading="eager"
+                src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img3.jpg" 
+                alt="Interior design detail" 
+                width={160} 
+                height={180} 
+                className="w-[120px] lg:w-[130px] xl:w-[150px] 2xl:w-[160px] h-[120px] lg:h-[140px] xl:h-[170px] 2xl:h-[180px] rounded-2xl mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 ml-20 lg:ml-24 xl:ml-28 2xl:ml-32 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1 object-cover"
+              />
+            </div>
+
+            {/* Center column */}
+            <div className="relative flex flex-col items-center justify-start flex-shrink-0 flex-grow-0 w-[600px] lg:w-[700px] xl:w-[800px] 2xl:w-[900px] min-w-0">
+              {videoError ? (
+                <div 
+                  className="absolute left-1/2 top-[100px] -translate-x-1/2 bg-gray-200 rounded-2xl flex items-center justify-center"
+                  style={{
+                    width: videoSize.width,
+                    height: videoSize.height,
+                    zIndex: 20,
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
+                  }}
+                >
+                  <p>Video unavailable</p>
+                </div>
+              ) : (
+                <div
+                  className="-ml-1 rounded-2xl flex items-center justify-center"
+                  style={{
+                    position: 'absolute',
+                    left: '50%',
+                    top: '100px',
+                    transform: 'translateX(-50%)',
+                    width: videoSize.width,
+                    height: videoSize.height,
+                    zIndex: 20,
+                    transition: 'width 0.3s ease, height 0.3s ease',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+                    pointerEvents: 'none',
+                    maxWidth: 'none',
+                  }}
+                >
+                  <video
+                    src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '1rem' }}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    onError={handleVideoError}
+                    preload="metadata"
+                  />
+                </div>
+              )}
+            </div>
+
+            <Image 
+              loading="eager"
+              src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img2.jpg" 
+              alt="Architectural design" 
+              width={300} 
+              height={380} 
+              className="w-[200px] lg:w-[220px] xl:w-[270px] 2xl:w-[300px] h-[250px] lg:h-[280px] xl:h-[350px] 2xl:h-[380px] rounded-2xl mr-8 lg:mr-12 xl:mr-16 2xl:mr-20 ml-2 lg:ml-6 xl:ml-4 flex-shrink-0 flex-grow-0 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+/////////
+
+
+"use client";
+import { useEffect, useState } from "react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion, AnimatePresence } from "framer-motion";
+
+export function HeroSection() {
+  const [currentFontIndex, setCurrentFontIndex] = useState(0);
+  const [showMainTitle, setShowMainTitle] = useState(false);
+  const [startFontAnimation, setStartFontAnimation] = useState(false);
+  const [showSubtext, setShowSubtext] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+
+  const fonts = [
+    'font-serif italic text-amber-950',
+    'font-mono font-bold text-amber-950',
+    'font-sans font-extrabold italic text-amber-950',
+    'wulkan-display text-amber-950'
+  ];
+
+  useEffect(() => {
+    const timeouts: NodeJS.Timeout[] = [];
+    setShowMainTitle(true);
+
+    const timeout1 = setTimeout(() => setStartFontAnimation(true), 1000);
+    timeouts.push(timeout1);
+
+    const timeout2 = setTimeout(() => {
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        if (i < fonts.length) {
+          setCurrentFontIndex(i);
+        } else {
+          clearInterval(interval);
+        }
+      }, 500);
+      timeouts.push(interval);
+    }, 1500);
+    timeouts.push(timeout2);
+
+    return () => {
+      timeouts.forEach(clearTimeout);
+    };
+  }, []);
+
+  // Show rest on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        setShowSubtext(true);
+        setShowButton(true);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleVideoError = () => setVideoError(true);
+
+  return (
+    <div className="bg-[#F1F2F6] overflow-hidden">
+      <div className="min-h-[100vh] flex flex-col items-center justify-center pt-24">
+        <motion.h1
+          initial={{ y: 100, opacity: 0 }}
+          animate={showMainTitle ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 1 }}
+          className="text-4xl sm:text-5xl text-center font-light wulkan-display text-amber-950"
+        >
+          <span className="manrope font-bold">Homes</span>{" "}
+          {startFontAnimation ? (
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentFontIndex}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.4 }}
+                className={`inline-block ${fonts[currentFontIndex]}`}
+              >
+                Uniquely
+              </motion.span>
+            </AnimatePresence>
+          ) : (
+            <span className="wulkan-display text-amber-950">Uniquely</span>
+          )}{" "}
+          <span className="manrope font-bold">Built</span>
+        </motion.h1>
+
+        {/* Subtext */}
+        {showSubtext && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="mt-6 text-center text-lg text-amber-950/90 max-w-xl manrope-medium"
+          >
+            Your Home Deserves More Than Just Design — it deserves the story only your home can tell
+          </motion.p>
+        )}
+
+        {/* Button */}
+        {showButton && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="mt-6"
+          >
+            <Link href="/Contact">
+              <div className="w-[160px] h-[45px] bg-[#DDCDC1] flex items-center justify-center rounded-full shadow-md border-b-4 border-[#b8a48c] transition duration-150 active:translate-y-1 hover:shadow-xl cursor-pointer text-base font-medium tracking-tight">
+                Get Consultation
+              </div>
+            </Link>
+          </motion.div>
+        )}
+
+        {/* Video */}
+        {showSubtext && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mt-12 w-full max-w-3xl px-4"
+          >
+            {videoError ? (
+              <div className="w-full h-[220px] bg-gray-300 rounded-xl flex items-center justify-center">
+                <p>Video preview unavailable</p>
+              </div>
+            ) : (
+              <video
+                src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+                className="w-full rounded-xl shadow-lg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                onError={handleVideoError}
+              />
+            )}
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+///scroll appear
+
+
+
+"use client"
+import { useEffect, useState } from "react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion, AnimatePresence } from "framer-motion";
+
+export function HeroSection(){
+    const [videoSize, setVideoSize] = useState({ width: 800, height: 450 });
+    const [currentFontIndex, setCurrentFontIndex] = useState(0);
+    const [showMainTitle, setShowMainTitle] = useState(false);
+    const [startFontAnimation, setStartFontAnimation] = useState(false);
+    const [showSubtext, setShowSubtext] = useState(false);
+    const [showButton, setShowButton] = useState(false);
+    const [showLayout, setShowLayout] = useState(false);
+    const [titlePosition, setTitlePosition] = useState({ x: 0, y: 0 });
+
+    const fonts = [
+        'font-serif italic text-amber-950',
+        'font-mono font-bold text-amber-950',
+        'font-sans font-extrabold italic text-amber-950',
+        'wulkan-display text-amber-950'
+    ];
+
+    useEffect(() => {
+        const timeouts: NodeJS.Timeout[] = [];
+        setShowMainTitle(true);
+
+        const timeout1 = setTimeout(() => setStartFontAnimation(true), 1000);
+        timeouts.push(timeout1);
+
+        const timeout2 = setTimeout(() => {
+            let i = 0;
+            const interval = setInterval(() => {
+                i++;
+                if (i < fonts.length) {
+                    setCurrentFontIndex(i);
+                } else {
+                    clearInterval(interval);
+                }
+            }, 500);
+            timeouts.push(interval);
+        }, 1500);
+        timeouts.push(timeout2);
+
+        return () => {
+            timeouts.forEach(clearTimeout);
+        };
+    }, []);
+
+    useEffect(() => {
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            const maxScroll = 500;
+            const progress = Math.min(scrollY / maxScroll, 1);
+            
+            // Responsive video sizing based on screen width
+            const screenWidth = window.innerWidth;
+            let baseWidth, maxWidth, baseHeight, maxHeight;
+            
+            if (screenWidth < 1280) { // Smaller screens
+                baseWidth = 600;
+                maxWidth = 800;
+                baseHeight = 338;
+                maxHeight = 450;
+            } else { // Large screens
+                baseWidth = 800;
+                maxWidth = 1200;
+                baseHeight = 450;
+                maxHeight = 675;
+            }
+            
+            const width = baseWidth + (maxWidth - baseWidth) * progress;
+            const height = baseHeight + (maxHeight - baseHeight) * progress;
+            setVideoSize({ width, height });
+
+            // Show layout elements on scroll
+            if (scrollY > 100) {
+                setShowSubtext(true);
+                setShowButton(true);
+                setShowLayout(true);
+            }
+        }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    return (
+        <div>
+            {/* Mobile/Tablet View (hidden on lg) */}
+            <div className="lg:hidden h-[600px] sm:h-[700px] mt-22 flex flex-col items-center justify-start pt-12" style={{backgroundColor: '#F1F2F6'}}>
+                <div className="w-full max-w-4xl px-4">
+                    <motion.h1 
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={showMainTitle ? { y: 0, opacity: 1 } : {}}
+                        transition={{ duration: 1 }}
+                        className="text-3xl sm:text-4xl  text-amber-950 text-center tracking-wider gilda-display-regular mb-10"
+                    >
+                        <span className="manrope">Homes</span>{" "}
+                        {startFontAnimation ? (
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={currentFontIndex}
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
+                                    transition={{ duration: 0.4 }}
+                                    className={`inline-block ${fonts[currentFontIndex]}`}
+                                >
+                                    Uniquely
+                                </motion.span>
+                            </AnimatePresence>
+                        ) : (
+                            <span className="wulkan-display text-amber-950">Uniquely</span>
+                        )}{" "}
+                        <span className="manrope">Built</span>
+                    </motion.h1>
+
+                    {showSubtext && (
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1, duration: 0.6 }}
+                            className="text-center text-base sm:text-lg font-semibold text-amber-950 mb-9 mt-16"
+                        >
+                            Your Home Deserves More Than Just Design — it deserves the story only your home can tell
+                        </motion.p>
+                    )}
+
+                    {showButton && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.2, duration: 0.5 }}
+                            className="flex justify-center"
+                        >
+                            <Link href="/Contact">
+                                <div className="manrope-medium w-[150px] h-[45px] bg-[#DDCDC1] flex items-center justify-center rounded-full mt-5 shadow-lg border-b-4 border-[#b8a48c] transition duration-150 active:translate-y-1 active:shadow hover:shadow-2xl cursor-pointer select-none text-base tracking-tight">
+                                    Get Consultation
+                                </div>
+                            </Link>
+                        </motion.div>
+                    )}
+
+                    {showLayout && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.6 }}
+                            className="w-full flex justify-center mt-20"
+                        >
+                            <video
+                                src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+                                className="w-full rounded-2xl shadow-lg"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                            />
+                        </motion.div>
+                    )}
+                </div>
+            </div>
+
+            {/* Desktop Layout (lg and above) - Responsive sizing */}
+            <div className="hidden lg:block h-[1000px] xl:h-[1100px] 2xl:h-[1200px]" style={{backgroundColor: '#F1F2F6'}}>
+                <div className="max-w-7xl mx-auto px-4 xl:px-8 2xl:px-12">
+                    <motion.div 
+                        initial={{ y: 100, opacity: 0, x: 0 }}
+                        animate={showMainTitle ? { y: 0, opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 1 }}
+                        className="text-4xl lg:text-5xl xl:text-[48px] 2xl:text-7xl mt-16 lg:mt-20 xl:mt-24 mb-4 text-amber-950 text-center pt-10 wulkan-display"
+                    >
+                        <motion.span 
+                            initial={{ x: 0 }}
+                            animate={showMainTitle ? { x: 32 } : {}}
+                            transition={{ delay: 1.5, duration: 0.8 }}
+                            className="manrope-semibold"
+                        >
+                            Homes
+                        </motion.span>{" "}
+                        {startFontAnimation ? (
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={currentFontIndex}
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
+                                    transition={{ duration: 0.4 }}
+                                    className={`inline-block ${fonts[currentFontIndex]}`}
+                                >
+                                    uniquely
+                                </motion.span>
+                            </AnimatePresence>
+                        ) : (
+                            <span className="wulkan-display text-amber-950">uniquely</span>
+                        )}{" "}
+                        <motion.span 
+                            initial={{ x: 0 }}
+                            animate={showMainTitle ? { x: -32 } : {}}
+                            transition={{ delay: 1.5, duration: 0.8 }}
+                            className="manrope-semibold"
+                        >
+                            Built
+                        </motion.span>
+                    </motion.div>
+
+                    {showSubtext && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1, duration: 0.6 }}
+                            className="text-center text-base lg:text-lg xl:text-xl 2xl:text-2xl font-medium text-amber-950 pl-10 pt-2 .manrope-semibold"
+                        >
+                            Your Home Deserves More Than Just Design — it deserves the story only your home can tell
+                        </motion.div>
+                    )}
+
+                    {showButton && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.2, duration: 0.5 }}
+                            className="flex justify-center mt-8 lg:mt-10 xl:mt-12"
+                        >
+                            <Link href="/Contact">
+                                <div className="manrope-semibold w-[140px] lg:w-[150px] xl:w-[200px] h-[40px] lg:h-[45px] xl:h-[50px] bg-[#DDCDC1] flex items-center justify-center rounded-full shadow-lg border-b-4 border-[#b8a48c] transition duration-150 active:translate-y-1 active:shadow hover:shadow-2xl cursor-pointer select-none text-base tracking-tight">
+                                    Get Consultation
+                                </div>
+                            </Link>
+                        </motion.div>
+                    )}
+
+                    {showLayout && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.6 }}
+                            className="flex justify-center items-start mt-8 lg:mt-6 xl:mt-8 2xl:mt-10"
+                        >
+                            {/* Left column */}
+                            <div className="flex flex-col flex-shrink-0 flex-grow-0 w-[280px] lg:w-[320px] xl:w-[350px] 2xl:w-[400px]">
+                                <div className="w-full h-[160px] lg:h-[180px] xl:h-[200px] 2xl:h-[220px] ml-8 lg:ml-12 xl:ml-16 2xl:ml-20 rounded-2xl relative shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
+                                    <Image 
+                                        loading="lazy" 
+                                        src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img1.jpg" 
+                                        alt="" 
+                                        width={400} 
+                                        height={220} 
+                                        className="object-cover rounded-2xl w-full h-full"
+                                    />
+                                </div>
+                                <div className="w-[120px] lg:w-[130px] xl:w-[150px] 2xl:w-[160px] h-[120px] lg:h-[140px] xl:h-[170px] 2xl:h-[180px] rounded-2xl mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 ml-20 lg:ml-24 xl:ml-28 2xl:ml-32 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
+                                    <Image 
+                                        loading="lazy" 
+                                        src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img3.jpg" 
+                                        alt="" 
+                                        width={160} 
+                                        height={180} 
+                                        className="object-cover rounded-2xl w-full h-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Center column */}
+                            <div className="relative flex flex-col items-center justify-start flex-shrink-0 flex-grow-0 w-[600px] lg:w-[700px] xl:w-[800px] 2xl:w-[900px] min-w-0">
+                                <div
+                                    className="-ml-1 rounded-2xl flex items-center justify-center"
+                                    style={{
+                                        position: 'absolute',
+                                        left: '50%',
+                                        top: '100px',
+                                        transform: 'translateX(-50%)',
+                                        width: videoSize.width,
+                                        height: videoSize.height,
+                                        zIndex: 20,
+                                        transition: 'width 0.3s, height 0.3s',
+                                        boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+                                        pointerEvents: 'none',
+                                        maxWidth: 'none',
+                                    }}
+                                >
+                                    <video
+                                        src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '1rem' }}
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Right column */}
+                            <div className="w-[200px] lg:w-[220px] xl:w-[270px] 2xl:w-[300px] h-[250px] lg:h-[280px] xl:h-[350px] 2xl:h-[380px] rounded-2xl mr-8 lg:mr-12 xl:mr-16 2xl:mr-20 ml-4 lg:ml-6 xl:ml-8 flex-shrink-0 flex-grow-0 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
+                                <Image 
+                                    loading="lazy" 
+                                    src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img2.jpg" 
+                                    alt="" 
+                                    width={300} 
+                                    height={380} 
+                                    className="object-cover rounded-2xl w-full h-full"
+                                />
+                            </div>
+                        </motion.div>
+                    )}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+
   
 

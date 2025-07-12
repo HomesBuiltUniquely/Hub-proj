@@ -6,7 +6,7 @@ import { useSwipeable } from "react-swipeable";
 type RoomType =
   | "Living Room"
   | "Kitchen Room"
-  | "BedRoom"
+  | "Bed Room"
   | "Kids Room"
   | "Devotional Room";
 
@@ -29,10 +29,10 @@ export function Form() {
       { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img5.jpg" },
       { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img6.jpg" }
     ],
-    "Kitchen Room": [ { image: "/kitchen1.jpg" }, { image: "/kitchen2.jpg" }, { image: "/kitchen3.jpg" }, { image: "/kitchen4.jpg" }, { image: "/kitchen5.jpg" }, { image: "/kitchen6.jpg" } ],
-    BedRoom: [ { image: "/bed1.jpg" }, { image: "/bed2.jpg" }, { image: "/bed3.jpg" }, { image: "/bed4.jpg" }, { image: "/bed5.jpg" }, { image: "/bed6.jpg" } ],
-    "Kids Room": [ { image: "/kids1.jpg" }, { image: "/kids2.jpg" }, { image: "/kids3.jpg" }, { image: "/kids4.jpg" }, { image: "/kids5.jpg" }, { image: "/kids6.jpg" } ],
-    "Devotional Room": [ { image: "/pooja1.jpg" }, { image: "/pooja2.jpg" }, { image: "/pooja3.jpg" }, { image: "/pooja4.jpg" }, { image: "/pooja5.jpg" }, { image: "/pooja6.jpg" } ]
+    "Kitchen Room": [ { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Kitchen1.jpg" }, { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Kitchen2.jpg" }, { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Kitchen3.jpg" }, { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//kitchen6.jpg" }, { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Kitchen4.jpg" }, { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//Kitchen5.jpg" } ],
+    "Bed Room": [ { image: "/bed1.jpg" }, { image: "/bed2.jpg" }, { image: "/bed3.jpg" }, { image: "/bed4.jpg" }, { image: "/bed5.jpg" }, { image: "/bed1.jpg" } ],
+    "Kids Room": [ { image: "/kids1.jpg" }, { image: "/kids2.jpg" }, { image: "/kids3.jpg" }, { image: "/kids4.jpg" }, { image: "/kids5.jpg" }, { image: "/kids1.jpg" } ],
+    "Devotional Room": [ { image: "/temple1.jpg" }, { image: "/temple2.jpg" }, { image: "/temple3.jpg" }, { image: "/templ5.jpg" }, { image: "/temple6.jpg" }, { image: "/temple2.jpg" } ]
   };
 
   const roomTypes = Object.keys(roomData) as RoomType[];
@@ -66,13 +66,13 @@ export function Form() {
   });
 
   return (
-    <div className="w-full bg-[#F1F2F6] py-30 px-4 sm:px-6 lg:px-12">
+    <div className="w-full bg-[#F1F2F6] py-35 px-6 sm:px-6 lg:px-12">
       <div className="max-w-[1440px] mx-auto">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl  text-amber-950 tracking-wider gilda-display-regular lg:mb-25 mb-10  lg:text-left">
-          The Features You Need, The Simplicity You Want
+        <h1 className="wulkan-display-bold text-2xl md:text-3xl lg:text-[40px] text-amber-950 lg:ml-16 tracking-tighter lg:mb-25 mb-10  lg:text-left">
+          Every space has a story, start yours here
         </h1>
 
-        <div className="flex flex-col lg:flex-row gap-10 ">
+        <div className="flex flex-col lg:flex-row gap-10 manrope ">
           {/* Sidebar (Desktop) */}
           <div className="hidden lg:flex flex-col w-[240px] flex-shrink-0 sticky top-20 self-start">
             {roomTypes.map((room) => (
@@ -85,10 +85,10 @@ export function Form() {
               >
                 <div
                   className={`absolute inset-0 rounded-3xl transition-all duration-300 z-0 ${
-                    hoveredRoom === room ? "bg-[#DDCDC1] opacity-100" : "opacity-0"
+                    hoveredRoom === room ? "bg-[#DDCDC1] opacity-100 w-[190px] ml-14 " : "opacity-0"
                   }`}
                 />
-                <h1 className="relative z-10 text-center text-lg   .manrope-semibold h-full flex items-center justify-center">
+                <h1 className="manrope-semibold relative z-10 text-left text-lg h-full flex items-center pl-18">
                   {room}
                 </h1>
               </div>
