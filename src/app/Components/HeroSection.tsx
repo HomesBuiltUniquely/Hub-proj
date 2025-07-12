@@ -169,15 +169,15 @@ export function HeroSection() {
             initial={{ y: 20, opacity: 0 }}
             animate={showMainTitle ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl xl:text-[48px] 2xl:text-7xl mb-4 text-amber-950 text-center wulkan-display"
+            className="text-4xl lg:text-5xl xl:text-[55px] 2xl:text-7xl mb-4 text-amber-950 text-center wulkan-display"
           >
             <motion.span 
               initial={{ x: 0 }}
               animate={showMainTitle ? { x: 32 } : {}}
               transition={{ delay: 1.5, duration: 0.8 }}
-              className="manrope-semibold"
+              className="manrope-semibold text-[40px]"
             >
-              Homes
+              HOMES
             </motion.span>{" "}
             {startFontAnimation ? (
               <AnimatePresence mode="wait">
@@ -199,9 +199,9 @@ export function HeroSection() {
               initial={{ x: 0 }}
               animate={showMainTitle ? { x: -32 } : {}}
               transition={{ delay: 1.5, duration: 0.8 }}
-              className="manrope-semibold"
+              className="manrope-semibold text-[40px]"
             >
-              Built
+              BUILT
             </motion.span>
           </motion.div>
 
