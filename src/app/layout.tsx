@@ -53,13 +53,6 @@ export const metadata: Metadata = {
     images: ["https://hubinterior.com/hub-og-image.jpg"],
   },
 
-  other: {
-    "fb:app_id": "1234567890", // Replace with real FB app ID
-    "pinterest-rich-pin": "true",
-    "article:published_time": "2025-07-14T12:00:00+00:00",
-    "article:author": "https://hubinterior.com/team",
-  },
-
   icons: {
     icon: "/hubicon.svg",
   },
