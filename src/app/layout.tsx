@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Script from "next/script"; // ✅ Add this
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,10 +13,55 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ Export viewport separately (as required by Next.js)
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+// ✅ Global Metadata
 export const metadata: Metadata = {
   title: "HUB Interior_Home",
+  description: "HUB Interior offers uniquely built homes with elegant designs and functionality.",
+  keywords: ["Interior Design", "HUB Interior", "Home Design", "Architecture", "Custom Homes"],
+  authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
+  creator: "HUB Interior Team",
+  metadataBase: new URL("https://hubinterior.com"),
+
+  openGraph: {
+    title: "HUB Interior",
+    description: "Homes uniquely built with elegance and purpose.",
+    url: "https://hubinterior.com",
+    siteName: "HUB Interior",
+    images: [
+      {
+        url: "https://hubinterior.com/hub-og-image.jpg", // Make sure this image exists in /public
+        width: 1200,
+        height: 630,
+        alt: "HUB Interior",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "HUB Interior",
+    description: "Homes uniquely built with elegance and purpose.",
+    creator: "@hubinterior", // Replace if you have a real Twitter handle
+    images: ["https://hubinterior.com/hub-og-image.jpg"],
+  },
+
+  other: {
+    "fb:app_id": "1234567890", // Replace with real FB app ID
+    "pinterest-rich-pin": "true",
+    "article:published_time": "2025-07-14T12:00:00+00:00",
+    "article:author": "https://hubinterior.com/team",
+  },
+
   icons: {
-    icon: '/hubicon.svg',
+    icon: "/hubicon.svg",
   },
 };
 
@@ -28,7 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ✅ Google Tag Manager Script */}
+        {/* ✅ Google Tag Manager */}
         <Script id="gtm-head" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -41,7 +86,7 @@ export default function RootLayout({
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* ✅ Google Tag Manager noscript fallback */}
+        {/* ✅ GTM noscript fallback */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-W8M2PLFJ"
