@@ -13,60 +13,98 @@ export function CxSection() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const desktopVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const [isSwiping, setIsSwiping] = useState(false);
 
-  // Track window width for responsive behavior
+  // Initialize desktop video refs array
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    
+    desktopVideoRefs.current = desktopVideoRefs.current.slice(0, videos.length);
+  }, [videos.length]);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Auto-advance videos
   useEffect(() => {
-    if (isSwiping) return; // Don't auto-advance during swipe
+    if (isSwiping) return;
+    
     const interval = setInterval(() => {
       if (isPlaying) {
-        setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+        handleVideoChange((currentVideoIndex + 1) % videos.length);
       }
     }, 8000);
+    
     return () => clearInterval(interval);
-  }, [videos.length, isPlaying, isSwiping]);
+  }, [videos.length, isPlaying, isSwiping, currentVideoIndex]);
+
+  const handleVideoChange = (newIndex: number) => {
+    // Pause all videos first
+    if (windowWidth >= 1024) {
+      desktopVideoRefs.current.forEach(video => video?.pause());
+    } else {
+      mobileVideoRef.current?.pause();
+    }
+    
+    setCurrentVideoIndex(newIndex);
+    setIsPlaying(false);
+    
+    // Reset video elements
+    setTimeout(() => {
+      if (windowWidth >= 1024) {
+        const newVideo = desktopVideoRefs.current[1];
+        if (newVideo) {
+          newVideo.currentTime = 0;
+          if (isPlaying) {
+            newVideo.play().catch(e => console.log("Autoplay prevented:", e));
+          }
+        }
+      } else {
+        if (mobileVideoRef.current) {
+          mobileVideoRef.current.currentTime = 0;
+          if (isPlaying) {
+            mobileVideoRef.current.play().catch(e => console.log("Mobile play failed:", e));
+          }
+        }
+      }
+    }, 10);
+  };
 
   const togglePlayPause = () => {
-    if (videoRef.current) {
+    const activeVideo = windowWidth >= 1024 
+      ? desktopVideoRefs.current[1] 
+      : mobileVideoRef.current;
+      
+    if (activeVideo) {
       if (isPlaying) {
-        videoRef.current.pause();
+        activeVideo.pause();
       } else {
-        videoRef.current.play();
+        // On mobile, we need to play with sound
+        if (windowWidth < 1024 && activeVideo.muted) {
+          activeVideo.muted = false;
+        }
+        activeVideo.play().catch(e => {
+          console.log("Play failed:", e);
+          // Fallback: mute and try again if autoplay fails
+          activeVideo.muted = true;
+          activeVideo.play().catch(e => console.log("Muted play failed:", e));
+        });
       }
       setIsPlaying(!isPlaying);
     }
   };
 
-  // Swipe handlers for mobile
   const swipeHandlers = useSwipeable({
     onSwiping: () => setIsSwiping(true),
-    onSwipedLeft: () => {
-      setIsSwiping(false);
-      setIsPlaying(false);
-      setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
-    },
-    onSwipedRight: () => {
-      setIsSwiping(false);
-      setIsPlaying(false);
-      setCurrentVideoIndex((prev) => (prev - 1 + videos.length) % videos.length);
-    },
+    onSwipedLeft: () => handleVideoChange((currentVideoIndex + 1) % videos.length),
+    onSwipedRight: () => handleVideoChange((currentVideoIndex - 1 + videos.length) % videos.length),
     onSwiped: () => setIsSwiping(false),
     trackMouse: false,
   });
 
-  // Responsive video height calculations
   const getVideoHeight = () => {
     if (windowWidth < 640) return '250px';
     if (windowWidth < 768) return '300px';
@@ -89,7 +127,7 @@ export function CxSection() {
           {...swipeHandlers}
         >
           <video
-            ref={videoRef}
+            ref={mobileVideoRef}
             src={videos[currentVideoIndex].src}
             className="w-full h-full object-cover"
             autoPlay={false}
@@ -130,12 +168,16 @@ export function CxSection() {
               if (index === 1) {
                 togglePlayPause();
               } else {
-                setCurrentVideoIndex((currentVideoIndex + index - 1 + videos.length) % videos.length);
-                setIsPlaying(false);
+                handleVideoChange((currentVideoIndex + index - 1 + videos.length) % videos.length);
               }
             }}
           >
             <video
+              ref={el => {
+                if (el) {
+                  desktopVideoRefs.current[index] = el;
+                }
+              }}
               src={video.src}
               className="w-full h-full object-cover cursor-pointer"
               autoPlay={index === 1 && isPlaying}
@@ -165,10 +207,7 @@ export function CxSection() {
         {videos.map((_, index) => (
           <button
             key={index}
-            onClick={() => {
-              setCurrentVideoIndex(index);
-              setIsPlaying(false);
-            }}
+            onClick={() => handleVideoChange(index)}
             className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               currentVideoIndex === index ? 'bg-[#DDCDC1] w-4 sm:w-6' : 'bg-gray-400'
             }`}
