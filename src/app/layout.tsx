@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "HUB Interior_Home",
   icons: {
-    icon: '/hub_icon3.jpg',
+    icon: '/hubicon.svg',
   },
 };
 
