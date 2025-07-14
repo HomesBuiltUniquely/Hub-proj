@@ -90,7 +90,7 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="text-3xl sm:text-4xl text-amber-950 text-center tracking-wider gilda-display-regular mb-10"
           >
-            <span className="manrope">Homes</span>{" "}
+            <span className="manrope">HOMES</span>{" "}
             {startFontAnimation ? (
               <AnimatePresence mode="wait">
                 <motion.span
@@ -101,13 +101,13 @@ export function HeroSection() {
                   transition={{ duration: 0.4 }}
                   className={`inline-block ${fonts[currentFontIndex]}`}
                 >
-                  Uniquely
+                  uniquely
                 </motion.span>
               </AnimatePresence>
             ) : (
-              <span className="wulkan-display text-amber-950">Uniquely</span>
+              <span className="wulkan-display text-amber-950">uniquely</span>
             )}{" "}
-            <span className="manrope">Built</span>
+            <span className="manrope">BUILT</span>
           </motion.h1>
 
           <AnimatePresence>

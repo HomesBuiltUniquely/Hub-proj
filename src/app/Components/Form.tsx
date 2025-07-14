@@ -68,7 +68,7 @@ export function Form() {
   return (
     <div className="w-full bg-[#F1F2F6] py-35 px-6 sm:px-6 lg:px-12">
       <div className="max-w-[1440px] mx-auto">
-        <h1 className="wulkan-display-bold text-2xl md:text-3xl lg:text-[40px] text-amber-950 lg:ml-16 tracking-tighter lg:mb-25 mb-10  lg:text-left">
+        <h1 className="wulkan-display-bold text-2xl md:text-3xl lg:text-[40px] text-amber-950 lg:ml-16 lg:mb-25 mb-10  lg:text-left">
           Every space has a story, start yours here
         </h1>
 
