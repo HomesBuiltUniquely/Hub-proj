@@ -1,8 +1,9 @@
+// app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,13 +15,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// ✅ Export viewport separately (as required by Next.js)
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
 
-// ✅ Global Metadata
 export const metadata: Metadata = {
   title: "HUB Interior_Home",
   description: "HUB Interior offers uniquely built homes with elegant designs and functionality.",
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
-
+  viewport,
   openGraph: {
     title: "HUB Interior",
     description: "Homes uniquely built with elegance and purpose.",
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "HUB Interior",
     images: [
       {
-        url: "https://hubinterior.com/hub-og-image.jpg", // Make sure this image exists in /public
+        url: "https://hubinterior.com/hub-og-image.jpg",
         width: 1200,
         height: 630,
         alt: "HUB Interior",
@@ -45,15 +44,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "HUB Interior",
     description: "Homes uniquely built with elegance and purpose.",
-    creator: "@hubinterior", // Replace if you have a real Twitter handle
+    creator: "@hubinterior",
     images: ["https://hubinterior.com/hub-og-image.jpg"],
   },
-
   icons: {
     icon: "/hubicon.svg",
   },
@@ -61,40 +58,60 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
-      <link rel="icon" type="image/svg" href="/hubicon.svg" />
-
-
-        {/* ✅ Google Tag Manager */}
+        {/* Favicon */}
+        <link rel="icon" type="image/svg+xml" href="/hubicon.svg" />
+        {/* Facebook Domain Verification */}
+        <meta
+          name="facebook-domain-verification"
+          content="YOUR_VERIFICATION_CODE_HERE"
+        />
+        {/* Meta Pixel Code */}
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`!function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1486878599401922');
+            fbq('track', 'PageView');`}
+        </Script>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1486878599401922&ev=PageView&noscript=1"
+          />
+        </noscript>
+        {/* Google Tag Manager Head */}
         <Script id="gtm-head" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-W8M2PLFJ');
-          `}
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?"&l="+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W8M2PLFJ');`}
         </Script>
       </head>
-
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* ✅ GTM noscript fallback */}
+        {/* GTM NoScript */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-W8M2PLFJ"
             height="0"
             width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
         </noscript>
-
         {children}
-        <Analytics/>
+        {/* Vercel Analytics */}
+        <Analytics />
       </body>
     </html>
   );
