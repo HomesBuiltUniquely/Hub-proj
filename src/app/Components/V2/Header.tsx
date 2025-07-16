@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { NavBar } from "./Navbar";
@@ -20,7 +20,7 @@ export default function Header() {
     phone: '',
     email: '',
     pincode: '',
-    urlParams: '', // new field
+    urlParams: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -32,10 +32,19 @@ export default function Header() {
   const [carouselSpeed, setCarouselSpeed] = useState(3000);
   const [carouselHeight, setCarouselHeight] = useState("h-[900px]");
 
-  // 🔵 Capture URL params once on mount
+  // Capture complete initial landing URL with all parameters
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setForm((prev) => ({ ...prev, urlParams: window.location.href }));
+      // Only store on first page load
+      if (!sessionStorage.getItem("initialLandingUrl")) {
+        const fullUrl = window.location.href;
+        sessionStorage.setItem("initialLandingUrl", fullUrl);
+        setForm(prev => ({ ...prev, urlParams: fullUrl }));
+      } else {
+        // Use stored URL for subsequent form submissions
+        const initialUrl = sessionStorage.getItem("initialLandingUrl") || window.location.href;
+        setForm(prev => ({ ...prev, urlParams: initialUrl }));
+      }
     }
   }, []);
 
@@ -57,8 +66,8 @@ export default function Header() {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -134,14 +143,21 @@ export default function Header() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // 🔵 Submit with urlParams
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      // Get the originally tracked URL with all parameters
+      const landingUrl = sessionStorage.getItem("initialLandingUrl") || window.location.href;
+      
+      const formData = {
+        ...form,
+        urlParams: landingUrl // Includes UTM params, paths, etc.
+      };
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(formData),
       });
 
       if (res.ok) {
@@ -161,6 +177,7 @@ export default function Header() {
       <NavBar />
 
       <div className={`relative w-full ${carouselHeight} overflow-hidden bg-black`}>
+        {/* Carousel */}
         <div
           className="w-full h-full relative"
           onTouchStart={handleTouchStart}
@@ -185,25 +202,22 @@ export default function Header() {
                   loading={idx < 2 ? "eager" : "lazy"}
                   priority={idx < 2}
                   draggable={false}
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
                 />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Form - Desktop */}
+        {/* Forms */}
         <div className="hidden lg:block absolute top-1/2 right-4 xl:right-12 transform -translate-y-1/2 z-20 w-[90%] max-w-sm backdrop-blur-lg bg-white/30 border border-white/30 text-white rounded-3xl shadow-2xl p-6">
           {renderForm()}
         </div>
 
-        {/* Form - Tablet */}
         <div className="hidden sm:block lg:hidden absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-[90%] max-w-md backdrop-blur-sm bg-white/20 border border-white/20 text-white rounded-2xl shadow-xl p-4">
           {renderForm('md')}
         </div>
       </div>
 
-      {/* Form - Mobile */}
       <div className="block sm:hidden w-full bg-[#f1f2f6] text-black py-6 px-4">
         <div className="max-w-md mx-auto bg-white rounded-xl shadow-md p-5">
           {renderForm('sm')}
@@ -216,69 +230,23 @@ export default function Header() {
     return (
       <div className={size === 'sm' ? 'space-y-3' : 'space-y-4'}>
         <h2 className={`${
-          size === 'sm' ? 'text-xl' : 
-          size === 'md' ? 'text-xl md:text-2xl' : 
-          'text-2xl'
+          size === 'sm' ? 'text-xl' : size === 'md' ? 'text-xl md:text-2xl' : 'text-2xl'
         } font-bold mb-3 text-center`}>
           Get in Touch
         </h2>
         {submitted ? (
-          <p className="text-green-600 text-center">Thank you! We&rsquo;ll contact you soon.</p>
+          <p className="text-green-600 text-center">Thank you! We'll contact you soon.</p>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              value={form.phone}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="text"
-              name="pincode"
-              placeholder="Pincode"
-              value={form.pincode}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-
+            <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
+            <input type="tel" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
+            <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
+            <input type="text" name="pincode" placeholder="Pincode" value={form.pincode} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
             <div className="flex items-center gap-2 text-sm md:text-base">
-              <input 
-                required 
-                id="confirm-details" 
-                type="checkbox" 
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
+              <input required id="confirm-details" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-blue-600" />
               <label htmlFor="confirm-details">Yes, every detail is correct</label>
             </div>
-
-            <button
-              type="submit"
-              className={`w-full ${
-                size === 'sm' ? 'py-2 text-sm' : 'py-3'
-              } bg-[#DDCDC1] hover:bg-red-500 text-black font-semibold rounded-xl transition duration-300 transform hover:scale-105`}
-            >
+            <button type="submit" className={`w-full ${size === 'sm' ? 'py-2 text-sm' : 'py-3'} bg-[#DDCDC1] hover:bg-red-500 text-black font-semibold rounded-xl`}>
               Submit
             </button>
             {error && <p className="text-red-500 text-center mt-2 text-sm">{error}</p>}
