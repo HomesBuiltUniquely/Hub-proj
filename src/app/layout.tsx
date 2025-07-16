@@ -66,6 +66,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <link rel="icon" type="image/svg" href="/hubicon.svg" />
+
+
         {/* ✅ Google Tag Manager */}
         <Script id="gtm-head" strategy="afterInteractive">
           {`
