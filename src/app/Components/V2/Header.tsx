@@ -235,7 +235,7 @@ export default function Header() {
           Get in Touch
         </h2>
         {submitted ? (
-          <p className="text-green-600 text-center">Thank you! We'll contact you soon.</p>
+          <p className="text-green-600 text-center">Thank you! We&#39;ll contact you soon.</p>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
             <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
