@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer'; // ✅ This is where Nodemailer is imported
+import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-  const { name, phone, email, pincode } = await req.json();
+  const { name, phone, email, pincode, urlParams } = await req.json(); // ⬅️ Include urlParams
 
-  // ✅ Nodemailer transport setup
+  // ✅ Setup transport using Gmail
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -13,10 +13,10 @@ export async function POST(req: Request) {
     },
   });
 
-  // ✅ Email content
+  // ✅ Email content including landing URL
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to: process.env.GMAIL_USER, // or any other email you want to send to
+    to: process.env.GMAIL_USER, // You can change this to a team email
     subject: 'New Contact Form Submission',
     html: `
       <h3>Contact Form Submission</h3>
@@ -24,15 +24,15 @@ export async function POST(req: Request) {
       <p><strong>Phone:</strong> ${phone}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Pincode:</strong> ${pincode}</p>
+      <p><strong>Landing URL:</strong> <a href="${urlParams}" target="_blank">${urlParams}</a></p>
     `,
   };
 
-  // ✅ Send the email
   try {
-    await transporter.sendMail(mailOptions); // <--- Nodemailer in action
+    await transporter.sendMail(mailOptions);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Email send error:", error);
-    return NextResponse.json({ success: false }, { status: 500 });
+    return NextResponse.json({ success: false, message: 'Failed to send email' }, { status: 500 });
   }
 }

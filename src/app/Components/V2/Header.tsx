@@ -15,7 +15,13 @@ export default function Header() {
   const extendedImages = [images[images.length - 1], ...images, images[0]];
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(true);
-  const [form, setForm] = useState({ name: '', phone: '', email: '', pincode: '' });
+  const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    pincode: '',
+    urlParams: '', // new field
+  });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
@@ -23,9 +29,15 @@ export default function Header() {
   const touchEndXRef = useRef(0);
   const mouseDownRef = useRef(false);
 
-  // Adjust carousel speed and height based on screen size
   const [carouselSpeed, setCarouselSpeed] = useState(3000);
   const [carouselHeight, setCarouselHeight] = useState("h-[900px]");
+
+  // 🔵 Capture URL params once on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setForm((prev) => ({ ...prev, urlParams: window.location.href }));
+    }
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -43,8 +55,7 @@ export default function Header() {
         setCarouselHeight("h-[800px]");
       }
     };
-    
-    // Initialize on mount
+
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -123,6 +134,7 @@ export default function Header() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // 🔵 Submit with urlParams
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -134,7 +146,7 @@ export default function Header() {
 
       if (res.ok) {
         setSubmitted(true);
-        setForm({ name: '', phone: '', email: '', pincode: '' });
+        setForm({ name: '', phone: '', email: '', pincode: '', urlParams: '' });
       } else {
         const data = await res.json();
         setError(data.message || 'Submission failed.');

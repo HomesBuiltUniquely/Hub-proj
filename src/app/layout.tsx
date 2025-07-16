@@ -15,19 +15,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ Separate viewport export (only here — NOT inside metadata)
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
 };
 
+// ✅ Clean metadata without viewport
 export const metadata: Metadata = {
   title: "HUB Interior_Home",
-  description: "HUB Interior offers uniquely built homes with elegant designs and functionality.",
+  description:
+    "HUB Interior offers uniquely built homes with elegant designs and functionality.",
   keywords: ["Interior Design", "HUB Interior", "Home Design", "Architecture", "Custom Homes"],
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
-  viewport,
   openGraph: {
     title: "HUB Interior",
     description: "Homes uniquely built with elegance and purpose.",
@@ -64,11 +67,13 @@ export default function RootLayout({
       <head>
         {/* Favicon */}
         <link rel="icon" type="image/svg+xml" href="/hubicon.svg" />
+
         {/* Facebook Domain Verification */}
         <meta
           name="facebook-domain-verification"
           content="YOUR_VERIFICATION_CODE_HERE"
         />
+
         {/* Meta Pixel Code */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s)
@@ -82,23 +87,26 @@ export default function RootLayout({
             fbq('init', '1486878599401922');
             fbq('track', 'PageView');`}
         </Script>
+
         <noscript>
           <img
             height="1"
             width="1"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=1486878599401922&ev=PageView&noscript=1"
           />
         </noscript>
+
         {/* Google Tag Manager Head */}
         <Script id="gtm-head" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?"&l="+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W8M2PLFJ');`}
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?"&l="+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-W8M2PLFJ');`}
         </Script>
       </head>
+
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* GTM NoScript */}
         <noscript>
@@ -106,10 +114,12 @@ j=d.createElement(s),dl=l!='dataLayer'?"&l="+l:'';j.async=true;j.src=
             src="https://www.googletagmanager.com/ns.html?id=GTM-W8M2PLFJ"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+
         {children}
+
         {/* Vercel Analytics */}
         <Analytics />
       </body>
