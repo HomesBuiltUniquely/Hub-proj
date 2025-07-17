@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   const mailOptions = {
     from: process.env.GMAIL_USER,
     to: process.env.GMAIL_USER, // You can change this to a team email
-    subject: 'New Contact Form Submission',
+    subject: 'Sales Lead',
     html: `
       <h3>Contact Form Submission</h3>
       <p><strong>Name:</strong> ${name}</p>
