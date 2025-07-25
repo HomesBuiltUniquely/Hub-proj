@@ -51,7 +51,7 @@ export default function Section3() {
                             <p className="text-[28px] tracking-wide">Whether you dream of a stylish modular</p>
                             <p className="text-[28px] tracking-wide">kitchen or a stunning home interior </p>
                             <p className="text-[28px] tracking-wide">designed for comfort and elegance we</p>
-                            <p className="text-[28px] tracking-wide">create spaces you&#39ll love within your</p>
+                            <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
                             <p className="text-[28px] tracking-wide">budget</p>
                             <button className="text-white bg-red-500 mt-12 w-[300px] h-[50px] font-bold rounded-full text-[20px]">Book A Free Design Session</button>
                         </div>
