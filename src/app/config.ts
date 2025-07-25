@@ -3,12 +3,12 @@ import { initializeApp, getApps,getApp } from "firebase/app";
 import  "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: process.env.ApiKey,
+  apiKey: process.env.API_KEY,
   authDomain: "otptutorial-f9583.firebaseapp.com",
   projectId: "otptutorial-f9583",
   storageBucket: "otptutorial-f9583.appspot.com",
-  messagingSenderId: process.env.MessagingSenderId,
-  appId: process.env.AppId,
+  messagingSenderId: process.env.MID,
+  appId: process.env.APP_ID,
   measurementId: "G-LXSNEZL49W"
 };
 
