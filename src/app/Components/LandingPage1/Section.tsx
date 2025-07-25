@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 export default function Section1() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // const [currentSlide, setCurrentSlide] = useState(0);
   
   const features = [
     {
@@ -34,12 +34,12 @@ export default function Section1() {
   ];
 
   // Auto-rotate carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
+  //   }, 3000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   // const nextSlide = () => {
   //   setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
