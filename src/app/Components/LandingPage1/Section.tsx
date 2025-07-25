@@ -41,18 +41,18 @@ export default function Section1() {
     return () => clearInterval(interval);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
-  };
+  // const nextSlide = () => {
+  //   setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
+  // };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? features.length - 1 : prev - 1));
-  };
+  // const prevSlide = () => {
+  //   setCurrentSlide((prev) => (prev === 0 ? features.length - 1 : prev - 1));
+  // };
 
   return (
     <div className="w-screen min-h-[410px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10">
       <h1 className="lg:pt-10 lg:m-10 lg:ml-16 lg:text-6xl text-4xl mt-16 ml-8 manrope-medium">
-        Why We're Different.
+        Why We&#39re Different.
       </h1>
 
       {/* Desktop Grid View */}

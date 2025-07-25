@@ -55,8 +55,8 @@ export default function HeroSections() {
     setBudgetOpen(false);
   };
 
-  const handlePrev = () => setCarouselIndex((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1));
-  const handleNext = () => setCarouselIndex((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
+  // const handlePrev = () => setCarouselIndex((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1));
+  // const handleNext = () => setCarouselIndex((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

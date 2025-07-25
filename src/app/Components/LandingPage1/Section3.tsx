@@ -38,7 +38,7 @@ export default function Section3() {
     // Card and container widths
     const cardWidth = 380;
     const gap = 96; // px, for gap-x-24
-    const containerWidth = cardWidth + cardWidth / 2 + gap / 2; // 1.5 cards + half gap
+    // const containerWidth = cardWidth + cardWidth / 2 + gap / 2; // 1.5 cards + half gap
 
     return (
         <>
