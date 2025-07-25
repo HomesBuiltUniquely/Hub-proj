@@ -21,7 +21,7 @@ export default function Login(){
 
         window.recaptchaVerifier = new RecaptchaVerifier(auth,"recaptcha-container",{
             'size': 'normal',
-            'callback': (response)=>{
+            'callback': ()=>{
 
             },
             'expired-callack':()=>{
