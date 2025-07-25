@@ -50,8 +50,8 @@ export default function Section1() {
   // };
 
   return (
-    <div className="w-screen min-h-[410px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10">
-      <h1 className="lg:pt-10 lg:m-10 lg:ml-16 lg:text-6xl text-4xl mt-16 ml-8 manrope-medium">
+    <div className="w-full min-h-[410px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 overflow-x-hidden">
+      <h1 className="lg:pt-10 lg:m-10 lg:ml-16 lg:text-6xl text-4xl mt-12 ml-8 manrope-medium">
         Why We&#39;re Different.
       </h1>
 
@@ -68,35 +68,35 @@ export default function Section1() {
         ))}
       </div>
 
-      {/* Mobile Carousel */}
-      <div className="lg:hidden relative overflow-hidden mt-10 mx-4">
-        <div 
-          className="flex transition-transform duration-500 ease-in-out w-[200px]"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {features.map((feature, index) => (
-            <div 
-              key={index}
-              className="w-full flex-shrink-0 px-4"
-            >
-              <div className="w-full h-[200px] border-2 border-[#DDCDC1] rounded-2xl flex flex-col items-center justify-center p-6">
+      {/* Mobile Marquee */}
+      <div className="lg:hidden w-full overflow-x-hidden mt-16 mb-10 ">
+        <div className="relative w-full">
+          <div
+            className="flex items-center gap-6 animate-marquee"
+            style={{
+              width: `calc(${features.length} * 190px)`
+            }}
+          >
+            {features.concat(features).map((feature, index) => (
+              <div
+                key={index}
+                className="w-[200px] h-[190px] border-2 border-[#DDCDC1] rounded-2xl flex flex-col items-center justify-center p-6 mx-2 bg-white"
+              >
                 <img className="w-16 h-16 mb-4" src={feature.icon} alt={feature.title} />
                 <div className="text-center text-lg font-medium">{feature.title}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
-
-        <div className="flex justify-center mt-12 space-x-2">
-          {features.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-[#DDCDC1]' : 'bg-gray-300'}`}
-            />
-          ))}
-        </div>
+        <style jsx>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee {
+            animation: marquee 18s linear infinite;
+          }
+        `}</style>
       </div>
     </div>
   );

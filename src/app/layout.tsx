@@ -67,7 +67,7 @@ export default function RootLayout({
       <head>
         {/* Favicon */}
         <link rel="icon" type="image/svg+xml" href="/hubicon.svg" />
-
+      
         {/* Facebook Domain Verification */}
         <meta
           name="facebook-domain-verification"

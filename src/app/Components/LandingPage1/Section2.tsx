@@ -27,30 +27,28 @@ export default function Section2(){
             
             {/* MOBILE */}
 
-            <div className=" lg:hidden w-screen h-[420px] bg-white">
-            <div className=" text-left pt-10 text-4xl pl-6  manrope-medium">Where Trust Meets Design Excellence</div>
-            <div className="flex mt-14 ml-2 ">
-            <div className="ml-6">
-                <div className="font-bold text-red-500 text-[30px]">3,500+ </div>
-                <p>Happy Homes</p>
-            </div>
-            <div className="ml-28">
-                <div className="font-bold text-red-500 text-[30px]">60+ </div>
-                <div>Expert <p>Designers</p></div>
-            </div>
-            </div>
-
-            <div className="flex mt-10 ml-2">
-            <div className="ml-6">
-                <div className="font-bold text-red-500 text-[30px]">2</div>
-                <div>Experince <p>Centers</p></div>
-            </div>
-            <div className="ml-36">
-                <div className="font-bold text-red-500 text-[30px]">4.7+ </div>
-                <p>Google Rating</p>
-            </div>
-            </div>
-
+            <div className="lg:hidden w-full max-w-[400px] h-[420px] bg-white mx-auto">
+              <div className="text-left pt-10 text-4xl pl-6 manrope-medium">Where Trust Meets Design Excellence</div>
+              <div className="flex mt-14 gap-6 px-4">
+                <div className="ml-4">
+                  <div className="font-bold text-red-500 text-[30px]">3,500+ </div>
+                  <p>Happy Homes</p>
+                </div>
+                <div className="ml-20">
+                  <div className="font-bold text-red-500 text-[30px]">60+ </div>
+                  <div>Expert <p>Designers</p></div>
+                </div>
+              </div>
+              <div className="flex gap-6 px-4 mt-4">
+                <div className="ml-4">
+                  <div className="font-bold text-red-500 text-[30px]">2</div>
+                  <div>Experience <p>Centers</p></div>
+                </div>
+                <div className="ml-22 mt-1">
+                  <div className="font-bold text-red-500 text-[30px] pl-4">4.7+ </div>
+                  <div>Google Rating</div>
+                </div>
+              </div>
             </div>
 
         </div>

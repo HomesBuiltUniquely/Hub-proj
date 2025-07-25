@@ -92,7 +92,7 @@ export default function Section3() {
             </div>
 
             {/* mobile */}
-            <div className="lg:hidden w-screen min-h-[850px] bg-[#f1f2f6]">
+            <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[850px] bg-[#f1f2f6]">
                 <div className="flex">
                     <div className="w-1 h-25 bg-amber-300 mt-10 ml-4"></div>
                     <h1 className="text-5xl pl-3 pt-10 tracking-wide font-light">Homes For Every Budget</h1>
@@ -100,12 +100,11 @@ export default function Section3() {
                 <div className="ml-5 mt-5">
                     <div>Whether you dream of a stylish modular kitchen or a</div>
                     <div>stunning home interior designed for comfort and</div>
-                    <div>elegance we create spaces you&#39ll love within your budget</div>
+                    <div>elegance we create spaces you&#39;ll love within your budget</div>
                 </div>
                 {/* Stacked Card Carousel */}
                 <div className='flex'>
-                <div className="w-1 h-30 bg-amber-300 mt-50 ml-5"></div>
-                <div className="mt-10 px-4 relative h-[400px] w-full ml-40" style={{ maxWidth: 340 }}>
+                  <div className="mt-10 px-4 relative h-[400px] w-full max-w-[350px] mx-auto">
                     {slides.map((slide, idx) => {
                         // Show only the top 3 cards in the stack for performance
                         const isTop = idx === currentSlide;
@@ -130,7 +129,7 @@ export default function Section3() {
                         return (
                             <div
                                 key={idx}
-                                className="absolute left-0 top-0 w-[320px] h-[420px] bg-white rounded-3xl shadow-lg flex-shrink-0"
+                                className="absolute left-0 top-0 w-full max-w-[300px] h-[410px] bg-white rounded-3xl shadow-lg flex-shrink-0 mx-auto ml-20"
                                 style={{
                                     transform: `translateX(-${offset}px) scale(${scale})`,
                                     zIndex: z,
@@ -152,7 +151,7 @@ export default function Section3() {
                     })}
                 </div>
                 </div>
-                <div className='mt-20 ml-20 w-[280px] h-[40px] bg-red-500 pt-2 pl-8 text-white rounded-4xl font-bold'>Book A Free Design Session</div>
+                <div className='mt-20 mx-auto w-[280px] h-[40px] bg-red-500 pt-2 pl-8 text-white rounded-4xl font-bold'>Book A Free Design Session</div>
             </div>
         </>
     )
