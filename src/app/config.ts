@@ -3,13 +3,13 @@ import { initializeApp, getApps, getApp,FirebaseApp } from "firebase/app";
 import "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB87AUeODoy558xYjxOBFVK9NGC7oc_65s",
-  authDomain: "otptutorial-f9583.firebaseapp.com",
-  projectId: "otptutorial-f9583",
-  storageBucket: "otptutorial-f9583.appspot.com",
-  messagingSenderId: "429583317667",
-  appId: "1:429583317667:web:e81aca994072f5fdd0dd16",
-  measurementId: "G-LXSNEZL49W"
+  apiKey: "AIzaSyBTjEdu_92IopHAO-feHlPuP9cbqrwEjY0",
+  authDomain: "hubotp-a2dac.firebaseapp.com",
+  projectId: "hubotp-a2dac",
+  storageBucket: "hubotp-a2dac.appspot.com",
+  messagingSenderId: "581708164901",
+  appId: "1:581708164901:web:c369bc9f5ccd0835eb74cc",
+  measurementId: "G-4GLDFLL8FH"
 };
 
 // Initialize Firebase

@@ -4,6 +4,14 @@ import { useState, useEffect } from 'react';
 
 export default function Section3() {
     const [currentSlide, setCurrentSlide] = useState(0);
+    
+    const scrollToForm = () => {
+        const formElement = document.getElementById('hero-form');
+        if (formElement) {
+            formElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+    
     const slides = [
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//3.jpg",
@@ -19,7 +27,13 @@ export default function Section3() {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.jpg",
             type: "2 BHK",
             price: "Starting @ 2.8L*"
-        }
+        },
+        {
+            img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064686.jpeg",
+            type: "Modular Kitchen",
+            price: "Starting @ 1.25L*"
+        },
+       
     ];
 
     // Auto slide effect
@@ -32,8 +46,7 @@ export default function Section3() {
 
     // Card and container widths
     const cardWidth = 380;
-    const gap = 96; // px, for gap-x-24
-    // const containerWidth = cardWidth + cardWidth / 2 + gap / 2; // 1.5 cards + half gap
+    const gap = 96; 
 
     return (
         <>
@@ -48,7 +61,12 @@ export default function Section3() {
                             <p className="text-[28px] tracking-wide">designed for comfort and elegance we</p>
                             <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
                             <p className="text-[28px] tracking-wide">budget</p>
-                            <button className="text-white bg-red-500 mt-12 w-[300px] h-[50px] font-bold rounded-full text-[20px]">Book A Free Design Session</button>
+                            <button 
+                                onClick={scrollToForm}
+                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] font-bold rounded-full text-[20px] hover:bg-red-600 transition-colors"
+                            >
+                                Book A Free Design Session
+                            </button>
                         </div>
                     </div>
                     <div className="w-[1200px] h-[720px] mt-18 ml-40 relative overflow-hidden flex items-center">
@@ -93,38 +111,54 @@ export default function Section3() {
                     <h1 className="text-5xl pl-3 pt-10 tracking-wide font-light">Homes For Every Budget</h1>
                 </div>
                 <div className="ml-5 mt-5">
-                    <div>Whether you dream of a stylish modular kitchen or a</div>
-                    <div>stunning home interior designed for comfort and</div>
-                    <div>elegance we create spaces you&#39;ll love within your budget</div>
+                    <p>Whether you dream of a stylish modular kitchen or a
+                       stunning home interior designed for comfort and
+                       elegance we create spaces you&#39;ll love within your budget</p>
                 </div>
                 {/* Stacked Card Carousel */}
-                <div className='flex'>
-                  <div className="mt-10 px-4 relative h-[400px] w-full max-w-[300px] mr-5">
+                <div className='flex justify-center'>
+                  <div className="mt-10 relative h-[400px] w-full max-w-[280px]">
                     {slides.map((slide, idx) => {
                         // Show only the top 3 cards in the stack for performance
                         const isTop = idx === currentSlide;
                         const isSecond = idx === (currentSlide + 1) % slides.length;
                         const isThird = idx === (currentSlide + 2) % slides.length;
-                        if (!(isTop || isSecond || isThird)) return null;
+                        const isFourth = idx === (currentSlide + 3) % slides.length;
+                        const isFifth = idx === (currentSlide + 4) % slides.length;
+                        
+                        if (!(isTop || isSecond || isThird || isFourth || isFifth)) return null;
+                        
                         let offset = 0;
                         let scale = 1;
-                        let z = 10;
+                        let z = 5;
                         let opacity = 1;
+                        
                         if (isSecond) {
-                            offset = 50;
-                            scale = 0.96;
-                            z = 5;
-                            opacity = 0.8;
+                            offset = 40;
+                            scale = 0.95;
+                            z = 4;
+                            opacity = 1;
                         } else if (isThird) {
-                            offset = 100;
-                            scale = 0.92;
+                            offset = 80;
+                            scale = 0.9;
+                            z = 3;
+                            opacity = 1;
+                        } else if (isFourth) {
+                            offset = 120;
+                            scale = 0.85;
+                            z = 2;
+                            opacity = 1;
+                        } else if (isFifth) {
+                            offset = 160;
+                            scale = 0.8;
                             z = 1;
-                            opacity = 0.6;
+                            opacity = 1;
                         }
+                        
                         return (
                             <div
                                 key={idx}
-                                className="absolute left-0 top-0 w-full max-w-[300px] h-[410px] bg-white rounded-3xl shadow-lg flex-shrink-0 mx-auto ml-20"
+                                className="absolute left-1/2 top-0 w-full max-w-[260px] h-[410px] bg-white rounded-3xl shadow-lg flex-shrink-0 transform -translate-x-1/2 ml-20"
                                 style={{
                                     transform: `translateX(-${offset}px) scale(${scale})`,
                                     zIndex: z,
@@ -135,7 +169,7 @@ export default function Section3() {
                                 <img
                                     src={slide.img}
                                     alt={slide.type}
-                                    className="w-full h-[300px] object-cover rounded-t-3xl"
+                                    className="w-full h-[300px] object-cover rounded-t-3xl "
                                 />
                                 <div className="p-6">
                                     <div className="text-2xl font-bold text-[#3A2C19] mb-2">{slide.type}</div>
@@ -146,7 +180,12 @@ export default function Section3() {
                     })}
                 </div>
                 </div>
-                <div className='mt-20 mx-auto w-[280px] h-[50px] bg-red-500 pt-3 pl-10 text-white rounded-4xl font-bold'>Book A Free Design Session</div>
+                <button 
+                    onClick={scrollToForm}
+                    className='mt-20 mx-auto text-[16px] w-[250px] h-[50px] bg-red-500 px-auto text-white rounded-4xl font-bold hover:bg-red-600 ml-14 transition-colors'
+                >
+                    Book A Free Design Session
+                </button>
             </div>
         </>
     )

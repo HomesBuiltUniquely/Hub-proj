@@ -3618,3 +3618,27 @@ export default function HeroSections() {
     </div>
   );
 }
+
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBTjEdu_92IopHAO-feHlPuP9cbqrwEjY0",
+  authDomain: "hubotp-a2dac.firebaseapp.com",
+  projectId: "hubotp-a2dac",
+  storageBucket: "hubotp-a2dac.firebasestorage.app",
+  messagingSenderId: "581708164901",
+  appId: "1:581708164901:web:c369bc9f5ccd0835eb74cc",
+  measurementId: "G-4GLDFLL8FH"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

@@ -109,44 +109,45 @@ export function Section4(){
               
               {expandedCards['faq-1'] && (
                 <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                  <ul className="list-disc pl-5 space-y-2 text-gray-800">
-                  <li className='font-bold'>
-                    Boiling Waterproof Plywood
-                    <ul className="list-disc pl-5 manrope-medium">
-                      <li>(Greenply / Century) – 100% water-resistant</li>
-                    </ul>
-                  </li>
-                  <li className='font-bold'>
-                    Moisture Resistant MDF
-                    <ul className="list-disc pl-5 manrope-medium">
-                      <li>Best for wardrobes & partitions</li>
-                    </ul>
-                  </li>     
-                  <li className='font-bold'>
-                    HDHMR Shutters
-                    <ul className="list-disc pl-5 manrope-medium">
-                      <li>Soft-close (Action Tesa / Century)</li>
-                    </ul>
-                  </li>   
-                  <li className='font-bold'>
-                    Premium Hardware
-                    <ul className="list-disc pl-5 manrope-medium">
-                      <li>Hettich, Blum & Ebco only</li>
-                    </ul>
-                  </li>       
-                  <li className='font-bold'>
-                    Verified Materials
-                    <ul className="list-disc pl-5 manrope-medium">
-                      <li>Bills & tags provided</li>
-                    </ul>
-                  </li> 
-                  <li className='font-bold'>
-                  Factory Visits Welcome
-                    <ul className="list-disc pl-5 manrope-medium">
-                      <li>Full transparency guaranteed</li>
-                    </ul>
-                  </li>             
-                </ul>
+                 <ul className="list-decimal pl-5 space-y-2 text-gray-800">
+  <li className="font-bold">
+    Boiling Waterproof Plywood
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>(Greenply / Century) – 100% water-resistant</li>
+    </ul>
+  </li>
+  <li className="font-bold">
+    Moisture Resistant MDF
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Best for wardrobes & partitions</li>
+    </ul>
+  </li>     
+  <li className="font-bold">
+    HDHMR Shutters
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Soft-close (Action Tesa / Century)</li>
+    </ul>
+  </li>   
+  <li className="font-bold">
+    Premium Hardware
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Hettich, Blum & Ebco only</li>
+    </ul>
+  </li>       
+  <li className="font-bold">
+    Verified Materials
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Bills & tags provided</li>
+    </ul>
+  </li> 
+  <li className="font-bold">
+    Factory Visits Welcome
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Full transparency guaranteed</li>
+    </ul>
+  </li>             
+</ul>
+
                 </div>
               )}
             </div>
@@ -171,44 +172,45 @@ export function Section4(){
               
               {expandedCards['faq-2'] && (
                 <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                  <ul className="list-disc pl-5 space-y-2 text-gray-800">
-                      <li className='font-bold'>
-                        Detailed Quotes
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>All sizes, materials & brands listed</li>
-                        </ul>
-                      </li>
-                      <li className='font-bold'>
-                        Version History
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>Compare quote revisions easily</li>
-                        </ul>
-                      </li>
-                      <li className='font-bold'>
-                        Design-Based Pricing
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>95% accurate, based on final 3D design</li>
-                        </ul>
-                      </li>
-                      <li className='font-bold'>
-                        No Hidden Costs
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>Clear, fixed pricing before execution</li>
-                        </ul>
-                      </li>
-                      <li className='font-bold'>
-                        Fits Your Budget
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>Custom material & design options</li>
-                        </ul>
-                      </li>
-                      <li className='font-bold'>
-                        Live Cost Tracking
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>Transparent updates during execution</li>
-                        </ul>
-                      </li>
-                    </ul>
+                  <ul className="list-decimal pl-5 space-y-2 text-gray-800">
+  <li className='font-bold'>
+    Detailed Quotes
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>All sizes, materials & brands listed</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    Version History
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Compare quote revisions easily</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    Design-Based Pricing
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>95% accurate, based on final 3D design</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    No Hidden Costs
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Clear, fixed pricing before execution</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    Fits Your Budget
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Custom material & design options</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    Live Cost Tracking
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Transparent updates during execution</li>
+    </ul>
+  </li>
+</ul>
+
                 </div>
               )}
             </div>
@@ -233,26 +235,27 @@ export function Section4(){
               
               {expandedCards['faq-3'] && (
                 <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                 <ul className="list-disc pl-5 space-y-2 text-gray-800">
-                      <li className="font-bold">
-                        10-Year Warranty
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>10-Year Warranty on all modular woodwork</li>
-                        </ul>
-                      </li>
-                      <li className='font-bold'>
-                        1-Year Warranty
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>On-site services: painting, plumbing, electrical</li>
-                        </ul>
-                      </li>
-                      <li className='font-bold'>
-                        Extended Support
-                        <ul className="list-disc pl-5 manrope-medium">
-                          <li>Even after warranty ends</li>
-                        </ul>
-                      </li>
-                    </ul>
+                 <ul className="list-decimal pl-5 space-y-2 text-gray-800">
+  <li className="font-bold">
+    10-Year Warranty
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>10-Year Warranty on all modular woodwork</li>
+    </ul>
+  </li>
+  <li className="font-bold">
+    1-Year Warranty
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>On-site services: painting, plumbing, electrical</li>
+    </ul>
+  </li>
+  <li className="font-bold">
+    Extended Support
+    <ul className="list-disc pl-5 manrope-medium">
+      <li>Even after warranty ends</li>
+    </ul>
+  </li>
+</ul>
+
                 </div>
               )}
             </div>
@@ -277,50 +280,51 @@ export function Section4(){
               
               {expandedCards['faq-4'] && (
                 <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                  <ul className="list-disc pl-5 space-y-2 text-gray-800">
-                      <li>
-                        SoftGlide Hardware
-                        <ul className="list-disc pl-5">
-                          <li>Smooth, silent drawer and shutter operation with German-engineered soft-close fittings</li>
-                        </ul>
-                      </li>
-                      <li>
-                        BWP Core Protection
-                        <ul className="list-disc pl-5">
-                          <li>Boiling Water Proof plywood with anti-borer treatment for long-lasting durability</li>
-                        </ul>
-                      </li>
-                      <li>
-                        ThermoShield Coating
-                        <ul className="list-disc pl-5">
-                          <li>Heat-resistant laminate that protects surfaces from high kitchen temperatures</li>
-                        </ul>
-                      </li>
-                      <li>
-                        AquaBloc Edging
-                        <ul className="list-disc pl-5">
-                          <li>Moisture-sealed edges that prevent water damage in cabinets and wardrobes</li>
-                        </ul>
-                      </li>
-                      <li>
-                        NanoGuard Laminate
-                        <ul className="list-disc pl-5">
-                          <li>Anti-fingerprint, stain-resistant laminate for easy maintenance in high-use areas</li>
-                        </ul>
-                      </li>
-                      <li>
-                        DuraBuild Structure
-                        <ul className="list-disc pl-5">
-                          <li>High-strength cabinet framework designed for superior load-bearing and longevity</li>
-                        </ul>
-                      </li>
-                      <li>
-                        ErgoCore Layout
-                        <ul className="list-disc pl-5">
-                          <li>Ergonomically optimized furniture design that improves comfort and movement flow</li>
-                        </ul>
-                      </li>
-                    </ul>
+                  <ul className="list-decimal pl-5 space-y-2 text-gray-800">
+  <li className='font-bold'>
+    SoftGlide Hardware
+    <ul className="list-disc pl-5">
+      <li className='manrope-medium'>Smooth, silent drawer and shutter operation with German-engineered soft-close fittings</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    BWP Core Protection
+    <ul className="list-disc pl-5">
+      <li className='manrope-medium'>Boiling Water Proof plywood with anti-borer treatment for long-lasting durability</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    ThermoShield Coating
+    <ul className="list-disc pl-5">
+      <li className='manrope-medium'>Heat-resistant laminate that protects surfaces from high kitchen temperatures</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    AquaBloc Edging
+    <ul className="list-disc pl-5">
+      <li className='manrope-medium'>Moisture-sealed edges that prevent water damage in cabinets and wardrobes</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    NanoGuard Laminate
+    <ul className="list-disc pl-5">
+      <li className='manrope-medium'>Anti-fingerprint, stain-resistant laminate for easy maintenance in high-use areas</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    DuraBuild Structure
+    <ul className="list-disc pl-5">
+      <li className='manrope-medium'>High-strength cabinet framework designed for superior load-bearing and longevity</li>
+    </ul>
+  </li>
+  <li className='font-bold'>
+    ErgoCore Layout
+    <ul className="list-disc pl-5">
+      <li className='manrope-medium'>Ergonomically optimized furniture design that improves comfort and movement flow</li>
+    </ul>
+  </li>
+</ul>
+
                 </div>
               )}
             </div>

@@ -118,13 +118,13 @@ export default function Section5(){
        <div className='lg:hidden w-auto h-auto bg-white mt-10'>
         <div className='text-[40px] font-light pl-6 pt-6 pb-6'>Complete Interior<p>Solution by HUB</p></div>
         {/* Living & Dining Spaces */}
-        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 0 ? null : 0)}>
+        <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 0 ? null : 0)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//livingroom.png"></img>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
-                <div className='ml-3 pt-16 text-[20px] text-white manrope-medium'>Living & <p> Dining Spaces </p></div>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Living & <p> Dining Spaces </p></div>
            </div>
            {activeMobile === 0 && (
              <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
@@ -133,13 +133,13 @@ export default function Section5(){
            )}
         </div>
         {/* Storage Innovation */}
-        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 1 ? null : 1)}>
+        <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 1 ? null : 1)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//boxes.png"></img>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
-                <div className='ml-3 pt-16 text-[20px] text-white manrope-medium'>Storage <p> Inovation </p></div>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Storage <p> Inovation </p></div>
            </div>
            {activeMobile === 1 && (
              <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
@@ -148,13 +148,13 @@ export default function Section5(){
            )}
         </div>
         {/* Bedroom Solutions */}
-        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 2 ? null : 2)}>
+        <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 2 ? null : 2)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//double-bed.png"></img>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
-                <div className='ml-3 pt-16 text-[20px] text-white manrope-medium'>Bedroom<p>Solutions</p></div>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Bedroom<p>Solutions</p></div>
            </div>
            {activeMobile === 2 && (
              <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
@@ -163,13 +163,13 @@ export default function Section5(){
            )}
         </div>
         {/* Interior Design Service */}
-        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 3 ? null : 3)}>
+        <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 3 ? null : 3)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//interior-design.png"></img>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
-                <div className='ml-3 pt-16 text-[20px] text-white manrope-medium'>Interior Design<p>Service</p></div>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Interior Design<p>Service</p></div>
            </div>
            {activeMobile === 3 && (
              <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
@@ -178,13 +178,13 @@ export default function Section5(){
            )}
         </div>
         {/* Modular Kitchen Design */}
-        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 4 ? null : 4)}>
+        <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 4 ? null : 4)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//kitchen.png"></img>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
-                <div className='ml-3 pt-16 text-[18px] text-white manrope-medium'>Modular Kitchen <p> Design</p></div>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Modular Kitchen <p> Design</p></div>
            </div>
            {activeMobile === 4 && (
              <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
@@ -193,13 +193,13 @@ export default function Section5(){
            )}
         </div>
         {/* Home Improvement Service */}
-        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 5 ? null : 5)}>
+        <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 5 ? null : 5)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//house-repair.png"></img>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
-                <div className='ml-3 pt-12 text-[20px] text-white manrope-medium'>Home <p> Improvment Service</p></div>
+                <div className='ml-3 pt-12 text-[20px] text-white manrope-semibold'>Home <p> Improvment Service</p></div>
            </div>
            {activeMobile === 5 && (
              <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">

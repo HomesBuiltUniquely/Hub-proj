@@ -11,6 +11,13 @@ export default function Section6() {
     bedrooms: 0,
     livingSpaces: 0
   });
+
+  const scrollToForm = () => {
+    const formElement = document.getElementById('hero-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   const categories = [
     {
@@ -172,7 +179,10 @@ export default function Section6() {
               </div>
 
               {/* Meet Our Designers Button */}
-              <button className="absolute top-8 right-8 bg-red-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-600 transition-colors">
+              <button 
+                onClick={scrollToForm}
+                className="absolute top-8 right-8 bg-red-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-600 transition-colors"
+              >
                 Meet Our Designers
               </button>
             </div>
@@ -215,7 +225,7 @@ export default function Section6() {
 
       {/* Mobile Carousel */}
       <div className="lg:hidden px-4 mx-auto bg-[#f1f2f6] rounded-4xl">
-        {/* Smart Storage Section */}
+        {/* Smart Storage Section */} 
         <div className="mb-8">
           <div className='flex'>
             <div className='bg-yellow-200 w-1 h-24 ml-4 mt-10'></div>
@@ -225,7 +235,7 @@ export default function Section6() {
               Unlock 25% Extra Space</p>
             </div>
           </div>
-          <div className='w-[300px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+          <div className='w-[340px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${mobileSlides.smartStorage * 100}%)` }}
@@ -233,14 +243,19 @@ export default function Section6() {
               {categories[0].slides.map((slide, index) => (
                 <div key={index} className="w-full flex-shrink-0">
                   <img 
-                    className='w-[370px] h-[450px] rounded-4xl object-cover' 
+                    className='w-[340px] h-[450px] rounded-4xl object-cover' 
                     src={slide.image}
                     alt={slide.title}
                   />
                 </div>
               ))}
             </div>
-            <button className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'>Meet Our Designer</button>
+            <button 
+              onClick={scrollToForm}
+              className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'
+            >
+              Meet Our Designer
+            </button>
           </div>
         </div>
 
@@ -253,7 +268,7 @@ export default function Section6() {
               <p className='manrope-medium'>Modular Kitchen With Smarter Storage</p>
             </div>
           </div>
-          <div className='w-[300px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+          <div className='w-[340px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${mobileSlides.modularKitchen * 100}%)` }}
@@ -261,14 +276,19 @@ export default function Section6() {
               {categories[1].slides.map((slide, index) => (
                 <div key={index} className="w-full flex-shrink-0">
                   <img 
-                    className='w-[300px] h-[450px] rounded-4xl object-cover' 
+                    className='w-[340px] h-[450px] rounded-4xl object-cover' 
                     src={slide.image}
                     alt={slide.title}
                   />
                 </div>
               ))}
             </div>
-            <button className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'>Meet Our Designer</button>
+            <button 
+              onClick={scrollToForm}
+              className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'
+            >
+              Meet Our Designer
+            </button>
           </div>
         </div>
 
@@ -281,7 +301,7 @@ export default function Section6() {
               <p className='manrope-medium'>Bedrooms That Blend Comfort With Elegance</p>
             </div>
           </div>
-          <div className='w-[300px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+          <div className='w-[340px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${mobileSlides.bedrooms * 100}%)` }}
@@ -289,14 +309,19 @@ export default function Section6() {
               {categories[2].slides.map((slide, index) => (
                 <div key={index} className="w-full flex-shrink-0">
                   <img 
-                    className='w-[300px] h-[450px] rounded-4xl object-cover' 
+                    className='w-[340px] h-[450px] rounded-4xl object-cover' 
                     src={slide.image}
                     alt={slide.title}
                   />
                 </div>
               ))}
             </div>
-            <button className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'>Meet Our Designer</button>
+            <button 
+              onClick={scrollToForm}
+              className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'
+            >
+              Meet Our Designer
+            </button>
           </div>
         </div>
 
@@ -309,7 +334,7 @@ export default function Section6() {
               <p className='manrope-medium'>Living Spaces Made For Style & Comfort</p>
             </div>
           </div>
-          <div className='w-[300px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+          <div className='w-[340px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${mobileSlides.livingSpaces * 100}%)` }}
@@ -317,14 +342,19 @@ export default function Section6() {
               {categories[3].slides.map((slide, index) => (
                 <div key={index} className="w-full flex-shrink-0">
                   <img 
-                    className='w-[300px] h-[450px] rounded-4xl object-cover' 
+                    className='w-[340px] h-[450px] rounded-4xl object-cover' 
                     src={slide.image}
                     alt={slide.title}
                   />
                 </div>
               ))}
             </div>
-            <button className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'>Meet Our Designer</button>
+            <button 
+              onClick={scrollToForm}
+              className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'
+            >
+              Meet Our Designer
+            </button>
           </div>
         </div>
       </div>

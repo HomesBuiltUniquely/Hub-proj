@@ -1,9 +1,8 @@
 'use client';
 
-// import { useState, useEffect } from "react";
 
 export default function Section1() {
-  // const [currentSlide, setCurrentSlide] = useState(0);
+  
   
   const features = [
     {
@@ -17,8 +16,8 @@ export default function Section1() {
       description: "Long-term protection for your investment"
     },
     {
-      icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//QUALITYU.png",
-      title: "150+ Quality Checks",
+      icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//quality.png",
+      title: "150+ Quality Analysis",
       description: "Rigorous quality control processes"
     },
     {
@@ -33,21 +32,6 @@ export default function Section1() {
     }
   ];
 
-  // Auto-rotate carousel
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
-  //   }, 3000);
-  //   return () => clearInterval(interval);
-  // }, []);
-
-  // const nextSlide = () => {
-  //   setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
-  // };
-
-  // const prevSlide = () => {
-  //   setCurrentSlide((prev) => (prev === 0 ? features.length - 1 : prev - 1));
-  // };
 
   return (
     <div className="w-full min-h-[410px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 overflow-x-hidden">
@@ -76,10 +60,20 @@ export default function Section1() {
               <div
                 key={index}
                 className={`h-[190px] border-2 border-[#DDCDC1] rounded-2xl flex flex-col items-center justify-center p-6 mx-2 bg-white ${
-                  feature.title === "150+ Quality Checks" ? "w-[250px]" : "w-[200px]"
+                  feature.title === "150+ Quality Checks" ? "w-[300px]" : "w-[400px]"
                 }`}
               >
-                <img className="w-16 h-16 mb-3" src={feature.icon} alt={feature.title} />
+                <img 
+                  className={`mb-3 ${
+                    feature.title === "34 Days Delivery" ? "w-14 h-14" :
+                    feature.title === "10 Years Warranty" ? "w-12 h-12" :
+                    feature.title === "Validated 150+ Quality Checks" ? "w-10 h-14" :
+                    feature.title === "0% EMI Options" ? "w-12 h-12" :
+                    "w-10 h-10" // Factory Finish
+                  }`} 
+                  src={feature.icon} 
+                  alt={feature.title} 
+                />
                 <div className="text-center text-lg font-medium">{feature.title}</div>
               </div>
             ))}
@@ -91,7 +85,7 @@ export default function Section1() {
             100% { transform: translateX(-50%); }
           }
           .animate-marquee {
-            animation: marquee 20s linear infinite;
+            animation: marquee 6s linear infinite;
           }
         `}</style>
       </div>

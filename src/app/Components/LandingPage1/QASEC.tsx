@@ -31,7 +31,7 @@ const faqData: FAQItem[] = [
 {
     "question": "6. Do you provide small kitchen interior designs?",
     "answer": "Yes. We offer a small kitchen interior design that optimizes space without compromising on style. From parallel kitchen layouts to compact modular solutions, we ensure ergonomic design, premium finishes, and functionality tailored for urban homes in Bangalore."
-},
+}, 
 {
     "question": "7. Who are the best interior designers in Bangalore?",
     "answer": "If you're looking for the best interior designers in Bangalore, HUB Interior stands out for its creative design, affordable pricing, and end-to-end project execution. We are one of the most trusted interior companies in Bangalore, known for transforming homes with style and function."
