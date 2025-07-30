@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApps, getApp } from "firebase/app";
+import { initializeApp, getApps, getApp,FirebaseApp } from "firebase/app";
 import "firebase/auth";
 
 const firebaseConfig = {
@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app: any;
+let app: FirebaseApp;
 if (getApps().length === 0) {
   app = initializeApp(firebaseConfig);
 } else {

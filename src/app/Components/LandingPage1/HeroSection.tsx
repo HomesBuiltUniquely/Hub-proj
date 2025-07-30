@@ -6,10 +6,11 @@ import cityOptions from "./DropDown1"
 import {budgetOptions} from "./DropDown2"
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from "firebase/auth";
 import { app } from '../../config';
+import { FirebaseError } from "firebase/app";
 
 declare global {
   interface Window {
-    recaptchaVerifier?: any;
+    recaptchaVerifier?: RecaptchaVerifier | null | undefined;
   }
 }
 
@@ -198,21 +199,26 @@ export default function HeroSections() {
       setConfirmationResult(confirmation);
       setOtpSent(true);
       alert('OTP has been sent to your phone number');
-    } catch (error: any) {
-      console.error('Error sending OTP:', error);
-      console.error('Error code:', error.code);
-      console.error('Error message:', error.message);
-      
-      if (error.code === 'auth/invalid-app-credential') {
-        alert('Firebase configuration error. Please check your Firebase settings and authorized domains.');
-      } else if (error.code === 'auth/invalid-phone-number') {
-        alert('Invalid phone number format. Please enter a valid 10-digit Indian phone number.');
-      } else if (error.code === 'auth/too-many-requests') {
-        alert('Too many OTP requests. Please wait a few minutes before trying again.');
-      } else if (error.code === 'auth/invalid-recaptcha-token') {
-        alert('reCAPTCHA verification failed. Please try again.');
+    } catch (error: unknown) {
+      if (error instanceof FirebaseError) {
+        console.error("Error sending OTP:", error);
+        console.error("Error code:", error.code);
+        console.error("Error message:", error.message);
+    
+        if (error.code === "auth/invalid-app-credential") {
+          alert("Firebase configuration error. Please check your Firebase settings and authorized domains.");
+        } else if (error.code === "auth/invalid-phone-number") {
+          alert("Invalid phone number format. Please enter a valid 10-digit Indian phone number.");
+        } else if (error.code === "auth/too-many-requests") {
+          alert("Too many OTP requests. Please wait a few minutes before trying again.");
+        } else if (error.code === "auth/invalid-recaptcha-token") {
+          alert("reCAPTCHA verification failed. Please try again.");
+        } else {
+          alert("Error sending OTP. Please try again. Make sure you complete the reCAPTCHA.");
+        }
       } else {
-        alert('Error sending OTP. Please try again. Make sure you complete the reCAPTCHA.');
+        console.error("Unknown error sending OTP:", error);
+        alert("An unknown error occurred while sending OTP.");
       }
     }
   };
@@ -352,16 +358,17 @@ export default function HeroSections() {
         setSubmitStatus('error');
         alert(responseData.message || 'Failed to submit form. Please try again.');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
-      
-      if (error.name === 'AbortError') {
+    
+      if (error instanceof Error && error.name === 'AbortError') {
         alert('Request timed out. Please check your internet connection and try again.');
       } else {
         alert('Failed to submit form. Please try again.');
       }
-    } finally {
+    }
+     finally {
       setIsSubmitting(false);
     }
   };
@@ -432,16 +439,17 @@ export default function HeroSections() {
         setSubmitStatus('error');
         alert(responseData.message || 'Failed to submit form. Please try again.');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
-      
-      if (error.name === 'AbortError') {
+    
+      if (error instanceof Error && error.name === 'AbortError') {
         alert('Request timed out. Please check your internet connection and try again.');
       } else {
         alert('Failed to submit form. Please try again.');
       }
-    } finally {
+    }
+     finally {
       setIsSubmitting(false);
     }
   };
@@ -614,7 +622,7 @@ export default function HeroSections() {
               {/* Success/Error Messages */}
               {submitStatus === 'success' && (
                 <div className="text-green-600 text-center text-sm mt-4 font-medium">
-                  Thank you! We'll get back to you soon.
+                  Thank you! We&#39;ll get back to you soon.
                 </div>
               )}
               
@@ -791,7 +799,7 @@ export default function HeroSections() {
                 {/* Success/Error Messages */}
                 {submitStatus === 'success' && (
                   <div className="text-green-600 text-center text-sm mt-4 font-medium">
-                    Thank you! We'll get back to you soon.
+                    Thank you! We&#39;ll get back to you soon.
                   </div>
                 )}
                 
@@ -846,7 +854,7 @@ export default function HeroSections() {
             {!otpSent ? (
               <div>
                 <p className="text-gray-600 mb-4">
-                  Please verify your phone number to continue. We'll send an OTP to {formData.phone}
+                  Please verify your phone number to continue. We&#39;ll send an OTP to {formData.phone}
                 </p>
                 <div id="recaptcha-container" className="mb-4"></div>
                 <button

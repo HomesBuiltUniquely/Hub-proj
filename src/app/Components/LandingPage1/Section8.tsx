@@ -150,7 +150,7 @@ export default function Section8() {
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
-                {videoThumbnails.map((video, index) => (
+                {videoThumbnails.map((video) => (
                   <div 
                     key={video.id} 
                     className="w-full flex-shrink-0 px-2"
