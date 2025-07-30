@@ -13,17 +13,12 @@ export default function Section3() {
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//2.jpg",
             type: "3 BHK",
-            price: "Starting @ 4.5L*"
+            price: "Starting @ 3.8L*"
         },
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.jpg",
             type: "2 BHK",
-            price: "Starting @ 3.5L*"
-        },
-        {
-            img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1.jpg",
-            type: "2 BHK",
-            price: "Starting @ 3.5L*"
+            price: "Starting @ 2.8L*"
         }
     ];
 
@@ -92,7 +87,7 @@ export default function Section3() {
             </div>
 
             {/* mobile */}
-            <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[850px] bg-[#f1f2f6]">
+            <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[900px] bg-[#f1f2f6]">
                 <div className="flex">
                     <div className="w-1 h-25 bg-amber-300 mt-10 ml-4"></div>
                     <h1 className="text-5xl pl-3 pt-10 tracking-wide font-light">Homes For Every Budget</h1>
@@ -104,7 +99,7 @@ export default function Section3() {
                 </div>
                 {/* Stacked Card Carousel */}
                 <div className='flex'>
-                  <div className="mt-10 px-4 relative h-[400px] w-full max-w-[350px] mx-auto">
+                  <div className="mt-10 px-4 relative h-[400px] w-full max-w-[300px] mr-5">
                     {slides.map((slide, idx) => {
                         // Show only the top 3 cards in the stack for performance
                         const isTop = idx === currentSlide;
@@ -140,7 +135,7 @@ export default function Section3() {
                                 <img
                                     src={slide.img}
                                     alt={slide.type}
-                                    className="w-full h-[220px] object-cover rounded-t-3xl"
+                                    className="w-full h-[300px] object-cover rounded-t-3xl"
                                 />
                                 <div className="p-6">
                                     <div className="text-2xl font-bold text-[#3A2C19] mb-2">{slide.type}</div>
@@ -151,7 +146,7 @@ export default function Section3() {
                     })}
                 </div>
                 </div>
-                <div className='mt-20 mx-auto w-[280px] h-[40px] bg-red-500 pt-2 pl-8 text-white rounded-4xl font-bold'>Book A Free Design Session</div>
+                <div className='mt-20 mx-auto w-[280px] h-[50px] bg-red-500 pt-3 pl-10 text-white rounded-4xl font-bold'>Book A Free Design Session</div>
             </div>
         </>
     )

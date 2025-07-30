@@ -71,18 +71,15 @@ export default function Section1() {
       {/* Mobile Marquee */}
       <div className="lg:hidden w-full overflow-x-hidden mt-16 mb-10 ">
         <div className="relative w-full">
-          <div
-            className="flex items-center gap-6 animate-marquee"
-            style={{
-              width: `calc(${features.length} * 190px)`
-            }}
-          >
+          <div className="flex items-center gap-6 animate-marquee">
             {features.concat(features).map((feature, index) => (
               <div
                 key={index}
-                className="w-[200px] h-[190px] border-2 border-[#DDCDC1] rounded-2xl flex flex-col items-center justify-center p-6 mx-2 bg-white"
+                className={`h-[190px] border-2 border-[#DDCDC1] rounded-2xl flex flex-col items-center justify-center p-6 mx-2 bg-white ${
+                  feature.title === "150+ Quality Checks" ? "w-[250px]" : "w-[200px]"
+                }`}
               >
-                <img className="w-16 h-16 mb-4" src={feature.icon} alt={feature.title} />
+                <img className="w-16 h-16 mb-3" src={feature.icon} alt={feature.title} />
                 <div className="text-center text-lg font-medium">{feature.title}</div>
               </div>
             ))}
@@ -94,7 +91,7 @@ export default function Section1() {
             100% { transform: translateX(-50%); }
           }
           .animate-marquee {
-            animation: marquee 18s linear infinite;
+            animation: marquee 20s linear infinite;
           }
         `}</style>
       </div>

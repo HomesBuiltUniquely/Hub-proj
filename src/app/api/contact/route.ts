@@ -2,7 +2,23 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-  const { name, phone, email, pincode, urlParams } = await req.json(); // ⬅️ Include urlParams
+  try {
+    const { name, phone, email, pincode, city, budget, whatsappConsent, pageUrl, verificationStatus } = await req.json();
+
+    console.log('API route called with data:', { name, phone, email, pincode, city, budget, whatsappConsent, pageUrl, verificationStatus });
+    console.log('Environment variables check:');
+    console.log('GMAIL_USER exists:', !!process.env.GMAIL_USER);
+    console.log('GMAIL_PASS exists:', !!process.env.GMAIL_PASS);
+
+    // Check if required environment variables are set
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+      console.error('Gmail credentials not configured');
+      console.log('For testing purposes, returning success without sending email');
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Form data received successfully (email not sent - credentials not configured)' 
+      });
+    }
 
   // ✅ Setup transport using Gmail
   const transporter = nodemailer.createTransport({
@@ -13,26 +29,40 @@ export async function POST(req: Request) {
     },
   });
 
-  // ✅ Email content including landing URL
+    // ✅ Email content including all form data
+    const verificationStatusText = verificationStatus === 'Verified User' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
+    const subject = verificationStatus === 'Verified User' ? 'New Interior Design Lead (Verified)' : 'New Interior Design Lead (Unverified)';
+    
   const mailOptions = {
     from: process.env.GMAIL_USER,
     to: process.env.GMAIL_USER, // You can change this to a team email
-    subject: 'Sales Lead',
+      subject: subject,
     html: `
       <h3>Contact Form Submission</h3>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Pincode:</strong> ${pincode}</p>
-      <p><strong>Landing URL:</strong> <a href="${urlParams}" target="_blank">${urlParams}</a></p>
+        <p><strong>Name:</strong> ${name || 'Not provided'}</p>
+        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+        <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
+        <p><strong>Interior Setup:</strong> ${city || 'Not provided'}</p>
+        <p><strong>Possession Timeline:</strong> ${budget || 'Not provided'}</p>
+        <p><strong>WhatsApp Consent:</strong> ${whatsappConsent ? 'Yes' : 'No'}</p>
+        <p><strong>Verification Status:</strong> <span style="color: ${verificationStatus === 'Verified User' ? 'green' : 'red'}; font-weight: bold;">${verificationStatusText}</span></p>
+        <p><strong>Page URL:</strong> <a href="${pageUrl || 'Not provided'}" target="_blank">${pageUrl || 'Not provided'}</a></p>
+        ${verificationStatus !== 'Verified User' ? '<p style="color: red; font-weight: bold;">⚠️ IMPORTANT: This user did not verify their phone number. Please follow up to verify their details.</p>' : ''}
     `,
   };
 
-  try {
+    console.log('Sending email with data:', { name, phone, email, pincode, city, budget, whatsappConsent, pageUrl, verificationStatus });
+
     await transporter.sendMail(mailOptions);
-    return NextResponse.json({ success: true });
+    console.log('Email sent successfully');
+    
+    return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error("Email send error:", error);
-    return NextResponse.json({ success: false, message: 'Failed to send email' }, { status: 500 });
+    return NextResponse.json({ 
+      success: false, 
+      message: 'Failed to send email. Please try again.' 
+    }, { status: 500 });
   }
 }

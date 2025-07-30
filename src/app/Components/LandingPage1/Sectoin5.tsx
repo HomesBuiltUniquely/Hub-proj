@@ -10,10 +10,14 @@ export default function Section5(){
     const [isHovered4, setIsHovered4] = useState(false);
     const [isHovered5, setIsHovered5] = useState(false);
 
+    // Add state for mobile overlay
+    const [activeMobile, setActiveMobile] = useState<number | null>(null);
+
 
     return(
+        <div>
         <div className='hidden lg:block'>
-       <div className="w-screen h-[800px] bg-white">
+       <div className="w-screen h-[900px] bg-white">
         <div className="pt-10 text-center text-6xl">Complete Interior Solution by HUB</div>
         <div className="flex mt-14">
             <div>
@@ -108,6 +112,102 @@ export default function Section5(){
             </div>
             </div>
         </div>
+       </div>
+       </div>
+       {/* mobile */}
+       <div className='lg:hidden w-auto h-auto bg-white mt-10'>
+        <div className='text-[40px] font-light pl-6 pt-6 pb-6'>Complete Interior<p>Solution by HUB</p></div>
+        {/* Living & Dining Spaces */}
+        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 0 ? null : 0)}>
+           <div className='flex'>
+                <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//livingroom.png"></img>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-medium'>Living & <p> Dining Spaces </p></div>
+           </div>
+           {activeMobile === 0 && (
+             <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
+               <p className="text-white text-[16px] p-6 text-center">Custom TV Units & Accent Walls / Elegant Crockery Cabinets / Stylish Bar Counters & Displays / Modern Bookshelves & Storage / Foyer Units & Entryway Consoles / Pooja Units & Prayer Spaces</p>
+             </div>
+           )}
+        </div>
+        {/* Storage Innovation */}
+        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 1 ? null : 1)}>
+           <div className='flex'>
+                <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//boxes.png"></img>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-medium'>Storage <p> Inovation </p></div>
+           </div>
+           {activeMobile === 1 && (
+             <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
+               <p className="text-white text-[17px] p-8 text-center">Janitor Closets & Utility Units / Skirting Drawers for Extra Space / Pantry Pull-Out Systems / Concealed Appliance Storage / Hidden Bar Cabinets & Magic Corners</p>
+             </div>
+           )}
+        </div>
+        {/* Bedroom Solutions */}
+        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 2 ? null : 2)}>
+           <div className='flex'>
+                <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//double-bed.png"></img>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-medium'>Bedroom<p>Solutions</p></div>
+           </div>
+           {activeMobile === 2 && (
+             <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
+               <p className="text-white text-[15px] py-10 px-6 text-center">Sleek Wardrobes with Internal Storage / Bed Frames with Built-In Storage / Integrated Dressing Units / Compact Study & Work Desks / Bedroom TV Panel Designs / Customized Kids Bedrooms with Study & Storage Solutions / Dedicated Home Office Setups</p>
+             </div>
+           )}
+        </div>
+        {/* Interior Design Service */}
+        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 3 ? null : 3)}>
+           <div className='flex'>
+                <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//interior-design.png"></img>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <div className='ml-3 pt-16 text-[20px] text-white manrope-medium'>Interior Design<p>Service</p></div>
+           </div>
+           {activeMobile === 3 && (
+             <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
+               <p className="text-white text-[18px] p-5 text-center">Designer False Ceilings & Lighting / Decorative Wall Panel Designs / Soft Furnishings & Decor Elements / Smart Appliance Integration / Wall Finishes, Textures & Wallpapers</p>
+             </div>
+           )}
+        </div>
+        {/* Modular Kitchen Design */}
+        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 4 ? null : 4)}>
+           <div className='flex'>
+                <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//kitchen.png"></img>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <div className='ml-3 pt-16 text-[18px] text-white manrope-medium'>Modular Kitchen <p> Design</p></div>
+           </div>
+           {activeMobile === 4 && (
+             <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
+               <p className="text-white text-[16px] p-8 text-center">Durable Countertops & Backsplashes / Premium Kitchen Accessories / Designer Shutters & Cabinets / Smart Kitchen Storage Solutions</p>
+             </div>
+           )}
+        </div>
+        {/* Home Improvement Service */}
+        <div className="relative w-[320px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 5 ? null : 5)}>
+           <div className='flex'>
+                <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//house-repair.png"></img>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <div className='ml-3 pt-12 text-[20px] text-white manrope-medium'>Home <p> Improvment Service</p></div>
+           </div>
+           {activeMobile === 5 && (
+             <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10">
+               <p className="text-white text-[16px] p-8 text-center">Interior & Exterior Painting / Bathroom Makeovers & Upgrades / Expert Tiling, Plumbing & Electrical Work / Civil Modifications / Deep Home Cleaning Services / Balcony & Utility Area Solutions</p>
+             </div>
+           )}
+        </div>
+
        </div>
        </div>
     )
