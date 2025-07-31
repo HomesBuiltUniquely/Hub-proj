@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import {Pincode} from "./Pincode"
 import cityOptions from "./DropDown1"
 import {budgetOptions} from "./DropDown2"
@@ -30,6 +31,7 @@ const carouselImages1 = [
 ];
 
 export default function HeroSections() {
+  const router = useRouter();
   const [cityOpen, setCityOpen] = useState(false);
   const [budgetOpen, setBudgetOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
@@ -456,6 +458,8 @@ export default function HeroSections() {
         
         if (verificationStatus === 'Verified User') {
           alert('Form submitted successfully! We will contact you soon.');
+          // Redirect to thank you page after successful verified submission
+          router.push('/ThankUpage');
         } else {
           alert('Form submitted! Please verify your phone number for faster response.');
         }
