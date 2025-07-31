@@ -18,8 +18,8 @@ export default function Section5(){
         <div>
         <div className='hidden lg:block'>
        <div className="w-screen h-[900px] bg-white">
-        <div className="pt-10 text-center text-6xl">Complete Interior Solution by HUB</div>
-        <div className="flex mt-14 mr-20">
+        <div className="pt-10 text-center text-6xl manrope-medium">Complete Interior Solution by HUB</div>
+        <div className="flex mt-24 mr-20">
             <div className='mx-auto' >
             <div className='relative '>
             <div 

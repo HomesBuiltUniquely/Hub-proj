@@ -19,19 +19,19 @@ export default function Section8() {
       id: 1,
       thumbnail: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=300&h=200&fit=crop",
       title: "Master Bedroom Design",
-      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4"
     },
     {
       id: 2,
       thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop",
       title: "Modern Living Room",
-      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//hub%20journey%20(1)%20(1)%20(1).mp4"
     },
     {
       id: 3,
       thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=200&fit=crop",
       title: "Kitchen Interior",
-      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4"
+      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4"
     }
   ];
 
@@ -89,7 +89,7 @@ export default function Section8() {
           <div className="relative z-10 h-full flex flex-col justify-center">
             <div className="max-w-7xl mx-auto px-6 w-full">
               {/* Text Header - Matching your screenshot */}
-              <div className="mb-16 text-black">
+              <div className="mb-16 text-black manrope-medium">
                 <h2 className="text-5xl md:text-7xl font-light leading-tight tracking-tight">
                   <span className="block">Recent Interior</span>
                   <span className="block">Design Projects in</span>

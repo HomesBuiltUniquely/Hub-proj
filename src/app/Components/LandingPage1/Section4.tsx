@@ -22,18 +22,18 @@ export function Section4(){
       <div className="">
         <div className="hidden lg:block overflow-hidden">
           <div className="w-screen h-[950px] bg-[#f1f2f6] ml-10 ">
-          <div className="text-[90px] font-light tracking-wide pl-10">Our Offerings</div>
+          <div className="text-[56px] manrope-medium tracking-wide text-center mt-4">Our Offerings</div>
                     <div className="mt-16 mr-20 flex justify-center ">
           <div className="">
           <div className="w-[580px] h-[330px] bg-white rounded-4xl text-5xl p-4 font-light pl-6 tracking-wide">
             <div>Material & Quality Assurance</div>
-            <ul className="list-disc list-inside text-[18px] mt-5">
-              <li className="manrope-medium ">Boiling Waterproof Plywood</li>
-              <li className="manrope-medium pt-2">Moisture Resistant MDF</li>
-              <li className="manrope-medium pt-2">HDHMR Shutters</li>
-              <li className="manrope-medium pt-2">Premium Hardware</li>  
-              <li className="manrope-medium pt-2">Verified Materials</li>  
-              <li className="manrope-medium pt-2">Factory Visits Welcome</li>   
+            <ul className="list-decimal list-inside text-[18px] mt-5">
+              <li className="manrope-medium pb-1">Boiling Waterproof Plywood</li>
+              <li className="manrope-medium pt-2 pb-1">Moisture Resistant MDF</li>
+              <li className="manrope-medium pt-2 pb-1">HDHMR Shutters</li>
+              <li className="manrope-medium pt-2 pb-1">Premium Hardware</li>  
+              <li className="manrope-medium pt-2 pb-1">Verified Materials</li>  
+              <li className="manrope-medium pt-2 pb-1">Factory Visits Welcome</li>   
             </ul>
           </div>
           
@@ -41,13 +41,13 @@ export function Section4(){
           <div className="">
           <div className="w-[580px] h-[330px] bg-white rounded-4xl ml-8 text-5xl p-4 font-light pl-6 tracking-wide">
             <div>Budget<p>Assurance</p></div>
-            <ul className="list-disc list-inside text-[18px] mt-5">
-              <li className="manrope-medium ">Detailed Quotes</li>
-              <li className="manrope-medium pt-2">Version History</li>
-              <li className="manrope-medium pt-2">Design-Based Pricing</li>
-              <li className="manrope-medium pt-2">No Hidden Costs</li>  
-              <li className="manrope-medium pt-2">Fits Your Budget</li>  
-              <li className="manrope-medium pt-2">Live Cost Tracking</li>   
+            <ul className="list-decimal list-inside text-[18px] mt-5">
+              <li className="manrope-medium pb-2">Detailed Quotes</li>
+              <li className="manrope-medium pb-2">Version History</li>
+              <li className="manrope-medium pb-2">Design-Based Pricing</li>
+              <li className="manrope-medium pb-2">No Hidden Costs</li>  
+              <li className="manrope-medium pb-2">Fits Your Budget</li>  
+              <li className="manrope-medium pb-2">Live Cost Tracking</li>   
             </ul>
           </div>
           </div>
@@ -56,7 +56,7 @@ export function Section4(){
           <div className="">
           <div className="w-[580px] h-[330px] bg-white rounded-4xl text-5xl p-4 font-light pl-6 tracking-wide">
             <div>10 Years <p> Waranty</p></div>
-            <ul className="list-disc list-inside text-[18px] mt-5">
+            <ul className="list-decimal list-inside text-[18px] mt-5">
               <li className="manrope-medium ">10-Year Warranty on all modular woodwork</li>
               <li className="manrope-medium pt-3">1-Year Warranty on on-site services</li>
               <li className="manrope-medium pt-3">Extended Support even after warranty ends</li>
@@ -66,14 +66,14 @@ export function Section4(){
           <div className="">
           <div className="w-[580px] h-[330px] bg-white rounded-4xl ml-8 text-5xl p-4 font-light pl-6 tracking-wide">
             <div>Smart Interior<p>Technology</p></div>
-            <ul className="list-disc list-inside text-[18px] mt-5">
-              <li className="manrope-medium ">SoftGlide Hardware</li>
-              <li className="manrope-medium pt-2">BWP Core Protection</li>
-              <li className="manrope-medium pt-2">ThermoShield Coating</li>
-              <li className="manrope-medium pt-2">AquaBloc Edging</li>  
-              <li className="manrope-medium pt-2">NanoGuard Laminate</li>  
-              <li className="manrope-medium pt-2">DuraBuild Structure</li> 
-              <li className="manrope-medium pt-2">ErgoCore Layout</li>   
+            <ul className="list-decimal list-inside text-[18px] mt-5">
+              <li className="manrope-medium pb-2">SoftGlide Hardware</li>
+              <li className="manrope-medium pb-2">BWP Core Protection</li>
+              <li className="manrope-medium pb-2">ThermoShield Coating</li>
+              <li className="manrope-medium pb-2">AquaBloc Edging</li>  
+              <li className="manrope-medium pb-2">NanoGuard Laminate</li>  
+              <li className="manrope-medium pb-2">DuraBuild Structure</li> 
+              <li className="manrope-medium pb-2">ErgoCore Layout</li>   
             </ul>
           </div>  
           </div>

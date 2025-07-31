@@ -865,8 +865,8 @@ export default function HeroSections() {
               />
               {/* Overlayed Headings and Button */}
               <div className="absolute left-10 bottom-10 text-left z-10">
-                <h1 className="text-white text-6xl font-bold leading-tight mb-0 drop-shadow-lg">Best Interior<p className="mb-1">Designers</p></h1>
-                <p className="text-white text-xl font-medium drop-shadow mb-2">Transforming Bangalore homes with personalized<br/>interiors that reflect your lifestyle.</p>
+                <h1 className="text-white text-6xl manrope leading-tight mb-0 drop-shadow-lg">Best Interior<p className="mb-1">Designers In <span className="text-red-500">Bangalore</span></p></h1>
+                <p className="text-white text-xl manrope-medium drop-shadow mb-1 pt-2">Transforming Bangalore homes with personalized<br/>interiors that reflect your lifestyle.</p>
               </div>
               <div className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 font-bold absolute -mt-190 ml-132 tracking-wider text-[18px] z-20"> GET FREE QUOTE</div>
             </div>

@@ -54,7 +54,7 @@ export default function Section3() {
             <div className="hidden lg:block">
                 <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
                     <div className='w-[850px]'>
-                        <div className="text-[72px] mt-10 ml-10 tracking-wide manrope-medium w-[490px]">Homes For Every Budget</div>
+                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[490px]">Homes For Every Budget</div>
                         <div className="ml-10 mt-10">
                             <p className="text-[28px] tracking-wide">Whether you dream of a stylish modular</p>
                             <p className="text-[28px] tracking-wide">kitchen or a stunning home interior </p>
