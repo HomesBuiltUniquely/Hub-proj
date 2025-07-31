@@ -239,10 +239,18 @@ export default function HeroSections() {
       await confirmationResult.confirm(otp);
       setIsVerified(true);
       setOtp('');
-      alert('Phone number verified successfully! Now submitting your form...');
+      alert('Phone number verified successfully! Submitting your form...');
       setOtpSent(false);
       setConfirmationResult(null);
-      // Don't close the modal yet, let the user see the "Submit Form" button
+      
+      // Automatically submit the form as verified user
+      await handleFinalSubmit('Verified User');
+      
+      // Close the modal after successful submission
+      setShowOtpModal(false);
+      setIsVerified(false);
+      setRecaptchaCompleted(false);
+      
     } catch (error) {
       console.error('Error verifying OTP:', error);
       alert('Invalid OTP. Please try again.');
@@ -268,8 +276,33 @@ export default function HeroSections() {
       whatsappConsent: whatsappConsent
     });
 
-    if (!selectedCity || !selectedBudget || !selectedPincode || !whatsappConsent || !formData.name || !formData.email || !formData.phone) {
-      alert("Please fill out all required fields.");
+    // Check each required field individually for better user feedback
+    if (!formData.name) {
+      alert("Please enter your name.");
+      return;
+    }
+    if (!formData.email) {
+      alert("Please enter your email address.");
+      return;
+    }
+    if (!formData.phone) {
+      alert("Please enter your phone number.");
+      return;
+    }
+    if (!selectedPincode) {
+      alert("Please select your property pincode.");
+      return;
+    }
+    if (!selectedCity) {
+      alert("Please choose your interior setup.");
+      return;
+    }
+    if (!selectedBudget) {
+      alert("Please select when you need possession.");
+      return;
+    }
+    if (!whatsappConsent) {
+      alert("Please agree to receive WhatsApp updates.");
       return;
     }
 
@@ -329,7 +362,7 @@ export default function HeroSections() {
 
       // Add timeout to prevent hanging
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+      const timeoutId = setTimeout(() => controller.abort(), 30000); 
 
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -506,7 +539,7 @@ export default function HeroSections() {
                 name="name" 
                   value={formData.name}
                   onChange={handleInputChange}
-                placeholder="Name" 
+                placeholder="Name *" 
                 required 
                 className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
               />
@@ -515,7 +548,7 @@ export default function HeroSections() {
                 name="email" 
                   value={formData.email}
                   onChange={handleInputChange}
-                placeholder="Email" 
+                placeholder="Email *" 
                 required 
                 className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
               />
@@ -528,7 +561,7 @@ export default function HeroSections() {
                   name="phone" 
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="Phone Number" 
+                  placeholder="Phone Number *" 
                   required 
                   className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                 />
@@ -541,7 +574,7 @@ export default function HeroSections() {
                   onChange={e => setSelectedPincode(e.target.value)}
                   className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                 >
-                  <option className="text-gray-400" value="" disabled>Property Pincode</option>
+                  <option className="text-gray-400" value="" disabled>Property Pincode *</option>
                   {Pincode.map((pin, idx) => (
                     <option key={idx} value={pin}>{pin}</option>
                   ))}
@@ -562,7 +595,7 @@ export default function HeroSections() {
                     onChange={e => setSelectedCity(e.target.value)}
                     className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                   >
-                    <option className="text-gray-400" value="" disabled>Choose Interior Setup</option>
+                    <option className="text-gray-400" value="" disabled>Choose Interior Setup *</option>
                     {cityOptions.map((option: string) => (
                       <option key={option} value={option}>{option}</option>
                     ))}
@@ -579,7 +612,7 @@ export default function HeroSections() {
                     onChange={e => setSelectedBudget(e.target.value)}
                     className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                   >
-                    <option className="text-gray-400" value="" disabled>Possession In</option>
+                    <option className="text-gray-400" value="" disabled>Possession In *</option>
                     {budgetOptions.map((option: string) => (
                       <option key={option} value={option}>{option}</option>
                     ))}
@@ -660,7 +693,7 @@ export default function HeroSections() {
                     name="name" 
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Name" 
+                    placeholder="Name *" 
                     required 
                     className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                   />
@@ -669,7 +702,7 @@ export default function HeroSections() {
                     name="email" 
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="Email" 
+                    placeholder="Email *" 
                     required 
                     className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                   />
@@ -682,7 +715,7 @@ export default function HeroSections() {
                     name="phone" 
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="Phone Number" 
+                    placeholder="Phone Number *" 
                     required 
                     className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                   />
@@ -695,7 +728,7 @@ export default function HeroSections() {
                       onChange={e => setSelectedPincode(e.target.value)}
                       className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                     >
-                      <option className="text-gray-400" value="" disabled>Property Pincode</option>
+                      <option className="text-gray-400" value="" disabled>Property Pincode *</option>
                       {Pincode.map((pin, idx) => (
                         <option key={idx} value={pin}>{pin}</option>
                       ))}
@@ -895,17 +928,7 @@ export default function HeroSections() {
               </div>
             )}
 
-            {isVerified && (
-              <div className="mt-4">
-                <button
-                  onClick={() => handleFinalSubmit('Verified User')}
-                  disabled={isSubmitting}
-                  className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? 'Sending...' : 'Submit Form (Verified)'}
-                </button>
-              </div>
-            )}
+
 
 
           </div>

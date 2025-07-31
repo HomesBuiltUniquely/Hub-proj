@@ -59,12 +59,12 @@ export default function Section6() {
           subtitle: "Organized Cooking Space"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%203.png",
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064686.jpeg",
           title: "Premium Kitchen Materials",
           subtitle: "Quality Craftsmanship"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%204.png",
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064701.jpeg",
           title: "Kitchen Workflow Design",
           subtitle: "Efficient Layout Planning"
         }
@@ -74,7 +74,7 @@ export default function Section6() {
       name: "Bedrooms",
       slides: [
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//BEDROOM%201.png",
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//bedroom_interior_design.jpg",
           title: "Master Bedroom Design",
           subtitle: "Luxury Meets Comfort"
         },
@@ -114,7 +114,7 @@ export default function Section6() {
           subtitle: "Productive Environments"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//LIVING%204.png",
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064700.jpeg",
           title: "Entertainment Centers",
           subtitle: "Modern Living"
         }
