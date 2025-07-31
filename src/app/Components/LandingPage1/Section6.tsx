@@ -49,7 +49,7 @@ export default function Section6() {
       name: "Modular Kitchens",
       slides: [
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%201.png",
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen1.jpg",
           title: "Modern Kitchen Design",
           subtitle: "Functional Beauty"
         },
