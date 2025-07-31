@@ -4,8 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 export function HeroSection() {
-    const [isOpen, setIsOpen] = useState(false);
-
     return (
         
         <div className="relative w-screen h-screen">
