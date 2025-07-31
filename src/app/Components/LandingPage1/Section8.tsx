@@ -137,7 +137,7 @@ export default function Section8() {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="mb-12 text-center">
-              <h2 className="text-5xl font-light leading-tight tracking-tight text-gray-800 mb-4">
+              <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
                 <span className="block ">Recent Interior</span>
                 <span className="block">Design Projects</span>
               </h2>

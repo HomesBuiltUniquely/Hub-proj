@@ -108,7 +108,7 @@ export default function Section3() {
             <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[900px] bg-[#f1f2f6]">
                 <div className="flex">
                     <div className="w-1 h-25 bg-amber-300 mt-10 ml-4"></div>
-                    <h1 className="text-5xl pl-3 pt-10 tracking-wide font-light">Homes For Every Budget</h1>
+                    <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium">Homes For Every Budget</h1>
                 </div>
                 <div className="ml-5 mt-5">
                     <p>Whether you dream of a stylish modular kitchen or a

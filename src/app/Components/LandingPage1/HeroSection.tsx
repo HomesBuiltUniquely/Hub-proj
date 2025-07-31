@@ -458,8 +458,8 @@ export default function HeroSections() {
         
         if (verificationStatus === 'Verified User') {
           alert('Form submitted successfully! We will contact you soon.');
-          // Redirect to thank you page after successful verified submission
-          router.push('/ThankUpage');
+
+          router.push('/Form-Submit-Thank-You');
         } else {
           alert('Form submitted! Please verify your phone number for faster response.');
         }
@@ -526,7 +526,7 @@ export default function HeroSections() {
 
             {/* Centered Heading and Subheading */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10 pb-64 pr-10">
-              <h1 className="text-white text-[28px] manrope top-4 pt-4 text-left leading-tight drop-shadow-lg">Best Interior Designers in <span className="text-red-500">Banglore</span></h1>
+              <h1 className="text-white text-[28px] manrope top-4 pt-4 text-left leading-tight drop-shadow-lg">Best Interior Designers in <span className="text-red-500">Bangalore</span></h1>
               <p className="text-white text-base text-left font-medium drop-shadow top-3 pt-1 pr-3">Transforming Bangalore homes with personalized interiors that reflect your lifestyle.</p>
             </div>
           </div>
@@ -534,7 +534,7 @@ export default function HeroSections() {
         {/* Mobile Form Card */}
           <div className="relative z-20 -mt-10 px-2">
             <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
-            <div className="text-2xl font-semibold text-center mb-6 text-amber-950">Interiors For Every Budget</div>
+            <div className="text-3xl manrope-semibold text-center mb-6 text-amber-950">Interiors For Every Budget</div>
             
               {/* Name and Email Row */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">

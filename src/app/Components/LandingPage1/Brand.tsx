@@ -37,7 +37,7 @@ export default function BrandCarousel() {
   return (
     <div className="w-full bg-white pt-8 pb-16">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-center mb-14 text-5xl font-light ">
+        <h2 className="text-center mb-14 text-4xl manrope-medium ">
         Trusted Partners
       </h2>
 

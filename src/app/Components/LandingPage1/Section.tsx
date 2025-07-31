@@ -35,8 +35,8 @@ export default function Section1() {
 
   return (
     <div className="w-full min-h-[410px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 overflow-x-hidden">
-      <h1 className="lg:pt-10 lg:m-10 lg:ml-16 lg:text-6xl text-4xl mt-12 ml-8 manrope-medium">
-        Why We&#39;re Different.
+      <h1 className="lg:pt-10 lg:m-10 lg:ml-16 lg:text-6xl text-4xl mt-12 ml-8 manrope-medium text-center sm:text-center pr-10">
+        Why We&#39;re Different
       </h1>
 
       {/* Desktop Grid View */}

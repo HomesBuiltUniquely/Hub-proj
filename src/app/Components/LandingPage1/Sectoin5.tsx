@@ -19,9 +19,9 @@ export default function Section5(){
         <div className='hidden lg:block'>
        <div className="w-screen h-[900px] bg-white">
         <div className="pt-10 text-center text-6xl">Complete Interior Solution by HUB</div>
-        <div className="flex mt-14">
-            <div>
-            <div className='relative'>
+        <div className="flex mt-14 mr-20">
+            <div className='mx-auto' >
+            <div className='relative '>
             <div 
                 className="relative bg-[#ef0101] w-[400px] h-[250px] mt-20 ml-20 rounded-[2rem]" 
                 onMouseEnter={() => setIsHovered(true)}
@@ -41,7 +41,7 @@ export default function Section5(){
             </div>
 
            {/* second */}
-            <div className='relative'>
+            <div className='relative '>
             <div className="bg-[#ef0101] w-[300px] h-[200px] mt-8 ml-44 rounded-4xl relative" 
                 onMouseEnter={() => setIsHovered3(true)}
                 onMouseLeave={() => setIsHovered3(false)}>
@@ -57,7 +57,7 @@ export default function Section5(){
             </div>
            
             </div>
-            <div>
+            <div className='mx-auto'>
           <div className='relative'>
           <div className="relative bg-[#ef0101] w-[450px] h-[300px] mt-20 ml-6 rounded-4xl " 
                 onMouseEnter={() => setIsHovered1(true)}
@@ -85,7 +85,7 @@ export default function Section5(){
                 </div>
             </div>
             </div>
-            <div>
+            <div className='mx-auto'>
             <div className='relative'>
             <div className="bg-[#ef0101] w-[290px] h-[220px] mt-4 ml-6 rounded-4xl relative" onMouseEnter={() => setIsHovered2(true)}
                 onMouseLeave={() => setIsHovered2(false)}>
@@ -116,7 +116,7 @@ export default function Section5(){
        </div>
        {/* mobile */}
        <div className='lg:hidden w-auto h-auto bg-white mt-10'>
-        <div className='text-[40px] font-light pl-6 pt-6 pb-6'>Complete Interior<p>Solution by HUB</p></div>
+        <div className='text-4xl manrope-medium pl-6 pt-6 pb-6'>Complete Interior<p>Solution by HUB</p></div>
         {/* Living & Dining Spaces */}
         <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 0 ? null : 0)}>
            <div className='flex'>
