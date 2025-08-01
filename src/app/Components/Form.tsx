@@ -29,7 +29,14 @@ export function Form() {
       { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img5.jpg" },
       { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img6.jpg" }
     ],
-    "Kitchen Room": [ { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen1.jpg" }, { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%202.png" }, { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%203.png" }, { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%204.png" }, { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//kitchen6.jpg" }, { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen5.jpg" } ],
+    "Kitchen Room": [ 
+       { image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img1.jpg" }, 
+       { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%202.png" }, 
+       { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%203.png" }, 
+       { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%204.png" }, 
+       { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//kitchen6.jpg" }, 
+       { image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen5.jpg" } 
+      ],
     "Bed Room": [ { image: "/bed1.jpg" }, { image: "/bed2.jpg" }, { image: "/bed3.jpg" }, { image: "/bed4.jpg" }, { image: "/bed5.jpg" }, { image: "/bed1.jpg" } ],
     "Kids Room": [ { image: "/kids1.jpg" }, { image: "/kids2.jpg" }, { image: "/kids3.jpg" }, { image: "/kids4.jpg" }, { image: "/kids5.jpg" }, { image: "/kids1.jpg" } ],
     "Devotional Room": [ { image: "/temple1.jpg" }, { image: "/temple2.jpg" }, { image: "/temple3.jpg" }, { image: "/templ5.jpg" }, { image: "/temple6.jpg" }, { image: "/temple2.jpg" } ]
