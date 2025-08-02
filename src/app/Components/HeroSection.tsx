@@ -248,7 +248,7 @@ export function HeroSection() {
                   <div className="w-full h-[160px] lg:h-[180px] xl:h-[200px] 2xl:h-[220px] ml-8 lg:ml-12 xl:ml-16 2xl:ml-20 rounded-2xl relative shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
                     <Image 
                       loading="lazy" 
-                      src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img1.jpg" 
+                      src="/kids4.jpg" 
                       alt="" 
                       width={400} 
                       height={220} 
@@ -258,7 +258,7 @@ export function HeroSection() {
                   <div className="w-[120px] lg:w-[130px] xl:w-[150px] 2xl:w-[160px] h-[120px] lg:h-[140px] xl:h-[170px] 2xl:h-[180px] rounded-2xl mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 ml-20 lg:ml-24 xl:ml-28 2xl:ml-32 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
                     <Image 
                       loading="lazy" 
-                      src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img3.jpg" 
+                      src="/mob.jpg" 
                       alt="" 
                       width={160} 
                       height={180} 
@@ -300,7 +300,7 @@ export function HeroSection() {
                 <div className="w-[200px] lg:w-[220px] xl:w-[270px] 2xl:w-[300px] h-[250px] lg:h-[280px] xl:h-[350px] 2xl:h-[380px] rounded-2xl mr-8 lg:mr-12 xl:mr-16 2xl:mr-20 ml-4 lg:ml-6 xl:ml-8 flex-shrink-0 flex-grow-0 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
                   <Image 
                     loading="lazy" 
-                    src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img2.jpg" 
+                    src="/bed3.jpg" 
                     alt="" 
                     width={300} 
                     height={380} 

@@ -1394,6 +1394,37 @@ export default function Section3() {
     )
 }
 
+            <div className="w-screen h-[700px] bg-white">
+                <div className="flex h-[70px] justify-between">
+                    <img src="hub.png" alt="Logo" className="w-[90px] h-[40px] m-4"></img>
+                    <button className="w-[160px] h-[40px] text-white bg-red-600 rounded-2xl m-4">Get Free Qoute</button>
+                </div>
+                <div className="relative">
+                    <img src="new.jpg" className="h-[630px] w-screen"></img>
+                    <div className="absolute -mt-59 text-[26px] ml-6 w-auto text-amber-950 manrope">Complete Home Interiors</div>
+                    <div className="absolute -mt-48 text-[16px] ml-10 w-auto text-amber-950 manrope-medium">Tailored For Every Style And LifeStyle</div>
+                    <div className="absolute -mt-36 text-[24px] ml-20 w-auto text-amber-950 manrope-medium">34 Days Delivery</div>
+                    <button onClick={() => setShowPopup(true)} className="absolute -mt-20 ml-16 w-[220px] h-[50px] bg-red-600 rounded-4xl text-white manrope p-3 shadow-xl">Book A Free Consultation</button>
+                    {showPopup && (
+                            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                            <div className="bg-white p-8 rounded-xl shadow-xl w-[90%] max-w-md relative">
+                                <h2 className="text-xl font-semibold mb-4">Popup Title</h2>
+                                <p className="text-gray-600 mb-6">
+                                This is a simple popup. You can add forms, images, or anything here.
+                                </p>
+                                <button
+                                onClick={() => setShowPopup(false)}
+                                className="absolute top-4 right-4 text-gray-500 hover:text-black text-xl"
+                                >
+                                &times;
+                                </button>
+                            </div>
+                            </div>
+                        )}
+                </div>
+                    
+            </div>
+
 
 
 
@@ -4570,4 +4601,130 @@ export default function HeroSections() {
       )}
     </div>
   );
+}
+
+
+
+/////
+
+
+
+'use client'
+
+import Image from "next/image";
+import { useState } from "react";
+
+export function HeroSection() {
+    const [open, setOpen] = useState(false);
+    const [propSelect,setpropSelect]= useState("");
+    const options =["2BHK","3BHK","4+BHK/Duplex"]
+    const [Selected, setSelected] = useState("Book A slot");
+    const [form,setForm]=useState({
+        name:"",
+        email:"",
+        phonennumber:"",
+        pincode:"",
+        Scheduler:"",
+        property:""
+    })
+
+        const timeSlots = [
+            "10:00 to 11:00",
+            "11:00 to 12:00",
+            "12:00 to 01:00",
+            "01:00 to 02:00",
+            "02:00 to 03:00",
+            "03:00 to 04:00",
+            "04:00 to 05:00",
+            "05:00 to 06:00",
+            "07:00 to 08:00",
+        ];
+     console.log(form.name);
+    
+    return (
+        
+        <div className="relative w-screen h-screen">
+            <Image 
+                src="/bn.jpg" 
+                alt="Hero background" 
+                fill
+                className="object-cover border-4 rounded-4xl border-black"
+                priority
+            />
+            <div className="absolute inset-0 flex items-center">
+                <div className="relative flex">      
+                    <div className="w-[650px] h-[820px] ml-1.5 bg-white/10 shadow-lg backdrop-blur-md overflow-hidden rounded-l-3xl"> 
+                    <img src="hub.png" className="w-[180px] h-[75px] ml-10 mt-6"></img>
+                    <div className="flex ">
+                       <input type="text" name="name" placeholder="Name" onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]: e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl m-10 placeholder-white manrope  "></input>
+                       <input type="text" name="email" placeholder="Email" onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]: e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl m-10 placeholder-white manrope"></input>
+                    </div>
+                    <div className="flex mt-4">
+                    <input type="text" name="phonenumber"  placeholder="PhoneNumber" onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]:e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl ml-8 placeholder-white manrope"></input>
+                    <input type="text" name="pincode" placeholder="Pincode (Banglore)" onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]:e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl ml-20 placeholder-white manrope"></input>
+                    </div>
+                {/* Selectables */}
+                    <div className="text-white mt-10 text-left pl-12 text-3xl manrope-medium">Property Type</div>
+                    <div className="mt-6 flex justify-evenly w-[600px] ml-5">
+                        {options.map((option)=>(
+                            <div key={option} onClick={()=> setpropSelect(option)} className={`cursor-pointer mt-4 border-2 border-[#DDCDC1] w-[180px] h-[50px] text-center pt-3 pr-3 rounded-4xl text-white manrope-medium 
+                            
+                            ${
+                                propSelect === option ? "bg-[#ef0101] border-[#DDCDC1]" : ""
+
+                            }`}>
+
+                                {option}
+                            </div>
+                        ))}
+                    </div>  
+
+                    <div className="relative inline-block  text-left">
+                    <button  onClick={() => setOpen(!open)} className="w-[580px] h-[60px] mt-14 ml-8 rounded-4xl text-white text-xl border-2 border-[#DDCDC1] flex justify-between p-4 pl-6 manrope">{Selected} {!open ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                        </svg>
+                        }
+                    </button> 
+                        {open && (
+                        <div className="absolute z-10 mt-2 w-[570px] max-h-50 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg ml-10 overflow-y-auto">
+                        <ul className="py-1 text-gray-700">
+                        {timeSlots.map((slot) => (
+                                <li
+                                    key={slot}
+                                    onClick={() => {
+                                    setSelected(slot);
+                                    setOpen(false);
+                                    }}
+                                    className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
+                                    Selected === slot ? "bg-gray-200 font-medium" : ""
+                                    }`}
+                                >
+                                    {slot}
+                                </li>
+                        ))}
+
+                        </ul>
+                        </div>
+                    )}
+                    </div> 
+                    <div className="  flex mt-10 pl-14">
+                        <input type="checkbox"/>
+                        <label className="ml-4 text-white ">Yes, all provided details are correct</label>
+                    </div>
+                    <div className="mt-10 relative">
+                        <button type="submit" className="w-[200px] h-[60px] border-2 border-[#ddcdc1] manrope-medium text-white ml-10 text-2xl rounded-4xl hover:bg-[#ef0101]">Submit</button>
+                    </div>
+                      <div>
+                      </div>
+                    </div> 
+                    <div className="text-5xl w-[620px] h-[100px] text-white manrope-medium pt-160 pl-6">Complete Home Interiors
+                    <div className="text-2xl w-[620px] h-[100px] text-white manrope-medium pt-4 pl-3">Tailored For Every Style & Lifestyle</div> 
+                    </div>
+                          
+                </div>
+            </div>
+        </div>
+    );
 }
