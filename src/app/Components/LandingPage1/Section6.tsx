@@ -243,7 +243,7 @@ export default function Section6() {
               {categories[0].slides.map((slide, index) => (
                 <div key={index} className="w-full flex-shrink-0">
                   <img 
-                    className='w-[340px] h-[450px] rounded-4xl object-cover' 
+                    className='w-[320px] h-[450px] rounded-4xl object-cover' 
                     src={slide.image}
                     alt={slide.title}
                   />
@@ -268,7 +268,7 @@ export default function Section6() {
               <p className='manrope-medium'>Modular Kitchen With Smarter Storage</p>
             </div>
           </div>
-          <div className='w-[340px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+          <div className='w-[320px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${mobileSlides.modularKitchen * 100}%)` }}
@@ -301,7 +301,7 @@ export default function Section6() {
               <p className='manrope-medium'>Bedrooms That Blend Comfort With Elegance</p>
             </div>
           </div>
-          <div className='w-[340px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+          <div className='w-[320px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${mobileSlides.bedrooms * 100}%)` }}
@@ -334,7 +334,7 @@ export default function Section6() {
               <p className='manrope-medium'>Living Spaces Made For Style & Comfort</p>
             </div>
           </div>
-          <div className='w-[340px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+          <div className='w-[320px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${mobileSlides.livingSpaces * 100}%)` }}

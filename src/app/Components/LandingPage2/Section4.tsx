@@ -17,19 +17,19 @@ export default function Section8() {
   const videoThumbnails: Video[] = [
     {
       id: 1,
-      thumbnail: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=300&h=200&fit=crop",
+      thumbnail: "iam.webp",
       title: "Master Bedroom Design",
       videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4"
     },
     {
       id: 2,
-      thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop",
+      thumbnail: "iam2.webp",
       title: "Modern Living Room",
       videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//hub%20journey%20(1)%20(1)%20(1).mp4"
     },
     {
       id: 3,
-      thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=200&fit=crop",
+      thumbnail: "fk.webp",
       title: "Kitchen Interior",
       videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4"
     }
@@ -137,8 +137,8 @@ export default function Section8() {
             {/* Header */}
             <div className="mb-12 text-center">
               <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
-                <span className="block ">Recent Interior</span>
-                <span className="block">Design Projects</span>
+                <span className="block ">HUB Happy</span>
+                <span className="block">Customers</span>
               </h2>
               <div className="w-16 h-1 bg-red-500 mx-auto"></div>
             </div>
@@ -171,7 +171,7 @@ export default function Section8() {
                         </div>
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-                        <h3 className="text-lg font-medium text-white">{video.title}</h3>
+                        {/* <h3 className="text-lg font-medium text-white">{video.title}</h3> */}
                       </div>
                     </div>
                   </div>

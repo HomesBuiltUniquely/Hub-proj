@@ -14,26 +14,54 @@ export default function Section33() {
     
     const slides = [
         {
-            img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//3.jpg",
-            type: "4 BHK",
-            price: "Starting @ 5.5L*"
+            img: "j1.webp",
+            type: "Modren Contemporary Interior",
+            
         },
         {
-            img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//2.jpg",
-            type: "3 BHK",
-            price: "Starting @ 3.8L*"
+            img: "j2.webp",
+            type: "Modren Asthetic Interior",
+            
         },
         {
-            img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.jpg",
-            type: "2 BHK",
-            price: "Starting @ 2.8L*"
+            img: "j3.webp",
+            type: "Wodden traditional Interior",
+            
         },
         {
-            img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064686.jpeg",
-            type: "Modular Kitchen",
-            price: "Starting @ 1.25L*"
+            img: "j4.webp",
+            type: "Art Deco Interior",
+            
+        },
+        {
+            img: "j5.webp",
+            type: "Minimalistic Interior",
+            
         },
        
+    ];
+    const slide1 = [
+        {
+            img: "j1.webp",
+            type: "Modren Contemporary Interior",
+            
+        },
+        {
+            img: "j2.webp",
+            type: "Modren Asthetic Interior",
+            
+        },
+        {
+            img: "j3.webp",
+            type: "Wodden traditional Interior",
+            
+        },
+        {
+            img: "j4.webp",
+            type: "Art Deco Interior",
+            
+        },
+
     ];
 
     // Auto slide effect
@@ -81,7 +109,7 @@ export default function Section33() {
                             {slides.map((slide, index) => (
                                 <div
                                     key={index}
-                                    className="w-[380px] h-[520px] bg-white rounded-4xl grid grid-rows-5 flex-shrink-0"
+                                    className="w-[380px] h-[520px] bg-[#ddcdc1] rounded-4xl grid grid-rows-5 flex-shrink-0"
                                 >
                                     <img
                                         src={slide.img}
@@ -89,8 +117,8 @@ export default function Section33() {
                                         className="rounded-t-4xl row-span-3 w-full h-[350px] object-cover"
                                     />
                                     <div className="row-span-2 mt-18 ml-5">
-                                        <div className="text-[30px] font-semibold">{slide.type}</div>
-                                        <div className="mt-1 text-2xl manrope-medium">{slide.price}</div>
+                                        <div className="text-[30px] font-semibold wulkan-display-bold">{slide.type}</div>
+
                                     </div>
                                 </div>
                             ))}
@@ -105,10 +133,10 @@ export default function Section33() {
             </div>
 
             {/* mobile */}
-            <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[900px] bg-[#f1f2f6]">
+            <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[900px] bg-white">
                 <div className="flex">
                     <div className="w-1 h-25 bg-amber-300 mt-10 ml-4"></div>
-                    <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium">Homes For Every Budget</h1>
+                    <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium">Homes For Every LifeStyle</h1>
                 </div>
                 <div className="ml-5 mt-5">
                     <p>Whether you dream of a stylish modular kitchen or a
@@ -118,7 +146,7 @@ export default function Section33() {
                 {/* Stacked Card Carousel */}
                 <div className='flex justify-center'>
                   <div className="mt-10 relative h-[400px] w-full max-w-[280px]">
-                    {slides.map((slide, idx) => {
+                    {slide1.map((slide, idx) => {
                         // Show only the top 3 cards in the stack for performance
                         const isTop = idx === currentSlide;
                         const isSecond = idx === (currentSlide + 1) % slides.length;
@@ -158,7 +186,7 @@ export default function Section33() {
                         return (
                             <div
                                 key={idx}
-                                className="absolute left-1/2 top-0 w-full max-w-[260px] h-[410px] bg-white rounded-3xl shadow-lg flex-shrink-0 transform -translate-x-1/2 ml-20"
+                                className="absolute left-1/2 top-0 w-full max-w-[260px] h-[410px] bg-[#ddcdc1] rounded-3xl shadow-lg flex-shrink-0 transform -translate-x-1/2 ml-13"
                                 style={{
                                     transform: `translateX(-${offset}px) scale(${scale})`,
                                     zIndex: z,
@@ -169,11 +197,10 @@ export default function Section33() {
                                 <img
                                     src={slide.img}
                                     alt={slide.type}
-                                    className="w-full h-[300px] object-cover rounded-t-3xl "
+                                    className="w-full h-[340px] object-cover rounded-t-3xl "
                                 />
-                                <div className="p-6">
-                                    <div className="text-2xl font-bold text-[#3A2C19] mb-2">{slide.type}</div>
-                                    <div className="text-lg text-[#3A2C19]">{slide.price}</div>
+                                <div className="pr-6 pl-6 pt-4">
+                                    <div className="text-[17px] font-bold text-[#3A2C19] pb-12 wulkan-display-bold">{slide.type}</div>
                                 </div>
                             </div>
                         );
@@ -182,7 +209,7 @@ export default function Section33() {
                 </div>
                 <button 
                     onClick={scrollToForm}
-                    className='mt-20 mx-auto text-[16px] w-[250px] h-[50px] bg-red-500 px-auto text-white rounded-4xl font-bold hover:bg-red-600 ml-14 transition-colors'
+                    className='mt-20 mb-8 mx-auto text-[16px] w-[250px] h-[50px] bg-[#ef0101] px-auto text-white rounded-4xl font-bold hover:bg-red-600 ml-14 transition-colors'
                 >
                     Book A Free Design Session
                 </button>

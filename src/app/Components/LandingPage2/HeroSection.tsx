@@ -28,7 +28,8 @@ export function HeroSection() {
             "03:00 to 04:00",
             "04:00 to 05:00",
             "05:00 to 06:00",
-            "07:00 to 08:00",
+            "06:00 to 07:00",
+            "07:00 to 08:00"
         ];
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -51,7 +52,7 @@ export function HeroSection() {
         setSubmitMessage("");
 
         try {
-            const response = await fetch('/api/contact', {
+            const response = await fetch('/api/landingpage2-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,18 +62,16 @@ export function HeroSection() {
                     phone: updatedForm.phonennumber,
                     email: updatedForm.email,
                     pincode: updatedForm.pincode,
-                    city: updatedForm.property, // Using property type as city
-                    budget: updatedForm.Scheduler, // Using time slot as budget
-                    whatsappConsent: true,
-                    pageUrl: window.location.href,
-                    verificationStatus: 'Unverified User' // Default status
+                    propertyType: updatedForm.property,
+                    timeSlot: updatedForm.Scheduler,
+                    pageUrl: window.location.href
                 }),
             });
 
             const data = await response.json();
 
             if (data.success) {
-                setSubmitMessage("Form submitted successfully! We'll contact you soon.");
+                setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
                 // Reset form
                 setForm({
                     name: "",
@@ -85,7 +84,7 @@ export function HeroSection() {
                 setpropSelect("");
                 setSelected("Book A slot");
             } else {
-                setSubmitMessage("Failed to submit form. Please try again.");
+                setSubmitMessage("Failed to submit appointment request. Please try again.");
             }
         } catch (error) {
             console.error('Form submission error:', error);
@@ -115,7 +114,7 @@ export function HeroSection() {
         setSubmitMessage("");
 
         try {
-            const response = await fetch('/api/contact', {
+            const response = await fetch('/api/landingpage2-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -125,18 +124,16 @@ export function HeroSection() {
                     phone: updatedForm.phonennumber,
                     email: updatedForm.email,
                     pincode: updatedForm.pincode,
-                    city: updatedForm.property, // Using property type as city
-                    budget: updatedForm.Scheduler, // Using time slot as budget
-                    whatsappConsent: true,
-                    pageUrl: window.location.href,
-                    verificationStatus: 'Unverified User' // Default status
+                    propertyType: updatedForm.property,
+                    timeSlot: updatedForm.Scheduler,
+                    pageUrl: window.location.href
                 }),
             });
 
             const data = await response.json();
 
             if (data.success) {
-                setSubmitMessage("Form submitted successfully! We'll contact you soon.");
+                setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
                 // Reset form
                 setForm({
                     name: "",
@@ -149,7 +146,7 @@ export function HeroSection() {
                 setpropSelect("");
                 setSelected("Book A slot");
             } else {
-                setSubmitMessage("Failed to submit form. Please try again.");
+                setSubmitMessage("Failed to submit appointment request. Please try again.");
             }
         } catch (error) {
             console.error('Form submission error:', error);
@@ -267,7 +264,7 @@ export function HeroSection() {
             <div className="w-screen h-[1000px]">
                 <div className="relative"> 
                     <div className="relative">
-                        <img src="mob1.jpg" className="absolute h-[1000px] w-screen"></img>
+                        <img src="mob1.jpg" className="absolute h-[700px] w-screen"></img>
                         <img src="hub.png" alt="Logo" className="absolute top-4 w-[100px] h-[50px] m-4"></img>
                     </div>
                     

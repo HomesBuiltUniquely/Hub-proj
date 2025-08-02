@@ -17,19 +17,19 @@ export default function Section8() {
   const videoThumbnails: Video[] = [
     {
       id: 1,
-      thumbnail: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=300&h=200&fit=crop",
+      thumbnail: "iam.webp",
       title: "Master Bedroom Design",
       videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4"
     },
     {
       id: 2,
-      thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop",
+      thumbnail: "iam2.webp",
       title: "Modern Living Room",
       videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//hub%20journey%20(1)%20(1)%20(1).mp4"
     },
     {
       id: 3,
-      thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=200&fit=crop",
+      thumbnail: "fk.webp",
       title: "Kitchen Interior",
       videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4"
     }
@@ -67,7 +67,7 @@ export default function Section8() {
     <div className="w-full">
       {/* Desktop Layout */}
       <div className="hidden lg:block">
-        <div className="w-[1200px] ml-30 mt-4 relative h-[700px] min-h-[700px] overflow-hidden rounded-2xl">
+        <div className="w-[1200px] ml-30 mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
           {/* Background Video */}
           <div className="absolute inset-0 z-0">
             <video
@@ -90,10 +90,8 @@ export default function Section8() {
             <div className="max-w-7xl mx-auto px-6 w-full">
               {/* Text Header - Matching your screenshot */}
               <div className="mb-16 text-black manrope-medium">
-                <h2 className="text-5xl md:text-7xl font-light leading-tight tracking-tight">
-                  <span className="block">Recent Interior</span>
-                  <span className="block">Design Projects in</span>
-                  <span className="block">Bangalore</span>
+                <h2 className="text-5xl md:text-7xl leading-tight tracking-tight manrope-medium">
+                  HUB Happy Customers
                 </h2>
                 <div className="w-24 h-1 bg-red-500 mt-8"></div>
               </div>
@@ -110,7 +108,8 @@ export default function Section8() {
                       <img
                         src={video.thumbnail}
                         alt={video.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-110"
+                        // Check here
                       />
                       <div className="absolute inset-0 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
@@ -138,8 +137,8 @@ export default function Section8() {
             {/* Header */}
             <div className="mb-12 text-center">
               <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
-                <span className="block ">Recent Interior</span>
-                <span className="block">Design Projects</span>
+                <span className="block ">Happy</span>
+                <span className="block">Customers</span>
               </h2>
               <div className="w-16 h-1 bg-red-500 mx-auto"></div>
             </div>
@@ -172,7 +171,7 @@ export default function Section8() {
                         </div>
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-                        <h3 className="text-lg font-medium text-white">{video.title}</h3>
+                        {/* <h3 className="text-lg font-medium text-white">{video.title}</h3> */}
                       </div>
                     </div>
                   </div>
