@@ -4,8 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 export function HeroSection() {
-
-    const[showPopup, setShowPopup]=useState(false)
     const [open, setOpen] = useState(false);
     const [propSelect,setpropSelect]= useState("");
     const options =["2BHK","3BHK","4+BHK/Duplex"]
