@@ -7,9 +7,9 @@ import Image from "next/image";
 export default function Header() {
   const images = [
     "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/1.svg",
-    "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img3.jpg",
+    "/img3.jpg",
     "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/3.svg",
-    "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//img5.jpg"
+    "/img5.jpg"
   ];
 
   const extendedImages = [images[images.length - 1], ...images, images[0]];
