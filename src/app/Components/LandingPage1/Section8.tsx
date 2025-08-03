@@ -19,19 +19,19 @@ export default function Section8() {
       id: 1,
       thumbnail: "iam.webp",
       title: "Master Bedroom Design",
-      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4"
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_153915_702.mp4"
     },
     {
       id: 2,
       thumbnail: "iam2.webp",
       title: "Modern Living Room",
-      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//hub%20journey%20(1)%20(1)%20(1).mp4"
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_150443_314.mp4"
     },
     {
       id: 3,
       thumbnail: "fk.webp",
       title: "Kitchen Interior",
-      videoUrl: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4"
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_150443_314.mp4"
     }
   ];
 
@@ -120,7 +120,7 @@ export default function Section8() {
                       </div>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
-                      <h3 className="text-xl font-medium text-white">{video.title}</h3>
+                      {/* <h3 className="text-xl font-medium text-white">{video.title}</h3> */}
                     </div>
                   </div>
                 ))}

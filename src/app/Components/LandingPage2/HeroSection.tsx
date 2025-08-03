@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function HeroSection() {
+    const router = useRouter();
     const [open, setOpen] = useState(false);
     const [propSelect,setpropSelect]= useState("");
     const options =["2BHK","3BHK","4+BHK/Duplex"]
@@ -72,7 +74,6 @@ export function HeroSection() {
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
-                // Reset form
                 setForm({
                     name: "",
                     email: "",
@@ -83,6 +84,11 @@ export function HeroSection() {
                 });
                 setpropSelect("");
                 setSelected("Book A slot");
+                
+                // Navigate to Thank-You page after successful submission
+                setTimeout(() => {
+                    router.push('/Thank-You');
+                }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");
             }
@@ -145,6 +151,11 @@ export function HeroSection() {
                 });
                 setpropSelect("");
                 setSelected("Book A slot");
+                
+                // Navigate to Thank-You page after successful submission
+                setTimeout(() => {
+                    router.push('/Thank-You');
+                }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");
             }
@@ -260,16 +271,16 @@ export function HeroSection() {
         </div>
         
         {/* Mobile Version */}
-        <div className="lg:hidden block h-[1000px]">
-            <div className="w-screen h-[1000px]">
+        <div className="lg:hidden block h-[1100px] bg-white">
+            <div className="w-screen h-[1000px] bg-white">
                 <div className="relative"> 
-                    <div className="relative">
-                        <img src="mob1.jpg" className="absolute h-[700px] w-screen"></img>
-                        <img src="hub.png" alt="Logo" className="absolute top-4 w-[100px] h-[50px] m-4"></img>
+                    <div className="relative ">
+                        <img src="jit.png" className="absolute h-[700px] w-screen"></img>
+                        <img src="LOGO.png" alt="Logo" className="absolute top-4 w-[100px] h-[40px] m-4"></img>
                     </div>
                     
                     {/* Mobile Form */}
-                    <form onSubmit={handleMobileSubmit} className="w-[320px] h-[720px] bg-black/40 backdrop-blur-md absolute rounded-3xl top-70 ml-5 overflow-hidden shadow-lg">
+                    <form onSubmit={handleMobileSubmit} className="w-[320px] h-[720px] bg-black/40 backdrop-blur-md absolute rounded-3xl top-90 ml-5 overflow-hidden shadow-lg">
                         {/* Name Input */}
                         <h1 className="pl-4 pt-10 text-white text-2xl wulkan-display">Complete Home Interiors</h1>
                         <input 

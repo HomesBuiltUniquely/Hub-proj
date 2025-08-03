@@ -1,20 +1,7 @@
-
-import Script from 'next/script' 
-
 export default function ThankUPage() {
   return (
     <div>
-      <Script
-        id="google-conversion-tracking"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            gtag('event', 'conversion', {
-              'send_to': '17366893543'
-            });
-          `,
-        }}
-      />
+     
       <div className="lg:block hidden">
       <div className="w-auto h-auto relative">
       <img src="Tq.png" className="w-auto h-auto"></img>

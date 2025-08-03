@@ -31,7 +31,7 @@ export async function POST(req: Request) {
 
     // ✅ Email content including all form data
     const verificationStatusText = verificationStatus === 'Verified User' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
-    const subject = verificationStatus === 'Verified User' ? 'New Interior Design Lead (Verified)' : 'New Interior Design Lead (Unverified)';
+    const subject = verificationStatus === 'Verified User' ? 'Google Ads Lead (Verified)' : 'Google Ads Lead (Unverified)';
     
   const mailOptions = {
     from: process.env.GMAIL_USER,

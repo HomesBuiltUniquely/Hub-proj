@@ -30,7 +30,7 @@ export async function POST(req: Request) {
   });
 
     // ✅ Custom email format for LandingPage2 appointment booking
-    const subject = `New Interior Design Appointment Request - ${name}`;
+    const subject = `Meta Lead - ${name}`;
     
   const mailOptions = {
     from: process.env.GMAIL_USER,
