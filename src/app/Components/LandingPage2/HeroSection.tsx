@@ -87,6 +87,8 @@ export function HeroSection() {
                 
                 // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
+                    // Set flag to trigger reload on Thank You page
+                    sessionStorage.setItem('formSubmitted', 'true');
                     router.push('/Thank-You');
                 }, 1500);
             } else {
@@ -154,6 +156,8 @@ export function HeroSection() {
                 
                 // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
+                    // Set flag to trigger reload on Thank You page
+                    sessionStorage.setItem('formSubmitted', 'true');
                     router.push('/Thank-You');
                 }, 1500);
             } else {

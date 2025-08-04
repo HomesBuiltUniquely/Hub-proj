@@ -1,6 +1,105 @@
+'use client'
+
+import Script from 'next/script'
+import { useEffect, useState } from 'react'
+
+// Declare gtag function for TypeScript
+declare global {
+  interface Window {
+    gtag: (command: string, targetId: string, config?: Record<string, unknown>) => void;
+  }
+}
+
 export default function ThankUPage() {
+  const [hasReloaded, setHasReloaded] = useState(false);
+
+  useEffect(() => {
+    // Check if this is a fresh redirect from form submission
+    const isFreshRedirect = sessionStorage.getItem('formSubmitted') === 'true';
+    
+    if (isFreshRedirect && !hasReloaded) {
+      // Clear the flag to prevent infinite reloads
+      sessionStorage.removeItem('formSubmitted');
+      
+      // Force a reload to ensure proper page load and conversion tracking
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+      
+      setHasReloaded(true);
+      return;
+    }
+
+    // Function to trigger GTM events
+    const triggerGTMEvents = () => {
+      if (typeof window !== 'undefined' && window.gtag) {
+        // Conversion event for form submission
+        window.gtag('event', 'conversion', {
+          'send_to': '17366893543'
+        });
+        
+        // Additional event for form submission tracking
+        window.gtag('event', 'form_submit', {
+          'event_category': 'form',
+          'event_label': 'appointment_booking',
+          'value': 1
+        });
+        
+        // Page view event for Thank-You page
+        window.gtag('event', 'page_view', {
+          'page_title': 'Thank You - Appointment Confirmed',
+          'page_location': window.location.href
+        });
+        
+        console.log('GTM events triggered on Thank-You page');
+        return true;
+      }
+      return false;
+    };
+
+    // Try to trigger events immediately
+    if (!triggerGTMEvents()) {
+      // If gtag is not available, wait a bit and try again
+      const retryTimer = setTimeout(() => {
+        triggerGTMEvents();
+      }, 1000);
+      
+      // Cleanup timer
+      return () => clearTimeout(retryTimer);
+    }
+  }, [hasReloaded]);
+
   return (
     <div>
+      <Script
+        id="google-conversion-tracking"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            // Ensure gtag is available
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'conversion', {
+                'send_to': '17366893543'
+              });
+              
+              gtag('event', 'form_submit', {
+                'event_category': 'form',
+                'event_label': 'appointment_booking',
+                'value': 1
+              });
+              
+              gtag('event', 'page_view', {
+                'page_title': 'Thank You - Appointment Confirmed',
+                'page_location': window.location.href
+              });
+              
+              console.log('GTM conversion events fired');
+            } else {
+              console.log('gtag not available, will retry in useEffect');
+            }
+          `,
+        }}
+      />
      
       <div className="lg:block hidden">
       <div className="w-auto h-auto relative">

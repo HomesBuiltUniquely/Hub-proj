@@ -459,6 +459,8 @@ export default function HeroSections() {
         if (verificationStatus === 'Verified User') {
           alert('Form submitted successfully! We will contact you soon.');
 
+          // Set flag to trigger reload on Thank You page
+          sessionStorage.setItem('formSubmitted', 'true');
           router.push('/Form-Submit-Thank-You');
         } else {
           alert('Form submitted! Please verify your phone number for faster response.');

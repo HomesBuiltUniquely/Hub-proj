@@ -1,7 +1,7 @@
 'use client'
 
 import Script from 'next/script'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 // Declare gtag function for TypeScript
 declare global {
@@ -11,7 +11,25 @@ declare global {
 }
 
 export default function ThankUPage() {
+  const [hasReloaded, setHasReloaded] = useState(false);
+
   useEffect(() => {
+    // Check if this is a fresh redirect from OTP verification
+    const isFreshRedirect = sessionStorage.getItem('formSubmitted') === 'true';
+    
+    if (isFreshRedirect && !hasReloaded) {
+      // Clear the flag to prevent infinite reloads
+      sessionStorage.removeItem('formSubmitted');
+      
+      // Force a reload to ensure proper page load and conversion tracking
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+      
+      setHasReloaded(true);
+      return;
+    }
+
     // Function to trigger GTM events
     const triggerGTMEvents = () => {
       if (typeof window !== 'undefined' && window.gtag) {
@@ -49,7 +67,7 @@ export default function ThankUPage() {
       // Cleanup timer
       return () => clearTimeout(retryTimer);
     }
-  }, []);
+  }, [hasReloaded]);
 
   return (
     <div>
