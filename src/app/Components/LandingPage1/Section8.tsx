@@ -25,7 +25,7 @@ export default function Section8() {
       id: 2,
       thumbnail: "iam2.webp",
       title: "Modern Living Room",
-      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_150443_314.mp4"
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//george%20f%20v_1%20(1)%20(1)%20(1).mp4"
     },
     {
       id: 3,

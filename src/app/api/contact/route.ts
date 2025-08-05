@@ -36,13 +36,13 @@ export async function POST(req: Request) {
     let subject = 'Google Ads Lead (Unverified)';
     if (verificationStatus === 'Verified User') {
       if (pageUrl && pageUrl.includes('/Contact')) {
-        subject = 'Lead from Contact Page (Verified)';
+        subject = 'Lead from Website(Verified)';
       } else {
         subject = 'Google Ads Lead (Verified)';
       }
     } else {
       if (pageUrl && pageUrl.includes('/Contact')) {
-        subject = 'Lead from Contact Page (Unverified)';
+        subject = 'Lead from Website (Unverified)';
       } else {
         subject = 'Google Ads Lead (Unverified)';
       }
