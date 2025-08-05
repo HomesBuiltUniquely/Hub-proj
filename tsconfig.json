@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/app/Components/login.ts", "src/app/otp/page.js", "src/app/otp/page.js"  ],
+, "src/app/Components/login.ts", "src/app/otp/page.js", "src/app/otp/page.js", "src/app/Components/AboutUs/ScrollableSection.client.jsx"  ],
   "exclude": [
     "node_modules"
   ]

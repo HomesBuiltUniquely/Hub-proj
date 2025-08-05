@@ -180,7 +180,7 @@ export function HeroSection() {
                 alt="Hero background" 
                 fill
                 className="object-cover border-4 rounded-4xl border-black"
-                priority
+                loading="lazy"
             />
             <div className="absolute inset-0 flex items-center">
                 <div className="relative flex">      
