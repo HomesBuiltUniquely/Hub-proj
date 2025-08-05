@@ -1,11 +1,12 @@
-export default function Section6() {
-  return (
-    <div>
-      <div>
-        <div className="">
-          <div className="w-screen h-auto">
-          <div className="">
-          <h1 className="text-5xl manrope-medium pt-20 pl-10">Mission</h1>
+export default function Section7(){
+    return (
+        <div>
+            <div className="w-screen h-auto flex justify-between">
+            <div className="w-[450px] h-[600px] bg-red-400 mt-30 ml-10">
+
+            </div>
+            <div className="mr-16 mb-20">
+            <h1 className="text-5xl manrope-medium pt-20 pl-10">Values</h1>
             <p className="w-[300px] ml-10 manrope-medium pt-3">At HUB Interiors, — it&#39;s about creating spaces that reflect you.</p>
             <div className="w-[400px] h-0 border-1 border-[#ddcdc1] mt-10 ml-10"></div>
             <div className="flex">
@@ -43,11 +44,9 @@ export default function Section6() {
               </div>
               <div className="pl-4 pt-6 w-[350px]">At HUB Interiors, — it&#39;s about creating spaces that reflect you.</div>
             </div>
-          </div>
-          </div>
-          <div></div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
-}   
+    )
+
+}

@@ -258,7 +258,7 @@ export function HeroSection() {
                   <div className="w-[120px] lg:w-[130px] xl:w-[150px] 2xl:w-[160px] h-[120px] lg:h-[140px] xl:h-[170px] 2xl:h-[180px] rounded-2xl mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 ml-20 lg:ml-24 xl:ml-28 2xl:ml-32 shadow-2xl hover:shadow-3xl transition hover:-translate-y-1">
                     <Image 
                       loading="lazy" 
-                      src="/mob.jpg" 
+                      src="/bn.jpg" 
                       alt="" 
                       width={160} 
                       height={180} 
