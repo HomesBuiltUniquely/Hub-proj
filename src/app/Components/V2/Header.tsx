@@ -151,7 +151,7 @@ export default function Header() {
       
       const formData = {
         ...form,
-        urlParams: landingUrl // Includes UTM params, paths, etc.
+        pageUrl: landingUrl // Changed from urlParams to pageUrl
       };
 
       const res = await fetch('/api/contact', {

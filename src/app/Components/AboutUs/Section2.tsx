@@ -1,7 +1,7 @@
 export default function Section2(){
     return(
         <div>
-            <div className="h-[650px] flex ml-6">
+            <div className="h-[650px] flex ml-2">
                 <div className="w-[500px] h-[550px] bg-[#ebd457] ml-14 rounded-2xl p-10 pt-36 text-[20px] manrope-medium tracking-wide">
                 At HUB Interiors, — it’s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
                 </div>

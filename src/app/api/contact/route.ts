@@ -31,7 +31,22 @@ export async function POST(req: Request) {
 
     // ✅ Email content including all form data
     const verificationStatusText = verificationStatus === 'Verified User' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
-    const subject = verificationStatus === 'Verified User' ? 'Google Ads Lead (Verified)' : 'Google Ads Lead (Unverified)';
+    
+    // Determine subject based on page URL
+    let subject = 'Google Ads Lead (Unverified)';
+    if (verificationStatus === 'Verified User') {
+      if (pageUrl && pageUrl.includes('/Contact')) {
+        subject = 'Lead from Contact Page (Verified)';
+      } else {
+        subject = 'Google Ads Lead (Verified)';
+      }
+    } else {
+      if (pageUrl && pageUrl.includes('/Contact')) {
+        subject = 'Lead from Contact Page (Unverified)';
+      } else {
+        subject = 'Google Ads Lead (Unverified)';
+      }
+    }
     
   const mailOptions = {
     from: process.env.GMAIL_USER,

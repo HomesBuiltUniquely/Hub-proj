@@ -1,3 +1,4 @@
+import Footer from "../Components/AboutUs/Footer";
 import Herosection from "../Components/AboutUs/Herosection";
 import Section1 from "../Components/AboutUs/Section1";
 import Section10 from "../Components/AboutUs/Section10";
@@ -25,6 +26,7 @@ export default function Aboutus(){
             <Section8/>
             <Section9/>
             <Section10/>
+            <Footer/>
         </div>
     )
 }
