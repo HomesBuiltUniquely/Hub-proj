@@ -30,7 +30,7 @@ const JourneySection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-2">Journey So Far</h2>
-          <p className="text-xl text-gray-600">The Path We've Paved!</p>
+          <p className="text-xl text-gray-600">The Path We&#39;ve Paved!</p>
         </div>
 
         <div className="flex flex-col md:flex-row gap-8">
