@@ -1,62 +1,231 @@
-'use client';
+"use client"
+import React, { useEffect, useRef } from "react";
 
-import React from 'react';
+// Card data for both sections
+const kitchenAccessories = [
+  {
+    img: "/bn.jpg", // Replace with your image paths
+    label: "U - Shaped Kitchen",
+  },
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+];
 
-const JourneySection = () => {
-  const stats = [
-    { value: "5000+", label: "Happy Homes" },
-    { value: "60+", label: "Expert Designers" },
-    { value: "2", label: "Experience Centre" },
-    { value: "4.7+", label: "Google Rating" },
-  ];
+const cabinetAccs = [
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },  {
+    img: "/bn.jpg",
+    label: "U - Shaped Kitchen",
+  },
+];
 
-  const timeline = [
-    { year: "2019", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2019 - 2020", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2020 - 2021", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2021 - 2022", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2022 - 2023", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2023 - 2024", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2024 - 2025", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-  ];
+const CardSection = ({
+  title,
+  subtitle,
+  buttonText,
+  cards,
+  scrollDirection = 1, // 1 for normal (left to right), -1 for opposite
+}: {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  cards: typeof kitchenAccessories;
+  scrollDirection?: 1 | -1;
+}) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      // Only horizontal scroll if Shift is NOT pressed for usability
+      // Or always map vertical scroll to horizontal
+      e.preventDefault();
+
+      // Scroll the container horizontally, respect scrollDirection sign
+      el.scrollLeft += e.deltaY * scrollDirection;
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [scrollDirection]);
 
   return (
-    <section className="py-16 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Journey So Far</h2>
-          <p className="text-xl text-gray-600">The Path We've Paved!</p>
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left Side - Static Stats */}
-          <div className="md:w-1/2 bg-gray-50 p-8 rounded-xl">
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-3xl font-bold text-[#ef0101]">{stat.value}</p>
-                  <p className="text-gray-600 mt-2">{stat.label}</p>
-                </div>
-              ))}
+    <section className="w-full py-12 bg-[#f1f2f6]">
+      <div className="flex flex-col items-center mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">{title}</h2>
+        <p className="text-lg italic text-gray-500 mb-4 text-center">{subtitle}</p>
+        <button className="bg-gray-800 text-white px-6 py-2 rounded-full font-semibold mb-6">{buttonText}</button>
+      </div>
+      <div
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto scrollbar-none px-4"
+        // Tailwind doesn't have scrollbar-none by default, add custom CSS to hide scrollbar
+      >
+        {cards.map((card, idx) => (
+          <div
+            key={idx}
+            className="min-w-[320px] flex-shrink-0 bg-[#f1f2f6] rounded-3xl shadow-lg overflow-hidden group transition hover:shadow-2xl"
+          >
+            <img
+              src={card.img}
+              alt={card.label}
+              className="w-full h-48 object-cover group-hover:scale-105 transition duration-300"
+            />
+            <div className="px-5 py-4">
+              <div className="inline-block bg-gray-100 rounded-full text-gray-800 px-4 py-1 text-xs font-bold">
+                {card.label}
+              </div>
             </div>
           </div>
-
-          {/* Right Side - Scrollable Timeline */}
-          <div className="md:w-1/2 h-[500px] p-8 rounded-xl overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-            <div className="space-y-8">
-              {timeline.map((item, index) => (
-                <div key={index} className="relative pl-8 pb-8 border-l-2 border-[#ef0101]">
-                  <div className="absolute w-4 h-4 bg-[#ef0101] rounded-full -left-2 top-1"></div>
-                  <h3 className="text-xl font-semibold text-gray-900">{item.year}</h3>
-                  <p className="mt-2 text-gray-600">{item.content}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default JourneySection;
+const ModularKitchenShowcase: React.FC = () => (
+  <div className="bg-[#f9fafc] w-full">
+    {/* First section scrolls left to right */}
+    <CardSection
+      title="Elevate Your"
+      subtitle="Everyday Essentials."
+      buttonText="Kitchen Accessories"
+      cards={kitchenAccessories}
+      scrollDirection={1}
+    />
+    {/* Second section scrolls right to left */}
+    <CardSection
+      title="Crafted to Organize"
+      subtitle="Designed to Impress"
+      buttonText="Cabinet"
+      cards={cabinetAccs}
+      scrollDirection={-1}
+    />
+  </div>
+);
+
+export default ModularKitchenShowcase;
+
+
+
+
+
+
+
+
+'use client';
+import { useRef, useEffect, useState } from 'react';
+
+export default function Services() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [userInteracted, setUserInteracted] = useState(false);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current
+        .play()
+        .then(() => console.log('Autoplay started'))
+        .catch((err) => console.warn('Autoplay blocked:', err));
+    }
+  }, []);
+
+  const handleVideoClick = () => {
+    if (!videoRef.current) return;
+
+    if (!userInteracted) {
+      setUserInteracted(true);
+      videoRef.current.muted = false;
+      videoRef.current
+        .play()
+        .then(() => console.log('Playing with sound'))
+        .catch((err) => console.warn('Play with audio failed:', err));
+    } else {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  };
+
+  return (
+    <div className="relative w-full max-w-[1200px] aspect-video mx-auto mt-16 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        playsInline
+        onClick={handleVideoClick}
+        className="w-full h-full object-cover cursor-pointer"
+      >
+        <source
+          src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//errorpage.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      {!userInteracted && (
+        <div
+          className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center px-6 z-10 cursor-pointer"
+          onClick={handleVideoClick}
+        >
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl manrope drop-shadow-xl mb-10">
+            #CHANGEISGOOD
+          </h1>
+          <button
+            className="p-4 bg-white bg-opacity-80 rounded-full animate-pulse"
+            aria-label="Play video"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              className="w-10 h-10 sm:w-12 sm:h-12"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
