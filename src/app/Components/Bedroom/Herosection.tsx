@@ -14,7 +14,7 @@ const BedroomHeroSimple: React.FC = () => (
     <div className="absolute bottom-50 left-20 z-10">
       <h1 className="text-white text-4xl font-extrabold mb-3">Bedroom</h1>
       <p className="text-white/90 text-lg italic mb-1">Tranquil Designs for Peaceful Nights</p>
-      <button className="mt-4 bg-yellow-300 px-6 py-2 rounded-2xl font-bold">Let's Connect</button>
+      <button className="mt-4 bg-yellow-300 px-6 py-2 rounded-2xl font-bold">Let&#39;s Connect</button>
     </div>
    }
   </div>
