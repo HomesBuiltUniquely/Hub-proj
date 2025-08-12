@@ -1,119 +1,175 @@
-"use client"
-import React, { useEffect, useRef } from "react";
+'use client';
+import React, { useState } from "react";
 
-// Card data for both sections
-const kitchenAccessories = [
+// --- Dummy Data ---
+const featuredVideos = [
   {
-    img: "/bn.jpg", // Replace with your image paths
-    label: "U - Shaped Kitchen",
+    id: 1,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp", // Add your thumbnail image here
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "Geroge, Royal Tulip",
   },
   {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
+    id: 2,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "Geroge, Royal Tulip",
   },
   {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
+    id: 3,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "Geroge, Royal Tulip",
   },
   {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
+    id: 4,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "Geroge, Royal Tulip",
   },
   {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
+    id: 5,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "Geroge, Royal Tulip",
   },
   {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
+    id: 6,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "Geroge, Royal Tulip",
   },
 ];
 
-const cabinetAccs = [
+const googleReviews = [
   {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
+    id: 1,
+    name: "Baishakhi M",
+    rating: 5,
+    location: "Sumadhura Epitome",
+    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
+    avatar: "/baishakhi.jpg",
   },
   {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
+    id: 2,
+    name: "Baishakhi M",
+    rating: 5,
+    location: "Sumadhura Epitome",
+    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
+    avatar: "/baishakhi.jpg",
   },
   {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
-  },
-  {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
-  },  {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
-  },  {
-    img: "/bn.jpg",
-    label: "U - Shaped Kitchen",
+    id: 3,
+    name: "Baishakhi M",
+    rating: 5,
+    location: "Sumadhura Epitome",
+    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
+    avatar: "/baishakhi.jpg",
   },
 ];
 
-const CardSection = ({
-  title,
-  subtitle,
-  buttonText,
-  cards,
-  scrollDirection = 1, // 1 for normal (left to right), -1 for opposite
-}: {
-  title: string;
-  subtitle: string;
-  buttonText: string;
-  cards: typeof kitchenAccessories;
-  scrollDirection?: 1 | -1;
-}) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const onWheel = (e: WheelEvent) => {
-      // Only horizontal scroll if Shift is NOT pressed for usability
-      // Or always map vertical scroll to horizontal
-      e.preventDefault();
-
-      // Scroll the container horizontally, respect scrollDirection sign
-      el.scrollLeft += e.deltaY * scrollDirection;
-    };
-
-    el.addEventListener("wheel", onWheel, { passive: false });
-
-    return () => el.removeEventListener("wheel", onWheel);
-  }, [scrollDirection]);
+const FeaturedCustomerSection = () => {
+  // Track currently playing video by id
+  const [playingVideoId, setPlayingVideoId] = useState<number | null>(null);
 
   return (
-    <section className="w-full py-12 bg-[#f1f2f6]">
-      <div className="flex flex-col items-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">{title}</h2>
-        <p className="text-lg italic text-gray-500 mb-4 text-center">{subtitle}</p>
-        <button className="bg-gray-800 text-white px-6 py-2 rounded-full font-semibold mb-6">{buttonText}</button>
-      </div>
-      <div
-        ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scrollbar-none px-4"
-        // Tailwind doesn't have scrollbar-none by default, add custom CSS to hide scrollbar
-      >
-        {cards.map((card, idx) => (
+    <section className="max-w-7xl mx-auto px-3 md:px-8 py-12">
+      {/* Featured Customers */}
+      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
+        Featured Customers
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 mt-20">
+        {featuredVideos.map((item) => (
           <div
-            key={idx}
-            className="min-w-[320px] flex-shrink-0 bg-[#f1f2f6] rounded-3xl shadow-lg overflow-hidden group transition hover:shadow-2xl"
+            key={item.id}
+            className="relative h-[300px] rounded-2xl overflow-hidden shadow-lg group bg-black"
           >
-            <img
-              src={card.img}
-              alt={card.label}
-              className="w-full h-48 object-cover group-hover:scale-105 transition duration-300"
-            />
-            <div className="px-5 py-4">
-              <div className="inline-block bg-gray-100 rounded-full text-gray-800 px-4 py-1 text-xs font-bold">
-                {card.label}
-              </div>
+            {playingVideoId === item.id ? (
+              <video
+                src={item.src}
+                controls
+                autoPlay
+                className="w-full h-full object-cover"
+                onEnded={() => setPlayingVideoId(null)}
+              />
+            ) : (
+              <>
+                <img
+                  src={item.thumbnail}
+                  alt={`Thumbnail for video by ${item.author}`}
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => setPlayingVideoId(item.id)}
+                />
+                <div className="absolute inset-0 bg-opacity-50 flex justify-center items-center cursor-pointer"
+                  onClick={() => setPlayingVideoId(item.id)}
+                  aria-label="Play video"
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={(e) => { if (e.key === 'Enter' || e.key === ' ') setPlayingVideoId(item.id); }}
+                >
+                  <svg width={64} height={64} viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="12" fill="rgba(255, 255, 255, 0.7)" />
+                    <polygon points="10,8 16,12 10,16" fill="#222" />
+                  </svg>
+                </div>
+              </>
+            )}
+
+            <div className="absolute bottom-0 left-0 right-0 bg-transparent bg-opacity-60 px-4 py-3 flex flex-col mb-6">
+              <p className="text-white text-sm mb-1">{item.quote}</p>
+              <span className="text-gray-300 w-[135px] h-[20px] pt-0.5 text-xs backdrop-blur-2xl bg-white/30 rounded-4xl pl-3">{item.author}</span>
             </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Google Reviews */}
+      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
+        Google Reviews
+      </h2>
+      <div className="flex gap-6 flex-wrap justify-center mt-20">
+        {googleReviews.map((review) => (
+          <div
+            key={review.id}
+            className="bg-white shadow-lg rounded-2xl p-5 w-72 flex flex-col items-center"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <img
+                src={review.avatar}
+                alt={review.name}
+                className="w-9 h-9 rounded-full object-cover"
+              />
+              <span className="font-semibold text-gray-700">{review.name}</span>
+              <span className="ml-2 text-yellow-500 flex">
+                {"★".repeat(review.rating)}
+              </span>
+              <svg
+                height={21}
+                width={21}
+                className="ml-2 text-gray-300"
+                aria-label="Google icon"
+                role="img"
+              >
+                <circle cx="10" cy="10" r="10" fill="#eee" />
+                <text
+                  x={5}
+                  y={16}
+                  fontSize={12}
+                  fontFamily="sans-serif"
+                  fill="#4285F4"
+                >
+                  G
+                </text>
+              </svg>
+            </div>
+            <span className="text-gray-500 text-xs mb-2">{review.location}</span>
+            <p className="text-gray-700 text-sm">{review.text}</p>
           </div>
         ))}
       </div>
@@ -121,111 +177,156 @@ const CardSection = ({
   );
 };
 
-const ModularKitchenShowcase: React.FC = () => (
-  <div className="bg-[#f9fafc] w-full">
-    {/* First section scrolls left to right */}
-    <CardSection
-      title="Elevate Your"
-      subtitle="Everyday Essentials."
-      buttonText="Kitchen Accessories"
-      cards={kitchenAccessories}
-      scrollDirection={1}
-    />
-    {/* Second section scrolls right to left */}
-    <CardSection
-      title="Crafted to Organize"
-      subtitle="Designed to Impress"
-      buttonText="Cabinet"
-      cards={cabinetAccs}
-      scrollDirection={-1}
-    />
-  </div>
-);
-
-export default ModularKitchenShowcase;
+export default FeaturedCustomerSection;
 
 
 
 
+// components/InspirationBoard.tsx
+"use client";
 
+import React, { JSX, useState } from "react";
+import Image from "next/image";
 
+const topCategories = ["Kitchen", "Living Room", "Bedroom", "Wardrobe", "Kids Room"];
+const bottomCategories = ["Kitchen", "Kitchen", "Kitchen", "Kitchen", "Kitchen"];
 
+type Img = { src: string; alt: string };
 
-'use client';
-import { useRef, useEffect, useState } from 'react';
+const gallery: Img[] = [
+  { src: "/bn.jpg", alt: "Kitchen - wood & grey" },
+  { src: "/bn.jpg", alt: "Modern kitchen island" },
+  { src: "/bn.jpg", alt: "Small kitchen thumbnail" },
+  { src: "/bn.jpg", alt: "See more thumbnail" },
+];
 
-export default function Services() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [userInteracted, setUserInteracted] = useState(false);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current
-        .play()
-        .then(() => console.log('Autoplay started'))
-        .catch((err) => console.warn('Autoplay blocked:', err));
-    }
-  }, []);
-
-  const handleVideoClick = () => {
-    if (!videoRef.current) return;
-
-    if (!userInteracted) {
-      setUserInteracted(true);
-      videoRef.current.muted = false;
-      videoRef.current
-        .play()
-        .then(() => console.log('Playing with sound'))
-        .catch((err) => console.warn('Play with audio failed:', err));
-    } else {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
-      }
-    }
-  };
+export default function InspirationBoard(): JSX.Element {
+  const [active, setActive] = useState<string>("Kitchen");
 
   return (
-    <div className="relative w-full max-w-[1200px] aspect-video mx-auto mt-16 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        playsInline
-        onClick={handleVideoClick}
-        className="w-full h-full object-cover cursor-pointer"
-      >
-        <source
-          src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//errorpage.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
+    <section className="bg-gray-50 py-12 px-4 sm:px-8 lg:px-16">
+      {/* Heading */}
+      <div className="max-w-3xl mx-auto text-center">
+        <p className="text-gray-600 text-lg leading-relaxed">
+          Step into a world of creativity where every idea is a stepping stone to your dream space.
+          Our Inspiration Board is filled with fresh concepts, trending designs, and timeless styles
+          to spark your imagination and guide your next project.
+        </p>
+      </div>
 
-      {!userInteracted && (
-        <div
-          className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center px-6 z-10 cursor-pointer"
-          onClick={handleVideoClick}
-        >
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl manrope drop-shadow-xl mb-10">
-            #CHANGEISGOOD
-          </h1>
-          <button
-            className="p-4 bg-white bg-opacity-80 rounded-full animate-pulse"
-            aria-label="Play video"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              className="w-10 h-10 sm:w-12 sm:h-12"
+      {/* Category pill rows */}
+      <div className="max-w-5xl mx-auto mt-8">
+        <div className="flex flex-wrap justify-center gap-6">
+          {topCategories.map((c) => (
+            <button
+              key={c}
+              onClick={() => setActive(c)}
+              className={`px-6 py-2 rounded-full transition-shadow border ${
+                active === c
+                  ? "bg-[#3a2d25] text-white shadow-md"
+                  : "bg-white text-gray-700 shadow-sm"
+              }`}
             >
-              <path d="M8 5v14l11-7z" />
-            </svg>
+              {c}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-6 mt-4">
+          {bottomCategories.map((c, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(c)}
+              className="px-5 py-2 rounded-full bg-white text-gray-600 shadow-sm"
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Gallery grid */}
+      <div className="max-w-6xl mx-auto mt-10">
+        {/* On large screens: 12-col grid with 2 rows of fixed height (arbitrary value) so left/center span both rows */}
+        <div className="grid grid-cols-12 gap-4 lg:[grid-template-rows:repeat(2,22rem)]">
+          {/* Left big image: spans two rows on lg */}
+          <div className="relative col-span-12 md:col-span-6 lg:col-span-5 lg:row-span-2 rounded-xl overflow-hidden bg-gray-200">
+            <Image src={gallery[0].src} alt={gallery[0].alt} fill className="object-cover" />
+          </div>
+
+          {/* Center big image: spans two rows on lg */}
+          <div className="relative col-span-12 md:col-span-6 lg:col-span-5 lg:row-span-2 rounded-xl overflow-hidden bg-gray-200">
+            <Image src={gallery[1].src} alt={gallery[1].alt} fill className="object-cover" />
+          </div>
+
+          {/* Right column top small (row 1) */}
+          <div className="relative col-span-12 lg:col-span-2 lg:row-start-1 lg:row-span-1 rounded-xl overflow-hidden bg-gray-200">
+            <Image src={gallery[2].src} alt={gallery[2].alt} fill className="object-cover" />
+          </div>
+
+          {/* Right column bottom small (row 2) with overlay */}
+          <div className="relative col-span-12 lg:col-span-2 lg:row-start-2 lg:row-span-1 rounded-xl overflow-hidden bg-gray-200">
+            <Image
+              src={gallery[3].src}
+              alt={gallery[3].alt}
+              fill
+              className="object-cover brightness-75"
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white pointer-events-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8 mb-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M8 3h8l1 4H7l1-4z" />
+              </svg>
+              <div className="text-center">
+                <div className="text-sm">230+ Designs</div>
+                <div className="text-lg font-medium">See More</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="flex justify-center mt-10">
+          <button className="bg-red-500 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-red-600 shadow">
+            Meet our designers
           </button>
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 }
+
+
+
+
+
+
+{/* Right column bottom small (row 2) with overlay */}
+          <div className="relative col-span-12 lg:col-span-2 lg:row-start-2 lg:row-span-1 rounded-xl overflow-hidden bg-gray-200">
+            <Image
+              src={gallery[3].src}
+              alt={gallery[3].alt}
+              fill
+              className="object-cover brightness-75"
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white pointer-events-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8 mb-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M8 3h8l1 4H7l1-4z" />
+              </svg>
+              <div className="text-center">
+                <div className="text-sm">230+ Designs</div>
+                <div className="text-lg font-medium">See More</div>
+              </div>
+            </div>
+          </div>

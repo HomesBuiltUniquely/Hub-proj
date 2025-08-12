@@ -34,7 +34,7 @@ const FRANCHISE_OPTIONS = [
 ];
 
 const Home: React.FC = () => (
-  <div className="min-h-screen bg-gray-50 w-[1400px] h-screen mx-auto mt-4">
+  <div className="min-h-screen bg-[#f1f2f6] w-[1400px] h-auto mx-auto mt-4">
     {/* Hero Section with navbar, text, form, background image */}
     <div
       className="
@@ -81,7 +81,7 @@ const Home: React.FC = () => (
         </div>
 
         {/* Right: Form */}
-        <div className="md:w-[500px] h-[500px] w-full bg-black/30 rounded-xl shadow-lg px-7 py-8 self-center">
+        <div className="md:w-[500px] h-[500px] w-full bg-black/60 rounded-xl shadow-lg px-7 py-8 self-center">
           <form className="space-y-4">
             <div className="flex gap-3">
               <div className="">

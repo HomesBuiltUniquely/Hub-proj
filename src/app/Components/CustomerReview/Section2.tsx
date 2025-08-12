@@ -1,0 +1,253 @@
+'use client';
+import React, { useState } from "react";
+
+// --- Video Testimonials ---
+const featuredVideos = [
+  {
+    id: 1,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "George, Royal Tulip",
+  },
+  {
+    id: 2,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "George, Royal Tulip",
+  },
+  {
+    id: 3,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "George, Royal Tulip",
+  },
+  {
+    id: 4,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "George, Royal Tulip",
+  },
+  {
+    id: 5,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "George, Royal Tulip",
+  },
+  {
+    id: 6,
+    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
+    thumbnail: "iam.webp",
+    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
+    author: "George, Royal Tulip",
+  },
+  
+];
+
+// --- Google Reviews ---
+const googleReviews = [
+  {
+    id: 1,
+    name: "Baishakhi M",
+    rating: 5,
+    location: "Sumadhura Epitome",
+    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
+    avatar: "/baishakhi.jpg",
+  },
+  {
+    id: 2,
+    name: "Amit R",
+    rating: 5,
+    location: "Sobha City",
+    text: "Excellent designs and professional team. Highly recommended!",
+    avatar: "/baishakhi.jpg",
+  },
+  {
+    id: 3,
+    name: "Priya D",
+    rating: 5,
+    location: "Prestige Lakeside",
+    text: "Smooth experience and beautiful end result for our interiors.",
+    avatar: "/baishakhi.jpg",
+  },
+  {
+    id: 4,
+    name: "Rahul S",
+    rating: 4,
+    location: "Brigade Exotica",
+    text: "On time and on budget. Very happy.",
+    avatar: "/baishakhi.jpg",
+  },
+  {
+    id: 5,
+    name: "Meena K",
+    rating: 5,
+    location: "Divyasree Republic",
+    text: "Our family loves our new living space—thank you HUB team!",
+    avatar: "/baishakhi.jpg",
+  },
+  {
+    id: 6,
+    name: "Vinay P",
+    rating: 5,
+    location: "Salarpuria Sattva",
+    text: "Would choose them again in a heartbeat.",
+    avatar: "/baishakhi.jpg",
+  },
+];
+
+const VISIBLE_CARDS = 3;
+
+const FeaturedCustomerSection = () => {
+  // Video play state
+  const [playingVideoId, setPlayingVideoId] = useState<number | null>(null);
+  // Google review carousel: starting review index (for first visible card)
+  const [startIdx, setStartIdx] = useState(0);
+
+  const total = googleReviews.length;
+  // Figure which 3 reviews should be visible right now, looping if necessary
+  const showCards = [];
+  for (let i = 0; i < VISIBLE_CARDS; ++i) {
+    showCards.push(googleReviews[(startIdx + i) % total]);
+  }
+
+  const handlePrev = () => setStartIdx((prev) => (prev - 1 + total) % total);
+  const handleNext = () => setStartIdx((prev) => (prev + 1) % total);
+
+  return (
+    <section className="max-w-7xl mx-auto px-3 md:px-8 py-12">
+      {/* Featured Customers */}
+      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
+        Featured Customers
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 mt-20">
+        {featuredVideos.map((item) => (
+          <div
+            key={item.id}
+            className="relative h-[300px] rounded-2xl overflow-hidden shadow-lg group"
+          >
+            {playingVideoId === item.id ? (
+              <video
+                src={item.src}
+                controls
+                autoPlay
+                className="w-full h-full object-cover"
+                onEnded={() => setPlayingVideoId(null)}
+              />
+            ) : (
+              <>
+                <img
+                  src={item.thumbnail}
+                  alt={`Thumbnail for video by ${item.author}`}
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => setPlayingVideoId(item.id)}
+                />
+                <div
+                  className="absolute inset-0  bg-opacity-50 flex justify-center items-center cursor-pointer"
+                  onClick={() => setPlayingVideoId(item.id)}
+                  aria-label="Play video"
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter" || e.key === " ") setPlayingVideoId(item.id);
+                  }}
+                >
+                  <svg width={64} height={64} viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="12" fill="rgba(255, 255, 255, 0.7)" />
+                    <polygon points="10,8 16,12 10,16" fill="#222" />
+                  </svg>
+                </div>
+              </>
+            )}
+            <div className="absolute bottom-0 left-0 right-0 bg-transparent bg-opacity-60 px-4 py-3 flex flex-col mb-6">
+              <p className="text-white text-sm mb-1">{item.quote}</p>
+              <span className="text-white  s w-[135px] h-[20px] pt-0.5 text-xs backdrop-blur-2xl bg-white/30 rounded-4xl pl-3">
+                {item.author}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Google Reviews Carousel */}
+      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
+        Google Reviews
+      </h2>
+      <div className="w-full flex flex-col items-center mt-20">
+        {/* Carousel Controls */}
+        <div className="flex justify-center items-center gap-4 mb-5">
+          <button
+            className="bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center pb-1 text-2xl"
+            onClick={handlePrev}
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+          <button
+            className="bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center pb-1 text-2xl"
+            onClick={handleNext}
+            aria-label="Next"
+          >
+            ›
+          </button>
+        </div>
+        {/* 3 visible cards */}
+        <div className="flex gap-6 justify-center flex-wrap">
+          {showCards.map((review, idx) => (
+            <div
+              key={`${review.id}-${idx}`}
+              className="bg-white shadow-lg w-[300px] h-[300px] rounded-2xl p-5  flex flex-col items-center"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <img
+                  src={review.avatar}
+                  alt={review.name}
+                  className="w-9 h-9 rounded-full object-cover"
+                />
+                <span className="font-semibold text-gray-700">{review.name}</span>
+                <span className="ml-2 text-yellow-500 flex">
+                  {"★".repeat(review.rating)}
+                </span>
+                <svg
+                  height={21}
+                  width={21}
+                  className="ml-2 text-gray-300"
+                  aria-label="Google icon"
+                  role="img"
+                >
+                  <circle cx="10" cy="10" r="10" fill="#eee" />
+                  <text
+                    x={5}
+                    y={16}
+                    fontSize={12}
+                    fontFamily="sans-serif"
+                    fill="#4285F4"
+                  >
+                    G
+                  </text>
+                </svg>
+              </div>
+              <span className="text-gray-500 text-xs mb-2">{review.location}</span>
+              <p className="text-gray-700 text-sm text-center">{review.text}</p>
+            </div>
+          ))}
+        </div>
+        {/* Dots */}
+        <div className="flex justify-center mt-5 gap-2">
+          {Array.from({ length: total }).map((_, idx) => (
+            <span
+              key={idx}
+              className={`w-2 h-2 rounded-full ${startIdx === idx ? "bg-gray-800" : "bg-gray-300"}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturedCustomerSection;
