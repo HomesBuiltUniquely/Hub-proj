@@ -25,7 +25,7 @@ const categoryCards = Array.from({ length: 6 }, (_, i) => ({
   img: "bn.jpg",
 }));
 
-const HomeShowcase = ({ canEdit = false, username = "" }: { canEdit?: boolean; username?: string }) => {
+const HomeShowcase = ({ canEdit = false }: { canEdit?: boolean }) => {
   const [allPosts, setAllPosts] = useState<Post[]>(allPostsInit);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const totalPages = Math.ceil(allPosts.length / itemsPerPage);
