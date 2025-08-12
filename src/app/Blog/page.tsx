@@ -102,7 +102,7 @@ export default function Blog() {
                     )}
                     <Herosection />
                     <Section2 canEdit={signedUp} />
-                    <HomeShowcase canEdit={signedUp} username={username} />
+                    <HomeShowcase canEdit={signedUp} />
                     <Footer />
                 </>
             )}
