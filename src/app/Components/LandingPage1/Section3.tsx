@@ -182,7 +182,7 @@ export default function Section3() {
                 </div>
                 <button 
                     onClick={scrollToForm}
-                    className='mt-20 mx-auto text-[16px] w-[250px] h-[50px] bg-red-500 px-auto text-white rounded-4xl font-bold hover:bg-red-600 ml-14 transition-colors'
+                    className='mt-20 mx-auto text-[18px] w-[250px] h-[50px] bg-red-500 px-auto text-white rounded-4xl font-bold hover:bg-red-600 ml-20 transition-colors'
                 >
                     Book A Free Design Session
                 </button>
