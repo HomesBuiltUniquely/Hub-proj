@@ -30,7 +30,7 @@ export default function Practice() {
             setGeneratedOTP(otpCode);
 
             const formattedPhone = phoneNumber.startsWith('+') ? phoneNumber : `+${phoneNumber}`;
-            const messageBody = customMessage.replace('{OTP}', otpCode);
+            const messageBody = `Your HUB INTERIOR verification code is: ${otpCode}`;
 
             const response = await fetch('/api/send-otp', {
                 method: 'POST',
