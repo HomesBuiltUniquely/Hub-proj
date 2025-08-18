@@ -12,6 +12,8 @@ export function HeroSection() {
     const [Selected, setSelected] = useState("Book A slot");
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitMessage, setSubmitMessage] = useState("");
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [filePreview, setFilePreview] = useState<string>("");
     const [form,setForm]=useState({
         name:"",
         email:"",
@@ -34,6 +36,28 @@ export function HeroSection() {
             "07:00 to 08:00"
         ];
 
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setSelectedFile(file);
+            // Create preview for images
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    setFilePreview(e.target?.result as string);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                setFilePreview("");
+            }
+        }
+    };
+
+    const removeFile = () => {
+        setSelectedFile(null);
+        setFilePreview("");
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
@@ -54,20 +78,23 @@ export function HeroSection() {
         setSubmitMessage("");
 
         try {
+            // Create FormData for file upload
+            const formData = new FormData();
+            formData.append('name', updatedForm.name);
+            formData.append('phone', updatedForm.phonennumber);
+            formData.append('email', updatedForm.email);
+            formData.append('pincode', updatedForm.pincode);
+            formData.append('propertyType', updatedForm.property);
+            formData.append('timeSlot', updatedForm.Scheduler);
+            formData.append('pageUrl', window.location.href);
+            
+            if (selectedFile) {
+                formData.append('file', selectedFile);
+            }
+
             const response = await fetch('/api/landingpage2-contact', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: updatedForm.name,
-                    phone: updatedForm.phonennumber,
-                    email: updatedForm.email,
-                    pincode: updatedForm.pincode,
-                    propertyType: updatedForm.property,
-                    timeSlot: updatedForm.Scheduler,
-                    pageUrl: window.location.href
-                }),
+                body: formData, // Send as FormData instead of JSON
             });
 
             const data = await response.json();
@@ -84,6 +111,8 @@ export function HeroSection() {
                 });
                 setpropSelect("");
                 setSelected("Book A slot");
+                setSelectedFile(null);
+                setFilePreview("");
                 
                 // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
@@ -122,20 +151,23 @@ export function HeroSection() {
         setSubmitMessage("");
 
         try {
+            // Create FormData for file upload
+            const formData = new FormData();
+            formData.append('name', updatedForm.name);
+            formData.append('phone', updatedForm.phonennumber);
+            formData.append('email', updatedForm.email);
+            formData.append('pincode', updatedForm.pincode);
+            formData.append('propertyType', updatedForm.property);
+            formData.append('timeSlot', updatedForm.Scheduler);
+            formData.append('pageUrl', window.location.href);
+            
+            if (selectedFile) {
+                formData.append('file', selectedFile);
+            }
+
             const response = await fetch('/api/landingpage2-contact', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: updatedForm.name,
-                    phone: updatedForm.phonennumber,
-                    email: updatedForm.email,
-                    pincode: updatedForm.pincode,
-                    propertyType: updatedForm.property,
-                    timeSlot: updatedForm.Scheduler,
-                    pageUrl: window.location.href
-                }),
+                body: formData, // Send as FormData instead of JSON
             });
 
             const data = await response.json();
@@ -153,6 +185,8 @@ export function HeroSection() {
                 });
                 setpropSelect("");
                 setSelected("Book A slot");
+                setSelectedFile(null);
+                setFilePreview("");
                 
                 // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
@@ -174,7 +208,7 @@ export function HeroSection() {
     return (
         
     <div> 
-        <div className="lg:block hidden relative w-screen h-screen">
+        <div className="lg:block hidden relative w-screen h-[1000px]">
             <Image 
                 src="/bn.jpg" 
                 alt="Hero background" 
@@ -184,16 +218,16 @@ export function HeroSection() {
             />
             <div className="absolute inset-0 flex items-center">
                 <div className="relative flex">      
-                    <div className="w-[650px] h-[823px] ml-1 bg-black/50 shadow-lg backdrop-blur-md overflow-hidden rounded-l-3xl"> 
-                    <img src="hub.png" className="w-[180px] h-[75px] ml-10 mt-6"></img>
+                    <div className="w-[650px] h-[1000px] ml-1 bg-black/50 shadow-lg backdrop-blur-md overflow-hidden rounded-l-3xl"> 
+                    <img src="hub.png" className="w-[150px] h-[60px] ml-10 mt-6"></img>
                     <form onSubmit={handleSubmit}>
                     <div className="flex ">
                        <input type="text" name="name" placeholder="Name" value={form.name} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]: e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl m-10 placeholder-white manrope  "></input>
                        <input type="text" name="email" placeholder="Email" value={form.email} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]: e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl m-10 placeholder-white manrope"></input>
                     </div>
                     <div className="flex mt-4">
-                    <input type="text" name="phonennumber"  placeholder="PhoneNumber" value={form.phonennumber} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]:e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl ml-8 placeholder-white manrope"></input>
-                    <input type="text" name="pincode" placeholder="Pincode (Banglore)" value={form.pincode} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]:e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl ml-20 placeholder-white manrope"></input>
+                    <input type="text" name="phonennumber"  placeholder="PhoneNumber" value={form.phonennumber} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]:e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl ml-10 placeholder-white manrope"></input>
+                    <input type="text" name="pincode" placeholder="Pincode (Banglore)" value={form.pincode} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]:e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl ml-18 placeholder-white manrope"></input>
                     </div>
                 {/* Selectables */}
                     <div className="text-white mt-10 text-left pl-12 text-3xl manrope-medium">Property Type</div>
@@ -241,6 +275,50 @@ export function HeroSection() {
                         </div>
                     )}
                     </div> 
+
+                    {/* File Upload Section */}
+                    <div className="mt-8 ml-10">
+                        <div className="text-white text-lg mb-3">Upload Files (Optional)</div>
+                        <div className="flex items-start space-x-4">
+                            <div className="flex flex-col space-y-2">
+                                <input
+                                    type="file"
+                                    onChange={handleFileChange}
+                                    accept="image/*,.pdf,.doc,.docx"
+                                    className="hidden"
+                                    id="file-upload"
+                                />
+                                <label
+                                    htmlFor="file-upload"
+                                    className="cursor-pointer bg-[#ef0101] text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
+                                >
+                                    Choose File
+                                </label>
+                                {selectedFile && (
+                                    <div className="text-white text-sm">
+                                        {selectedFile.name}
+                                    </div>
+                                )}
+                            </div>
+                            {filePreview && (
+                                <div className="flex flex-col items-center">
+                                    <img 
+                                        src={filePreview} 
+                                        alt="Floor plan preview" 
+                                        className="w-40 h-32 object-cover rounded border border-[#DDCDC1]"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={removeFile}
+                                        className="mt-2 text-red-400 hover:text-red-300 text-sm underline"
+                                    >
+                                        Remove File
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
                     <div className="  flex mt-10 pl-14">
                         <input type="checkbox" required/>
                         <label className="ml-4 text-white ">Yes, all provided details are correct</label>
@@ -385,9 +463,52 @@ export function HeroSection() {
                                 )}
                             </div>
                         </div>
+
+                        {/* File Upload Section - Mobile */}
+                        <div className="mt-4 ml-6">
+                            <div className="text-white text-sm mb-2">Upload Files (Optional)</div>
+                            <div className="flex items-start space-x-3">
+                                <div className="flex flex-col space-y-2">
+                                    <input
+                                        type="file"
+                                        onChange={handleFileChange}
+                                        accept="image/*,.pdf,.doc,.docx"
+                                        className="hidden"
+                                        id="file-upload-mobile"
+                                    />
+                                    <label
+                                        htmlFor="file-upload-mobile"
+                                        className="cursor-pointer bg-[#ef0101] text-white px-3 py-1 rounded text-xs hover:bg-red-700 transition"
+                                    >
+                                        Choose File
+                                    </label>
+                                    {selectedFile && (
+                                        <div className="text-white text-xs truncate max-w-[120px]">
+                                            {selectedFile.name}
+                                        </div>
+                                    )}
+                                </div>
+                                {filePreview && (
+                                    <div className="flex flex-col items-center">
+                                        <img 
+                                            src={filePreview} 
+                                            alt="Floor plan preview" 
+                                            className="w-24 h-20 object-cover rounded border border-[#DDCDC1]"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={removeFile}
+                                            className="mt-1 text-red-400 hover:text-red-300 text-xs underline"
+                                        >
+                                            Remove
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                         
                         {/* Checkbox */}
-                        <div className="flex mt-6 ml-6">
+                        <div className="flex mt-4 ml-6">
                             <input type="checkbox" required className="mt-1"/>
                             <label className="ml-3 text-white text-sm">Yes, all provided details are correct</label>
                         </div>
@@ -400,7 +521,7 @@ export function HeroSection() {
                         )}
                         
                         {/* Submit Button */}
-                        <div className="mt-6 ml-6">
+                        <div className="mt-4 ml-6">
                             <button 
                                 type="submit" 
                                 disabled={isSubmitting}

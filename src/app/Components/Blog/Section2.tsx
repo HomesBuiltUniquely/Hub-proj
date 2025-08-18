@@ -1,220 +1,158 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-type TrendTitle = { title: string; subtitle: string };
-type BackupType = Partial<{
-    img1: string;
-    img2: string;
-    img3: string;
-    title1: string;
-    subtitle1: string;
-    title2: string;
-    subtitle2: string;
-    mainTitle: string;
-    mostTrending: string;
-    trendTitles: TrendTitle[];
-    editIdx: number | null;
-}>;
+type Post = { 
+    id: number; 
+    title: string; 
+    date: string; 
+    readTime: string; 
+    img: string 
+};
 
-export default function Section2({ canEdit = false }: { canEdit?: boolean }) {
-    // State for all editable fields
-    const [img1, setImg1] = useState("bn.jpg");
-    const [img2, setImg2] = useState("bn.jpg");
-    const [img3, setImg3] = useState("bn.jpg ");
-    const [title1, setTitle1] = useState("Designing the Heart of Your ");
-    const [subtitle1, setSubtitle1] = useState("Home: Bedroom Ideas That Inspire");
-    const [title2, setTitle2] = useState("Designing the Heart of Your ");
-    const [subtitle2, setSubtitle2] = useState("Home: Bedroom Ideas That Inspire");
-    const [mainTitle, setMainTitle] = useState("Designing the Heart of Your \nHome: Bedroom Ideas That Inspire\nYour Mind");
-    const [mostTrending, setMostTrending] = useState("Most Trending");
-    const [trendTitles, setTrendTitles] = useState<TrendTitle[]>([
-        { title: "Designing the Heart of Your ", subtitle: "Home: Bedroom Ideas That Inspire" },
-        { title: "Designing the Heart of Your ", subtitle: "Home: Bedroom Ideas That Inspire" },
-        { title: "Designing the Heart of Your ", subtitle: "Home: Bedroom Ideas That Inspire" },
-        { title: "Designing the Heart of Your ", subtitle: "Home: Bedroom Ideas That Inspire" },
-    ]);
-    const [editing, setEditing] = useState(false);
-    const [editIdx, setEditIdx] = useState<number | null>(null);
-    // Handlers for image upload
-    const handleImgChange = (e: React.ChangeEvent<HTMLInputElement>, setter: (val: string) => void) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (ev) => {
-                if (ev.target && typeof ev.target.result === "string") setter(ev.target.result);
-            };
-            reader.readAsDataURL(file);
+type TrendingItem = {
+    id: number;
+    title: string;
+    subtitle: string;
+    readTime: string;
+    date: string;
+};
+
+export default function Section2({ posts = [] }: { posts?: Post[] }) {
+    const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
+    
+    // Get the latest 5 posts for Section2
+    const latestPosts = posts.slice(0, 5);
+    
+    // Load trending data from localStorage
+    useEffect(() => {
+        const savedTrending = localStorage.getItem('trendingData');
+        if (savedTrending) {
+            setTrendingData(JSON.parse(savedTrending));
+        } else {
+            // Default trending data
+            setTrendingData([
+                { id: 1, title: "Designing the Heart of Your ", subtitle: "Home: Bedroom Ideas That Inspire", readTime: "18 mins read", date: "July 28, 2025" },
+                { id: 2, title: "Designing the Heart of Your ", subtitle: "Home: Bedroom Ideas That Inspire", readTime: "18 mins read", date: "July 28, 2025" },
+                { id: 3, title: "Designing the Heart of Your ", subtitle: "Home: Bedroom Ideas That Inspire", readTime: "18 mins read", date: "July 28, 2025" },
+                { id: 4, title: "Designing the Heart of Your ", subtitle: "Home: Bedroom Ideas That Inspire", readTime: "18 mins read", date: "July 28, 2025" }
+            ]);
         }
-    };
-    // Handlers for trend titles
-    const handleTrendTitleChange = (idx: number, field: "title" | "subtitle", value: string) => {
-        setTrendTitles(titles => titles.map((t, i) => i === idx ? { ...t, [field]: value } : t));
-    };
-    // Save/cancel for all
-    const [backup, setBackup] = useState<BackupType>({});
-    const startEdit = (idx: number) => {
-        setBackup({
-            img1, img2, img3, title1, subtitle1, title2, subtitle2, mainTitle, mostTrending, trendTitles: JSON.parse(JSON.stringify(trendTitles)), editIdx: idx
-        });
-        setEditing(true);
-        setEditIdx(idx);
-    };
-    const cancelEdit = () => {
-        if (backup) {
-            if (backup.img1 !== undefined) setImg1(backup.img1);
-            if (backup.img2 !== undefined) setImg2(backup.img2);
-            if (backup.img3 !== undefined) setImg3(backup.img3);
-            if (backup.title1 !== undefined) setTitle1(backup.title1);
-            if (backup.subtitle1 !== undefined) setSubtitle1(backup.subtitle1);
-            if (backup.title2 !== undefined) setTitle2(backup.title2);
-            if (backup.subtitle2 !== undefined) setSubtitle2(backup.subtitle2);
-            if (backup.mainTitle !== undefined) setMainTitle(backup.mainTitle);
-            if (backup.mostTrending !== undefined) setMostTrending(backup.mostTrending);
-            if (backup.trendTitles !== undefined) setTrendTitles(backup.trendTitles);
-        }
-        setEditing(false);
-        setEditIdx(null);
-    };
-    const saveEdit = () => {
-        setEditing(false);
-        setEditIdx(null);
-    };
+    }, []);
+    
     return (
         <div>
             <div className="w-screen h-screen flex">
                 <div className="flex ">
+                    {/* Left Section - 2nd and 3rd Latest Blogs */}
                     <div className="w-[400px] h-[300px] mt-16 ml-8">
-                        <div className="relative">
-                            <img src={img1} alt="image" className="w-[400px] h-[250px] rounded-4xl" />
-                            {canEdit && editing && editIdx === 1 && (
-                                <>
-                                    <input id="up-img1" type="file" accept="image/*" onChange={e => handleImgChange(e, setImg1)} className="hidden" />
-                                    <label htmlFor="up-img1" className="absolute inset-0 flex items-center justify-center">
-                                        <span className="bg-blue-600 text-white px-4 py-2 rounded shadow cursor-pointer">Upload Image</span>
-                                    </label>
-                                </>
-                            )}
-                        </div>
-                        <div className="flex justify-between mt-4 w-[340px] ml-6">
-                            <p>Blog - 18 mins read</p>
-                            <p>July 28, 2025</p>
-                        </div>
-                        {canEdit && editing && editIdx === 1 ? (
+                        {latestPosts.length > 1 ? (
                             <>
-                                <input value={title1} onChange={e => setTitle1(e.target.value)} className="pt-4 pl-2 text-center pr-3 manrope border" />
-                                <input value={subtitle1} onChange={e => setSubtitle1(e.target.value)} className="pl-4 text-center manrope border" />
+                                <div className="relative">
+                                    <img src={latestPosts[1].img} alt="image" className="w-[400px] h-[250px] rounded-4xl" />
+                                </div>
+                                <div className="flex justify-between mt-4 w-[340px] ml-6">
+                                    <p>Blog • {latestPosts[1].readTime}</p>
+                                    <p>{latestPosts[1].date}</p>
+                                </div>
+                                <p className="pt-4 pl-2 text-center pr-3 manrope">{latestPosts[1].title}</p>
                             </>
                         ) : (
                             <>
-                                <p className="pt-4 pl-2 text-center pr-3 manrope">{title1}</p>
-                                <p className="pl-4 text-center manrope">{subtitle1}</p>
-                            </>
-                        )}
-                        <div className="relative">
-                            <img src={img2} alt="image" className="w-[400px] h-[250px] rounded-4xl mt-6" />
-                            {canEdit && editing && editIdx === 1 && (
-                                <>
-                                    <input id="up-img2" type="file" accept="image/*" onChange={e => handleImgChange(e, setImg2)} className="hidden" />
-                                    <label htmlFor="up-img2" className="absolute inset-0 flex items-center justify-center">
-                                        <span className="bg-blue-600 text-white px-4 py-2 rounded shadow cursor-pointer">Upload Image</span>
-                                    </label>
-                                </>
-                            )}
-                        </div>
-                        <div className="flex justify-between mt-4 w-[340px] ml-6">
-                            <p>Blog - 18 mins read</p>
-                            <p>July 28, 2025</p>
-                        </div>
-                        {canEdit && editing && editIdx === 1 ? (
-                            <>
-                                <input value={title2} onChange={e => setTitle2(e.target.value)} className="pt-4 pl-2 text-center pr-3 manrope border" />
-                                <input value={subtitle2} onChange={e => setSubtitle2(e.target.value)} className="pl-4 text-center manrope border" />
-                            </>
-                        ) : (
-                            <>
-                                <p className="pt-4 pl-2 text-center pr-3 manrope">{title2}</p>
-                                <p className="pl-4 text-center manrope">{subtitle2}</p>
-                            </>
-                        )}
-                        {canEdit && !editing ? (
-                            <button className="bg-blue-500 text-white px-3 py-1 rounded mt-2" onClick={() => startEdit(1)}>Edit</button>
-                        ) : null}
-                        {canEdit && editing && editIdx === 1 ? (
-                            <>
-                                <button className="bg-green-500 text-white px-3 py-1 rounded mr-2 mt-2" onClick={saveEdit}>Save</button>
-                                <button className="bg-gray-400 text-white px-3 py-1 rounded mt-2" onClick={cancelEdit}>Cancel</button>
-                            </>
-                        ) : null}
-                    </div>
-                    <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
-                    <div className="w-[500px] h-[350px] bg-red-400 ml-10 mt-20 rounded-4xl ">
-                        <div className="relative">
-                            <img src={img3} className="w-[500px] h-[350px] rounded-4xl" />
-                            {canEdit && editing && editIdx === 2 && (
-                                <>
-                                    <input id="up-img3" type="file" accept="image/*" onChange={e => handleImgChange(e, setImg3)} className="hidden" />
-                                    <label htmlFor="up-img3" className="absolute inset-0 flex items-center justify-center">
-                                        <span className="bg-blue-600 text-white px-4 py-2 rounded shadow cursor-pointer">Upload Image</span>
-                                    </label>
-                                </>
-                            )}
-                        </div>
-                        <div className="flex justify-between mt-4 w-[340px] ml-20">
-                            <p>Blog - 18 mins read</p>
-                            <p>July 28, 2025</p>
-                        </div>
-                        {canEdit && editing && editIdx === 2 ? (
-                            <textarea value={mainTitle} onChange={e => setMainTitle(e.target.value)} className="w-[400px] mx-auto pt-10 text-3xl manrope border" />
-                        ) : (
-                            <div className="w-[400px] mx-auto pt-10 text-3xl manrope">{mainTitle.split("\n").map((line, i) => <div key={i}>{line}</div>)}</div>
-                        )}
-                        {canEdit && !editing ? (
-                            <button className="bg-blue-500 text-white px-3 py-1 rounded mt-2" onClick={() => startEdit(2)}>Edit</button>
-                        ) : null}
-                        {canEdit && editing && editIdx === 2 ? (
-                            <>
-                                <button className="bg-green-500 text-white px-3 py-1 rounded mr-2 mt-2" onClick={saveEdit}>Save</button>
-                                <button className="bg-gray-400 text-white px-3 py-1 rounded mt-2" onClick={cancelEdit}>Cancel</button>
-                            </>
-                        ) : null}
-                    </div>
-                    <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
-                    <div className="w-[400px] h-[300px] mt-30 ml-8 text-3xl manrope">
-                        {canEdit && editing && editIdx === 3 ? (
-                            <input value={mostTrending} onChange={e => setMostTrending(e.target.value)} className="mb-2 border" />
-                        ) : (
-                            mostTrending
-                        )}
-                        {[0, 1, 2, 3].map(idx => (
-                            <div key={idx}>
-                                <div className="flex justify-between mt-8 text-[14px] w-[340px] manrope-medium">
+                                <div className="relative">
+                                    <img src="bn.jpg" alt="image" className="w-[400px] h-[250px] rounded-4xl" />
+                                </div>
+                                <div className="flex justify-between mt-4 w-[340px] ml-6">
                                     <p>Blog - 18 mins read</p>
                                     <p>July 28, 2025</p>
                                 </div>
-                                <div className="mt-2 pr-20">
-                                    {canEdit && editing && editIdx === 3 ? (
-                                        <>
-                                            <input value={trendTitles[idx].title} onChange={e => handleTrendTitleChange(idx, 'title', e.target.value)} className="pt-4 pr-14 text-center manrope text-[16px] border" />
-                                            <input value={trendTitles[idx].subtitle} onChange={e => handleTrendTitleChange(idx, 'subtitle', e.target.value)} className="text-center manrope text-[16px] border" />
-                                        </>
-                                    ) : (
-                                        <>
-                                            <p className="pt-4 pr-14 text-center manrope text-[16px]">{trendTitles[idx].title}</p>
-                                            <p className="text-center manrope text-[16px]">{trendTitles[idx].subtitle}</p>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="w-[350px] h-[1px] bg-amber-900 center mt-4 mb-4 "></div>
-                            </div>
-                        ))}
-                        {canEdit && !editing ? (
-                            <button className="bg-blue-500 text-white px-3 py-1 rounded mt-2" onClick={() => startEdit(3)}>Edit</button>
-                        ) : null}
-                        {canEdit && editing && editIdx === 3 ? (
-                            <>
-                                <button className="bg-green-500 text-white px-3 py-1 rounded mr-2 mt-2" onClick={saveEdit}>Save</button>
-                                <button className="bg-gray-400 text-white px-3 py-1 rounded mt-2" onClick={cancelEdit}>Cancel</button>
+                                <p className="pt-4 pl-2 text-center pr-3 manrope">Designing the Heart of Your </p>
+                                <p className="pl-4 text-center manrope">Home: Bedroom Ideas That Inspire</p>
                             </>
-                        ) : null}
+                        )}
+                        
+                        {latestPosts.length > 2 ? (
+                            <>
+                                <div className="relative">
+                                    <img src={latestPosts[2].img} alt="image" className="w-[400px] h-[250px] rounded-4xl mt-6" />
+                                </div>
+                                <div className="flex justify-between mt-4 w-[340px] ml-6">
+                                    <p>Blog • {latestPosts[2].readTime}</p>
+                                    <p>{latestPosts[2].date}</p>
+                                </div>
+                                <p className="pt-4 pl-2 text-center pr-3 manrope">{latestPosts[2].title}</p>
+                            </>
+                        ) : (
+                            <>
+                                <div className="relative">
+                                    <img src="bn.jpg" alt="image" className="w-[400px] h-[250px] rounded-4xl mt-6" />
+                                </div>
+                                <div className="flex justify-between mt-4 w-[340px] ml-6">
+                                    <p>Blog - 18 mins read</p>
+                                    <p>July 28, 2025</p>
+                                </div>
+                                <p className="pt-4 pl-2 text-center pr-3 manrope">Designing the Heart of Your </p>
+                                <p className="pl-4 text-center manrope">Home: Bedroom Ideas That Inspire</p>
+                            </>
+                        )}
+                    </div>
+                    
+                    <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
+                    
+                    {/* Middle Section - Latest Blog */}
+                    <div className="w-[500px] h-[350px] bg-red-400 ml-10 mt-20 rounded-4xl ">
+                        {latestPosts.length > 0 ? (
+                            <>
+                                <div className="relative">
+                                    <img src={latestPosts[0].img} className="w-[500px] h-[350px] rounded-4xl" />
+                                </div>
+                                <div className="flex justify-between mt-4 w-[340px] ml-20">
+                                    <p>Blog • {latestPosts[0].readTime}</p>
+                                    <p>{latestPosts[0].date}</p>
+                                </div>
+                                <div className="w-[400px] mx-auto pt-10 text-3xl manrope">
+                                    <div>{latestPosts[0].title}</div>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="relative">
+                                    <img src="bn.jpg" className="w-[500px] h-[350px] rounded-4xl" />
+                                </div>
+                                <div className="flex justify-between mt-4 w-[340px] ml-20">
+                                    <p>Blog - 18 mins read</p>
+                                    <p>July 28, 2025</p>
+                                </div>
+                                <div className="w-[400px] mx-auto pt-10 text-3xl manrope">
+                                    <div>Designing the Heart of Your </div>
+                                    <div>Home: Bedroom Ideas That Inspire</div>
+                                    <div>Your Mind</div>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                    
+                    <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
+                    
+                    {/* Right Section - Most Trending Items Only */}
+                    <div className="w-[400px] h-[600px] mt-16 ml-8">
+                        {/* Most Trending Items - Scrollable */}
+                        <div className="mt-8">
+                            <h3 className="text-2xl font-bold mb-4 text-gray-900">Most Trending</h3>
+                            <div className="h-[500px] overflow-y-auto pr-2">
+                                {trendingData.map((item, idx) => (
+                                    <div key={item.id} className="mb-6">
+                                        <div className="flex justify-between text-[14px] w-[340px] manrope-medium">
+                                            <p>Blog • {item.readTime}</p>
+                                            <p>{item.date}</p>
+                                        </div>
+                                        <div className="mt-2 pr-20">
+                                            <p className="pt-4 pr-14 text-center manrope text-[16px]">{item.title}</p>
+                                            <p className="text-center manrope text-[16px]">{item.subtitle}</p>
+                                        </div>
+                                        <div className="w-[350px] h-[1px] bg-amber-900 center mt-4 mb-4 "></div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

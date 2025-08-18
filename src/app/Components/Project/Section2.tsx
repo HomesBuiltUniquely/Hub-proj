@@ -56,7 +56,7 @@ const FeaturedProjectsAndEbook = () => {
               <img
                 src={slide.thumbnail}
                 alt={slide.title}
-                className="w-full h-full object-cover "
+                className="w-full h-full object-cover"
                 onClick={() => setIsPlaying(true)}
               />
               {/* Play button overlay */}
