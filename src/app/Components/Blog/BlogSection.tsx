@@ -17,7 +17,7 @@ const categoryCards = Array.from({ length: 6 }, (_, i) => ({
   img: "bn.jpg",
 }));
 
-const HomeShowcase = ({ canEdit = false, posts = [] }: { canEdit?: boolean; posts?: Post[] }) => {
+const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
   const [allPosts, setAllPosts] = useState<Post[]>(posts.length > 0 ? posts : allPostsInit);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 3; // Show only 3 posts per page for remaining posts

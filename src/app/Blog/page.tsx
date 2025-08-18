@@ -29,7 +29,7 @@ export default function Blog() {
         <div>
             <Herosection />
             <Section2 posts={posts} />
-            <HomeShowcase canEdit={false} posts={posts} />
+            <HomeShowcase posts={posts} />
             <Footer />
         </div>
     );
