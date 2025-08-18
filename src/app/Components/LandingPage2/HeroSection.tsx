@@ -221,7 +221,7 @@ export function HeroSection() {
                     <div className="w-[650px] h-[1000px] ml-1 bg-black/50 shadow-lg backdrop-blur-md overflow-hidden rounded-l-3xl"> 
                     <img src="hub.png" className="w-[150px] h-[60px] ml-10 mt-6"></img>
                     <form onSubmit={handleSubmit}>
-                    <div className="flex ">
+                    <div className="flex mt-4">
                        <input type="text" name="name" placeholder="Name" value={form.name} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]: e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl m-10 placeholder-white manrope  "></input>
                        <input type="text" name="email" placeholder="Email" value={form.email} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{setForm({...form,[e.target.name]: e.target.value})}} className="w-[250px] h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl m-10 placeholder-white manrope"></input>
                     </div>

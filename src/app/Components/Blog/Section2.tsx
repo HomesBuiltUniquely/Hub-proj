@@ -138,7 +138,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                         <div className="mt-8">
                             <h3 className="text-2xl font-bold mb-4 text-gray-900">Most Trending</h3>
                             <div className="h-[500px] overflow-y-auto pr-2">
-                                {trendingData.map((item, idx) => (
+                                {trendingData.map((item) => (
                                     <div key={item.id} className="mb-6">
                                         <div className="flex justify-between text-[14px] w-[340px] manrope-medium">
                                             <p>Blog • {item.readTime}</p>

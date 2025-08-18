@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     const subject = `Meta Lead - ${name}`;
     
     // Prepare email options
-    const mailOptions: any = {
+    const mailOptions: nodemailer.SendMailOptions = {
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER, // You can change this to a team email
       subject: subject,
