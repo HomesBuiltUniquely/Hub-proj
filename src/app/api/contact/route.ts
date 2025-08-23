@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     
   const mailOptions = {
     from: "google Ads Lead <" + process.env.GMAIL_USER + ">",
-    to: process.env.GMAIL_USER, // You can change this to a team email
+    to: "hello <"+process.env.GMAIL_USER+ ">", // You can change this to a team email
       subject: subject,
     html: `
       <h3>Contact Form Submission</h3>
