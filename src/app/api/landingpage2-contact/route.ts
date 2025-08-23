@@ -39,22 +39,38 @@ export async function POST(req: Request) {
     },
   });
 
-    // ✅ Custom email format for LandingPage2 appointment booking
-    const subject = `Meta Lead - ${name}`;
+    // ✅ N8N-Friendly Email Configuration
+    const timestamp = new Date().toISOString();
+    const uniqueId = `APPOINTMENT_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    
+    // N8N-Friendly Subject with consistent format
+    const subject = `[N8N-APPOINTMENT] Meta Lead - ${name} - ${propertyType}`;
     
     // Prepare email options
     const mailOptions: nodemailer.SendMailOptions = {
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER, // You can change this to a team email
+      to: process.env.GMAIL_USER,
+      replyTo: email, // User's email for reply
       subject: subject,
+      // N8N-Friendly Headers
+      headers: {
+        'X-N8N-Appointment-ID': uniqueId,
+        'X-N8N-Source': 'Meta Ads',
+        'X-N8N-Form-Type': 'Appointment',
+        'X-N8N-Property-Type': propertyType,
+        'X-N8N-Timestamp': timestamp,
+        'X-N8N-Lead-Name': name
+      },
       html: `
+        <!-- N8N-Friendly Email Template -->
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
           <div style="background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
             
-            <!-- Header -->
-            <div style="text-align: center; margin-bottom: 30px; border-bottom: 3px solid #ef0101; padding-bottom: 20px;">
-              <h1 style="color: #ef0101; margin: 0; font-size: 28px; font-weight: bold;">🏠 Complete Home Interiors</h1>
-              <p style="color: #666; margin: 5px 0 0 0; font-size: 16px;">Appointment Booking Request</p>
+            <!-- N8N Header with Unique ID -->
+            <div style="background-color: #ef0101; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center;">
+              <h1 style="margin: 0; font-size: 24px; font-weight: bold;">🏠 Complete Home Interiors</h1>
+              <p style="margin: 5px 0 0 0; font-size: 16px;">Appointment Booking Request</p>
+              <p style="margin: 5px 0 0 0; font-size: 14px;">ID: ${uniqueId}</p>
             </div>
 
             <!-- Client Information -->
@@ -107,6 +123,16 @@ export async function POST(req: Request) {
             </div>
             ` : ''}
 
+            <!-- N8N Metadata -->
+            <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #2196f3;">
+              <h4 style="color: #1976d2; margin: 0 0 10px 0; font-size: 16px;">🔧 N8N Automation Data</h4>
+              <p style="color: #1976d2; margin: 5px 0; font-size: 12px;"><strong>Appointment ID:</strong> ${uniqueId}</p>
+              <p style="color: #1976d2; margin: 5px 0; font-size: 12px;"><strong>Source:</strong> Meta Ads</p>
+              <p style="color: #1976d2; margin: 5px 0; font-size: 12px;"><strong>Form Type:</strong> Appointment Booking</p>
+              <p style="color: #1976d2; margin: 5px 0; font-size: 12px;"><strong>Property Type:</strong> ${propertyType || 'Not selected'}</p>
+              <p style="color: #1976d2; margin: 5px 0; font-size: 12px;"><strong>Timestamp:</strong> ${timestamp}</p>
+            </div>
+
             <!-- Action Required -->
             <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
               <h3 style="color: #856404; margin: 0 0 10px 0; font-size: 18px;">⚠️ Action Required</h3>
@@ -119,7 +145,13 @@ export async function POST(req: Request) {
             <!-- Footer -->
             <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
               <p style="color: #666; margin: 0; font-size: 12px;">
+                Reply to this email to contact: <strong>${email || 'No email provided'}</strong>
+              </p>
+              <p style="color: #666; margin: 5px 0 0 0; font-size: 12px;">
                 This request was submitted from: <a href="${pageUrl || 'Not provided'}" target="_blank" style="color: #ef0101;">${pageUrl || 'Not provided'}</a>
+              </p>
+              <p style="color: #666; margin: 5px 0 0 0; font-size: 12px;">
+                Appointment ID: ${uniqueId} | Form: Appointment
               </p>
               <p style="color: #666; margin: 5px 0 0 0; font-size: 12px;">
                 Submitted on: ${new Date().toLocaleString('en-IN', { 
@@ -148,12 +180,12 @@ export async function POST(req: Request) {
       }];
     }
 
-    console.log('Sending LandingPage2 email with data:', { name, phone, email, pincode, propertyType, timeSlot, pageUrl, hasFile: !!file });
+    console.log('Sending N8N-friendly LandingPage2 email with data:', { name, phone, email, pincode, propertyType, timeSlot, pageUrl, hasFile: !!file, uniqueId });
 
     await transporter.sendMail(mailOptions);
-    console.log('LandingPage2 email sent successfully');
+    console.log('N8N-friendly LandingPage2 email sent successfully with ID:', uniqueId);
     
-    return NextResponse.json({ success: true, message: 'Appointment request sent successfully' });
+    return NextResponse.json({ success: true, message: 'Appointment request sent successfully', appointmentId: uniqueId });
   } catch (error) {
     console.error("LandingPage2 email send error:", error);
     return NextResponse.json({ 
