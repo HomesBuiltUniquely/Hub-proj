@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     }
     
   const mailOptions = {
-    from: process.env.GMAIL_USER,
+    from: email,
     to: process.env.GMAIL_USER, // You can change this to a team email
       subject: subject,
     html: `

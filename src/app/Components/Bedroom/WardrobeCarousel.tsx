@@ -88,7 +88,7 @@ const WardrobeCarousel: React.FC = () => {
                 <img
                   src={item.img}
                   alt={item.label}
-                  className="w-full h-56 object-cover rounded-3xl rounded-b-none group-hover:scale-105 transition duration-300"
+                  className="w-full h-56 object-cover rounded-3xl  rounded-b-none group-hover:scale-105 transition duration-300"
                 />
                 <div className="p-4 flex items-center">
                   <span className="bg-white/80 text-gray-800 font-semibold px-4 py-1 rounded-full shadow text-sm">
