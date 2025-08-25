@@ -1,220 +1,219 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
-import { useSwipeable } from 'react-swipeable';
+import { useState, useRef, useEffect } from 'react';
 
-export function CxSection() {
-  const videos = [
-    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4', title: 'Testimonial 1' },
-    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//hub%20journey%20(1)%20(1)%20(1).mp4', title: 'Testimonial 2' },
-    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//execution%20(1)%20(1)%20(1).mp4', title: 'Testimonial 3' },
-    { src: 'https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//hub%20journey%20(1)%20(1)%20(1).mp4', title: 'Testimonial 4' }
+interface Video {
+  id: number;
+  thumbnail: string;
+  title: string;
+  videoUrl: string;
+}
+
+export default function CxSection() {
+  const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const videoThumbnails: Video[] = [
+    {
+      id: 1,
+      thumbnail: "iam.webp",
+      title: "Master Bedroom Design",
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_153915_702.mp4"
+    },
+    {
+      id: 2,
+      thumbnail: "iam2.webp",
+      title: "Modern Living Room",
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//george%20f%20v_1%20(1)%20(1)%20(1).mp4"
+    },
+    {
+      id: 3,
+      thumbnail: "fk.webp",
+      title: "Kitchen Interior",
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_150443_314.mp4"
+    }
   ];
 
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
-  const desktopVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const mobileVideoRef = useRef<HTMLVideoElement>(null);
-  const [isSwiping, setIsSwiping] = useState(false);
+  const handleVideoClick = (video: Video) => {
+    setSelectedVideo(video);
+    setIsModalOpen(true);
+  };
 
-  // Initialize desktop video refs array
-  useEffect(() => {
-    desktopVideoRefs.current = desktopVideoRefs.current.slice(0, videos.length);
-  }, [videos.length]);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideo(null);
+  };
 
+  // Auto-advance carousel
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % videoThumbnails.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(timer);
+  }, [videoThumbnails.length]);
+
+  // Background video autoplay with mute
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.log("Autoplay prevented:", error);
+      });
+    }
   }, []);
 
-  useEffect(() => {
-    if (isSwiping) return;
-    
-    const interval = setInterval(() => {
-      if (isPlaying) {
-        handleVideoChange((currentVideoIndex + 1) % videos.length);
-      }
-    }, 8000);
-    
-    return () => clearInterval(interval);
-  }, [videos.length, isPlaying, isSwiping, currentVideoIndex]);
-
-  const handleVideoChange = (newIndex: number) => {
-    // Pause all videos first
-    if (windowWidth >= 1024) {
-      desktopVideoRefs.current.forEach(video => video?.pause());
-    } else {
-      mobileVideoRef.current?.pause();
-    }
-    
-    setCurrentVideoIndex(newIndex);
-    setIsPlaying(false);
-    
-    // Reset video elements
-    setTimeout(() => {
-      if (windowWidth >= 1024) {
-        const newVideo = desktopVideoRefs.current[1];
-        if (newVideo) {
-          newVideo.currentTime = 0;
-          if (isPlaying) {
-            newVideo.play().catch(e => console.log("Autoplay prevented:", e));
-          }
-        }
-      } else {
-        if (mobileVideoRef.current) {
-          mobileVideoRef.current.currentTime = 0;
-          if (isPlaying) {
-            mobileVideoRef.current.play().catch(e => console.log("Mobile play failed:", e));
-          }
-        }
-      }
-    }, 10);
-  };
-
-  const togglePlayPause = () => {
-    const activeVideo = windowWidth >= 1024 
-      ? desktopVideoRefs.current[1] 
-      : mobileVideoRef.current;
-      
-    if (activeVideo) {
-      if (isPlaying) {
-        activeVideo.pause();
-      } else {
-        // On mobile, we need to play with sound
-        if (windowWidth < 1024 && activeVideo.muted) {
-          activeVideo.muted = false;
-        }
-        activeVideo.play().catch(e => {
-          console.log("Play failed:", e);
-          // Fallback: mute and try again if autoplay fails
-          activeVideo.muted = true;
-          activeVideo.play().catch(e => console.log("Muted play failed:", e));
-        });
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const swipeHandlers = useSwipeable({
-    onSwiping: () => setIsSwiping(true),
-    onSwipedLeft: () => handleVideoChange((currentVideoIndex + 1) % videos.length),
-    onSwipedRight: () => handleVideoChange((currentVideoIndex - 1 + videos.length) % videos.length),
-    onSwiped: () => setIsSwiping(false),
-    trackMouse: false,
-  });
-
-  const getVideoHeight = () => {
-    if (windowWidth < 640) return '250px';
-    if (windowWidth < 768) return '300px';
-    if (windowWidth < 1024) return '350px';
-    return '500px';
-  };
-
-  return (
-    <div className="min-h-[500px] sm:min-h-[700px] flex flex-col items-center bg-[#F1F2F6] sm:py-12 px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-2xl sm:text-2xl md:text-4xl lg:text-4xl tracking-wider wulkan-display-bold text-amber-950 mb-20">
-          Testimonials
-        </h1>
-      </div>
-
-      {/* Mobile/Tablet - Single Video with Swipe */}
-      <div className="lg:hidden w-full max-w-[800px]" style={{ height: getVideoHeight() }}>
-        <div 
-          className="relative w-full h-full rounded-lg overflow-hidden shadow-xl sm:shadow-2xl"
-          {...swipeHandlers}
-        >
-          <video
-            ref={mobileVideoRef}
-            src={videos[currentVideoIndex].src}
-            className="w-full h-full object-cover"
-            autoPlay={false}
-            muted={false}
-            loop
-            playsInline
-            onClick={togglePlayPause}
-          />
-          
-          {!isPlaying && (
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
-                togglePlayPause();
-              }}
-              className="absolute inset-0 m-auto w-12 h-12 sm:w-14 sm:h-14 bg-black/30 rounded-full flex items-center justify-center hover:bg-black/40 transition-all"
-              aria-label={isPlaying ? "Pause video" : "Play video"}
+  return ( 
+    <div className="w-full h-auto">
+      {/* Desktop Layout */}
+      <div className="hidden lg:block">
+        <div className="w-[1200px] ml-10  relative h-[800px] min-h-[700px] overflow-hidden rounded-2xl">
+          {/* Background Video */}
+          <div className="absolute inset-0 z-0">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
             >
-              <span className="text-white text-2xl sm:text-3xl">▶</span>
-            </button>
-          )}
+              <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* Dark overlay for better text contrast */}
+            <div className="absolute inset-0 bg-[#F1F2F6] bg-opacity-40"></div>
+          </div>
+
+          {/* Content Overlay */}
+          <div className="relative z-10 h-full flex flex-col justify-center">
+            <div className="max-w-7xl mx-auto px-6 w-full">
+              {/* Text Header - Matching your screenshot */}
+              <div className="mb-16 text-black manrope-medium">
+                <h2 className="text-5xl md:text-4xl mr-10 leading-tight tracking-tight manrope-medium">
+                  HUB Happy Customers
+                </h2>
+                <div className="w-24 h-1 bg-red-500 mt-8"></div>
+              </div>
+
+              {/* Video Thumbnails Grid */}
+              <div className="grid grid-cols-3 gap-8">
+                {videoThumbnails.map((video) => (
+                  <div 
+                    key={video.id} 
+                    className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                    onClick={() => handleVideoClick(video)}
+                  >
+                    <div className="aspect-w-16 aspect-h-9">
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-110"
+                        // Check here
+                      />
+                      <div className="absolute inset-0 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
+                          <svg className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                      <h3 className="text-xl font-medium text-white">{video.title}</h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Desktop - Triple Video Carousel */}
-      <div className="hidden lg:flex relative w-full max-w-[1400px] h-[500px] gap-4 xl:gap-6 mt-6">
-        {[
-          videos[(currentVideoIndex - 1 + videos.length) % videos.length],
-          videos[currentVideoIndex],
-          videos[(currentVideoIndex + 1) % videos.length]
-        ].map((video, index) => (
-          <div 
-            key={`${video.src}-${index}`}
-            className={`relative flex-1 rounded-lg overflow-hidden shadow-xl xl:shadow-2xl transition-all duration-500 ${
-              index === 1 ? 'z-10 scale-105' : 'z-0 scale-95 opacity-90'
-            }`}
-            onClick={() => {
-              if (index === 1) {
-                togglePlayPause();
-              } else {
-                handleVideoChange((currentVideoIndex + index - 1 + videos.length) % videos.length);
-              }
-            }}
-          >
-            <video
-              ref={el => {
-                if (el) {
-                  desktopVideoRefs.current[index] = el;
-                }
-              }}
-              src={video.src}
-              className="w-full h-full object-cover cursor-pointer"
-              autoPlay={index === 1 && isPlaying}
-              muted={index !== 1}
-              loop
-              playsInline
-            />
-            
-            {index === 1 && !isPlaying && (
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  togglePlayPause();
-                }}
-                className="absolute inset-0 m-auto w-16 h-16 bg-black/30 rounded-full flex items-center justify-center hover:bg-black/40 transition-all"
-                aria-label="Play video"
+      {/* Mobile Layout */}
+      <div className="lg:hidden">
+        <div className="w-full bg-[#F1F2F6] py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
+                <span className="block ">HUB Happy</span>
+                <span className="block">Customers</span>
+              </h2>
+              <div className="w-16 h-1 bg-red-500 mx-auto"></div>
+            </div>
+
+            {/* Video Carousel */}
+            <div className="relative overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
-                <span className="text-white text-3xl">▶</span>
-              </button>
-            )}
+                {videoThumbnails.map((video) => (
+                  <div 
+                    key={video.id} 
+                    className="w-full flex-shrink-0 px-2"
+                    onClick={() => handleVideoClick(video)}
+                  >
+                    <div className="relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 active:scale-95">
+                      <div className="aspect-w-16 aspect-h-9">
+                        <img
+                          src={video.thumbnail}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0  bg-opacity-30 flex items-center justify-center">
+                          <div className="w-12 h-12 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
+                            <svg className="w-5 h-5 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                        {/* <h3 className="text-lg font-medium text-white">{video.title}</h3> */}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
 
-      {/* Navigation indicators */}
-      <div className="flex gap-3 sm:gap-4 mt-6 sm:mt-8">
-        {videos.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handleVideoChange(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-              currentVideoIndex === index ? 'bg-[#DDCDC1] w-4 sm:w-6' : 'bg-gray-400'
-            }`}
-            aria-label={`Go to testimonial ${index + 1}`}
-          />
-        ))}
-      </div>
+      {/* Video Modal */}
+      {isModalOpen && selectedVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-4xl">
+            <button
+              onClick={closeModal}
+              className="absolute -top-12 right-0 z-10 text-white hover:text-gray-300 transition-colors"
+              aria-label="Close video modal"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
+              <video
+                className="w-full h-full"
+                controls
+                autoPlay
+                playsInline
+                src={selectedVideo.videoUrl}
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            
+            <div className="mt-4 text-center">
+              <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
