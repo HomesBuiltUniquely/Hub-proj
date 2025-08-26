@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from "next/navigation";
 import {Pincode} from "./Pincode"
 import cityOptions from "./DropDown1"
