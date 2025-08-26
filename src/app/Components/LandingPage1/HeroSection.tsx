@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from "next/navigation";
 import {Pincode} from "./Pincode"
 import cityOptions from "./DropDown1"
@@ -30,16 +30,16 @@ export default function HeroSections() {
   const [selectedPincode, setSelectedPincode] = useState("");
   const [whatsappConsent, setWhatsappConsent] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [isVerified, setIsVerified] = useState(false);
+  const [showOtpModal, setShowOtpModal] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [verificationStatus, setVerificationStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
   const [isSendingOtpAuto, setIsSendingOtpAuto] = useState(false);
 
   // OTP States
-  const [showOtpModal, setShowOtpModal] = useState(false);
-  const [otp, setOtp] = useState('');
-  const [otpSent, setOtpSent] = useState(false);
   const [isOtpVerifying, setIsOtpVerifying] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
-  const [isSendingOtp, setIsSendingOtp] = useState(false);
 
   // Add state for form fields
   const [formData, setFormData] = useState({
@@ -97,11 +97,11 @@ export default function HeroSections() {
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     
-    if (otpSent && !isVerified && !isOtpVerifying) {
+    if (verificationStatus === 'Unverified User' && !isVerified && !isOtpVerifying) {
       timeoutId = setTimeout(async () => {
         console.log('Auto-closing modal and submitting as unverified after timeout');
         await handleModalClose();
-      }, 180000); // 3 minutes
+      }, 300000); // 5 minutes
     }
 
     return () => {
@@ -109,53 +109,7 @@ export default function HeroSections() {
         clearTimeout(timeoutId);
       }
     };
-  }, [otpSent, isVerified, isOtpVerifying]);
-
-  const handleSendOtp = async () => {
-    try {
-      setIsSendingOtp(true);
-
-      // Validate phone number
-      if (!formData.phone || formData.phone.length < 10) {
-        alert('Please enter a valid 10-digit phone number');
-        return;
-      }
-
-      // Clean and format phone number
-      const cleanedPhone = formData.phone.replace(/\D/g, "");
-      if (cleanedPhone.length !== 10) {
-        alert('Please enter a valid 10-digit phone number');
-        return;
-      }
-
-      const formattedPhoneNumber = `+91${cleanedPhone}`;
-      console.log('Sending OTP to:', formattedPhoneNumber);
-      
-      const response = await fetch('/api/send-twilio-otp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ phone: formattedPhoneNumber }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setOtpSent(true);
-        // Removed alert - OTP modal appears directly
-      } else {
-        // Still show modal but user needs to manually send OTP
-        setShowOtpModal(true);
-      }
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      // Still show modal but user needs to manually send OTP
-      setShowOtpModal(true);
-    } finally {
-      setIsSendingOtp(false);
-    }
-  };
+  }, [verificationStatus, isVerified, isOtpVerifying, handleModalClose]);
 
   const handleOtpSubmit = async () => {
     if (!otp || otp.length !== 6) {
@@ -166,7 +120,7 @@ export default function HeroSections() {
     setIsOtpVerifying(true);
     try {
       const cleanedPhone = formData.phone.replace(/\D/g, "");
-      const formattedPhoneNumber = `+91${cleanedPhone}`;
+      const formattedPhone = cleanedPhone.startsWith('+') ? cleanedPhone : `+91${cleanedPhone}`;
       
       const response = await fetch('/api/verify-twilio-otp', {
         method: 'POST',
@@ -174,7 +128,7 @@ export default function HeroSections() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          phone: formattedPhoneNumber,
+          phone: formattedPhone, 
           otp: otp 
         }),
       });
@@ -185,25 +139,15 @@ export default function HeroSections() {
         setIsVerified(true);
         setOtp('');
         // Removed alert - no interruption during verification
-        setOtpSent(false);
+        setVerificationStatus('Verified User');
         
         // Automatically submit the form as verified user
         await handleFinalSubmit('Verified User');
-        
-        // Close the modal after successful submission
-        setShowOtpModal(false);
-        setIsVerified(false);
-        
       } else {
         // Removed alert - no interruption during verification
-        // After wrong OTP, give user option to try again or close modal
-        const shouldClose = window.confirm('Invalid OTP. Would you like to try again or close and submit as unverified?');
-        if (!shouldClose) {
-          await handleModalClose();
-        }
       }
     } catch (error) {
-      console.error('Error verifying OTP:', error);
+      console.error("Error verifying OTP:", error);
       // Removed alert - no interruption during verification
     } finally {
       setIsOtpVerifying(false);
@@ -292,7 +236,7 @@ export default function HeroSections() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setOtpSent(true);
+        setVerificationStatus('Unverified User'); // Set status to unverified
         setShowOtpModal(true);
         // Removed alert - OTP modal appears directly
       } else {
@@ -309,22 +253,22 @@ export default function HeroSections() {
   };
 
   // Function to handle modal close and auto-submit as unverified
-  const handleModalClose = async () => {
-    if (otpSent && !isVerified) {
+  const handleModalClose = useCallback(async () => {
+    if (verificationStatus === 'Unverified User') {
       // User started OTP process but didn't complete it - submit as unverified
       console.log('Modal closed with unverified OTP - submitting as unverified');
       await handleFinalSubmit('Unverified User');
-    } else if (!otpSent) {
+    } else if (verificationStatus === '') {
       // User never clicked "Send OTP" - submit as unverified
       console.log('Modal closed without sending OTP - submitting as unverified');
       await handleFinalSubmit('Unverified User');
     }
     
     setShowOtpModal(false);
-    setOtpSent(false);
+    setVerificationStatus('');
     setOtp('');
     setIsVerified(false);
-  };
+  }, [verificationStatus, handleFinalSubmit]);
 
   const handleFinalSubmitWithoutReset = async (verificationStatus = 'Unverified User') => {
     console.log('handleFinalSubmitWithoutReset called with status:', verificationStatus);
