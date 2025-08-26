@@ -35,7 +35,6 @@ export default function HeroSections() {
   const [otp, setOtp] = useState('');
   const [verificationStatus, setVerificationStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isVerifying, setIsVerifying] = useState(false);
   const [isSendingOtpAuto, setIsSendingOtpAuto] = useState(false);
 
   // OTP States
@@ -94,6 +93,23 @@ export default function HeroSections() {
   };
 
   // Auto-close modal and submit as unverified after 3 minutes if OTP was sent but not verified
+  const handleModalClose = async () => {
+    if (verificationStatus === 'Unverified User') {
+      // User started OTP process but didn't complete it - submit as unverified
+      console.log('Modal closed with unverified OTP - submitting as unverified');
+      await handleFinalSubmit('Unverified User');
+    } else if (verificationStatus === '') {
+      // User never clicked "Send OTP" - submit as unverified
+      console.log('Modal closed without sending OTP - submitting as unverified');
+      await handleFinalSubmit('Unverified User');
+    }
+    
+    setShowOtpModal(false);
+    setVerificationStatus('');
+    setOtp('');
+    setIsVerified(false);
+  };
+
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     
@@ -109,7 +125,7 @@ export default function HeroSections() {
         clearTimeout(timeoutId);
       }
     };
-  }, [verificationStatus, isVerified, isOtpVerifying, handleModalClose]);
+  }, [verificationStatus, isVerified, isOtpVerifying]);
 
   const handleOtpSubmit = async () => {
     if (!otp || otp.length !== 6) {
@@ -251,24 +267,6 @@ export default function HeroSections() {
       setIsSendingOtpAuto(false);
     }
   };
-
-  // Function to handle modal close and auto-submit as unverified
-  const handleModalClose = useCallback(async () => {
-    if (verificationStatus === 'Unverified User') {
-      // User started OTP process but didn't complete it - submit as unverified
-      console.log('Modal closed with unverified OTP - submitting as unverified');
-      await handleFinalSubmit('Unverified User');
-    } else if (verificationStatus === '') {
-      // User never clicked "Send OTP" - submit as unverified
-      console.log('Modal closed without sending OTP - submitting as unverified');
-      await handleFinalSubmit('Unverified User');
-    }
-    
-    setShowOtpModal(false);
-    setVerificationStatus('');
-    setOtp('');
-    setIsVerified(false);
-  }, [verificationStatus, handleFinalSubmit]);
 
   const handleFinalSubmitWithoutReset = async (verificationStatus = 'Unverified User') => {
     console.log('handleFinalSubmitWithoutReset called with status:', verificationStatus);
