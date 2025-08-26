@@ -5,15 +5,6 @@ import { useRouter } from "next/navigation";
 import {Pincode} from "./Pincode"
 import cityOptions from "./DropDown1"
 import {budgetOptions} from "./DropDown2"
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from "firebase/auth";
-import { app } from '../../config';
-import { FirebaseError } from "firebase/app";
-
-declare global {
-  interface Window {
-    recaptchaVerifier?: RecaptchaVerifier | null | undefined;
-  }
-}
 
 const carouselImages = [
   "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//3.png",
@@ -40,16 +31,15 @@ export default function HeroSections() {
   const [whatsappConsent, setWhatsappConsent] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
+  const [isSendingOtpAuto, setIsSendingOtpAuto] = useState(false);
 
   // OTP States
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otp, setOtp] = useState('');
-  const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
   const [otpSent, setOtpSent] = useState(false);
   const [isOtpVerifying, setIsOtpVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [recaptchaCompleted, setRecaptchaCompleted] = useState(false);
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
 
   // Add state for form fields
   const [formData, setFormData] = useState({
@@ -57,8 +47,6 @@ export default function HeroSections() {
     email: '',
     phone: ''
   });
-
-  const auth = getAuth(app);
 
   // Auto-slide effect
   useEffect(() => {
@@ -71,7 +59,6 @@ export default function HeroSections() {
   const cityRef = useRef<HTMLDivElement>(null);
   const budgetRef = useRef<HTMLDivElement>(null);
 
-
   const handleCitySelect = (value: string) => {
     console.log('City selected:', value);
     setSelectedCity(value);
@@ -83,9 +70,6 @@ export default function HeroSections() {
     setSelectedBudget(value);
     setTimeout(() => setBudgetOpen(false), 100);
   };
-
-  // const handlePrev = () => setCarouselIndex((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1));
-  // const handleNext = () => setCarouselIndex((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -109,45 +93,6 @@ export default function HeroSections() {
     });
   };
 
-  // Initialize reCAPTCHA
-  useEffect(() => {
-    if (showOtpModal) {
-      // Clear any existing reCAPTCHA
-      if (window.recaptchaVerifier) {
-          window.recaptchaVerifier.clear();
-        window.recaptchaVerifier = null;
-      }
-
-      // Wait for DOM to be ready
-      setTimeout(() => {
-    try {
-          window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-            'size': 'normal',
-            'callback': () => {
-              console.log('reCAPTCHA verified');
-              setRecaptchaCompleted(true);
-            },
-            'expired-callback': () => {
-              console.log('reCAPTCHA expired');
-              setRecaptchaCompleted(false);
-            }
-          });
-          
-          // Render the reCAPTCHA
-          window.recaptchaVerifier.render();
-        } catch (error) {
-          console.error('Error initializing reCAPTCHA:', error);
-          }
-      }, 100);
-    } else {
-      // Cleanup when modal closes
-      if (window.recaptchaVerifier) {
-          window.recaptchaVerifier.clear();
-        window.recaptchaVerifier = null;
-      }
-    }
-  }, [showOtpModal, auth]);
-
   // Auto-close modal and submit as unverified after 3 minutes if OTP was sent but not verified
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -168,10 +113,7 @@ export default function HeroSections() {
 
   const handleSendOtp = async () => {
     try {
-      if (!window.recaptchaVerifier) {
-        alert('reCAPTCHA not initialized. Please try again.');
-        return;
-      }
+      setIsSendingOtp(true);
 
       // Validate phone number
       if (!formData.phone || formData.phone.length < 10) {
@@ -188,40 +130,30 @@ export default function HeroSections() {
 
       const formattedPhoneNumber = `+91${cleanedPhone}`;
       console.log('Sending OTP to:', formattedPhoneNumber);
-      console.log('Auth instance:', auth);
-      console.log('reCAPTCHA verifier:', window.recaptchaVerifier);
       
-      // Check if reCAPTCHA is completed
-      if (!recaptchaCompleted) {
-        alert('Please complete the reCAPTCHA verification first.');
-        return;
-      }
-      
-      const confirmation = await signInWithPhoneNumber(auth, formattedPhoneNumber, window.recaptchaVerifier);
-      setConfirmationResult(confirmation);
-      setOtpSent(true);
-      alert('OTP has been sent to your phone number');
-    } catch (error: unknown) {
-      if (error instanceof FirebaseError) {
-        console.error("Error sending OTP:", error);
-        console.error("Error code:", error.code);
-        console.error("Error message:", error.message);
-    
-        if (error.code === "auth/invalid-app-credential") {
-          alert("Firebase configuration error. Please check your Firebase settings and authorized domains.");
-        } else if (error.code === "auth/invalid-phone-number") {
-          alert("Invalid phone number format. Please enter a valid 10-digit Indian phone number.");
-        } else if (error.code === "auth/too-many-requests") {
-          alert("Too many OTP requests. Please wait a few minutes before trying again.");
-        } else if (error.code === "auth/invalid-recaptcha-token") {
-          alert("reCAPTCHA verification failed. Please try again.");
-        } else {
-          alert("Error sending OTP. Please try again. Make sure you complete the reCAPTCHA.");
-        }
+      const response = await fetch('/api/send-twilio-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phone: formattedPhoneNumber }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setOtpSent(true);
+        // Removed alert - OTP modal appears directly
       } else {
-        console.error("Unknown error sending OTP:", error);
-        alert("An unknown error occurred while sending OTP.");
+        // Still show modal but user needs to manually send OTP
+        setShowOtpModal(true);
       }
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      // Still show modal but user needs to manually send OTP
+      setShowOtpModal(true);
+    } finally {
+      setIsSendingOtp(false);
     }
   };
 
@@ -230,37 +162,49 @@ export default function HeroSections() {
       alert('Please enter a valid 6-digit OTP');
       return;
     }
-    
-    if (!confirmationResult) {
-      alert('No confirmation result available. Please try again.');
-      return;
-    }
 
     setIsOtpVerifying(true);
     try {
-      await confirmationResult.confirm(otp);
-      setIsVerified(true);
-      setOtp('');
-      alert('Phone number verified successfully! Submitting your form...');
-      setOtpSent(false);
-      setConfirmationResult(null);
+      const cleanedPhone = formData.phone.replace(/\D/g, "");
+      const formattedPhoneNumber = `+91${cleanedPhone}`;
       
-      // Automatically submit the form as verified user
-      await handleFinalSubmit('Verified User');
-      
-      // Close the modal after successful submission
-      setShowOtpModal(false);
-      setIsVerified(false);
-      setRecaptchaCompleted(false);
-      
+      const response = await fetch('/api/verify-twilio-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          phone: formattedPhoneNumber,
+          otp: otp 
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsVerified(true);
+        setOtp('');
+        // Removed alert - no interruption during verification
+        setOtpSent(false);
+        
+        // Automatically submit the form as verified user
+        await handleFinalSubmit('Verified User');
+        
+        // Close the modal after successful submission
+        setShowOtpModal(false);
+        setIsVerified(false);
+        
+      } else {
+        // Removed alert - no interruption during verification
+        // After wrong OTP, give user option to try again or close modal
+        const shouldClose = window.confirm('Invalid OTP. Would you like to try again or close and submit as unverified?');
+        if (!shouldClose) {
+          await handleModalClose();
+        }
+      }
     } catch (error) {
       console.error('Error verifying OTP:', error);
-      alert('Invalid OTP. Please try again.');
-      // After wrong OTP, give user option to try again or close modal
-      const shouldClose = window.confirm('Invalid OTP. Would you like to try again or close and submit as unverified?');
-      if (!shouldClose) {
-        await handleModalClose();
-      }
+      // Removed alert - no interruption during verification
     } finally {
       setIsOtpVerifying(false);
     }
@@ -312,8 +256,56 @@ export default function HeroSections() {
     console.log('Submitting form data immediately as unverified');
     await handleFinalSubmitWithoutReset('Unverified User');
     
-    // Then show OTP modal for verification
-    setShowOtpModal(true);
+    // Automatically send OTP and show modal
+    await handleAutoSendOtp();
+  };
+
+  // New function to automatically send OTP
+  const handleAutoSendOtp = async () => {
+    try {
+      setIsSendingOtpAuto(true);
+      
+      // Validate phone number
+      if (!formData.phone || formData.phone.length < 10) {
+        alert('Please enter a valid 10-digit phone number');
+        return;
+      }
+
+      // Clean and format phone number
+      const cleanedPhone = formData.phone.replace(/\D/g, "");
+      if (cleanedPhone.length !== 10) {
+        alert('Please enter a valid 10-digit phone number');
+        return;
+      }
+
+      const formattedPhoneNumber = `+91${cleanedPhone}`;
+      console.log('Automatically sending OTP to:', formattedPhoneNumber);
+      
+      const response = await fetch('/api/send-twilio-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phone: formattedPhoneNumber }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setOtpSent(true);
+        setShowOtpModal(true);
+        // Removed alert - OTP modal appears directly
+      } else {
+        // Still show modal but user needs to manually send OTP
+        setShowOtpModal(true);
+      }
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      // Still show modal but user needs to manually send OTP
+      setShowOtpModal(true);
+    } finally {
+      setIsSendingOtpAuto(false);
+    }
   };
 
   // Function to handle modal close and auto-submit as unverified
@@ -331,9 +323,7 @@ export default function HeroSections() {
     setShowOtpModal(false);
     setOtpSent(false);
     setOtp('');
-    setConfirmationResult(null);
     setIsVerified(false);
-    setRecaptchaCompleted(false);
   };
 
   const handleFinalSubmitWithoutReset = async (verificationStatus = 'Unverified User') => {
@@ -344,7 +334,6 @@ export default function HeroSections() {
     console.log('selectedPincode:', selectedPincode);
     
     setIsSubmitting(true);
-    setSubmitStatus('');
 
     try {
       const currentUrl = window.location.href;
@@ -382,20 +371,13 @@ export default function HeroSections() {
       console.log('API response data:', responseData);
 
       if (response.ok && responseData.success) {
-        setSubmitStatus('success');
-        
-        if (verificationStatus === 'Verified User') {
-          alert('Form submitted successfully! We will contact you soon.');
-        } else {
-          alert('Form submitted! Please verify your phone number for faster response.');
-        }
+        // Form submitted successfully as unverified - no alert needed
+        // OTP modal will appear directly
       } else {
-        setSubmitStatus('error');
         alert(responseData.message || 'Failed to submit form. Please try again.');
       }
     } catch (error: unknown) {
       console.error('Error submitting form:', error);
-      setSubmitStatus('error');
     
       if (error instanceof Error && error.name === 'AbortError') {
         alert('Request timed out. Please check your internet connection and try again.');
@@ -416,7 +398,6 @@ export default function HeroSections() {
     console.log('selectedPincode:', selectedPincode);
     
     setIsSubmitting(true);
-    setSubmitStatus('');
 
     try {
       const currentUrl = window.location.href;
@@ -454,33 +435,31 @@ export default function HeroSections() {
       console.log('API response data:', responseData);
 
       if (response.ok && responseData.success) {
-        setSubmitStatus('success');
-        
         if (verificationStatus === 'Verified User') {
-          alert('Form submitted successfully! We will contact you soon.');
+          // Removed alert - redirect happens silently
 
           // Set flag to trigger reload on Thank You page
           sessionStorage.setItem('formSubmitted', 'true');
+          
+          // Reset form
+          setSelectedCity("");
+          setSelectedBudget("");
+          setSelectedPincode("");
+          setWhatsappConsent(true);
+          setFormData({ name: '', email: '', phone: '' });
+          setIsVerified(false);
+          setShowOtpModal(false);
+          
+          // Redirect to thank you page
           router.push('/Form-Submit-Thank-You');
         } else {
-          alert('Form submitted! Please verify your phone number for faster response.');
+          // Removed alert - OTP modal will appear directly
         }
-        
-        // Reset form
-        setSelectedCity("");
-        setSelectedBudget("");
-        setSelectedPincode("");
-        setWhatsappConsent(true);
-        setFormData({ name: '', email: '', phone: '' });
-        setIsVerified(false);
-        setShowOtpModal(false);
       } else {
-        setSubmitStatus('error');
         alert(responseData.message || 'Failed to submit form. Please try again.');
       }
     } catch (error: unknown) {
       console.error('Error submitting form:', error);
-      setSubmitStatus('error');
     
       if (error instanceof Error && error.name === 'AbortError') {
         alert('Request timed out. Please check your internet connection and try again.');
@@ -646,11 +625,11 @@ export default function HeroSections() {
                 {/* Submit Button */}
               <button
                 type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || isSendingOtpAuto}
                   className="flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] font-medium justify-center items-center lg:mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                  <p>{isSubmitting ? 'Sending...' : 'Submit'}</p>
-                  {!isSubmitting && (
+                  <p>{isSubmitting || isSendingOtpAuto ? 'Sending...' : 'Submit'}</p>
+                  {!isSubmitting && !isSendingOtpAuto && (
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 sm:size-6 lg:size-7 ml-2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
@@ -658,19 +637,6 @@ export default function HeroSections() {
               </button>
             </div>
 
-              {/* Success/Error Messages */}
-              {submitStatus === 'success' && (
-                <div className="text-green-600 text-center text-sm mt-4 font-medium">
-                  Thank you! We&#39;ll get back to you soon.
-                </div>
-              )}
-              
-              {submitStatus === 'error' && (
-                <div className="text-red-600 text-center text-sm mt-4 font-medium">
-                  Something went wrong. Please try again.
-                </div>
-              )}
-              
               {/* Legal Text */}
             <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-center sm:text-left mr-0 sm:mr-26 lg:ml-2">
               By Submitting This Form, You Agree To The{" "}
@@ -823,11 +789,11 @@ export default function HeroSections() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || isSendingOtpAuto}
                     className="flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] font-medium justify-center items-center lg:mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <p>{isSubmitting ? 'Sending...' : 'Submit'}</p>
-                    {!isSubmitting && (
+                    <p>{isSubmitting || isSendingOtpAuto ? 'Sending...' : 'Submit'}</p>
+                    {!isSubmitting && !isSendingOtpAuto && (
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 sm:size-6 lg:size-7 ml-2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -835,19 +801,6 @@ export default function HeroSections() {
                   </button>
                 </div>
 
-                {/* Success/Error Messages */}
-                {submitStatus === 'success' && (
-                  <div className="text-green-600 text-center text-sm mt-4 font-medium">
-                    Thank you! We&#39;ll get back to you soon.
-                  </div>
-                )}
-                
-                {submitStatus === 'error' && (
-                  <div className="text-red-600 text-center text-sm mt-4 font-medium">
-                    Something went wrong. Please try again.
-                  </div>
-                )}
-                
                 {/* Legal Text */}
                 <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-center sm:text-left mr-0 sm:mr-26 lg:ml-2 ">
                   By Submitting This Form, You Agree To The{" "}
@@ -890,53 +843,35 @@ export default function HeroSections() {
               </button>
             </div>
 
-            {!otpSent ? (
-              <div>
-                <p className="text-gray-600 mb-4">
-                  Please verify your phone number to continue. We&#39;ll send an OTP to {formData.phone}
-                </p>
-                <div id="recaptcha-container" className="mb-4"></div>
+            <div>
+              <p className="text-gray-600 mb-4">
+                Enter the 6-digit OTP sent to {formData.phone}
+              </p>
+              <input
+                type="text"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                placeholder="Enter 6-digit OTP"
+                maxLength={6}
+                className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium"
+              />
+              <div className="flex gap-3">
                 <button
-                  onClick={handleSendOtp}
-                  className="w-full bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-semibold hover:bg-[#c4b5a8] transition-colors"
+                  onClick={handleOtpSubmit}
+                  disabled={isOtpVerifying || otp.length !== 6}
+                  className="flex-1 bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-semibold hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send OTP
+                  {isOtpVerifying ? 'Verifying...' : 'Verify OTP'}
+                </button>
+                <button
+                  onClick={handleAutoSendOtp}
+                  disabled={isSendingOtpAuto}
+                  className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSendingOtpAuto ? 'Sending...' : 'Resend OTP'}
                 </button>
               </div>
-            ) : (
-              <div>
-                <p className="text-gray-600 mb-4">
-                  Enter the 6-digit OTP sent to {formData.phone}
-                </p>
-                <input
-                  type="text"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  placeholder="Enter 6-digit OTP"
-                  maxLength={6}
-                  className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium"
-                />
-                <div className="flex gap-3">
-                  <button
-                    onClick={handleOtpSubmit}
-                    disabled={isOtpVerifying || otp.length !== 6}
-                    className="flex-1 bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-semibold hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isOtpVerifying ? 'Verifying...' : 'Verify OTP'}
-                  </button>
-                  <button
-                    onClick={handleSendOtp}
-                    className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-colors"
-                  >
-                    Resend
-                  </button>
-                </div>
-              </div>
-            )}
-
-
-
-
+            </div>
           </div>
         </div>
       )}
