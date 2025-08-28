@@ -1,6 +1,10 @@
 export default function Section7(){
     return (
         <div>
+          <div className="2xl:block hidden">
+
+          </div>
+          <div className="2xl:hidden block">
             <div className="w-screen h-auto flex justify-between">
             <div className="w-[450px] h-[600px] bg-red-400 mt-30 ml-10">
 
@@ -45,6 +49,7 @@ export default function Section7(){
               <div className="pl-4 pt-6 w-[350px]">At HUB Interiors, — it&#39;s about creating spaces that reflect you.</div>
             </div>
                 </div>
+            </div>
             </div>
         </div>
     )

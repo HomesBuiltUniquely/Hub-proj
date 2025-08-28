@@ -1,8 +1,11 @@
 export default function Section6() {
   return (
     <div>
+      <div className="2xl:block hidden">
+
+      </div>
       <div>
-        <div className="">
+        <div className="2xl:hidden block">
           <div className="w-screen h-auto">
           <div className="">
           <h1 className="text-5xl manrope-medium pt-20 pl-10">Mission</h1>

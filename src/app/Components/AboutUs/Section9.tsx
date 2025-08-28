@@ -59,6 +59,15 @@ export default function Section9() {
   };
 
   return (
+    <div>
+    <div className=''>
+
+
+
+
+
+    </div>
+    <div className=''>
     <div className="w-screen h-screen relative overflow-hidden">
       <div className="text-5xl manrope pt-20 pl-12">Core Members</div>
       
@@ -119,6 +128,8 @@ export default function Section9() {
           ))}
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

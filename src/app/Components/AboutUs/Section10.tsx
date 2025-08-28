@@ -1,7 +1,10 @@
 export default function Section10() {
   return (
     <div>
-      <div className="mt-20 ml-9 w-screen h-auto">
+      <div className="2xl:block hidden">
+
+      </div>
+      <div className="mt-20 ml-9 w-screen h-auto 2xl:hidden block">
         <div className="w-[1400px] h-[450px] bg-red-300 relative rounded-2xl">
           <img src="bn.jpg" className="w-[1400px] h-[450px] rounded-2xl absolute"></img>
           <div className="w-[550px] h-[300px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-10 mt-25 rounded-2xl">

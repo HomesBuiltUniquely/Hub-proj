@@ -1,332 +1,56 @@
-'use client';
-import React, { useState } from "react";
+import Image from "next/image"
+import Link from "next/link"
 
-// --- Dummy Data ---
-const featuredVideos = [
-  {
-    id: 1,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp", // Add your thumbnail image here
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "Geroge, Royal Tulip",
-  },
-  {
-    id: 2,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "Geroge, Royal Tulip",
-  },
-  {
-    id: 3,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "Geroge, Royal Tulip",
-  },
-  {
-    id: 4,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "Geroge, Royal Tulip",
-  },
-  {
-    id: 5,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "Geroge, Royal Tulip",
-  },
-  {
-    id: 6,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "Geroge, Royal Tulip",
-  },
-];
+export default function Herosection(){
+    return(
+        <div>
 
-const googleReviews = [
-  {
-    id: 1,
-    name: "Baishakhi M",
-    rating: 5,
-    location: "Sumadhura Epitome",
-    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 2,
-    name: "Baishakhi M",
-    rating: 5,
-    location: "Sumadhura Epitome",
-    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 3,
-    name: "Baishakhi M",
-    rating: 5,
-    location: "Sumadhura Epitome",
-    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
-    avatar: "/baishakhi.jpg",
-  },
-];
+            <div className="2xl:block hidden">
 
-const FeaturedCustomerSection = () => {
-  // Track currently playing video by id
-  const [playingVideoId, setPlayingVideoId] = useState<number | null>(null);
 
-  return (
-    <section className="max-w-7xl mx-auto px-3 md:px-8 py-12">
-      {/* Featured Customers */}
-      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
-        Featured Customers
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 mt-20">
-        {featuredVideos.map((item) => (
-          <div
-            key={item.id}
-            className="relative h-[300px] rounded-2xl overflow-hidden shadow-lg group bg-black"
-          >
-            {playingVideoId === item.id ? (
-              <video
-                src={item.src}
-                controls
-                autoPlay
-                className="w-full h-full object-cover"
-                onEnded={() => setPlayingVideoId(null)}
-              />
-            ) : (
-              <>
-                <img
-                  src={item.thumbnail}
-                  alt={`Thumbnail for video by ${item.author}`}
-                  className="w-full h-full object-cover cursor-pointer"
-                  onClick={() => setPlayingVideoId(item.id)}
-                />
-                <div className="absolute inset-0 bg-opacity-50 flex justify-center items-center cursor-pointer"
-                  onClick={() => setPlayingVideoId(item.id)}
-                  aria-label="Play video"
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={(e) => { if (e.key === 'Enter' || e.key === ' ') setPlayingVideoId(item.id); }}
-                >
-                  <svg width={64} height={64} viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="12" fill="rgba(255, 255, 255, 0.7)" />
-                    <polygon points="10,8 16,12 10,16" fill="#222" />
-                  </svg>
+
+            <div className="w-screen h-screen">
+                <div className="relative">
+                <img src="Mask-group.png" alt="" className="w-[2510px] h-screen ml-6"/>
+                <Image src="/LOGO.png" alt="LOGO" width={180} height={90} className="-mt-330 ml-16"></Image>
+                <div className=" ml-405 -mt-14 text-white ">
+                <Link href="/" className="pr-10  hover:text-amber-300 text-2xl manrope">HOME</Link>
+                <Link href="/Services" className="pr-10 hover:text-amber-300 text-2xl manrope">SERVICE</Link>
+                <Link href="/Services" className="hover:text-amber-300 text-2xl manrope">EXPLORE ROOMS</Link>
                 </div>
-              </>
-            )}
-
-            <div className="absolute bottom-0 left-0 right-0 bg-transparent bg-opacity-60 px-4 py-3 flex flex-col mb-6">
-              <p className="text-white text-sm mb-1">{item.quote}</p>
-              <span className="text-gray-300 w-[135px] h-[20px] pt-0.5 text-xs backdrop-blur-2xl bg-white/30 rounded-4xl pl-3">{item.author}</span>
+                <div className="w-[300px] h-[60px] ml-294 -mt-12 bg-[#f1f2f6]"><button className="manrope-medium text-xl w-[350px] h-[65px] bg-[#ddcdc1] rounded-4xl ml-240 hover:bg-[#ef0101] pt-1">Get Free Estimate</button></div>
+                <div className=" text-white ml-20 mt-160">
+                        <div className="text-[76px] manrope-medium">HOMES ,</div>  
+                        <div className="text-[90px] wulkan-display pt-5">uniquely</div>
+                        <div className="text-[76px] manrope-medium pt-5">BUILT</div>
+                </div>
+                </div>   
             </div>
-          </div>
-        ))}
-      </div>
 
-      {/* Google Reviews */}
-      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
-        Google Reviews
-      </h2>
-      <div className="flex gap-6 flex-wrap justify-center mt-20">
-        {googleReviews.map((review) => (
-          <div
-            key={review.id}
-            className="bg-white shadow-lg rounded-2xl p-5 w-72 flex flex-col items-center"
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <img
-                src={review.avatar}
-                alt={review.name}
-                className="w-9 h-9 rounded-full object-cover"
-              />
-              <span className="font-semibold text-gray-700">{review.name}</span>
-              <span className="ml-2 text-yellow-500 flex">
-                {"★".repeat(review.rating)}
-              </span>
-              <svg
-                height={21}
-                width={21}
-                className="ml-2 text-gray-300"
-                aria-label="Google icon"
-                role="img"
-              >
-                <circle cx="10" cy="10" r="10" fill="#eee" />
-                <text
-                  x={5}
-                  y={16}
-                  fontSize={12}
-                  fontFamily="sans-serif"
-                  fill="#4285F4"
-                >
-                  G
-                </text>
-              </svg>
+
+         
+</div>
+          
+           
+           <div className="xl:block 2xl:hidden hidden">
+                <div className="w-screen h-auto">
+                <div className="relative w-[1400px] h-[800px] ml-5">
+                <img src="Mask-group.png" alt="" className="w-[1400px] h-[800px] m-4"/>
+                <Image src="/LOGO.png" alt="LOGO" width={140} height={90} className="-mt-198 ml-16"></Image>
+                <div className=" ml-200 -mt-12 text-white ">
+                <Link href="/" className="pr-6 hover:text-amber-300 manrope text-[16px]">HOME</Link>
+                <Link href="/Services" className="pr-6 hover:text-amber-300 manrope text-[16px]">SERVICE</Link>
+                <Link href="/Services" className="hover:text-amber-300 manrope text-[16px]">EXPLORE ROOMS</Link>
+                </div>
+                <div className="w-[300px] h-[60px] ml-254 -mt-12 bg-[#f1f2f6]"><button className="manrope-medium w-[190px] h-[40px] bg-[#ddcdc1] rounded-4xl ml-45 mt-2">Get Free Estimate</button></div>
+                <div className=" text-white ml-20 mt-90">
+                        <div className="text-6xl manrope">HOMES ,</div>  
+                        <div className="text-7xl wulkan-display pt-5">uniquely</div>
+                        <div className="text-6xl manrope pt-5">BUILT</div>
+               </div>
+                </div>   
+                </div>
             </div>
-            <span className="text-gray-500 text-xs mb-2">{review.location}</span>
-            <p className="text-gray-700 text-sm">{review.text}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
-export default FeaturedCustomerSection;
-
-
-
-
-// components/InspirationBoard.tsx
-"use client";
-
-import React, { JSX, useState } from "react";
-import Image from "next/image";
-
-const topCategories = ["Kitchen", "Living Room", "Bedroom", "Wardrobe", "Kids Room"];
-const bottomCategories = ["Kitchen", "Kitchen", "Kitchen", "Kitchen", "Kitchen"];
-
-type Img = { src: string; alt: string };
-
-const gallery: Img[] = [
-  { src: "/bn.jpg", alt: "Kitchen - wood & grey" },
-  { src: "/bn.jpg", alt: "Modern kitchen island" },
-  { src: "/bn.jpg", alt: "Small kitchen thumbnail" },
-  { src: "/bn.jpg", alt: "See more thumbnail" },
-];
-
-export default function InspirationBoard(): JSX.Element {
-  const [active, setActive] = useState<string>("Kitchen");
-
-  return (
-    <section className="bg-gray-50 py-12 px-4 sm:px-8 lg:px-16">
-      {/* Heading */}
-      <div className="max-w-3xl mx-auto text-center">
-        <p className="text-gray-600 text-lg leading-relaxed">
-          Step into a world of creativity where every idea is a stepping stone to your dream space.
-          Our Inspiration Board is filled with fresh concepts, trending designs, and timeless styles
-          to spark your imagination and guide your next project.
-        </p>
-      </div>
-
-      {/* Category pill rows */}
-      <div className="max-w-5xl mx-auto mt-8">
-        <div className="flex flex-wrap justify-center gap-6">
-          {topCategories.map((c) => (
-            <button
-              key={c}
-              onClick={() => setActive(c)}
-              className={`px-6 py-2 rounded-full transition-shadow border ${
-                active === c
-                  ? "bg-[#3a2d25] text-white shadow-md"
-                  : "bg-white text-gray-700 shadow-sm"
-              }`}
-            >
-              {c}
-            </button>
-          ))}
         </div>
-
-        <div className="flex flex-wrap justify-center gap-6 mt-4">
-          {bottomCategories.map((c, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(c)}
-              className="px-5 py-2 rounded-full bg-white text-gray-600 shadow-sm"
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Gallery grid */}
-      <div className="max-w-6xl mx-auto mt-10">
-        {/* On large screens: 12-col grid with 2 rows of fixed height (arbitrary value) so left/center span both rows */}
-        <div className="grid grid-cols-12 gap-4 lg:[grid-template-rows:repeat(2,22rem)]">
-          {/* Left big image: spans two rows on lg */}
-          <div className="relative col-span-12 md:col-span-6 lg:col-span-5 lg:row-span-2 rounded-xl overflow-hidden bg-gray-200">
-            <Image src={gallery[0].src} alt={gallery[0].alt} fill className="object-cover" />
-          </div>
-
-          {/* Center big image: spans two rows on lg */}
-          <div className="relative col-span-12 md:col-span-6 lg:col-span-5 lg:row-span-2 rounded-xl overflow-hidden bg-gray-200">
-            <Image src={gallery[1].src} alt={gallery[1].alt} fill className="object-cover" />
-          </div>
-
-          {/* Right column top small (row 1) */}
-          <div className="relative col-span-12 lg:col-span-2 lg:row-start-1 lg:row-span-1 rounded-xl overflow-hidden bg-gray-200">
-            <Image src={gallery[2].src} alt={gallery[2].alt} fill className="object-cover" />
-          </div>
-
-          {/* Right column bottom small (row 2) with overlay */}
-          <div className="relative col-span-12 lg:col-span-2 lg:row-start-2 lg:row-span-1 rounded-xl overflow-hidden bg-gray-200">
-            <Image
-              src={gallery[3].src}
-              alt={gallery[3].alt}
-              fill
-              className="object-cover brightness-75"
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-white pointer-events-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 mb-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M8 3h8l1 4H7l1-4z" />
-              </svg>
-              <div className="text-center">
-                <div className="text-sm">230+ Designs</div>
-                <div className="text-lg font-medium">See More</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="flex justify-center mt-10">
-          <button className="bg-red-500 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-red-600 shadow">
-            Meet our designers
-          </button>
-        </div>
-      </div>
-    </section>
-  );
+    )
 }
-
-
-
-
-
-
-{/* Right column bottom small (row 2) with overlay */}
-          <div className="relative col-span-12 lg:col-span-2 lg:row-start-2 lg:row-span-1 rounded-xl overflow-hidden bg-gray-200">
-            <Image
-              src={gallery[3].src}
-              alt={gallery[3].alt}
-              fill
-              className="object-cover brightness-75"
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-white pointer-events-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 mb-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M8 3h8l1 4H7l1-4z" />
-              </svg>
-              <div className="text-center">
-                <div className="text-sm">230+ Designs</div>
-                <div className="text-lg font-medium">See More</div>
-              </div>
-            </div>
-          </div>
