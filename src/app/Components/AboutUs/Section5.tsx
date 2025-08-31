@@ -37,7 +37,7 @@ const Section5 = () => {
                 Journey So Far
               </h2>
               <p className="aboutus-section5-3xl-subtitle">
-                The Path We've Paved!
+                The Path We&#39;ve Paved!
               </p>
             </div>
 
@@ -90,7 +90,7 @@ const Section5 = () => {
               Journey So Far
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              The Path We've Paved!
+              The Path We&#39;ve Paved!
             </p>
           </div>
 
@@ -142,7 +142,7 @@ const Section5 = () => {
               Journey So Far
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              The Path We've Paved!
+              The Path We&#39;ve Paved!
             </p>
           </div>
 
@@ -194,7 +194,7 @@ const Section5 = () => {
               Journey So Far
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              The Path We've Paved!
+              The Path We&#39;ve Paved!
             </p>
           </div>
 
@@ -246,7 +246,7 @@ const Section5 = () => {
               Journey So Far
             </h2>
             <p className="text-base text-gray-600 leading-relaxed">
-              The Path We've Paved!
+              The Path We&#39;ve Paved!
             </p>
           </div>
 
@@ -298,7 +298,7 @@ const Section5 = () => {
               Journey So Far
             </h2>
             <p className="text-sm text-gray-600 leading-relaxed">
-              The Path We've Paved!
+              The Path We&#39;ve Paved!
             </p>
           </div>
 

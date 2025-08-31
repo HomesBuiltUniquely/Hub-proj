@@ -26,7 +26,7 @@ export default function Section3(){
                             
                             {/* Description Text - 3XL optimized */}
                             <div className="aboutus-section3-3xl-description">
-                                At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
                             </div>
                             
                         </div>
@@ -64,7 +64,7 @@ export default function Section3(){
                             
                             {/* Description Text - 2XL optimized */}
                             <div className="manrope-medium text-xl w-full leading-relaxed">
-                                At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
                             </div>
                             
                         </div>
@@ -102,7 +102,7 @@ export default function Section3(){
                             
                             {/* Description Text - XL optimized */}
                             <div className="manrope-medium text-lg w-full leading-relaxed">
-                                At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
                             </div>
                             
                         </div>
@@ -140,7 +140,7 @@ export default function Section3(){
                             
                             {/* Description Text - LG optimized */}
                             <div className="manrope-medium text-base w-full leading-relaxed">
-                                At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
                             </div>
                             
                         </div>
@@ -178,7 +178,7 @@ export default function Section3(){
                             
                             {/* Description Text - MD optimized */}
                             <div className="manrope-medium text-sm w-full leading-relaxed">
-                                At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
                             </div>
                             
                         </div>
@@ -216,7 +216,7 @@ export default function Section3(){
                             
                             {/* Description Text - SM optimized */}
                             <div className="manrope-medium text-xs w-full leading-relaxed">
-                                At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
                             </div>
                             
                         </div>

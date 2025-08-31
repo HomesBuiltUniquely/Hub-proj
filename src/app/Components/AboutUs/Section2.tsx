@@ -9,7 +9,7 @@ export default function Section2(){
                     
                     {/* Left Text Box - 3XL optimized */}
                     <div className="aboutus-section2-3xl-textbox">
-                        At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
                     </div>
                     
                     {/* Center Image Box - 3XL optimized */}
@@ -51,7 +51,7 @@ export default function Section2(){
                     
                     {/* Left Text Box - 2XL optimized */}
                     <div className="w-[500px] h-[500px] bg-[#ebd457] rounded-2xl p-16 pt-30 text-xl manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
                     </div>
                     
                     {/* Center Image Box - 2XL optimized */}
@@ -93,7 +93,7 @@ export default function Section2(){
                     
                     {/* Left Text Box - XL optimized */}
                     <div className="w-[450px] h-[470px] bg-[#ebd457] rounded-2xl p-12 pt-32 text-[16px] manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
                     </div>
                     
                     {/* Center Image Box - XL optimized */}
@@ -135,7 +135,7 @@ export default function Section2(){
                     
                     {/* Left Text Box - LG optimized */}
                     <div className="w-[400px] h-[400px] bg-[#ebd457] rounded-2xl p-10 pt-24 text-sm manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
                     </div>
                     
                     {/* Center Image Box - LG optimized */}
@@ -177,7 +177,7 @@ export default function Section2(){
                     
                     {/* Left Text Box - MD optimized */}
                     <div className="w-full h-[300px] bg-[#ebd457] rounded-2xl p-8 pt-20 text-sm manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
                     </div>
                     
                     {/* Center Image Box - MD optimized */}
@@ -219,7 +219,7 @@ export default function Section2(){
                     
                     {/* Left Text Box - SM optimized */}
                     <div className="w-full h-[250px] bg-[#ebd457] rounded-xl p-6 pt-16 text-xs manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it's about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
                     </div>
                     
                     {/* Center Image Box - SM optimized */}

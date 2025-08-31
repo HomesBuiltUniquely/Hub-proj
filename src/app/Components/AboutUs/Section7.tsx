@@ -22,7 +22,7 @@ const Section7 = () => {
                   Values
                 </h1>
                 <p className="aboutus-section7-3xl-subtitle">
-                  At HUB Interiors, — it's about creating spaces that reflect you.
+                  At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                 </p>
               </div>
               
@@ -38,7 +38,7 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                      At HUB Interiors, — it's about creating spaces that reflect you.
+                      At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                     </div>
                   </div>
                 </div>
@@ -53,7 +53,7 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                      At HUB Interiors, — it's about creating spaces that reflect you.
+                      At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                     </div>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                      At HUB Interiors, — it's about creating spaces that reflect you.
+                      At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                     </div>
                   </div>
                 </div>
@@ -83,7 +83,7 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                      At HUB Interiors, — it's about creating spaces that reflect you.
+                      At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                     </div>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const Section7 = () => {
               
               {/* Values Description */}
               <p className="w-[400px] ml-10 manrope-medium pt-3 text-xl leading-relaxed">
-                At HUB Interiors, — it's about creating spaces that reflect you.
+                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </p>
               
               {/* Values Points */}
@@ -125,7 +125,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -138,7 +138,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -151,7 +151,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -164,7 +164,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
               </div>
@@ -191,7 +191,7 @@ const Section7 = () => {
               
               {/* Values Description */}
               <p className="w-[350px] ml-10 manrope-medium pt-3 text-lg leading-relaxed">
-                At HUB Interiors, — it's about creating spaces that reflect you.
+                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </p>
               
               {/* Values Points */}
@@ -205,7 +205,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -218,7 +218,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -231,7 +231,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -244,7 +244,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
               </div>
@@ -271,7 +271,7 @@ const Section7 = () => {
               
               {/* Values Description */}
               <p className="w-[300px] ml-8 manrope-medium pt-3 text-base leading-relaxed">
-                At HUB Interiors, — it's about creating spaces that reflect you.
+                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </p>
               
               {/* Values Points */}
@@ -285,7 +285,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -298,7 +298,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -311,7 +311,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -324,7 +324,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
               </div>
@@ -351,7 +351,7 @@ const Section7 = () => {
               
               {/* Values Description */}
               <p className="w-[250px] ml-6 manrope-medium pt-2 text-sm leading-relaxed">
-                At HUB Interiors, — it's about creating spaces that reflect you.
+                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </p>
               
               {/* Values Points */}
@@ -365,7 +365,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-3 pt-4 w-[300px] text-xs leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -378,7 +378,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-3 pt-4 w-[300px] text-xs leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -391,7 +391,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-3 pt-4 w-[300px] text-xs leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -404,7 +404,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-3 pt-4 w-[300px] text-xs leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
               </div>
@@ -431,7 +431,7 @@ const Section7 = () => {
               
               {/* Values Description */}
               <p className="w-full ml-4 manrope-medium pt-2 text-xs leading-relaxed">
-                At HUB Interiors, — it's about creating spaces that reflect you.
+                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </p>
               
               {/* Values Points */}
@@ -445,7 +445,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -458,7 +458,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -471,7 +471,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
                 
@@ -484,7 +484,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    At HUB Interiors, — it's about creating spaces that reflect you.
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
               </div>
