@@ -1,35 +1,321 @@
+'use client';
+
 export default function Section4(){
     return (
         <div>
-          <div className="2xl:block hidden"> 
+            {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
+            <div className="aboutus-section4-3xl-container hidden">
+                <div className="aboutus-section4-3xl-layout">
+                    
+                    {/* Header Section - 3XL optimized */}
+                    <div className="aboutus-section4-3xl-header">
+                        
+                        {/* Heading - 3XL optimized */}
+                        <h1 className="aboutus-section4-3xl-heading">
+                            Sub Brands
+                        </h1>
+                        
+                        {/* Description - 3XL optimized */}
+                        <p className="aboutus-section4-3xl-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                        </p>
+                        
+                    </div>
+                    
+                    {/* Cards Section - 3XL optimized */}
+                    <div className="aboutus-section4-3xl-cards">
+                        
+                        {/* Card 1 */}
+                        <div className="aboutus-section4-3xl-card"></div>
+                        
+                        {/* Card 2 */}
+                        <div className="aboutus-section4-3xl-card"></div>
+                        
+                        {/* Card 3 */}
+                        <div className="aboutus-section4-3xl-card"></div>
+                        
+                        {/* Card 4 */}
+                        <div className="aboutus-section4-3xl-card"></div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
 
-          <div className="h-[700px]">
-           <div className="flex justify-between w-screen h-[300px]">
-            <h1 className="text-6xl mt-20 ml-50 manrope-medium">Sub Brands</h1>
-            <p className="w-[600px] mt-16 mr-70 manrope-medium text-[30px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            {/* 2XL Screen - Large displays */}
+            <div className="aboutus-section4-2xl-section hidden 2xl:block 3xl:hidden">
+                <div className="h-auto min-h-[650px] px-16">
+                    
+                    {/* Header Section - 2XL optimized */}
+                    <div className="flex flex-row justify-between w-full h-auto min-h-[300px] gap-12">
+                        
+                        {/* Heading - 2XL optimized */}
+                        <h1 className="text-6xl manrope-medium mt-20 ml-15 leading-tight">
+                            Sub Brands
+                        </h1>
+                        
+                        {/* Description - 2XL optimized */}
+                        <p className="w-[500px] mt-16  manrope-medium text-[26px] leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                        </p>
+                        
+                    </div>
+                    
+                    {/* Cards Section - 2XL optimized */}
+                    <div className="flex flex-wrap justify-start gap-10  ml-32">
+                        
+                        {/* Card 1 */}
+                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 2 */}
+                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 3 */}
+                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 4 */}
+                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                    </div>
+                    
+                </div>
             </div>
-            <div className="ml-80 flex mt-10">
-            <div className="w-[310px] h-[300px] rounded-4xl bg-white mr-10"></div>
-            <div className="w-[310px] h-[300px] rounded-4xl bg-white mr-10"></div>
-            <div className="w-[310px] h-[300px] rounded-4xl bg-white mr-10"></div>
-            <div className="w-[310px] h-[300px] rounded-4xl bg-white mr-10"></div>
-            <div className="w-[310px] h-[300px] rounded-4xl bg-white"></div>
-            </div>
-           </div>
 
-          </div>
-          <div className="h-[600px] block 2xl:hidden">
-           <div className="flex justify-between w-screen h-[300px]">
-            <h1 className="text-[42px] mt-16 ml-30 manrope-medium">Sub Brands</h1>
-            <p className="w-[400px] mt-14 mr-14 manrope-medium text-[20px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            {/* XL Screen - Extra large displays */}
+            <div className="hidden xl:block 2xl:hidden">
+                <div className="h-[700px] px-12">
+                    
+                    {/* Header Section - XL optimized */}
+                    <div className="flex flex-row justify-between  h-[300px] gap-10">
+                        
+                        {/* Heading - XL optimized */}
+                        <h1 className="text-5xl manrope-medium mt-18 ml-26 leading-tight">
+                            Sub Brands
+                        </h1>
+                        
+                        {/* Description - XL optimized */}
+                        <p className="w-[500px] mt-14 mr-12  manrope-medium text-2xl leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                        </p>
+                        
+                    </div>
+                    
+                    {/* Cards Section - XL optimized */}
+                    <div className="flex flex-wrap justify-start gap-8 ml-20">
+                        
+                        {/* Card 1 */}
+                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 2 */}
+                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 3 */}
+                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 4 */}
+                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                    </div>
+                    
+                </div>
             </div>
-            <div className="flex -mt-16 ml-22">
-            <div className="w-[260px] h-[260px] rounded-4xl bg-white mr-10"></div>
-            <div className="w-[260px] h-[260px] rounded-4xl bg-white mr-10"></div>
-            <div className="w-[260px] h-[260px] rounded-4xl bg-white mr-10"></div>
-            <div className="w-[260px] h-[260px] rounded-4xl bg-white"></div>
+
+            {/* LG Screen - Large displays */}
+            <div className="hidden lg:block xl:hidden">
+                <div className="h-[600px] px-8">
+                    
+                    {/* Header Section - LG optimized */}
+                    <div className="flex flex-row justify-between h-[250px] gap-8">
+                        
+                        {/* Heading - LG optimized */}
+                        <h1 className="text-4xl manrope-medium mt-16 ml-20 leading-tight">
+                            Sub Brands
+                        </h1>
+                        
+                        {/* Description - LG optimized */}
+                        <p className="w-[400px] mt-12 mr-8 manrope-medium text-xl leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                        </p>
+                        
+                    </div>
+                    
+                    {/* Cards Section - LG optimized */}
+                    <div className="flex flex-wrap justify-start gap-6 ml-16">
+                        
+                        {/* Card 1 */}
+                        <div className="w-[220px] h-[220px] rounded-3xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 2 */}
+                        <div className="w-[220px] h-[220px] rounded-3xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 3 */}
+                        <div className="w-[220px] h-[220px] rounded-3xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 4 */}
+                        <div className="w-[220px] h-[220px] rounded-3xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                    </div>
+                    
+                </div>
             </div>
-           </div>
+
+            {/* MD Screen - Medium displays */}
+            <div className="hidden md:block lg:hidden">
+                <div className="h-[500px] px-6">
+                    
+                    {/* Header Section - MD optimized */}
+                    <div className="flex flex-col justify-between h-[200px] gap-6">
+                        
+                        {/* Heading - MD optimized */}
+                        <h1 className="text-3xl manrope-medium mt-12 ml-12 leading-tight">
+                            Sub Brands
+                        </h1>
+                        
+                        {/* Description - MD optimized */}
+                        <p className="w-[300px] mt-8 ml-12 manrope-medium text-lg leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                        </p>
+                        
+                    </div>
+                    
+                    {/* Cards Section - MD optimized */}
+                    <div className="flex flex-wrap justify-start gap-4 ml-12">
+                        
+                        {/* Card 1 */}
+                        <div className="w-[180px] h-[180px] rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 2 */}
+                        <div className="w-[180px] h-[180px] rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 3 */}
+                        <div className="w-[180px] h-[180px] rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 4 */}
+                        <div className="w-[180px] h-[180px] rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            {/* SM Screen - Small displays and mobile */}
+            <div className="block md:hidden">
+                <div className="h-[400px] px-4">
+                    
+                    {/* Header Section - SM optimized */}
+                    <div className="flex flex-col justify-between h-[150px] gap-4">
+                        
+                        {/* Heading - SM optimized */}
+                        <h1 className="text-2xl manrope-medium mt-8 ml-8 leading-tight">
+                            Sub Brands
+                        </h1>
+                        
+                        {/* Description - SM optimized */}
+                        <p className="w-full mt-6 ml-8 manrope-medium text-base leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                        </p>
+                        
+                    </div>
+                    
+                    {/* Cards Section - SM optimized */}
+                    <div className="flex flex-wrap justify-start gap-3 ml-8">
+                        
+                        {/* Card 1 */}
+                        <div className="w-[140px] h-[140px] rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 2 */}
+                        <div className="w-[140px] h-[140px] rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 3 */}
+                        <div className="w-[140px] h-[140px] rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                        {/* Card 4 */}
+                        <div className="w-[140px] h-[140px] rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            {/* Pure CSS for 3XL - 2560*1440 resolution */}
+            <style jsx>{`
+                /* Ensure only one 3xl section exists */
+                .aboutus-section4-3xl-container {
+                    display: none !important;
+                }
+                
+                /* Hide 2xl section when 3xl is active */
+                @media (min-width: 2560px) {
+                    .aboutus-section4-2xl-section {
+                        display: none !important;
+                    }
+                }
+                
+                @media (min-width: 2560px) {
+                    .aboutus-section4-3xl-container {
+                        display: block !important;
+                        width: auto;
+                        height: auto;
+                        margin: 2rem;
+                    }
+                    
+                    .aboutus-section4-3xl-layout {
+                        height: auto;
+                        min-height: 800px;
+                        padding: 0 5rem;
+                    }
+                    
+                    // .aboutus-section4-3xl-header {
+                    //     display: flex;
+                    //     flex-direction: row;
+                    //     justify-content: space-between;
+                    //     width: 100%;
+                    //     height: auto;
+                    //     min-height: 350px;
+                    //     gap: 4rem;
+                    // }
+                    
+                    .aboutus-section4-3xl-heading {
+                        font-size: 5rem;
+                        font-family: 'ManropeMedium', sans-serif;
+                        margin-top: 10rem;
+                        line-height: 1.2;
+                        margin-left: 40%;
+                    }
+                    
+                    .aboutus-section4-3xl-description {
+                        width: 1800px;
+                        font-family: 'ManropeMedium', sans-serif;
+                        font-size: 2rem;
+                        line-height: 1.6;
+                        margin-top: 2rem;
+                       padding-left: 32rem;
+                       text-align: center;
+                    }
+                    
+                    .aboutus-section4-3xl-cards {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: flex-start;
+                        gap: 2.5rem;
+                        margin-top: 6rem;
+                        margin-left: 20rem;
+                    }
+                    
+                    .aboutus-section4-3xl-card {
+                        width: 380px;
+                        height: 380px;
+                        border-radius: 2rem;
+                        background-color: white;
+                        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                        transition: box-shadow 0.3s ease;
+                    }
+                    
+                    .aboutus-section4-3xl-card:hover {
+                        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                    }
+                }
+            `}</style>
         </div>
     )
 }

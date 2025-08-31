@@ -6,154 +6,375 @@ import Link from 'next/link';
 
 export default function Herosection() {
     return (
-        <div>
-            {/* XXL Screen Size (2xl) */}
-            <div className="hidden 2xl:block">
-                <div className="w-[2510px] h-screen m-6">
-                    <div className="relative">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen" />
-                        <div className="absolute inset-0 bg-opacity-40"></div>
-                        <div className="absolute top-0 left-0 w-full p-8 flex items-center justify-between">
-                            <Image src="/LOGO.png" alt="LOGO" width={180} height={90} />
-                            <nav className="text-white text-2xl manrope space-x-10 pl-300">
-                                <Link href="/" className="hover:text-amber-300">HOME</Link>
-                                <Link href="/Services" className="hover:text-amber-300">SERVICE</Link>
-                                <Link href="/Services" className="hover:text-amber-300">EXPLORE ROOMS</Link>
-                            </nav>
-                            <button className="w-[320px] h-[70px] manrope-medium text-[20px] mr-15 -mt-4 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors">Get Free Estimate</button>
-                        </div>
-                        <div className="absolute top-240 left-16 -translate-y-1/2 text-white ">
-                            <div className="text-[76px] manrope-medium">HOMES</div>
-                            <div className="text-[90px] wulkan-display ">uniquely</div>
-                            <div className="text-[76px] manrope-medium">BUILT</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* XL Screen Size - Fully Responsive */}
-            <div className="hidden xl:block 2xl:hidden">
-                {/* Use w-screen and h-screen to fill the viewport */}
-                <div className="w-auto h-screen m-6">
-                    <div className="relative w-full h-full">
-                        
-                        <Image
-                            src="/Mask-group.png"
-                            alt="Background"
-                            layout="fill"
-                            quality={90}
-                            className="z-0"
-                        />
+        <>
+            <style jsx>{`
+                /* Ensure only one 3xl section exists */
+                .aboutus-hero-3xl-container {
+                    display: none !important;
+                }
+                
+                @media (min-width: 2560px) {
+                    .aboutus-hero-3xl-container {
+                        display: block !important;
+                        width: auto;
+                        height: auto;
+                        margin: 2rem;
+                    }
+                    
+                    .aboutus-hero-3xl-relative {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    
+                    .aboutus-hero-3xl-bg-image {
+                        width: 100%;
+                        height: 100vh;
+                    }
+                    
+                    .aboutus-hero-3xl-overlay {
+                        position: absolute;
+                        inset: 0;
                        
-                        <div className="absolute inset-0 bg-opacity-40 z-10"></div>
-                        <div className="relative z-20 h-full flex flex-col p-8">
-                            
-                            <div className="absolute top-4 right-8 z-30">
-                                <button className=" mx-auto manrope-medium text-base px-6 py-2.5 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors -mt-10">Get Free Estimate</button>
-                            </div>
-                            
-                            <header className="flex w-full justify-between ">
-                                <div className="flex-shrink-0">
-                                    <Image src="/LOGO.png" alt="LOGO" width={160} height={80} />
-                                </div>
-                                <nav className="text-white text-xl manrope space-x-8 mx-auto ">
-                                    <Link href="/" className="hover:text-amber-300 transition-colors text-[16px]">HOME</Link>
-                                    <Link href="/Services" className="hover:text-amber-300 transition-colors text-[16px]">SERVICE</Link>
-                                    <Link href="/Services" className="hover:text-amber-300 transition-colors text-[16px]">EXPLORE ROOMS</Link>
-                                </nav>
-                            </header>
-                            <main className="flex-grow flex items-center mt-40">
-                                <div className="text-white ml-4">
-                                    <div className="text-6xl manrope-medium">HOMES,</div>
-                                    <div className="text-7xl wulkan-display my-4">uniquely</div>
-                                    <div className="text-6xl manrope-medium">BUILT</div>
-                                </div>
-                            </main>
-                        </div>
+                    }
+                    
+                    .aboutus-hero-3xl-button {
+                        position: absolute;
+                        top: 1.5rem;
+                        right: 5rem;
+                        z-index: 30;
+                        width: 300px;
+                        height: 65px;
+                        font-family: 'ManropeMedium', sans-serif;
+                        font-size: 1.5rem;
+                        padding: 0 2rem 0.1rem;
+                        background-color: #ddcdc1;
+                        border-radius: 9999px;
+                        border: none;
+                        color: #000;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                    }
+                    
+                    .aboutus-hero-3xl-button:hover {
+                        background-color: #ef0101;
+                        color: white;
+                        transform: translateY(-2px);
+                        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+                    }
+                    
+                    .aboutus-hero-3xl-header {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        padding: 3rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+                    
+                    .aboutus-hero-3xl-logo {
+                        width: 220px;
+                        height: 110px;
+                    }
+                    
+                    .aboutus-hero-3xl-nav {
+                        color: white;
+                        font-size: 1.5rem;
+                        font-family: 'Manrope', sans-serif;
+                        display: flex;
+                        gap: 4rem;
+                        margin: 0 auto;
+                        padding-left: 50rem;
+                        padding-bottom: 2rem;
+                    }
+                    
+                    .aboutus-hero-3xl-nav a {
+                        color: white;
+                        text-decoration: none;
+                        transition: color 0.3s ease;
+                    }
+                    
+                    .aboutus-hero-3xl-nav a:hover {
+                        color: #fbbf24;
+                    }
+                    
+                    .aboutus-hero-3xl-content {
+                        position: absolute;
+                        top: 60%;
+                        left: 6rem;
+                        transform: translateY(-50%);
+                        color: white;
+                    }
+                    
+                    .aboutus-hero-3xl-title-1 {
+                        font-size: 6rem;
+                        font-family: 'ManropeMedium', sans-serif;
+                        line-height: 1;
+                        margin: 0;
+                    }
+                    
+                    .aboutus-hero-3xl-title-2 {
+                        font-size: 8rem;
+                        font-family: 'WulkanDisplay', serif;
+                        line-height: 1;
+                        margin: 2.5rem 0;
+                    }
+                    
+                    .aboutus-hero-3xl-title-3 {
+                        font-size: 6rem;
+                        font-family: 'ManropeMedium', sans-serif;
+                        line-height: 1;
+                        margin: 0;
+                    }
+                }
+                
+                /* Hide 2xl section when 3xl is active (2560px+) */
+                @media (min-width: 2560px) {
+                    .aboutus-hero-2xl-section {
+                        display: none !important;
+                    }
+                }
+            `}</style>
+            
+            {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) */}
+            <div className="aboutus-hero-3xl-container hidden">
+                <div className="aboutus-hero-3xl-relative">
+                    <img src="/Mask-group.png" alt="Background" className="aboutus-hero-3xl-bg-image" />
+                    <div className="aboutus-hero-3xl-overlay"></div>
+                    
+                    {/* Get Free Estimate Button - 3XL 2560*1440 optimized */}
+                    <button className="aboutus-hero-3xl-button">Get Free Estimate</button>
+                    
+                    {/* Header - 3XL 2560*1440 optimized */}
+                    <div className="aboutus-hero-3xl-header">
+                        <Image 
+                            src="/LOGO.png" 
+                            alt="LOGO" 
+                            width={220} 
+                            height={110} 
+                            className="aboutus-hero-3xl-logo"
+                        />
+                        
+                        {/* Navigation - 3XL 2560*1440 optimized */}
+                        <nav className="aboutus-hero-3xl-nav">
+                            <Link href="/">HOME</Link>
+                            <Link href="/Services">SERVICE</Link>
+                            <Link href="/Services">EXPLORE ROOMS</Link>
+                        </nav>
+                    </div>
+                    
+                    {/* Main Content - 3XL 2560*1440 optimized */}
+                    <div className="aboutus-hero-3xl-content">
+                        <div className="aboutus-hero-3xl-title-1">HOMES,</div>
+                        <div className="aboutus-hero-3xl-title-2">uniquely</div>
+                        <div className="aboutus-hero-3xl-title-3">BUILT</div>
                     </div>
                 </div>
             </div>
 
-            {/* Large Screen Size (lg) */}
-            <div className="hidden lg:block xl:hidden">
-                <div className="w-screen h-screen">
-                    <div className="relative">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen" />
+            {/* 2XL Screen - Large displays */}
+            <div className="aboutus-hero-2xl-section hidden 2xl:block 3xl:hidden">
+                <div className="w-auto h-auto m-6">
+                    <div className="relative w-full h-full">
+                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen " />
                         <div className="absolute inset-0 bg-opacity-40"></div>
                         
-                        {/* Get Free Estimate Button for lg screens */}
+                        {/* Get Free Estimate Button - 2XL optimized */}
                         <div className="absolute top-4 right-8 z-30">
-                            <button className="manrope-medium text-base px-6 py-2.5 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors">Get Free Estimate</button>
+                            <button className="w-[230px] h-[50px] manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg  2xl-1850:bg-red-500">Get Free Estimate</button>
                         </div>
                         
-                        <div className="absolute top-0 left-0 w-full p-6 flex items-center justify-between">
-                            <Image src="/LOGO.png" alt="LOGO" width={140} height={70} />
-                            <nav className="text-white text-base manrope space-x-6">
-                                <Link href="/" className="hover:text-amber-300">HOME</Link>
-                                <Link href="/Services" className="hover:text-amber-300">SERVICE</Link>
-                                <Link href="/Services" className="hover:text-amber-300">EXPLORE</Link>
+                        {/* Header - 2XL optimized */}
+                        <div className="absolute top-0 left-0 w-full p-8 flex items-center justify-between">
+                            <Image 
+                                src="/LOGO.png" 
+                                alt="LOGO" 
+                                width={150} 
+                                height={90} 
+                                className="mb-170"
+                            
+                            />
+                            
+                            {/* Navigation - 2XL optimized */}
+                            <nav className="text-white text-2xl manrope space-x-10 mr-80 -mt-175">
+                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
                             </nav>
                         </div>
-                        <div className="absolute top-1/2 left-10 -translate-y-1/2 text-white">
-                            <div className="text-6xl manrope-medium">HOMES,</div>
-                            <div className="text-7xl wulkan-display my-3">uniquely</div>
-                            <div className="text-6xl manrope-medium">BUILT</div>
+                        
+                        {/* Main Content - 2XL optimized */}
+                        <div className="absolute  left-16 -translate-y-1/2 text-white -mt-60">
+                            <div className="text-6xl manrope-medium leading-tight">HOMES,</div>
+                            <div className="text-7xl wulkan-display my-6 leading-tight">uniquely</div>
+                            <div className="text-6xl manrope-medium leading-tight">BUILT</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Medium Screen Size (md) */}
-            <div className="hidden md:block lg:hidden">
-                <div className="w-screen h-screen">
-                    <div className="relative">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen" />
+            {/* XL Screen - Extra large displays */}
+            <div className="hidden xl:block 2xl:hidden 3xl:hidden">
+                <div className="w-auto h-[550px] m-6">
+                    <div className="relative w-full h-full">
+                        <img src="/Mask-group.png" alt="Background" className="w-full h-auto" />
                         <div className="absolute inset-0 bg-opacity-40"></div>
                         
-                        {/* Get Free Estimate Button for md screens */}
+                        {/* Get Free Estimate Button - XL optimized */}
+                        <div className="ml-300 -mt-226 ">
+                            <button className="manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg">Get Free Estimate</button>
+                        </div>
+                        
+                        {/* Header - XL optimized */}
+                        <div className="absolute top-0 left-0 w-full p-8 flex items-center justify-between">
+                            <Image 
+                                src="/LOGO.png" 
+                                alt="LOGO" 
+                                width={160} 
+                                height={80} 
+                              
+                            />
+                            
+                            {/* Navigation - XL optimized */}
+                            <nav className="text-white text-xl manrope space-x-8 pr-60 pb-12">
+                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
+                            </nav>
+                        </div>
+                        
+                        {/* Main Content - XL optimized */}
+                        <div className="absolute top-1/2 ml-20 -translate-y-1/2 text-white mt-70">
+                            <div className="text-6xl manrope-medium leading-tight">HOMES,</div>
+                            <div className="text-7xl wulkan-display my-4 leading-tight">uniquely</div>
+                            <div className="text-6xl manrope-medium leading-tight">BUILT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* LG Screen - Large displays */}
+            <div className="hidden lg:block xl:hidden 3xl:hidden">
+                <div className="w-auto h-auto m-6">
+                    <div className="relative w-full h-full">
+                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen object-cover" />
+                        <div className="absolute inset-0 bg-opacity-40"></div>
+                        
+                        {/* Get Free Estimate Button - LG optimized */}
                         <div className="absolute top-4 right-6 z-30">
-                            <button className="manrope-medium text-sm px-5 py-2 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors">Get Free Estimate</button>
+                            <button className="manrope-medium text-base px-6 py-2.5 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-md ">Get Free Estimate</button>
                         </div>
                         
-                        <div className="absolute top-0 left-0 w-full p-5 flex items-center justify-between">
-                            <Image src="/LOGO.png" alt="LOGO" width={120} height={60} />
-                            {/* Hamburger Menu Icon */}
-                            <button className="text-white text-3xl">&#9776;</button>
+                        {/* Header - LG optimized */}
+                        <div className="absolute top-0 left-0 w-full p-6 flex items-center justify-between">
+                            <Image 
+                                src="/LOGO.png" 
+                                alt="LOGO" 
+                                width={140} 
+                                height={70} 
+                                className="w-[140px] h-[70px]"
+                            />
+                            
+                            {/* Navigation - LG optimized */}
+                            <nav className="text-white text-lg manrope space-x-6 mx-auto">
+                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
+                            </nav>
                         </div>
-                        <div className="absolute top-1/2 left-8 -translate-y-1/2 text-white">
-                            <div className="text-5xl manrope-medium">HOMES,</div>
-                            <div className="text-6xl wulkan-display my-2">uniquely</div>
-                            <div className="text-5xl manrope-medium">BUILT</div>
+                        
+                        {/* Main Content - LG optimized */}
+                        <div className="absolute top-1/2 left-6 -translate-y-1/2 text-white">
+                            <div className="text-4xl manrope-medium leading-tight">HOMES,</div>
+                            <div className="text-5xl wulkan-display my-3 leading-tight">uniquely</div>
+                            <div className="text-4xl manrope-medium leading-tight">BUILT</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Small Screen Size (sm) and default mobile */}
-            <div className="block md:hidden">
-                <div className="w-screen h-screen">
-                    <div className="relative">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen" />
+            {/* MD Screen - Medium displays */}
+            <div className="hidden md:block lg:hidden 3xl:hidden">
+                <div className="w-auto h-auto m-4">
+                    <div className="relative w-full h-full">
+                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen object-cover" />
                         <div className="absolute inset-0 bg-opacity-40"></div>
                         
-                        {/* Get Free Estimate Button for mobile screens */}
+                        {/* Get Free Estimate Button - MD optimized */}
                         <div className="absolute top-3 right-4 z-30">
-                            <button className="manrope-medium text-xs px-4 py-1.5 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors">Get Free Estimate</button>
+                            <button className="manrope-medium text-sm px-4 py-1.5 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-md">Get Free Estimate</button>
                         </div>
                         
+                        {/* Header - MD optimized */}
                         <div className="absolute top-0 left-0 w-full p-4 flex items-center justify-between">
-                            <Image src="/LOGO.png" alt="LOGO" width={100} height={50} />
-                            {/* Hamburger Menu Icon */}
-                            <button className="text-white text-2xl">&#9776;</button>
+                            <Image 
+                                src="/LOGO.png" 
+                                alt="LOGO" 
+                                width={100} 
+                                height={50} 
+                                className="w-[100px] h-[50px]"
+                            />
+                            
+                            {/* Navigation - MD optimized */}
+                            <nav className="text-white text-base manrope space-x-4 mx-auto">
+                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
+                            </nav>
                         </div>
-                        <div className="absolute top-1/2 left-6 -translate-y-1/2 text-white">
-                            <div className="text-4xl manrope-medium">HOMES,</div>
-                            <div className="text-5xl wulkan-display my-2">uniquely</div>
-                            <div className="text-4xl manrope-medium">BUILT</div>
+                        
+                        {/* Main Content - MD optimized */}
+                        <div className="absolute top-1/2 left-4 -translate-y-1/2 text-white">
+                            <div className="text-3xl manrope-medium leading-tight"></div>
+                            <div className="text-4xl wulkan-display my-2 leading-tight">uniquely</div>
+                            <div className="text-3xl manrope-medium leading-tight">BUILT</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            {/* SM Screen - Small displays and mobile */}
+            <div className="block md:hidden 3xl:hidden">
+                <div className="w-auto h-auto m-2">
+                    <div className="relative w-full h-full">
+                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen object-cover" />
+                        <div className="absolute inset-0 bg-opacity-40"></div>
+                        
+                        {/* Get Free Estimate Button - SM optimized */}
+                        <div className="absolute top-2 right-3 z-30">
+                            <button className="manrope-medium text-xs px-3 py-1 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-sm">Get Free Estimate</button>
+                        </div>
+                        
+                        {/* Header - SM optimized */}
+                        <div className="absolute top-0 left-0 w-full p-3 flex items-center justify-between">
+                            <Image 
+                                src="/LOGO.png" 
+                                alt="LOGO" 
+                                width={80} 
+                                height={40} 
+                                className="w-[80px] h-[40px]"
+                            />
+                            
+                            {/* Navigation - SM optimized */}
+                            <nav className="text-white text-sm manrope space-x-3 mx-auto">
+                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
+                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
+                            </nav>
+                        </div>
+                        
+                        {/* Main Content - SM optimized */}
+                        <div className="absolute top-1/2 left-3 -translate-y-1/2 text-white">
+                            <div className="text-2xl manrope-medium leading-tight">HOMES,</div>
+                            <div className="text-3xl wulkan-display my-1 leading-tight">uniquely</div>
+                            <div className="text-2xl manrope-medium leading-tight">BUILT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }

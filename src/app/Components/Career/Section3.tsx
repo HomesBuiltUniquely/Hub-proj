@@ -17,7 +17,7 @@ const JoinUsPage: React.FC = () => {
   return (
     <div className="min-h-auto flex items-center bg-gray-100">
       {/* Left: Text and brochure */}
-      <div className="hidden lg:flex flex-col justify-center flex-1 px-12">
+      <div className="hidden lg:flex flex-col justify-center flex-1 px-20">
         <h1 className="text-5xl font-bold text-gray-900 mb-4 leading-tight">
           Ready to<br />join us?
         </h1>

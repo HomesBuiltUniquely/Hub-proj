@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const JourneySection = () => {
+const Section5 = () => {
   const stats = [
     { value: "5000+", label: "Happy Homes" },
     { value: "60+", label: "Expert Designers" },
@@ -27,50 +27,470 @@ const JourneySection = () => {
 
   return (
     <div>
-      <div className='2xl:block hidden'>
-
-      <section className="py-16 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Journey So Far</h2>
-          <p className="text-xl text-gray-600">The Path We&#39;ve Paved!</p>
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left Side - Static Stats */}
-          <div className="md:w-1/2 bg-gray-50 p-8 rounded-xl">
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-3xl font-bold text-[#ef0101]">{stat.value}</p>
-                  <p className="text-gray-600 mt-2">{stat.label}</p>
-                </div>
-              ))}
+      {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
+      <section className="aboutus-section5-3xl-container hidden">
+        <div className="aboutus-section5-3xl-content">
+          <div className="aboutus-section5-3xl-layout">
+            {/* Header Section */}
+            <div className="aboutus-section5-3xl-header">
+              <h2 className="aboutus-section5-3xl-title">
+                Journey So Far
+              </h2>
+              <p className="aboutus-section5-3xl-subtitle">
+                The Path We've Paved!
+              </p>
             </div>
-          </div>
 
-          {/* Right Side - Scrollable Timeline with always-visible scrollbar */}
-          <div className="md:w-1/2 h-[500px] p-8 rounded-xl relative">
-            <div className="h-full overflow-y-scroll pr-4 scrollbar scroll-container always-visible-scrollbar style={{ direction: 'rtl' }}">
-              <div className="space-y-8 min-h-[800px]">
-                {timeline.map((item, index) => (
-                  <div key={index} className="relative pl-8 pb-8 border-l-2 border-[#ef0101]">
+            {/* Main Content */}
+            <div className="aboutus-section5-3xl-main">
+              {/* Left Side - Static Stats */}
+              <div className="aboutus-section5-3xl-stats">
+                <div className="aboutus-section5-3xl-stats-grid">
+                  {stats.map((stat, index) => (
+                    <div key={index} className="aboutus-section5-3xl-stat-item">
+                      <p className="aboutus-section5-3xl-stat-value">
+                        {stat.value}
+                      </p>
+                      <p className="aboutus-section5-3xl-stat-label">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-                    <h3 className="text-xl font-semibold text-gray-900">{item.year}</h3>
-                    <p className="mt-2 text-gray-600">{item.content}</p>
+              {/* Right Side - Scrollable Timeline */}
+              <div className="aboutus-section5-3xl-timeline">
+                <div className="aboutus-section5-3xl-timeline-scroll">
+                  <div className="aboutus-section5-3xl-timeline-content">
+                    {timeline.map((item, index) => (
+                      <div key={index} className="aboutus-section5-3xl-timeline-item">
+                        <h3 className="aboutus-section5-3xl-timeline-year">
+                          {item.year}
+                        </h3>
+                        <p className="aboutus-section5-3xl-timeline-text">
+                          {item.content}
+                        </p>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* 2XL Screen - Large displays */}
+      <section className="aboutus-section5-2xl-section hidden 2xl:block 3xl:hidden py-20 px-16 bg-white">
+        <div className="max-w-7xl mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2 leading-tight">
+              Journey So Far
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              The Path We've Paved!
+            </p>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* Left Side - Static Stats */}
+            <div className="w-full lg:w-1/2 bg-gray-50 p-8 rounded-xl">
+              <div className="grid grid-cols-2 gap-6">
+                {stats.map((stat, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <p className="text-3xl font-bold text-[#ef0101] leading-tight">
+                      {stat.value}
+                    </p>
+                    <p className="text-base text-gray-600 mt-2 leading-relaxed">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side - Scrollable Timeline */}
+            <div className="w-full lg:w-1/2 h-[500px] p-8 rounded-xl relative">
+              <div className="h-full overflow-y-scroll pr-4 scrollbar scroll-container always-visible-scrollbar">
+                <div className="space-y-8 min-h-[800px]">
+                  {timeline.map((item, index) => (
+                    <div key={index} className="relative pl-8 pb-8 border-l-2 border-[#ef0101]">
+                      <h3 className="text-xl font-semibold text-gray-900 leading-tight">
+                        {item.year}
+                      </h3>
+                      <p className="mt-2 text-base text-gray-600 leading-relaxed">
+                        {item.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* XL Screen - Extra large displays */}
+      <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2 leading-tight">
+              Journey So Far
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              The Path We've Paved!
+            </p>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex flex-col lg:flex-row gap-10">
+            {/* Left Side - Static Stats */}
+            <div className="w-full lg:w-1/2 bg-gray-50 p-8 rounded-xl">
+              <div className="grid grid-cols-2 gap-6">
+                {stats.map((stat, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <p className="text-3xl font-bold text-[#ef0101] leading-tight">
+                      {stat.value}
+                    </p>
+                    <p className="text-base text-gray-600 mt-2 leading-relaxed">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side - Scrollable Timeline */}
+            <div className="w-full lg:w-1/2 h-[500px] p-8 rounded-xl relative">
+              <div className="h-full overflow-y-scroll pr-4 scrollbar scroll-container always-visible-scrollbar">
+                <div className="space-y-8 min-h-[800px]">
+                  {timeline.map((item, index) => (
+                    <div key={index} className="relative pl-8 pb-8 border-l-2 border-[#ef0101]">
+                      <h3 className="text-xl font-semibold text-gray-900 leading-tight">
+                        {item.year}
+                      </h3>
+                      <p className="mt-2 text-base text-gray-600 leading-relaxed">
+                        {item.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LG Screen - Large displays */}
+      <section className="hidden lg:block xl:hidden py-16 px-8 bg-white">
+        <div className="max-w-5xl mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">
+              Journey So Far
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              The Path We've Paved!
+            </p>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Left Side - Static Stats */}
+            <div className="w-full lg:w-1/2 bg-gray-50 p-6 rounded-lg">
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map((stat, index) => (
+                  <div key={index} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <p className="text-2xl font-bold text-[#ef0101] leading-tight">
+                      {stat.value}
+                    </p>
+                    <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side - Scrollable Timeline */}
+            <div className="w-full lg:w-1/2 h-[450px] p-6 rounded-lg relative">
+              <div className="h-full overflow-y-scroll pr-3 scrollbar scroll-container always-visible-scrollbar">
+                <div className="space-y-6 min-h-[750px]">
+                  {timeline.map((item, index) => (
+                    <div key={index} className="relative pl-6 pb-6 border-l-2 border-[#ef0101]">
+                      <h3 className="text-lg font-semibold text-gray-900 leading-tight">
+                        {item.year}
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                        {item.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MD Screen - Medium displays */}
+      <section className="hidden md:block lg:hidden py-12 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2 leading-tight">
+              Journey So Far
+            </h2>
+            <p className="text-base text-gray-600 leading-relaxed">
+              The Path We've Paved!
+            </p>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex flex-col gap-6">
+            {/* Left Side - Static Stats */}
+            <div className="w-full bg-gray-50 p-6 rounded-lg">
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map((stat, index) => (
+                  <div key={index} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <p className="text-xl font-bold text-[#ef0101] leading-tight">
+                      {stat.value}
+                    </p>
+                    <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side - Scrollable Timeline */}
+            <div className="w-full h-[400px] p-6 rounded-lg relative">
+              <div className="h-full overflow-y-scroll pr-3 scrollbar scroll-container always-visible-scrollbar">
+                <div className="space-y-6 min-h-[700px]">
+                  {timeline.map((item, index) => (
+                    <div key={index} className="relative pl-6 pb-6 border-l-2 border-[#ef0101]">
+                      <h3 className="text-base font-semibold text-gray-900 leading-tight">
+                        {item.year}
+                      </h3>
+                      <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                        {item.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SM Screen - Small displays */}
+      <section className="block md:hidden py-8 px-4 bg-white">
+        <div className="max-w-sm mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-bold text-gray-900 mb-2 leading-tight">
+              Journey So Far
+            </h2>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              The Path We've Paved!
+            </p>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex flex-col gap-4">
+            {/* Left Side - Static Stats */}
+            <div className="w-full bg-gray-50 p-4 rounded-lg">
+              <div className="grid grid-cols-2 gap-3">
+                {stats.map((stat, index) => (
+                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <p className="text-lg font-bold text-[#ef0101] leading-tight">
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side - Scrollable Timeline */}
+            <div className="w-full h-[350px] p-4 rounded-lg relative">
+              <div className="h-full overflow-y-scroll pr-2 scrollbar scroll-container always-visible-scrollbar">
+                <div className="space-y-4 min-h-[600px]">
+                  {timeline.map((item, index) => (
+                    <div key={index} className="relative pl-4 pb-4 border-l-2 border-[#ef0101]">
+                      <h3 className="text-sm font-semibold text-gray-900 leading-tight">
+                        {item.year}
+                      </h3>
+                      <p className="mt-1 text-xs text-gray-600 leading-relaxed">
+                        {item.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pure CSS for 3XL - 2560*1440 resolution */}
+      <style jsx>{`
+        /* Ensure only one 3xl section exists */
+        .aboutus-section5-3xl-container {
+          display: none !important;
+        }
+        
+        /* Hide 2xl section when 3xl is active */
+        @media (min-width: 2560px) {
+          .aboutus-section5-2xl-section {
+            display: none !important;
+          }
+        }
+        
+        @media (min-width: 2560px) {
+          .aboutus-section5-3xl-container {
+            display: block !important;
+            width: auto;
+            height: auto;
+            margin: 2rem;
+            padding: 5rem 6rem;
+            background-color: white;
+          }
+          
+          .aboutus-section5-3xl-content {
+            max-width: 1200rem;
+            margin: 0 auto;
+          }
+          
+          .aboutus-section5-3xl-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+          }
+          
+          .aboutus-section5-3xl-header {
+            text-align: center;
+            margin-bottom: 3rem;
+          }
+          
+          .aboutus-section5-3xl-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #111827;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+          }
+          
+          .aboutus-section5-3xl-subtitle {
+            font-size: 1.5rem;
+            color: #4b5563;
+            line-height: 1.7;
+          }
+          
+          .aboutus-section5-3xl-main {
+            display: flex;
+            gap: 3rem;
+          }
+          
+          .aboutus-section5-3xl-stats {
+            width: 50%;
+            background-color: #f9fafb;
+            padding: 2rem;
+            border-radius: 1rem;
+          }
+          
+          .aboutus-section5-3xl-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+          }
+          
+          .aboutus-section5-3xl-stat-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+          }
+          
+          .aboutus-section5-3xl-stat-item:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          }
+          
+          .aboutus-section5-3xl-stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ef0101;
+            line-height: 1.2;
+          }
+          
+          .aboutus-section5-3xl-stat-label {
+            font-size: 1.125rem;
+            color: #4b5563;
+            margin-top: 0.5rem;
+            line-height: 1.7;
+          }
+          
+          .aboutus-section5-3xl-timeline {
+            width: 50%;
+            height: 600px;
+            padding: 2rem;
+            border-radius: 1rem;
+            position: relative;
+          }
+          
+          .aboutus-section5-3xl-timeline-scroll {
+            height: 100%;
+            overflow-y: scroll;
+            padding-right: 1rem;
+          }
+          
+          .aboutus-section5-3xl-timeline-content {
+            space-y: 2rem;
+            min-height: 1000px;
+          }
+          
+          .aboutus-section5-3xl-timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #ef0101;
+          }
+          
+          .aboutus-section5-3xl-timeline-year {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #111827;
+            line-height: 1.2;
+          }
+          
+          .aboutus-section5-3xl-timeline-text {
+            margin-top: 0.5rem;
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.7;
+          }
+        }
+      `}</style>
 
       {/* Global scrollbar styling */}
       <style jsx global>{`
         .scrollbar::-webkit-scrollbar {
-          width: 8px;
+          width: 6px;
           background-color: #f5f5f5;
+        }
+        @media (min-width: 768px) {
+          .scrollbar::-webkit-scrollbar {
+            width: 8px;
+          }
         }
         .scrollbar::-webkit-scrollbar-thumb {
           background-color: #ef0101;
@@ -89,8 +509,13 @@ const JourneySection = () => {
         }
         .always-visible-scrollbar::-webkit-scrollbar {
           -webkit-appearance: none;
-          width: 8px;
+          width: 6px;
           display: block !important;
+        }
+        @media (min-width: 768px) {
+          .always-visible-scrollbar::-webkit-scrollbar {
+            width: 8px;
+          }
         }
         .always-visible-scrollbar::-webkit-scrollbar-track {
           background: #f5f5f5;
@@ -100,8 +525,13 @@ const JourneySection = () => {
         .always-visible-scrollbar::-webkit-scrollbar-thumb {
           background: #ef0101;
           border-radius: 4px;
-          min-height: 40px;
+          min-height: 30px;
           display: block !important;
+        }
+        @media (min-width: 768px) {
+          .always-visible-scrollbar::-webkit-scrollbar-thumb {
+            min-height: 40px;
+          }
         }
         .always-visible-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #d00101;
@@ -109,20 +539,23 @@ const JourneySection = () => {
         .always-visible-scrollbar::-webkit-scrollbar-corner {
           background: #f5f5f5;
         }
-        /* Force scrollbar to always show */
         .always-visible-scrollbar {
           scrollbar-gutter: stable;
           overflow-y: scroll !important;
         }
-        /* Additional force for scrollbar visibility */
         .scroll-container {
           overflow-y: scroll !important;
           scrollbar-width: thin;
           scrollbar-color: #ef0101 #f5f5f5;
         }
         .scroll-container::-webkit-scrollbar {
-          width: 8px !important;
+          width: 6px !important;
           display: block !important;
+        }
+        @media (min-width: 768px) {
+          .scroll-container::-webkit-scrollbar {
+            width: 8px !important;
+          }
         }
         .scroll-container::-webkit-scrollbar-track {
           background: #f5f5f5 !important;
@@ -131,130 +564,19 @@ const JourneySection = () => {
         .scroll-container::-webkit-scrollbar-thumb {
           background: #ef0101 !important;
           border-radius: 4px;
-          min-height: 40px;
+          min-height: 30px;
+        }
+        @media (min-width: 768px) {
+          .scroll-container::-webkit-scrollbar-thumb {
+            min-height: 40px;
+          }
         }
         .scroll-container::-webkit-scrollbar-thumb:hover {
           background: #d00101 !important;
         }
       `}</style>
-    </section>
-
-
-
-      </div>
-      <section className="py-16 px-4 bg-white block 2xl:hidden">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Journey So Far</h2>
-          <p className="text-xl text-gray-600">The Path We&#39;ve Paved!</p>
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left Side - Static Stats */}
-          <div className="md:w-1/2 bg-gray-50 p-8 rounded-xl">
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-3xl font-bold text-[#ef0101]">{stat.value}</p>
-                  <p className="text-gray-600 mt-2">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Side - Scrollable Timeline with always-visible scrollbar */}
-          <div className="md:w-1/2 h-[500px] p-8 rounded-xl relative">
-            <div className="h-full overflow-y-scroll pr-4 scrollbar scroll-container always-visible-scrollbar style={{ direction: 'rtl' }}">
-              <div className="space-y-8 min-h-[800px]">
-                {timeline.map((item, index) => (
-                  <div key={index} className="relative pl-8 pb-8 border-l-2 border-[#ef0101]">
-
-                    <h3 className="text-xl font-semibold text-gray-900">{item.year}</h3>
-                    <p className="mt-2 text-gray-600">{item.content}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Global scrollbar styling */}
-      <style jsx global>{`
-        .scrollbar::-webkit-scrollbar {
-          width: 8px;
-          background-color: #f5f5f5;
-        }
-        .scrollbar::-webkit-scrollbar-thumb {
-          background-color: #ef0101;
-          border-radius: 4px;
-        }
-        .scrollbar::-webkit-scrollbar-thumb:hover {
-          background-color: #d00101;
-        }
-        .scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: #ef0101 #f5f5f5;
-        }
-        .always-visible-scrollbar {
-          overflow-y: scroll !important;
-          scrollbar-gutter: stable;
-        }
-        .always-visible-scrollbar::-webkit-scrollbar {
-          -webkit-appearance: none;
-          width: 8px;
-          display: block !important;
-        }
-        .always-visible-scrollbar::-webkit-scrollbar-track {
-          background: #f5f5f5;
-          border-radius: 4px;
-          display: block !important;
-        }
-        .always-visible-scrollbar::-webkit-scrollbar-thumb {
-          background: #ef0101;
-          border-radius: 4px;
-          min-height: 40px;
-          display: block !important;
-        }
-        .always-visible-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #d00101;
-        }
-        .always-visible-scrollbar::-webkit-scrollbar-corner {
-          background: #f5f5f5;
-        }
-        /* Force scrollbar to always show */
-        .always-visible-scrollbar {
-          scrollbar-gutter: stable;
-          overflow-y: scroll !important;
-        }
-        /* Additional force for scrollbar visibility */
-        .scroll-container {
-          overflow-y: scroll !important;
-          scrollbar-width: thin;
-          scrollbar-color: #ef0101 #f5f5f5;
-        }
-        .scroll-container::-webkit-scrollbar {
-          width: 8px !important;
-          display: block !important;
-        }
-        .scroll-container::-webkit-scrollbar-track {
-          background: #f5f5f5 !important;
-          border-radius: 4px;
-        }
-        .scroll-container::-webkit-scrollbar-thumb {
-          background: #ef0101 !important;
-          border-radius: 4px;
-          min-height: 40px;
-        }
-        .scroll-container::-webkit-scrollbar-thumb:hover {
-          background: #d00101 !important;
-        }
-      `}</style>
-    </section>
-
     </div>
-   
   );
 };
 
-export default JourneySection;
+export default Section5;

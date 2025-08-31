@@ -109,16 +109,16 @@ const CardSection = ({
 const ModularKitchenShowcase: React.FC = () => (
   <div className="bg-[#f9fafc] w-screen min-h-screen">
     <CardSection
-      title="Elevate Your"
-      subtitle="Everyday Essentials."
-      buttonText="Kitchen Accessories"
+      title="Designed to Fit "
+      subtitle="Built to Last."
+      buttonText="Wardrobe for him & her"
       cards={kitchenAccessories}
       scrollDirection={1}
     />
     <CardSection
-      title="Crafted to Organize"
-      subtitle="Designed to Impress"
-      buttonText="Cabinet"
+      title="Designed to Fit "
+      subtitle="Built to Last."
+      buttonText="Dresser Unit"
       cards={cabinetAccs}
       scrollDirection={-1}
     />

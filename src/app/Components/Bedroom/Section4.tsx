@@ -38,9 +38,9 @@ const Section4: React.FC = () => {
     <div className="w-full min-h-screen bg-[#f1f2f6] py-12">
       {/* Heading */}
       <div className="max-w-6xl mx-auto px-4 mb-10">
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-800">Let’s Talk Kitchens</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-800">Let’s Talk About Bedroom</h1>
         <p className="text-gray-500 text-lg mb-7">
-          Read our blog to discover how design meets utility in every kitchen.
+         Read our blog to discover how design meets utility in every Bedroom.
         </p>
       </div>
 
@@ -113,7 +113,7 @@ const Section4: React.FC = () => {
       {/* Download Guide Button */}
       <div className="w-full flex justify-center mt-20">
         <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg font-semibold shadow-xl hover:bg-[#2a1d10] transition">
-          Download our kitchen design guide
+          Download our Bedroom design guide
         </button>
       </div>
     </div>
