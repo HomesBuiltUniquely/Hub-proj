@@ -470,7 +470,7 @@ export default function HeroSections() {
                 required 
                 className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
               />
-              {/* <input 
+              <input 
                 type="email" 
                 name="email" 
                   value={formData.email}
@@ -478,7 +478,7 @@ export default function HeroSections() {
                 placeholder="Email *" 
                 required 
                 className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
-              /> */}
+              />
             </div>
 
               {/* Phone and Pincode Row */}
