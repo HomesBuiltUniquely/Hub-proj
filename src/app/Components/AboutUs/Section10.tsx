@@ -247,7 +247,7 @@ const Section10 = () => {
           .aboutus-section10-3xl-container {
             display: block !important;
             width: 100%;
-            height: 7=600px;
+            height: 800px;
             margin-top: 5rem;
             margin-left: 2.25rem;
             padding: 0 6rem;
@@ -266,7 +266,7 @@ const Section10 = () => {
           .aboutus-section10-3xl-background {
             width: 100%;
             height: auto;
-            min-height: 600px;
+            min-height: 800px;
             background-color: #fca5a5;
             position: relative;
             border-radius: 1rem;
@@ -291,7 +291,7 @@ const Section10 = () => {
             background-color: rgba(0, 0, 0, 0.2);
             position: absolute;
             margin-left: 2.5rem;
-            margin-top: 8.25rem;
+            margin-top: 16.25rem;
             border-radius: 1rem;
             padding: 2rem;
           }

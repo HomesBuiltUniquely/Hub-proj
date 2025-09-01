@@ -21,7 +21,6 @@ export default function Contact(){
             <Featurespro/>
             <QAsection/>
             <Footer/>
-
         </div>
     )
 

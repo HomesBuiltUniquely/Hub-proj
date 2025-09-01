@@ -470,7 +470,7 @@ export default function HeroSections() {
                 required 
                 className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
               />
-              <input 
+              {/* <input 
                 type="email" 
                 name="email" 
                   value={formData.email}
@@ -478,7 +478,7 @@ export default function HeroSections() {
                 placeholder="Email *" 
                 required 
                 className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
-              />
+              /> */}
             </div>
 
               {/* Phone and Pincode Row */}
@@ -493,7 +493,7 @@ export default function HeroSections() {
                   className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                 />
                 {/* Pincode Dropdown */}
-                <div className="relative w-full sm:w-[250px] mt-4 sm:mt-10">
+                <div className="relative w-full sm:w-[250px] mt-2 sm:mt-10">
                 <select
                   name="pincode"
                   required
@@ -552,7 +552,7 @@ export default function HeroSections() {
             {/* Checkbox and Button Container */}
             <div className="flex flex-col items-start mt-6 sm:mt-8 gap-3">
                 {/* WhatsApp Checkbox */}
-              <div className="flex items-center w-full sm:w-auto justify-start mb-3 lg:mb-0 lg:ml-2">
+              {/* <div className="flex items-center w-full sm:w-auto justify-start mb-3 lg:mb-0 lg:ml-2">
                 <input
                   type="checkbox"
                   required
@@ -563,12 +563,12 @@ export default function HeroSections() {
                 <label className="text-sm sm:text-[16px] font-light ml-2 sm:ml-6 whitespace-normal break-words">
                   Send Me Updates On WhatsApp
                 </label>
-              </div>
+              </div> */}
                 {/* Submit Button */}
               <button
                 type="submit"
                   disabled={isSubmitting || isSendingOtpAuto}
-                  className="flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] font-medium justify-center items-center lg:mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className=" flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] font-medium justify-center items-center lg:mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                   <p>{isSubmitting || isSendingOtpAuto ? 'Sending...' : 'Submit'}</p>
                   {!isSubmitting && !isSendingOtpAuto && (
@@ -580,10 +580,10 @@ export default function HeroSections() {
             </div>
 
               {/* Legal Text */}
-            <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-center sm:text-left mr-0 sm:mr-26 lg:ml-2">
+            <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-center sm:text-left  sm:mr-26 lg:ml-2 mr-12">
               By Submitting This Form, You Agree To The{" "}
               <span className="text-[#DDCDC1]">Privacy Policy</span> &{" "}
-              <span className="text-[#DDCDC1]">Terms & Conditions</span>
+              <div className="text-[#DDCDC1] text-left  pl-3">Terms & Conditions</div>
               </div>
             </div>
           </div>

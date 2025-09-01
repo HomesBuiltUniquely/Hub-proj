@@ -2,7 +2,7 @@ export default function Footer(){
     return(
         <div>
             {/* Responsive Footer - Adaptable to all screen sizes */}
-            <div className="w-full h-auto min-h-[400px] md:min-h-[450px] lg:min-h-[500px] xl:min-h-[550px] 2xl:min-h-[580px] 3xl:min-h-[600px] px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20">
+            <div className="w-full h-auto min-h-[400px] md:min-h-[450px] lg:min-h-[500px] xl:min-h-[550px] 2xl:min-h-[580px] 3xl:min-h-[600px] px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20 2xl:ml-120">
                 
                 <div className="max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-7xl 3xl:max-w-7xl ml-4">
                     
