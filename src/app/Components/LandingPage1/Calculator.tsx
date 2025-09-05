@@ -345,7 +345,7 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
                                                 }} 
                                                 className="w-full bg-red-500 text-white font-bold h-[40px] rounded-lg hover:bg-red-600 active:bg-red-700 transition-colors touch-manipulation"
                                             >
-                                                Select {type.name}
+                                                Select 
                                             </button>
                                         </div>
                                     </div>
@@ -989,7 +989,7 @@ const Step7Submit: React.FC<StepProps> = ({ formData }) => {
 export default function CalculatorSetup() {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({
-    bhkType: '1 BHK',
+    bhkType: '',
     rooms: {},
     wardrobe: {},
     kitchen: {},
@@ -1036,18 +1036,17 @@ export default function CalculatorSetup() {
   const isStepValid = (stepIndex: number) => {
     switch (stepIndex) {
       case 0:
-        return Boolean(formData.bhkType);
+        return Boolean(formData.bhkType && ['2 BHK', '3 BHK', '4 BHK and More'].includes(formData.bhkType));
       case 1:
         return Boolean(formData.rooms && Object.keys(formData.rooms).length > 0);
       case 2:
         return Boolean(formData.wardrobe?.type && formData.wardrobe?.height);
       case 3:
-        return Boolean(formData.kitchen?.layout && formData.kitchen?.size);
+        return Boolean(formData.kitchen?.layout && formData.kitchen?.size && formData.kitchen?.units && formData.kitchen.units.length > 0);
       case 4:
         return Boolean(formData.collections?.selections && formData.collections.selections.length > 0);
       case 5:
-        // Final form validates itself; enable Finish button
-        return true;
+        return Boolean(formData.material?.type && formData.material?.finish);
       default:
         return true;
     }

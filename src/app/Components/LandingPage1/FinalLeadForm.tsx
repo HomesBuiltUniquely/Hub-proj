@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
+import { budgetOptions } from './DropDown2';
 
 interface CalculatorData {
   bhkType?: string;
@@ -36,22 +37,81 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const router = useRouter();
 
   const [selectedPincode, setSelectedPincode] = useState('');
+  const [selectedPossession, setSelectedPossession] = useState('');
+  const [possessionOpen, setPossessionOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  
+  // OTP related states
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [otpError, setOtpError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const performSubmitFlow = async () => {
-
-    if (!formData.name || !formData.email || !formData.phone || !selectedPincode) {
-      return;
-    }
-    await handleFinalSubmit();
+  const handlePossessionSelect = (option: string) => {
+    setSelectedPossession(option);
+    setPossessionOpen(false);
   };
 
-  const handleFinalSubmit = async () => {
+  const sendOTP = async () => {
+    if (!formData.phone) {
+      setOtpError('Please enter a phone number first');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/send-twilio-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: formData.phone }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setOtpSent(true);
+        setOtpError('');
+      } else {
+        setOtpError(data.message || 'Failed to send OTP');
+      }
+    } catch (error) {
+      setOtpError('Failed to send OTP. Please try again.');
+    }
+  };
+
+  const verifyOTP = async () => {
+    if (!otp) {
+      setOtpError('Please enter the OTP');
+      return;
+    }
+
+    setIsVerifying(true);
+    try {
+      const response = await fetch('/api/verify-twilio-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: formData.phone, otp }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setIsVerified(true);
+        setOtpError('');
+      } else {
+        setOtpError(data.message || 'Invalid OTP');
+      }
+    } catch (error) {
+      setOtpError('Failed to verify OTP. Please try again.');
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
+  const handleFinalSubmit = useCallback(async () => {
     setIsSubmitting(true);
     try {
       const currentUrl = window.location.href;
@@ -61,9 +121,10 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
+        possession: selectedPossession,
         pincode: selectedPincode,
         pageUrl: currentUrl,
-        verificationStatus: 'No OTP',
+        verificationStatus: isVerified ? 'Verified User' : 'No OTP',
         // Include calculator data both nested and flattened for backend email processing
         calculator: c,
         bhkType: c.bhkType ?? '',
@@ -82,6 +143,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
       if (res.ok && data.success) {
         setSelectedPincode('');
+        setSelectedPossession('');
         setFormData({ name: '', email: '', phone: '' });
         router.push('/Form-Submit-Thank-You');
       }
@@ -90,18 +152,31 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [formData, selectedPossession, selectedPincode, isVerified, calculatorData, router]);
+
+  const performSubmitFlow = useCallback(async () => {
+    if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode) {
+      return;
+    }
+    
+    if (!isVerified) {
+      setOtpError('Please verify your phone number with OTP first');
+      return;
+    }
+    
+    await handleFinalSubmit();
+  }, [formData, selectedPossession, selectedPincode, isVerified, handleFinalSubmit]);
 
   useEffect(() => {
     const handler = () => { performSubmitFlow(); };
     window.addEventListener('calculator:submit-final', handler);
     return () => { window.removeEventListener('calculator:submit-final', handler); };
-  }, [formData, selectedPincode]);
+  }, [performSubmitFlow]);
 
   return (
     <div>
       <div className="bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-6">
-        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Interiors For Every Budget</div>
+        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Get Your Free Estimate</div>
 
         {/* Stacked inputs, one after another */}
         <div className="space-y-4">
@@ -132,6 +207,74 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             required
             className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
           />
+          
+          {/* OTP Section */}
+          {formData.phone && (
+            <div className="space-y-3">
+              {!otpSent ? (
+                <button
+                  type="button"
+                  onClick={sendOTP}
+                  className="w-full h-[50px] bg-blue-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-blue-600 transition-colors"
+                >
+                  Send OTP
+                </button>
+              ) : !isVerified ? (
+                <div className="space-y-3">
+                  <input
+                    type="text"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    placeholder="Enter OTP *"
+                    className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+                  />
+                  <button
+                    type="button"
+                    onClick={verifyOTP}
+                    disabled={isVerifying}
+                    className="w-full h-[50px] bg-green-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
+                  >
+                    {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                  </button>
+                </div>
+              ) : (
+                <div className="w-full h-[50px] bg-green-100 text-green-700 rounded-3xl text-base sm:text-lg pl-6 flex items-center font-medium">
+                  ✅ Phone Number Verified
+                </div>
+              )}
+              
+              {otpError && (
+                <div className="text-red-500 text-sm text-center">{otpError}</div>
+              )}
+            </div>
+          )}
+          
+          <div className="relative w-full">
+            <div
+              onClick={() => {
+                setPossessionOpen(!possessionOpen);
+              }}
+              className={`w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-lg flex items-center justify-between px-6 cursor-pointer ${!selectedPossession && 'text-gray-400'}`}
+            >
+              <span>
+                {selectedPossession || "Possession In *"}
+              </span>
+              <span className="text-gray-500">&#9662;</span>
+            </div>
+            {possessionOpen && (
+              <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
+                {budgetOptions.map((option: string) => (
+                  <li
+                    key={option}
+                    onClick={() => handlePossessionSelect(option)}
+                    className="px-6 py-3 hover:bg-gray-100 cursor-pointer text-gray-700"
+                  >
+                    {option}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <div className="relative w-full">
             <select
               name="pincode"
@@ -153,7 +296,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         </div>
 
         <div className="text-xs mt-4 font-medium text-center">
-          By Submitting This Form, You Agree To The <span className="text-[#DDCDC1]">Privacy Policy</span> & <span className="text-[#DDCDC1]">Terms & Conditions</span>
+        By submitting, you agree to our Privacy Policy & Terms & Conditions
+
         </div>
       </div>
     </div>
@@ -161,3 +305,4 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 };
 
 export default FinalLeadForm;
+
