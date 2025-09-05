@@ -4,7 +4,33 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 
-type FinalLeadFormProps = { calculatorData?: any };
+interface CalculatorData {
+  bhkType?: string;
+  rooms?: Record<string, number>;
+  wardrobe?: {
+    type?: string;
+    height?: string;
+    measurements?: {
+      width?: number;
+      height?: number;
+      depth?: number;
+    };
+  };
+  kitchen?: {
+    layout?: string;
+    size?: string;
+    units?: string[];
+  };
+  collections?: {
+    selections?: string[];
+  };
+  material?: {
+    type?: string;
+    finish?: string;
+  };
+}
+
+type FinalLeadFormProps = { calculatorData?: CalculatorData };
 
 const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const router = useRouter();
