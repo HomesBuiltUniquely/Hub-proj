@@ -85,7 +85,7 @@ export async function POST(req: Request) {
       }
     }
 
-    const renderJSON = (value: any) => {
+    const renderJSON = (value: unknown) => {
       try {
         if (typeof value === 'string') return value;
         return value ? JSON.stringify(value, null, 2) : 'Not provided';
