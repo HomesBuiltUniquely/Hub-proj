@@ -65,10 +65,37 @@ const ProgressBar: React.FC<{ steps: string[]; currentStep: number }> = ({ steps
 
 
 
+// --- Form Data Interface ---
+interface FormData {
+  bhkType: string;
+  rooms: Record<string, number>;
+  wardrobe: {
+    type?: string;
+    height?: string;
+    measurements?: {
+      width?: number;
+      height?: number;
+      depth?: number;
+    };
+  };
+  kitchen: {
+    layout?: string;
+    size?: string;
+    units?: string[];
+  };
+  collections: {
+    selections?: string[];
+  };
+  material: {
+    type?: string;
+    finish?: string;
+  };
+}
+
 // --- Step Component Interfaces ---
 interface StepProps {
-  formData: any;
-  setFormData: React.Dispatch<React.SetStateAction<any>>;
+  formData: FormData;
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
 }
 
 
@@ -143,7 +170,7 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
     const roomOptions = ["Living Room", "Bedroom", "Kitchen", "Dining", "Bathroom"];
 
     const handleCountChange = (roomName: string, delta: number) => {
-        setFormData((prev: any) => {
+        setFormData((prev: FormData) => {
             const currentCount = prev.rooms?.[roomName] || 0;
             const newCount = Math.max(0, currentCount + delta); // Prevent going below zero
 
@@ -248,7 +275,7 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
 
 
     const handleOptionClick = (name: string, value: string) => {
-        setFormData((prev: any) => ({
+        setFormData((prev: FormData) => ({
             ...prev,
             wardrobe: {
                 ...prev.wardrobe,
@@ -399,7 +426,7 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
 
 
     const handleOptionClick = (name: string, value: string) => {
-        setFormData((prev: any) => ({
+        setFormData((prev: FormData) => ({
             ...prev,
             kitchen: {
                 ...prev.kitchen,
@@ -409,7 +436,7 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
     };
     
     const handleMultiSelectClick = (unit: string) => {
-        setFormData((prev: any) => {
+        setFormData((prev: FormData) => {
             const currentUnits = prev.kitchen?.units || [];
             const newUnits = currentUnits.includes(unit)
                 ? currentUnits.filter((u: string) => u !== unit)
@@ -623,7 +650,7 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
     const [slide, setSlide] = useState(0);
 
     const handleOptionClick = (name: string, value: string) => {
-        setFormData((prev: any) => ({
+        setFormData((prev: FormData) => ({
             ...prev,
             material: {
                 ...prev.material,
@@ -846,7 +873,7 @@ const Step5Collections: React.FC<StepProps> = ({ formData, setFormData }) => {
     const [slide, setSlide] = useState(0); // single slide but keep for consistency
 
     const handleMultiSelect = (collectionName: string) => {
-        setFormData((prev: any) => {
+        setFormData((prev: FormData) => {
             const currentCollections = prev.collections?.selections || [];
             const newCollections = currentCollections.includes(collectionName)
                 ? currentCollections.filter((c: string) => c !== collectionName)
@@ -961,7 +988,7 @@ const Step7Submit: React.FC<StepProps> = ({ formData }) => {
 
 export default function CalculatorSetup() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState<any>({
+  const [formData, setFormData] = useState<FormData>({
     bhkType: '1 BHK',
     rooms: {},
     wardrobe: {},
