@@ -78,7 +78,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       } else {
         setOtpError(data.message || 'Failed to send OTP');
       }
-    } catch (_error) {
+    } catch {
       setOtpError('Failed to send OTP. Please try again.');
     }
   };
@@ -104,7 +104,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       } else {
         setOtpError(data.message || 'Invalid OTP');
       }
-    } catch (_error) {
+    } catch {
       setOtpError('Failed to verify OTP. Please try again.');
     } finally {
       setIsVerifying(false);
