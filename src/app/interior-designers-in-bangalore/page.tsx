@@ -10,6 +10,8 @@ import Section8 from "../Components/LandingPage1/Section8";
 import Section9 from "../Components/LandingPage1/Section9";
 import BrandCarousel from "../Components/LandingPage1/Brand";
 import { QAsection } from "../Components/LandingPage1/QASEC";
+import CalculatorPage from "../Components/LandingPage1/CalculatorPage";
+import Section33 from "../Components/LandingPage1/Caron";
 
 
 export default function InteriorDesignersInBangalore() {
@@ -19,9 +21,11 @@ export default function InteriorDesignersInBangalore() {
       <Section1 />
       <Section2 />
       <Section3 />
+      <Section33/>
       <Section4 />
       <Section5 />
       <Section6 />
+      <CalculatorPage/>
       <Section7 />
       <Section8 />
       <Section9 />

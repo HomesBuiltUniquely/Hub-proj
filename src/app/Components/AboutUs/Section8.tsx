@@ -3,8 +3,8 @@
 import React from 'react';
 
 const Section8 = () => {
-  return (
-    <div>
+    return (
+      <div>
       {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
       <section className="aboutus-section8-3xl-container hidden">
         <div className="aboutus-section8-3xl-content">
@@ -356,7 +356,7 @@ const Section8 = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-              </div>
+                </div>
               <div className="pl-3 pt-4 w-[300px] text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
@@ -387,7 +387,7 @@ const Section8 = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-              </div>
+                </div>
               <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
@@ -400,7 +400,7 @@ const Section8 = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-              </div>
+                </div>
               <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
@@ -413,7 +413,7 @@ const Section8 = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-              </div>
+                </div>
               <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
@@ -429,7 +429,7 @@ const Section8 = () => {
               </div>
               <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -542,8 +542,8 @@ const Section8 = () => {
           }
         }
       `}</style>
-    </div>
-  );
+      </div>
+    );
 };
 
 export default Section8;   

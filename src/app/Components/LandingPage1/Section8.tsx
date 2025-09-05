@@ -209,7 +209,7 @@ export default function Section8() {
             </div>
             
             <div className="mt-4 text-center">
-              <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
+              
             </div>
           </div>
         </div>

@@ -121,7 +121,7 @@ export default function Section5(){
         <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 0 ? null : 0)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//livingroom.png"></img>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5  text-white">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
                 <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Living & <p> Dining Spaces </p></div>
@@ -136,7 +136,7 @@ export default function Section5(){
         <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 1 ? null : 1)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//boxes.png"></img>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 text-white ">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
                 <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Storage <p> Inovation </p></div>
@@ -151,7 +151,7 @@ export default function Section5(){
         <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 2 ? null : 2)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//double-bed.png"></img>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5  text-white">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
                 <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Bedroom<p>Solutions</p></div>
@@ -166,7 +166,7 @@ export default function Section5(){
         <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 3 ? null : 3)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500 pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//interior-design.png"></img>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 text-white ">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
                 <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Interior Design<p>Service</p></div>
@@ -181,7 +181,7 @@ export default function Section5(){
         <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 4 ? null : 4)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//kitchen.png"></img>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 text-white">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
                 <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Modular Kitchen <p> Design</p></div>
@@ -196,7 +196,7 @@ export default function Section5(){
         <div className="relative w-[330px] h-[190px] bg-red-500 rounded-4xl mt-6 mx-auto" onClick={() => setActiveMobile(activeMobile === 5 ? null : 5)}>
            <div className='flex'>
                 <img className="w-[90px] h-[120px] bg-red-500  pt-4 mt-5 ml-6" src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//house-repair.png"></img>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 text-white">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
                 <div className='ml-3 pt-12 text-[20px] text-white manrope-semibold'>Home <p> Improvment Service</p></div>

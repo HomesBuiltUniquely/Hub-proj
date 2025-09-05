@@ -222,7 +222,7 @@ const Section6 = () => {
               </div>
             </div>
           </div>
-        </div>
+      </div>
       </section>
 
       {/* LG Screen - Large displays */}
@@ -245,8 +245,8 @@ const Section6 = () => {
             <div className="flex items-start">
               <div className="w-[45px] h-[45px] rounded-lg bg-[#ddcdc1] mt-5 ml-8 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
               </div>
               <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
@@ -258,8 +258,8 @@ const Section6 = () => {
             <div className="flex items-start">
               <div className="w-[45px] h-[45px] rounded-lg bg-[#ddcdc1] mt-5 ml-8 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
               </div>
               <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
@@ -271,8 +271,8 @@ const Section6 = () => {
             <div className="flex items-start">
               <div className="w-[45px] h-[45px] rounded-lg bg-[#ddcdc1] mt-5 ml-8 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
               </div>
               <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
@@ -284,8 +284,8 @@ const Section6 = () => {
             <div className="flex items-start">
               <div className="w-[45px] h-[45px] rounded-lg bg-[#ddcdc1] mt-5 ml-8 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
               </div>
               <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
@@ -359,8 +359,8 @@ const Section6 = () => {
               </div>
               <div className="pl-3 pt-4 w-[300px] text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -431,8 +431,8 @@ const Section6 = () => {
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
             </div>
-          </div>
         </div>
+      </div>
       </section>
 
       {/* Pure CSS for 3XL - 2560*1440 resolution */}

@@ -169,11 +169,11 @@ export default function Section3() {
                                 <img
                                     src={slide.img}
                                     alt={slide.type}
-                                    className="w-full h-[300px] object-cover rounded-t-3xl "
+                                    className="w-full h-[320px] object-cover rounded-t-3xl "
                                 />
                                 <div className="p-6">
-                                    <div className="text-2xl font-bold text-[#3A2C19] mb-2">{slide.type}</div>
-                                    <div className="text-lg text-[#3A2C19]">{slide.price}</div>
+                                    <div className="text-2xl manrope text-[#3A2C19]">{slide.type}</div>
+                                    <div className="text-lg text-[#3A2C19] ">{slide.price}</div>
                                 </div>
                             </div>
                         );
@@ -182,7 +182,7 @@ export default function Section3() {
                 </div>
                 <button 
                     onClick={scrollToForm}
-                    className='mt-20 mx-auto text-[18px] w-[250px] h-[50px] bg-red-500 px-auto text-white rounded-4xl font-bold hover:bg-red-600 ml-20 transition-colors'
+                    className='mt-15  text-[18px] w-[250px] h-[50px] bg-red-500 px-auto text-white rounded-xl font-bold hover:bg-red-600 ml-16 transition-colors'
                 >
                     Book A Free Design Session
                 </button>

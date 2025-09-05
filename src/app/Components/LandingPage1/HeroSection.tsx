@@ -424,7 +424,7 @@ export default function HeroSections() {
           <div className="bg-white w-full py-4 px-4 shadow-sm">
             <div className="flex items-center justify-between">
               <img src="/hub.png" alt="Logo" className="h-[38px]" />
-              <button type="button" className="bg-[#DDCDC1] text-amber-950 rounded-full px-5 py-2 text-sm font-semibold shadow-md">GET FREE QUOTE</button>
+              <button type="button" className="bg-[#DDCDC1] text-amber-950 rounded-xl px-5 py-2 text-sm font-semibold shadow-md">GET A FREE QUOTE</button>
             </div>
           </div>
 
@@ -449,8 +449,8 @@ export default function HeroSections() {
 
             {/* Centered Heading and Subheading */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10 pb-64 pr-10">
-              <h1 className="text-white text-[28px] manrope top-4  text-left leading-tight drop-shadow-lg">Best Interior Designers in <span className="text-red-500">Bangalore</span></h1>
-              <p className="text-white text-base text-left font-medium drop-shadow top-3 pt-1 pr-3">Transforming Bangalore homes with personalized interiors that reflect your lifestyle.</p>
+              <h1 className="text-white text-[24px] manrope top-4 text-left leading-tight drop-shadow-lg mt-6 w-full h-full">Best Interior Designers in <span className="text-red-500">Bangalore</span></h1>
+              <p className="text-white text-base text-left font-medium drop-shadow top-3 pt-1 pr-3 w-full h-full">Transforming Bangalore homes with personalized interiors that reflect your lifestyle.</p>
             </div>
           </div>
 
@@ -468,7 +468,7 @@ export default function HeroSections() {
                   onChange={handleInputChange}
                 placeholder="Name *" 
                 required 
-                className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
+                className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
               />
               <input 
                 type="email" 
@@ -477,7 +477,7 @@ export default function HeroSections() {
                   onChange={handleInputChange}
                 placeholder="Email *" 
                 required 
-                className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
+                className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-2 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
               />
             </div>
 
@@ -490,7 +490,7 @@ export default function HeroSections() {
                   onChange={handleInputChange}
                   placeholder="Phone Number *" 
                   required 
-                  className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
+                  className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                 />
                 {/* Pincode Dropdown */}
                 <div className="relative w-full sm:w-[250px] mt-2 sm:mt-10">
@@ -499,7 +499,7 @@ export default function HeroSections() {
                   required
                   value={selectedPincode}
                   onChange={e => setSelectedPincode(e.target.value)}
-                  className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
+                  className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                 >
                   <option className="text-gray-400" value="" disabled>Property Pincode *</option>
                   {Pincode.map((pin, idx) => (
@@ -520,7 +520,7 @@ export default function HeroSections() {
                     required
                     value={selectedCity}
                     onChange={e => setSelectedCity(e.target.value)}
-                    className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
+                    className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-3xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                   >
                     <option className="text-gray-400" value="" disabled>Choose Interior Setup *</option>
                     {cityOptions.map((option: string) => (
@@ -537,7 +537,7 @@ export default function HeroSections() {
                     required
                     value={selectedBudget}
                     onChange={e => setSelectedBudget(e.target.value)}
-                    className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
+                    className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                   >
                     <option className="text-gray-400" value="" disabled>Possession In *</option>
                     {budgetOptions.map((option: string) => (
@@ -568,7 +568,7 @@ export default function HeroSections() {
               <button
                 type="submit"
                   disabled={isSubmitting || isSendingOtpAuto}
-                  className=" flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] font-medium justify-center items-center lg:mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className=" flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-2xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] font-medium justify-center items-center lg:mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                   <p>{isSubmitting || isSendingOtpAuto ? 'Sending...' : 'Submit'}</p>
                   {!isSubmitting && !isSendingOtpAuto && (
@@ -580,10 +580,8 @@ export default function HeroSections() {
             </div>
 
               {/* Legal Text */}
-            <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-center sm:text-left  sm:mr-26 lg:ml-2 mr-12">
-              By Submitting This Form, You Agree To The{" "}
-              <span className="text-[#DDCDC1]">Privacy Policy</span> &{" "}
-              <div className="text-[#DDCDC1] text-left  pl-3">Terms & Conditions</div>
+            <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-amber-950 text-center sm:text-left mr-0 sm:mr-26 lg:ml-2">
+              By submitting, you agree to our Privacy Policy & Terms & Conditions
               </div>
             </div>
           </div>
@@ -609,7 +607,7 @@ export default function HeroSections() {
                     onChange={handleInputChange}
                     placeholder="Name *" 
                     required 
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                   />
                   <input 
                     type="email" 
@@ -618,7 +616,7 @@ export default function HeroSections() {
                     onChange={handleInputChange}
                     placeholder="Email *" 
                     required 
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                   />
                 </div>
 
@@ -631,7 +629,7 @@ export default function HeroSections() {
                     onChange={handleInputChange}
                     placeholder="Phone Number *" 
                     required 
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f2f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                   />
                   {/* Pincode Dropdown */}
                   <div className="relative w-full sm:w-[250px] mt-4 sm:mt-10">
@@ -745,7 +743,7 @@ export default function HeroSections() {
 
                 {/* Legal Text */}
                 <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-center sm:text-left mr-0 sm:mr-26 lg:ml-2 ">
-                  By Submitting This Form, You Agree To The{" "}
+                By submitting, you agree to our {" "}
                   <span className="text-[#DDCDC1]">Privacy Policy</span> &{" "}
                   <span className="text-[#DDCDC1]">Terms & Conditions</span>
                 </div>
