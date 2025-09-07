@@ -23,15 +23,15 @@ export default function Section1(){
 
             {/* 2XL Screen - Large displays */}
             <div className="aboutus-section1-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="flex flex-row justify-between w-full h-[300px] mt-20 px-16">
+                <div className="flex flex-row justify-between w-full h-[300px] mt-12 px-16">
                     
                     {/* Heading - 2XL optimized */}
-                    <h1 className="text-6xl manrope-medium mt-22 ml-20 leading-tight">
+                    <h1 className="text-6xl manrope-medium mt-28 ml-24 leading-tight">
                         About Us
                     </h1>
                     
                     {/* Description - 2XL optimized */}
-                    <p className="w-[600px] mt-14  manrope-medium text-[26px] leading-relaxed">
+                    <p className="w-[600px] mt-14 mr-20  manrope-medium text-[26px] leading-relaxed">
                     Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.  
                     No templates. No compromises. Just interiors that truly fit you.
                     </p>

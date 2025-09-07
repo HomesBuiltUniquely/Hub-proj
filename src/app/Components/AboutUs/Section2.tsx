@@ -47,7 +47,7 @@ export default function Section2(){
 
             {/* 2XL Screen - Large displays */}
             <div className="aboutus-section2-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="h-[600px] flex flex-row px-16 mt-16 gap-12 ml-10">
+                <div className="h-[600px] flex flex-row px-16 mt-16 gap-12 ml-50">
                     
                     {/* Left Text Box - 2XL optimized */}
                     <div className="w-[500px] h-[500px] bg-[#ebd457] rounded-2xl p-16 pt-30 text-xl manrope-medium tracking-wide leading-relaxed">

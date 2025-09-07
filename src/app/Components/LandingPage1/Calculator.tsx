@@ -886,10 +886,10 @@ const Step5Collections: React.FC<StepProps> = ({ formData, setFormData }) => {
     };
 
     const collections = [
-        { name: 'Study Unit', image: 'studyunit.jpg' },
-        { name: 'TV Unit', image: 'TVUNIT.jpg' },
-        { name: 'Crockery Unit', image: 'CROCKERY.jpg' },
-        { name: 'Dressing Unit', image: 'DRESSIGNUNIT.jpg' },
+        { name: 'Study Unit', image: '/studyunit.jpg' },
+        { name: 'TV Unit', image: '/TVUNIT.jpg' },
+        { name: 'Crockery Unit', image: '/CROCKERY.jpg' },
+        { name: 'Dressing Unit', image: '/DRESSIGNUNIT.jpg' },
     ];
 
     const selected = formData.collections?.selections || [];
