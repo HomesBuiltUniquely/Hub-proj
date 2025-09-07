@@ -12,7 +12,7 @@ export default function Section4(){
                         
                         {/* Heading - 3XL optimized */}
                         <h1 className="aboutus-section4-3xl-heading">
-                            Sub Brands
+                        Brand Eco System
                         </h1>
                         
                         {/* Description - 3XL optimized */}
@@ -51,7 +51,7 @@ export default function Section4(){
                         
                         {/* Heading - 2XL optimized */}
                         <h1 className="text-6xl manrope-medium mt-20 ml-15 leading-tight">
-                            Sub Brands
+                        Brand Eco System
                         </h1>
                         
                         {/* Description - 2XL optimized */}
@@ -90,7 +90,7 @@ export default function Section4(){
                         
                         {/* Heading - XL optimized */}
                         <h1 className="text-5xl manrope-medium mt-18 ml-26 leading-tight">
-                            Sub Brands
+                        Brand Eco System
                         </h1>
                         
                         {/* Description - XL optimized */}
@@ -129,7 +129,7 @@ export default function Section4(){
                         
                         {/* Heading - LG optimized */}
                         <h1 className="text-4xl manrope-medium mt-16 ml-20 leading-tight">
-                            Sub Brands
+                        Brand Eco System
                         </h1>
                         
                         {/* Description - LG optimized */}
@@ -168,7 +168,7 @@ export default function Section4(){
                         
                         {/* Heading - MD optimized */}
                         <h1 className="text-3xl manrope-medium mt-12 ml-12 leading-tight">
-                            Sub Brands
+                        Brand Eco System
                         </h1>
                         
                         {/* Description - MD optimized */}
@@ -207,7 +207,7 @@ export default function Section4(){
                         
                         {/* Heading - SM optimized */}
                         <h1 className="text-2xl manrope-medium mt-8 ml-8 leading-tight">
-                            Sub Brands
+                        Brand Eco System
                         </h1>
                         
                         {/* Description - SM optimized */}
@@ -280,7 +280,7 @@ export default function Section4(){
                         font-family: 'ManropeMedium', sans-serif;
                         margin-top: 10rem;
                         line-height: 1.2;
-                        margin-left: 40%;
+                        margin-left: 36%;
                     }
                     
                     .aboutus-section4-3xl-description {

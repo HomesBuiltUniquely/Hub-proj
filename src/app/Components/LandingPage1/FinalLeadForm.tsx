@@ -145,6 +145,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         setSelectedPincode('');
         setSelectedPossession('');
         setFormData({ name: '', email: '', phone: '' });
+        // Set flag to trigger reload on thank you page for GTM tracking
+        sessionStorage.setItem('formSubmitted', 'true');
         router.push('/Form-Submit-Thank-You');
       }
     } catch (e) {

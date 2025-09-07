@@ -9,13 +9,13 @@ export default function Section2(){
                     
                     {/* Left Text Box - 3XL optimized */}
                     <div className="aboutus-section2-3xl-textbox">
-                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
-                    </div>
-                    
+                    At Hub Interior, beauty is backed by process.
+                            Every space you see is a result of deep planning, skilled design, and flawless execution.
+                            We don’t just make interiors look good—we make them work better for real lives.                    </div>
                     {/* Center Image Box - 3XL optimized */}
                     <div className="aboutus-section2-3xl-center-image">
                         <img 
-                            src="bed1.jpg" 
+                            src="1.png" 
                             className="aboutus-section2-3xl-image" 
                             alt="Bedroom Interior"
                         />
@@ -35,7 +35,7 @@ export default function Section2(){
                         {/* Bottom Image */}
                         <div className="aboutus-section2-3xl-bottom-image">
                             <img 
-                                src="j4.webp" 
+                                src="3.png" 
                                 className="aboutus-section2-3xl-image" 
                                 alt="Interior Design"
                             />
@@ -51,13 +51,15 @@ export default function Section2(){
                     
                     {/* Left Text Box - 2XL optimized */}
                     <div className="w-[500px] h-[500px] bg-[#ebd457] rounded-2xl p-16 pt-30 text-xl manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                    At Hub Interior, beauty is backed by process.
+                    Every space you see is a result of deep planning, skilled design, and flawless execution.
+                    We don’t just make interiors look good—we make them work better for real lives.
                     </div>
                     
                     {/* Center Image Box - 2XL optimized */}
                     <div className="w-[500px] h-[500px] bg-[#ebd457] rounded-2xl overflow-hidden">
                         <img 
-                            src="bed1.jpg" 
+                            src="1.png" 
                             className="w-full h-full object-cover rounded-2xl" 
                             alt="Bedroom Interior"
                         />
@@ -77,7 +79,7 @@ export default function Section2(){
                         {/* Bottom Image */}
                         <div className="w-[280px] h-[320px] bg-red-400 rounded-2xl overflow-hidden">
                             <img 
-                                src="j4.webp" 
+                                src="3.png" 
                                 className="w-full h-full object-cover rounded-2xl" 
                                 alt="Interior Design"
                             />
@@ -93,13 +95,15 @@ export default function Section2(){
                     
                     {/* Left Text Box - XL optimized */}
                     <div className="w-[450px] h-[470px] bg-[#ebd457] rounded-2xl p-12 pt-32 text-[16px] manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                    At Hub Interior, beauty is backed by process.
+                    Every space you see is a result of deep planning, skilled design, and flawless execution.
+                    We don’t just make interiors look good—we make them work better for real lives.
                     </div>
                     
                     {/* Center Image Box - XL optimized */}
                     <div className="w-[450px] h-[450px] bg-[#ebd457] rounded-2xl overflow-hidden">
                         <img 
-                            src="bed1.jpg" 
+                            src="1.png" 
                             className="w-full h-full object-cover rounded-2xl" 
                             alt="Bedroom Interior"
                         />
@@ -119,7 +123,7 @@ export default function Section2(){
                         {/* Bottom Image */}
                         <div className="w-[250px] h-[300px] bg-red-400 rounded-2xl overflow-hidden">
                             <img 
-                                src="j4.webp" 
+                                src="3.png" 
                                 className="w-full h-full object-cover rounded-2xl" 
                                 alt="Interior Design"
                             />
@@ -135,7 +139,9 @@ export default function Section2(){
                     
                     {/* Left Text Box - LG optimized */}
                     <div className="w-[400px] h-[400px] bg-[#ebd457] rounded-2xl p-10 pt-24 text-sm manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                    At Hub Interior, beauty is backed by process.
+                    Every space you see is a result of deep planning, skilled design, and flawless execution.
+                    We don’t just make interiors look good—we make them work better for real lives.
                     </div>
                     
                     {/* Center Image Box - LG optimized */}
@@ -177,7 +183,9 @@ export default function Section2(){
                     
                     {/* Left Text Box - MD optimized */}
                     <div className="w-full h-[300px] bg-[#ebd457] rounded-2xl p-8 pt-20 text-sm manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                    At Hub Interior, beauty is backed by process.
+                    Every space you see is a result of deep planning, skilled design, and flawless execution.
+                    We don’t just make interiors look good—we make them work better for real lives.
                     </div>
                     
                     {/* Center Image Box - MD optimized */}
@@ -219,7 +227,9 @@ export default function Section2(){
                     
                     {/* Left Text Box - SM optimized */}
                     <div className="w-full h-[250px] bg-[#ebd457] rounded-xl p-6 pt-16 text-xs manrope-medium tracking-wide leading-relaxed">
-                        At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored to the people who live in it.
+                    At Hub Interior, beauty is backed by process.
+                    Every space you see is a result of deep planning, skilled design, and flawless execution.
+                    We don’t just make interiors look good—we make them work better for real lives.
                     </div>
                     
                     {/* Center Image Box - SM optimized */}

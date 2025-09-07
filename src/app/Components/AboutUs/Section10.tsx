@@ -12,7 +12,7 @@ const Section10 = () => {
             <div className="aboutus-section10-3xl-background">
               {/* Background Image - 3XL optimized */}
               <img 
-                src="bn.jpg" 
+                src="ab2.png" 
                 className="aboutus-section10-3xl-bg-image" 
                 alt="Interior Design Background"
               />
@@ -47,7 +47,7 @@ const Section10 = () => {
               
               {/* Background Image - 2XL optimized */}
               <img 
-                src="bn.jpg" 
+                src="ab2.png" 
                 className="w-full h-full min-h-[450px] rounded-2xl absolute object-cover" 
                 alt="Interior Design Background"
               />
@@ -85,7 +85,7 @@ const Section10 = () => {
               
               {/* Background Image - XL optimized */}
               <img 
-                src="bn.jpg" 
+                src="ab2.png" 
                 className="w-full h-full min-h-[400px] rounded-2xl absolute object-cover" 
                 alt="Interior Design Background"
               />
@@ -123,7 +123,7 @@ const Section10 = () => {
               
               {/* Background Image - LG optimized */}
               <img 
-                src="bn.jpg" 
+                src="ab.png" 
                 className="w-full h-full min-h-[350px] rounded-2xl absolute object-cover" 
                 alt="Interior Design Background"
               />
@@ -249,7 +249,7 @@ const Section10 = () => {
             width: 100%;
             height: 800px;
             margin-top: 5rem;
-            margin-left: 2.25rem;
+            margin-right: 5rem;
             padding: 0 6rem;
           }
           

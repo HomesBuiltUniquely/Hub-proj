@@ -11,7 +11,7 @@ const Section7 = () => {
           <div className="aboutus-section7-3xl-layout">
             {/* Left Side - Image Container */}
             <div className="aboutus-section7-3xl-image">
-              <img src="/bn.jpg" alt="Values Image" className=" h-[800px] rounded-2xl" />
+              <img src="/6.png" alt="Values Image" className=" h-[900px] rounded-2xl " />
             </div>
             
             {/* Right Side - Values Content */}
@@ -21,9 +21,6 @@ const Section7 = () => {
                 <h1 className="aboutus-section7-3xl-title">
                   Values
                 </h1>
-                <p className="aboutus-section7-3xl-subtitle">
-                  At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-                </p>
               </div>
               
               {/* Values Points */}
@@ -38,7 +35,7 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                      At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                    Integrity: Building trust through honesty, transparency, and respect in everything we do.
                     </div>
                   </div>
                 </div>
@@ -53,10 +50,26 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                      At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                    Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
                     </div>
                   </div>
                 </div>
+
+                <div className="aboutus-section7-3xl-point">
+                  <div className="aboutus-section7-3xl-divider"></div>
+                  <div className="aboutus-section7-3xl-point-content">
+                    <div className="aboutus-section7-3xl-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="aboutus-section7-3xl-svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    </div>
+                    <div className="aboutus-section7-3xl-text">
+                    Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
+
+                    </div>
+                  </div>
+                </div>
+
                 
                 {/* Value Point 3 */}
                 <div className="aboutus-section7-3xl-point">
@@ -68,7 +81,8 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                      At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                    Excellence: Designing homes that are timeless, functional, and crafted with precision.
+
                     </div>
                   </div>
                 </div>
@@ -83,7 +97,21 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                      At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                    Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
+                    </div>
+                  </div>
+                </div>
+
+                <div className="aboutus-section7-3xl-point">
+                  <div className="aboutus-section7-3xl-divider"></div>
+                  <div className="aboutus-section7-3xl-point-content">
+                    <div className="aboutus-section7-3xl-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="aboutus-section7-3xl-svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    </div>
+                    <div className="aboutus-section7-3xl-text">
+                    Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
                     </div>
                   </div>
                 </div>
@@ -98,8 +126,10 @@ const Section7 = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between gap-20">
             {/* Left Side - Image Container */}
-            <div className="w-full lg:w-[400px] h-[580px] bg-red-400 mt-24 ml-10 rounded-2xl">
+            <div className="w-[400px] lg:w-[800px] h-[580px] bg-red-400 mt-24 ml-10 rounded-2xl">
               {/* Image placeholder - can be replaced with actual image */}
+              <img src="/bn.jpg" alt="Values Image" className=" h-[580px] rounded-2xl" >
+              </img>
             </div>
             
             {/* Right Side - Values Content */}
@@ -174,77 +204,99 @@ const Section7 = () => {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white">
+      <section className="hidden xl:block 2xl:hidden py-10 px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between gap-16">
             {/* Left Side - Image Container */}
-            <div className="w-full lg:w-[350px] h-[550px] bg-red-400 mt-20 ml-8 rounded-2xl">
+            <div className="w-full lg:w-[500px] h-[550px] bg-red-400 mt-10  rounded-2xl">
               {/* Image placeholder - can be replaced with actual image */}
+              <img src="/6.png" alt="Values Image" className="w-[500px] h-[550px] rounded-2xl" />
             </div>
             
             {/* Right Side - Values Content */}
-            <div className="w-full lg:w-auto lg:flex-1 mr-16 mb-20">
+            <div className="w-full lg:w-auto lg:flex-1 ml-56">
               {/* Values Header */}
-              <h1 className="text-5xl manrope-medium pt-18 pl-10 leading-tight">
+              <h1 className="text-5xl manrope-medium  pl-10 leading-tight">
                 Values
               </h1>
               
               {/* Values Description */}
-              <p className="w-[350px] ml-10 manrope-medium pt-3 text-lg leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </p>
+             
               
               {/* Values Points */}
-              <div className="space-y-10">
+              <div className="space-y-5">
                 {/* Value Point 1 */}
-                <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-10 ml-10"></div>
+                <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-6 ml-10"></div>
                 <div className="flex items-start">
-                  <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
+                  <div className="w-[30px] h-[30px] rounded-lg bg-[#ddcdc1] ml-10 flex items-center justify-center mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
-                  <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  <div className="pl-4 w-[400px] text-base leading-relaxed">
+                  Integrity: Building trust through honesty, transparency, and respect in everything we do.
                   </div>
                 </div>
                 
                 {/* Value Point 2 */}
-                <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-10 ml-10"></div>
+                <div className="w-[450px] h-0 border-t border-[#ddcdc1]  ml-10"></div>
                 <div className="flex items-start">
-                  <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
+                  <div className="w-[30px] h-[30px] rounded-lg bg-[#ddcdc1] ml-10 flex items-center justify-center mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
-                  <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  <div className="pl-4  w-[400px] text-base leading-relaxed">
+                  Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
+
                   </div>
                 </div>
                 
                 {/* Value Point 3 */}
-                <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-10 ml-10"></div>
+                <div className="w-[450px] h-0 border-t border-[#ddcdc1]  ml-10"></div>
                 <div className="flex items-start">
-                  <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
+                  <div className="w-[30px] h-[30px] rounded-lg bg-[#ddcdc1] ml-10 flex items-center justify-center mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
-                  <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  <div className="pl-4 w-[400px] text-base leading-relaxed">
+                  Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
                   </div>
                 </div>
                 
                 {/* Value Point 4 */}
-                <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-10 ml-10"></div>
+                <div className="w-[450px] h-0 border-t border-[#ddcdc1] ml-10"></div>
                 <div className="flex items-start">
-                  <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
+                  <div className="w-[30px] h-[30px] rounded-lg bg-[#ddcdc1] ml-10 flex items-center justify-center mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
-                  <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  <div className="pl-4  w-[400px] text-base leading-relaxed">
+                  Excellence: Designing homes that are timeless, functional, and crafted with precision.
+                  </div>
+                </div>
+                <div className="w-[450px] h-0 border-t border-[#ddcdc1] ml-10"></div>
+                <div className="flex items-start">
+                  <div className="w-[30px] h-[30px] rounded-lg bg-[#ddcdc1] ml-10 flex items-center justify-center mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <div className="pl-4  w-[400px] text-base leading-relaxed">
+                  Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
+                  </div>
+                </div>
+                <div className="w-[450px] h-0 border-t border-[#ddcdc1] ml-10"></div>
+                <div className="flex items-start">
+                  <div className="w-[30px] h-[30px] rounded-lg bg-[#ddcdc1] ml-10 flex items-center justify-center mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <div className="pl-4  w-[450px] text-base leading-relaxed">
+                  Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
                   </div>
                 </div>
               </div>
@@ -525,23 +577,24 @@ const Section7 = () => {
           .aboutus-section7-3xl-layout {
             display: flex;
             justify-content: space-between;
-            gap: 6rem;
+            align-items: flex-start;
+            gap: 4rem;
+            width: 100%;
           }
           
           .aboutus-section7-3xl-image {
-            width: 650px;
+            width: 700px;
             height: 800px;
             background-color: #f87171;
-            margin-top: 7.5rem;
-            margin-left: 2.5rem;
+            margin-top: 10rem;
+            margin-left: 9rem;
             border-radius: 1rem;
           }
           
           .aboutus-section7-3xl-values {
             width: auto;
             flex: 1;
-            margin-bottom: 5rem;
-            
+            margin-bottom: 2rem; 
           }
           
           .aboutus-section7-3xl-header {
@@ -555,8 +608,8 @@ const Section7 = () => {
             line-height: 1.2;
             margin-bottom: 1rem;
             font-family: 'Manrope', sans-serif;
-            padding-top: 5rem;
-            padding-left: 2.5rem;
+            padding-top: 0rem;
+            padding-left: 750px;
             
           }
           
@@ -565,17 +618,18 @@ const Section7 = () => {
             color: #4b5563;
             line-height: 1.7;
             font-family: 'Manrope', sans-serif;
-            width: 450px;
+            width: 1200px;
             padding-top: 0.75rem;
-            padding-left: 2.5rem;
+            padding-left: 600px;
           }
           
           .aboutus-section7-3xl-points {
-            space-y: 2.5rem;
+           
           }
           
           .aboutus-section7-3xl-point {
             margin-bottom: 2.5rem;
+            margin-left: 600px;
           }
           
           .aboutus-section7-3xl-divider {

@@ -13,8 +13,9 @@ export default function Section1(){
                     </h1>
                     
                     {/* Description - 3XL optimized */}
-                    <p className="aboutus-section1-3xl-description">
-                        Since our foundation, we transform spaces into thoughtful interiors that reflect your lifestyle, values, and vision — all with a focus on quality, detail, and timeless appeal.
+                    <p className="aboutus-section1-3xl-description text-center">
+                    Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.  
+                    No templates. No compromises. Just interiors that truly fit you.
                     </p>
                     
                 </div>
@@ -31,7 +32,8 @@ export default function Section1(){
                     
                     {/* Description - 2XL optimized */}
                     <p className="w-[600px] mt-14  manrope-medium text-[26px] leading-relaxed">
-                        Since our foundation, we transform spaces into thoughtful interiors that reflect your lifestyle, values, and vision — all with a focus on quality, detail, and timeless appeal.
+                    Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.  
+                    No templates. No compromises. Just interiors that truly fit you.
                     </p>
                 
                 </div>
@@ -39,16 +41,17 @@ export default function Section1(){
 
             {/* XL Screen - Extra large displays */}
             <div className="hidden xl:block 2xl:hidden">
-                <div className="flex flex-row justify-between w-full h-[320px] mt-110 px-12">
+                <div className="flex flex-row justify-between w-full h-[320px] mt-70 px-12">
                     
                     {/* Heading - XL optimized */}
-                    <h1 className="text-6xl manrope-medium mt-14 ml-30 leading-tight">
+                    <h1 className="text-6xl manrope-medium mt-20 ml-30 leading-tight">
                         About Us
                     </h1>
                     
                     {/* Description - XL optimized */}
                     <p className="w-[550px] mt-12 mr-18 manrope-medium text-2xl leading-relaxed">
-                        Since our foundation, we transform spaces into thoughtful interiors that reflect your lifestyle, values, and vision — all with a focus on quality, detail, and timeless appeal.
+                    Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.  
+                    No templates. No compromises. Just interiors that truly fit you.
                     </p>
                     
                 </div>
@@ -65,7 +68,8 @@ export default function Section1(){
                     
                     {/* Description - LG optimized */}
                     <p className="w-[350px] mt-8 mr-8 manrope-medium text-xl leading-relaxed">
-                        Since our foundation, we transform spaces into thoughtful interiors that reflect your lifestyle, values, and vision — all with a focus on quality, detail, and timeless appeal.
+                    Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.  
+                    No templates. No compromises. Just interiors that truly fit you.
                     </p>
                     
                 </div>
@@ -82,7 +86,8 @@ export default function Section1(){
                     
                     {/* Description - MD optimized */}
                     <p className="w-full manrope-medium text-lg leading-relaxed">
-                        Since our foundation, we transform spaces into thoughtful interiors that reflect your lifestyle, values, and vision — all with a focus on quality, detail, and timeless appeal.
+                    Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.  
+                    No templates. No compromises. Just interiors that truly fit you.
                     </p>
                     
                 </div>
@@ -99,7 +104,8 @@ export default function Section1(){
                     
                     {/* Description - SM optimized */}
                     <p className="w-full manrope-medium text-base leading-relaxed">
-                        Since our foundation, we transform spaces into thoughtful interiors that reflect your lifestyle, values, and vision — all with a focus on quality, detail, and timeless appeal.
+                    Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.  
+                    No templates. No compromises. Just interiors that truly fit you.
                     </p>
                     
                 </div>

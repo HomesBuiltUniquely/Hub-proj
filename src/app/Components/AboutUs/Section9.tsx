@@ -157,7 +157,7 @@ export default function Section9() {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden">
+      <section className="hidden xl:block 2xl:hidden bg-white">
         <div className="w-screen h-screen relative overflow-hidden">
           <div className="text-5xl manrope pt-18 pl-12">Core Members</div>
           

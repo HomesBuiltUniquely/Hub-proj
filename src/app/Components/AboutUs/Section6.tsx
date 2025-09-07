@@ -9,77 +9,27 @@ const Section6 = () => {
       <section className="aboutus-section6-3xl-container hidden">
         <div className="aboutus-section6-3xl-content">
           <div className="aboutus-section6-3xl-layout">
-            {/* Mission Header */}
-            <div className="aboutus-section6-3xl-header">
-              <h1 className="aboutus-section6-3xl-title">
-                Mission
-              </h1>
-              <p className="aboutus-section6-3xl-subtitle">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </p>
+            {/* Left Side - Mission Content */}
+            <div className="aboutus-section6-3xl-text-content">
+              {/* Mission Header */}
+              <div className="aboutus-section6-3xl-header">
+                <h1 className="aboutus-section6-3xl-title">
+                  Mission
+                </h1>
+                <p className="aboutus-section6-3xl-subtitle">
+                  At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                </p>
+              </div>
+              
+              {/* Mission Points */}
+              <div className="aboutus-section6-3xl-points">
+              To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+              </div>
             </div>
             
-            {/* Mission Points */}
-            <div className="aboutus-section6-3xl-points">
-              {/* Mission Point 1 */}
-              <div className="aboutus-section6-3xl-point">
-                <div className="aboutus-section6-3xl-divider"></div>
-                <div className="aboutus-section6-3xl-point-content">
-                  <div className="aboutus-section6-3xl-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="aboutus-section6-3xl-svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="aboutus-section6-3xl-text">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-                  </div>
-                </div>
-              </div>
-              
-              {/* Mission Point 2 */}
-              <div className="aboutus-section6-3xl-point">
-                <div className="aboutus-section6-3xl-divider"></div>
-                <div className="aboutus-section6-3xl-point-content">
-                  <div className="aboutus-section6-3xl-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="aboutus-section6-3xl-svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="aboutus-section6-3xl-text">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-                  </div>
-                </div>
-              </div>
-              
-              {/* Mission Point 3 */}
-              <div className="aboutus-section6-3xl-point">
-                <div className="aboutus-section6-3xl-divider"></div>
-                <div className="aboutus-section6-3xl-point-content">
-                  <div className="aboutus-section6-3xl-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="aboutus-section6-3xl-svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="aboutus-section6-3xl-text">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-                  </div>
-                </div>
-              </div>
-              
-              {/* Mission Point 4 */}
-              <div className="aboutus-section6-3xl-point">
-                <div className="aboutus-section6-3xl-divider"></div>
-                <div className="aboutus-section6-3xl-point-content">
-                  <div className="aboutus-section6-3xl-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="aboutus-section6-3xl-svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="aboutus-section6-3xl-text">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-                  </div>
-                </div>
-              </div>
+            {/* Right Side - Image */}
+            <div className="aboutus-section6-3xl-image-container">
+              <img src="/5.png" alt="Mission Image" className="aboutus-section6-3xl-image"></img>
             </div>
           </div>
         </div>
@@ -99,130 +49,33 @@ const Section6 = () => {
           </p>
           
           {/* Mission Points */}
-          <div className="space-y-10">
-            {/* Mission Point 1 */}
-            <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-10 ml-16"></div>
-            <div className="flex items-start">
-              <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-16 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-            
-            {/* Mission Point 2 */}
-            <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-10 ml-16"></div>
-            <div className="flex items-start">
-              <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-16 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-            
-            {/* Mission Point 3 */}
-            <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-10 ml-16"></div>
-            <div className="flex items-start">
-              <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-16 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-            
-            {/* Mission Point 4 */}
-            <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-10 ml-16"></div>
-            <div className="flex items-start">
-              <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-16 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
+          <div className="w-[400px] ml-16 manrope-medium pt-10 text-xl leading-relaxed">
+          To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step. 
           </div>
         </div>
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-[#f1f2f6]">
-        <div className="max-w-6xl mx-auto">
+      <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6]">
+        <div className="flex justify-evenly">
+        <div className="max-w-6xl mt-12 mr-70">
           {/* Mission Header */}
-          <h1 className="text-5xl manrope-medium pt-20 pl-12 leading-tight">
+          <h1 className="text-5xl manrope-medium leading-tight">
             Mission
           </h1>
           
           {/* Mission Description */}
-          <p className="w-[350px] ml-12 manrope-medium pt-3 text-lg leading-relaxed">
+          <p className="w-[350px]  manrope-medium pt-3 text-lg leading-relaxed">
             At HUB Interiors, — it&#39;s about creating spaces that reflect you.
           </p>
           
           {/* Mission Points */}
-          <div className="space-y-10">
-            {/* Mission Point 1 */}
-            <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-10 ml-12"></div>
-            <div className="flex items-start">
-              <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-12 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-            
-            {/* Mission Point 2 */}
-            <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-10 ml-12"></div>
-            <div className="flex items-start">
-              <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-12 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-            
-            {/* Mission Point 3 */}
-            <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-10 ml-12"></div>
-            <div className="flex items-start">
-              <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-12 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-            
-            {/* Mission Point 4 */}
-            <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-10 ml-12"></div>
-            <div className="flex items-start">
-              <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-12 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-4 pt-6 w-[400px] text-base leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
+          <div className="w-[400px]  manrope-medium pt-10 text-lg leading-relaxed">
+          To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
           </div>
       </div>
+      <img src="/5.png" className="w-[500px] h-[500px] rounded-2xl"></img>
+        </div>
       </section>
 
       {/* LG Screen - Large displays */}
@@ -466,8 +319,35 @@ const Section6 = () => {
           
           .aboutus-section6-3xl-layout {
             display: flex;
-            flex-direction: column;
-            gap: 3rem;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 4rem;
+            width: 100%;
+          }
+          
+          .aboutus-section6-3xl-text-content {
+            flex: 1;
+            max-width: 60%;
+            margin-left: 10rem;
+            margin-top: 3rem;
+          }
+          
+          .aboutus-section6-3xl-image-container {
+            flex: 1;
+            max-width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .aboutus-section6-3xl-image {
+            width: 100%;
+            max-width: 600px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-right: 10rem;
           }
           
           .aboutus-section6-3xl-header {
@@ -492,7 +372,13 @@ const Section6 = () => {
           }
           
           .aboutus-section6-3xl-points {
-            space-y: 2.5rem;
+            space-y: 1rem;
+            width: 600px;
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #4b5563;
+            font-family: 'Manrope-medium', sans-serif;
+            padding-right: 10rem;
           }
           
           .aboutus-section6-3xl-point {

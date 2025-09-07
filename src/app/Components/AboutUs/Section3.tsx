@@ -11,7 +11,7 @@ export default function Section3(){
                         
                         {/* Left Image - 3XL optimized */}
                         <img 
-                            src="j2.webp" 
+                            src="2.png" 
                             alt="Interior Design" 
                             className="aboutus-section3-3xl-left-image" 
                         />
@@ -26,7 +26,9 @@ export default function Section3(){
                             
                             {/* Description Text - 3XL optimized */}
                             <div className="aboutus-section3-3xl-description">
-                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                            The Brand Hub is the powerhouse behind Hub Interior.
+                            It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
+                            From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
                             </div>
                             
                         </div>
@@ -49,7 +51,7 @@ export default function Section3(){
                         
                         {/* Left Image - 2XL optimized */}
                         <img 
-                            src="j2.webp" 
+                            src="2.png" 
                             alt="Interior Design" 
                             className="w-[500px] h-auto min-h-[450px] rounded-3xl lg:rounded-l-3xl lg:rounded-r-none object-cover" 
                         />
@@ -64,7 +66,9 @@ export default function Section3(){
                             
                             {/* Description Text - 2XL optimized */}
                             <div className="manrope-medium text-xl w-full leading-relaxed">
-                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                            The Brand Hub is the powerhouse behind Hub Interior.
+                                It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
+                                From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
                             </div>
                             
                         </div>
@@ -87,7 +91,7 @@ export default function Section3(){
                         
                         {/* Left Image - XL optimized */}
                         <img 
-                            src="j2.webp" 
+                            src="2.png" 
                             alt="Interior Design" 
                             className="w-[500px] h-auto min-h-[400px] rounded-3xl lg:rounded-l-3xl lg:rounded-r-none object-cover" 
                         />
@@ -102,7 +106,9 @@ export default function Section3(){
                             
                             {/* Description Text - XL optimized */}
                             <div className="manrope-medium text-lg w-full leading-relaxed">
-                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                            The Brand Hub is the powerhouse behind Hub Interior.
+                            It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
+                            From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
                             </div>
                             
                         </div>
@@ -140,7 +146,9 @@ export default function Section3(){
                             
                             {/* Description Text - LG optimized */}
                             <div className="manrope-medium text-base w-full leading-relaxed">
-                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                            The Brand Hub is the powerhouse behind Hub Interior.
+                            It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
+                            From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
                             </div>
                             
                         </div>
@@ -178,7 +186,9 @@ export default function Section3(){
                             
                             {/* Description Text - MD optimized */}
                             <div className="manrope-medium text-sm w-full leading-relaxed">
-                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                            The Brand Hub is the powerhouse behind Hub Interior.
+                            It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
+                            From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
                             </div>
                             
                         </div>
@@ -216,7 +226,9 @@ export default function Section3(){
                             
                             {/* Description Text - SM optimized */}
                             <div className="manrope-medium text-xs w-full leading-relaxed">
-                                At HUB Interiors, — it&#39;s about creating spaces that reflect you. With a focus on functionality, creativity, and detail, we craft interiors that feel personal, purposeful, and effortlessly beautiful. From concept to completion, every space we design is thoughtfully tailored
+                            The Brand Hub is the powerhouse behind Hub Interior.
+                            It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
+                            From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
                             </div>
                             
                         </div>

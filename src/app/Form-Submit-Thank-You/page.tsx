@@ -14,17 +14,17 @@ export default function ThankUPage() {
   const [hasReloaded, setHasReloaded] = useState(false);
 
   useEffect(() => {
-    // Check if this is a fresh redirect from OTP verification
+    // Check if this is a fresh redirect from form submission
     const isFreshRedirect = sessionStorage.getItem('formSubmitted') === 'true';
     
     if (isFreshRedirect && !hasReloaded) {
       // Clear the flag to prevent infinite reloads
       sessionStorage.removeItem('formSubmitted');
       
-      // Force a reload to ensure proper page load and conversion tracking
+      // Force a reload to ensure proper page load and GTM conversion tracking
       setTimeout(() => {
         window.location.reload();
-      }, 100);
+      }, 500); // Increased delay to ensure proper page load
       
       setHasReloaded(true);
       return;
@@ -64,8 +64,16 @@ export default function ThankUPage() {
         triggerGTMEvents();
       }, 1000);
       
-      // Cleanup timer
-      return () => clearTimeout(retryTimer);
+      // Also try after a longer delay to ensure GTM is fully loaded
+      const longRetryTimer = setTimeout(() => {
+        triggerGTMEvents();
+      }, 3000);
+      
+      // Cleanup timers
+      return () => {
+        clearTimeout(retryTimer);
+        clearTimeout(longRetryTimer);
+      };
     }
   }, [hasReloaded]);
 

@@ -6,7 +6,7 @@ import {useRouter} from "next/navigation";
 export default function CalculatorPage() {
     const router = useRouter();
     function handelSubmit() {
-       router.push('/Calculator')
+       router.push('/interior-designers-in-bangalore/Calculator')
     }
     return (
         <div className="w-full h-auto bg-white">

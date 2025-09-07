@@ -30,6 +30,7 @@ export default function Herosection() {
                     .aboutus-hero-3xl-bg-image {
                         width: 100%;
                         height: 100vh;
+                        border-radius: 2rem;
                     }
                     
                     .aboutus-hero-3xl-overlay {
@@ -142,7 +143,7 @@ export default function Herosection() {
             {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) */}
             <div className="aboutus-hero-3xl-container hidden">
                 <div className="aboutus-hero-3xl-relative">
-                    <img src="/Mask-group.png" alt="Background" className="aboutus-hero-3xl-bg-image" />
+                    <img src="/ab1.png" alt="Background" className="aboutus-hero-3xl-bg-image" />
                     <div className="aboutus-hero-3xl-overlay"></div>
                     
                     {/* Get Free Estimate Button - 3XL 2560*1440 optimized */}
@@ -179,7 +180,7 @@ export default function Herosection() {
             <div className="aboutus-hero-2xl-section hidden 2xl:block 3xl:hidden">
                 <div className="w-auto h-auto m-6">
                     <div className="relative w-full h-full">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen " />
+                        <img src="/ab1.png" alt="Background" className="w-full h-screen rounded-4xl" />
                         <div className="absolute inset-0 bg-opacity-40"></div>
                         
                         {/* Get Free Estimate Button - 2XL optimized */}
@@ -188,7 +189,7 @@ export default function Herosection() {
                         </div>
                         
                         {/* Header - 2XL optimized */}
-                        <div className="absolute top-0 left-0 w-full p-8 flex items-center justify-between">
+                        <div className="absolute top-0 left-0 w-full p-8 flex items-center  justify-between">
                             <Image 
                                 src="/LOGO.png" 
                                 alt="LOGO" 
@@ -208,7 +209,7 @@ export default function Herosection() {
                         
                         {/* Main Content - 2XL optimized */}
                         <div className="absolute  left-16 -translate-y-1/2 text-white -mt-60">
-                            <div className="text-6xl manrope-medium leading-tight">HOMES,</div>
+                            <div className="text-6xl manrope-medium leading-tight ">HOMES,</div>
                             <div className="text-7xl wulkan-display my-6 leading-tight">uniquely</div>
                             <div className="text-6xl manrope-medium leading-tight">BUILT</div>
                         </div>
@@ -218,13 +219,13 @@ export default function Herosection() {
 
             {/* XL Screen - Extra large displays */}
             <div className="hidden xl:block 2xl:hidden 3xl:hidden">
-                <div className="w-auto h-[550px] m-6">
+                <div className="w-auto h-[550px] m-4 ">
                     <div className="relative w-full h-full">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-auto" />
+                        <img src="/ab1.png" alt="Background" className="w-full h-auto rounded-4xl" />
                         <div className="absolute inset-0 bg-opacity-40"></div>
                         
                         {/* Get Free Estimate Button - XL optimized */}
-                        <div className="ml-300 -mt-226 ">
+                        <div className="ml-300 -mt-195 ">
                             <button className="manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg">Get Free Estimate</button>
                         </div>
                         
