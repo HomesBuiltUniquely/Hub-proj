@@ -14,7 +14,7 @@ const Section6 = () => {
               {/* Mission Header */}
               <div className="aboutus-section6-3xl-header">
                 <h1 className="aboutus-section6-3xl-title">
-                  Vision
+                  Mission
                 </h1>
                 <p className="aboutus-section6-3xl-subtitle">
                   At HUB Interiors, — it&#39;s about creating spaces that reflect you.
@@ -23,33 +23,38 @@ const Section6 = () => {
               
               {/* Mission Points */}
               <div className="aboutus-section6-3xl-points">
-              To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.              </div>
+              To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+              </div>
             </div>
             
             {/* Right Side - Image */}
             <div className="aboutus-section6-3xl-image-container">
-              <img src="/4.png" alt="Mission Image" className="aboutus-section6-3xl-image"></img>
+              <img src="/5.png" alt="Mission Image" className="aboutus-section6-3xl-image"></img>
             </div>
           </div>
         </div>
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className="aboutus-section6-2xl-section hidden 2xl:block 3xl:hidden py-20 px-16 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="aboutus-section6-2xl-section hidden 2xl:block 3xl:hidden px-30 bg-[#f1f2f6] py-10">
+        <div className='flex justify-between'>
+        <div className="max-w-7xl">
           {/* Mission Header */}
-          <h1 className="text-6xl manrope-medium pt-20 pl-16 leading-tight">
+          <h1 className="text-6xl manrope-medium pt-20 leading-tight">
             Vision
           </h1>
           
           {/* Mission Description */}
-          <p className="w-[400px] ml-16 manrope-medium pt-3 text-xl leading-relaxed">
+          <p className="w-[400px]  manrope-medium pt-3 text-xl leading-relaxed">
             At HUB Interiors, — it&#39;s about creating spaces that reflect you.
           </p>
           
           {/* Mission Points */}
-          <div className="w-[400px] ml-16 manrope-medium pt-10 text-xl leading-relaxed">
-          To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.          </div>
+          <div className="w-[400px]  manrope-medium pt-10 text-xl leading-relaxed">
+          To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
+          </div>
+        </div>
+        <img src="/4.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
         </div>
       </section>
 
@@ -80,7 +85,7 @@ const Section6 = () => {
         <div className="max-w-5xl mx-auto">
           {/* Mission Header */}
           <h1 className="text-4xl manrope-medium pt-16 pl-8 leading-tight">
-            Vision
+            Mission
           </h1>
           
           {/* Mission Description */}
@@ -150,7 +155,7 @@ const Section6 = () => {
         <div className="max-w-4xl mx-auto">
           {/* Mission Header */}
           <h1 className="text-3xl manrope-medium pt-12 pl-6 leading-tight">
-            Vision
+            Mission
           </h1>
           
           {/* Mission Description */}
@@ -220,7 +225,7 @@ const Section6 = () => {
         <div className="max-w-sm mx-auto">
           {/* Mission Header */}
           <h1 className="text-2xl manrope-medium pt-8 pl-4 leading-tight">
-            Vision
+            Mission
           </h1>
           
           {/* Mission Description */}

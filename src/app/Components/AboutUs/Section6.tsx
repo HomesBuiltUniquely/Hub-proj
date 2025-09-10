@@ -36,22 +36,25 @@ const Section6 = () => {
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className="aboutus-section6-2xl-section hidden 2xl:block 3xl:hidden py-20 px-16 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="aboutus-section6-2xl-section hidden 2xl:block 3xl:hidden px-30 bg-[#f1f2f6] py-10">
+        <div className='flex justify-between'>
+        <div className="max-w-7xl">
           {/* Mission Header */}
-          <h1 className="text-6xl manrope-medium pt-20 pl-16 leading-tight">
+          <h1 className="text-6xl manrope-medium pt-20 leading-tight">
             Mission
           </h1>
           
           {/* Mission Description */}
-          <p className="w-[400px] ml-16 manrope-medium pt-3 text-xl leading-relaxed">
+          <p className="w-[400px]  manrope-medium pt-3 text-xl leading-relaxed">
             At HUB Interiors, — it&#39;s about creating spaces that reflect you.
           </p>
           
           {/* Mission Points */}
-          <div className="w-[400px] ml-16 manrope-medium pt-10 text-xl leading-relaxed">
+          <div className="w-[400px]  manrope-medium pt-10 text-xl leading-relaxed">
           To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step. 
           </div>
+        </div>
+        <img src="/5.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
         </div>
       </section>
 

@@ -9,7 +9,7 @@ export default function CalculatorPage() {
        router.push('/interior-designers-in-bangalore/Calculator')
     }
     return (
-        <div className="w-full h-auto bg-white">
+        <div id="calculator-section" className="w-full h-auto bg-white">
             {/* Mobile Version */}
             <div className="lg:hidden h-[500px]">
                 <h1 className="text-4xl sm:text-3xl text-center px-4 manrope-medium">Get A Free Estimate for Your Interiors</h1>

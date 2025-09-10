@@ -37,6 +37,14 @@ export default function HeroSections() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSendingOtpAuto, setIsSendingOtpAuto] = useState(false);
 
+  // Function to scroll to calculator section
+  const scrollToCalculator = () => {
+    const calculatorElement = document.getElementById('calculator-section');
+    if (calculatorElement) {
+      calculatorElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // OTP States
   const [isOtpVerifying, setIsOtpVerifying] = useState(false);
 
@@ -424,7 +432,7 @@ export default function HeroSections() {
           <div className="bg-white w-full py-4 px-4 shadow-sm">
             <div className="flex items-center justify-between">
               <img src="/hub.png" alt="Logo" className="h-[38px]" />
-              <button type="button" className="bg-[#DDCDC1] text-amber-950 rounded-xl px-5 py-2 text-sm font-semibold shadow-md">GET A FREE QUOTE</button>
+              <button type="button" onClick={scrollToCalculator} className="bg-[#DDCDC1] text-amber-950 rounded-xl px-5 py-2 text-sm font-semibold shadow-md hover:bg-[#c4b5a8] transition-colors">GET A FREE QUOTE</button>
             </div>
           </div>
 
@@ -763,7 +771,7 @@ export default function HeroSections() {
                 <h1 className="text-white text-6xl manrope leading-tight mb-0 drop-shadow-lg">Best Interior<p className="mb-1">Designers In <span className="text-red-500">Bangalore</span></p></h1>
                 <p className="text-white text-xl manrope-medium drop-shadow mb-1 pt-2">Transforming Bangalore homes with personalized<br/>interiors that reflect your lifestyle.</p>
               </div>
-              <div className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 font-bold absolute -mt-190 ml-132 tracking-wider text-[18px] z-20"> GET FREE QUOTE</div>
+              <button onClick={scrollToCalculator} className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 font-bold absolute -mt-190 ml-132 tracking-wider text-[18px] z-20 hover:bg-[#c4b5a8] transition-colors cursor-pointer"> GET FREE QUOTE</button>
             </div>
           </div>
         </div>

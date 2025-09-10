@@ -47,17 +47,17 @@ export default function Section2(){
 
             {/* 2XL Screen - Large displays */}
             <div className="aboutus-section2-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="h-[600px] flex flex-row px-16 mt-16 gap-12 ml-50">
+                <div className="h-[600px] flex flex-row px-16 mt-16 gap-12 ml-18">
                     
                     {/* Left Text Box - 2XL optimized */}
-                    <div className="w-[500px] h-[500px] bg-[#ebd457] rounded-2xl p-16 pt-30 text-xl manrope-medium tracking-wide leading-relaxed">
+                    <div className="w-[600px] h-[550px] bg-[#ebd457] rounded-2xl p-16 pt-30 text-xl manrope-medium tracking-wide leading-relaxed">
                     At Hub Interior, beauty is backed by process.
                     Every space you see is a result of deep planning, skilled design, and flawless execution.
                     We don’t just make interiors look good—we make them work better for real lives.
                     </div>
                     
                     {/* Center Image Box - 2XL optimized */}
-                    <div className="w-[500px] h-[500px] bg-[#ebd457] rounded-2xl overflow-hidden">
+                    <div className="w-[600px] h-[550px] bg-[#ebd457] rounded-2xl overflow-hidden">
                         <img 
                             src="1.png" 
                             className="w-full h-full object-cover rounded-2xl" 
@@ -68,7 +68,7 @@ export default function Section2(){
                     {/* Right Side Images - 2XL optimized */}
                     <div className="flex flex-col gap-8">
                         {/* Top Image */}
-                        <div className="w-[280px] h-[150px] bg-yellow-300 rounded-2xl overflow-hidden">
+                        <div className="w-[350px] h-[150px] bg-yellow-300 rounded-2xl overflow-hidden">
                             <img 
                                 src="bn.jpg" 
                                 className="w-full h-full object-cover rounded-2xl" 
@@ -77,7 +77,7 @@ export default function Section2(){
                         </div>
                         
                         {/* Bottom Image */}
-                        <div className="w-[280px] h-[320px] bg-red-400 rounded-2xl overflow-hidden">
+                        <div className="w-[350px] h-[370px] bg-red-400 rounded-2xl overflow-hidden">
                             <img 
                                 src="3.png" 
                                 className="w-full h-full object-cover rounded-2xl" 

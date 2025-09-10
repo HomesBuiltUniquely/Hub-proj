@@ -41,9 +41,9 @@ const Section10 = () => {
 
       {/* 2XL Screen - Large displays */}
       <section className="aboutus-section10-2xl-section hidden 2xl:block 3xl:hidden">
-        <div className="mt-20 ml-9 w-full h-auto px-16">
-          <div className="max-w-7xl mx-auto">
-            <div className="w-full h-auto min-h-[450px] bg-red-300 relative rounded-2xl overflow-hidden">
+        <div className="mt-20  w-full h-[550px] px-16">
+          <div className="max-w-8xl mx-auto">
+            <div className="w-full h-auto min-h-[550px] bg-red-300 relative rounded-2xl overflow-hidden mt-10">
               
               {/* Background Image - 2XL optimized */}
               <img 
@@ -53,15 +53,15 @@ const Section10 = () => {
               />
               
               {/* Overlay Content - 2XL optimized */}
-              <div className="w-[550px] h-auto min-h-[300px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-10 mt-25 rounded-2xl p-8">
+              <div className="w-[550px] h-auto min-h-[300px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-10 mt-40 rounded-2xl p-8">
                 
                 {/* Heading - 2XL optimized */}
-                <h1 className="text-3xl w-[400px] h-[100px] text-white pt-14 pl-6 manrope-medium leading-tight">
+                <h1 className="text-3xl w-[400px] h-[100px] text-white mt-2 pl-6 manrope-medium leading-tight">
                   Shape the Future of Interior Design With Us
                 </h1>
                 
                 {/* Description - 2XL optimized */}
-                <p className="text-md manrope-medium pt-4 text-white w-[400px] pl-6 leading-relaxed">
+                <p className="text-md manrope-medium pt-3 text-white w-[400px] pl-6 leading-relaxed">
                   Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
                 </p>
                 

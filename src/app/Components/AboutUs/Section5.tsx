@@ -11,18 +11,17 @@ const Section5 = () => {
   ];
 
   const timeline = [
-    { year: "2019", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2019 - 2020", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2020 - 2021", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2021 - 2022", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2022 - 2023", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2023 - 2024", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2024 - 2025", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2025 - 2026", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2026 - 2027", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2027 - 2028", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2028 - 2029", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
-    { year: "2029 - 2030", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." },
+    { year: "2019 – New Experience Centre, Banaswadi", content: "The story began with the launch of our very first Experience Centre in Banaswadi." },
+    { year: "2020 – Instahome", content: "Introduced Instahome, making interiors quicker and more accessible for modern homeowners." },
+    { year: "2021 – HUB Store", content: "Expanded with the launch of the HUB Store, bringing curated products and solutions under one roof." },
+    { year: "2022 – New Experience Centre, Sarjapur", content: "Opened our second Experience Centre in Sarjapur, strengthening our presence in Bengaluru." },
+    { year: "2023 – Hubster ERP", content: "Launched Hubster, our in-house ERP system, streamlining processes and efficiency." },
+    { year: "2023 – HUB for Business", content: "Extended our expertise with HUB for Business, catering to B2B clients and partnerships." },
+    { year: "2024 – Fast Track Interiors", content: "Introduced 34 Days Fast Track Interiors, setting new benchmarks in speed and quality." },
+    { year: "2024 – Bigger Space, Bigger Team", content: " Moved from Banaswadi to a larger Experience Centre in HBR Layout, reflecting our growth. " },
+    { year: "2025 – Rebranding", content: "Transformed from Homes Under Budget into HUB Interior, marking a bold new chapter." },
+    { year: "2025 – Expanding Horizons", content: "Opened a new Experience Centre in JP Nagar, Bengaluru and our first branch outside the city in Chennai." },
+
   ];
 
   return (

@@ -42,7 +42,7 @@ const Section1: React.FC = () => {
   return (
     <section className="w-full py-12 bg-[#f1f2f6]">
 
-    <div className="text-xl w-[1000px] text-center mx-auto mt-10">For those who are truly inspired by cooking, the kitchen is the hub of your home. Kitchen is where you work, share and entertain. Hub brings style, convenience and craft into your kitchen.We want you to experience the pleasures that cooking, eating and entertaining in a kitchen. And that’s what inspires us to Make it Wonderful.</div>
+    <div className="text-xl w-[1000px] text-center mx-auto mt-10">At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.</div>
         
       <div className="max-w-6xl mx-auto px-4 relative mt-30">
         {/* Heading */}

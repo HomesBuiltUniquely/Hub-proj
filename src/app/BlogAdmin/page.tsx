@@ -75,14 +75,29 @@ export default function BlogAdmin() {
     // Save posts to localStorage whenever posts change
     useEffect(() => {
         if (isAuthenticated) {
-            localStorage.setItem('blogPosts', JSON.stringify(posts));
+            try {
+                const dataToStore = JSON.stringify(posts);
+                // Check if data is too large (approximate 4MB limit)
+                if (dataToStore.length > 4 * 1024 * 1024) {
+                    alert('Warning: Blog data is getting too large. Consider removing some old posts to prevent storage issues.');
+                }
+                localStorage.setItem('blogPosts', dataToStore);
+            } catch (error) {
+                console.error('Failed to save blog posts to localStorage:', error);
+                alert('Failed to save blog posts. The data might be too large. Please try removing some posts.');
+            }
         }
     }, [posts, isAuthenticated]);
     
     // Save trending data to localStorage whenever it changes
     useEffect(() => {
         if (isAuthenticated) {
-            localStorage.setItem('trendingData', JSON.stringify(trendingData));
+            try {
+                localStorage.setItem('trendingData', JSON.stringify(trendingData));
+            } catch (error) {
+                console.error('Failed to save trending data to localStorage:', error);
+                alert('Failed to save trending data. Please try again.');
+            }
         }
     }, [trendingData, isAuthenticated]);
 
@@ -206,14 +221,56 @@ export default function BlogAdmin() {
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
+            // Check file size (limit to 2MB)
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Image size must be less than 2MB. Please compress your image and try again.');
+                return;
+            }
+
             const reader = new FileReader();
             reader.onload = (ev) => {
                 if (ev.target && typeof ev.target.result === "string") {
-                    setFormData(prev => ({ ...prev, img: ev.target!.result as string }));
+                    // Compress the image before storing
+                    compressImage(ev.target.result, (compressedDataUrl) => {
+                        setFormData(prev => ({ ...prev, img: compressedDataUrl }));
+                    });
                 }
             };
             reader.readAsDataURL(file);
         }
+    };
+
+    // Image compression function
+    const compressImage = (dataUrl: string, callback: (compressedDataUrl: string) => void) => {
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Calculate new dimensions (max 800px width, maintain aspect ratio)
+            const maxWidth = 800;
+            const maxHeight = 600;
+            let { width, height } = img;
+            
+            if (width > maxWidth) {
+                height = (height * maxWidth) / width;
+                width = maxWidth;
+            }
+            
+            if (height > maxHeight) {
+                width = (width * maxHeight) / height;
+                height = maxHeight;
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            
+            // Draw and compress
+            ctx?.drawImage(img, 0, 0, width, height);
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7); // 70% quality
+            callback(compressedDataUrl);
+        };
+        img.src = dataUrl;
     };
 
     const resetForm = () => {
@@ -226,6 +283,33 @@ export default function BlogAdmin() {
         setTrendingFormData({ title: "", subtitle: "", readTime: "", date: "" });
         setEditingTrending(null);
         setShowTrendingForm(false);
+    };
+
+    // Storage management functions
+    const clearAllData = () => {
+        if (confirm('Are you sure you want to clear all blog data? This action cannot be undone.')) {
+            try {
+                localStorage.removeItem('blogPosts');
+                localStorage.removeItem('trendingData');
+                setPosts([]);
+                setTrendingData([]);
+                alert('All data cleared successfully.');
+            } catch (error) {
+                console.error('Failed to clear data:', error);
+                alert('Failed to clear data. Please try again.');
+            }
+        }
+    };
+
+    const getStorageSize = () => {
+        try {
+            const blogData = localStorage.getItem('blogPosts') || '';
+            const trendingData = localStorage.getItem('trendingData') || '';
+            const totalSize = blogData.length + trendingData.length;
+            return Math.round(totalSize / 1024); // Size in KB
+        } catch (error) {
+            return 0;
+        }
     };
 
     // Show login form if not authenticated
@@ -300,13 +384,26 @@ export default function BlogAdmin() {
                 <div className="bg-white rounded-lg shadow-lg p-6">
                     {/* Header with Logout */}
                     <div className="flex justify-between items-center mb-8">
-                        <h1 className="text-3xl font-bold text-gray-900">Blog Admin Panel</h1>
-                        <button
-                            onClick={handleLogout}
-                            className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
-                        >
-                            Logout
-                        </button>
+                        <div>
+                            <h1 className="text-3xl font-bold text-gray-900">Blog Admin Panel</h1>
+                            <p className="text-sm text-gray-600 mt-1">
+                                Storage used: {getStorageSize()} KB
+                            </p>
+                        </div>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={clearAllData}
+                                className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition"
+                            >
+                                Clear All Data
+                            </button>
+                            <button
+                                onClick={handleLogout}
+                                className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
+                            >
+                                Logout
+                            </button>
+                        </div>
                     </div>
 
                     {/* Blog Posts Section */}
@@ -382,6 +479,9 @@ export default function BlogAdmin() {
                                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required={!editingPost}
                                         />
+                                        <p className="text-xs text-gray-500 mt-1">
+                                            Images will be automatically compressed to save storage space. Max file size: 2MB.
+                                        </p>
                                         {formData.img && (
                                             <img 
                                                 src={formData.img} 

@@ -108,7 +108,7 @@ export default function Section9() {
 
       {/* 2XL Screen - Large displays */}
       <section className="aboutus-section9-2xl-section hidden 2xl:block 3xl:hidden">
-        <div className="w-screen h-screen relative overflow-hidden">
+        <div className="w-screen h-screen relative overflow-hidden bg-white">
           <div className="text-6xl manrope pt-20 pl-16">Core Members</div>
           
           {/* Carousel Container - 2XL optimized */}

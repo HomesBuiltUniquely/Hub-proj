@@ -7,10 +7,7 @@ const BedroomSection: React.FC = () => (
       <div className="bg-[#3a2b21] rounded-3xl px-9 py-10 flex flex-col justify-center md:w-1/2 w-full min-h-[350px]">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">Ideal Bedroom</h2>
         <p className="text-white/80 text-base md:text-lg leading-relaxed font-normal">
-          An ideal bedroom is more than just a place to sleep — 
-          it’s a personal sanctuary designed for comfort, function, and peace of mind. 
-          With the right balance of soothing colors, smart storage, cozy furnishings, and thoughtful lighting, 
-          it becomes a space that supports rest, reflects your style, and fits your lifestyle.
+        An ideal bedroom combines dreams, comfort, and feelings. HUB Interior offers more than just interior design — we create a cozy space that reflects your lifestyle and personality. As a trusted interior designer in Bengaluru, known for our cozy and comfortable bedroom interiors, we help you achieve your vision with warmth, care, and timeless elegance. Every corner of your bedroom is filled with thoughtful details, turning it into a sanctuary of peace and love.
         </p>
       </div>
       {/* Right: Bedroom image */}

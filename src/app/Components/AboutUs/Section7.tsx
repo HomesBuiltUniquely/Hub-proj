@@ -122,35 +122,31 @@ const Section7 = () => {
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className="aboutus-section7-2xl-section hidden 2xl:block 3xl:hidden py-20 px-16 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row justify-between gap-20">
+      <section className="aboutus-section7-2xl-section hidden 2xl:block 3xl:hidden px-16 bg-white">
+        <div className="">
+          <div className="flex flex-col lg:flex-row justify-between gap-130">
             {/* Left Side - Image Container */}
-            <div className="w-[400px] lg:w-[800px] h-[580px] bg-red-400 mt-24 ml-10 rounded-2xl">
+            <div className="w-[400px] lg:w-[500px] h-[580px] bg-red-400 mt-32 ml-18 rounded-2xl ">
               {/* Image placeholder - can be replaced with actual image */}
               <img src="/bn.jpg" alt="Values Image" className=" h-[580px] rounded-2xl" >
               </img>
             </div>
             
             {/* Right Side - Values Content */}
-            <div className="w-full lg:w-auto lg:flex-1 mr-16 mb-20">
+            <div className="w-full lg:w-auto lg:flex-1 mb-10">
               {/* Values Header */}
               <h1 className="text-6xl manrope-medium pt-20 pl-10 leading-tight">
                 Values
               </h1>
               
-              {/* Values Description */}
-              <p className="w-[400px] ml-10 manrope-medium pt-3 text-xl leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </p>
               
               {/* Values Points */}
-              <div className="space-y-10">
+              <div className="">
                 {/* Value Point 1 */}
-                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-10 ml-10"></div>
+                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
-                  <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
@@ -160,10 +156,10 @@ const Section7 = () => {
                 </div>
                 
                 {/* Value Point 2 */}
-                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-10 ml-10"></div>
+                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
-                  <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
@@ -173,10 +169,10 @@ const Section7 = () => {
                 </div>
                 
                 {/* Value Point 3 */}
-                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-10 ml-10"></div>
+                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
-                  <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
@@ -186,10 +182,10 @@ const Section7 = () => {
                 </div>
                 
                 {/* Value Point 4 */}
-                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-10 ml-10"></div>
+                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
-                  <div className="w-[50px] h-[50px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7 text-gray-700">
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
@@ -197,6 +193,31 @@ const Section7 = () => {
                     At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
+
+                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
+                <div className="flex items-start">
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  </div>
+                </div>
+
+                 <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
+                <div className="flex items-start">
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
+                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>

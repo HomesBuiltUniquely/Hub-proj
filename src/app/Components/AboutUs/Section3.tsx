@@ -45,19 +45,21 @@ export default function Section3(){
 
             {/* 2XL Screen - Large displays */}
             <div className="aboutus-section3-2xl-section hidden 2xl:block 3xl:hidden  ">
-                <div className="h-auto min-h-[580px] mx-auto mt-4 px-16">
+                <div className="h-[680px] mx-auto mt-4 px-16">
                     
-                    <div className="w-full max-w-[1500px] h-[500px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
+                    <div className="w-full max-w-[1500px] h-[650px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
                         
                         {/* Left Image - 2XL optimized */}
                         <img 
                             src="2.png" 
                             alt="Interior Design" 
-                            className="w-[500px] h-auto min-h-[450px] rounded-3xl lg:rounded-l-3xl lg:rounded-r-none object-cover" 
+                            className="w-[550px] h-[650px] rounded-3xl lg:rounded-l-3xl  object-cover" 
                         />
                         
                         {/* Center Content - 2XL optimized */}
-                        <div className="w-[500px] h-auto p-14 lg:mt-0 lg:ml-12 flex flex-col justify-center">
+                        <div className="w-[600px] h-auto p-14  lg:ml-12 flex flex-col justify-center">
+
+                            <div className="text-[#ef0101] ml-2 text-2xl py-20">Brand Hub</div>
                             
                             {/* Main Heading - 2XL optimized */}
                             <div className="manrope-medium text-5xl w-full leading-tight mb-8">
@@ -72,11 +74,7 @@ export default function Section3(){
                             </div>
                             
                         </div>
-                        
-                        {/* Right Brand Text - 2XL optimized */}
-                        <div className="text-[#ef0101] text-xl lg:ml-auto lg:mr-8 lg:pt-6 px-6 lg:px-0 pb-6 lg:pb-0 text-center lg:text-left">
-                            Brand Hub
-                        </div>
+                    
                         
                     </div>
                     
@@ -87,7 +85,8 @@ export default function Section3(){
             <div className="hidden xl:block 2xl:hidden">
                 <div className="h-[500px] mx-auto px-12">
                     
-                    <div className=" w-[1200px] h-[450px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
+                    <div className=" w-[1100px] h-[500px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
+
                         
                         {/* Left Image - XL optimized */}
                         <img 
@@ -95,17 +94,20 @@ export default function Section3(){
                             alt="Interior Design" 
                             className="w-[500px] h-auto min-h-[400px] rounded-3xl lg:rounded-l-3xl lg:rounded-r-none object-cover" 
                         />
+
+                        <div className="text-[#ef0101] text-2xl  pt-8 pl-8">Brand Hub</div>
                         
                         {/* Center Content - XL optimized */}
-                        <div className="w-[400px] p-12 lg:mt-0 lg:ml-8 flex flex-col justify-center">
+                        <div className="w-[400px]  flex flex-col justify-center items-end pt-30 ">
+                            
                             
                             {/* Main Heading - XL optimized */}
-                            <div className="manrope-medium text-4xl w-[500px] leading-tight mb-10 text-[30px]">
+                            <div className="manrope-medium text-4xl w-[500px] leading-tight mb-10 text-[30px] pr-10">
                                 Great design goes beyond aesthetics.
                             </div>
                             
                             {/* Description Text - XL optimized */}
-                            <div className="manrope-medium text-lg w-full leading-relaxed">
+                            <div className="manrope-medium text-lg leading-relaxed w-[500px]">
                             The Brand Hub is the powerhouse behind Hub Interior.
                             It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
                             From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
@@ -114,9 +116,7 @@ export default function Section3(){
                         </div>
                         
                         {/* Right Brand Text - XL optimized */}
-                        <div className="text-[#ef0101] text-lg lg:ml-auto lg:mr-6 lg:pt-4 px-6 lg:px-0 pb-4 lg:pb-0 text-center lg:text-left">
-                            Brand Hub
-                        </div>
+                       
                         
                     </div>
                     
