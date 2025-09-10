@@ -307,7 +307,7 @@ export default function BlogAdmin() {
             const trendingData = localStorage.getItem('trendingData') || '';
             const totalSize = blogData.length + trendingData.length;
             return Math.round(totalSize / 1024); // Size in KB
-        } catch (error) {
+        } catch {
             return 0;
         }
     };

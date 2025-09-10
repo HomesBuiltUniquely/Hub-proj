@@ -202,7 +202,7 @@ const Home: React.FC = () => {
     <div className="w-[1200px] text-center mx-auto mt-20 text-[18px]">
     HUB Interior is more than an interior brand; it&#34;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#34;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.
     </div>
-    <div className="w-[1200px] text-center mx-auto mt-4 text-[18px]">Our mission, "Homes Uniquely Built", reflects our commitment to crafting personalized spaces that inspire. As a partner, you gain the power of a proven business model, an ecosystem of high-performing brands, and the confidence that comes with a fast-growing market.</div>
+    <div className="w-[1200px] text-center mx-auto mt-4 text-[18px]">Our mission, &#34;Homes Uniquely Built&#34;, reflects our commitment to crafting personalized spaces that inspire. As a partner, you gain the power of a proven business model, an ecosystem of high-performing brands, and the confidence that comes with a fast-growing market.</div>
 
     {/* Franchise Options Section */}
     <div className="flex ">
