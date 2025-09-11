@@ -48,7 +48,7 @@ export default function BlogDetail() {
             <div className="min-h-screen bg-[#f1f2f6] flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">Blog Post Not Found</h1>
-                    <p className="text-gray-600 mb-8">The blog post you're looking for doesn't exist.</p>
+                    <p className="text-gray-600 mb-8">The blog post you&#39;re looking for doesn&#39;t exist.</p>
                     <button 
                         onClick={() => router.push('/Blog')}
                         className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors"
@@ -117,14 +117,14 @@ export default function BlogDetail() {
                         <div className="prose prose-lg max-w-none">
                             <p className="text-gray-700 leading-relaxed mb-6">
                                 Welcome to our comprehensive guide on {post.title.toLowerCase()}. In this detailed article, 
-                                we'll explore the latest trends, innovative ideas, and practical tips that will help you 
+                                we&#39;ll explore the latest trends, innovative ideas, and practical tips that will help you 
                                 transform your space into something truly remarkable.
                             </p>
 
                             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Key Highlights</h2>
                             <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
                                 <li>Modern design principles and their practical applications</li>
-                                <li>Budget-friendly solutions that don't compromise on style</li>
+                                <li>Budget-friendly solutions that don&#39;t compromise on style</li>
                                 <li>Color schemes that create the perfect ambiance</li>
                                 <li>Furniture selection tips for optimal space utilization</li>
                                 <li>Lighting strategies that enhance your interior design</li>
@@ -140,7 +140,7 @@ export default function BlogDetail() {
 
                             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Implementation Tips</h2>
                             <p className="text-gray-700 leading-relaxed mb-6">
-                                Whether you're planning a complete home makeover or looking to refresh a specific room, 
+                                Whether you&#39;re planning a complete home makeover or looking to refresh a specific room, 
                                 these insights will guide you through the process. Remember, the best interior design 
                                 solutions are those that align with your lifestyle and personal preferences.
                             </p>
