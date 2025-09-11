@@ -3,6 +3,7 @@
 // pages/index.tsx
 
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const FRANCHISE_OPTIONS = [
   {
@@ -30,6 +31,7 @@ const FRANCHISE_OPTIONS = [
 
 const Home: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const router = useRouter();
 
   const scrollToForm = () => {
     const formElement = document.getElementById('franchise-form');
@@ -66,9 +68,8 @@ const Home: React.FC = () => {
       const result = await response.json();
       
       if (result.success) {
-        alert('Thank you for your interest! We will contact you soon regarding franchise opportunities.');
-        // Reset form
-        (e.target as HTMLFormElement).reset();
+        // Redirect to thank you page
+        router.push('/thank-you-franchisee');
       } else {
         alert('There was an error submitting your inquiry. Please try again.');
       }

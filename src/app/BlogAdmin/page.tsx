@@ -55,6 +55,23 @@ export default function BlogAdmin() {
             const savedPosts = localStorage.getItem('blogPosts');
             if (savedPosts) {
                 setPosts(JSON.parse(savedPosts));
+            } else {
+                // If no saved posts, start with default posts so admin can see and manage them
+                const defaultPosts = [
+                    { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png" },
+                    { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png" },
+                    { id: 3, title: "Living Room Makeovers With a Wow Factor", date: "July 30, 2025", readTime: "10 mins read", img: "/3.png" },
+                    { id: 4, title: "Bathroom Design Trends for 2025", date: "August 1, 2025", readTime: "8 mins read", img: "/bn.jpg" },
+                    { id: 5, title: "Small Space Interior Solutions", date: "August 3, 2025", readTime: "15 mins read", img: "/bn.jpg" },
+                    { id: 6, title: "Color Psychology in Interior Design", date: "August 5, 2025", readTime: "12 mins read", img: "/bn.jpg" },
+                    { id: 7, title: "Sustainable Interior Design Practices", date: "August 7, 2025", readTime: "14 mins read", img: "/bn.jpg" },
+                    { id: 8, title: "Home Office Design Ideas", date: "August 9, 2025", readTime: "11 mins read", img: "/bn.jpg" },
+                    { id: 9, title: "Lighting Design for Modern Homes", date: "August 11, 2025", readTime: "9 mins read", img: "/bn.jpg" },
+                    { id: 10, title: "Furniture Selection Guide", date: "August 13, 2025", readTime: "13 mins read", img: "/bn.jpg" },
+                    { id: 11, title: "Wall Decor Ideas and Trends", date: "August 15, 2025", readTime: "7 mins read", img: "/bn.jpg" },
+                    { id: 12, title: "Flooring Options for Every Budget", date: "August 17, 2025", readTime: "16 mins read", img: "/bn.jpg" },
+                ];
+                setPosts(defaultPosts);
             }
             
             const savedTrending = localStorage.getItem('trendingData');
@@ -82,6 +99,9 @@ export default function BlogAdmin() {
                     alert('Warning: Blog data is getting too large. Consider removing some old posts to prevent storage issues.');
                 }
                 localStorage.setItem('blogPosts', dataToStore);
+                
+                // Dispatch custom event to notify blog page of updates
+                window.dispatchEvent(new CustomEvent('blogPostsUpdated'));
             } catch (error) {
                 console.error('Failed to save blog posts to localStorage:', error);
                 alert('Failed to save blog posts. The data might be too large. Please try removing some posts.');
@@ -391,6 +411,30 @@ export default function BlogAdmin() {
                             </p>
                         </div>
                         <div className="flex gap-3">
+                            <button
+                                onClick={() => {
+                                    if (confirm('Reset to default blog posts? This will replace all current posts.')) {
+                                        const defaultPosts = [
+                                            { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png" },
+                                            { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png" },
+                                            { id: 3, title: "Living Room Makeovers With a Wow Factor", date: "July 30, 2025", readTime: "10 mins read", img: "/3.png" },
+                                            { id: 4, title: "Bathroom Design Trends for 2025", date: "August 1, 2025", readTime: "8 mins read", img: "/bn.jpg" },
+                                            { id: 5, title: "Small Space Interior Solutions", date: "August 3, 2025", readTime: "15 mins read", img: "/bn.jpg" },
+                                            { id: 6, title: "Color Psychology in Interior Design", date: "August 5, 2025", readTime: "12 mins read", img: "/bn.jpg" },
+                                            { id: 7, title: "Sustainable Interior Design Practices", date: "August 7, 2025", readTime: "14 mins read", img: "/bn.jpg" },
+                                            { id: 8, title: "Home Office Design Ideas", date: "August 9, 2025", readTime: "11 mins read", img: "/bn.jpg" },
+                                            { id: 9, title: "Lighting Design for Modern Homes", date: "August 11, 2025", readTime: "9 mins read", img: "/bn.jpg" },
+                                            { id: 10, title: "Furniture Selection Guide", date: "August 13, 2025", readTime: "13 mins read", img: "/bn.jpg" },
+                                            { id: 11, title: "Wall Decor Ideas and Trends", date: "August 15, 2025", readTime: "7 mins read", img: "/bn.jpg" },
+                                            { id: 12, title: "Flooring Options for Every Budget", date: "August 17, 2025", readTime: "16 mins read", img: "/bn.jpg" },
+                                        ];
+                                        setPosts(defaultPosts);
+                                    }
+                                }}
+                                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+                            >
+                                Reset to Default Posts
+                            </button>
                             <button
                                 onClick={clearAllData}
                                 className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition"

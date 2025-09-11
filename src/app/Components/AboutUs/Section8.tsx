@@ -14,7 +14,7 @@ const Section6 = () => {
               {/* Mission Header */}
               <div className="aboutus-section6-3xl-header">
                 <h1 className="aboutus-section6-3xl-title">
-                  Mission
+                Vision
                 </h1>
                 <p className="aboutus-section6-3xl-subtitle">
                   At HUB Interiors, — it&#39;s about creating spaces that reflect you.
@@ -23,7 +23,7 @@ const Section6 = () => {
               
               {/* Mission Points */}
               <div className="aboutus-section6-3xl-points">
-              To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+              To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
               </div>
             </div>
             
