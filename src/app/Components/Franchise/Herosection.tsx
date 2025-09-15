@@ -4,6 +4,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const FRANCHISE_OPTIONS = [
   {
@@ -105,7 +106,7 @@ const Home: React.FC = () => {
 
       {/* Navbar */}
       <header className="relative z-10 flex justify-between items-center px-8 py-6 -mt-24 ">
-         <img src="redlogo.png" className="w-[210px] h-full"></img>
+         <Image src="/redlogo.png" alt="HUB Interior Logo" width={210} height={100} className="w-[210px] h-full" />
         <nav className="flex gap-8 items-center mt-4 mr-20">
           <a className="text-white hover:text-[#ef0101] font-medium" href="#">HOME</a>
           <a className="text-white hover:text-[#ef0101] font-medium" href="#">EXPIRENCE CENTER</a>

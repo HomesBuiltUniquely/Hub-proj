@@ -1,12 +1,14 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const ContactHeader: React.FC = () => (
   <div className="w-[1400px] h-[900px] mx-auto mt-4 rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/Contactus.png')" }}>
     {/* Navbar */}
     <div className="flex items-center justify-between -mt-15 ">
-      <img src="redlogo.png" className="w-[250px] h-full -mt-4 -ml-4"></img>
+      <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
       <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-        <a href="/">HOME</a>
+        <Link href="/">HOME</Link>
         <a href="#">SERVICES</a>
         <a href="#">EXPLORE ROOMS</a>
       </div>

@@ -169,7 +169,7 @@ export default function ThankYouFranchisee() {
           
           <p className="thankyou-ultrawide-message">
             Thank you for your interest in becoming a HUB Interior franchisee! We have received your application and our team will review it carefully. 
-            We'll contact you within 24-48 hours to discuss the next steps and answer any questions you may have about our franchise opportunities.
+            We&#39;ll contact you within 24-48 hours to discuss the next steps and answer any questions you may have about our franchise opportunities.
           </p>
           
           <div className="thankyou-ultrawide-buttons">
@@ -210,7 +210,7 @@ export default function ThankYouFranchisee() {
           {/* Message */}
           <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8">
             Thank you for your interest in becoming a HUB Interior franchisee! We have received your application and our team will review it carefully. 
-            We'll contact you within 24-48 hours to discuss the next steps and answer any questions you may have about our franchise opportunities.
+            We&#39;ll contact you within 24-48 hours to discuss the next steps and answer any questions you may have about our franchise opportunities.
           </p>
           
           {/* Action Buttons */}

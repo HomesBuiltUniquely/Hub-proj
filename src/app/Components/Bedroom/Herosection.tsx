@@ -1,13 +1,15 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const BedroomHeroSimple: React.FC = () => (
 <div>
 <div className="w-[1300px] h-[850px] mx-auto mt-4 rounded-4xl overflow-hidden  bg-cover bg-center relative" style={{ backgroundImage: "url('/bh.png')" }}>
   {/* Navbar */}
   <div className="flex items-center justify-between -mt-15">
-    <img src="redlogo.png" className="w-[220px]  -ml-2"></img>
+    <Image src="/redlogo.png" alt="HUB Interior Logo" width={220} height={100} className="w-[220px] -ml-2" />
     <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-      <a href="#">HOME</a>
+      <Link href="/">HOME</Link>
       <a href="#">SERVICES</a>
       <a href="#">EXPLORE ROOMS</a>
     </div>
