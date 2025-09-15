@@ -231,7 +231,7 @@ export default function Footer(){
                                 </div>
                             </div>
                         <div className="flex justify-between mt-10">
-                        <a href="/"><img src="/LOGO.png" className="w-[100px] h-[40px]"></img></a>
+                        <Link href="/"><img src="/LOGO.png" className="w-[100px] h-[40px]"></img></Link>
                         <a href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></a>
                         <div className="flex gap-8">
                        <a href="https://www.linkedin.com/company/homesunderbudget/"> <img src="LinkedIn.png " className="w-[25px] h-[25px] "></img></a>
