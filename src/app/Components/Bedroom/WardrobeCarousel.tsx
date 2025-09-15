@@ -5,24 +5,20 @@ import React, { useRef } from "react";
 // Demo data for wardrobes
 const wardrobes = [
   {
-    img: "/bn.jpg",
+    img: "/w1.jpg",
     label: "Sliding Door Wardrobe",
   },
   {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
+    img: "/w2.jpg",
+    label: "Hinged door wardrobe",
   },
   {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
+    img: "/w3.jpg",
+    label: "Open wardrobe",
   },
   {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
-  },
-  {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
+    img: "/w4.jpg",
+    label: "Bi Fold Door wardrobe",
   },
 ];
 
@@ -83,18 +79,20 @@ const WardrobeCarousel: React.FC = () => {
             {wardrobes.map((item, idx) => (
               <div
                 key={idx}
-                className="min-w-[290px] max-w-xs bg-white rounded-3xl shadow-lg group hover:shadow-2xl transition"
+                className="min-w-[400px] h-[520px]  bg-white rounded-4xl shadow-lg"
               >
                 <img
                   src={item.img}
                   alt={item.label}
-                  className="w-full h-56 object-cover rounded-3xl  rounded-b-none group-hover:scale-105 transition duration-300"
+                  className="w-full h-130 object-cover rounded-4xl"
                 />
-                <div className="p-4 flex items-center">
-                  <span className="bg-white/80 text-gray-800 font-semibold px-4 py-1 rounded-full shadow text-sm">
-                    {item.label}
+                <div className="p-4 flex items-center -mt-50 h-[270px]">
+                  <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
+                    {item.label}<br/>
+                    <button className="border-1 border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
                   </span>
                 </div>
+               
               </div>
             ))}
           </div>

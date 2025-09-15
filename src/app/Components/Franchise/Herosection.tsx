@@ -11,7 +11,7 @@ const FRANCHISE_OPTIONS = [
     details: [
       "Exclusively Tier 1/Metro cities",
       "Projected ROI - 3x in 3 years",
-      "Investment  45-60 Lakhs",
+      "Investment  40 Lakhs - 1 Crore",
       "Minimum area - 2000 sq. ft."
     ],
     text: "Minimum effort, Maximum return"
@@ -19,7 +19,7 @@ const FRANCHISE_OPTIONS = [
   {
     title: "FOFO (Franchise Owned Franchise Operated)",
     details: [
-      "Tier 2 & 3 cities",
+      "Tier 2 cities",
       "Projected ROI - 200% in 1 year",
       "Investment from 18 Lakh",
       "Minimum area - 800 sq. ft.",
@@ -95,7 +95,7 @@ const Home: React.FC = () => {
         rounded-3xl
         "
       style={{
-        backgroundImage: "url('/bn.jpg')",
+        backgroundImage: "url('/kh.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -104,9 +104,9 @@ const Home: React.FC = () => {
       <div className="absolute"></div>
 
       {/* Navbar */}
-      <header className="relative z-10 flex justify-between items-center px-8 py-6">
-         <img src="LOGO.png" className="w-[100px] h-[40px]"></img>
-        <nav className="flex gap-8 items-center">
+      <header className="relative z-10 flex justify-between items-center px-8 py-6 -mt-24 ">
+         <img src="redlogo.png" className="w-[210px] h-full"></img>
+        <nav className="flex gap-8 items-center mt-4 mr-20">
           <a className="text-white hover:text-[#ef0101] font-medium" href="#">HOME</a>
           <a className="text-white hover:text-[#ef0101] font-medium" href="#">EXPIRENCE CENTER</a>
           <a className="text-white hover:text-[#ef0101] font-medium" href="#">STUDIO LOCATOR</a>

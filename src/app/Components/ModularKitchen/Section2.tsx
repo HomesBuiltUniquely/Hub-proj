@@ -3,19 +3,24 @@
 import React, { useEffect, useRef } from "react";
 
 const kitchenAccessories = [
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
+  { img: "/k1.jpg", label: "Bottle pullout" },
+  { img: "/k2.jpg", label: "Corner Solutions" },
+  { img: "/k3.jpg", label: "Cutlery Tray" },
+  { img: "/k4.jpg", label: "Detergent Rack" },
+  { img: "/k5.jpg", label: "Pantry Pullout" },
+  { img: "/k6.jpg", label: "Plate holder" },
+  { img: "/k7.jpg", label: "Tambour Unit" },
+  { img: "/k8.jpg", label: "Tandem Box" },
+  { img: "/k9.jpg", label: "Waste Bin" },
+  { img: "/k10.jpg", label: "Wicker Basket" },
 ];
 
 const cabinetAccs = [
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
+  { img: "/c1.jpg", label: "shaker style Kitchen cabinets" },
+  { img: "/c2.jpg", label: "Slab Kitchen cabinets" },
+  { img: "/c3.jpg", label: "Glass Front Kitchen cabinets" },
+  { img: "/c4.jpg", label: "Inset Kitchen cabinets" },
+  { img: "/c5.webp", label: "Glossy Kitchen cabinets" },
 ];
 
 const CardSection = ({

@@ -47,7 +47,7 @@ export default function Section3(){
             <div className="aboutus-section3-2xl-section hidden 2xl:block 3xl:hidden  ">
                 <div className="h-[680px] mx-auto mt-4 px-16">
                     
-                    <div className="w-full max-w-[1500px] h-[650px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
+                    <div className="w-full max-w-[1500px] h-[550px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
                         
                         {/* Left Image - 2XL optimized */}
                         <img 
@@ -57,7 +57,7 @@ export default function Section3(){
                         />
                         
                         {/* Center Content - 2XL optimized */}
-                        <div className="w-[600px] h-auto p-14  lg:ml-12 flex flex-col justify-center">
+                        <div className="w-[600px] h-auto px-10  lg:ml-8 flex flex-col justify-center pb-20">
 
                             <div className="text-[#ef0101] ml-2 text-2xl py-20">Brand Hub</div>
                             

@@ -124,11 +124,11 @@ const Section7 = () => {
       {/* 2XL Screen - Large displays */}
       <section className="aboutus-section7-2xl-section hidden 2xl:block 3xl:hidden px-16 bg-white">
         <div className="">
-          <div className="flex flex-col lg:flex-row justify-between gap-130">
+          <div className="flex flex-col lg:flex-row justify-between gap-80">
             {/* Left Side - Image Container */}
-            <div className="w-[400px] lg:w-[500px] h-[580px] bg-red-400 mt-32 ml-18 rounded-2xl ">
+            <div className="w-[700px] lg:w-[700px] h-[580px] mt-32 rounded-2xl ">
               {/* Image placeholder - can be replaced with actual image */}
-              <img src="/bn.jpg" alt="Values Image" className=" h-[580px] rounded-2xl" >
+              <img src="/6.png" alt="Values Image" className="w-full h-[580px] rounded-2xl" >
               </img>
             </div>
             
@@ -151,7 +151,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  Integrity: Building trust through honesty, transparency, and respect in everything we do.
                   </div>
                 </div>
                 
@@ -164,7 +164,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
                   </div>
                 </div>
                 
@@ -177,7 +177,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
                   </div>
                 </div>
                 
@@ -190,7 +190,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  Excellence: Designing homes that are timeless, functional, and crafted with precision.
                   </div>
                 </div>
 
@@ -202,7 +202,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
                   </div>
                 </div>
 
@@ -214,7 +214,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                  Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
                   </div>
                 </div>
 
@@ -225,13 +225,13 @@ const Section7 = () => {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden py-10 px-12 bg-white">
+      <section className="hidden xl:block 2xl:hidden py-10 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between gap-16">
             {/* Left Side - Image Container */}
-            <div className="w-full lg:w-[500px] h-[550px] bg-red-400 mt-10  rounded-2xl">
+            <div className="w-[600px] lg:w-[600px] h-[550px] mt-10  rounded-2xl">
               {/* Image placeholder - can be replaced with actual image */}
-              <img src="/6.png" alt="Values Image" className="w-[500px] h-[550px] rounded-2xl" />
+              <img src="/6.png" alt="Values Image" className="w-[600px] h-[550px]  ml-5" />
             </div>
             
             {/* Right Side - Values Content */}
@@ -247,7 +247,7 @@ const Section7 = () => {
               {/* Values Points */}
               <div className="space-y-5">
                 {/* Value Point 1 */}
-                <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-6 ml-10"></div>
+                <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-6 ml-4"></div>
                 <div className="flex items-start">
                   <div className="w-[30px] h-[30px] rounded-lg bg-[#ddcdc1] ml-10 flex items-center justify-center mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
@@ -606,7 +606,7 @@ const Section7 = () => {
           .aboutus-section7-3xl-image {
             width: 700px;
             height: 800px;
-            background-color: #f87171;
+           
             margin-top: 10rem;
             margin-left: 9rem;
             border-radius: 1rem;

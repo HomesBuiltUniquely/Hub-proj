@@ -23,7 +23,7 @@ export default function Herosection() {
                     
                     .aboutus-hero-3xl-relative {
                         position: relative;
-                        width: 100%;
+                        width: full;
                         height: 100%;
                     }
                     
@@ -31,6 +31,7 @@ export default function Herosection() {
                         width: 100%;
                         height: 100vh;
                         border-radius: 2rem;
+                        
                     }
                     
                     .aboutus-hero-3xl-overlay {
@@ -41,7 +42,7 @@ export default function Herosection() {
                     
                     .aboutus-hero-3xl-button {
                         position: absolute;
-                        top: 1.5rem;
+                        top: 3rem;
                         right: 5rem;
                         z-index: 30;
                         width: 300px;
@@ -74,11 +75,14 @@ export default function Herosection() {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
+                        margin-top: -9rem;
+                        margin-left: rem;
                     }
                     
                     .aboutus-hero-3xl-logo {
-                        width: 220px;
-                        height: 110px;
+                        width: 800px;
+                        height: 200px;
+                        
                     }
                     
                     .aboutus-hero-3xl-nav {
@@ -88,8 +92,9 @@ export default function Herosection() {
                         display: flex;
                         gap: 4rem;
                         margin: 0 auto;
-                        padding-left: 50rem;
-                        padding-bottom: 2rem;
+                        padding-left: 40rem;
+                        margin-top: 0.5rem;
+                       
                     }
                     
                     .aboutus-hero-3xl-nav a {
@@ -111,7 +116,7 @@ export default function Herosection() {
                     }
                     
                     .aboutus-hero-3xl-title-1 {
-                        font-size: 6rem;
+                        font-size: 8rem;
                         font-family: 'ManropeMedium', sans-serif;
                         line-height: 1;
                         margin: 0;
@@ -125,10 +130,11 @@ export default function Herosection() {
                     }
                     
                     .aboutus-hero-3xl-title-3 {
-                        font-size: 6rem;
+                        font-size: 8rem;
                         font-family: 'ManropeMedium', sans-serif;
                         line-height: 1;
                         margin: 0;
+                        
                     }
                 }
                 
@@ -152,10 +158,10 @@ export default function Herosection() {
                     {/* Header - 3XL 2560*1440 optimized */}
                     <div className="aboutus-hero-3xl-header">
                         <Image 
-                            src="/LOGO.png" 
+                            src="/redlogo.png" 
                             alt="LOGO" 
-                            width={220} 
-                            height={110} 
+                            width={360} 
+                            height={120} 
                             className="aboutus-hero-3xl-logo"
                         />
                         
@@ -169,9 +175,9 @@ export default function Herosection() {
                     
                     {/* Main Content - 3XL 2560*1440 optimized */}
                     <div className="aboutus-hero-3xl-content">
-                        <div className="aboutus-hero-3xl-title-1">HOMES,</div>
+                        <div className="aboutus-hero-3xl-title-1">homes</div>
                         <div className="aboutus-hero-3xl-title-2">uniquely</div>
-                        <div className="aboutus-hero-3xl-title-3">BUILT</div>
+                        <div className="aboutus-hero-3xl-title-3">built</div>
                     </div>
                 </div>
             </div>
@@ -184,23 +190,23 @@ export default function Herosection() {
                         <div className="absolute inset-0 bg-opacity-40"></div>
                         
                         {/* Get Free Estimate Button - 2XL optimized */}
-                        <div className="absolute top-4 right-8 z-30">
+                        <div className="absolute top-8 right-8 z-30">
                             <button className="w-[230px] h-[50px] manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg  2xl-1850:bg-red-500">Get Free Estimate</button>
                         </div>
                         
                         {/* Header - 2XL optimized */}
-                        <div className="absolute top-0 left-0 w-full p-8 flex items-center  justify-between">
+                        <div className="absolute top-0 left-0 w-full p-8 flex items-center  justify-between -mt-26">
                             <Image 
-                                src="/LOGO.png" 
+                                src="/redlogo.png" 
                                 alt="LOGO" 
-                                width={150} 
-                                height={90} 
+                                width={220} 
+                                height={100} 
                                 className="mb-170"
                             
                             />
                             
                             {/* Navigation - 2XL optimized */}
-                            <nav className="text-white text-2xl manrope space-x-10 mr-80 -mt-175">
+                            <nav className="text-white text-2xl manrope space-x-10 mr-80 -mt-158">
                                 <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
                                 <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
                                 <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
@@ -221,26 +227,26 @@ export default function Herosection() {
             <div className="hidden xl:block 2xl:hidden 3xl:hidden">
                 <div className="w-auto h-[550px] m-4 ">
                     <div className="relative w-full h-full">
-                        <img src="/ab1.png" alt="Background" className="w-full h-auto rounded-4xl" />
+                        <img src="/ab1.png" alt="Background" className="w-full h-[800px] rounded-4xl" />
                         <div className="absolute inset-0 bg-opacity-40"></div>
                         
                         {/* Get Free Estimate Button - XL optimized */}
-                        <div className="ml-300 -mt-195 ">
+                        <div className="ml-260 -mt-190 ">
                             <button className="manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg">Get Free Estimate</button>
                         </div>
                         
                         {/* Header - XL optimized */}
-                        <div className="absolute top-0 left-0 w-full p-8 flex items-center justify-between">
+                        <div className="absolute -mt-50 right-5 w-full p-8 flex items-center justify-between mr-2">
                             <Image 
-                                src="/LOGO.png" 
+                                src="/redlogo.png" 
                                 alt="LOGO" 
-                                width={160} 
-                                height={80} 
+                                width={240} 
+                                height={100} 
                               
                             />
                             
                             {/* Navigation - XL optimized */}
-                            <nav className="text-white text-xl manrope space-x-8 pr-60 pb-12">
+                            <nav className="text-white text-xl manrope space-x-8 pr-65 pb-12 mt-25">
                                 <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
                                 <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
                                 <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
@@ -272,7 +278,7 @@ export default function Herosection() {
                         {/* Header - LG optimized */}
                         <div className="absolute top-0 left-0 w-full p-6 flex items-center justify-between">
                             <Image 
-                                src="/LOGO.png" 
+                                src="/redlogo.png" 
                                 alt="LOGO" 
                                 width={140} 
                                 height={70} 
@@ -312,7 +318,7 @@ export default function Herosection() {
                         {/* Header - MD optimized */}
                         <div className="absolute top-0 left-0 w-full p-4 flex items-center justify-between">
                             <Image 
-                                src="/LOGO.png" 
+                                src="/redlogo.png" 
                                 alt="LOGO" 
                                 width={100} 
                                 height={50} 
@@ -352,7 +358,7 @@ export default function Herosection() {
                         {/* Header - SM optimized */}
                         <div className="absolute top-0 left-0 w-full p-3 flex items-center justify-between">
                             <Image 
-                                src="/LOGO.png" 
+                                src="/redlogo.png" 
                                 alt="LOGO" 
                                 width={80} 
                                 height={40} 

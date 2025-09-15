@@ -1,253 +1,312 @@
 'use client';
-import React, { useState } from "react";
+import { useState, useRef, useEffect } from 'react';
 
-// --- Video Testimonials ---
-const featuredVideos = [
-  {
-    id: 1,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "George, Royal Tulip",
-  },
-  {
-    id: 2,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "George, Royal Tulip",
-  },
-  {
-    id: 3,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "George, Royal Tulip",
-  },
-  {
-    id: 4,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "George, Royal Tulip",
-  },
-  {
-    id: 5,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "George, Royal Tulip",
-  },
-  {
-    id: 6,
-    src: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4//DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    quote: "HUB turned our dream home into reality. Budget, design, smooth process.",
-    author: "George, Royal Tulip",
-  },
-  
-];
+interface Video {
+  id: number;
+  thumbnail: string;
+  title: string;
+  videoUrl: string;
+}
 
-// --- Google Reviews ---
-const googleReviews = [
-  {
-    id: 1,
-    name: "Baishakhi M",
-    rating: 5,
-    location: "Sumadhura Epitome",
-    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 2,
-    name: "Amit R",
-    rating: 5,
-    location: "Sobha City",
-    text: "Excellent designs and professional team. Highly recommended!",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 3,
-    name: "Priya D",
-    rating: 5,
-    location: "Prestige Lakeside",
-    text: "Smooth experience and beautiful end result for our interiors.",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 4,
-    name: "Rahul S",
-    rating: 4,
-    location: "Brigade Exotica",
-    text: "On time and on budget. Very happy.",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 5,
-    name: "Meena K",
-    rating: 5,
-    location: "Divyasree Republic",
-    text: "Our family loves our new living space—thank you HUB team!",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 6,
-    name: "Vinay P",
-    rating: 5,
-    location: "Salarpuria Sattva",
-    text: "Would choose them again in a heartbeat.",
-    avatar: "/baishakhi.jpg",
-  },
-];
+export default function Section8() {
+  const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-const VISIBLE_CARDS = 3;
+  const videoThumbnails: Video[] = [
+    {
+      id: 1,
+      thumbnail: "iam.webp",
+      title: "Master Bedroom Design",
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_153915_702.mp4"
+    },
+    {
+      id: 2,
+      thumbnail: "iam2.webp",
+      title: "Modern Living Room",
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//george%20f%20v_1%20(1)%20(1)%20(1).mp4"
+    },
+    {
+      id: 3,
+      thumbnail: "fk.webp",
+      title: "Kitchen Interior",
+      videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_150443_314.mp4"
+    }
+  ];
 
-const FeaturedCustomerSection = () => {
-  // Video play state
-  const [playingVideoId, setPlayingVideoId] = useState<number | null>(null);
-  // Google review carousel: starting review index (for first visible card)
-  const [startIdx, setStartIdx] = useState(0);
+  const handleVideoClick = (video: Video) => {
+    setSelectedVideo(video);
+    setIsModalOpen(true);
+  };
 
-  const total = googleReviews.length;
-  // Figure which 3 reviews should be visible right now, looping if necessary
-  const showCards = [];
-  for (let i = 0; i < VISIBLE_CARDS; ++i) {
-    showCards.push(googleReviews[(startIdx + i) % total]);
-  }
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideo(null);
+  };
 
-  const handlePrev = () => setStartIdx((prev) => (prev - 1 + total) % total);
-  const handleNext = () => setStartIdx((prev) => (prev + 1) % total);
+  // Auto-advance carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % videoThumbnails.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(timer);
+  }, [videoThumbnails.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % videoThumbnails.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + videoThumbnails.length) % videoThumbnails.length);
+  };
+
+  // Background video autoplay with mute
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.log("Autoplay prevented:", error);
+      });
+    }
+  }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-3 md:px-8 py-12">
-      {/* Featured Customers */}
-      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
-        Featured Customers
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 mt-20">
-        {featuredVideos.map((item) => (
-          <div
-            key={item.id}
-            className="relative h-[300px] rounded-2xl overflow-hidden shadow-lg group"
-          >
-            {playingVideoId === item.id ? (
-              <video
-                src={item.src}
-                controls
-                autoPlay
-                className="w-full h-full object-cover"
-                onEnded={() => setPlayingVideoId(null)}
-              />
-            ) : (
-              <>
-                <img
-                  src={item.thumbnail}
-                  alt={`Thumbnail for video by ${item.author}`}
-                  className="w-full h-full object-cover cursor-pointer"
-                  onClick={() => setPlayingVideoId(item.id)}
-                />
-                <div
-                  className="absolute inset-0  bg-opacity-50 flex justify-center items-center cursor-pointer"
-                  onClick={() => setPlayingVideoId(item.id)}
-                  aria-label="Play video"
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={(e) => {
-                    if (e.key === "Enter" || e.key === " ") setPlayingVideoId(item.id);
-                  }}
+    <div className="w-full">
+      {/* Desktop Layout */}
+      <div className="hidden lg:block">
+        <div className="w-[1200px] mx-auto mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
+          {/* Background Video */}
+          <div className="absolute inset-0 z-0">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* Dark overlay for better text contrast */}
+            <div className="absolute inset-0 bg-[#F1F2F6] bg-opacity-40"></div>
+          </div>
+
+          {/* Content Overlay */}
+          <div className="relative z-10 h-full flex flex-col justify-center">
+            <div className="max-w-7xl mx-auto px-6 w-full">
+              {/* Text Header - Matching your screenshot */}
+              <div className="mb-16 text-black manrope-medium">
+                <h2 className="text-5xl md:text-7xl leading-tight tracking-tight manrope-medium">
+                What our customers say about HUB
+                </h2>
+                <div className="w-24 h-1 bg-red-500 mt-8"></div>
+              </div>
+
+              {/* Video Carousel */}
+              <div className="relative">
+                {/* Navigation Buttons */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+                  aria-label="Previous video"
                 >
-                  <svg width={64} height={64} viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="12" fill="rgba(255, 255, 255, 0.7)" />
-                    <polygon points="10,8 16,12 10,16" fill="#222" />
+                  <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
+                </button>
+                
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+                  aria-label="Next video"
+                >
+                  <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Carousel Container */}
+                <div className="overflow-hidden rounded-xl">
+                  <div 
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
+                  >
+                    {videoThumbnails.map((video) => (
+                      <div 
+                        key={video.id} 
+                        className="w-1/3 flex-shrink-0 px-4"
+                      >
+                        <div 
+                          className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                          onClick={() => handleVideoClick(video)}
+                        >
+                          <div className="aspect-w-16 aspect-h-9">
+                            <img
+                              src={video.thumbnail}
+                              alt={video.title}
+                              className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
+                                <svg className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z"/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                            <h3 className="text-xl font-medium text-white">{video.title}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </>
-            )}
-            <div className="absolute bottom-0 left-0 right-0 bg-transparent bg-opacity-60 px-4 py-3 flex flex-col mb-6">
-              <p className="text-white text-sm mb-1">{item.quote}</p>
-              <span className="text-white  s w-[135px] h-[20px] pt-0.5 text-xs backdrop-blur-2xl bg-white/30 rounded-4xl pl-3">
-                {item.author}
-              </span>
+
+                {/* Dots Indicator */}
+                <div className="flex justify-center mt-6 gap-2">
+                  {videoThumbnails.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        currentSlide === index 
+                          ? 'bg-red-500 scale-125' 
+                          : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
 
-      {/* Google Reviews Carousel */}
-      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
-        Google Reviews
-      </h2>
-      <div className="w-full flex flex-col items-center mt-20">
-        {/* Carousel Controls */}
-        <div className="flex justify-center items-center gap-4 mb-5">
-          <button
-            className="bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center pb-1 text-2xl"
-            onClick={handlePrev}
-            aria-label="Previous"
-          >
-            ‹
-          </button>
-          <button
-            className="bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center pb-1 text-2xl"
-            onClick={handleNext}
-            aria-label="Next"
-          >
-            ›
-          </button>
-        </div>
-        {/* 3 visible cards */}
-        <div className="flex gap-6 justify-center flex-wrap">
-          {showCards.map((review, idx) => (
-            <div
-              key={`${review.id}-${idx}`}
-              className="bg-white shadow-lg w-[300px] h-[300px] rounded-2xl p-5  flex flex-col items-center"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <img
-                  src={review.avatar}
-                  alt={review.name}
-                  className="w-9 h-9 rounded-full object-cover"
-                />
-                <span className="font-semibold text-gray-700">{review.name}</span>
-                <span className="ml-2 text-yellow-500 flex">
-                  {"★".repeat(review.rating)}
-                </span>
-                <svg
-                  height={21}
-                  width={21}
-                  className="ml-2 text-gray-300"
-                  aria-label="Google icon"
-                  role="img"
-                >
-                  <circle cx="10" cy="10" r="10" fill="#eee" />
-                  <text
-                    x={5}
-                    y={16}
-                    fontSize={12}
-                    fontFamily="sans-serif"
-                    fill="#4285F4"
-                  >
-                    G
-                  </text>
-                </svg>
-              </div>
-              <span className="text-gray-500 text-xs mb-2">{review.location}</span>
-              <p className="text-gray-700 text-sm text-center">{review.text}</p>
+      {/* Mobile Layout */}
+      <div className="lg:hidden">
+        <div className="w-full bg-[#F1F2F6] py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
+                <span className="block ">HUB Happy</span>
+                <span className="block">Customers</span>
+              </h2>
+              <div className="w-16 h-1 bg-red-500 mx-auto"></div>
             </div>
-          ))}
-        </div>
-        {/* Dots */}
-        <div className="flex justify-center mt-5 gap-2">
-          {Array.from({ length: total }).map((_, idx) => (
-            <span
-              key={idx}
-              className={`w-2 h-2 rounded-full ${startIdx === idx ? "bg-gray-800" : "bg-gray-300"}`}
-            />
-          ))}
+
+            {/* Video Carousel */}
+            <div className="relative overflow-hidden">
+              {/* Mobile Navigation Buttons */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300"
+                aria-label="Previous video"
+              >
+                <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <button
+                onClick={nextSlide}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300"
+                aria-label="Next video"
+              >
+                <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {videoThumbnails.map((video) => (
+                  <div 
+                    key={video.id} 
+                    className="w-full flex-shrink-0 px-2"
+                    onClick={() => handleVideoClick(video)}
+                  >
+                    <div className="relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 active:scale-95">
+                      <div className="aspect-w-16 aspect-h-9">
+                        <img
+                          src={video.thumbnail}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0  bg-opacity-30 flex items-center justify-center">
+                          <div className="w-12 h-12 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
+                            <svg className="w-5 h-5 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                        <h3 className="text-lg font-medium text-white">{video.title}</h3>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile Dots Indicator */}
+              <div className="flex justify-center mt-4 gap-2">
+                {videoThumbnails.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === index 
+                        ? 'bg-red-500 scale-125' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  );
-};
 
-export default FeaturedCustomerSection;
+      {/* Video Modal */}
+      {isModalOpen && selectedVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+          <div className="relative w-full max-w-4xl">
+            <button
+              onClick={closeModal}
+              className="absolute -top-12 right-0 z-10 text-white hover:text-gray-300 transition-colors"
+              aria-label="Close video modal"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
+              <video
+                className="w-full h-full"
+                controls
+                autoPlay
+                playsInline
+                src={selectedVideo.videoUrl}
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            
+            <div className="mt-4 text-center">
+              <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

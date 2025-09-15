@@ -6,36 +6,26 @@ export default function Section9() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const travers = [
     {
-      img: "/bn.jpg",
+      img: "/r.png",
       name: "Ranjit P Raj",
       title: "Founder",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+      linkedin: "https://www.linkedin.com/in/ranjithpraj/"
     },
     {
-        img: "/bn.jpg",
-        name: "Ranjit P Raj",
-        title: "Founder",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+        img: "/s.png",
+        name: "Susmitha ",
+        title: "Co-Founder",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+        linkedin: "https://www.linkedin.com/in/susmita-mondal-955344b3/"
     },
     {
-        img: "/bn.jpg",
-        name: "Ranjit P Raj",
-        title: "Founder",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+        img: "/Alex.png",
+        name: "Ebez Alex",
+        title: "Associate Diretor",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+        linkedin: "https://www.linkedin.com/in/ebezalex/"
     },
-    {
-        img: "/bn.jpg",
-        name: "Ranjit P Raj",
-        title: "Founder",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
-      },
-      {
-        img: "/bn.jpg",
-        name: "Ranjits P Raj",
-        title: "Founder",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
-      },
-    
   ];
 
   const nextSlide = () => {
@@ -74,14 +64,23 @@ export default function Section9() {
                         <Image 
                           src={traver.img} 
                           alt={traver.name}
-                          layout="fill"
-                          objectFit="cover"
+                          fill
+                          style={{ objectFit: 'cover' }}
                         />
                       </div>
-                      <div className="aboutus-section9-3xl-card-content">
+                     
+                    </div>
+                    <div>
+                    <div className="aboutus-section9-3xl-card-content">
+                        <div>
                         <h3 className="aboutus-section9-3xl-name">{traver.name}</h3>
                         <p className="aboutus-section9-3xl-title-text">{traver.title}</p>
-                        <p className="aboutus-section9-3xl-description">{traver.description}</p>
+                        </div>
+                        <div>
+                          <a href={traver.linkedin}>
+                            <img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-2' alt="LinkedIn" />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -108,7 +107,7 @@ export default function Section9() {
 
       {/* 2XL Screen - Large displays */}
       <section className="aboutus-section9-2xl-section hidden 2xl:block 3xl:hidden">
-        <div className="w-screen h-screen relative overflow-hidden bg-white">
+        <div className="w-screen h-[1000px] relative overflow-hidden bg-white">
           <div className="text-6xl manrope pt-20 pl-16">Core Members</div>
           
           {/* Carousel Container - 2XL optimized */}
@@ -121,18 +120,24 @@ export default function Section9() {
                   className="flex-1 min-w-0"
                 >
                   <div className="w-full h-full bg-white shadow-lg rounded-2xl overflow-hidden">
-                    <div className="h-1/2 relative">
+                    <div className="h-full relative">
                       <Image 
                         src={traver.img} 
                         alt={traver.name}
-                        layout="fill"
-                        objectFit="cover"
+                          fill
+                          style={{ objectFit: 'cover' }}
                       />
-                    </div>
+                    </div>                   
+                  </div>
+                  <div className=" bg-[#ebd457] flex justify-between  mt-5 rounded-2xl">
                     <div className="h-1/2 p-8 flex flex-col">
                       <h3 className="text-3xl font-bold">{traver.name}</h3>
                       <p className="text-gray-500 mb-6 text-xl">{traver.title}</p>
-                      <p className="text-gray-700 text-lg">{traver.description}</p>
+                    </div>
+                    <div>
+                      <a href={traver.linkedin}>
+                        <img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-10 mr-10' alt="LinkedIn" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -162,7 +167,7 @@ export default function Section9() {
           <div className="text-5xl manrope pt-18 pl-12">Core Members</div>
           
           {/* Carousel Container - XL optimized */}
-          <div className="relative w-full h-[70vh] mt-18 px-12">
+          <div className="relative w-[1400px] h-[50vh] mx-auto mt-18 px-12">
             {/* Slides Container */}
             <div className="flex gap-6 h-full">
               {travers.slice(currentIndex, currentIndex + 3).map((traver, index) => (
@@ -171,19 +176,29 @@ export default function Section9() {
                   className="flex-1 min-w-0"
                 >
                   <div className="w-full h-full bg-white shadow-lg rounded-2xl overflow-hidden">
-                    <div className="h-1/2 relative">
+                    <div className="h-[400px] relative">
                       <Image 
                         src={traver.img} 
                         alt={traver.name}
-                        layout="fill"
-                        objectFit="cover"
+                          fill
+                          style={{ objectFit: 'cover' }}
                       />
                     </div>
-                    <div className="h-1/2 p-6 flex flex-col">
-                      <h3 className="text-2xl font-bold">{traver.name}</h3>
-                      <p className="text-gray-500 mb-4 text-lg">{traver.title}</p>
-                      <p className="text-gray-700 text-base">{traver.description}</p>
+
+                  </div>
+                  <div className="">
+                    <div className=" h-[100px] p-6 mt-4 flex justify-between bg-[#ebd457] rounded-2xl ">
+                     <div >
+                      <h3 className="text-2xl manrope text-white">{traver.name}</h3>
+                      <p className=" text-gray-100 mb-4 text-lg manrope-medium">{traver.title}</p>
+                     </div>
+                      <div> 
+                        <a href={traver.linkedin}>
+                          <img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-2' alt="LinkedIn" />
+                        </a>
+                      </div>
                     </div>
+                   
                   </div>
                 </div>
               ))}
@@ -225,8 +240,8 @@ export default function Section9() {
                       <Image 
                         src={traver.img} 
                         alt={traver.name}
-                        layout="fill"
-                        objectFit="cover"
+                          fill
+                          style={{ objectFit: 'cover' }}
                       />
                     </div>
                     <div className="h-1/2 p-6 flex flex-col">
@@ -275,8 +290,8 @@ export default function Section9() {
                       <Image 
                         src={traver.img} 
                         alt={traver.name}
-                        layout="fill"
-                        objectFit="cover"
+                          fill
+                          style={{ objectFit: 'cover' }}
                       />
                     </div>
                     <div className="h-1/2 p-4 flex flex-col">
@@ -325,8 +340,8 @@ export default function Section9() {
                       <Image 
                         src={traver.img} 
                         alt={traver.name}
-                        layout="fill"
-                        objectFit="cover"
+                          fill
+                          style={{ objectFit: 'cover' }}
                       />
                     </div>
                     <div className="h-1/2 p-3 flex flex-col">
@@ -374,7 +389,7 @@ export default function Section9() {
           .aboutus-section9-3xl-container {
             display: block !important;
             width: 100vw;
-            height: 100vh;
+            height: 95vh;
             position: relative;
             overflow: hidden;
             background-color: white;
@@ -403,10 +418,12 @@ export default function Section9() {
           
           .aboutus-section9-3xl-carousel {
             position: relative;
-            width: 100%;
-            height: 70vh;
-            margin-top: 5rem;
+            width: 80%;
+            height: 50vh;
+            margin-top: 8rem;
             padding: 0 6rem;
+            margin-left: 15rem;
+
           }
           
           .aboutus-section9-3xl-slides {
@@ -430,28 +447,33 @@ export default function Section9() {
           }
           
           .aboutus-section9-3xl-image-container {
-            height: 50%;
+            height: 100%;
             position: relative;
           }
           
           .aboutus-section9-3xl-card-content {
-            height: 50%;
             padding: 2rem;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            background-color: #ddcdc1;
+            justify-content: space-between;
+            border-radius: 2rem;
+            margin-top: 1rem;
           }
           
           .aboutus-section9-3xl-name {
             font-size: 2.5rem;
             font-weight: 700;
             color: #111827;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
           }
           
           .aboutus-section9-3xl-title-text {
             color: #6b7280;
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
+            color: #ffffff;
           }
           
           .aboutus-section9-3xl-description {

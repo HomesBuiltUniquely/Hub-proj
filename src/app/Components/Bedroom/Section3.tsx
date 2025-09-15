@@ -3,19 +3,19 @@
 import React, { useEffect, useRef } from "react";
 
 const kitchenAccessories = [
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
+  { img: "/wc11.png", label: "U - Shaped Kitchen" },
+  { img: "/wc12.png", label: "U - Shaped Kitchen" },
+  { img: "/wc13.png", label: "U - Shaped Kitchen" },
+  { img: "/wc14.jpg", label: "U - Shaped Kitchen" },
+  
 ];
 
 const cabinetAccs = [
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
-  { img: "/bn.jpg", label: "U - Shaped Kitchen" },
+  { img: "/wc21.jpg", label: "U - Shaped Kitchen" },
+  { img: "/wc22.jpg", label: "U - Shaped Kitchen" },
+  { img: "/wc23.jpg", label: "U - Shaped Kitchen" },
+  { img: "/wc24.jpg", label: "U - Shaped Kitchen" },
+  { img: "/wc25.jpg", label: "U - Shaped Kitchen" },
 ];
 
 const CardSection = ({
@@ -94,11 +94,7 @@ const CardSection = ({
               alt={card.label}
               className="w-full h-[400px] object-cover transition duration-300"
             />
-            <div className="px-6 pt-4 -mt-20">
-              <div className="h-[40px] inline-block bg-gray-100 rounded-full text-gray-800 px-4 py-2.5 text-sm font-bold">
-                {card.label}
-              </div>
-            </div>
+            
           </div>
         ))}
       </div>

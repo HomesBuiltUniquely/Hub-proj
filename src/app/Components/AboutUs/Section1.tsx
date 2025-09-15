@@ -23,10 +23,10 @@ export default function Section1(){
 
             {/* 2XL Screen - Large displays */}
             <div className="aboutus-section1-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="flex flex-row justify-between w-full h-[300px] mt-12 px-10">
+                <div className="flex flex-row justify-between w-full h-[300px] mt-12 ">
                     
                     {/* Heading - 2XL optimized */}
-                    <h1 className="text-6xl manrope-medium mt-28 ml-30 leading-tight">
+                    <h1 className="text-6xl manrope-medium mt-28 ml-25 leading-tight">
                         About Us
                     </h1>
                     

@@ -27,16 +27,25 @@ export default function Section4(){
                     <div className="aboutus-section4-3xl-cards">
                         
                         {/* Card 1 */}
-                        <div className="aboutus-section4-3xl-card"></div>
+                        <div className="aboutus-section4-3xl-card">
+                            <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[300px] h-[150px] mt-30 ml-9" />
+                        </div>
                         
                         {/* Card 2 */}
-                        <div className="aboutus-section4-3xl-card"></div>
+                        <div className="aboutus-section4-3xl-card">
+
+                            <img src="/b2.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[300px] h-[150px] mt-30 ml-9" />
+                        </div>
                         
                         {/* Card 3 */}
-                        <div className="aboutus-section4-3xl-card"></div>
+                        <div className="aboutus-section4-3xl-card">
+                            <img src="/b3.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[300px] h-[150px] mt-30 ml-9" />
+                        </div>
                         
                         {/* Card 4 */}
-                        <div className="aboutus-section4-3xl-card"></div>
+                        <div className="aboutus-section4-3xl-card">
+                            <img src="/b4.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[300px] h-[150px] mt-30 ml-9" />
+                        </div>
                         
                     </div>
                     
@@ -51,12 +60,12 @@ export default function Section4(){
                     <div className="flex flex-row justify-between w-full h-auto min-h-[300px] gap-12">
                         
                         {/* Heading - 2XL optimized */}
-                        <h1 className="text-6xl manrope-medium mt-20 ml-15 leading-tight">
+                        <h1 className="text-5xl manrope-medium mt-20 ml-7 leading-tight">
                         Brand Eco System
                         </h1>
                         
                         {/* Description - 2XL optimized */}
-                        <p className="w-[500px] mt-16  manrope-medium text-[26px] leading-relaxed">
+                        <p className="w-[650px] mt-16  manrope-medium text-[26px] leading-relaxed">
                         The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
 
                         </p>
@@ -64,19 +73,27 @@ export default function Section4(){
                     </div>
                     
                     {/* Cards Section - 2XL optimized */}
-                    <div className="flex flex-wrap justify-start gap-10  ml-32">
+                    <div className="flex flex-wrap justify-start gap-10  ml-18 mt-10">
                         
                         {/* Card 1 */}
-                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-25 ml-9" />
+                        </div>
                         
                         {/* Card 2 */}
-                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <img src="/b2.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-25 ml-9" />
+                        </div>
                         
                         {/* Card 3 */}
-                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <img src="/b3.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-25 ml-9" />
+                        </div>
                         
                         {/* Card 4 */}
-                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        <div className="w-[280px] h-[280px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <img src="/b4.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-25 ml-9" />
+                        </div>
                         
                     </div>
                     
@@ -91,12 +108,12 @@ export default function Section4(){
                     <div className="flex flex-row justify-between  h-[300px] gap-10">
                         
                         {/* Heading - XL optimized */}
-                        <h1 className="text-5xl manrope-medium mt-20 ml-26 leading-tight">
+                        <h1 className="text-5xl manrope-medium mt-20 ml-16 leading-tight">
                         Brand Eco System
                         </h1>
                         
                         {/* Description - XL optimized */}
-                        <p className="w-[500px] mt-14 mr-12  manrope-medium text-2xl leading-relaxed">
+                        <p className="w-[600px] mt-14 mr-12  manrope-medium text-2xl leading-relaxed">
                         The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
 
                         </p>
@@ -104,19 +121,27 @@ export default function Section4(){
                     </div>
                     
                     {/* Cards Section - XL optimized */}
-                    <div className="flex flex-wrap justify-start gap-8 ml-30">
+                    <div className="flex flex-wrap justify-start gap-8 ml-10">
                         
                         {/* Card 1 */}
-                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                        </div>
                         
                         {/* Card 2 */}
-                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <img src="/b2.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                        </div>
                         
                         {/* Card 3 */}
-                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <img src="/b3.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                        </div>
                         
                         {/* Card 4 */}
-                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+                        <div className="w-[250px] h-[250px] rounded-4xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <img src="/b4.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                        </div>
                         
                     </div>
                     

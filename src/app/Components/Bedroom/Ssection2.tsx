@@ -14,7 +14,7 @@ const BedroomSection: React.FC = () => (
       <div className="flex-1 md:w-1/2">
         <div className="rounded-3xl overflow-hidden shadow-xl md:h-full flex items-center bg-[#e8e5dd]">
           <img
-            src="/bn.jpg" // Replace with your actual bedroom image
+            src="/bs1.jpg" // Replace with your actual bedroom image
             alt="Ideal Bedroom"
             className="w-full h-[350px] md:h-[390px] object-cover"
           />

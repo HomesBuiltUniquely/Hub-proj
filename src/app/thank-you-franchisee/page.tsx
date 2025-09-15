@@ -1,156 +1,240 @@
-'use client'
+"use client";
 
-import Script from 'next/script'
-import { useEffect, useState } from 'react'
+import React from "react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-// Declare gtag function for TypeScript
-declare global {
-  interface Window {
-    gtag: (command: string, targetId: string, config?: Record<string, unknown>) => void;
-  }
-}
-
-export default function ThankUPage() {
-  const [hasReloaded, setHasReloaded] = useState(false);
+export default function ThankYouFranchisee() {
+  const router = useRouter();
 
   useEffect(() => {
-    // Check if this is a fresh redirect from form submission
-    const isFreshRedirect = sessionStorage.getItem('formSubmitted') === 'true';
-    
-    if (isFreshRedirect && !hasReloaded) {
-      // Clear the flag to prevent infinite reloads
-      sessionStorage.removeItem('formSubmitted');
-      
-      // Force a reload to ensure proper page load and conversion tracking
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-      
-      setHasReloaded(true);
-      return;
-    }
+    // Auto redirect to home page after 10 seconds
+    const timer = setTimeout(() => {
+      router.push('/');
+    }, 10000);
 
-    // Function to trigger GTM events
-    const triggerGTMEvents = () => {
-      if (typeof window !== 'undefined' && window.gtag) {
-        // Conversion event for form submission
-        window.gtag('event', 'conversion', {
-          'send_to': '17366893543'
-        });
-        
-        // Additional event for form submission tracking
-        window.gtag('event', 'form_submit', {
-          'event_category': 'form',
-          'event_label': 'appointment_booking',
-          'value': 1
-        });
-        
-        // Page view event for Thank-You page
-        window.gtag('event', 'page_view', {
-          'page_title': 'Thank You - Appointment Confirmed',
-          'page_location': window.location.href
-        });
-        
-        console.log('GTM events triggered on Thank-You page');
-        return true;
-      }
-      return false;
-    };
+    return () => clearTimeout(timer);
+  }, [router]);
 
-    // Try to trigger events immediately
-    if (!triggerGTMEvents()) {
-      // If gtag is not available, wait a bit and try again
-      const retryTimer = setTimeout(() => {
-        triggerGTMEvents();
-      }, 1000);
-      
-      // Cleanup timer
-      return () => clearTimeout(retryTimer);
-    }
-  }, [hasReloaded]);
+  const handleGoHome = () => {
+    router.push('/');
+  };
+
+  const handleGoBack = () => {
+    router.push('/interior-design-franchise');
+  };
 
   return (
-    <div>
-      <Script
-        id="google-conversion-tracking"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            // Ensure gtag is available
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'conversion', {
-                'send_to': '17366893543'
-              });
-              
-              gtag('event', 'form_submit', {
-                'event_category': 'form',
-                'event_label': 'appointment_booking',
-                'value': 1
-              });
-              
-              gtag('event', 'page_view', {
-                'page_title': 'Thank You - Appointment Confirmed',
-                'page_location': window.location.href
-              });
-              
-              console.log('GTM conversion events fired');
-            } else {
-              console.log('gtag not available, will retry in useEffect');
-            }
-          `,
-        }}
-      />
-     
-      <div className="lg:block hidden">
-      <div className="w-auto h-auto relative">
-      <img src="Tq.png" className="w-auto h-auto"></img>
-      <img src="Ani.gif" className="absolute top-40 left-1/2 w-[90px] h-[90px] transform -translate-x-1/2 -translate-y-1/2 "></img>
-      <h1 className="text-[90px] absolute top-60 left-136 font-light tracking-wide">Thank You</h1>
-      <div className="text-[20px] absolute top-100 pl-80 manrope-medium">Your appointment is confirmed! Our talented Interior Designer will contact you shortly to<p className="pl-46">explore your design aspirations and requirements.</p> </div>
-      <div className="bg-[#ef0101] w-[650px] h-[70px] left-105 top-130 absolute rounded-3xl flex justify-between pt-6 manrope-medium">
-        <div className="flex text-white pl-4">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-          </svg>
-          <h1 className="pl-1">+91 9741162754</h1>
-        </div>
-        <div className="flex text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-8 pr-2 pb-2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-        </svg>
+    <>
+      <style jsx>{`
+        /* Hide regular section on ultra-wide screens */
+        @media (min-width: 2560px) {
+          .thankyou-regular {
+            display: none !important;
+          }
+        }
+        
+        /* Ultra-wide layout for 2560px+ */
+        .thankyou-ultrawide {
+          display: none !important;
+        }
+        
+        @media (min-width: 2560px) {
+          .thankyou-ultrawide {
+            display: block !important;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f1f2f6 0%, #f1f2f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+          }
+          
+          .thankyou-ultrawide-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background: white;
+            border-radius: 3rem;
+            padding: 6rem 4rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+          }
+          
+          .thankyou-ultrawide-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 3rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+          }
+          
+          .thankyou-ultrawide-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+          
+          .thankyou-ultrawide-subtitle {
+            font-size: 2rem;
+            color: #374151;
+            margin-bottom: 3rem;
+            font-weight: 500;
+          }
+          
+          .thankyou-ultrawide-message {
+            font-size: 1.5rem;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          
+          .thankyou-ultrawide-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+          }
+          
+          .thankyou-ultrawide-button {
+            padding: 1.5rem 3rem;
+            border-radius: 1.5rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+          }
+          
+          .thankyou-ultrawide-button-primary {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+          }
+          
+          .thankyou-ultrawide-button-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.4);
+          }
+          
+          .thankyou-ultrawide-button-secondary {
+            background: white;
+            color: #374151;
+            border: 2px solid #e5e7eb;
+          }
+          
+          .thankyou-ultrawide-button-secondary:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+            transform: translateY(-2px);
+          }
+          
+          .thankyou-ultrawide-timer {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            font-style: italic;
+          }
+          
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+          }
+        }
+      `}</style>
 
-          <h1 className="pr-4">dorothy@hubinterior.com</h1>
-        </div>
-      </div>
-      </div>
-      </div>
-      <div className="lg:hidden">
-          <div className="w-auto h-[400px] bg-[#f1f2f6] relative">
-            <img
-              src="Ani.gif"
-              alt="Animation"
-              className="absolute top-24 left-1/2 transform -translate-x-1/2 w-[70px] h-[70px]"
-            />
-            <h1 className="text-[50px] manrope-medium pt-50 text-center">Thank You</h1>
-            <div className="p-4 text-center">
-              Your appointment is confirmed! Our talented Interior Designer will contact you shortly to explore your design aspirations and requirements.
-            </div>
-            <div className="w-[350px] h-[220px] mx-auto bg-red-600 mt-8 rounded-2xl text-white flex-row items-center">
-            <div className="pt-7 text-xl ">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mx-auto">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+      {/* Ultra-wide layout for 2560px+ */}
+      <div className="thankyou-ultrawide">
+        <div className="thankyou-ultrawide-container">
+          <div className="thankyou-ultrawide-icon">
+            <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
             </svg>
-            <h1 className="text-center pt-2 ">+91 9741162754</h1>
-            </div>
-            <div className="pt-6 text-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-8 mx-auto">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-            </svg>
-             <h1 className="text-center pt-2">dorothy@hubinterior.com</h1>
-             </div>
-            </div>
           </div>
+          
+          <h1 className="thankyou-ultrawide-title">Thank You!</h1>
+          <h2 className="thankyou-ultrawide-subtitle">Franchise Application Submitted Successfully</h2>
+          
+          <p className="thankyou-ultrawide-message">
+            Thank you for your interest in becoming a HUB Interior franchisee! We have received your application and our team will review it carefully. 
+            We'll contact you within 24-48 hours to discuss the next steps and answer any questions you may have about our franchise opportunities.
+          </p>
+          
+          <div className="thankyou-ultrawide-buttons">
+            <button onClick={handleGoHome} className="thankyou-ultrawide-button thankyou-ultrawide-button-primary">
+              Go to Homepage
+            </button>
+            <button onClick={handleGoBack} className="thankyou-ultrawide-button thankyou-ultrawide-button-secondary">
+              Back to Franchise Page
+            </button>
+          </div>
+          
+          <p className="thankyou-ultrawide-timer">
+            You will be automatically redirected to the homepage in 10 seconds...
+          </p>
         </div>
-    </div>
+      </div>
+
+      {/* Regular layout for screens below 2560px */}
+      <div className="thankyou-regular min-h-screen bg-[#f1f2f6] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto text-center bg-white rounded-xl sm:rounded-2xl shadow-xl p-6 sm:p-8 md:p-12">
+          {/* Success Icon */}
+          <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-green-500 rounded-full flex items-center justify-center animate-pulse">
+            <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          
+          {/* Title */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-4">
+            Thank You!
+          </h1>
+          
+          {/* Subtitle */}
+          <h2 className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 sm:mb-6 font-medium">
+            Franchise Application Submitted Successfully
+          </h2>
+          
+          {/* Message */}
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8">
+            Thank you for your interest in becoming a HUB Interior franchisee! We have received your application and our team will review it carefully. 
+            We'll contact you within 24-48 hours to discuss the next steps and answer any questions you may have about our franchise opportunities.
+          </p>
+          
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-4 sm:mb-6">
+            <button 
+              onClick={handleGoHome}
+              className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg transition-colors duration-200 transform hover:scale-105 text-sm sm:text-base"
+            >
+              Go to Homepage
+            </button>
+            <button 
+              onClick={handleGoBack}
+              className="w-full sm:w-auto bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg transition-colors duration-200 transform hover:scale-105 text-sm sm:text-base"
+            >
+              Back to Franchise Page
+            </button>
+          </div>
+          
+          {/* Auto-redirect notice */}
+          <p className="text-xs sm:text-sm text-gray-500 italic">
+            You will be automatically redirected to the homepage in 10 seconds...
+          </p>
+        </div>
+      </div>
+    </>
   );
 }

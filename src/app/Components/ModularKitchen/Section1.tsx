@@ -5,24 +5,24 @@ import React, { useRef } from "react";
 // Demo data for wardrobes
 const wardrobes = [
   {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
+    img: "/kl1.jpeg",
+    label: "L Shape Modular Kitchen Interior – Smart design for modern homes.",
   },
   {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
+    img: "/kl2.jpeg",
+    label: "U Shape Kitchen Interior – Spacious, functional, and stylish.",
   },
   {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
+    img: "/kl3.jpg",
+    label: "Straight Modular Kitchen Interior – Sleek, simple, and efficient.",
   },
   {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
+    img: "/kl4.jpg",
+    label: "Parallel Modern Kitchen Interior – Perfect balance of comfort and workflow",
   },
   {
-    img: "/bn.jpg",
-    label: "Sliding Door Wardrobe",
+    img: "/kl5.jpg",
+    label: "Island Kitchen Interior – A touch of luxury for everyday living.",
   },
 ];
 
@@ -86,18 +86,20 @@ const Section1: React.FC = () => {
             {wardrobes.map((item, idx) => (
               <div
                 key={idx}
-                className="min-w-[290px] max-w-xs bg-white rounded-3xl shadow-lg group hover:shadow-2xl transition"
+                className="min-w-[400px] h-[520px]  bg-white rounded-4xl shadow-lg"
               >
                 <img
                   src={item.img}
                   alt={item.label}
-                  className="w-full h-56 object-cover rounded-3xl  rounded-b-none group-hover:scale-105 transition duration-300"
+                  className="w-full h-130 object-cover rounded-4xl"
                 />
-                <div className="p-4 flex items-center">
-                  <span className="bg-white/80 text-gray-800 font-semibold px-4 py-1 rounded-full shadow text-sm">
-                    {item.label}
+                <div className="p-4 flex items-center -mt-50 h-[270px]">
+                  <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
+                    {item.label}<br/>
+                    <button className="border-1 border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
                   </span>
                 </div>
+               
               </div>
             ))}
           </div>

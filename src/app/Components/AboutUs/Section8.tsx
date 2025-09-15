@@ -29,7 +29,7 @@ const Section6 = () => {
             
             {/* Right Side - Image */}
             <div className="aboutus-section6-3xl-image-container">
-              <img src="/5.png" alt="Mission Image" className="aboutus-section6-3xl-image"></img>
+              <img src="/Values.png" alt="Mission Image" className="aboutus-section6-3xl-image"></img>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ const Section6 = () => {
           To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
           </div>
         </div>
-        <img src="/4.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
+        <img src="/values.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
         </div>
       </section>
 
@@ -76,7 +76,7 @@ const Section6 = () => {
           <div className="w-[400px]  manrope-medium pt-10 text-lg leading-relaxed">
           To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.          </div>
       </div>
-      <img src="/4.png" className="w-[500px] h-[500px] rounded-2xl"></img>
+      <img src="/values.png" className="w-[500px] h-[500px] rounded-2xl"></img>
         </div>
       </section>
 
