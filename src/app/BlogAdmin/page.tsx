@@ -163,7 +163,7 @@ export default function BlogAdmin() {
         } else {
             // Add new post
             const newPost: Post = {
-                id: Date.now(),
+                id: Math.floor(Math.random() * 1000000) + 1,
                 ...formData
             };
             setPosts(prev => [newPost, ...prev]);
@@ -193,7 +193,7 @@ export default function BlogAdmin() {
         } else {
             // Add new trending item
             const newTrendingItem: TrendingItem = {
-                id: Date.now(),
+                id: Math.floor(Math.random() * 1000000) + 1,
                 ...trendingFormData
             };
             setTrendingData(prev => [...prev, newTrendingItem]);

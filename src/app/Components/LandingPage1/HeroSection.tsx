@@ -39,9 +39,11 @@ export default function HeroSections() {
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
-    const calculatorElement = document.getElementById('calculator-section');
-    if (calculatorElement) {
-      calculatorElement.scrollIntoView({ behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      const calculatorElement = document.getElementById('calculator-section');
+      if (calculatorElement) {
+        calculatorElement.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -89,8 +91,10 @@ export default function HeroSections() {
       }
       }, 10);
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    if (typeof window !== 'undefined') {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

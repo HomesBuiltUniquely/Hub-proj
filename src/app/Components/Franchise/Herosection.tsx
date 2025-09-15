@@ -35,9 +35,11 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   const scrollToForm = () => {
-    const formElement = document.getElementById('franchise-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      const formElement = document.getElementById('franchise-form');
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 

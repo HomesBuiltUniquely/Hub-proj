@@ -22,7 +22,7 @@ export default function Section9() {
     {
         img: "/Alex.png",
         name: "Ebez Alex",
-        title: "Associate Diretor",
+        title: "Associate Director",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
         linkedin: "https://www.linkedin.com/in/ebezalex/"
     },
