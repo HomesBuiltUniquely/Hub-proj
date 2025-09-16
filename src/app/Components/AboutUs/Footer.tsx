@@ -74,7 +74,7 @@ export default function Footer(){
                                 <Link href="/"><Image src="/LOGO.png" alt="HUB Logo" width={100} height={40} className="w-[100px] h-[40px]" /></Link>
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
-                                    <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/LinkedIn.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
@@ -154,7 +154,7 @@ export default function Footer(){
                                 <Link href="/"><Image src="/LOGO.png" alt="HUB Logo" width={100} height={40} className="w-[100px] h-[40px]" /></Link>
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
-                                    <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/LinkedIn.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/Linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
@@ -234,7 +234,7 @@ export default function Footer(){
                         <Link href="/"><img src="/LOGO.png" className="w-[100px] h-[40px]"></img></Link>
                         <a href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></a>
                         <div className="flex gap-8">
-                       <a href="https://www.linkedin.com/company/homesunderbudget/"> <img src="LinkedIn.png " className="w-[25px] h-[25px] "></img></a>
+                       <a href="https://www.linkedin.com/company/homesunderbudget/"> <img src="Linkedin.png " className="w-[25px] h-[25px] "></img></a>
                         <a href="https://www.youtube.com/@homesunderbudget"><img src="youtube.png" className="w-[25px] h-[25px]  "></img></a>
                         <a href="https://www.facebook.com/HomesUnderBudget/"><img src="facebook.png" className="w-[25px] h-[25px] "></img></a>
                         <a href="https://www.instagram.com/homesunderbudget/"><img src="instagram.png" className="w-[25px] h-[25px] "></img></a>
@@ -297,7 +297,7 @@ export default function Footer(){
                                     <div className="space-y-3">
                                         <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Facebook</p></Link>
                                         <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Instagram</p></Link>
-                                        <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">LinkedIn</p></Link>
+                                        <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">linkedin</p></Link>
                                         <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">YouTube</p></Link>
                                         <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">WhatsApp</p>
                                     </div>
