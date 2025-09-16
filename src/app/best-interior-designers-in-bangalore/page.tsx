@@ -8,7 +8,7 @@ import Section7 from "../Components/LandingPage1/Section7";
 import Section9 from "../Components/LandingPage1/Section9";
 import BrandCarousel from "../Components/LandingPage1/Brand";
 import { QAsection } from "../Components/LandingPage1/QASEC";
-import CalculatorPage from "../Components/LandingPage1/CalculatorPage";
+
 
 export default function BestInteriorDesignersInBangalore(){
     return(
