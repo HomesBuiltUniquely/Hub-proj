@@ -1,125 +1,252 @@
-const googleReviews = [
+"use client";
+
+// pages/index.tsx
+
+import React from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import OfferingsDropdown from "../OfferingsDropdown";
+import ExploreRoomsDropdown from "../ExploreRooms";
+import NavMore from "../NavMore";
+
+const FRANCHISE_OPTIONS = [
   {
-    id: 1,
-    name: "Baishakhi M",
-    rating: 5,
-    location: "Sumadhura Epitome",
-    text: "This was exactly the interior design experience I was seeking. HUB created the perfect plan for my space, my style and my budget.",
-    avatar: "/baishakhi.jpg",
+    title: "FICO (Franchise Invested Company Operated)",
+    details: [
+      "Exclusively Tier 1/Metro cities",
+      "Projected ROI - 3x in 3 years",
+      "Investment  40 Lakhs - 1 Crore",
+      "Minimum area - 2000 sq. ft."
+    ],
+    text: "Minimum effort, Maximum return"
   },
   {
-    id: 2,
-    name: "Amit R",
-    rating: 5,
-    location: "Sobha City",
-    text: "Excellent designs and professional team. Highly recommended!",
-    avatar: "/baishakhi.jpg",
+    title: "FOFO (Franchise Owned Franchise Operated)",
+    details: [
+      "Tier 2 cities",
+      "Projected ROI - 200% in 1 year",
+      "Investment from 18 Lakh",
+      "Minimum area - 800 sq. ft.",
+    ],
+     text: "Grow Your Empire!"
   },
-  {
-    id: 3,
-    name: "Priya D",
-    rating: 5,
-    location: "Prestige Lakeside",
-    text: "Smooth experience and beautiful end result for our interiors.",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 4,
-    name: "Rahul S",
-    rating: 4,
-    location: "Brigade Exotica",
-    text: "On time and on budget. Very happy.",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 5,
-    name: "Meena K",
-    rating: 5,
-    location: "Divyasree Republic",
-    text: "Our family loves our new living space—thank you HUB team!",
-    avatar: "/baishakhi.jpg",
-  },
-  {
-    id: 6,
-    name: "Vinay P",
-    rating: 5,
-    location: "Salarpuria Sattva",
-    text: "Would choose them again in a heartbeat.",
-    avatar: "/baishakhi.jpg",
-  },
+  // Add more objects if you want more franchise cards
 ];
 
+const Home: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const router = useRouter();
 
-      {/* Google Reviews Carousel */}
-      <h2 className="text-xl md:text-4xl mt-20 font-bold mb-6 text-gray-800">
-        Google Reviews
-      </h2>
-      <div className="w-full flex flex-col items-center mt-20">
-        {/* Carousel Controls */}
-        <div className="flex justify-center items-center gap-4 mb-5">
-          <button
-            className="bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center pb-1 text-2xl"
-            onClick={handlePrev}
-            aria-label="Previous"
-          >
-            ‹
+  const scrollToForm = () => {
+    if (typeof window !== 'undefined') {
+      const formElement = document.getElementById('franchise-form');
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Prevent multiple submissions
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      city: formData.get('city') as string,
+    };
+
+    try {
+      const response = await fetch('/api/franchise-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        // Redirect to thank you page
+        router.push('/thank-you-franchisee');
+      } else {
+        alert('There was an error submitting your inquiry. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting your inquiry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+  <div className="min-h-screen bg-[#f1f2f6] w-[1400px] h-auto mx-auto">
+    {/* Hero Section with navbar, text, form, background image */}
+    <div
+      className="
+        relative flex flex-col
+        w-full
+        h-[900px]
+        min-h-[600px]
+        md:min-h-[700px]
+        overflow-hidden
+        rounded-3xl
+        "
+      style={{
+        backgroundImage: "url('/kh.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay */}
+      <div className="absolute"></div>
+
+      {/* Navbar */}
+      <header className="relative z-10 flex justify-between items-center px-8 py-6 -mt-18 ">
+         <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={150} className=" h-[250px] -mt-7 -ml-10" />
+        <nav className="flex gap-8 items-center mt-4 mr-20">
+        <OfferingsDropdown textColor="text-white" />
+        <ExploreRoomsDropdown textColor="text-white" />
+        <NavMore textColor="text-white" />
+          <button className="bg-[#ddcdc1] text-black font-semibold px-5 py-2 rounded-4xl ml-4 hover:bg-[#ef0101]">
+            GET FREE ESTIMATE
           </button>
-          <button
-            className="bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center pb-1 text-2xl"
-            onClick={handleNext}
-            aria-label="Next"
-          >
-            ›
-          </button>
+        </nav>
+      </header>
+
+      {/* Main Content & Form */}
+      <div className="relative z-10 flex flex-col gap-10 md:flex-row justify-between px-8 md:px-20 w-full flex-1 py-10 md:py-0">
+        {/* Left: Headline & intro */}
+        <div className="flex-1 flex flex-col justify-center md:max-w-xl pt-10 md:pt-0">
+          <h1 className="text-white text-4xl md:text-5xl font-extrabold mb-2 drop-shadow-lg">
+             Become a Franchisee!
+          </h1>
+          <p className="text-2xl text-gray-100 mb-6">
+          Future of smart investing
+          </p>
         </div>
-        {/* 3 visible cards */}
-        <div className="flex gap-6 justify-center flex-wrap">
-          {showCards.map((review, idx) => (
-            <div
-              key={`${review.id}-${idx}`}
-              className="bg-white shadow-lg w-[300px] h-[300px] rounded-2xl p-5  flex flex-col items-center"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <img
-                  src={review.avatar}
-                  alt={review.name}
-                  className="w-9 h-9 rounded-full object-cover"
-                />
-                <span className="font-semibold text-gray-700">{review.name}</span>
-                <span className="ml-2 text-yellow-500 flex">
-                  {"★".repeat(review.rating)}
-                </span>
-                <svg
-                  height={21}
-                  width={21}
-                  className="ml-2 text-gray-300"
-                  aria-label="Google icon"
-                  role="img"
-                >
-                  <circle cx="10" cy="10" r="10" fill="#eee" />
-                  <text
-                    x={5}
-                    y={16}
-                    fontSize={12}
-                    fontFamily="sans-serif"
-                    fill="#4285F4"
-                  >
-                    G
-                  </text>
-                </svg>
+
+        {/* Right: Form */}
+        <div id="franchise-form" className="md:w-[500px] h-[550px] w-full bg-black/60 rounded-xl shadow-lg px-7 py-8 self-center">
+        <div className="text-white text-2xl mb-5">Enter Your Details To Get Started</div>
+          <form onSubmit={handleFormSubmit} className="space-y-4">
+            <div className="flex gap-3">
+              <div className="">
+              <label className="pl-1 text-white"> Name*</label>
+              <input
+                required
+                name="name"
+                placeholder=""
+                disabled={isSubmitting}
+                className="w-[440px] px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                type="text"
+              />
               </div>
-              <span className="text-gray-500 text-xs mb-2">{review.location}</span>
-              <p className="text-gray-700 text-sm text-center">{review.text}</p>
+              <div className="">
+              </div>
             </div>
-          ))}
-        </div>
-        {/* Dots */}
-        <div className="flex justify-center mt-5 gap-2">
-          {Array.from({ length: total }).map((_, idx) => (
-            <span
-              key={idx}
-              className={`w-2 h-2 rounded-full ${startIdx === idx ? "bg-gray-800" : "bg-gray-300"}`}
+            <label className="pl-1 text-white">Email Id*</label>
+            <input
+              required
+              name="email"
+              placeholder=""
+              disabled={isSubmitting}
+              className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+              type="email"
             />
-          ))}
+            <label className="pl-1 text-white">Phone*</label>
+            <input
+              required
+              name="phone"
+              placeholder=""
+              disabled={isSubmitting}
+              className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+              type="tel"
+            />
+            <label className="pl-1 text-white">City*</label>
+            <input
+              required
+              name="city"
+              placeholder=""
+              disabled={isSubmitting}
+              className="w-full px-4 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+              type="text"
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full font-bold py-2 rounded mt-4 transition flex items-center justify-center ${
+                isSubmitting 
+                  ? 'bg-gray-400 cursor-not-allowed' 
+                  : 'bg-red-600 hover:bg-red-700'
+              }`}
+            >
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Submitting...
+                </>
+              ) : (
+                'Submit'
+              )}
+            </button>
+          </form>
         </div>
       </div>
+    </div>
+
+    <div className="w-[1200px] text-center mx-auto mt-20 text-[18px]">
+    HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.
+    </div>
+    <div className="w-[1200px] text-center mx-auto mt-4 text-[18px]">Our mission, &#34;Homes Uniquely Built&#34;, reflects our commitment to crafting personalized spaces that inspire. As a partner, you gain the power of a proven business model, an ecosystem of high-performing brands, and the confidence that comes with a fast-growing market.</div>
+
+    {/* Franchise Options Section */}
+    <div className="flex ">
+    <section className="w-screen h-[500px] mt-20">
+      <h2 className="text-4xl font-bold mb-2 pl-135">Business Models</h2>
+      <div className="grid md:grid-cols-3 gap-50 ml-70 mt-10">
+        {FRANCHISE_OPTIONS.map((option, idx) => (
+          <div
+            key={idx}
+            className="bg-[#ddcdc1] w-[400px] h-[350px] rounded-xl shadow-md p-6 flex flex-col justify-between border border-gray-100 mt-2"
+          >
+            <div className="">
+              <strong className="font-semibold">{option.title}</strong>
+              <ul className="list-disc ml-6 mt-3 mb-4 text-gray-700 space-y-1">
+                {option.details.map((d, i) => (
+                  <li key={i} className={d.includes("ROI") ? "text-black " : ""}>
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="text-center text-lg manrope-medium">
+              {option.text}
+            </div>
+            <button 
+              onClick={scrollToForm}
+              className="bg-white text-black font-semibold px-4 py-2 rounded-md mt-2 hover:bg-[#ef0101] transition-colors"
+            >
+              Know More
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
+    </div>
+  </div>
+  );
+};
+
+export default Home;

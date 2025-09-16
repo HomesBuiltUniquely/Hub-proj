@@ -19,7 +19,6 @@ export default function BestInteriorDesignersInBangalore(){
             <Section4/>
             <Section2/>
             <Section6/>
-            <CalculatorPage/>
             <Section7/>
             <Section9/>
             <BrandCarousel/>

@@ -5,6 +5,9 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import OfferingsDropdown from "../OfferingsDropdown";
+import ExploreRoomsDropdown from "../ExploreRooms";
+import NavMore from "../NavMore";
 
 const FRANCHISE_OPTIONS = [
   {
@@ -85,13 +88,13 @@ const Home: React.FC = () => {
   };
 
   return (
-  <div className="min-h-screen bg-[#f1f2f6] w-[1400px] h-auto mx-auto mt-4">
+  <div className="min-h-screen bg-[#f1f2f6] w-[1400px] h-auto mx-auto">
     {/* Hero Section with navbar, text, form, background image */}
     <div
       className="
         relative flex flex-col
         w-full
-        h-[850px]
+        h-[900px]
         min-h-[600px]
         md:min-h-[700px]
         overflow-hidden
@@ -107,12 +110,12 @@ const Home: React.FC = () => {
       <div className="absolute"></div>
 
       {/* Navbar */}
-      <header className="relative z-10 flex justify-between items-center px-8 py-6 -mt-24 ">
-         <Image src="/redlogo.png" alt="HUB Interior Logo" width={210} height={100} className="w-[210px] h-full" />
-        <nav className="flex gap-8 items-center mt-4 mr-20">
-          <a className="text-white hover:text-[#ef0101] font-medium" href="#">HOME</a>
-          <a className="text-white hover:text-[#ef0101] font-medium" href="#">EXPIRENCE CENTER</a>
-          <a className="text-white hover:text-[#ef0101] font-medium" href="#">STUDIO LOCATOR</a>
+      <header className="relative z-30 flex justify-between items-center px-8 py-6 -mt-18 ">
+         <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={150} className=" h-[250px] -mt-7 -ml-10" />
+        <nav className="flex gap-8 items-center mt-4 mr-20 ">
+        <OfferingsDropdown textColor="text-white" className="" />
+        <ExploreRoomsDropdown textColor="text-white" className="" />
+        <NavMore textColor="text-white" className="" />
           <button className="bg-[#ddcdc1] text-black font-semibold px-5 py-2 rounded-4xl ml-4 hover:bg-[#ef0101]">
             GET FREE ESTIMATE
           </button>
