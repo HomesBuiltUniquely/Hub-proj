@@ -5,7 +5,7 @@ import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 
 const ContactHeader: React.FC = () => (
-  <div className="w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/Kh.png')" }}>
+  <div className="w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
     {/* Navbar */}
     <div className="flex items-center justify-between -mt-15">
       <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
