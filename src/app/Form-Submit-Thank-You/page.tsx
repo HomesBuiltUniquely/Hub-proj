@@ -12,8 +12,16 @@ declare global {
 
 export default function ThankUPage() {
   const [hasReloaded, setHasReloaded] = useState(false);
+  const [userData, setUserData] = useState({ name: '', email: '', phone: '' });
 
   useEffect(() => {
+    // Load user data from sessionStorage
+    const userName = sessionStorage.getItem('userName') || '';
+    const userEmail = sessionStorage.getItem('userEmail') || '';
+    const userPhone = sessionStorage.getItem('userPhone') || '';
+    
+    setUserData({ name: userName, email: userEmail, phone: userPhone });
+    
     // Check if this is a fresh redirect from form submission
     const isFreshRedirect = sessionStorage.getItem('formSubmitted') === 'true';
     
@@ -108,56 +116,114 @@ export default function ThankUPage() {
           `,
         }}
       />
-      <div className="lg:block hidden">
-      <div className="w-auto h-auto relative">
-      <img src="Tq.png" className="w-auto h-auto"></img>
-      <img src="Ani.gif" className="absolute top-40 left-1/2 w-[90px] h-[90px] transform -translate-x-1/2 -translate-y-1/2 "></img>
-      <h1 className="text-[90px] absolute top-60 left-136 font-light tracking-wide">Thank You</h1>
-      <div className="text-[20px] absolute top-100 pl-80 manrope-medium">Your appointment is confirmed! Our talented Interior Designer will contact you shortly to<p className="pl-46">explore your design aspirations and requirements.</p> </div>
-      <div className="bg-[#ef0101] w-[650px] h-[70px] left-105 top-130 absolute rounded-3xl flex justify-between pt-6 manrope-medium">
-        <div className="flex text-white pl-4">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-          </svg>
-          <h1 className="pl-1">+91 889 889 1117</h1>
-        </div>
-        <div className="flex text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-8 pr-2 pb-2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-        </svg>
-
-          <h1 className="pr-4">hello@hubinterior.com</h1>
-        </div>
-      </div>
-      </div>
-      </div>
-      <div className="lg:hidden">
-          <div className="w-auto h-[400px] bg-[#f1f2f6] relative">
-            <img
-              src="Ani.gif"
-              alt="Animation"
-              className="absolute top-24 left-1/2 transform -translate-x-1/2 w-[70px] h-[70px]"
-            />
-            <h1 className="text-[50px] manrope-medium pt-50 text-center">Thank You</h1>
-            <div className="p-4 text-center">
-              Your appointment is confirmed! Our talented Interior Designer will contact you shortly to explore your design aspirations and requirements.
+      {/* Desktop & Tablet Layout */}
+      <div className="hidden md:block">
+        <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "url('Tq.png')" }}>
+          {/* Animated GIF */}
+          <div className="absolute top-32 md:top-40 left-1/2 transform -translate-x-1/2">
+            <img src="Ani.gif" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" alt="Animation" />
+          </div>
+          
+          {/* Thank You Title */}
+          <div className="absolute top-48 md:top-60 lg:top-64 left-1/2 transform -translate-x-1/2">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-wide text-center text-gray-800">
+              Thank You
+            </h1>
+          </div>
+          
+          {/* Main Message */}
+          <div className="absolute top-72 md:top-96 lg:top-104 left-1/2 transform -translate-x-1/2 max-w-4xl px-8">
+            <div className="text-base md:text-lg lg:text-xl text-center manrope-medium text-gray-700">
+              Your appointment is confirmed! Our talented Interior Designer will contact you shortly to
+              <br className="hidden md:block" />
+              explore your design aspirations and requirements.
             </div>
-            <div className="w-[350px] h-[220px] mx-auto bg-red-600 mt-8 rounded-2xl text-white flex-row items-center">
-            <div className="pt-7 text-xl ">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mx-auto">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-            </svg>
-            <h1 className="text-center pt-2 ">+91 889 889 1117</h1>
+          </div>
+          
+          {/* User Data Display - Desktop */}
+          {(userData.email || userData.phone) && (
+            <div className="absolute top-80 md:top-112 lg:top-120 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg max-w-md w-full mx-4">
+              <h3 className="text-lg font-semibold text-gray-800 mb-3 text-center">Appointment Details:</h3>
+              {userData.name && <p className="text-gray-700 mb-2 text-center"><span className="font-medium">Name:</span> {userData.name}</p>}
+              {userData.email && <p className="text-gray-700 mb-2 text-center"><span className="font-medium">Email:</span> {userData.email}</p>}
+              {userData.phone && <p className="text-gray-700 text-center"><span className="font-medium">Phone:</span> {userData.phone}</p>}
             </div>
-            <div className="pt-6 text-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-8 mx-auto">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-            </svg>
-             <h1 className="text-center pt-2">hello@hubinterior.com</h1>
-             </div>
+          )}
+          
+          {/* Contact Info Bar */}
+          <div className="absolute bottom-20 md:bottom-32 lg:bottom-40 left-1/2 transform -translate-x-1/2 bg-[#ef0101] rounded-3xl shadow-lg">
+            <div className="flex flex-col md:flex-row justify-between items-center p-4 md:p-6 gap-4 md:gap-8 text-white manrope-medium">
+              <div className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg>
+                <span className="text-sm md:text-base">+91 889 889 1117</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+                <span className="text-sm md:text-base">hello@hubinterior.com</span>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+      {/* Mobile Layout */}
+      <div className="block md:hidden">
+        <div className="min-h-screen bg-[#f1f2f6] px-4 py-8">
+          <div className="flex flex-col items-center justify-center min-h-screen space-y-6">
+            {/* Animated GIF */}
+            <img
+              src="Ani.gif"
+              alt="Animation"
+              className="w-16 h-16 sm:w-20 sm:h-20"
+            />
+            
+            {/* Thank You Title */}
+            <h1 className="text-3xl sm:text-4xl manrope-medium text-center text-gray-800">
+              Thank You
+            </h1>
+            
+            {/* Main Message */}
+            <div className="text-center px-4 max-w-md">
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                Your appointment is confirmed! Our talented Interior Designer will contact you shortly to explore your design aspirations and requirements.
+              </p>
+            </div>
+            
+            {/* User Data Display - Mobile */}
+            {(userData.email || userData.phone) && (
+              <div className="bg-white rounded-2xl p-6 shadow-lg w-full max-w-sm">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">Appointment Details:</h3>
+                <div className="space-y-2">
+                  {userData.name && <p className="text-gray-700 text-center"><span className="font-medium">Name:</span> {userData.name}</p>}
+                  {userData.email && <p className="text-gray-700 text-center"><span className="font-medium">Email:</span> {userData.email}</p>}
+                  {userData.phone && <p className="text-gray-700 text-center"><span className="font-medium">Phone:</span> {userData.phone}</p>}
+                </div>
+              </div>
+            )}
+            
+            {/* Contact Info Card */}
+            <div className="bg-[#ef0101] rounded-2xl text-white p-6 w-full max-w-sm shadow-lg">
+              <div className="space-y-4">
+                <div className="flex items-center justify-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                  </svg>
+                  <span className="text-sm sm:text-base">+91 889 889 1117</span>
+                </div>
+                <div className="flex items-center justify-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                  </svg>
+                  <span className="text-sm sm:text-base">hello@hubinterior.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

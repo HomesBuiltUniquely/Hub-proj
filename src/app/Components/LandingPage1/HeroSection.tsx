@@ -395,6 +395,11 @@ export default function HeroSections() {
           // Set flag to trigger reload on Thank You page
           sessionStorage.setItem('formSubmitted', 'true');
           
+          // Store user data for thank you page
+          sessionStorage.setItem('userEmail', formData.email);
+          sessionStorage.setItem('userPhone', formData.phone);
+          sessionStorage.setItem('userName', formData.name);
+          
           // Reset form
           setSelectedCity("");
           setSelectedBudget("");

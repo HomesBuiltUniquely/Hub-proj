@@ -147,6 +147,12 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         setFormData({ name: '', email: '', phone: '' });
         // Set flag to trigger reload on thank you page for GTM tracking
         sessionStorage.setItem('formSubmitted', 'true');
+        
+        // Store user data for thank you page
+        sessionStorage.setItem('userEmail', formData.email);
+        sessionStorage.setItem('userPhone', formData.phone);
+        sessionStorage.setItem('userName', formData.name);
+        
         router.push('/Form-Submit-Thank-You');
       }
     } catch (e) {

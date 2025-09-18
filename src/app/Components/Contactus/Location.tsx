@@ -13,7 +13,7 @@ const locations = [
   },
   {
     name: "JP Nagar, Bangalore",
-    description: "No. 10, Safa Heights, 2, Dr Puneeth Rajkumar Rd, JP Nagar 4th Phase, Dollar Layout, Bengaluru, Karnataka 560078",
+    description: "Safa Heights, 2, Dr Puneeth Rajkumar Rd, JP Nagar 4th Phase, Dollar Layout, Bengaluru, Karnataka 560078",
     mapUrl: "#",
   },
   {
