@@ -91,7 +91,7 @@ export default function Section4() {
 
                             {/* Quote Text */}
                             <blockquote className="text-2xl text-gray-700 leading-relaxed mb-8 font-medium">
-                                "{testimonials[currentSlide].quote}"
+                            &#34;{testimonials[currentSlide].quote}&#34;
                             </blockquote>
 
                             {/* Customer Info */}
