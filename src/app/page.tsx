@@ -1,28 +1,33 @@
-import  {HeroSection} from "./Components/HeroSection";
-import  BrandCorosal  from "./Components/BrandCorosal";
-import {NavBar} from "./Components/NavBar"
-import  {Form}  from "./Components/Form";
-import  CxSection  from "./Components/CxSection";
-import { Featurespro } from "./Components/Featurespro";
-import { QAsection } from "./Components/QAsection";
-import { Footer } from "./Components/Footer";
-import { Stepsection } from "./Components/StepSections";
+import BrandCarousel from "./Components/Home/BrandCarosel";
+import Footer from "./Components/Home/Footer";
+import Herosection from "./Components/Home/Herosection";
+import { QAsection } from "./Components/Home/QAsection";
+import Section1 from "./Components/Home/Section1";
+import Section2 from "./Components/Home/Section2";
+import Section3 from "./Components/Home/Section3";
+import Section4 from "./Components/Home/Section4";
+import Section5 from "./Components/Home/Section5";
+import Section6 from "./Components/Home/Section6";
+import Section7 from "./Components/Home/Section7";
+
 
 
 export default function Home() {
   return (
     <div>
 
-      <NavBar />
-      <HeroSection/>
-      <Form/>
-      <BrandCorosal/>
-      <CxSection/>
-      <Stepsection/>
-      <Featurespro/>
+      <Herosection/>
+      <Section1/>
+      <Section2/>
+      <Section3/>
+      <Section4/>
+      <Section5/>
+      <Section6/>
+      <Section7/>
+      <BrandCarousel/>
       <QAsection/>
       <Footer/>
-
+      
     </div>
   )
 }

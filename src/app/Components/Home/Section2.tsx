@@ -10,33 +10,28 @@ export default function Section2() {
     const roomCards = [
         {
             title: "Kitchen",
-            image: "/kids1.jpg",
+            image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//kitchen6.jpg",
             link: "/ModularKitchen"
         },
         {
             title: "Kids Room", 
-            image: "/kids1.jpg",
+            image: "/kids2.jpg",
             link: "/Kids-Room"
         },
         {
             title: "Bed Room",
-            image: "/bed1.jpg", 
+            image: "/bed3.jpg", 
             link: "/Bedroom"
         },
         {
-            title: "Bed Room",
-            image: "/bed1.jpg", 
-            link: "/Bedroom"
+            title: "Liuving Room",
+            image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img4.jpg", 
+            link: "/LivingRoom"
         },
         {
-            title: "Bed Room",
-            image: "/bed1.jpg", 
-            link: "/Bedroom"
-        },
-        {
-            title: "Bed Room",
-            image: "/bed1.jpg", 
-            link: "/Bedroom"
+            title: "Devotional Room",
+            image: "/temple2.jpg", 
+            link: "/Temple"
         }
     ];
 

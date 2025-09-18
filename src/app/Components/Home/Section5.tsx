@@ -12,25 +12,25 @@ export default function Section5() {
             title: "Meet our designers",
             description: "Visit our Experience Centre or consult with us online.",
             image: "/img3.jpg",
-            icon: "👥"
+            icon: "/discussion.png"
         },
         {
             title: "Get your quote", 
             description: "Visit our Experience Centre or consult with us online.",
             image: "/bed1.jpg",
-            icon: "💰"
+            icon: "/file.png"
         },
         {
             title: "Customize your home",
             description: "Visit our Experience Centre or consult with us online.",
             image: "/kids1.jpg",
-            icon: "🏠"
+            icon: "/home-repair.png"
         },
         {
             title: "Hassle-free execution",
             description: "Visit our Experience Centre or consult with us online.",
-            image: "/kh.png",
-            icon: "✅"
+            image: "/bed5.jpg",
+            icon: "/execute.png"
         }
     ];
 
@@ -106,7 +106,7 @@ export default function Section5() {
                                                 ? 'bg-[#32261c] text-white shadow-lg' 
                                                 : 'bg-gray-300 text-gray-600'
                                         }`}>
-                                            {step.icon}
+                                            <Image src={step.icon} alt={step.title} width={24} height={24} />
                                         </div>
                                     </div>
 

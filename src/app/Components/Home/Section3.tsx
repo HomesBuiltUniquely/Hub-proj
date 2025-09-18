@@ -9,44 +9,23 @@ export default function Section3() {
     
     const serviceCards = [
         {
-            title: "Commercial Interiors",
-            description: "Commercial interiors plays a pivotal role in the success of any business.",
-            image: "/img3.jpg",
+            title: "Modular Interiors for Every Home",
+            description: "Efficient layouts and space-saving designs crafted to fit kitchens, wardrobes, and storage — blending style with everyday functionality.",
+            image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen5.jpg",
             link: "/Services",
             borderColor: ""
         },
         {
-            title: "Residential Interiors", 
-            description: "Budget design does not mean usage of cheap materials or products.",
+            title: "End-to-End Interior Solutions", 
+            description: "From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing under one roof.",
             image: "/bed1.jpg",
             link: "/Services",
             borderColor: ""
         },
         {
-            title: "Custom Furniture",
-            description: "Do you have a uniquely shape or sized area in your home that demands",
-            image: "/kids1.jpg",
-            link: "/Services",
-            borderColor: ""
-        },
-        {
-            title: "Custom Furniture",
-            description: "Do you have a uniquely shape or sized area in your home that demands",
-            image: "/kids1.jpg",
-            link: "/Services",
-            borderColor: ""
-        },
-        {
-            title: "Custom Furniture",
-            description: "Do you have a uniquely shape or sized area in your home that demands",
-            image: "/kids1.jpg",
-            link: "/Services",
-            borderColor: ""
-        },
-        {
-            title: "Custom Furniture",
-            description: "Do you have a uniquely shape or sized area in your home that demands",
-            image: "/kids1.jpg",
+            title: "Luxury Interiors Thoughtfully Crafted",
+            description: "Luxury interiors thoughtfully built to balance modern design, comfort, and personal expression. elevating everyday lifestyle",
+            image: "/bed4.jpg",
             link: "/Services",
             borderColor: ""
         },
@@ -68,8 +47,7 @@ export default function Section3() {
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="flex flex-row justify-between items-center mb-12">
-                    <h1 className="text-4xl wulkan-display-bold text-gray-800">Services tailored to you</h1>
-                    <p className="text-lg manrope-medium w-[350px] text-gray-600">From cozy homes to modern commercial spaces, we bring your vision to life with creativity, precision, and passion.</p>
+                    <h1 className="text-4xl wulkan-display-bold text-gray-800">All Interior Service, One Destination</h1>
                     <Link href="/ContactUs">
                         <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
                             Book consultation
@@ -134,7 +112,7 @@ export default function Section3() {
                                     </div>
                                     <div className="p-8 flex-1 flex flex-col">
                                             <h3 className="text-2xl font-bold text-gray-800 mb-4 manrope-semibold text-center">{service.title}</h3>
-                                            <p className="text-gray-600 mb-6 leading-relaxed  text-center w-[300px] ">{service.description}</p>
+                                            <p className="text-gray-600 mb-6 leading-relaxed text-center w-[300px] manrope-medium">{service.description}</p>
                                             
                                             {/* Request Service Button */}
                                             <Link href={service.link}>

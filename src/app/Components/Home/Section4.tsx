@@ -8,23 +8,30 @@ export default function Section4() {
     
     const testimonials = [
         {
-            image: "/img3.jpg",
-            quote: "HUB turned our dream home into reality. Thoughtful design, smooth process HUB turned our dream home into reality. Thoughtful design, smooth process.",
-            name: "George, Royal Tulip",
-            avatar: "/1.png"
+            image: "/CUSTOMER2.jpg",
+            quote: "Royal Tulip Villa — A Timeless Blend of Story, Elegance & Comfort by HUB Interior",
+            name: "George Family – Royal Tulip Villa",
+            avatar: "/CUSTOMER2.jpg"
         },
         {
-            image: "/bed1.jpg",
-            quote: "Amazing work by HUB team. They understood our vision perfectly and delivered beyond expectations. Professional service throughout.",
-            name: "Sarah, Green Valley",
-            avatar: "/2.png"
+            image: "/CUTOMER1.jpg",
+            quote: "Warmth with Function — HUB Interior’s Soulful Home Design for Mr. Rijul at Azizam",
+            name: "4. Mr. Rijul – Azizam Home",
+            avatar: "/CUTOMER1.jpg"
         },
         {
-            image: "/kids1.jpg",
-            quote: "Outstanding interior design services. The attention to detail and quality of work exceeded our expectations completely.",
-            name: "Michael, Downtown",
-            avatar: "/3.png"
-        }
+            image: "/CUSTOMER3.jpg",
+            quote: "A Peaceful Retreat — HUB Interior’s Modern Home Design for Mr. Allen & Mrs. Ann",
+            name: " Mr. Allen & Mrs. Ann",
+            avatar: "/Customer3.jpg"
+        },
+        {
+            image: "/CUSTOMER4.jpg",
+            quote: "Quiet Luxury, Thoughtful Living — Modern Home Interiors by HUB at Bhoo Aabharana",
+            name: "Mr. Akhil – Bhoo Aabharana",
+            avatar: "/Customer4.jpg"
+        },
+
     ];
 
     const nextSlide = () => {
