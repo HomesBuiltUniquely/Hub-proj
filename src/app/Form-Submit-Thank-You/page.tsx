@@ -197,9 +197,9 @@ export default function ThankUPage() {
               <div className="bg-white rounded-2xl p-6 shadow-lg w-full max-w-sm">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">Appointment Details:</h3>
                 <div className="space-y-2">
-                  {userData.name && <p className="text-gray-700 text-center"><span className="font-medium">Name:</span> {userData.name}</p>}
-                  {userData.email && <p className="text-gray-700 text-center"><span className="font-medium">Email:</span> {userData.email}</p>}
-                  {userData.phone && <p className="text-gray-700 text-center"><span className="font-medium">Phone:</span> {userData.phone}</p>}
+                  {userData.name && <p id='name' className="text-gray-700 text-center"><span className="font-medium">Name:</span> {userData.name}</p>}
+                  {userData.email && <p id="email1" className="text-gray-700 text-center"><span className="font-medium">Email:</span> {userData.email}</p>}
+                  {userData.phone && <p id="phone1" className="text-gray-700 text-center"><span className="font-medium">Phone:</span> {userData.phone}</p>}
                 </div>
               </div>
             )}
