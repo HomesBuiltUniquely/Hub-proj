@@ -627,6 +627,7 @@ export default function HeroSections() {
                     className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium" 
                   />
                   <input 
+                    id="e1"
                     type="email" 
                     name="email" 
                     value={formData.email}
@@ -640,6 +641,7 @@ export default function HeroSections() {
                 {/* Phone and Pincode Row */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                   <input 
+                    id="e2"
                     type="tel" 
                     name="phone" 
                     value={formData.phone}
