@@ -104,7 +104,7 @@ const Herosection: React.FC = () => {
        {/* Mobile Version - Different Design */}
        <div className="block md:hidden">
           <div>
-           <div className="w-auto h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+           <div className="w-auto h-[540px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
              {/* Mobile Header */}
              <div className="relative z-20 flex items-center justify-between p-4">
                <img src="/redlogo.png" className="w-[135px] h-[140px] pb-6 -mt-8 pr-14 "></img>
@@ -170,7 +170,7 @@ const Herosection: React.FC = () => {
                </div>
              )}
              
-             <img className="w-full h-[600px] rounded-4xl relative -mt-40" src={`/hh1${currentSlide + 1}.png`} />
+             <img className="w-full h-[550px] rounded-4xl relative -mt-40" src={`/hh1${currentSlide + 1}.png`} />
              <div className="-mt-60 w-[350px] text-left text-4xl font-semibold text-white ml-10 wulkan-display-bold absolute">{mobileTexts[currentSlide]}</div>
              <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl -mt-12 ml-10 manrope-medium absolute">Explore Models</button>
            </div>

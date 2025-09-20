@@ -86,6 +86,49 @@ const Home: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+
+  const handleMobileFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Prevent multiple submissions
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get('firstName') as string;
+    const lastName = formData.get('lastName') as string;
+    const data = {
+      name: `${firstName} ${lastName}`.trim(),
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      city: formData.get('city') as string,
+    };
+
+    try {
+      const response = await fetch('/api/franchise-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        // Redirect to thank you page
+        router.push('/thank-you-franchisee');
+      } else {
+        alert('There was an error submitting your inquiry. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting your inquiry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -341,19 +384,74 @@ const Home: React.FC = () => {
            </div>
           </div>
 
-          {/* Section2 */}
+            {/* Section2 */}
 
             <div className="h-auto ">
               <div className="w-[320px] h-[480px] border-2 border-[#DDCDC1] mx-auto mt-5 rounded-4xl">
 
-                <div className="w-[280px] h-[50px] mx-auto">
-                  <input type="text" placeholder="First Name" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-10 pl-4 " />
-                  <input type="text" placeholder="Last Name" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 " />
-                  <input type="text" placeholder="Email" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 " />
-                  <input type="text" placeholder="Phone" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 " />
-                  <input type="text" placeholder="Preffered Location" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 " />
-                  <button className="bg-[#ef0101] text-white w-[180px] h-[40px] rounded-full mt-8">Join our network</button>
-                </div>
+                <form onSubmit={handleMobileFormSubmit} className="w-[280px] h-[50px] mx-auto">
+                  <input 
+                    type="text" 
+                    name="firstName"
+                    placeholder="First Name" 
+                    required
+                    disabled={isSubmitting}
+                    className="w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-10 pl-4 disabled:opacity-50 disabled:cursor-not-allowed" 
+                  />
+                  <input 
+                    type="text" 
+                    name="lastName"
+                    placeholder="Last Name" 
+                    required
+                    disabled={isSubmitting}
+                    className="w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 disabled:opacity-50 disabled:cursor-not-allowed" 
+                  />
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Email" 
+                    required
+                    disabled={isSubmitting}
+                    className="w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 disabled:opacity-50 disabled:cursor-not-allowed" 
+                  />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    placeholder="Phone" 
+                    required
+                    disabled={isSubmitting}
+                    className="w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 disabled:opacity-50 disabled:cursor-not-allowed" 
+                  />
+                  <input 
+                    type="text" 
+                    name="city"
+                    placeholder="Preferred Location" 
+                    required
+                    disabled={isSubmitting}
+                    className="w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 disabled:opacity-50 disabled:cursor-not-allowed" 
+                  />
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-[180px] h-[40px] rounded-full mt-8 transition flex items-center justify-center mx-auto ${
+                      isSubmitting 
+                        ? 'bg-gray-400 cursor-not-allowed text-white' 
+                        : 'bg-[#ef0101] text-white hover:bg-red-700'
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Submitting...
+                      </>
+                    ) : (
+                      'Join our network'
+                    )}
+                  </button>
+                </form>
 
               </div>
               
