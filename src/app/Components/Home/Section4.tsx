@@ -157,7 +157,7 @@ export default function Section4() {
 
               {/* Quote Text */}
               <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 manrope-medium">
-                "{testimonials[currentSlide].quote}"
+              &#34;{testimonials[currentSlide].quote}&#34;
               </blockquote>
 
               {/* Customer Info */}

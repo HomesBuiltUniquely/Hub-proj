@@ -1,7 +1,6 @@
 import BrandCarousel from "./Components/Home/BrandCarosel";
 import Footer from "./Components/Home/Footer";
 import Herosection from "./Components/Home/Herosection";
-import Practice from "./Components/Home/practice";
 import { QAsection } from "./Components/Home/QAsection";
 import Section1 from "./Components/Home/Section1";
 import Section2 from "./Components/Home/Section2";
