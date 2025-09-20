@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -19,12 +19,12 @@ export default function Section2() {
             link: "/Kids-Room"
         },
         {
-            title: "Bed Room",
+            title: "BedRoom",
             image: "/bed3.jpg", 
             link: "/Bedroom"
         },
         {
-            title: "Liuving Room",
+            title: "Living Room",
             image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img4.jpg", 
             link: "/LivingRoom"
         },
@@ -46,8 +46,18 @@ export default function Section2() {
         setCurrentSlide((prev) => Math.max(0, prev - 1));
     };
 
+    // Auto-advance carousel for mobile
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % roomCards.length);
+        }, 3000); // Change slide every 3 seconds
+
+        return () => clearInterval(interval);
+    }, [roomCards.length]);
+
     return (
-        <div className="bg-[#F1F2F6] min-h-[580px] pt-14 pb-8 px-8">
+        <div>
+        <div className="hidden md:block bg-[#F1F2F6] min-h-[580px] pt-14 pb-8 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="flex justify-between items-start mb-12">
@@ -60,7 +70,7 @@ export default function Section2() {
                     
                     {/* Book Consultation Button */}
                     <Link href="/ContactUs">
-                        <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
+                        <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
                             Book consultation
                             <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                 <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,12 +169,108 @@ export default function Section2() {
 
                     {/* Explore Gallery Button */}
                     <Link href="/Inspiration">
-                        <button className="bg-[#ddcdc1] text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-amber-300 transition-colors">
+                        <button className="bg-[#ddcdc1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
                             Explore Gallery
                         </button>
                     </Link>
                 </div>
             </div>
+        </div>
+        {/* Mobile Version - Carousel Card Design */}
+        <div className="block md:hidden">
+          <div className="bg-[#F1F2F6] py-8 px-4">
+            {/* Mobile Title */}
+            <div className="mb-8">
+              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-2">
+                Every space has a story, start yours here
+              </h1>
+            </div>
+
+            {/* Mobile Stacked Cards */}
+            <div className="relative w-[320px] h-[450px] mx-auto mt-10">
+              {/* Card Stack - Show 3 cards stacked */}
+              {roomCards.map((room, index) => {
+                const isActive = index === currentSlide;
+                const isNext = index === (currentSlide + 1) % roomCards.length;
+                const isPrev = index === (currentSlide - 1 + roomCards.length) % roomCards.length;
+                
+                let zIndex = 0;
+                let transform = '';
+                let opacity = 0;
+                
+                if (isActive) {
+                  zIndex = 30;
+                  transform = 'translateX(0px) translateY(15px) scaleY(1.1)';
+                  opacity = 1;
+                } else if (isNext) {
+                  zIndex = 20;
+                  transform = 'translateX(25px) translateY(15px) scaleY(0.9)  scale(1.1)';
+                  opacity = 1;
+                } else if (isPrev) {
+                  zIndex = 10;
+                  transform = 'translateX(-25px) translateY(15px) scaleY(0.9) scale(1.1)';
+                  opacity = 1;
+                }
+
+                return (
+                  <div
+                    key={index}
+                    className="absolute inset-0 transition-all duration-500 ease-in-out"
+                    style={{
+                      zIndex,
+                      transform,
+                      opacity
+                    }}
+                  >
+                    <div className="relative h-full rounded-4xl overflow-hidden shadow-xl w-auto">
+                      {/* Background Image */}
+                      <Image
+                        src={room.image}
+                        alt={room.title}
+                        fill
+                        className="object-cover"
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      
+                      {/* Room Title - Only show on active card */}
+                      {isActive && (
+                        <div className="absolute bottom-7 left-6">
+                          <h2 className="text-white text-2xl font-bold wulkan-display-bold">
+                            {room.title}
+                          </h2>
+                        </div>
+                      )}
+                      
+                      {/* Arrow Button - Only show on active card */}
+                      {isActive && (
+                        <Link href={room.link}>
+                          <div className="absolute bottom-6 right-6">
+                            <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                          </div>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Explore Gallery Button */}
+            <div className="flex justify-center mt-20">
+              <Link href="/Inspiration">
+                <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
+                  Explore Gallery
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
         </div>
     );
 }

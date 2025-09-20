@@ -10,25 +10,25 @@ export default function Section5() {
     const steps = [
         {
             title: "Meet our designers",
-            description: "Visit our Experience Centre or consult with us online.",
+            description: "Connect with our experts to share your ideas and vision.",
             image: "/img3.jpg",
             icon: "/discussion.png"
         },
         {
             title: "Get your quote", 
-            description: "Visit our Experience Centre or consult with us online.",
+            description: "Receive a transparent, personalized estimate tailored to your needs.",
             image: "/bed1.jpg",
             icon: "/file.png"
         },
         {
             title: "Customize your home",
-            description: "Visit our Experience Centre or consult with us online.",
+            description: "Select layouts, finishes, and designs that reflect your personal style and lifestyle.",
             image: "/kids1.jpg",
             icon: "/home-repair.png"
         },
         {
             title: "Hassle-free execution",
-            description: "Visit our Experience Centre or consult with us online.",
+            description: "Enjoy on-time delivery with quality assurance and end-to-end support.",
             image: "/bed5.jpg",
             icon: "/execute.png"
         }
@@ -83,7 +83,8 @@ export default function Section5() {
     }, [activeStep, steps.length]);
 
     return (
-        <div ref={sectionRef} className="bg-[#F1F2F6] min-h-[740px] py-16 px-8">
+        <div>
+        <div ref={sectionRef} className="hidden md:block bg-[#F1F2F6] min-h-[740px] py-16 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="mb-16">
@@ -112,12 +113,12 @@ export default function Section5() {
 
                                     {/* Step Content */}
                                     <div className="flex-1 pt-2">
-                                        <h3 className={`text-2xl font-bold mb-2 transition-colors duration-500 ${
+                                        <h3 className={`text-2xl manrope mb-2 transition-colors duration-500 ${
                                             index <= activeStep ? 'text-gray-800' : 'text-gray-500'
                                         }`}>
                                             {step.title}
                                         </h3>
-                                        <p className={`text-lg leading-relaxed transition-colors duration-500 ${
+                                        <p className={`text-lg manrope-medium leading-relaxed transition-colors duration-500 ${
                                             index <= activeStep ? 'text-gray-600' : 'text-gray-400'
                                         }`}>
                                             {step.description}
@@ -153,5 +154,77 @@ export default function Section5() {
                 </div>
             </div>
         </div>
+        {/* Mobile Version - Progress Bar Design */}
+        <div className="block md:hidden ml-3" ref={sectionRef}>
+          <div className="bg-[#F1F2F6] py-8 px-4">
+            {/* Mobile Title */}
+            <div className="mb-8">
+              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-2">
+                Your dream space in just four steps
+              </h1>
+            </div>
+
+            {/* Mobile Layout - Steps Top, Image Bottom */}
+            <div className="space-y-8">
+              {/* Top - Progress Steps */}
+              <div className="relative">
+                <div className="space-y-6">
+                  {steps.map((step, index) => (
+                    <div key={index} className="flex items-start gap-4 relative">
+                      {/* Step Circle */}
+                      <div className="relative z-10">
+                        <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg transition-all duration-500 ${
+                          index <= activeStep 
+                            ? 'bg-[#32261c] text-white shadow-lg' 
+                            : 'bg-gray-300 text-gray-600'
+                        }`}>
+                          <Image src={step.icon} alt={step.title} width={20} height={20} />
+                        </div>
+                      </div>
+
+                      {/* Step Content */}
+                      <div className="flex-1 pt-2">
+                        <h3 className={`text-lg font-bold mb-2 transition-colors duration-500 ${
+                          index <= activeStep ? 'text-gray-800' : 'text-gray-500'
+                        }`}>
+                          {step.title}
+                        </h3>
+                        <p className={`text-sm leading-relaxed transition-colors duration-500 ${
+                          index <= activeStep ? 'text-gray-600' : 'text-gray-400'
+                        }`}>
+                          {step.description}
+                        </p>
+                      </div>
+
+                      {/* Connecting Line */}
+                      {index < steps.length - 1 && (
+                        <div className="absolute left-6 top-12 w-0.5 h-6 bg-gray-300">
+                          <div 
+                            className={`w-full bg-[#32261c] transition-all duration-500 ${
+                              index < activeStep ? 'h-full' : 'h-0'
+                            }`}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bottom - Image Card */}
+              <div className="w-full max-w-sm mx-auto">
+                <div className="relative h-80 rounded-3xl overflow-hidden shadow-xl">
+                  <Image
+                    src={steps[activeStep].image}
+                    alt={steps[activeStep].title}
+                    fill
+                    className="object-cover transition-opacity duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
     );
-}
+};

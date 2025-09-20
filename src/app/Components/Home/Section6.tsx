@@ -22,7 +22,7 @@ export default function Section6() {
         },
         {
             title: "Contemporary Style",
-            subtitle: "1 BHK",
+            subtitle: "2 BHK",
             image: "/kids1.jpg",
             link: "/Project"
         },
@@ -52,7 +52,8 @@ export default function Section6() {
     };
 
     return (
-        <div className="bg-[#F1F2F6] min-h-[600px] py-16 px-8">
+        <div>
+        <div className="hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="flex justify-between items-start mb-12">
@@ -117,12 +118,78 @@ export default function Section6() {
                 <div className="flex justify-between items-center mt-8">
                     {/* Explore All Projects Button */}
                     <Link href="/Project">
-                        <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full font-medium hover:bg-amber-300 transition-colors">
+                        <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
                             Explore all projects
                         </button>
                     </Link>
                 </div>
             </div>
+        </div>
+        {/* Mobile Version - Vertical Stacked Cards */}
+        <div className="block md:hidden">
+          <div className="bg-[#F1F2F6] py-8 px-4 w-full">
+            {/* Mobile Title */}
+            <div className="mb-8">
+              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-2">
+                Recent Interior Design Projects
+              </h1>
+            </div>
+
+            {/* Vertical Project Cards */}
+            <div className="space-y-6 w-full max-w-sm mx-auto">
+               <div className='w-full max-w-sm mx-auto mt-5'>
+                <div className='relative h-80 rounded-3xl overflow-hidden shadow-xl'>
+                  <Image src="/img3.jpg" alt="Classic Minimal Interior" fill className="object-cover" />
+                </div>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl'>
+                    <h3 className="text-white text-xl font-bold mb-1">Classic Minimal</h3>
+                    <p className="text-white/80 text-sm">2 BHK</p>
+                </div>
+               </div>
+            <div className='w-full max-w-sm mx-auto mt-5'>
+                <img src="/bed1.jpg" className='relative w-full h-80 rounded-3xl overflow-hidden shadow-xl '></img>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl ml-2'>
+                    <h3 className="text-white text-xl font-bold mb-1">Modern Living</h3>
+                    <p className="text-white/80 text-sm">3 BHK</p>
+                </div>
+               </div>
+            </div>
+            <div>
+               <div className='w-full max-w-sm mx-auto mt-5'>
+                <img src="/kids1.jpg" className='relative w-full h-80 rounded-3xl overflow-hidden shadow-xl '></img>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl ml-2'>
+                    <h3 className="text-white text-xl font-bold mb-1">Contemporary Style</h3>
+                    <p className="text-white/80 text-sm">2 BHK</p>
+                </div>
+               </div>
+            </div>
+            <div>
+               <div className='w-full max-w-sm mx-auto mt-5'>
+                <img src="/1.png" className='relative w-full h-80 rounded-3xl overflow-hidden shadow-xl '></img>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl ml-2'>
+                    <h3 className="text-white text-xl font-bold mb-1">Luxury Design</h3>
+                    <p className="text-white/80 text-sm">4 BHK</p>
+                </div>
+               </div>
+            </div>
+               <div className='w-full max-w-sm mx-auto mt-5'>
+                <img src="/img5.jpg" className='relative w-full h-80 rounded-3xl overflow-hidden shadow-xl '></img>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl ml-2'>
+                    <h3 className="text-white text-xl font-bold mb-1">Elegant Space</h3>
+                    <p className="text-white/80 text-sm">2 BHK</p>
+                </div>
+               </div>
+            </div>
+            
+            {/* Explore All Projects Button */}
+            <div className="flex justify-center mt-8">
+              <Link href="/Project">
+                <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
+                  Explore all projects
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
     );
 }

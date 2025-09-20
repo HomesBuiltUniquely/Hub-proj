@@ -30,6 +30,12 @@ const Herosection: React.FC = () => {
     }
   ];
 
+  const mobileTexts = [
+    "From Vision To Reality Interiors in 34 Days",
+    "Get Your Home Interior Cost Estimate Today", 
+    "From Floor Plan to Lifestyle Home, Uniquely Built"
+  ];
+
   // Auto-slide effect
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,7 +46,9 @@ const Herosection: React.FC = () => {
   }, [heroSlides.length]);
 
   return (
-    <div className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative">
+    <div>
+      {/* Desktop Version */}
+      <div className="hidden md:block w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative">
       {/* Background Image Carousel */}
       <div className="absolute inset-0">
         {heroSlides.map((slide, index) => (
@@ -56,7 +64,7 @@ const Herosection: React.FC = () => {
 
       {/* Navbar */}
       <div className="relative z-10 flex items-center justify-between -mt-15">
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 ml-2" />
         <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
           <OfferingsDropdown textColor="text-white" />
           <ExploreRoomsDropdown textColor="text-white" />
@@ -89,7 +97,20 @@ const Herosection: React.FC = () => {
             }`}
           />
         ))}
+        </div>
       </div>
+
+       {/* Mobile Version - Different Design */}
+       <div className="block md:hidden">
+          <div>
+           <div className="w-auto h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+             <img src="/redlogo.png" className="w-[100px] h-[120px] absolute"></img>
+             <img className="w-full h-[600px] rounded-4xl relative" src={`/hh1${currentSlide + 1}.png`} />
+             <div className="-mt-60 w-[350px] text-left text-4xl font-semibold text-white ml-10 wulkan-display-bold absolute">{mobileTexts[currentSlide]}</div>
+             <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl -mt-12 ml-10 manrope-medium absolute">Explore Models</button>
+           </div>
+          </div>
+       </div>
     </div>
   );
 };

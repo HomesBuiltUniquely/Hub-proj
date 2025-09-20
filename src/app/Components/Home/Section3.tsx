@@ -43,13 +43,14 @@ export default function Section3() {
     };
 
     return (
-        <div className="bg-[#F1F2F6] h-[1100px] pt-8 pb-20 px-8">
+        <div>
+        <div className="hidden md:block bg-[#F1F2F6] h-[1100px] pt-8 pb-20 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="flex flex-row justify-between items-center mb-12">
                     <h1 className="text-4xl wulkan-display-bold text-gray-800">All Interior Service, One Destination</h1>
                     <Link href="/ContactUs">
-                        <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
+                        <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
                             Book consultation
                             <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                 <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,7 +117,7 @@ export default function Section3() {
                                             
                                             {/* Request Service Button */}
                                             <Link href={service.link}>
-                                                <button className="w-full bg-transparent border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-50 transition-colors mt-auto mx-auto">
+                                                <button className="w-full bg-transparent border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full manrope-medium hover:bg-gray-50 transition-colors mt-auto mx-auto">
                                                     Request service
                                                 </button>
                                             </Link>
@@ -156,5 +157,40 @@ export default function Section3() {
                 </div>
             </div>
         </div>
+        <div className="block md:hidden">
+
+            <div className="w-auto bg-[#F1F2F6] text-left text-4xl wulkan-display-bold pt-10 pl-5">All Interior Service, One Destination</div>
+           <div className="w-[300px] h-[450px] mt-10 rounded-4xl bg-[#F1F2F6] mx-auto relative" >
+          <img className="w-full h-full object-cover rounded-4xl " src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen5.jpg"></img>
+           <div className="absolute h-[180px] bottom-0 left-0 right-0 p-6 bg-black/40 rounded-4xl m-2">
+           <div className="flex items-center gap-2">
+           <div className="w-1 h-10 bg-[#ebd457]"></div>
+           <div className="text-white text-xl wulkan-display-bold">Modular Interiors for Every Home</div>
+           </div>
+           <p className="text-white text-sm manrope-medium pt-2">Efficient layouts and space-saving designs crafted to fit kitchens, wardrobes, and storage — blending style with everyday functionality.</p>
+           </div>
+           </div>   
+           <div className="w-[310px] h-[450px] mt-10 rounded-4xl bg-[#F1F2F6] mx-auto relative" >
+          <img className="w-full h-full object-cover rounded-4xl " src="/bed1.jpg"></img>
+           <div className="absolute h-[180px] bottom-0 left-0 right-0 p-5 bg-black/40 rounded-4xl m-2">
+           <div className="flex items-center gap-2">
+           <div className="w-1 h-10 bg-[#ebd457]"></div>
+           <div className="text-white text-xl wulkan-display-bold">End-to-End Interior Solutions</div>
+           </div>
+           <p className="text-white text-sm manrope-medium">From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing under one roof.</p>
+           </div>
+           </div>   
+           <div className="w-[300px] h-[450px] mt-10 rounded-4xl bg-[#F1F2F6] mx-auto relative" >
+          <img className="w-full h-full object-cover rounded-4xl " src="/bed4.jpg"></img>
+           <div className="absolute h-[180px] bottom-0 left-0 right-0 p-6 bg-black/40 rounded-4xl m-2">
+           <div className="flex items-center gap-2">
+           <div className="w-1 h-10 bg-[#ebd457]"></div>
+           <div className="text-white text-xl wulkan-display-bold">Luxury Interiors Thoughtfully Crafted</div>
+           </div>
+           <p className="text-white text-sm manrope-medium pt-2">Luxury interiors thoughtfully built to balance modern design, comfort, and personal expression. elevating everyday lifestyle</p>
+           </div>
+           </div>   
+        </div>
+    </div>
     )
 }
