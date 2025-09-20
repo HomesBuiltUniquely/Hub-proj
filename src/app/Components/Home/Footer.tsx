@@ -154,7 +154,7 @@ export default function Footer(){
                                 <Link href="/"><Image src="/LOGO.png" alt="HUB Logo" width={100} height={40} className="w-[100px] h-[40px]" /></Link>
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
-                                    <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/Linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
@@ -234,7 +234,7 @@ export default function Footer(){
                         <Link href="/"><img src="/LOGO.png" className="w-[100px] h-[40px]"></img></Link>
                         <a href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium">Privacy Policy Terms & Conditions</p></a>
                         <div className="flex gap-8">
-                       <a href="https://www.linkedin.com/company/homesunderbudget/"> <img src="/Linkedin.png " className="w-[25px] h-[25px] "></img></a>
+                       <a href="https://www.linkedin.com/company/homesunderbudget/"> <img src="/linkedin.png " className="w-[25px] h-[25px] "></img></a>
                         <a href="https://www.youtube.com/@homesunderbudget"><img src="/youtube.png" className="w-[25px] h-[25px]  "></img></a>
                         <a href="https://www.facebook.com/HomesUnderBudget/"><img src="/facebook.png" className="w-[25px] h-[25px] "></img></a>
                         <a href="https://www.instagram.com/homesunderbudget/"><img src="/instagram.png" className="w-[25px] h-[25px] "></img></a>
@@ -445,7 +445,7 @@ export default function Footer(){
                                 {/* Social Media Icons */}
                                 <div className="flex space-x-4">
                                     <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                        <span className="text-white text-xs font-bold"> <img src="/Linkedin.png " className="w-[25px] h-[25px] "></img></span>
+                                        <span className="text-white text-xs font-bold"> <img src="/linkedin.png " className="w-[25px] h-[25px] "></img></span>
                                     </Link>
                                     <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 s rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
