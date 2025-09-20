@@ -86,7 +86,6 @@ const Home: React.FC = () => {
       setIsSubmitting(false);
     }
   };
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   
