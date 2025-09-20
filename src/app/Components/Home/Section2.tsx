@@ -146,14 +146,14 @@ export default function Section2() {
                 </div>
 
                 {/* Bottom Section with Slider and Button */}
-                <div className="flex justify-between items-center mt-8">
+                <div className="flex justify-between items-center mt-8 gap-6">
                     {/* Progress Slider */}
-                    <div className="flex items-center gap-4 mt-3 ">
-                        <div className="w-250 h-1 bg-gray-300 rounded-full relative">
+                    <div className="flex items-center gap-4 flex-1 max-w-lg">
+                        <div className="w-full h-1 bg-gray-300 rounded-full relative overflow-hidden">
                             <div 
-                                className="h-1 w-250 bg-gray-600 rounded-full transition-all duration-300"
+                                className="h-1 bg-gray-600 rounded-full transition-all duration-300 absolute top-0 left-0"
                                 style={{ 
-                                    width: `${((currentSlide + 1) / Math.max(1, roomCards.length - 2)) * 100}%` 
+                                    width: `${Math.min(100, ((currentSlide + 1) / Math.max(1, roomCards.length - 2)) * 100)}%` 
                                 }}
                             />
                             <input
@@ -169,7 +169,7 @@ export default function Section2() {
 
                     {/* Explore Gallery Button */}
                     <Link href="/Inspiration">
-                        <button className="bg-[#ddcdc1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
+                        <button className="bg-[#ddcdc1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors flex-shrink-0">
                             Explore Gallery
                         </button>
                     </Link>

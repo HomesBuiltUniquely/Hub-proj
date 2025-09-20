@@ -2,7 +2,7 @@
 
 // pages/index.tsx
 
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
@@ -15,7 +15,7 @@ const FRANCHISE_OPTIONS = [
     details: [
       "Exclusively Tier 1/Metro cities",
       "Projected ROI - 3x in 3 years",
-      "Investment  40 Lakhs - 1 Crore",
+      "Investment  50-80 Lakhs",
       "Minimum area - 2000 sq. ft."
     ],
     text: "Minimum effort, Maximum return"
@@ -86,9 +86,18 @@ const Home: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  
+  const mobileTexts = [
+    "Become a Franchisee!"
+  ];
 
   return (
-  <div className="min-h-screen bg-[#f1f2f6] w-[1400px] h-auto mx-auto">
+    
+  <div>
+  <div className="hidden md:block min-h-screen bg-[#f1f2f6] w-[1400px] h-auto mx-auto">
     {/* Hero Section with navbar, text, form, background image */}
     <div
       className="
@@ -245,6 +254,113 @@ const Home: React.FC = () => {
       </div>
     </section>
     </div>
+  </div>
+
+
+
+          {/* Mobile version */}
+      <div className="block md:hidden">
+      <div>
+           <div className="w-auto h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+             {/* Mobile Header */}
+             <div className="relative z-20 flex items-center justify-between p-4">
+               <img src="/redlogo.png" className="w-[135px] h-[140px] pb-6 -mt-8 pr-14 "></img>
+               
+               {/* Hamburger Menu Button */}
+               <button 
+                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                 className="text-white pr-10 mb-10"
+               >
+                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                 </svg>
+               </button>
+             </div>
+
+             {/* Mobile Navigation Menu */}
+             {isMobileMenuOpen && (
+               <div className="absolute top-0 right-0 w-80 h-full bg-white/95 backdrop-blur-sm z-30 rounded-[35px] overflow-hidden">
+                 <div className="p-6 pt-20">
+                   {/* Close Button */}
+                   <button 
+                     onClick={() => setIsMobileMenuOpen(false)}
+                     className="absolute top-4 right-4 text-gray-600 p-2"
+                   >
+                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                     </svg>
+                   </button>
+
+                   {/* Navigation Items */}
+                   <div className="space-y-6">
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">OFFERINGS</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Full Home Interior</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Modular Interior</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Home Renovation</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Space Management</p>
+                       </div>
+                     </div>
+
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">EXPLORE ROOMS</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Modular Kitchen</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Bedroom</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Living Room</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Kids Room</p>
+                       </div>
+                     </div>
+
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">MORE</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">About Us</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Projects</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Blog</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Contact</p>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             )}
+             
+             <img className="w-full h-[600px] rounded-4xl relative -mt-40" src={`/hh1${currentSlide + 1}.png`} />
+             <div className="-mt-60 w-[350px] text-left text-4xl font-semibold text-white ml-10 wulkan-display-bold absolute">{mobileTexts[currentSlide]}</div>
+             <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl -mt-12 ml-10 manrope-medium absolute">Explore Models</button>
+           </div>
+          </div>
+
+          {/* Section2 */}
+
+            <div className="h-auto ">
+              <div className="w-[320px] h-[480px] border-2 border-[#DDCDC1] mx-auto mt-5 rounded-4xl">
+
+                <div className="w-[280px] h-[50px] mx-auto">
+                  <input type="text" placeholder="First Name" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-10 pl-4 " />
+                  <input type="text" placeholder="Last Name" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 " />
+                  <input type="text" placeholder="Email" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 " />
+                  <input type="text" placeholder="Phone" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 " />
+                  <input type="text" placeholder="Preffered Location" className=" w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-5 pl-4 " />
+                  <button className="bg-[#ef0101] text-white w-[180px] h-[40px] rounded-full mt-8">Join our network</button>
+                </div>
+
+              </div>
+              
+
+            </div>
+
+            {/* Section3 */}
+
+            <div className="w-auto mt-20 mx-auto text-center">
+
+            <p className="w-[300px] text-sm mx-auto">HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.</p>
+
+            </div>
+
+      </div>
   </div>
   );
 };
