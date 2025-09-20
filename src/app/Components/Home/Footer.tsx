@@ -377,7 +377,7 @@ export default function Footer(){
                         <div className="grid grid-cols-2 gap-4 mb-8">
                             {/* Company Column */}
                             <div>
-                                <h3 className="text-sm font-semibold mb-4 manrope">Company</h3>
+                                <h3 className="text-sm manrope mb-4 manrope">Company</h3>
                                 <div className="space-y-2">
                                     <Link href="/AboutUs"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">About</p></Link>
                                     <Link href="/Career"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Career</p></Link>
@@ -390,7 +390,7 @@ export default function Footer(){
                             
                             {/* Offerings Column */}
                             <div>
-                                <h3 className="text-sm font-semibold mb-4 manrope">Offerings</h3>
+                                <h3 className="text-sm manrope mb-4 manrope">Offerings</h3>
                                 <div className="space-y-2">
                                     <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Full Home Interior</p>
                                     <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Modular Interior</p>
@@ -404,7 +404,7 @@ export default function Footer(){
                             
                             {/* Explore Rooms Column */}
                             <div>
-                                <h3 className="text-sm font-semibold mb-4 manrope">Explore Rooms</h3>
+                                <h3 className="text-sm manrope mb-4 manrope">Explore Rooms</h3>
                                 <div className="space-y-2">
                                     <Link href="/ModularKitchen"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Modular Kitchen</p></Link>
                                     <Link href="/Bedroom"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Bedroom</p></Link>
@@ -425,7 +425,7 @@ export default function Footer(){
                             
                             {/* Information Column */}
                             <div>
-                                <h3 className="text-sm font-semibold mb-4 manrope">Information</h3>
+                                <h3 className="text-sm manrope mb-4 manrope">Information</h3>
                                 <div className="space-y-2">
                                     <Link href="/ContactUs"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Contact Us</p></Link>
                                     <Link href="/Policy"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Privacy Policy</p></Link>
