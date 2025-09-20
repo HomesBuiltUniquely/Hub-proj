@@ -2,7 +2,7 @@
 
 // pages/index.tsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
@@ -87,7 +87,16 @@ const Home: React.FC = () => {
     }
   };
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
+  // Auto-slide effect for mobile carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 3); // Cycle through 3 images
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
   
   const mobileTexts = [
     "Become a Franchisee!"

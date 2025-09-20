@@ -94,6 +94,7 @@ export default function RootLayout({
             width="1"
             style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=1486878599401922&ev=PageView&noscript=1"
+            alt=""
           />
         </noscript>
 
