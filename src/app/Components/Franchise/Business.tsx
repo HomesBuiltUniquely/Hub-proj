@@ -19,7 +19,7 @@ export default function Business() {
                 </div>
                 <div className="flex mt-5">
                     <div className="w-3 h-3 bg-[#ef0101] rounded-full mt-1"></div>
-                    <h1 className="pl-2 manrope-medium">Investment 40 Lakhs - 1 Crore</h1>
+                    <h1 className="pl-2 manrope-medium">Investment 50-80 Lakhs</h1>
                 </div>
                 <div className="flex mt-5">
                     <div className="w-3 h-3 bg-[#ef0101] rounded-full mt-1"></div>
