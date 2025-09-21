@@ -1,204 +1,3 @@
-<div className="w-96 h-[10502px] relative bg-gray-100 rounded-[35px] overflow-hidden">
-    <img className="w-96 h-[464px] left-[19px] top-[2425px] absolute rounded-3xl" src="https://placehold.co/401x464" />
-    <img className="w-96 h-[464px] left-[19px] top-[3006px] absolute rounded-3xl" src="https://placehold.co/401x464" />
-    <img className="w-96 h-[464px] left-[19px] top-[3572px] absolute rounded-3xl" src="https://placehold.co/401x464" />
-    <img className="w-56 h-96 left-[21px] top-[1644px] absolute rounded-[35px]" src="https://placehold.co/229x389" />
-    <div className="left-[34px] top-[1978px] absolute justify-center text-gray-100 text-xl font-medium font-['Manrope'] leading-7">Kitche</div>
-    <img className="w-56 h-96 left-[190px] top-[1648px] absolute rounded-[35px]" src="https://placehold.co/231x385" />
-    <img className="w-96 h-[499px] left-[21px] top-[23px] absolute rounded-[20px]" src="https://placehold.co/398x499" />
-    <img className="w-24 h-24 left-[13px] top-[3px] absolute" src="https://placehold.co/98x98" />
-    <div className="w-20 h-8 left-[23.77px] top-[36.01px] absolute bg-red-600" />
-    <div className="w-8 h-0 left-[360px] top-[41px] absolute outline outline-2 outline-offset-[-1px] outline-gray-100"></div>
-    <div className="w-8 h-0 left-[360px] top-[49px] absolute outline outline-2 outline-offset-[-1px] outline-gray-100"></div>
-    <div className="w-8 h-0 left-[360px] top-[57px] absolute outline outline-2 outline-offset-[-1px] outline-gray-100"></div>
-    <div className="w-80 h-16 left-[38px] top-[418px] absolute justify-center text-gray-100 text-2xl font-extrabold font-['Manrope'] leading-7">Create Culinary Magic in a Kitchen That Inspires</div>
-    <div className="w-44 h-9 left-[38px] top-[503px] absolute bg-stone-300 rounded-[50px]" />
-    <div className="w-36 h-7 left-[53px] top-[507px] absolute justify-center text-stone-800 text-xl font-medium font-['Manrope'] leading-normal">Explore models</div>
-    <div className="w-2.5 h-2.5 left-[365px] top-[501px] absolute bg-zinc-300 rounded-full" />
-    <div className="w-2.5 h-2.5 left-[377.94px] top-[501px] absolute rounded-full border-[0.50px] border-gray-100" />
-    <div className="w-2.5 h-2.5 left-[390.87px] top-[501px] absolute rounded-full border-[0.50px] border-gray-100" />
-    <div className="w-96 h-20 left-[25px] top-[568px] absolute text-center justify-center text-stone-800 text-base font-normal font-['Manrope'] leading-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </div>
-    <img className="w-72 h-96 left-[74px] top-[1634px] absolute rounded-[35px]" src="https://placehold.co/292x426" />
-    <div className="left-[88px] top-[2002px] absolute justify-center text-gray-100 text-xl font-medium font-['Manrope'] leading-7">Bed Room</div>
-    <div data-size="48" className="w-12 h-12 left-[300px] top-[2017.05px] absolute origin-top-left rotate-[-41.52deg] overflow-hidden">
-        <div className="w-14 h-14 left-[5.51px] top-[5.51px] absolute outline outline-2 outline-offset-[-1px] outline-gray-100" />
-    </div>
-    <div data-size="48" className="w-10 h-10 left-[366px] top-[1998.55px] absolute origin-top-left rotate-[-41.52deg] overflow-hidden">
-        <div className="w-12 h-12 left-[4.71px] top-[4.71px] absolute outline outline-2 outline-offset-[-1px] outline-gray-100" />
-    </div>
-    <div className="w-80 left-[21px] top-[1534px] absolute justify-center"><span class="text-stone-800 text-3xl font-semibold font-['Wulkan_Display'] leading-9">Every space has a story,<br/></span><span class="text-stone-800 text-3xl font-medium font-['Wulkan_Display'] leading-9">start yours here</span></div>
-    <div className="w-56 h-12 left-[108px] top-[2090px] absolute bg-stone-300 rounded-[55.50px]" />
-    <div className="left-[148px] top-[2100px] absolute justify-center text-stone-800 text-xl font-semibold font-['Manrope'] leading-7">Explore Gallery</div>
-    <div className="w-80 left-[20px] top-[2248px] absolute justify-center text-stone-800 text-3xl font-semibold font-['Wulkan_Display'] leading-10">Services tailored to you</div>
-    <div className="w-96 h-32 left-[20px] top-[2266px] absolute justify-center text-stone-800 text-xl font-light font-['Manrope'] leading-7">From cozy homes to modern commercial spaces, we bring your vision to life with creativity, precision, and passion.</div>
-    <div className="w-96 h-28 left-[33px] top-[2770px] absolute bg-gradient-to-l from-zinc-700/50 to-neutral-500/50 rounded-3xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" />
-    <div className="w-96 h-28 left-[33px] top-[3351px] absolute bg-gradient-to-l from-zinc-700/50 to-neutral-500/50 rounded-3xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" />
-    <div className="w-96 h-28 left-[33px] top-[3917px] absolute bg-gradient-to-l from-zinc-700/50 to-neutral-500/50 rounded-3xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" />
-    <div className="left-[60px] top-[2791px] absolute justify-center text-gray-100 text-2xl font-extrabold font-['Manrope'] capitalize leading-loose">Commercial Interiors</div>
-    <div className="left-[62px] top-[3371px] absolute justify-center text-gray-100 text-2xl font-extrabold font-['Manrope'] capitalize leading-loose">Residential Interiors</div>
-    <div className="left-[62px] top-[3937px] absolute justify-center text-gray-100 text-2xl font-extrabold font-['Manrope'] capitalize leading-loose">Custom Furniture</div>
-    <div className="w-80 left-[61px] top-[2822px] absolute justify-center text-gray-100 text-sm font-normal font-['Manrope'] leading-tight">Commercial interiors plays a pivotal role in the success of any business. </div>
-    <div className="w-80 left-[62px] top-[3404px] absolute justify-center text-gray-100 text-sm font-normal font-['Manrope'] leading-none">Budget design does not mean usage of cheap materials or products in the process. </div>
-    <div className="w-80 left-[62px] top-[3969px] absolute justify-center text-gray-100 text-sm font-normal font-['Manrope'] leading-tight">Commercial interiors plays a pivotal role in the success of any business. </div>
-    <div className="w-52 h-9 left-[114px] top-[2930px] absolute rounded-[55.50px] border border-stone-800" />
-    <div className="w-36 h-7 left-[145px] top-[2932.38px] absolute text-center justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-7">Request service</div>
-    <div className="w-52 h-9 left-[114px] top-[3495px] absolute rounded-[55.50px] border border-stone-800" />
-    <div className="w-36 h-7 left-[145px] top-[3497.38px] absolute text-center justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-7">Request service</div>
-    <div className="w-52 h-9 left-[114px] top-[4061px] absolute rounded-[55.50px] border border-stone-800" />
-    <div className="w-36 h-7 left-[145px] top-[4063.38px] absolute text-center justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-7">Request service</div>
-    <div className="w-64 h-11 left-[91px] top-[4133px] absolute bg-stone-300 rounded-[55.50px]" />
-    <div className="left-[145px] top-[4139px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-7">View all services</div>
-    <div className="w-96 left-[20px] top-[4284px] absolute justify-center text-stone-800 text-3xl font-semibold font-['Wulkan_Display'] leading-10">Trusted by homeowners <br/>like you</div>
-    <div className="w-96 h-[464px] left-[20px] top-[4396px] absolute bg-stone-300 rounded-3xl" />
-    <img className="w-96 h-56 left-[26px] top-[4401px] absolute rounded-3xl" src="https://placehold.co/388x226" />
-    <div className="w-9 h-3 left-[31px] top-[4665px] absolute justify-center text-stone-800 text-7xl font-semibold font-['Manrope'] leading-[108.80px]">“</div>
-    <div className="w-80 h-28 left-[38px] top-[4682px] absolute justify-start text-stone-800 text-base font-normal font-['Manrope'] leading-relaxed">“HUB turned our dream home into reality. Thoughtful design, smooth process HUB turned our dream home into reality. Thoughtful design, smooth process”</div>
-    <div className="w-48 h-6 left-[70px] top-[4807px] absolute justify-center text-stone-800 text-xl font-bold font-['Manrope'] leading-snug">George, Royal Tulip</div>
-    <div className="w-7 h-7 left-[37px] top-[4809px] absolute bg-zinc-300 rounded-full" />
-    <img className="w-20 h-14 left-[4.13px] top-[4796.73px] absolute" src="https://placehold.co/88x59" />
-    <div className="w-9 h-9 left-[376.85px] top-[4915px] absolute origin-top-left rotate-180 rounded-full border-[0.50px] border-black" />
-    <div data-size="48" className="w-6 h-6 left-[369.66px] top-[4907.81px] absolute origin-top-left rotate-180 overflow-hidden">
-        <div className="w-3.5 h-3.5 left-[4.87px] top-[5.24px] absolute outline outline-1 outline-offset-[-0.50px] outline-Icon-Default-Default" />
-    </div>
-    <div className="w-9 h-9 left-[382.25px] top-[4876px] absolute origin-top-left rotate-180 rounded-full border-[0.50px] border-black" />
-    <div data-size="48" className="w-6 h-6 left-[389.44px] top-[4881.39px] absolute origin-top-left rotate-180 overflow-hidden">
-        <div className="w-3.5 h-3.5 left-[18.50px] top-[19.93px] absolute outline outline-1 outline-offset-[-0.50px] outline-Icon-Default-Default" />
-    </div>
-    <div className="w-80 left-[20px] top-[5031px] absolute justify-center text-stone-800 text-3xl font-semibold font-['Wulkan_Display'] leading-10">Your dream space in<br/>just four steps</div>
-    <div className="w-24 h-0 left-[44px] top-[5202px] absolute origin-top-left rotate-90 outline outline-1 outline-offset-[-0.50px] outline-stone-800"></div>
-    <div className="w-24 h-0 left-[44px] top-[5338px] absolute origin-top-left rotate-90 outline outline-1 outline-offset-[-0.50px] outline-stone-800"></div>
-    <div className="w-24 h-0 left-[44px] top-[5474px] absolute origin-top-left rotate-90 outline outline-1 outline-offset-[-0.50px] outline-stone-800"></div>
-    <div className="w-80 h-12 left-[90px] top-[5153px] absolute justify-center text-stone-800 text-2xl font-bold font-['Manrope'] leading-7">Meet our designers</div>
-    <div className="w-48 h-8 left-[90px] top-[5298px] absolute justify-center text-stone-800 text-2xl font-bold font-['Manrope'] leading-7">Get your quote</div>
-    <div className="w-64 h-7 left-[90px] top-[5436px] absolute justify-center text-stone-800 text-2xl font-bold font-['Manrope'] leading-7">Customize your home</div>
-    <div className="w-64 h-8 left-[90px] top-[5568px] absolute justify-center text-stone-800 text-2xl font-bold font-['Manrope'] leading-7">Hassle-free execution</div>
-    <div className="w-80 h-12 left-[90px] top-[5203px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-snug">Visit our Experience Centre or consult with us online.</div>
-    <div className="w-80 h-12 left-[90px] top-[5339px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-snug">Visit our Experience Centre or consult with us online.</div>
-    <div className="w-80 h-12 left-[90px] top-[5473px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-snug">Visit our Experience Centre or consult with us online.</div>
-    <div className="w-80 h-12 left-[90px] top-[5610px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-snug">Visit our Experience Centre or consult with us online.</div>
-    <div className="w-12 h-12 left-[20px] top-[5155px] absolute bg-stone-800 rounded-full" />
-    <div className="w-7 h-5 left-[29.64px] top-[5167.65px] absolute bg-gray-100" />
-    <div className="w-12 h-12 left-[20px] top-[5291px] absolute bg-stone-800 rounded-full" />
-    <div className="w-7 h-5 left-[29.64px] top-[5303.65px] absolute bg-gray-100" />
-    <div className="w-12 h-12 left-[20px] top-[5427px] absolute bg-stone-800 rounded-full" />
-    <div className="w-7 h-5 left-[29.64px] top-[5439.65px] absolute bg-gray-100" />
-    <div className="w-12 h-12 left-[20px] top-[5563px] absolute bg-stone-800 rounded-full" />
-    <div className="w-7 h-5 left-[29.64px] top-[5575.65px] absolute bg-gray-100" />
-    <img className="w-96 h-80 left-[20px] top-[5697px] absolute rounded-3xl" src="https://placehold.co/400x305" />
-    <div className="w-80 left-[20px] top-[6125px] absolute justify-center text-stone-800 text-3xl font-semibold font-['Wulkan_Display'] leading-10">Recent Interior Design <br/>Projects</div>
-    <img className="w-96 h-96 left-[20px] top-[6230px] absolute rounded-3xl" src="https://placehold.co/400x405" />
-    <div className="w-80 h-24 left-[52px] top-[6516px] absolute bg-gradient-to-l from-stone-800/50 to-white/50 rounded-3xl shadow-[0px_4px_5.199999809265137px_-1px_rgba(0,0,0,0.25)]" />
-    <div className="w-80 h-24 left-[52px] top-[6516px] absolute bg-gradient-to-l from-stone-800/50 to-white/50 rounded-3xl shadow-[0px_4px_5.199999809265137px_-1px_rgba(0,0,0,0.25)]" />
-    <div className="w-60 h-12 left-[64px] top-[6519px] absolute justify-center text-gray-100 text-3xl font-semibold font-['Manrope'] leading-9">Classic Minimal</div>
-    <div className="w-16 h-12 left-[64px] top-[6551px] absolute justify-center text-gray-100 text-xl font-medium font-['Manrope'] leading-snug">2 BHK</div>
-    <img className="w-96 h-96 left-[20px] top-[6666px] absolute rounded-[20px]" src="https://placehold.co/400x405" />
-    <div className="w-80 h-24 left-[52px] top-[6954px] absolute bg-gradient-to-l from-stone-800/50 to-white/50 rounded-3xl shadow-[0px_4px_5.199999809265137px_-1px_rgba(0,0,0,0.25)]" />
-    <div className="w-80 h-24 left-[52px] top-[6954px] absolute bg-gradient-to-l from-stone-800/50 to-white/50 rounded-3xl shadow-[0px_4px_5.199999809265137px_-1px_rgba(0,0,0,0.25)]" />
-    <div className="w-60 h-12 left-[64px] top-[6957px] absolute justify-center text-gray-100 text-3xl font-semibold font-['Manrope'] leading-9">Classic Minimal</div>
-    <div className="w-16 h-12 left-[64px] top-[6989px] absolute justify-center text-gray-100 text-xl font-medium font-['Manrope'] leading-snug">2 BHK</div>
-    <img className="w-96 h-96 left-[20px] top-[7101px] absolute rounded-[20px]" src="https://placehold.co/401x406" />
-    <div className="w-80 h-24 left-[52px] top-[7392px] absolute bg-gradient-to-l from-stone-800/50 to-white/50 rounded-3xl shadow-[0px_4px_5.199999809265137px_-1px_rgba(0,0,0,0.25)]" />
-    <div className="w-80 h-24 left-[52px] top-[7392px] absolute bg-gradient-to-l from-stone-800/50 to-white/50 rounded-3xl shadow-[0px_4px_5.199999809265137px_-1px_rgba(0,0,0,0.25)]" />
-    <div className="w-60 h-12 left-[64px] top-[7395px] absolute justify-center text-gray-100 text-3xl font-semibold font-['Manrope'] leading-9">Classic Minimal</div>
-    <div className="w-16 h-12 left-[64px] top-[7427px] absolute justify-center text-gray-100 text-xl font-medium font-['Manrope'] leading-snug">2 BHK</div>
-    <div className="w-52 h-11 left-[118px] top-[7537px] absolute bg-stone-300 rounded-[55.50px]" />
-    <div className="left-[133px] top-[7544px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-7">Explore all Projects</div>
-    <img className="w-96 h-72 left-[20px] top-[7689px] absolute rounded-3xl blur-[2px]" src="https://placehold.co/401x283" />
-    <div className="w-96 h-72 left-[20px] top-[7689px] absolute bg-black/30 rounded-3xl" />
-    <div className="w-72 left-[78px] top-[7730px] absolute text-center justify-center text-gray-100 text-3xl font-semibold font-['Wulkan_Display'] leading-10">Meet our interior designers</div>
-    <div className="w-64 h-7 left-[87px] top-[7817px] absolute text-center justify-center text-gray-100 text-base font-normal font-['Manrope'] leading-tight">Experts Creating Spaces You’ll Love</div>
-    <div className="w-52 h-10 left-[112px] top-[7882px] absolute bg-stone-300 rounded-[55.50px]" />
-    <div className="w-44 left-[130px] top-[7890px] absolute justify-center text-stone-800 text-base font-semibold font-['Manrope'] leading-normal">Book  your consultation</div>
-    <div className="w-96 h-20 left-[420.61px] top-[8248px] absolute origin-top-left -rotate-180 bg-gray-100 rounded-2xl" />
-    <img className="w-96 h-7 left-[20px] top-[8189.22px] absolute" src="https://placehold.co/400x29" />
-    <div className="w-64 h-16 left-[7px] top-[8063px] absolute text-center justify-center text-stone-800 text-3xl font-medium font-['Wulkan_Display'] leading-10">Trusted Partners</div>
-    <div className="w-96 h-9 left-[15px] top-[8108px] absolute text-center justify-center text-stone-800 text-base font-normal font-['Manrope'] leading-normal">Creating value through partnerships built on trust.</div>
-    <div className="w-96 h-9 left-[20px] top-[8372px] absolute justify-center text-stone-800 text-base font-normal font-['Manrope'] leading-normal">Media houses where we got featured</div>
-    <div className="left-[20px] top-[8565px] absolute justify-center text-stone-800 text-3xl font-medium font-['Wulkan_Display'] leading-10">Frequently Asked <br/>Questions</div>
-    <div className="left-[20px] top-[8340px] absolute justify-center text-stone-800 text-3xl font-medium font-['Wulkan_Display'] leading-10">Featured in</div>
-    <div className="left-[15px] top-[8412px] absolute inline-flex justify-start items-center gap-6">
-        <img className="w-12 h-12" src="https://placehold.co/48x48" />
-        <img className="w-10 h-10" src="https://placehold.co/40x40" />
-        <img className="w-16 h-16" src="https://placehold.co/61x61" />
-        <img className="w-11 h-11" src="https://placehold.co/43x43" />
-        <img className="w-11 h-11" src="https://placehold.co/45x45" />
-        <img className="w-12 h-12" src="https://placehold.co/52x52" />
-    </div>
-    <div className="left-[20px] top-[8666px] absolute justify-center text-stone-800 text-base font-normal font-['Manrope'] leading-normal">What is the interior design cost in Bangalore for <br/>2BHK, 3BHK, 4BHK, Villa, and Kitchen?</div>
-    <div className="left-[15px] top-[8846px] absolute justify-center text-stone-800 text-base font-normal font-['Manrope'] leading-normal">What is the interior design cost in Bangalore for <br/>2BHK, 3BHK, 4BHK, Villa, and Kitchen?</div>
-    <div className="left-[20px] top-[8756px] absolute justify-center text-stone-800 text-base font-normal font-['Manrope'] leading-normal">What is the interior design cost in Bangalore for <br/>2BHK, 3BHK, 4BHK, Villa, and Kitchen?</div>
-    <div className="left-[15px] top-[8936px] absolute justify-center text-stone-800 text-base font-normal font-['Manrope'] leading-normal">What is the interior design cost in Bangalore for <br/>2BHK, 3BHK, 4BHK, Villa, and Kitchen?</div>
-    <div className="w-96 h-0 left-[20px] top-[8735px] absolute outline outline-[0.50px] outline-offset-[-0.25px] outline-stone-800" />
-    <div className="w-96 h-0 left-[15px] top-[8915px] absolute outline outline-[0.50px] outline-offset-[-0.25px] outline-stone-800" />
-    <div className="w-96 h-0 left-[20px] top-[8825px] absolute outline outline-[0.50px] outline-offset-[-0.25px] outline-stone-800" />
-    <div className="w-96 h-0 left-[15px] top-[9005px] absolute outline outline-[0.50px] outline-offset-[-0.25px] outline-stone-800" />
-    <div data-size="48" className="w-6 h-6 left-[394px] top-[8674px] absolute overflow-hidden">
-        <div className="w-3.5 h-3.5 left-[4.79px] top-[4.79px] absolute outline outline-1 outline-offset-[-0.50px] outline-stone-800" />
-    </div>
-    <div data-size="48" className="w-6 h-6 left-[389px] top-[8854px] absolute overflow-hidden">
-        <div className="w-3.5 h-3.5 left-[4.79px] top-[4.79px] absolute outline outline-1 outline-offset-[-0.50px] outline-stone-800" />
-    </div>
-    <div data-size="48" className="w-6 h-6 left-[394px] top-[8764px] absolute overflow-hidden">
-        <div className="w-3.5 h-3.5 left-[4.79px] top-[4.79px] absolute outline outline-1 outline-offset-[-0.50px] outline-stone-800" />
-    </div>
-    <div data-size="48" className="w-6 h-6 left-[389px] top-[8944px] absolute overflow-hidden">
-        <div className="w-3.5 h-3.5 left-[4.79px] top-[4.79px] absolute outline outline-1 outline-offset-[-0.50px] outline-stone-800" />
-    </div>
-    <div className="w-96 h-[1074px] left-[-2px] top-[9133px] absolute bg-stone-800 rounded-bl-[35px] rounded-br-[35px]" />
-    <div className="left-[36px] top-[9164px] absolute justify-start text-stone-300 text-xl font-extrabold font-['Manrope']">Company</div>
-    <div className="left-[286px] top-[9164px] absolute justify-start text-stone-300 text-xl font-extrabold font-['Manrope']">Services</div>
-    <div className="w-40 left-[36px] top-[9225px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">About</div>
-    <div className="w-40 left-[36px] top-[9272px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Modular Kitchen</div>
-    <div className="w-40 left-[36px] top-[9319px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Bedroom</div>
-    <div className="w-40 left-[36px] top-[9366px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Franchise</div>
-    <div className="w-40 left-[36px] top-[9413px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Life at HUB</div>
-    <div className="w-40 left-[36px] top-[9460px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Career</div>
-    <div className="left-[36px] top-[9540px] absolute justify-start text-stone-300 text-xl font-extrabold font-['Manrope']">Other</div>
-    <img className="w-24 h-24 left-[175px] top-[9896px] absolute" src="https://placehold.co/103x103" />
-    <div className="w-24 h-14 left-[172px] top-[9914px] absolute bg-stone-300" />
-    <div className="w-7 h-6 left-[78px] top-[9986px] absolute bg-stone-300" />
-    <div className="w-7 h-5 left-[146px] top-[9988px] absolute bg-stone-300" />
-    <div className="w-7 h-6 left-[217px] top-[9986px] absolute bg-stone-300" />
-    <div className="w-3 h-6 left-[286px] top-[9986px] absolute bg-stone-300" />
-    <div className="w-5 h-5 left-[340px] top-[9988px] absolute bg-stone-300" />
-    <div className="w-80 left-[62px] top-[10026px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Privacy Policy Terms & Conditions</div>
-    <div className="w-40 left-[36px] top-[9587px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Insights</div>
-    <div className="w-40 left-[36px] top-[9634px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Blogs</div>
-    <div className="w-40 left-[36px] top-[9609px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Press</div>
-    <div className="w-40 left-[36px] top-[9656px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Partnership</div>
-    <div className="w-40 left-[36px] top-[9703px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Resource</div>
-    <div className="w-40 left-[36px] top-[9750px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Testimonials</div>
-    <div className="w-40 left-[36px] top-[9797px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Sitemap</div>
-    <div className="w-40 left-[266px] top-[9225px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">2 BHK Interior</div>
-    <div className="w-40 left-[266px] top-[9272px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">3 BHK Interior</div>
-    <div className="w-40 left-[266px] top-[9319px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">4 BHK Interior</div>
-    <div className="w-40 left-[266px] top-[9366px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Kitchen</div>
-    <div className="w-40 left-[266px] top-[9413px] absolute justify-start text-stone-300 text-xl font-medium font-['Manrope']">Franchise</div>
-    <div className="w-56 left-[19px] top-[719px] absolute text-center justify-center text-stone-800 text-3xl font-semibold font-['Wulkan_Display'] leading-10">Why Choose us</div>
-    <div className="w-96 h-36 left-[21px] top-[832px] absolute rounded-2xl border border-amber-300" />
-    <div className="w-96 h-36 left-[21px] top-[991px] absolute rounded-2xl border border-amber-300" />
-    <div className="w-96 h-36 left-[21px] top-[1150px] absolute rounded-2xl border border-amber-300" />
-    <div className="w-96 h-36 left-[21px] top-[1309px] absolute rounded-2xl border border-amber-300" />
-    <div className="w-48 left-[70px] top-[853px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-relaxed">Years Warranty</div>
-    <div className="left-[31px] top-[844px] absolute justify-center text-stone-800 text-3xl font-bold font-['Manrope'] leading-10">10</div>
-    <div className="w-96 h-14 left-[31px] top-[891px] absolute justify-center text-stone-800 text-xs font-normal font-['Manrope'] leading-none">Every material we use and every detail we craft comes backed with a 10-year warranty — because timeless interiors deserve timeless trust.</div>
-    <div className="w-96 left-[19px] top-[761px] absolute justify-center text-stone-800 text-sm font-normal font-['Manrope'] leading-tight">We don’t just deliver projects, we deliver <br/>experiences that last.</div>
-    <div className="left-[31px] top-[1008px] absolute justify-center text-stone-800 text-3xl font-bold font-['Manrope'] leading-10">0%</div>
-    <div className="w-10 left-[86px] top-[1014px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-relaxed">EMI</div>
-    <div className="w-96 left-[34px] top-[1055px] absolute justify-center text-stone-800 text-xs font-normal font-['Manrope'] leading-tight">Every material we use and every detail we craft comes backed with a 10-year warranty — because timeless interiors deserve timeless trust.</div>
-    <div className="w-96 left-[34px] top-[1206px] absolute justify-center text-stone-800 text-xs font-normal font-['Manrope'] leading-tight">Every material we use and every detail we craft comes backed with a 10-year warranty — because timeless interiors deserve timeless trust.</div>
-    <div className="w-96 left-[34px] top-[1365px] absolute justify-center text-stone-800 text-xs font-normal font-['Manrope'] leading-tight">Every material we use and every detail we craft comes backed with a 10-year warranty — because timeless interiors deserve timeless trust.</div>
-    <div className="w-60 left-[34px] top-[1164px] absolute justify-center text-stone-800 text-3xl font-bold font-['Manrope'] leading-loose">Factory Finish</div>
-    <div className="left-[34px] top-[1322px] absolute justify-center text-stone-800 text-3xl font-bold font-['Manrope'] leading-10">34</div>
-    <div className="w-32 left-[78px] top-[1329px] absolute justify-center text-stone-800 text-xl font-normal font-['Manrope'] leading-relaxed">Days Delivery</div>
-    <div className="w-6 h-0 left-[54px] top-[2794px] absolute origin-top-left rotate-90 outline outline-1 outline-offset-[-0.50px] outline-amber-300"></div>
-    <div className="w-6 h-0 left-[54px] top-[3939px] absolute origin-top-left rotate-90 outline outline-1 outline-offset-[-0.50px] outline-amber-300"></div>
-</div>
-
-
-
-
-
 'use client';
 
 import React, { useState, useEffect } from "react";
@@ -209,6 +8,7 @@ import NavMore from "../NavMore";
 
 const Herosection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const heroSlides = [
     {
@@ -231,6 +31,12 @@ const Herosection: React.FC = () => {
     }
   ];
 
+  const mobileTexts = [
+    "From Vision To Reality Interiors in 34 Days",
+    "Get Your Home Interior Cost Estimate Today", 
+    "From Floor Plan to Lifestyle Home, Uniquely Built"
+  ];
+
   // Auto-slide effect
   useEffect(() => {
     const interval = setInterval(() => {
@@ -241,7 +47,9 @@ const Herosection: React.FC = () => {
   }, [heroSlides.length]);
 
   return (
-    <div className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative">
+    <div>
+      {/* Desktop Version */}
+      <div className="hidden md:block w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative">
       {/* Background Image Carousel */}
       <div className="absolute inset-0">
         {heroSlides.map((slide, index) => (
@@ -257,7 +65,7 @@ const Herosection: React.FC = () => {
 
       {/* Navbar */}
       <div className="relative z-10 flex items-center justify-between -mt-15">
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 ml-2" />
         <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
           <OfferingsDropdown textColor="text-white" />
           <ExploreRoomsDropdown textColor="text-white" />
@@ -290,13 +98,84 @@ const Herosection: React.FC = () => {
             }`}
           />
         ))}
+        </div>
       </div>
 
-        {/* Mobile version is intentionally blank */}
-        <div className="block md:hidden">
-          {/* Mobile content will be added later */}
-        </div>
+       {/* Mobile Version - Different Design */}
+       <div className="block md:hidden">
+          <div>
+           <div className="w-auto h-[540px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+             {/* Mobile Header */}
+             <div className="relative z-20 flex items-center justify-between p-4">
+               <img src="/redlogo.png" className="w-[135px] h-[140px] pb-6 -mt-8 pr-14 "></img>
+               
+               {/* Hamburger Menu Button */}
+               <button 
+                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                 className="text-white pr-10 mb-10"
+               >
+                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                 </svg>
+               </button>
+             </div>
 
+             {/* Mobile Navigation Menu */}
+             {isMobileMenuOpen && (
+               <div className="absolute top-0 right-0 w-80 h-full bg-white/95 backdrop-blur-sm z-30 rounded-[35px] overflow-hidden">
+                 <div className="p-6 pt-20">
+                   {/* Close Button */}
+                   <button 
+                     onClick={() => setIsMobileMenuOpen(false)}
+                     className="absolute top-4 right-4 text-gray-600 p-2"
+                   >
+                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                     </svg>
+                   </button>
+
+                   {/* Navigation Items */}
+                   <div className="space-y-6">
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">OFFERINGS</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Full Home Interior</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Modular Interior</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Home Renovation</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Space Management</p>
+                       </div>
+                     </div>
+
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">EXPLORE ROOMS</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Modular Kitchen</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Bedroom</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Living Room</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Kids Room</p>
+                       </div>
+                     </div>
+
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">MORE</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">About Us</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Projects</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Blog</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Contact</p>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             )}
+             
+             <img className="w-full h-[550px] rounded-4xl relative -mt-40" src={`/hh1${currentSlide + 1}.png`} />
+             <div className="-mt-60 w-[350px] text-left text-4xl font-semibold text-white ml-10 wulkan-display-bold absolute">{mobileTexts[currentSlide]}</div>
+             <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl -mt-12 ml-10 manrope-medium absolute">Explore Models</button>
+           </div>
+          </div>
+       </div>
     </div>
   );
 };

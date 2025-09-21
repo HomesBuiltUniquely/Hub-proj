@@ -48,14 +48,35 @@ const Herosection: React.FC = () => {
 
   return (
     <div>
-      {/* Desktop Version */}
-      <div className="hidden md:block w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative">
+      <style jsx>{`
+        /* Hide both sections by default on mobile */
+        .desktop-1440,
+        .desktop-1280 {
+          display: none;
+        }
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
+
+        /* Show 1440px section for screens 1440px and above */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block;
+          }
+        }
+      `}</style>
+      {/* Desktop Version - For screens 1440px and above */}
+      <div className="desktop-1440 w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
       {/* Background Image Carousel */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 w-[1440px]">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            className={`absolute inset-0 bg-cover transition-opacity duration-1000 ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ backgroundImage: `url('${slide.image}')` }}
@@ -65,7 +86,7 @@ const Herosection: React.FC = () => {
 
       {/* Navbar */}
       <div className="relative z-10 flex items-center justify-between -mt-15">
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 ml-2" />
+        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" />
         <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
           <OfferingsDropdown textColor="text-white" />
           <ExploreRoomsDropdown textColor="text-white" />
@@ -99,6 +120,63 @@ const Herosection: React.FC = () => {
           />
         ))}
         </div>
+      </div>
+
+{/* laptop */}
+      <div>
+
+      <div className="desktop-1280 max-w-[1280px] h-[800px] mx-auto rounded-3xl overflow-hidden relative">
+      {/* Background Image Carousel */}
+      <div className="absolute inset-0">
+        {heroSlides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000  ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ backgroundImage: `url('${slide.image}')` }}
+          />
+        ))}
+      </div>
+
+      {/* Navbar */}
+      <div className="relative z-10 flex items-center justify-between -mt-15">
+        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 ml-3" />
+        <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5">
+          <OfferingsDropdown textColor="text-white" />
+          <ExploreRoomsDropdown textColor="text-white" />
+          <NavMore textColor="text-white" />
+        </div>
+        <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
+      </div>
+
+      {/* Hero content */}
+      <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
+        <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
+          {heroSlides[currentSlide].title} 
+        </h1>
+       
+        <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-160 mt-4 transition-all duration-1000 manrope-medium">
+          {heroSlides[currentSlide].buttonText}
+        </button>
+      </div>
+
+      {/* Carousel Indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-white scale-110' 
+                : 'bg-white/50 hover:bg-white/60'
+            }`}
+          />
+        ))}
+        </div>
+      </div>
+        
       </div>
 
        {/* Mobile Version - Different Design */}
