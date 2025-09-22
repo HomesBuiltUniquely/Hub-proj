@@ -21,19 +21,19 @@ export default function Section3() {
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//2.jpg",
             type: "3 BHK",
-            price: "Starting @ 3.8L*"
+            price: "Starting @ 4.0L*"
         },
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.jpg",
             type: "2 BHK",
-            price: "Starting @ 2.8L*"
+            price: "Starting @ 3.0L*"
         },
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064686.jpeg",
             type: "Modular Kitchen",
             price: "Starting @ 1.25L*"
         },
-       
+    
     ];
 
     // Auto slide effect
@@ -56,11 +56,11 @@ export default function Section3() {
                     <div className='w-[850px]'>
                         <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[490px]">Homes For Every Budget</div>
                         <div className="ml-10 mt-10">
-                            <p className="text-[28px] tracking-wide">Whether you dream of a stylish modular</p>
-                            <p className="text-[28px] tracking-wide">kitchen or a stunning home interior </p>
-                            <p className="text-[28px] tracking-wide">designed for comfort and elegance we</p>
-                            <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
-                            <p className="text-[28px] tracking-wide">budget</p>
+                            <p className="text-[28px] tracking-wide">From cozy living rooms to elegant bedrooms and stylish modular kitchens,</p>
+                            <p className="text-[28px] tracking-wide">we craft dream home interiors that blend comfort, </p>
+                            <p className="text-[28px] tracking-wide">beauty, and functionality, creating spaces you'll love.</p>
+                            {/* <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
+                            <p className="text-[28px] tracking-wide">budget</p> */}
                             <button 
                                 onClick={scrollToForm}
                                 className="text-white bg-red-500 mt-12 w-[300px] h-[50px] font-bold rounded-full text-[20px] hover:bg-red-600 transition-colors"
@@ -108,16 +108,16 @@ export default function Section3() {
             <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[900px] bg-[#f1f2f6]">
                 <div className="flex">
                     <div className="w-1 h-25 bg-amber-300 mt-10 ml-4"></div>
-                    <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium">Homes For Every Budget</h1>
+                    <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium">Homes For Every Lifestyle</h1>
                 </div>
-                <div className="ml-5 mt-5">
-                    <p>Whether you dream of a stylish modular kitchen or a
-                       stunning home interior designed for comfort and
-                       elegance we create spaces you&#39;ll love within your budget</p>
+                <div className="ml-5 mt-5 manrope-medium">
+                    <p>From cozy living rooms to elegant bedrooms and stylish modular
+                    kitchens, we craft dream home
+                    interiors that blend comfort, beauty, and functionality, creating spaces you'll love.</p>
                 </div>
                 {/* Stacked Card Carousel */}
                 <div className='flex justify-center'>
-                  <div className="mt-10 relative h-[400px] w-full max-w-[280px]">
+                <div className="mt-10 relative h-[400px] w-full max-w-[280px]">
                     {slides.map((slide, idx) => {
                         // Show only the top 3 cards in the stack for performance
                         const isTop = idx === currentSlide;

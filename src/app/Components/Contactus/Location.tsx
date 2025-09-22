@@ -25,7 +25,7 @@ const locations = [
 
 const Locations: React.FC = () => (
   <section className="my-10 m-12">
-    <div className="max-w-screen-2xl mx-auto rounded-3xl overflow-hidden shadow-lg bg-[url('/bn.jpg')] bg-cover bg-center relative">
+    <div className=" hidden md:block max-w-screen-2xl mx-auto rounded-3xl overflow-hidden shadow-lg bg-[url('/bn.jpg')] bg-cover bg-center relative">
       <div className="bg-black/50 py-14 px-6">
         <h2 className="text-white text-3xl font-extrabold mb-1 pl-12">Our Locations</h2>
         <p className="text-white mb-8 pl-12">Find HUB location near you.</p>

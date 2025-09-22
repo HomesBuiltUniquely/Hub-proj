@@ -112,7 +112,7 @@ export function Section4(){
               
               {expandedCards['faq-1'] && (
                 <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                 <ul className="list-decimal pl-5 space-y-2 text-gray-800">
+                <ul className="list-decimal pl-5 space-y-2 text-gray-800">
   <li className="font-bold">
     Boiling Waterproof Plywood
     <ul className="list-disc pl-5 manrope-medium">
@@ -238,7 +238,7 @@ export function Section4(){
               
               {expandedCards['faq-3'] && (
                 <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                 <ul className="list-decimal pl-5 space-y-2 text-gray-800">
+                <ul className="list-decimal pl-5 space-y-2 text-gray-800">
   <li className="font-bold">
     10-Year Warranty
     <ul className="list-disc pl-5 manrope-medium">

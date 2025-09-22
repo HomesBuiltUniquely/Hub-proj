@@ -23,8 +23,9 @@ const enquiries = [
   }
 ];
 
+{/* Desktop version */}
 const HelpCenter: React.FC = () => (
-  <section className="max-w-screen-2xl mx-auto mt-10 px-4">
+  <section className="hidden md:block max-w-screen-2xl mx-auto mt-10 px-4">
     <h2 className="text-3xl font-extrabold mb-2 text-gray-800 mt-20">Connect With The Right Team</h2>
     <div className="flex flex-col md:flex-row gap-6 h-[180px] mt-10">
       {enquiries.map((item) => (
@@ -38,5 +39,27 @@ const HelpCenter: React.FC = () => (
     </div>
   </section>
 );
+
+{/* Mobile version */}
+  <section className="block md:hidden max-w-md mx-auto mt-10 px-4">
+    <h2 className="text-2xl font-bold mb-4 text-gray-800">
+        Connect With The Right Team
+    </h2>
+    <div className="flex flex-col gap-4 mt-6">
+      {enquiries.map((item) => (
+        <div
+          key={item.title}
+          className="bg-[#ddcdc1] rounded-xl p-4 flex justify-between items-center">
+          <div>
+            <div className="font-semibold text-base">{item.title}</div>
+            <div className="text-sm text-gray-600">{item.description}</div>
+          </div>
+          <div className="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow">
+            <span className="text-xl text-amber-950">&#8594;</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 
 export default HelpCenter;

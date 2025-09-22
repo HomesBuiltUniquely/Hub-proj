@@ -1,7 +1,7 @@
 import React from "react";
 
 const ContactSection: React.FC = () => (
-  <div className="bg-gray-100  h-[750px] pb-8">
+  <div className="hidden md:block bg-gray-100  h-[750px] pb-8">
     {/* Top Section: Headline + Form */}
     <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8 pt-12 px-4">
       {/* Left: Heading and subtext */}
