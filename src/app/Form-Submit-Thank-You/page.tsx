@@ -144,9 +144,9 @@ export default function ThankUPage() {
           {(userData.email || userData.phone) && (
             <div className="absolute top-80 md:top-112 lg:top-120 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg max-w-md w-full mx-4">
               <h3 className="text-lg font-semibold text-gray-800 mb-3 text-center">Appointment Details:</h3>
-              {userData.name && <p id="desktop-name" className="text-gray-700 mb-2 text-center"><span className="font-medium">Name:</span> <span id="desktop-user-name">{userData.name}</span></p>}
-              {userData.email && <p id="desktop-email" className="text-gray-700 mb-2 text-center"><span className="font-medium">Email:</span> <span id="desktop-user-email">{userData.email}</span></p>}
-              {userData.phone && <p id="desktop-phone" className="text-gray-700 text-center"><span className="font-medium">Phone:</span> <span id="desktop-user-phone">{userData.phone}</span></p>}
+              {userData.name && <p id="desktop-name" className="text-gray-700 mb-2 text-center"><span className="font-medium">Name:</span> <span id="user-name">{userData.name}</span></p>}
+              {userData.email && <p id="desktop-email" className="text-gray-700 mb-2 text-center"><span className="font-medium">Email:</span> <span id="user-email">{userData.email}</span></p>}
+              {userData.phone && <p id="desktop-phone" className="text-gray-700 text-center"><span className="font-medium">Phone:</span> <span id="user-phone">{userData.phone}</span></p>}
             </div>
           )}
           
@@ -197,9 +197,9 @@ export default function ThankUPage() {
               <div className="bg-white rounded-2xl p-6 shadow-lg w-full max-w-sm">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">Appointment Details:</h3>
                 <div className="space-y-2">
-                  {userData.name && <p id='name' className="text-gray-700 text-center"><span className="font-medium">Name:</span> {userData.name}</p>}
-                  {userData.email && <p id="email1" className="text-gray-700 text-center"><span className="font-medium">Email:</span> {userData.email}</p>}
-                  {userData.phone && <p id="phone1" className="text-gray-700 text-center"><span className="font-medium">Phone:</span> {userData.phone}</p>}
+                  {userData.name && <p id='user-name' className="text-gray-700 text-center"><span className="font-medium">Name:</span> {userData.name}</p>}
+                  {userData.email && <p id="user-email" className="text-gray-700 text-center"><span className="font-medium">Email:</span> {userData.email}</p>}
+                  {userData.phone && <p id="user-phone" className="text-gray-700 text-center"><span className="font-medium">Phone:</span> {userData.phone}</p>}
                 </div>
               </div>
             )}
