@@ -58,7 +58,7 @@ export default function Section3() {
                         <div className="ml-10 mt-10">
                             <p className="text-[30px] manrope-medium tracking-wide">From cozy living rooms to elegant bedrooms and stylish modular kitchens,</p>
                             <p className="text-[30px] manrope-medium tracking-wide">we craft dream home interiors that blend comfort, </p>
-                            <p className="text-[30px] manrope-medium tracking-wide">beauty, and functionality, creating spaces you'll love.</p>
+                            <p className="text-[30px] manrope-medium tracking-wide">beauty, and functionality, creating spaces youll love.</p>
                             {/* <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
                             <p className="text-[28px] tracking-wide">budget</p> */}
                             <button 
@@ -113,7 +113,7 @@ export default function Section3() {
                 <div className="ml-5 mt-5 manrope-medium">
                     <p>From cozy living rooms to elegant bedrooms and stylish modular
                     kitchens, we craft dream home
-                    interiors that blend comfort, beauty, and functionality, creating spaces you'll love.</p>
+                    interiors that blend comfort, beauty, and functionality, creating spaces you&#39;ll love.</p>
                 </div>
                 {/* Stacked Card Carousel */}
                 <div className='flex justify-center'>
