@@ -36,7 +36,7 @@ export default function Section6() {
             link: "/Project"
         },
         {
-            title: "Elegant Space",
+            title: "Elegance Space",
             subtitle: "2 BHK",
             image: "/img5.jpg",
             link: "/Project"
