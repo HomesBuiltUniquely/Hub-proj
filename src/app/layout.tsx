@@ -124,6 +124,7 @@ export default function RootLayout({
         {/* Vercel Analytics */}
         <Analytics />
       </body>
+      
     </html>
   );
 }

@@ -88,6 +88,19 @@ export default function ThankUPage() {
   return (
     <div>
       <Script
+        id="user-data-conversion-tracking"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            gtag('set', 'user_data', {
+              "email": document.querySelector('#desktop-user-email').innerText
+            });
+            gtag('event', 'conversion', {'send_to': 'AW-17366893543/rwiHCL3ygvMaEOeHl9lA'});
+          `,
+        }}
+      />
+
+      <Script
         id="google-conversion-tracking"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{

@@ -1,9 +1,9 @@
 import React from "react";
 
 const ContactSection: React.FC = () => (
-  <div className="bg-gray-100  h-[750px] pb-8">
+  <div className="bg-gray-100 min-h-[750px] pb-16">
     {/* Top Section: Headline + Form */}
-    <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8 pt-12 px-4">
+    <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8 pt-12 pb-8 px-4">
       {/* Left: Heading and subtext */}
       <div className="md:w-1/2 mb-10 md:mb-0">
         <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-8 leading-tight">
@@ -51,7 +51,7 @@ const ContactSection: React.FC = () => (
     </div>
 
     {/* Bottom Section: Office and Social */}
-    <div className="max-w-6xl mx-auto mt-20 bg-[#DDCDC1] rounded-3xl px-8 py-10 flex flex-col md:flex-row justify-between items-start gap-8">
+    <div className="max-w-6xl mx-auto mt-16 mb-8 bg-[#DDCDC1] rounded-3xl px-8 py-10 flex flex-col md:flex-row justify-between items-start gap-8">
       {/* Corporate Office */}
       <div>
         <h2 className="text-xl font-bold text-white mb-6">Corporate Office</h2>
