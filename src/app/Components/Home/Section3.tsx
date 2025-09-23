@@ -96,10 +96,10 @@ export default function Section3() {
                         </button>
                     </div>
 
-                    <div className="absolute right-0 top-[250px] transform -translate-y-1/2 z-10">
+                    <div className="absolute right-0 top-[250px] transform -translate-y-1/2 z-10 ">
                         <button 
                             onClick={nextSlide}
-                            className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors -mr-15"
+                            className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors -mr-10"
                         >
                             <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -223,7 +223,7 @@ export default function Section3() {
                     </div>
 
                     {/* Service Cards */}
-                    <div className="overflow-hidden w-[1090px] ml-19">
+                    <div className="overflow-hidden w-[1090px] ml-16">
                         <div 
                             className="flex gap-6 transition-transform duration-500 ease-in-out"
                             style={{ 

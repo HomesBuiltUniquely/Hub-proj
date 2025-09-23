@@ -227,12 +227,12 @@ export default function Section3() {
         },
         {
             img: "j2.webp",
-            type: "Modern Asthetic Interior",
+            type: "Modern Aesthetic Interior",
            
         },
         {
             img: "j3.webp",
-            type: "Wodden Traditional Interior",
+            type: "Wooden Traditional Interior",
            
         },
         {

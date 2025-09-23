@@ -1,183 +1,195 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import OfferingsDropdown from "../OfferingsDropdown";
-import ExploreRoomsDropdown from "../ExploreRooms";
-import NavMore from "../NavMore";
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const Herosection: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  const heroSlides = [
-    {
-      image: "/hh1.png",
-      title: "From Floor Plan to Lifestyle Home, Uniquely Built",
-      subtitle: "Innovative Interior Design",
-      buttonText: "Explore Designs"
-    },
-    {
-      image: "/hh2.png", 
-      title: " Get Your Home Interior Cost Estimate Today",
-      subtitle: "a Kitchen That Inspires",
-      buttonText: "Explore Models"
-    },
-    {
-      image: "/hh3.png",
-      title: "From Vision to Reality — Interiors in 34 Days",
-      subtitle: "Living Space Today",
-      buttonText: "Explore Designs"
-    }
-  ];
+export default function Section6() {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    
+    const projects = [
+        {
+            title: "Classic Minimal",
+            subtitle: "2 BHK",
+            image: "/img3.jpg",
+            link: "/Project"
+        },
+        {
+            title: "Modern Living",
+            subtitle: "3 BHK", 
+            image: "/bed1.jpg",
+            link: "/Project"
+        },
+        {
+            title: "Contemporary Style",
+            subtitle: "2 BHK",
+            image: "/kids1.jpg",
+            link: "/Project"
+        },
+        {
+            title: "Luxury Design",
+            subtitle: "4 BHK",
+            image: "/1.png",
+            link: "/Project"
+        },
+        {
+            title: "Elegant Space",
+            subtitle: "2 BHK",
+            image: "/img5.jpg",
+            link: "/Project"
+        }
+    ];
 
-  const mobileTexts = [
-    "From Vision To Reality Interiors in 34 Days",
-    "Get Your Home Interior Cost Estimate Today", 
-    "From Floor Plan to Lifestyle Home, Uniquely Built"
-  ];
+    const nextSlide = () => {
+        setCurrentSlide((prev) => {
+            const maxSlide = Math.max(0, projects.length - 4);
+            return prev < maxSlide ? prev + 1 : prev;
+        });
+    };
 
-  // Auto-slide effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 4000); // Change slide every 4 seconds
+    const prevSlide = () => {
+        setCurrentSlide((prev) => Math.max(0, prev - 1));
+    };
 
-    return () => clearInterval(interval);
-  }, [heroSlides.length]);
+    return (
+        <div>
+        <div className="hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-8">
+            <div className="max-w-7xl mx-auto">
+                {/* Header Section */}
+                <div className="flex justify-between items-start mb-12">
+                    <h1 className="text-4xl wulkan-display-bold text-gray-800 max-w-md">
+                        Recent Interior Design Projects
+                    </h1>
+                    
+                    {/* Navigation Controls */}
+                    <div className="flex gap-4">
+                        <button 
+                            onClick={prevSlide}
+                            className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                        >
+                            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button 
+                            onClick={nextSlide}
+                            className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                        >
+                            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
 
-  return (
-    <div>
-      {/* Desktop Version */}
-      <div className="hidden md:block w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative">
-      {/* Background Image Carousel */}
-      <div className="absolute inset-0">
-        {heroSlides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ backgroundImage: `url('${slide.image}')` }}
-          />
-        ))}
-      </div>
+                {/* Project Cards Carousel */}
+                <div className="relative">
+                    <div className="overflow-hidden">
+                        <div 
+                            className="flex gap-6 transition-transform duration-500 ease-in-out"
+                            style={{ 
+                                transform: `translateX(-${currentSlide * (280 + 24)}px)`,
+                                width: `${projects.length * (280 + 24)}px`
+                            }}
+                        >
+                            {projects.map((project, index) => (
+                                <Link key={index} href={project.link} className="group flex-shrink-0">
+                                    <div className="w-70 h-80 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                        
+                                        {/* Text Overlay */}
+                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                                            <h3 className="text-white text-xl font-bold mb-1">{project.title}</h3>
+                                            <p className="text-white/80 text-sm">{project.subtitle}</p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
-      {/* Navbar */}
-      <div className="relative z-10 flex items-center justify-between -mt-15">
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 ml-2" />
-        <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-          <OfferingsDropdown textColor="text-white" />
-          <ExploreRoomsDropdown textColor="text-white" />
-          <NavMore textColor="text-white" />
+                {/* Bottom Section */}
+                <div className="flex justify-between items-center mt-8">
+                    {/* Explore All Projects Button */}
+                    <Link href="/Project">
+                        <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
+                            Explore all projects
+                        </button>
+                    </Link>
+                </div>
+            </div>
         </div>
-        <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
-      </div>
+        {/* Mobile Version - Vertical Stacked Cards */}
+        <div className="block md:hidden">
+          <div className="bg-[#F1F2F6] py-8 px-4 w-full">
+            {/* Mobile Title */}
+            <div className="mb-8">
+              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-2">
+                Recent Interior Design Projects
+              </h1>
+            </div>
 
-      {/* Hero content */}
-      <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
-        <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
-          {heroSlides[currentSlide].title} 
-        </h1>
-       
-        <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-160 mt-4 transition-all duration-1000 manrope-medium">
-          {heroSlides[currentSlide].buttonText}
-        </button>
-      </div>
-
-      {/* Carousel Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
-        {heroSlides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide 
-                ? 'bg-white scale-110' 
-                : 'bg-white/50 hover:bg-white/60'
-            }`}
-          />
-        ))}
-        </div>
-      </div>
-
-       {/* Mobile Version - Different Design */}
-       <div className="block md:hidden">
-          <div>
-           <div className="w-auto h-[540px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
-             {/* Mobile Header */}
-             <div className="relative z-20 flex items-center justify-between p-4">
-               <img src="/redlogo.png" className="w-[135px] h-[140px] pb-6 -mt-8 pr-14 "></img>
-               
-               {/* Hamburger Menu Button */}
-               <button 
-                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                 className="text-white pr-10 mb-10"
-               >
-                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                 </svg>
-               </button>
-             </div>
-
-             {/* Mobile Navigation Menu */}
-             {isMobileMenuOpen && (
-               <div className="absolute top-0 right-0 w-80 h-full bg-white/95 backdrop-blur-sm z-30 rounded-[35px] overflow-hidden">
-                 <div className="p-6 pt-20">
-                   {/* Close Button */}
-                   <button 
-                     onClick={() => setIsMobileMenuOpen(false)}
-                     className="absolute top-4 right-4 text-gray-600 p-2"
-                   >
-                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                     </svg>
-                   </button>
-
-                   {/* Navigation Items */}
-                   <div className="space-y-6">
-                     <div>
-                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">OFFERINGS</h3>
-                       <div className="space-y-2 pl-4">
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Full Home Interior</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Modular Interior</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Home Renovation</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Space Management</p>
-                       </div>
-                     </div>
-
-                     <div>
-                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">EXPLORE ROOMS</h3>
-                       <div className="space-y-2 pl-4">
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Modular Kitchen</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Bedroom</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Living Room</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Kids Room</p>
-                       </div>
-                     </div>
-
-                     <div>
-                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">MORE</h3>
-                       <div className="space-y-2 pl-4">
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">About Us</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Projects</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Blog</p>
-                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Contact</p>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
+            {/* Vertical Project Cards */}
+            <div className="space-y-6 w-full max-w-sm mx-auto">
+               <div className='w-full max-w-sm mx-auto mt-5'>
+                <div className='relative h-80 rounded-3xl overflow-hidden shadow-xl'>
+                  <Image src="/img3.jpg" alt="Classic Minimal Interior" fill className="object-cover" />
+                </div>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl'>
+                    <h3 className="text-white text-xl font-bold mb-1">Classic Minimal</h3>
+                    <p className="text-white/80 text-sm">2 BHK</p>
+                </div>
                </div>
-             )}
-             
-             <img className="w-full h-[550px] rounded-4xl relative -mt-40" src={`/hh1${currentSlide + 1}.png`} />
-             <div className="-mt-60 w-[350px] text-left text-4xl font-semibold text-white ml-10 wulkan-display-bold absolute">{mobileTexts[currentSlide]}</div>
-             <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl -mt-12 ml-10 manrope-medium absolute">Explore Models</button>
-           </div>
+            <div className='w-full max-w-sm mx-auto mt-5'>
+                <img src="/bed1.jpg" className='relative w-full h-80 rounded-3xl overflow-hidden shadow-xl '></img>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl ml-2'>
+                    <h3 className="text-white text-xl font-bold mb-1">Modern Living</h3>
+                    <p className="text-white/80 text-sm">3 BHK</p>
+                </div>
+               </div>
+            </div>
+            <div>
+               <div className='w-full max-w-sm mx-auto mt-5'>
+                <img src="/kids1.jpg" className='relative w-full h-80 rounded-3xl overflow-hidden shadow-xl '></img>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl ml-2'>
+                    <h3 className="text-white text-xl font-bold mb-1">Contemporary Style</h3>
+                    <p className="text-white/80 text-sm">2 BHK</p>
+                </div>
+               </div>
+            </div>
+            <div>
+               <div className='w-full max-w-sm mx-auto mt-5'>
+                <img src="/1.png" className='relative w-full h-80 rounded-3xl overflow-hidden shadow-xl '></img>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl ml-2'>
+                    <h3 className="text-white text-xl font-bold mb-1">Luxury Design</h3>
+                    <p className="text-white/80 text-sm">4 BHK</p>
+                </div>
+               </div>
+            </div>
+               <div className='w-full max-w-sm mx-auto mt-5'>
+                <img src="/img5.jpg" className='relative w-full h-80 rounded-3xl overflow-hidden shadow-xl '></img>
+                <div className='absolute -mt-30 bg-black/40 w-[250px] p-6 rounded-4xl ml-2'>
+                    <h3 className="text-white text-xl font-bold mb-1">Elegant Space</h3>
+                    <p className="text-white/80 text-sm">2 BHK</p>
+                </div>
+               </div>
+            </div>
+            
+            {/* Explore All Projects Button */}
+            <div className="flex justify-center mt-8">
+              <Link href="/Project">
+                <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
+                  Explore all projects
+                </button>
+              </Link>
+            </div>
           </div>
-       </div>
-    </div>
-  );
-};
-
-export default Herosection;
+        </div>
+    );
+}

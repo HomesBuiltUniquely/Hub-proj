@@ -187,7 +187,7 @@ export default function Section2() {
             </div>
 
             {/* Mobile Stacked Cards */}
-            <div className="relative w-[320px] h-[450px] mx-auto mt-10">
+            <div className="relative w-[280px] h-[450px] mx-auto mt-10">
               {/* Card Stack - Show 3 cards stacked */}
               {roomCards.map((room, index) => {
                 const isActive = index === currentSlide;

@@ -49,9 +49,11 @@ const Herosection: React.FC = () => {
   return (
     <div>
       <style jsx>{`
-        /* Hide both sections by default on mobile */
+        /* Hide all sections by default */
         .desktop-1440,
-        .desktop-1280 {
+        .desktop-1280,
+        .mobile-small,
+        .mobile-large {
           display: none;
         }
 
@@ -65,6 +67,20 @@ const Herosection: React.FC = () => {
         /* Show 1440px section for screens 1440px and above */
         @media (min-width: 1440px) {
           .desktop-1440 {
+            display: block;
+          }
+        }
+
+        /* Show small mobile version for screens 320px to 479px */
+        @media (min-width: 320px) and (max-width: 479px) {
+          .mobile-small {
+            display: block;
+          }
+        }
+
+        /* Show large mobile version for screens 480px to 767px */
+        @media (min-width: 480px) and (max-width: 767px) {
+          .mobile-large {
             display: block;
           }
         }
@@ -181,22 +197,27 @@ const Herosection: React.FC = () => {
 
        {/* Mobile Version - Different Design */}
        <div className="block md:hidden">
-          <div>
-           <div className="w-auto h-[540px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+
+          {/* Mobile Version 1 - Small Mobile (320px to 479px) */}
+           <div className="mobile-small w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
              {/* Mobile Header */}
-             <div className="relative z-20 flex items-center justify-between p-4">
-               <img src="/redlogo.png" className="w-[135px] h-[140px] pb-6 -mt-8 pr-14 "></img>
+            <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
+
+            <div className="relative z-20 flex items-center justify-between mt-4 ">
+               <img src="/redlogo.png" className="w-[110px] h-[120px] pb-6 -mt-5 mb-7 pr-6"></img>
                
                {/* Hamburger Menu Button */}
                <button 
                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                 className="text-white pr-10 mb-10"
+                 className="text-white pr-8 mb-10"
                >
                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                  </svg>
                </button>
              </div>
+             
+            </div>
 
              {/* Mobile Navigation Menu */}
              {isMobileMenuOpen && (
@@ -248,11 +269,86 @@ const Herosection: React.FC = () => {
                </div>
              )}
              
-             <img className="w-full h-[550px] rounded-4xl relative -mt-40" src={`/hh1${currentSlide + 1}.png`} />
-             <div className="-mt-60 w-[350px] text-left text-4xl font-semibold text-white ml-10 wulkan-display-bold absolute">{mobileTexts[currentSlide]}</div>
-             <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl -mt-12 ml-10 manrope-medium absolute">Explore Models</button>
+             <img className="w-[330px] h-[500px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+             <div className="-mt-62 w-[300px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-10">{mobileTexts[currentSlide]}</div>
+             <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl -mt-6 ml-10 manrope-medium absolute">Explore Models</button>
            </div>
-          </div>
+             {/* Mobile Version 2 - Large Mobile (480px to 767px) */}
+            <div className="mobile-large w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+             {/* Mobile Header */}
+            <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
+
+            <div className="relative z-20 flex items-center justify-between mt-4 ">
+               <img src="/redlogo.png" className="w-[110px] h-[120px] pb-6 -mt-5 mb-7 pr-8"></img>
+               
+               {/* Hamburger Menu Button */}
+               <button 
+                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                 className="text-white pr-8 mb-10"
+               >
+                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                 </svg>
+               </button>
+             </div>
+             
+            </div>
+
+             {/* Mobile Navigation Menu */}
+             {isMobileMenuOpen && (
+               <div className="absolute top-0 right-0 w-80 h-full bg-white/95 backdrop-blur-sm z-30 rounded-[35px] overflow-hidden">
+                 <div className="p-6 pt-20">
+                   {/* Close Button */}
+                   <button 
+                     onClick={() => setIsMobileMenuOpen(false)}
+                     className="absolute top-4 right-4 text-gray-600 p-2"
+                   >
+                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                     </svg>
+                   </button>
+
+                   {/* Navigation Items */}
+                   <div className="space-y-6">
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">OFFERINGS</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Full Home Interior</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Modular Interior</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Home Renovation</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Space Management</p>
+                       </div>
+                     </div>
+
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">EXPLORE ROOMS</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Modular Kitchen</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Bedroom</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Living Room</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Kids Room</p>
+                       </div>
+                     </div>
+
+                     <div>
+                       <h3 className="text-lg font-semibold text-gray-800 mb-3 manrope">MORE</h3>
+                       <div className="space-y-2 pl-4">
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">About Us</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Projects</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Blog</p>
+                         <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">Contact</p>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             )}
+             
+             <img className="w-[340px] h-[500px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+             <div className="-mt-62 w-[300px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
+             <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl -mt-6 ml-10 manrope-medium absolute">Explore Models</button>
+           </div>
+          
        </div>
     </div>
   );
