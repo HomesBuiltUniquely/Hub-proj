@@ -25,7 +25,7 @@ const locations = [
 ];
 
 // Function to render direction button with consistent styling
-const renderDirectionButton = (loc: any) => {
+const renderDirectionButton = (loc: { name: string; description: string; mapUrl: string }) => {
   return (
     <a href={loc.mapUrl} target="_blank" rel="noopener noreferrer"
        className="inline-block bg-yellow-200 px-4 py-2 rounded-md font-semibold shadow text-gray-800 mt-10">
