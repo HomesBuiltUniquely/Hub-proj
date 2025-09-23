@@ -1,4 +1,5 @@
-import Footer from "../Components/Policy/Footer";
+
+import Footer from "../Components/Home/Footer";
 import PolicyHeroSimple from "../Components/Policy/Herosection";
 import LegalSection from "../Components/Policy/PSection1";
 

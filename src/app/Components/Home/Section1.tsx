@@ -30,7 +30,7 @@ export default function Section1() {
       `}</style>
       
     <div className="desktop-1440 w-full h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block desktop-1440">
-      <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto marope-medium">
+      <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto manrope-medium">
        HUB Interior is India’s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
       </h1>
       <div className="bg-[#F1F2F6] w-[1350px] h-auto  grid grid-cols-4 mt-10 ml-8 gap-20 2xl:mx-auto">

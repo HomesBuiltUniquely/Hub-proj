@@ -22,12 +22,12 @@ const getContent = (tab: string) => {
   switch (tab) {
     case "privacy":
       return (
-        <div className="space-y-5 text-gray-700 text-base">
+        <div className="space-y-4 md:space-y-5 text-gray-700 text-sm md:text-base leading-relaxed">
           <p>
-            <span className="font-semibold">Hubinterior.com</span> is a website owned by <span className="font-semibold">BRIGHTSPACE CREATIONS PRIVATE LIMITED</span>, a company incorporated under the Indian Companies Act, 1956. Specifically, wherever the term “HUB” or “HUB interior” or “hubinterior.com” is used, it refers to Brightside Innotech LLP, along with its subsidiaries, controlled entities, affiliates, and related parties. HUB interior provides the services through <span className="underline">www.hubinterior.com</span> (‘Website’ or ‘Site’).
+            <span className="font-semibold">Hubinterior.com</span> is a website owned by <span className="font-semibold">BRIGHTSPACE CREATIONS PRIVATE LIMITED</span>, a company incorporated under the Indian Companies Act, 1956. Specifically, wherever the term "HUB" or "HUB interior" or "hubinterior.com" is used, it refers to Brightside Innotech LLP, along with its subsidiaries, controlled entities, affiliates, and related parties. HUB interior provides the services through <span className="underline">www.hubinterior.com</span> ('Website' or 'Site').
           </p>
           <p>
-            In addition, at Hub Interior, we are highly committed to the privacy of your data and information while also providing excellent service to all of our customers and visitors of the Website. Thus, we have prepared this Data Protection and Privacy Policy (“Policy”) to inform you of the privacy principles that govern this Website.
+            In addition, at Hub Interior, we are highly committed to the privacy of your data and information while also providing excellent service to all of our customers and visitors of the Website. Thus, we have prepared this Data Protection and Privacy Policy ("Policy") to inform you of the privacy principles that govern this Website.
           </p>
           <p>
             Furthermore, unless restricted by applicable law, you agree that all your personal information collected by HUB interior through the Website may be used as well as disclosed as set out in this Policy.
@@ -39,10 +39,10 @@ const getContent = (tab: string) => {
       );
     case "cancellation":
       return (
-        <div className="text-gray-700 text-base">
+        <div className="text-gray-700 text-sm md:text-base leading-relaxed">
 
-          <ol className="list-decimal">
-            <li className="manrope mt-20">CANCELLATION POLICY: 0% – 10% Stage
+          <ol className="list-decimal pl-4 md:pl-6">
+            <li className="manrope mt-8 md:mt-20">CANCELLATION POLICY: 0% – 10% Stage
             <ul className="list-disc pl-5 pt-4 ">
               <li className="manrope">Full Refund within 7 Days
                 <ul className="list-disc pl-5 manrope-medium">
@@ -142,15 +142,15 @@ const getContent = (tab: string) => {
       );
     case "information-collected":
       return (
-        <div className="text-gray-700 text-base py-5 mt-10 ">
-          <h1 className="text-2xl manrope">Profile Information</h1>
+        <div className="text-gray-700 text-sm md:text-base py-3 md:py-5 mt-6 md:mt-10 leading-relaxed">
+          <h1 className="text-xl md:text-2xl manrope mb-4">Profile Information</h1>
           <p className="manrope-medium pt-4">HUB interior collects the details provided by you on registration (email address, name, password, phone number, address and some profile details and interests) together with information we learn about you from your use of our service and your visits to our Site. We also collect information about the transactions you undertake including details of payments and type of cards used. We will not collect and store information related to your credit cards such as number, expiry date and CVV number.</p>
           <p className="manrope-medium pt-4">We may collect additional information in connection with your participation in any promotions or competitions offered by us and information you provide when giving us feedback or completing profile forms. We also monitor customer traffic patterns and Site use, which enables us to improve the service we provide. We will collect only such information as is necessary and relevant to us to provide you with the services available on the Site.</p>
           <p className="manrope-medium">You can terminate your account at any time. However, your information may remain stored in archive on our servers even after the deletion or the termination of your account.</p>
-          <h1 className="text-2xl manrope pt-4">Anonymous Information</h1>
-          <div className="manrope-medium pt-4"> In addition to the information that you explicitly provide during your interactions on the Site, we will automatically receive and collect certain anonymous information in standard usage logs through our Web server, including computer-identification information obtained from “cookies” sent to your browser from:
+          <h1 className="text-xl md:text-2xl manrope pt-4 mb-4">Anonymous Information</h1>
+          <div className="manrope-medium pt-4"> In addition to the information that you explicitly provide during your interactions on the Site, we will automatically receive and collect certain anonymous information in standard usage logs through our Web server, including computer-identification information obtained from "cookies" sent to your browser from:
           </div>
-          <ol className="list-decimal pl-10 pt-4">
+          <ol className="list-decimal pl-6 md:pl-10 pt-4 space-y-2">
             <li>web server cookie stored on your hard drive</li>
             <li>an IP address, assigned to the computer which you use</li>
             <li>the domain server through which you access our service</li>
@@ -161,10 +161,10 @@ const getContent = (tab: string) => {
       );
     case "information-usage":
       return (
-        <div className="text-gray-700 text-base py-5 ">
-          <h1 className="text-2xl manrope">Information Usage</h1>
+        <div className="text-gray-700 text-sm md:text-base py-3 md:py-5 leading-relaxed">
+          <h1 className="text-xl md:text-2xl manrope mb-4">Information Usage</h1>
           <div className="manrope-medium pt-5">We use your personal information to allow it to process your registration, to process any orders that you may make for any products or services displayed on the Website, provide you with improved services, contact you when it is needed by telephone, facsimile and e-mail, and to advise you of products and services which may be of interest to you, inviting you to be a participant or a respondent to an online event that is hosted on Hubointerior.com. Further, the relevant information is used by HUB interior to</div>
-         <ul className="list-disc pl-10 pt-5">
+         <ul className="list-disc pl-6 md:pl-10 pt-5 space-y-2">
           <li>provide you with statements of your account;</li>
           <li>to communicate with you on any matter relating to the conduct of your account; and</li>
           <li>to communicate the details of any orders / processing of any orders placed by you relating to products displayed on the Website.</li>
@@ -270,9 +270,9 @@ const LegalSection = () => {
   const [activeTab, setActiveTab] = useState("privacy");
 
   return (
-    <section className="w-full mx-auto my-8 bg-[#f1f2f6] p-6 md:p-10 rounded-2xl">
+    <section className="w-full mx-auto my-4 md:my-8 bg-[#f1f2f6] p-4 md:p-6 lg:p-10 rounded-xl md:rounded-2xl">
       {/* Tabs */}
-      <div className="w-full max-w-7xl mx-auto mb-8">
+      <div className="w-full max-w-7xl mx-auto mb-6 md:mb-8">
         {/* Desktop Tabs - Horizontal Scroll */}
         <div className="hidden md:block">
           <div className="flex border border-blue-300 rounded-xl overflow-x-auto overflow-y-hidden">
@@ -296,25 +296,35 @@ const LegalSection = () => {
           </div>
         </div>
         
-        {/* Mobile Tabs - Dropdown */}
+        {/* Mobile Tabs - Enhanced Dropdown */}
         <div className="md:hidden">
-          <select
-            value={activeTab}
-            onChange={(e) => setActiveTab(e.target.value)}
-            className="w-full p-3 border border-blue-300 rounded-xl bg-white text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            {TABS.map((tab) => (
-              <option key={tab.value} value={tab.value}>
-                {tab.label}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={activeTab}
+              onChange={(e) => setActiveTab(e.target.value)}
+              className="w-full p-4 border-2 border-blue-300 rounded-xl bg-white text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none text-base"
+            >
+              {TABS.map((tab) => (
+                <option key={tab.value} value={tab.value}>
+                  {tab.label}
+                </option>
+              ))}
+            </select>
+            {/* Custom dropdown arrow */}
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
       
       {/* Content */}
       <div className="mx-auto max-w-4xl">
-        {getContent(activeTab)}
+        <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
+          {getContent(activeTab)}
+        </div>
       </div>
     </section>
   );

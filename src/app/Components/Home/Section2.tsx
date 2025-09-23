@@ -124,7 +124,7 @@ export default function Section2() {
                                         
                                         {/* Text Overlay */}
                                         <div className="absolute bottom-0 left-0 p-6">
-                                            <h3 className="text-white text-xl font-semibold mb-2">{room.title}</h3>
+                                            <h3 className="text-white text-xl manrope mb-2">{room.title}</h3>
                                         </div>
                                         
                                         {/* Action Icon */}

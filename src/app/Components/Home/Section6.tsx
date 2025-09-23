@@ -140,8 +140,8 @@ export default function Section6() {
                                         
                                         {/* Text Overlay */}
                                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                                            <h3 className="text-white text-xl font-bold mb-1">{project.title}</h3>
-                                            <p className="text-white/80 text-sm">{project.subtitle}</p>
+                                            <h3 className="text-white text-xl manrope mb-1">{project.title}</h3>
+                                            <p className="text-white/80 text-sm manrope-medium">{project.subtitle}</p>
                                         </div>
                                     </div>
                                 </Link>
