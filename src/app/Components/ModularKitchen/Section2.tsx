@@ -1,14 +1,15 @@
+
 "use client";
 
 import React, { useEffect, useRef } from "react";
 
 const kitchenAccessories = [
-  { img: "/k1.jpg", label: "Bottle pullout" },
+  { img: "/k1.jpg", label: "Bottle Pullout" },
   { img: "/k2.jpg", label: "Corner Solutions" },
   { img: "/k3.jpg", label: "Cutlery Tray" },
   { img: "/k4.jpg", label: "Detergent Rack" },
   { img: "/k5.jpg", label: "Pantry Pullout" },
-  { img: "/k6.jpg", label: "Plate holder" },
+  { img: "/k6.jpg", label: "Plate Holder" },
   { img: "/k7.jpg", label: "Tambour Unit" },
   { img: "/k8.jpg", label: "Tandem Box" },
   { img: "/k9.jpg", label: "Waste Bin" },
@@ -16,11 +17,11 @@ const kitchenAccessories = [
 ];
 
 const cabinetAccs = [
-  { img: "/c1.jpg", label: "shaker style Kitchen cabinets" },
-  { img: "/c2.jpg", label: "Slab Kitchen cabinets" },
-  { img: "/c3.jpg", label: "Glass Front Kitchen cabinets" },
-  { img: "/c4.jpg", label: "Inset Kitchen cabinets" },
-  { img: "/c5.webp", label: "Glossy Kitchen cabinets" },
+  { img: "/c1.jpg", label: "Shaker Style Kitchen Cabinets" },
+  { img: "/c2.jpg", label: "Slab Kitchen Cabinets" },
+  { img: "/c3.jpg", label: "Glass Front Kitchen Cabinets" },
+  { img: "/c4.jpg", label: "Inset Kitchen Cabinets" },
+  { img: "/c5.webp", label: "Glossy Kitchen Cabinets" },
 ];
 
 const CardSection = ({
@@ -50,7 +51,7 @@ const CardSection = ({
 
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
-      el.scrollLeft += e.deltaY * (-scrollDirection);
+      el.scrollLeft += e.deltaY * -scrollDirection;
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
@@ -61,58 +62,90 @@ const CardSection = ({
   }, [scrollDirection]);
 
   return (
-    <section className="w-screen py-12 bg-[#f1f2f6]">
-      <div className="flex flex-col items-center mb-8 px-2">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center">
-          {title}
-        </h2>
-        <p className="text-lg italic text-gray-500 mb-4 text-center">
-          {subtitle}
-        </p>
-        <button className="bg-gray-800 text-white px-7 py-2 rounded-full font-semibold text-base mb-6">
-          {buttonText}
-        </button>
-      </div>
-      {/* This is the key container for 2.5 cards */}
-      <div
-        ref={scrollRef}
-        className="
-          flex gap-7 overflow-x-auto scrollbar-none
-          px-2 md:px-0 pb-2
-          w-full
-          md:max-w-[1360px] mx-auto
-        "
-        style={{
-          paddingRight: "56px",
-        }}
-      >
-        {cards.map((card, idx) => (
-          <div
-            key={idx}
-            className="min-w-[350px] max-w-[350px] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
-            style={{
-              height: "400px",
-            }}
-          >
-            <img
-              src={card.img}
-              alt={card.label}
-              className="w-full h-[400px] object-cover transition duration-300"
-            />
-            <div className="px-6 pt-4 -mt-20">
-              <div className="h-[40px] inline-block bg-gray-100 rounded-full text-gray-800 px-4 py-2.5 text-sm font-bold">
-                {card.label}
+    <section className="w-full py-8 md:py-12 bg-[#f1f2f6]">
+      {/* Desktop Version */}
+      <div className="hidden md:block">
+        <div className="flex flex-col items-center mb-8 px-2">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center">
+            {title}
+          </h2>
+          <p className="text-lg italic text-gray-500 mb-4 text-center">
+            {subtitle}
+          </p>
+          <button className="bg-gray-800 text-white px-7 py-2 rounded-full font-semibold text-base mb-6">
+            {buttonText}
+          </button>
+        </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-2 w-full md:max-w-[1360px] mx-auto"
+          style={{ paddingRight: "56px" }}
+        >
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className="min-w-[350px] max-w-[350px] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+              style={{ height: "400px" }}
+            >
+              <img
+                src={card.img}
+                alt={card.label}
+                className="w-full h-[400px] object-cover transition duration-300"
+              />
+              <div className="px-6 pt-4 -mt-20">
+                <div className="h-[40px] inline-block bg-gray-100 rounded-full text-gray-800 px-4 py-2.5 text-sm font-bold">
+                  {card.label}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile Version (below 360px) */}
+      <div className="md:hidden px-4">
+        <div className="flex flex-col items-center mb-6">
+          <h2 className="text-2xl manrope-medium font-bold text-gray-900 mb-1 text-center">
+            {title}
+          </h2>
+          <p className="text-3xl wulkan-display italic text-gray-500 mb-4 text-center">
+            {subtitle}
+          </p>
+          <button className="bg-gray-800 text-white rounded-md manrope-medium px-5 py-2 font-semibold text-sm mb-4">
+            {buttonText}
+          </button>
+        </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto scrollbar-none px-2 pb-2 w-full"
+          style={{ paddingRight: "42px" }}
+        >
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className="min-w-[280px] max-w-[280px] bg-white rounded-[24px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+              style={{ height: "320px" }}
+            >
+              <img
+                src={card.img}
+                alt={card.label}
+                className="w-full h-[320px] object-cover transition duration-300"
+              />
+              <div className="px-4 pt-4 -mt-16">
+                <div className="h-[36px] inline-block bg-gray-100 rounded-full text-gray-800 px-3 py-2 text-xs font-bold">
+                  {card.label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
 const ModularKitchenShowcase: React.FC = () => (
-  <div className="bg-[#f9fafc] w-screen min-h-screen">
+  <div className="bg-[#f9fafc] w-screen min-h-screen -mt-10">
     <CardSection
       title="Elevate Your"
       subtitle="Everyday Essentials."

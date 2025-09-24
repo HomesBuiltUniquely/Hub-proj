@@ -33,7 +33,7 @@ export default function Section3() {
             type: "Modular Kitchen",
             price: "Starting @ 1.25L*"
         },
-    
+
     ];
 
     // Auto slide effect

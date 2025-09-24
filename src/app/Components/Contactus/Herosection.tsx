@@ -87,7 +87,7 @@ const ContactHeader: React.FC = () => {
     {/* Hero content */}
     <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-70 absolute top-0 left-0 right-0">
       <h1 className="text-5xl lg:text-6xl manrope drop-shadow-lg">How Can We Help You</h1>
-     
+
     </div>
   </div>
 
@@ -95,7 +95,7 @@ const ContactHeader: React.FC = () => {
   <div className="block md:hidden">
 
 
-    
+
 
   </div>
   </div>

@@ -1,33 +1,40 @@
 "use client"
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 // Demo data for wardrobes
 const wardrobes = [
   {
     img: "/kl1.jpeg",
-    label: "L Shape Modular Kitchen Interior – Smart design for modern homes.",
+    label: "LShape Modular Kitchen Interior",
+    subtitle: "Smart design for modern homes."
   },
   {
     img: "/kl2.jpeg",
-    label: "U Shape Kitchen Interior – Spacious, functional, and stylish.",
+    label: "U Shape Kitchen Interior",
+    subtitle: "Spacious, functional, and stylish."
   },
   {
     img: "/kl3.jpg",
-    label: "Straight Modular Kitchen Interior – Sleek, simple, and efficient.",
-  },
-  {
-    img: "/kl4.jpg",
-    label: "Parallel Modern Kitchen Interior – Perfect balance of comfort and workflow",
+    label: "Straight Modular Kitchen Interior",
+    subtitle: "Sleek, simple, and efficient."
   },
   {
     img: "/kl5.jpg",
-    label: "Island Kitchen Interior – A touch of luxury for everyday living.",
+    label: "Parallel Modern Kitchen Interior",
+    subtitle: "Perfect balance of comfort and workflow."
+  },
+  {
+    img: "/kl4.jpg",
+    label: "Island Kitchen Interior",
+    subtitle: "A touch of luxury for everyday living"
   },
 ];
 
+
 const Section1: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState(0); // For mobile selection
 
   const scroll = (dir: "left" | "right") => {
     if (scrollRef.current) {
@@ -39,12 +46,15 @@ const Section1: React.FC = () => {
     }
   };
 
+  const kitchenTypes = ["L Shape", "U Shape", "Straight", "Island"];
+
   return (
     <section className="w-full py-12 bg-[#f1f2f6]">
 
-    <div className="text-xl w-[1000px] text-center mx-auto mt-10">At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.</div>
+    {/*Desktop Version */}
+    <div className="hidden md:block text-xl w-[1000px] text-center mx-auto mt-10">At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.</div>
         
-      <div className="max-w-6xl mx-auto px-4 relative mt-30">
+      <div className="hidden md:block max-w-6xl mx-auto px-4 relative mt-30">
         {/* Heading */}
         <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
           <div>
@@ -95,18 +105,68 @@ const Section1: React.FC = () => {
                 />
                 <div className="p-4 flex items-center -mt-50 h-[270px]">
                   <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
+                  <div className="text-lg">
                     {item.label}<br/>
+                  </div>
+                  <div className="manrope-medium">{item.subtitle}</div>
                     <button className="border-1 border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
                   </span>
                 </div>
-               
               </div>
             ))}
           </div>
         </div>
       </div>
+      
+      {/*Mobile Version 360*/}
+      <div className="md:hidden px-4">
+        {/* Mobile Description */}
+          <div className="manrope-medium text-m h-[300px] w-[360px] mt-2 m-3">
+            At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
+          </div>
+
+          {/* Mobile Heading */}
+          <div>
+            <div className="flex relative mt-10 ">
+            <div className="w-[2px] h-[75px] bg-amber-300 mb-10 ml-4"></div>
+            <h2 className="h-10 text-3xl manrope-medium-bold text-gray-800 m-2">Kitchen Layout</h2>
+          </div>
+          </div>
+        <p className="ml-7 -mt-17 text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
+
+        {/* Mobile Glassmorphism Menu Bar */}
+        <div className="relative mb-6 mt-7">
+          <div className="mx-auto">
+          <div className="absolute top-0 left-0 w-[285px] bg-[#32261c]/70 rounded-md p-2 mt-3 flex justify-around text-gray-200/70 font-medium z-10 mx-8">
+              {kitchenTypes.map((type, idx) => (
+                <button key={idx} onClick={() => setSelected(idx)} className={`px-2 py-1 text-sm rounded ${selected === idx ? "bg-geay-700/50 text-white" : ""} hover:bg-gray-600/30`}>{type}</button>
+              ))}
+          </div>
+          </div>
+
+          {/* Mobile Content Card */}
+          <div className="bg-white rounded-md relative max-w-[380px] h-95 mx-auto">
+            <img src={wardrobes[selected].img} alt={wardrobes[selected].label} className="w-full h-full object-cover rounded-3xl"/>
+            <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center h-[200px] mr-2">
+              <span className="bg-zinc-500/60 text-white manrope px-4 py-2 pt-1 rounded-3xl shadow text-sm w-[600px] h-[100px] mt-18">
+                <div className="text-bold text-lg">
+                {wardrobes[selected].label}<br/>
+                </div>
+                <div className="manrope-medium">{wardrobes[selected].subtitle}</div>
+                <br/>
+                <button className="border border-[#ebd457] text-white px-3 -mt-3 mb-1 rounded-full hover:bg-[#ebd457] text-xs py-1">
+                  Book Free Consultation
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
     </section>
   );
 };
 
 export default Section1;
+
