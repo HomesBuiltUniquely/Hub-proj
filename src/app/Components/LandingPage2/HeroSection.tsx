@@ -357,7 +357,7 @@ export function HeroSection() {
             <div className="w-screen h-[1000px] bg-white">
                 <div className="relative"> 
                     <div className="relative ">
-                        <img src="jit.png" className="absolute h-[700px] w-screen"></img>
+                        <img src="jit1.jpeg" className="absolute h-[700px] w-screen"></img>
                         <img src="LOGO.png" alt="Logo" className="absolute top-4 w-[100px] h-[40px] m-4"></img>
                     </div>
                     
