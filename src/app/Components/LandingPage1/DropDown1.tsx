@@ -1,5 +1,6 @@
 
 const cityOptions = [
+
     "2 BHK Essential Interiors [ Starting at 3.0 Lakhs (Including Modular kitchen, wardrobes, TV unit) ]",
     "3 BHK Essential Interiors [ Starting at 4.0 Lakhs (Including Modular kitchen, wardrobes, TV unit) ]",
     "4 BHK Essential Interiors [ Starting at 5.5 Lakhs (Including Modular kitchen, wardrobes, TV unit) ]",

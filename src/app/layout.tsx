@@ -88,12 +88,21 @@ export default function RootLayout({
             fbq('track', 'PageView');`}
         </Script>
 
+        <Script 
+      type="text/javascript"
+      src="https://d3mkw6s8thqya7.cloudfront.net/integration-plugin.js"
+      id="aisensy-wa-widget"
+      widget-id="aaamze"
+    />
+   
+
         <noscript>
           <img
             height="1"
             width="1"
             style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=1486878599401922&ev=PageView&noscript=1"
+            alt=""
           />
         </noscript>
 
@@ -123,6 +132,7 @@ export default function RootLayout({
         {/* Vercel Analytics */}
         <Analytics />
       </body>
+      
     </html>
   );
 }

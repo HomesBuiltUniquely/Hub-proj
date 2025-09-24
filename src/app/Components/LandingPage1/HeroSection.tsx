@@ -474,7 +474,7 @@ export default function HeroSections() {
         {/* Mobile Form Card */}
           <div className="relative z-20 -mt-10 px-2">
             <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
-            <div className="text-3xl manrope-semibold text-center mb-6 text-amber-950">Interiors For Every Budget</div>
+            <div className="text-3xl manrope-semibold text-center mb-6 text-amber-950">Interiors For Every Home</div>
             
               {/* Name and Email Row */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
@@ -613,7 +613,7 @@ export default function HeroSections() {
                 <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2" />
               </div>
               <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
-                <p className="lg:mr-20 mb-6 manrope-semibold lg:mb-0">Interiors For Every Budget</p>
+                <p className="lg:mr-20 mb-6 manrope-semibold lg:mb-0">Interiors For Every Home</p>
                 
                 {/* Name and Email Row */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">

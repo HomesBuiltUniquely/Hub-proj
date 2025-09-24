@@ -8,19 +8,37 @@ export default function ThankYouFranchisee() {
   const router = useRouter();
 
   useEffect(() => {
+    // Reload the page once when component mounts (simulates form submission reload)
+    const hasReloaded = sessionStorage.getItem('franchiseThankYouReloaded');
+    if (!hasReloaded) {
+      sessionStorage.setItem('franchiseThankYouReloaded', 'true');
+      window.location.reload();
+      return;
+    }
+
     // Auto redirect to home page after 10 seconds
     const timer = setTimeout(() => {
+      // Clear the reload flag when leaving
+      sessionStorage.removeItem('franchiseThankYouReloaded');
       router.push('/');
     }, 10000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      // Clean up the reload flag if component unmounts
+      sessionStorage.removeItem('franchiseThankYouReloaded');
+    };
   }, [router]);
 
   const handleGoHome = () => {
+    // Clear the reload flag when manually navigating
+    sessionStorage.removeItem('franchiseThankYouReloaded');
     router.push('/');
   };
 
   const handleGoBack = () => {
+    // Clear the reload flag when manually navigating
+    sessionStorage.removeItem('franchiseThankYouReloaded');
     router.push('/interior-design-franchise');
   };
 

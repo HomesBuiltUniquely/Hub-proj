@@ -51,13 +51,16 @@ return(
         </div >
         <div className="mt-15 flex mr-20 justify-center">
         <div className="">
-        <div className="w-[580px] h-[330px] bg-white rounded-4xl text-5xl p-4 font-light pl-6 tracking-wide">
+        <div className="w-[580px] h-[360px] bg-white rounded-4xl text-5xl p-4 font-light pl-6 tracking-wide">
             <div>Luxury</div>
             <ul className="list-decimal list-inside text-[18px] mt-5">
             <li className="manrope-medium pb-1">Kitchen ( Base + Wall + Loft ) with Tall Unit</li>
             <li className="manrope-medium pt-3">Utility ( Base + Wall ) Unit</li>
-            <li className="manrope-medium pt-3">Living Room ( TV Unit + Partition + Art Work + False Ceiling with Electrical )</li>
-            <li className="manrope-medium pt-3">Bedroom ( Wardrobes ( Base + Loft ), Study Unit, False Ceiling with Electrical, TV Unit, Bed, Bedside Table, Headboard with Electrical )</li>
+            <li className="manrope-medium pt-3">Living Room ( TV Unit + Partition + Art Work + False <span className="pl-6">Ceiling with Electrical )</span></li>
+            <li className="manrope-medium pt-3 text-left">Bedroom ( Wardrobes ( Base + Loft ), Study Unit, <span className="pl-6">False Ceiling with Electrical, TV Unit, Bed, Bedside</span> <span className="pl-6"> Table, Headboard with Electrical )</span></li>
+            <li className="manrope-medium pt-3">Crockary Unit</li>
+            <li className="manrope-medium pt-3">Pooja Unit</li>
+            <li className="manrope-medium pt-3">Vanity for Washroom</li>
             </ul>
         </div>
         </div>
@@ -142,7 +145,7 @@ return(
     TV Unit
     </li>
     <li className='manrope-medium'>
-    Crockary Unit
+    Crockery Unit
     </li>
     <li className='manrope-medium'>
     Pooja Unit
@@ -189,6 +192,9 @@ return(
     <li className="manrope-medium">
     Bedroom ( Wardrobes ( Base + Loft ), Study Unit, False Ceiling with Electrical, TV Unit, Bed, Bedside Table, Headboard with Electrical)
     </li>
+    <li className="manrope-medium ">Crockery Unit</li>
+    <li className="manrope-medium  ">Pooja Unit</li>
+    <li className="manrope-medium pb-2">Vanity for Washroom</li>
 </ul>
 
 
