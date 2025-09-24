@@ -91,21 +91,19 @@ const HeroSection: React.FC = () => {
       <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-4xl font-semibold shadow  mr-13 mt-4">GET FREE ESTIMATE</button>
     </div>
     {/* Hero content */}
-    <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-70 absolute top-0 left-0 right-0">
-      <h1 className="text-5xl lg:text-6xl manrope drop-shadow-lg">How Can We Help You</h1>
-      <div className="mt-8">
+    <div className="flex justify-between pt-24 pb-20 text-white text-center mt-70 absolute top-0 left-0 right-0">
+      <div className="w-[310px] mt-4 ml-10">
+        <h1 className="text-5xl lg:text-6xl manrope mb-6 drop-shadow-lg">Get free <span className="ml-4">estimate</span></h1>
+        <p className="manrope-medium">Your ideas, our cost estimate</p>
+      </div>
+      <div className=" -mt-30 mr-10">
         <EstimateForm />
       </div>
     </div>
   </div>
 
   <div className="block md:hidden">
-    <div className="bg-gradient-to-br from-orange-500 to-red-600 p-8 text-white text-center">
-      <h1 className="text-3xl font-bold mb-6">How Can We Help You</h1>
-      <div className="mt-4">
-        <EstimateForm />
-      </div>
-    </div>
+   
   </div>
   </div>
   );
