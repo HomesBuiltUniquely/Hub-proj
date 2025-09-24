@@ -474,7 +474,7 @@ export default function HeroSections() {
         {/* Mobile Form Card */}
           <div className="relative z-20 -mt-10 px-2">
             <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
-            <div className="text-3xl manrope-semibold text-center mb-6 text-amber-950">Interiors For Every Budget</div>
+            <div className="text-3xl manrope-semibold text-center mb-6 text-amber-950">Interiors For Every Home</div>
             
               {/* Name and Email Row */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
