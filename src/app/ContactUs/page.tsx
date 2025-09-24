@@ -12,7 +12,7 @@ const App: React.FC = () => (
     <HelpCenter />
     <Locations />
     <ContactSection/>
-    {/* <Footer/> */}
+    <Footer/>
   </div>
 );
 
