@@ -24,10 +24,10 @@ const getContent = (tab: string) => {
       return (
         <div className="space-y-4 md:space-y-5 text-gray-700 text-sm md:text-base leading-relaxed">
           <p>
-            <span className="font-semibold">Hubinterior.com</span> is a website owned by <span className="font-semibold">BRIGHTSPACE CREATIONS PRIVATE LIMITED</span>, a company incorporated under the Indian Companies Act, 1956. Specifically, wherever the term "HUB" or "HUB interior" or "hubinterior.com" is used, it refers to Brightside Innotech LLP, along with its subsidiaries, controlled entities, affiliates, and related parties. HUB interior provides the services through <span className="underline">www.hubinterior.com</span> ('Website' or 'Site').
+            <span className="font-semibold">Hubinterior.com</span> is a website owned by <span className="font-semibold">BRIGHTSPACE CREATIONS PRIVATE LIMITED</span>, a company incorporated under the Indian Companies Act, 1956. Specifically, wherever the term &#34;HUB&#34; or &#34;HUB interior&#34; or &#34;hubinterior.com&#34; is used, it refers to Brightside Innotech LLP, along with its subsidiaries, controlled entities, affiliates, and related parties. HUB interior provides the services through <span className="underline">www.hubinterior.com</span> (&#39;Website&#39; or &#39;Site&#39;).
           </p>
           <p>
-            In addition, at Hub Interior, we are highly committed to the privacy of your data and information while also providing excellent service to all of our customers and visitors of the Website. Thus, we have prepared this Data Protection and Privacy Policy ("Policy") to inform you of the privacy principles that govern this Website.
+            In addition, at Hub Interior, we are highly committed to the privacy of your data and information while also providing excellent service to all of our customers and visitors of the Website. Thus, we have prepared this Data Protection and Privacy Policy (&#34;Policy&#34;) to inform you of the privacy principles that govern this Website.
           </p>
           <p>
             Furthermore, unless restricted by applicable law, you agree that all your personal information collected by HUB interior through the Website may be used as well as disclosed as set out in this Policy.
@@ -148,7 +148,7 @@ const getContent = (tab: string) => {
           <p className="manrope-medium pt-4">We may collect additional information in connection with your participation in any promotions or competitions offered by us and information you provide when giving us feedback or completing profile forms. We also monitor customer traffic patterns and Site use, which enables us to improve the service we provide. We will collect only such information as is necessary and relevant to us to provide you with the services available on the Site.</p>
           <p className="manrope-medium">You can terminate your account at any time. However, your information may remain stored in archive on our servers even after the deletion or the termination of your account.</p>
           <h1 className="text-xl md:text-2xl manrope pt-4 mb-4">Anonymous Information</h1>
-          <div className="manrope-medium pt-4"> In addition to the information that you explicitly provide during your interactions on the Site, we will automatically receive and collect certain anonymous information in standard usage logs through our Web server, including computer-identification information obtained from "cookies" sent to your browser from:
+          <div className="manrope-medium pt-4"> In addition to the information that you explicitly provide during your interactions on the Site, we will automatically receive and collect certain anonymous information in standard usage logs through our Web server, including computer-identification information obtained from &#34;cookies&#34; sent to your browser from:
           </div>
           <ol className="list-decimal pl-6 md:pl-10 pt-4 space-y-2">
             <li>web server cookie stored on your hard drive</li>

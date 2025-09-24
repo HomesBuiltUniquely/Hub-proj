@@ -88,13 +88,13 @@ export default function RootLayout({
             fbq('track', 'PageView');`}
         </Script>
 
-        <script 
+        <Script 
       type="text/javascript"
       src="https://d3mkw6s8thqya7.cloudfront.net/integration-plugin.js"
       id="aisensy-wa-widget"
       widget-id="aaamyq"
-    >
-    </script>
+        />
+    
 
         <noscript>
           <img
