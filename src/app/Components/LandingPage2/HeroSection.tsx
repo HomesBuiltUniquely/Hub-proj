@@ -210,7 +210,7 @@ export function HeroSection() {
     <div> 
         <div className="lg:block hidden relative w-screen h-[1000px]">
             <Image 
-                src="/bn.jpg" 
+                src="/lan2.jpeg" 
                 alt="Hero background" 
                 fill
                 className="object-cover border-4 rounded-4xl border-black"
