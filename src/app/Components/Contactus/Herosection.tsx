@@ -27,7 +27,7 @@ const ContactHeader: React.FC = () => (
   {/*Mobile Version*/}
     <div className="block md:hidden">
       <div>
-        <img src="/Contactus.png" className="p-7 w-[700px] h-[450px] mx-auto bg-cover bg-center relative overflow-hidden "></img>
+        <img src="/Contactus.png" className="p-3 w-170 h-130 mx-auto bg-cover bg-center relative overflow-hidden"></img>
       </div>
       <div className="flex items-center justify-between -mt-100 py-7 -m-2">
       <img src="/redlogo.png" className="w-[85px] h-[110px] pb-8 -mt-17 px-2 ml-5"></img>

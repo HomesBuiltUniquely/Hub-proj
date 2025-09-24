@@ -1,5 +1,6 @@
 
-import Footer from "../Components/AboutUs/Footer";
+
+import Footer from "../Components/Home/Footer";
 import ModularKitchen from "../Components/ModularKitchen/Herosection";
 import KitchenBlogSection from "../Components/ModularKitchen/KitchenBlogSection";
 import Section1 from "../Components/ModularKitchen/Section1";
