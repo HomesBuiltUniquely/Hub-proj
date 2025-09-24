@@ -29,10 +29,10 @@ const enquiries = [
   }
 ];
 
-{/* Desktop version */}
 const HelpCenter: React.FC = () => (
+  <div>
   <section className="hidden md:block max-w-screen-2xl mx-auto mt-10 px-4">
-    <h2 className="text-3xl font-extrabold mb-2 text-gray-800 mt-20">Connect With The Right Team</h2>
+    <h2 className="text-3xl manrope mb-2 text-gray-800 mt-20">Connect With The Right Team</h2>
     <div className="flex flex-col md:flex-row gap-6 h-[180px] mt-10">
       {enquiries.map((item) => (
         <div key={item.title} className="flex-1 bg-[#ddcdc1] rounded-xl p-6 w-[200px]">

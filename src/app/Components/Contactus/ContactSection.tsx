@@ -63,8 +63,6 @@ const ContactSection: React.FC = () => {
     }
   };
 
-const ContactSection: React.FC = () => (
-  <div className="hidden md:block bg-gray-100  h-[750px] pb-8">
   return (
 
   <div className=" bg-gray-100 min-h-[750px] pb-16">
@@ -122,18 +120,18 @@ const ContactSection: React.FC = () => (
           className="w-full rounded-md px-3 py-2 bg-white border border-gray-200 h-28 resize-none focus:border-red-500 focus:outline-none"
           placeholder="Tell Us More"
         />
-
+        
         {/* Status Message */}
         {statusMessage && (
           <div className={`p-3 rounded-md text-sm ${
-            submitStatus === 'success'
-              ? 'bg-green-100 text-green-800 border border-green-200'
+            submitStatus === 'success' 
+              ? 'bg-green-100 text-green-800 border border-green-200' 
               : 'bg-red-100 text-red-800 border border-red-200'
           }`}>
             {statusMessage}
           </div>
         )}
-
+        
         <button
           type="submit"
           disabled={isSubmitting}
@@ -183,5 +181,7 @@ const ContactSection: React.FC = () => (
     </div>
   </div>
   );
+
+};
 
 export default ContactSection;
