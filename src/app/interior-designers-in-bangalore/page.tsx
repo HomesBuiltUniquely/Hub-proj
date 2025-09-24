@@ -13,7 +13,6 @@ import BrandCarousel from "../Components/LandingPage1/Brand";
 import { QAsection } from "../Components/LandingPage1/QASEC";
 import CalculatorPage from "../Components/LandingPage1/CalculatorPage";
 import Section33 from "../Components/LandingPage1/Caron";
-import { Section10 } from "../Components/LandingPage1/Section10";
 
 
 
