@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from "react";
 
 const ContactSection: React.FC = () => {
@@ -179,6 +181,7 @@ const ContactSection: React.FC = () => {
     </div>
   </div>
   );
+
 };
 
 export default ContactSection;
