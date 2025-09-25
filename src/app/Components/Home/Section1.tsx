@@ -31,7 +31,7 @@ export default function Section1() {
       
     <div className="desktop-1440 w-full h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block desktop-1440">
       <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto manrope-medium">
-       HUB Interior is India’s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
+       HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
       </h1>
       <div className="bg-[#F1F2F6] w-[1350px] h-auto  grid grid-cols-4 mt-10 ml-8 gap-20 2xl:mx-auto">
 
@@ -138,7 +138,7 @@ export default function Section1() {
     <div className="block md:hidden" >
       <div className="w-full min-h-[700px] bg-[#F1F2F6] mt-6 px-4">
         <h1 className="text-center text-sm sm:text-base md:text-lg manrope-medium mt-4 px-1">
-           HUB Interior is India's leading and most innovative interior design company. We specialize in tailor-made solutions from modular kitchen interiors to luxury villa interiors designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
+           HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions from modular kitchen interiors to luxury villa interiors designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
         </h1>
         
         <div className="mt-10 text-4xl sm:text-3xl md:text-4xl wulkan-display-bold pl-4 sm:pl-6"> Why Choose Us</div>
