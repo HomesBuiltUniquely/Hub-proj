@@ -65,26 +65,33 @@ export default function Section6() {
 
     // Touch handlers for mobile carousel
     const handleTouchStart = (e: React.TouchEvent) => {
+        e.preventDefault();
         setTouchStart(e.targetTouches[0].clientX);
     };
 
     const handleTouchMove = (e: React.TouchEvent) => {
+        e.preventDefault();
         setTouchEnd(e.targetTouches[0].clientX);
     };
 
-    const handleTouchEnd = () => {
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        e.preventDefault();
         if (!touchStart || !touchEnd) return;
         
         const distance = touchStart - touchEnd;
         const isLeftSwipe = distance > 50;
         const isRightSwipe = distance < -50;
 
-        if (isLeftSwipe) {
+        if (isLeftSwipe && mobileSlide < projects.length - 1) {
             nextMobileSlide();
         }
-        if (isRightSwipe) {
+        if (isRightSwipe && mobileSlide > 0) {
             prevMobileSlide();
         }
+        
+        // Reset touch states
+        setTouchStart(0);
+        setTouchEnd(0);
     };
 
     return (
@@ -161,85 +168,71 @@ export default function Section6() {
                 </div>
             </div>
         </div>
-        {/* Mobile Version - Carousel */}
+        {/* Mobile Version - Swipeable Cards Design */}
         <div className="block md:hidden">
           <div className="bg-[#F1F2F6] py-8 px-4 w-full">
             {/* Mobile Title */}
             <div className="mb-8">
-              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-2">
+              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-4">
                 Recent Interior Design Projects
               </h1>
             </div>
 
-            {/* Mobile Carousel Container */}
-            <div className="flex items-center gap-4">
-              {/* Left Arrow - Outside */}
-              <button 
-                onClick={prevMobileSlide}
-                className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-50 transition-colors flex-shrink-0"
-              >
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              {/* Carousel Content */}
+            {/* Swipeable Cards Container */}
+            <div className="relative overflow-hidden px-4">
               <div 
-                className="flex-1 relative"
+                className="flex transition-transform duration-300 ease-out"
+                style={{ 
+                  transform: `translateX(-${mobileSlide * 60}%)`,
+                  touchAction: 'pan-y'
+                }}
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
               >
-                {/* Project Card */}
-                <Link href={projects[mobileSlide].link} className="group">
-                  <div className="relative h-80 rounded-3xl overflow-hidden shadow-xl">
-                    <Image 
-                      src={projects[mobileSlide].image} 
-                      alt={projects[mobileSlide].title} 
-                      fill 
-                      className="object-cover group-hover:scale-105 transition-transform duration-300" 
-                    />
-                    
-                    {/* Text Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                      <h3 className="text-white text-xl font-bold mb-1">{projects[mobileSlide].title}</h3>
-                      <p className="text-white/80 text-sm">{projects[mobileSlide].subtitle}</p>
-                    </div>
+                {projects.map((project, index) => (
+                  <div key={index} className="w-[80%] flex-shrink-0 px-2">
+                    <Link href={project.link} className="group">
+                      <div className="relative h-60 rounded-2xl overflow-hidden shadow-lg">
+                        <Image 
+                          src={project.image} 
+                          alt={project.title} 
+                          fill 
+                          className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                        />
+                        
+                        {/* Text Overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                          <h3 className="text-white text-lg font-bold mb-1">{project.title}</h3>
+                          <p className="text-white/80 text-sm">{project.subtitle}</p>
+                        </div>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-
-                {/* Carousel Indicators */}
-                <div className="flex justify-center mt-6 gap-2">
-                  {projects.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setMobileSlide(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === mobileSlide 
-                          ? 'bg-gray-600 scale-125' 
-                          : 'bg-gray-300 hover:bg-gray-400'
-                      }`}
-                    />
-                  ))}
-                </div>
+                ))}
               </div>
 
-              {/* Right Arrow - Outside */}
-              <button 
-                onClick={nextMobileSlide}
-                className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-50 transition-colors flex-shrink-0"
-              >
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
+              {/* Carousel Indicators */}
+              <div className="flex justify-center mt-6 mb-2 gap-2">
+                {projects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setMobileSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === mobileSlide 
+                        ? 'bg-red-600 scale-125' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
             
-            {/* Explore All Projects Button */}
+            {/* Explore Projects Button */}
             <div className="flex justify-center mt-8">
               <Link href="/Project">
-                <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
-                  Explore all projects
+                <button className="bg-red-600 text-white px-8 py-3 rounded-full manrope-medium hover:bg-red-700 transition-colors">
+                  Explore Projects
                 </button>
               </Link>
             </div>

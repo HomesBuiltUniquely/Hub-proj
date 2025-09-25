@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function Section4() {
@@ -41,6 +41,15 @@ export default function Section4() {
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
     };
+
+    // Auto-play functionality for mobile only
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+        }, 4000); // Change slide every 4 seconds
+
+        return () => clearInterval(interval);
+    }, [testimonials.length]);
 
     return (
         <div>
