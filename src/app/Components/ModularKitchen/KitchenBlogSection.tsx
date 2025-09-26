@@ -1,4 +1,5 @@
-"use client"
+
+"use client";
 
 import React, { useState } from "react";
 
@@ -6,19 +7,19 @@ const articles = [
   {
     image: "/kb1.jpg", // Replace with your image path
     title: "A Kitchen That Talks Love—Creating a Space That Brings People Together!",
-    date: "September 05, 2025",
+    date: "July 05, 2025",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
   },
   {
     image: "/kb2.png",
     title: "L-Shape Modular Kitchen Designs That Make Cooking Effortless.",
-    date: "September 05, 2025",
+    date: "July 05, 2025",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
   },
   {
     image: "/kb3.png",
     title: "Why Modular Kitchens Are the Smartest Choice for 2BHK & 3BHK Homes",
-    date: "September 05, 2025",
+    date: "July 05, 2025",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
   },
 ];
@@ -67,7 +68,7 @@ const faqs = [
   {
     question: "How Much Does a Kitchen Remodel Typically Cost?",
     answer: "The cost of a kitchen interior design in Bengaluru depends on size, layout, materials, and finishes. A modular kitchen interior can start from budget-friendly solutions for 2BHKs to premium luxury kitchens for villas. HUB Interior provides transparent pricing with customized designs to suit your lifestyle and budget."
-  }
+  },
 ];
 
 const KitchenBlogSection: React.FC = () => {
@@ -75,84 +76,158 @@ const KitchenBlogSection: React.FC = () => {
 
   return (
     <div className="w-full min-h-screen bg-[#f1f2f6] py-12">
-      {/* Heading */}
-      <div className="max-w-6xl mx-auto px-4 mb-10">
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-800">Let’s Talk Kitchens</h1>
-        <p className="text-gray-500 text-lg mb-7">
-          Read our blog to discover how design meets utility in every kitchen.
-        </p>
-      </div>
-
-      {/* Blog Cards */}
-      <div className="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row gap-6">
-        {articles.map((article, idx) => (
-          <div
-            key={idx}
-            className="bg-white rounded-3xl shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
-          >
-            <img src={article.image} alt={article.title} className="w-full h-56 object-cover" />
-            <div className="p-5 flex flex-col flex-1">
-              <h3 className="text-base font-semibold text-gray-900 mt-2 mb-1">
-                {article.title}
-              </h3>
-              <span className="text-xs text-gray-400 mt-4">{article.date}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      {/* View All Button */}
-      <div className="text-center mb-10">
-        <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition hover:bg-gray-200 font-medium">
-          View All
-        </button>
-      </div>
-
-      {/* FAQ and Guide */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row px-4 gap-6 mt-30">
-        {/* FAQ Left */}
-        <div className="md:w-1/3 mb-8 md:mb-0 py-[230px]">
-          <h2 className="text-2xl font-bold mb-3 text-gray-900">FAQs</h2>
-          <p className="text-gray-600 mb-4">Here are answers to questions our clients ask.</p>
-          <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm font-medium">
-            Connect
-          </button>
+      {/* Desktop Version */}
+      <div className="hidden md:block">
+        {/* Heading */}
+        <div className="max-w-6xl mx-auto px-4 mb-10">
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-800">Let’s Talk Kitchens</h1>
+          <p className="text-gray-500 text-lg mb-7">
+            Read our blog to discover how design meets utility in every kitchen.
+          </p>
         </div>
-        {/* Accordion Right */}
-        <div className="md:w-2/3">
-          {faqs.map((faq, i) => (
-            <div key={i} className="border-b">
-              <button
-                onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-                className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
-              >
-                <span className="font-medium text-gray-700">{faq.question}</span>
-                <span className="ml-2">
-                  {openFAQ === i ? (
-                    <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"/>
-                    </svg>
-                  ) : (
-                    <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
-                    </svg>
-                  )}
-                </span>
-              </button>
-              {openFAQ === i && (
-                <div className="py-2 pl-3 text-gray-500 text-sm">
-                  {faq.answer}
-                </div>
-              )}
+
+        {/* Blog Cards */}
+        <div className="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row gap-6">
+          {articles.map((article, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-3xl shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
+            >
+              <img src={article.image} alt={article.title} className="w-full h-56 object-cover" />
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="text-base font-semibold text-gray-900 mt-2 mb-1">
+                  {article.title}
+                </h3>
+                <span className="text-xs text-gray-400 mt-4">{article.date}</span>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* View All Button */}
+        <div className="text-center mb-10">
+          <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition hover:bg-gray-200 font-medium">
+            View All
+          </button>
+        </div>
+
+        {/* FAQ and Guide */}
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row px-4 gap-6 mt-30">
+          {/* FAQ Left */}
+          <div className="md:w-1/3 mb-8 md:mb-0 py-[230px]">
+            <h2 className="text-2xl font-bold mb-3 text-gray-900">FAQs</h2>
+            <p className="text-gray-600 mb-4">Here are answers to questions our clients ask.</p>
+            <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm font-medium">
+              Connect
+            </button>
+          </div>
+          {/* Accordion Right */}
+          <div className="md:w-2/3">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b">
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                  className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
+                >
+                  <span className="font-medium text-gray-700">{faq.question}</span>
+                  <span className="ml-2">
+                    {openFAQ === i ? (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"/>
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
+                      </svg>
+                    )}
+                  </span>
+                </button>
+                {openFAQ === i && (
+                  <div className="py-2 pl-3 text-gray-500 text-sm">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Download Guide Button */}
+        <div className="w-full flex justify-center mt-16">
+          <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg font-semibold shadow-xl hover:bg-[#2a1d10] transition">
+            Download our kitchen design guide
+          </button>
+        </div>
       </div>
 
-      {/* Download Guide Button */}
-      <div className="w-full flex justify-center mt-16">
-        <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg font-semibold shadow-xl hover:bg-[#2a1d10] transition">
-          Download our kitchen design guide
-        </button>
+      {/* Mobile Version (below 360px) */}
+      <div className="md:hidden px-3">
+        {/* Heading */}
+        <div className="mx-auto mb-6">
+          <div className="flex mr-1">
+            <div className="w-[2px] h-[75px] bg-amber-300 mb-10 ml-4"></div>
+            <h1 className="text-4xl manrope-medium mb-2 ml-3 text-gray-800 text-center w-[160px]">Let’s Talk Kitchens</h1>
+          </div>
+          <p className="text-gray-500 text-base mb-5 ml-8 -mt-6 ">
+            Read our blog to discover how design meets utility in every kitchen.
+          </p>
+        </div>
+
+        {/* Blog Cards */}
+        <div className="mx-auto mb-6 gap-4">
+          {articles.map((article, idx) => (
+            <><div
+              key={idx}
+              className="rounded-3xl shadow-md overflow-hidden w-full flex flex-col"
+            >
+              <img src={article.image} alt={article.title} className="w-full w-[230px] h-[230px] object-cover" />
+            </div><div className="p-4 flex flex-col flex-1">
+                <span className="text-xs text-gray-400 mt-2 ml-65 manrope-medium">{article.date}</span>
+                <h3 className="text-lg text-gray-900 mt-1 mb-1 manrope-medium">
+                  {article.title}
+                </h3>
+              </div></>
+            
+          ))}
+        </div>
+
+        {/* FAQ and Guide */}
+        <div className="mx-auto flex flex-col ">
+          {/* FAQ Left */}
+          <div className="flex mb-4 py-10">
+            <div className="w-[2px] h-[75px] bg-amber-300 mb-10 ml-4"></div>
+            <h2 className="text-4xl manrope-medium font-bold mb-2 text-gray-900 w-[280px] ml-2">Frequently asked questions</h2>
+          </div>
+          {/* Accordion Right */}
+          <div className="manrope-medium w-full -mt-14 ml-2">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b">
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                  className="w-full flex justify-between items-center py-3 text-left focus:outline-none"
+                >
+                  <span className="font-medium text-gray-700 text-sm">{faq.question}</span>
+                  <span className="ml-2">
+                    {openFAQ === i ? (
+                      <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"/>
+                      </svg>
+                    ) : (
+                      <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
+                      </svg>
+                    )}
+                  </span>
+                </button>
+                {openFAQ === i && (
+                  <div className="py-2 pl-2 text-gray-500 text-xs">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,11 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Section2() {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
+    const carouselRef = useRef<HTMLDivElement>(null);
     
     const roomCards = [
         {
@@ -46,14 +49,43 @@ export default function Section2() {
         setCurrentSlide((prev) => Math.max(0, prev - 1));
     };
 
-    // Auto-advance carousel for mobile
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % roomCards.length);
-        }, 3000); // Change slide every 3 seconds
+    // Touch event handlers for mobile swipe
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
 
-        return () => clearInterval(interval);
-    }, [roomCards.length]);
+    const handleTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > 50;
+        const isRightSwipe = distance < -50;
+
+        // For mobile multi-card layout, we show 2.5 cards at a time
+        const maxSlide = Math.max(0, roomCards.length - 2);
+        
+        if (isLeftSwipe && currentSlide < maxSlide) {
+            setCurrentSlide(currentSlide + 1);
+        }
+        if (isRightSwipe && currentSlide > 0) {
+            setCurrentSlide(currentSlide - 1);
+        }
+    };
+
+    // Auto-advance carousel for mobile - DISABLED (swipe-only)
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         const maxSlide = Math.max(0, roomCards.length - 2);
+    //         setCurrentSlide((prev) => prev < maxSlide ? prev + 1 : 0);
+    //     }, 3000); // Change slide every 3 seconds
+
+    //     return () => clearInterval(interval);
+    // }, [roomCards.length]);
 
     return (
         <div>
@@ -176,95 +208,88 @@ export default function Section2() {
                 </div>
             </div>
         </div>
-        {/* Mobile Version - Carousel Card Design */}
+        {/* Mobile Version - Multi-Card Swipeable Carousel */}
         <div className="block md:hidden">
           <div className="bg-[#F1F2F6] py-8 px-4">
             {/* Mobile Title */}
             <div className="mb-8">
-              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-2">
-                Every space has a story, start yours here
+              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-4">
+                Every space has a story, <div className='text-3xl'>start yours here</div>
               </h1>
             </div>
 
-            {/* Mobile Stacked Cards */}
-            <div className="relative w-[280px] h-[450px] mx-auto mt-10">
-              {/* Card Stack - Show 3 cards stacked */}
-              {roomCards.map((room, index) => {
-                const isActive = index === currentSlide;
-                const isNext = index === (currentSlide + 1) % roomCards.length;
-                const isPrev = index === (currentSlide - 1 + roomCards.length) % roomCards.length;
-                
-                let zIndex = 0;
-                let transform = '';
-                let opacity = 0;
-                
-                if (isActive) {
-                  zIndex = 30;
-                  transform = 'translateX(0px) translateY(15px) scaleY(1.1)';
-                  opacity = 1;
-                } else if (isNext) {
-                  zIndex = 20;
-                  transform = 'translateX(25px) translateY(15px) scaleY(0.9)  scale(1.1)';
-                  opacity = 1;
-                } else if (isPrev) {
-                  zIndex = 10;
-                  transform = 'translateX(-25px) translateY(15px) scaleY(0.9) scale(1.1)';
-                  opacity = 1;
-                }
-
-                return (
-                  <div
-                    key={index}
-                    className="absolute inset-0 transition-all duration-500 ease-in-out"
-                    style={{
-                      zIndex,
-                      transform,
-                      opacity
-                    }}
-                  >
-                    <div className="relative h-full rounded-4xl overflow-hidden shadow-xl w-auto">
-                      {/* Background Image */}
-                      <Image
-                        src={room.image}
-                        alt={room.title}
-                        fill
-                        className="object-cover"
-                      />
-                      
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      
-                      {/* Room Title - Only show on active card */}
-                      {isActive && (
-                        <div className="absolute bottom-7 left-6">
-                          <h2 className="text-white text-2xl font-bold wulkan-display-bold">
+            {/* Multi-Card Carousel Container */}
+            <div 
+              ref={carouselRef}
+              className="relative overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Carousel Cards - Show 2.5 cards */}
+              <div 
+                className="flex transition-transform duration-300 ease-out gap-4"
+                style={{ 
+                  transform: `translateX(-${currentSlide * (280 + 16)}px)`,
+                  width: `${roomCards.length * (280 + 16)}px`
+                }}
+              >
+                {roomCards.map((room, index) => (
+                  <div key={index} className="flex-shrink-0 w-[280px]">
+                    <Link href={room.link} className="block">
+                      <div className="relative w-full h-[380px] rounded-3xl overflow-hidden shadow-xl">
+                        {/* Background Image */}
+                        <Image
+                          src={room.image}
+                          alt={room.title}
+                          fill
+                          className="object-cover"
+                        />
+                        
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                        
+                        {/* Room Title */}
+                        <div className="absolute bottom-6 left-6">
+                          <h2 className="text-white text-xl font-bold wulkan-display-bold">
                             {room.title}
                           </h2>
                         </div>
-                      )}
-                      
-                      {/* Arrow Button - Only show on active card */}
-                      {isActive && (
-                        <Link href={room.link}>
-                          <div className="absolute bottom-6 right-6">
-                            <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </div>
+                        
+                        {/* Arrow Button */}
+                        <div className="absolute bottom-6 right-6">
+                          <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
                           </div>
-                        </Link>
-                      )}
-                    </div>
+                        </div>
+                      </div>
+                    </Link>
                   </div>
-                );
-              })}
+                ))}
+              </div>
+
+              {/* Swipe Indicators */}
+              <div className="flex justify-center mt-6 gap-2">
+                {roomCards.slice(0, Math.max(1, roomCards.length - 1)).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentSlide 
+                        ? 'bg-gray-800 w-8' 
+                        : 'bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Explore Gallery Button */}
-            <div className="flex justify-center mt-20">
+            <div className="flex justify-center mt-8">
               <Link href="/Inspiration">
-                <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
+                <button className="bg-[#ef0101] text-white px-8 py-3 rounded-full manrope hover:bg-amber-300 transition-colors">
                   Explore Gallery
                 </button>
               </Link>

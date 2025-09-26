@@ -1,0 +1,72 @@
+import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+
+export async function POST(req) {
+  try {
+    const body = await req.json();
+    const { name, email, phoneNumber, pincode, tellUsMore } = body;
+
+    console.log('Get Estimate API route called with data:', {
+      name,
+      email,
+      phoneNumber,
+      pincode,
+      tellUsMore,
+    });
+
+    // Check if required environment variables are set
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+      console.error('Gmail credentials not configured');
+      console.log('For testing purposes, returning success without sending email');
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Form data received successfully (email not sent - credentials not configured)',
+      });
+    }
+
+    // Setup transport using Gmail
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
+      },
+    });
+
+    // Email content
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER, // You can change this to a team email
+      subject: 'Get Estimate Form Submission',
+      html: `
+        <h3>Get Estimate Form Submission</h3>
+        <p><strong>Name:</strong> ${name || 'Not provided'}</p>
+        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+        <p><strong>Phone Number:</strong> ${phoneNumber || 'Not provided'}</p>
+        <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
+        <p><strong>Tell Us More:</strong> ${tellUsMore || 'Not provided'}</p>
+        <hr/>
+        <p><em>This form was submitted from the Get Estimate page.</em></p>
+      `,
+    };
+
+    console.log('Sending email with Get Estimate data:', {
+      name,
+      email,
+      phoneNumber,
+      pincode,
+      tellUsMore,
+    });
+
+    await transporter.sendMail(mailOptions);
+    console.log('Get Estimate email sent successfully');
+    
+    return NextResponse.json({ success: true, message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Get Estimate email send error:', error);
+    return NextResponse.json({ 
+      success: false, 
+      message: 'Failed to send email. Please try again.' 
+    }, { status: 500 });
+  }
+}

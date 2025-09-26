@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
@@ -9,6 +10,11 @@ import NavMore from "../NavMore";
 const Herosection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
+
+  const handleGetEstimate = () => {
+    router.push('/GetEstimate');
+  };
   
   const heroSlides = [
     {
@@ -108,7 +114,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -163,7 +169,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}

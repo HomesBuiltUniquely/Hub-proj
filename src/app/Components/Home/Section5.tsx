@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 
 export default function Section5() {
     const [activeStep, setActiveStep] = useState(0);
     const sectionRef = useRef<HTMLDivElement>(null);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
     const steps = [
         {
@@ -34,53 +36,42 @@ export default function Section5() {
         }
     ];
 
-    useEffect(() => {
-        let scrollTimeout: NodeJS.Timeout;
-        let isAnimating = false;
+    // Removed automatic scroll-based carousel functionality
+    // Now only manual swipe control is available
 
-        const handleScroll = () => {
-            if (sectionRef.current && !isAnimating) {
-                const rect = sectionRef.current.getBoundingClientRect();
-                const sectionTop = rect.top;
-                const sectionHeight = rect.height;
-                const windowHeight = window.innerHeight;
+    // Touch handlers for swipe functionality
+    const minSwipeDistance = 50;
 
-                // Start animation only when title is fully visible (section top reaches viewport)
-                if (sectionTop <= windowHeight * 0.5 && sectionTop + sectionHeight >= 0) {
-                    // Calculate progress from when title becomes visible
-                    const scrollProgress = Math.max(0, Math.min(1, (windowHeight * 0.5 - sectionTop) / (sectionHeight * 0.8)));
-                    
-                    // Divide scroll progress into 4 equal parts with delays
-                    let newActiveStep = 0;
-                    if (scrollProgress >= 0.2) newActiveStep = 1;
-                    if (scrollProgress >= 0.4) newActiveStep = 2;
-                    if (scrollProgress >= 0.6) newActiveStep = 3;
-                    
-                    if (newActiveStep !== activeStep) {
-                        isAnimating = true;
-                        setActiveStep(newActiveStep);
-                        
-                        // Slow down scrolling during step animations
-                        clearTimeout(scrollTimeout);
-                        scrollTimeout = setTimeout(() => {
-                            isAnimating = false;
-                        }, 1200); // Longer delay to ensure step completion
-                    }
-                } else if (sectionTop > windowHeight * 0.5) {
-                    // Reset to first step if scrolled back up
-                    setActiveStep(0);
-                }
-            }
-        };
+    const onTouchStart = (e: React.TouchEvent) => {
+        e.preventDefault();
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
 
-        window.addEventListener('scroll', handleScroll, { passive: false });
-        handleScroll(); // Initial check
+    const onTouchMove = (e: React.TouchEvent) => {
+        e.preventDefault();
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            clearTimeout(scrollTimeout);
-        };
-    }, [activeStep, steps.length]);
+    const onTouchEnd = (e: React.TouchEvent) => {
+        e.preventDefault();
+        if (!touchStart || !touchEnd) return;
+        
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe && activeStep < steps.length - 1) {
+            setActiveStep(activeStep + 1);
+        }
+        if (isRightSwipe && activeStep > 0) {
+            setActiveStep(activeStep - 1);
+        }
+        
+        // Reset touch states
+        setTouchStart(null);
+        setTouchEnd(null);
+    };
 
     return (
         <div>
@@ -154,75 +145,52 @@ export default function Section5() {
                 </div>
             </div>
         </div>
-        {/* Mobile Version - Progress Bar Design */}
-        <div className="block md:hidden ml-3" ref={sectionRef}>
-          <div className="bg-[#F1F2F6] py-8 px-4">
-            {/* Mobile Title */}
-            <div className="mb-8">
-              <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-2">
-                Your dream space in just four steps
-              </h1>
-            </div>
+        {/* Mobile Version - Swipeable Cards Design */}
+        <div className="block md:hidden bg-[#F1F2F6] py-8 px-4">
+          {/* Mobile Title */}
+          <div className="mb-8">
+            <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left ml-4">
+              Your dream space in just four steps
+            </h1>
+          </div>
 
-            {/* Mobile Layout - Steps Top, Image Bottom */}
-            <div className="space-y-8">
-              {/* Top - Progress Steps */}
-              <div className="relative">
-                <div className="space-y-6">
-                  {steps.map((step, index) => (
-                    <div key={index} className="flex items-start gap-4 relative">
-                      {/* Step Circle */}
-                      <div className="relative z-10">
-                        <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg transition-all duration-500 ${
-                          index <= activeStep 
-                            ? 'bg-[#32261c] text-white shadow-lg' 
-                            : 'bg-gray-300 text-gray-600'
-                        }`}>
-                          <Image src={step.icon} alt={step.title} width={20} height={20} />
-                        </div>
+          {/* Swipeable Cards Container */}
+          <div className="relative overflow-hidden px-4 pt-8">
+            <div 
+              className="flex transition-transform duration-300 ease-out"
+              style={{ 
+                transform: `translateX(-${activeStep * 258}px)`,
+                touchAction: 'pan-y'
+              }}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
+              {steps.map((step, index) => (
+                <div key={index} className="w-[260px] h-[270px] flex-shrink-0 px-2">
+                  <div className="bg-white h-[240px] rounded-2xl p-6 shadow-sm border-2 border-[#ddcdc1] relative">
+                    {/* Step Number Circle - Positioned to overlap border */}
+                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
+                      <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
+                        <span className="text-white font-bold text-lg">{index + 1}</span>
                       </div>
-
-                      {/* Step Content */}
-                      <div className="flex-1 pt-2">
-                        <h3 className={`text-lg font-bold mb-2 transition-colors duration-500 ${
-                          index <= activeStep ? 'text-gray-800' : 'text-gray-500'
-                        }`}>
-                          {step.title}
-                        </h3>
-                        <p className={`text-sm leading-relaxed transition-colors duration-500 ${
-                          index <= activeStep ? 'text-gray-600' : 'text-gray-400'
-                        }`}>
-                          {step.description}
-                        </p>
-                      </div>
-
-                      {/* Connecting Line */}
-                      {index < steps.length - 1 && (
-                        <div className="absolute left-6 top-12 w-0.5 h-6 bg-gray-300">
-                          <div 
-                            className={`w-full bg-[#32261c] transition-all duration-500 ${
-                              index < activeStep ? 'h-full' : 'h-0'
-                            }`}
-                          />
-                        </div>
-                      )}
                     </div>
-                  ))}
+                    
+                    {/* Step Title */}
+                    <h3 className="text-xl manrope text-gray-800 text-center mt-8">
+                      {step.title}
+                    </h3>
+                    
+                    {/* Step Description */}
+                    <p className="text-gray-600 text-center manrope-medium  leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              {/* Bottom - Image Card */}
-              <div className="w-full max-w-sm mx-auto">
-                <div className="relative h-80 rounded-3xl overflow-hidden shadow-xl">
-                  <Image
-                    src={steps[activeStep].image}
-                    alt={steps[activeStep].title}
-                    fill
-                    className="object-cover transition-opacity duration-500"
-                  />
-                </div>
-              </div>
+              ))}
             </div>
+
+
           </div>
         </div>
         </div>

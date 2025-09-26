@@ -1,12 +1,20 @@
 "use client"
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 
 
-const ContactHeader: React.FC = () => (
+const ContactHeader: React.FC = () => {
+  const router = useRouter();
+
+  const handleGetEstimate = () => {
+    router.push('/GetEstimate');
+  };
+
+  return (
   <div className="">
      <style jsx>{`
         /* Hide all sections by default */
@@ -54,7 +62,7 @@ const ContactHeader: React.FC = () => (
       <ExploreRoomsDropdown textColor="text-white" />
       <NavMore textColor="text-white" />
       </div>
-      <button className="bg-orange-100 text-black px-4 py-2 rounded-xl font-semibold shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
+      <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-xl font-semibold shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
     </div>
     {/* Hero content */}
     <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
@@ -74,12 +82,12 @@ const ContactHeader: React.FC = () => (
       <ExploreRoomsDropdown textColor="text-white" />
       <NavMore textColor="text-white" />
       </div>
-      <button className="bg-orange-100 text-black px-4 py-2 rounded-4xl font-semibold shadow  mr-13 mt-4">GET FREE ESTIMATE</button>
+      <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-4xl font-semibold shadow  mr-13 mt-4">GET FREE ESTIMATE</button>
     </div>
     {/* Hero content */}
     <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-70 absolute top-0 left-0 right-0">
       <h1 className="text-5xl lg:text-6xl manrope drop-shadow-lg">How Can We Help You</h1>
-     
+
     </div>
   </div>
 
@@ -87,11 +95,11 @@ const ContactHeader: React.FC = () => (
   <div className="block md:hidden">
 
 
-    
+
 
   </div>
   </div>
-  
-);
+  );
+};
 
 export default ContactHeader;
