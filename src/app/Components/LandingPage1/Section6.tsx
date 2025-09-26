@@ -181,7 +181,7 @@ export default function Section6() {
               {/* Meet Our Designers Button */}
               <button 
                 onClick={scrollToForm}
-                className="absolute top-8 right-8 bg-red-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-600 transition-colors"
+                className="absolute top-8 right-8 bg-red-500 text-white px-6 py-3 rounded-full manrope-medium hover:bg-red-600 transition-colors"
               >
                 Meet Our Designers
               </button>
@@ -228,7 +228,7 @@ export default function Section6() {
         {/* Smart Storage Section */} 
         <div className="mb-8">
           <div className='flex'>
-            <div className='bg-yellow-200 w-1 h-24 ml-4 mt-10'></div>
+            <div className='bg-[#ebd657]  w-0.75 h-24 ml-4 mt-10'></div>
             <div className='ml-3'>
               <h1 className='text-4xl mr-12 mt-10 manrope-medium'>Smart Storage</h1>
               <p className='manrope-medium text-[15px] pt-2'>Tailored Storage Designs for Maximum Space - 
@@ -262,7 +262,7 @@ export default function Section6() {
         {/* Modular Kitchen Section */}
         <div className="mb-8">
           <div className='flex mt-10'>
-            <div className='bg-yellow-200 w-1 h-20 ml-4'></div>
+            <div className='bg-[#ebd657] w-0.75 h-20 ml-4'></div>
             <div className='ml-3'>
               <h1 className='text-3xl mr-12 mt-2 manrope-medium'>Modular Kitchen</h1>
               <p className='manrope-medium'>Modular Kitchen With Smarter Storage</p>
@@ -295,9 +295,9 @@ export default function Section6() {
         {/* Bedrooms Section */}
         <div className="mb-8">
           <div className='flex mt-10'>
-            <div className='bg-yellow-200 w-1 h-24 ml-4 mt-2'></div>
+            <div className='bg-[#ebd657] w-0.75 h-24 ml-4 mt-2'></div>
             <div className='ml-3'>
-              <h1 className='text-4xl mr-12 mt-2 manrope-medium'>Bedrooms</h1>
+              <h1 className='text-4xl mr-12 mt-5 manrope-medium'>Bedrooms</h1>
               <p className='manrope-medium'>Bedrooms That Blend Comfort With Elegance</p>
             </div>
           </div>
@@ -328,7 +328,7 @@ export default function Section6() {
         {/* Living Spaces Section */}
         <div className="mb-8">
           <div className='flex mt-10'>
-            <div className='bg-yellow-200 w-1 h-24 ml-4'></div>
+            <div className='bg-[#ebd657] w-0.75 h-24 ml-4'></div>
             <div className='ml-3'>
               <h1 className='text-4xl mr-12 mt-2 manrope-medium'>Living Spaces</h1>
               <p className='manrope-medium'>Living Spaces Made For Style & Comfort</p>

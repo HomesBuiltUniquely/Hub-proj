@@ -78,13 +78,13 @@ const CardSection = ({
           md:max-w-[1360px] mx-auto
         "
         style={{
-          paddingRight: "56px",
+          paddingRight: "8px",
         }}
       >
         {cards.map((card, idx) => (
           <div
             key={idx}
-            className="min-w-[350px] max-w-[350px] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+            className="min-w-[270px] w-[350px] bg-white rounded-[23px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
             style={{
               height: "400px",
             }}
@@ -92,7 +92,7 @@ const CardSection = ({
             <img
               src={card.img}
               alt={card.label}
-              className="w-full h-[400px] object-cover transition duration-300"
+              className="w-full h-[450px] object-cover bg-center transition duration-300"
             />
             
           </div>
@@ -109,7 +109,7 @@ const ModularKitchenShowcase: React.FC = () => (
       subtitle="Built to Last."
       buttonText="Wardrobe for him & her"
       cards={kitchenAccessories}
-      scrollDirection={1}
+      scrollDirection={-1}
     />
     <CardSection
       title="Designed to Fit "

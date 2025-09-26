@@ -46,7 +46,7 @@ export default function Section2(){
                 </div>
                 <div className="ml-22 mt-1">
                   <div className="font-bold text-red-500 text-[30px] pl-4">4.7+ </div>
-                  <div>Google Rating</div>
+                  <div className="ml-4">Google Rating</div>
                 </div>
               </div>
             </div>
