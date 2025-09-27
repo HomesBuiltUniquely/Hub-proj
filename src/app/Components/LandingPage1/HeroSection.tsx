@@ -465,7 +465,7 @@ export default function HeroSections() {
       <form onSubmit={handleSubmit} id="hero-form">
 
         {/* ===== MOBILE VERSION ===== */}
-        <div className="block lg:hidden">
+        <div className=" w-[full] mx-auto   block lg:hidden">
           {/* Mobile Navbar - Separate Row with White Background */}
           <div className="bg-white w-full py-4 px-4 shadow-sm">
             <div className="flex items-center justify-between">
@@ -495,7 +495,7 @@ export default function HeroSections() {
             {/* Centered Heading and Subheading */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10 pb-64 pr-10">
               <h1 className="text-white text-[24px] manrope text-left leading-tight drop-shadow-lg mt-6 w-full h-full">Best Interior Designers in <span className="text-red-500  manrope-semibold">Bangalore</span></h1>
-              <p className="text-white text-base text-left font-small drop-shadow top-3 pt-1 pr-3 w-full h-full">Transforming Bangalore homes with personalized interiors that reflect your lifestyle.</p>
+              <p className="text-white text-1 text-left manrope-medium drop-shadow top-3 pt-1 pr-3 w-full h-full">Transforming Bangalore homes with personalized interiors that reflect your lifestyle.</p>
             </div>
           </div>
 
@@ -567,7 +567,7 @@ export default function HeroSections() {
                     onChange={e => setSelectedCity(e.target.value)}
                     className="manrope-medium w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-3xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                   >
-                    <option className="text-gray-400" value="" disabled>Choose Interior Setup *</option>
+                    <option className="text-gray-400 manrope-medium" value="" disabled>Choose Interior Setup *</option>
                     {cityOptions.map((option: string) => (
                       <option key={option} value={option}>{option}</option>
                     ))}
@@ -576,7 +576,7 @@ export default function HeroSections() {
                   <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
                 </div>
                 {/* Budget Dropdown */}
-                <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10">
+                <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 manrope-medium">
                   <select
                     name="budget"
                     required
@@ -641,7 +641,7 @@ export default function HeroSections() {
                 <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2" />
               </div>
               <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
-                <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every Budget</p>
+                <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every Home</p>
                 
                 {/* Name and Email Row */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
@@ -652,7 +652,7 @@ export default function HeroSections() {
                     onChange={handleInputChange}
                     placeholder="Name *"
                     required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium"
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                   />
                   <input
                     id="e1"
@@ -662,7 +662,7 @@ export default function HeroSections() {
                     onChange={handleInputChange}
                     placeholder="Email *"
                     required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium"
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                   />
                 </div>
 
@@ -676,7 +676,7 @@ export default function HeroSections() {
                     onChange={handleInputChange}
                     placeholder="Phone Number *"
                     required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 font-medium"
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                   />
                   {/* Pincode Dropdown */}
                   <div className="relative w-full sm:w-[250px] mt-4 sm:mt-10">
@@ -685,9 +685,9 @@ export default function HeroSections() {
                       required
                       value={selectedPincode}
                       onChange={e => setSelectedPincode(e.target.value)}
-                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
+                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
                     >
-                      <option className="text-gray-400 font-manrope" value="" disabled>Property Pincode *</option>
+                      <option className="text-gray-400 manrope-medium" value="" disabled>Property Pincode *</option>
                       {Pincode.map((pin, idx) => (
                         <option key={idx} value={pin}>{pin}</option>
                       ))}
@@ -706,7 +706,7 @@ export default function HeroSections() {
                         setCityOpen(!cityOpen);
                         setBudgetOpen(false);
                       }}
-                      className={`w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && 'text-gray-400'}`}
+                      className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && 'text-gray-400'}`}
                     >
                       <span className="truncate">
                         {selectedCity || "Choose Interior Setup"}
@@ -714,7 +714,7 @@ export default function HeroSections() {
                       <span className="text-gray-500">&#9662;</span>
                     </div>
                     {cityOpen && (
-                      <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
+                      <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto manrope-medium">
                         {cityOptions.map((option: string) => (
                           <li
                             key={option}
@@ -735,7 +735,7 @@ export default function HeroSections() {
                         setBudgetOpen(!budgetOpen);
                         setCityOpen(false);
                       }}
-                      className={`w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] mt-6 sm:mt-10 flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedBudget && 'text-gray-400'}`}
+                      className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] mt-6 sm:mt-10 flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedBudget && 'text-gray-400'}`}
                     >
                       <span>
                         {selectedBudget || "Possession In"}
@@ -812,7 +812,7 @@ export default function HeroSections() {
                 <h1 className="text-white text-6xl manrope-medium leading-tight mb-0 drop-shadow-lg">Best Interior<p className="mb-1">Designers In <span className="text-red-500">Bangalore</span></p></h1>
                 <p className="text-white text-xl manrope-medium drop-shadow mb-1 pt-2">Transforming Bangalore homes with personalized<br />interiors that reflect your lifestyle.</p>
               </div>
-              <button onClick={scrollToCalculator} className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 manrope absolute -mt-190 ml-132 tracking-wider text-[18px] z-20 hover:bg-[#c4b5a8] transition-colors cursor-pointer"> GET A FREE QUOTE</button>
+              <button onClick={scrollToCalculator} className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 absolute -mt-190 ml-132 manrope tracking-wider text-[18px] z-20 hover:bg-[#c4b5a8] transition-colors cursor-pointer"> GET A FREE QUOTE</button>
             </div>
           </div>
         </div>
@@ -842,20 +842,20 @@ export default function HeroSections() {
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="Enter 6-digit OTP"
                 maxLength={6}
-                className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium"
+                className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium"
               />
               <div className="flex gap-3">
                 <button
                   onClick={handleOtpSubmit}
                   disabled={isOtpVerifying || otp.length !== 6}
-                  className="flex-1 bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-manrope hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-manrope hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
                 >
                   {isOtpVerifying ? 'Verifying...' : 'Verify OTP'}
                 </button>
                 <button
                   onClick={handleAutoSendOtp}
                   disabled={isSendingOtpAuto}
-                  className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
                 >
                   {isSendingOtpAuto ? 'Sending...' : 'Resend OTP'}
                 </button>

@@ -270,8 +270,8 @@ export default function Section3() {
                             <p className="text-[28px] tracking-wide">budget</p> */}
                             <button
                                 onClick={scrollToForm}
-                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] font-bold rounded-full text-[20px] hover:bg-red-600 transition-colors"
-                            >
+                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] manrope rounded-full text-[20px] hover:bg-red-600 transition-colors"
+>
                                 Book A Free Design Session
                             </button>
                         </div>
@@ -296,7 +296,7 @@ export default function Section3() {
                                         className="rounded-t-4xl row-span-3 w-full h-[350px] object-cover"
                                     />
                                     <div className="row-span-2 mt-18 ml-5">
-                                        <div className="text-[30px] font-semibold">{slide.type}</div>
+                                        <div className="text-[30px] manrope">{slide.type}</div>
                                     </div>
                                 </div>
                             ))}
@@ -311,22 +311,24 @@ export default function Section3() {
             </div>
 
             {/* mobile */}
-            <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[950px] bg-[#f1f2f6]">
+            <div className="lg:hidden w-[full] mx-auto   max-h-[950px] bg-[#f1f2f6]">
                 {/* Stacked Card Carousel */}
 
-                <div className='w-[400px]'>
+                <div className=''>
                     <div className="flex">
-                        <div className="w-0.75 h-25  bg-[#ebd657] mt-10 ml-4"></div>
-                        <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium">Designs for Every <div className="text-4xl tracking-wide marope-medium">
-                            Preference
-                        </div></h1>
+                        <div className="w-0.75 h-25   bg-[#ebd657] mt-10 ml-4"></div>
+                        <h1 className="text-4xl pl-4 pt-12 tracking-wide manrope-medium">Designs for Every Preference
+                      </h1>
 
                     </div>
-                    <div className="ml-5 mt-5 manrope-medium">
-                        <p>From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless </p>
-                        <p>balance of modern charm, timeless tradition</p>
-                        <p>and artistic sophistication tailored to every lifestyle.</p>
+                    <div className=" manrope-medium ml-4 mt-4 ">
+                        <p>From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless
+                        balance of modern charm, timeless tradition
+                        and artistic sophistication tailored to every
+                        lifestyle.</p>
                     </div>
+
+                    
                     <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[400px]"></div>
                     <div className="ml-10 mt-10">
 
@@ -344,7 +346,7 @@ export default function Section3() {
                 </div>
 
                 <div className='flex justify-center'>
-                    <div className=" relative h-[400px] w-full max-w-[280px]">
+                    <div className=" relative h-[400px] w-full max-w-[280px] manrope-medium">
                         {slides.map((slide, idx) => {
                             // Show only the top 3 cards in the stack for performance
                             const isTop = idx === currentSlide;

@@ -26,23 +26,25 @@ const BedroomSection: React.FC = () => (
     {/* mobile version */}
 
     <div className="block md:hidden">
-      
-     <div className="bg-[#3a2b21] w-360 max-w-sm rounded-2xl px-5 py-10 ">
-
     
+        
 
-        <img src="/bs1.jpg" alt="Ideal Bedroom" className="rounded-3xl "/>
+        <div className="bg-[#3a2b21] w-[360px] mx-auto pb-15 pl-3 pr-3 mr-3 pt-5 justify-center rounded-3xl">
 
-            <h1 className="manrope-medium text-4xl text-white py-4">Ideal Bedroom</h1>
 
-            <p className="justify-center text-white manrope-medium">
-              An ideal bedroom combines dreams, comfort, and feelings. HUB Interior offers more than just interior design — we create a cozy space that reflects your lifestyle and personality. As a trusted interior designer in Bengaluru, known for our cozy and comfortable bedroom interiors, we help you achieve your vision with warmth, care, and timeless elegance. Every corner of your bedroom is filled with thoughtful details, turning it into a sanctuary of peace and love.
-            </p>
+
+          <img src="/bs1.jpg" alt="Ideal Bedroom" className="rounded-3xl " />
+
+          <h1 className="manrope-medium text-4xl text-white py-4">Ideal Bedroom</h1>
+
+          <p className="justify-center text-white manrope-medium">
+            An ideal bedroom combines dreams, comfort, and feelings. HUB Interior offers more than just interior design — we create a cozy space that reflects your lifestyle and personality. As a trusted interior designer in Bengaluru, known for our cozy and comfortable bedroom interiors, we help you achieve your vision with warmth, care, and timeless elegance. Every corner of your bedroom is filled with thoughtful details, turning it into a sanctuary of peace and love.
+          </p>
+
+        </div>
 
       </div>
-  
-    </div>
-
+   
   </section>
 
 
