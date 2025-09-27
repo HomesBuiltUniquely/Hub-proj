@@ -13,6 +13,9 @@ declare global {
 export async function POST(req: Request) {
   try {
     const { phone } = await req.json();
+    if (!phone) {
+      return NextResponse.json({ success: false, message: 'Phone is required' }, { status: 400 });
+    }
 
     // Check if required environment variables are set
     if (!process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN || !process.env.TWILIO_PHONE_NUMBER) {
@@ -41,11 +44,24 @@ export async function POST(req: Request) {
       attempts: 0
     });
 
+    // Normalize phone to E.164 (+91XXXXXXXXXX) for India
+    const digits = String(phone).replace(/\D/g, '');
+    let toNumber = '';
+    if (phone.startsWith('+')) {
+      toNumber = phone; // assume already E.164
+    } else if (digits.length === 10) {
+      toNumber = `+91${digits}`;
+    } else if (digits.length === 12 && digits.startsWith('91')) {
+      toNumber = `+${digits}`;
+    } else {
+      return NextResponse.json({ success: false, message: 'Invalid phone number' }, { status: 400 });
+    }
+
     // Send SMS via Twilio
     const message = await client.messages.create({
       body: `Your HUB INTERIOR verification code is: ${otp}. Valid for 5 minutes.`,
       from: process.env.TWILIO_PHONE_NUMBER,
-      to: phone.startsWith('+') ? phone : `+91${phone}`
+      to: toNumber,
     });
 
     console.log('SMS sent successfully:', message.sid);
@@ -76,9 +92,9 @@ export async function POST(req: Request) {
       }
     }
     
-    return NextResponse.json({ 
-      success: false, 
-      message: 'Failed to send OTP. Please try again.' 
-    }, { status: 500 });
+    const message = process.env.NODE_ENV !== 'production' && error instanceof Error
+      ? `Failed to send OTP: ${error.message}`
+      : 'Failed to send OTP. Please try again.';
+    return NextResponse.json({ success: false, message }, { status: 500 });
   }
 }
