@@ -43,7 +43,7 @@ const ContactHeader: React.FC = () => {
   </div>
     {/* Mobile Version above 360px */}
     <div className="md:hidden w-[360px] mx-auto pb-10">
-      <div className="relative h-[550px]">
+      <div className="relative h-[550px] w-[360px]">
         {/* Rounded image only */}
         <div className="absolute inset-0 rounded-4xl overflow-hidden">
           <Image
