@@ -63,6 +63,27 @@ const CardSection = ({
 
   return (
     <section className="w-full py-8 md:py-12 bg-[#f1f2f6]">
+      <style jsx>{`
+        /* Hide custom mobile variants by default */
+        .mobile-360plus,
+        .mobile-300 {
+          display: none;
+        }
+
+        /* Show mobile layout for widths >= 360px (up to md breakpoint) */
+        @media (min-width: 360px) and (max-width: 767px) {
+          .mobile-360plus {
+            display: block;
+          }
+        }
+
+        /* Show compact mobile for widths between 300px and 359px */
+        @media (min-width: 300px) and (max-width: 359px) {
+          .mobile-300 {
+            display: block;
+          }
+        }
+      `}</style>
       {/* Desktop Version */}
       <div className="hidden md:block">
         <div className="flex flex-col items-center mb-8 px-2">
@@ -102,8 +123,8 @@ const CardSection = ({
         </div>
       </div>
 
-      {/* Mobile Version (below 360px) */}
-      <div className="md:hidden px-4">
+      {/* Mobile Version (>= 360px) */}
+      <div className="md:hidden px-4 mobile-360plus">
         <div className="flex flex-col items-center mb-6">
           <h2 className="text-2xl manrope-medium font-bold text-gray-900 mb-1 text-center">
             {title}
@@ -133,6 +154,45 @@ const CardSection = ({
               />
               <div className="px-4 pt-4 -mt-16">
                 <div className="h-[36px] inline-block bg-gray-100 rounded-full text-gray-800 px-3 py-2 text-xs font-bold">
+                  {card.label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Compact Mobile Version (< 360px) */}
+      <div className="md:hidden px-3 mobile-300">
+        <div className="flex flex-col items-center mb-4">
+          <h2 className="text-xl manrope-medium font-bold text-gray-900 mb-1 text-center">
+            {title}
+          </h2>
+          <p className="text-2xl wulkan-display italic text-gray-500 mb-3 text-center">
+            {subtitle}
+          </p>
+          <button className="bg-gray-800 text-white rounded-md manrope-medium px-4 py-1.5 font-semibold text-xs mb-3">
+            {buttonText}
+          </button>
+        </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-3 overflow-x-auto scrollbar-none px-1 pb-2 w-full"
+          style={{ paddingRight: "32px" }}
+        >
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className="min-w-[220px] max-w-[220px] bg-white rounded-2xl shadow-md overflow-hidden group transition hover:shadow-xl"
+              style={{ height: "240px" }}
+            >
+              <img
+                src={card.img}
+                alt={card.label}
+                className="w-full h-[240px] object-cover transition duration-300"
+              />
+              <div className="px-3 pt-3 -mt-14">
+                <div className="h-[30px] inline-block bg-gray-100 rounded-full text-gray-800 px-3 py-1.5 text-[10px] font-bold">
                   {card.label}
                 </div>
               </div>

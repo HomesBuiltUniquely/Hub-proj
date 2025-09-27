@@ -14,6 +14,7 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
   className = "" 
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLockedOpen, setIsLockedOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
@@ -21,6 +22,7 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        setIsLockedOpen(false);
       }
     };
 
@@ -28,6 +30,18 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+  }, []);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        setIsLockedOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   const offerings = [
@@ -68,10 +82,18 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
     className="relative" 
     ref={dropdownRef}
     onMouseEnter={() => setIsOpen(true)}
-    onMouseLeave={() => setIsOpen(false)}
+    onMouseLeave={() => { if (!isLockedOpen) setIsOpen(false); }}
   >
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (isLockedOpen) {
+            setIsLockedOpen(false);
+            setIsOpen(false);
+          } else {
+            setIsLockedOpen(true);
+            setIsOpen(true);
+          }
+        }}
         className={`hover:text-[#edb457] font-medium transition-colors py-4 text-xm manrope ${textColor} ${className}`}
       >
         EXPLORE ROOMS
@@ -79,15 +101,15 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
 
       {isOpen && (
               <div 
-              className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[90vw] max-w-[800px] bg-white rounded-4xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
+              className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[80vw] max-w-[800px] bg-white rounded-4xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
               onMouseEnter={() => setIsOpen(true)}
-              onMouseLeave={() => setIsOpen(false)}
+              onMouseLeave={() => { if (!isLockedOpen) setIsOpen(false); }}
             >
           <div className="flex flex-col lg:flex-row">
             {/* Left Section - Offerings List */}
             
             {/* Right Section - Image Cards */}
-            <div className="w-full lg:w-1/2 p-6 lg:p-8">
+              <div className="w-full lg:w-1/2 p-4 lg:p-6">
               <div className="grid grid-cols-2 gap-3 lg:gap-4 ">
                 {cards.map((card, index) => (
                   <Link key={index} href={card.link} className="group">
@@ -118,12 +140,12 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
 
 
 
-            <div className="w-full lg:w-1/2 p-6 lg:p-8 bg-gray-50">
-              <h3 className="text-lg font-semibold text-gray-800 mb-6 pl-39">Explore rooms</h3>
+            <div className="w-full lg:w-1/2 p-4 lg:p-4s bg-gray-50">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Explore rooms</h3>
               <ul className="space-y-3">
                 {offerings.map((offering, index) => (
                   <li key={index}>
-                    <button className="text-left text-gray-700 hover:text-[#DDCCC1] transition-colors w-full text-sm manrope-medium pl-40">
+                    <button className="text-left text-gray-700 hover:text-[#DDCCC1] transition-colors w-full text-sm manrope-medium">
                       {offering}
                     </button>
                   </li>

@@ -1,14 +1,26 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 
-const ContactHeader: React.FC = () => (
+const ContactHeader: React.FC = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/');
+  };
+
+  return (
   <div className="w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
     {/* Navbar */}
     <div className="flex items-center justify-between -mt-15">
-      <Image src="/redlogo.png" alt="HUB Interior Logo" width={220} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+      <div onClick={handleClick} className="cursor-pointer">
+        <Image src="/redlogo.png" alt="HUB Interior Logo" width={220} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+      </div>
       <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
       <OfferingsDropdown textColor="text-white" />
       <ExploreRoomsDropdown textColor="text-white" />
@@ -24,6 +36,7 @@ const ContactHeader: React.FC = () => (
      
     </div>
   </div>
-);
+  );
+};
 
 export default ContactHeader;

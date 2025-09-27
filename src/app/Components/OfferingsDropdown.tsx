@@ -16,6 +16,8 @@ const OfferingsDropdown: React.FC<OfferingsDropdownProps> = ({
   showForm = false
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  // When true, dropdown remains open regardless of mouse leave until toggled or closed via outside/Esc
+  const [isLockedOpen, setIsLockedOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
@@ -23,6 +25,7 @@ const OfferingsDropdown: React.FC<OfferingsDropdownProps> = ({
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        setIsLockedOpen(false);
       }
     };
 
@@ -30,6 +33,18 @@ const OfferingsDropdown: React.FC<OfferingsDropdownProps> = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+  }, []);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        setIsLockedOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   const offerings = [
@@ -70,10 +85,19 @@ const OfferingsDropdown: React.FC<OfferingsDropdownProps> = ({
       className="relative" 
       ref={dropdownRef}
       onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseLeave={() => { if (!isLockedOpen) setIsOpen(false); }}
     >
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          // Toggle lock; opening if closed, closing if already locked
+          if (isLockedOpen) {
+            setIsLockedOpen(false);
+            setIsOpen(false);
+          } else {
+            setIsLockedOpen(true);
+            setIsOpen(true);
+          }
+        }}
         className={`hover:text-[#ebd457] font-medium transition-colors py-4 text-xm manrope ${textColor} ${className}`}
       >
         OFFERINGS
@@ -83,7 +107,7 @@ const OfferingsDropdown: React.FC<OfferingsDropdownProps> = ({
         <div 
           className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[90vw] max-w-[800px] bg-white rounded-4xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
           onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
+          onMouseLeave={() => { if (!isLockedOpen) setIsOpen(false); }}
         >
           {showForm ? (
             // Franchise Form Layout

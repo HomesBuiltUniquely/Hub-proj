@@ -55,6 +55,7 @@ export default function Section3() {
                 <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
                     <div className='w-[850px]'>
                         <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">Homes For Every Lifestyle</div>
+                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">Homes For Every Lifestyle</div>
                         <div className="ml-10 mt-10">
                             <p className="text-[30px] manrope-medium tracking-wide  text-align: justify;
 ">From cozy living rooms to elegant bedrooms and stylish modular kitchens, we craft dream home interiors that blend comfort,</p>
