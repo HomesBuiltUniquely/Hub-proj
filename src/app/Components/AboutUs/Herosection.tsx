@@ -37,7 +37,6 @@ export default function Herosection() {
                     .aboutus-hero-3xl-overlay {
                         position: absolute;
                         inset: 0;
-                       
                     }
                     
                     .aboutus-hero-3xl-button {

@@ -15,6 +15,10 @@ const HeroSection: React.FC = () => {
     router.push('/GetEstimate');
   };
 
+  const handleClick = () => {
+    router.push('/');
+  };
+
   return (
   <div className="">
      <style jsx>{`
@@ -57,7 +61,9 @@ const HeroSection: React.FC = () => {
   <div className="desktop-1440 w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/gh1.png')" }}>
     {/* Navbar */}
     <div className="flex items-center justify-between -mt-15 ">
-      <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+      <div onClick={handleClick} className="cursor-pointer">
+        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+      </div>
       <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
       <OfferingsDropdown textColor="text-white" />
       <ExploreRoomsDropdown textColor="text-white" />
@@ -82,7 +88,9 @@ const HeroSection: React.FC = () => {
     <img src={"/gh1.png"} className=" w-full"></img>
 
     <div className="flex items-center justify-between -mt-15 absolute top-0 left-0 right-0">
-      <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[200px] h-full  ml-4 mt-2" />
+      <div onClick={handleClick} className="cursor-pointer">
+        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[200px] h-full  ml-4 mt-2" />
+      </div>
       <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-85 mt-4">
       <OfferingsDropdown textColor="text-white" />
       <ExploreRoomsDropdown textColor="text-white" />
