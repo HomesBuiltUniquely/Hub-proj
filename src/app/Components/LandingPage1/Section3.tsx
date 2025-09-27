@@ -54,11 +54,13 @@ export default function Section3() {
             <div className="hidden lg:block">
                 <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
                     <div className='w-[850px]'>
-                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[490px]">Homes For Every Budget</div>
+                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">Homes For Every Lifestyle</div>
                         <div className="ml-10 mt-10">
-                            <p className="text-[30px] manrope-medium tracking-wide">From cozy living rooms to elegant bedrooms and stylish modular kitchens,</p>
-                            <p className="text-[30px] manrope-medium tracking-wide">we craft dream home interiors that blend comfort, </p>
-                            <p className="text-[30px] manrope-medium tracking-wide">beauty, and functionality, creating spaces youll love.</p>
+                            <p className="text-[30px] manrope-medium tracking-wide  text-align: justify;
+">From cozy living rooms to elegant bedrooms and stylish modular kitchens, we craft dream home interiors that blend comfort,</p>
+                            {/* { <p className="text-[30px] manrope-medium tracking-wide  text-align: justify"></p>} */}
+                             { <p className="text-[30px] manrope-medium tracking-wide  text-align: justify">beauty, and functionality, creating spaces you&#39;ll love. </p>}
+                             {/* // <p className="text-[30px] manrope-medium tracking-wide"></p>  */}
                             {/* <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
                             <p className="text-[28px] tracking-wide">budget</p> */}
                             <button 
@@ -107,13 +109,12 @@ export default function Section3() {
             {/* mobile */}
             <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[900px] bg-[#f1f2f6]">
                 <div className="flex">
-                    <div className="w-1 h-25 bg-amber-300 mt-10 ml-4"></div>
-                    <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium">Homes For Every Lifestyle</h1>
+                    <div className="w-0.75 h-25 bg-[#ebd657] mt-10 ml-4"></div>
+                    <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium ">Homes For Every Lifestyle</h1>
                 </div>
                 <div className="ml-5 mt-5 manrope-medium">
-                    <p>From cozy living rooms to elegant bedrooms and stylish modular
-                    kitchens, we craft dream home
-                    interiors that blend comfort, beauty, and functionality, creating spaces you&#39;ll love.</p>
+                    <p>From cozy living rooms to elegant bedrooms and stylish modular kitchens, we craft dream home</p>
+                    <p> interiors that blend comfort, beauty, and functionality, creating spaces you&#39;ll love</p>
                 </div>
                 {/* Stacked Card Carousel */}
                 <div className='flex justify-center'>

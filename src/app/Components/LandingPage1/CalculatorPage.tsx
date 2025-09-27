@@ -6,7 +6,7 @@ import {useRouter} from "next/navigation";
 export default function CalculatorPage() {
     const router = useRouter();
     function handelSubmit() {
-       router.push('/interior-designers-in-bangalore/Calculator')
+    router.push('/interior-designers-in-bangalore/Calculator')
     }
     return (
         <div id="calculator-section" className="w-full h-auto bg-white">
@@ -28,8 +28,8 @@ export default function CalculatorPage() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-white ">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
-                            </div>  
-                        </button>        
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
