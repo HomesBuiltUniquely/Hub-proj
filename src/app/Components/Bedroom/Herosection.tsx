@@ -5,7 +5,12 @@ import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 
 
-const BedroomHeroSimple: React.FC = () => (
+const BedroomHeroSimple: React.FC = () => {
+
+  const handleClick = () => {
+    router.push("/");
+  };
+  
   <div>
     <div className=" hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/bh.png')" }}>
       {/* Navbar */}
@@ -26,38 +31,57 @@ const BedroomHeroSimple: React.FC = () => (
           <button className="bg-yellow-300 text-black px-6 py-3 rounded-full font-semibold shadow mr-70">Lets Connect</button>
         </div>
       </div>
-       <div className="hidden md:block w-[1000px] text-lg text-center mt-20 rounded-3xl relative mx-auto">
-      Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
+      <div className="hidden md:block w-[1000px] text-lg text-center mt-20 rounded-3xl relative mx-auto">
+        Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
+      </div>
     </div>
-    </div>
-   
+
 
     {/* ===== MOBILE VERSION ===== */}
 
-<div className="block md:hidden">
-    <div className="   mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: `url('C:\Users\Nishanth\new\Hub-proj\public\BR Herosimple.png')`, }}>
-
-
-      {/* Navbar */}
-      <div className="flex items-center justify-between -mt-15">
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={200} className="w-[250px]  -mt-4 -ml-4" />
-        <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white ml-80 mt-4">
-          <OfferingsDropdown textColor="text-white" />
-          <ExploreRoomsDropdown textColor="text-white" />
-          <NavMore textColor="text-white" />
+    <div className="md:hidden w-[360px] mx-auto pb-10">
+          <div className="relative h-[550px]">
+            {/* Rounded image only */}
+            <div className="absolute inset-0 rounded-4xl overflow-hidden">
+              <Image
+                src="/bh1.png"
+                alt="Modular Kitchen Background"
+                fill
+                priority
+                className="object-cover"
+              />
+              {/* gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            </div>
+    
+            {/* top logo */}
+            <div className="absolute top-2 -mt-5 -mx-5" onClick={handleClick}>
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={25} className="cursor-pointer" />
+            </div>
+    
+            {/* text + cta */}
+            <div className="absolute bottom-10 left-4 right-4 text-white">
+              <h2 className="manrope font-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+                Modular
+                <br />
+                Kitchen
+              </h2>
+              <p className="mt-2 text-[13px] manrope-medium opacity-90">
+                Modular Kitchens Design for Style, Comfort & Everyday Living
+              </p>
+            </div>
+              {/* CTA overlapping, positioned above image */}
+              <div className="absolute left-6 -bottom-5 z-20">
+                <button className="bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
+                  Get Free Quote
+                </button>
+              </div>
+          </div>
         </div>
-       
-      </div>
-
-      {/* <div className="">
-        Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
-      </div> */}
-
+      
     </div>
-
-</div>
-  </div>
-);
+ 
+)};
 
 export default BedroomHeroSimple;
 

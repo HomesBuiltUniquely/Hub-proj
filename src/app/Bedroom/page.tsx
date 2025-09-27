@@ -11,11 +11,11 @@ export default function Bedroom(){
     return(
         <div>
             <BedroomHeroSimple/> 
-           <BedroomSection/>
-       <WardrobeCarousel/>
+            {/* <BedroomSection/>
+      <WardrobeCarousel/>
             <Section3/> 
             <Section4/>
-            <Footer/>
+            <Footer/> */}
         </div>
     )
 }
