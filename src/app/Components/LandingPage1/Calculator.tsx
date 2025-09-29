@@ -206,7 +206,6 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
             <div className="space-y-4 max-w-md mx-auto">
                 {roomOptions.map(room => {
                     const count = formData.rooms?.[room] || 0;
-                    const isSelected = count > 0;
                     return (
                         <div
                             key={room}
@@ -243,7 +242,6 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
                 <div className="space-y-3 max-w-md mx-auto px-4">
                     {roomOptions.map(room => {
                         const count = formData.rooms?.[room] || 0;
-                        const isSelected = count > 0;
                         return (
                             <div
                                 key={room}
