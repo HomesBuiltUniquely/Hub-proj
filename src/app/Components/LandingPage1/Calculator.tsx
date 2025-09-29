@@ -156,7 +156,7 @@ const Step1BhkType: React.FC<StepProps> = ({ formData, setFormData }) => {
             >
               {formData.bhkType === option && <div className="w-2 h-2 bg-white rounded-full"></div>}
             </div>
-              <span className="font-semibold text-gray-700 text-base">{option}</span>
+              <span className="manrope text-gray-700 text-base">{option}</span>
           </div>
         ))}
         </div>
@@ -172,7 +172,14 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
     const handleCountChange = (roomName: string, delta: number) => {
         setFormData((prev: FormData) => {
             const currentCount = prev.rooms?.[roomName] || 0;
-            const newCount = Math.max(0, currentCount + delta); // Prevent going below zero
+            let newCount;
+            
+            // Special case for Bedroom: if going from 0 to 1, start with 2
+            if (roomName === "Bedroom" && currentCount === 0 && delta === 1) {
+                newCount = 2;
+            } else {
+                newCount = Math.max(0, currentCount + delta); // Prevent going below zero
+            }
 
             const newRooms = { ...prev.rooms };
 
@@ -205,7 +212,7 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
                                     isSelected ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
                                 }`}
                             >
-                                <span className={`font-semibold text-lg ${isSelected ? 'text-red-600' : 'text-gray-700'}`}>{room}</span>
+                                <span className={`manrope text-lg ${isSelected ? 'text-red-600' : 'text-gray-700'}`}>{room}</span>
                                 <div className="flex items-center gap-4">
                                     <button
                                         onClick={() => handleCountChange(room, -1)}
@@ -990,7 +997,7 @@ export default function CalculatorSetup() {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({
     bhkType: '',
-    rooms: {},
+    rooms: { "Bedroom": 2 },
     wardrobe: {},
     kitchen: {},
     collections: {},
