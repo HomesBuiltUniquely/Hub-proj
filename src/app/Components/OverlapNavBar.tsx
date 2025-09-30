@@ -214,7 +214,7 @@ const OverlapNavBar: React.FC = () => {
           onClick={handleLetsBeginClick}
           className={` -mt-6 manrope-medium bg-red-600 hover:bg-red-700 text-white w-16 h-16 rounded-full flex flex-col items-center justify-center text-xs transition-colors duration-200 absolute left-1/2 transform -translate-x-1/2 -top-2 shadow-lg ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         >
-          <span>Let's</span>
+          <span>Let&#39;s</span>
           <span>begin</span>
         </button>
       </div>
