@@ -79,7 +79,7 @@ export default function Section5() {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="mb-16">
-                    <h1 className="text-4xl wulkan-display-bold text-gray-800 max-w-md">
+                    <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md">
                         Your dream space in just four steps
                     </h1>
                 </div>
@@ -98,12 +98,12 @@ export default function Section5() {
                                                 ? 'bg-[#32261c] text-white shadow-lg' 
                                                 : 'bg-gray-300 text-gray-600'
                                         }`}>
-                                            <Image src={step.icon} alt={step.title} width={24} height={24} />
+                                            <Image src={step.icon} alt={step.title} width={25} height={25} />
                                         </div>
                                     </div>
 
                                     {/* Step Content */}
-                                    <div className="flex-1 pt-2">
+                                    <div className="flex-1 pt-2 ">
                                         <h3 className={`text-2xl manrope mb-2 transition-colors duration-500 ${
                                             index <= activeStep ? 'text-gray-800' : 'text-gray-500'
                                         }`}>

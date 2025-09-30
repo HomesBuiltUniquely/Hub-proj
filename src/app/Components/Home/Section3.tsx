@@ -97,7 +97,7 @@ export default function Section3() {
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="flex flex-row justify-between items-center mb-12">
-                    <h1 className="text-4xl wulkan-display-bold text-gray-800">All Interior Service, One Destination</h1>
+                    <h1 className="text-4xl wulkan-display-bold text-gray-800 ">All Interior Service, One Destination</h1>
                     <a href="/ContactUs">
                         <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
                             Book consultation
@@ -173,11 +173,11 @@ export default function Section3() {
         
         {/* Mobile Overlapping Carousel */}
         <div className="block md:hidden bg-[#F1F2F6] py-12">
-            <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 mb-2 pl-8">All Interior Service, One Destination</h1>
+            <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-5 pl-8">All Interior Service, One Destination</h1>
             
             <div 
                 ref={carouselRef}
-                className="relative h-[560px] flex justify-center items-center"
+                className="relative h-[560px] flex justify-center items-center -mt-5"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
