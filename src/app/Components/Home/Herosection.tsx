@@ -172,7 +172,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ddcdc1]  hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -218,10 +218,10 @@ const Herosection: React.FC = () => {
 
             
             <img className="w-[350px] h-[630px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
-            <div className="-mt-62 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-10">{mobileTexts[currentSlide]}</div>
+            <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
              {/* Horizontal line above button */}
-            <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-30 ml-10"></div>
-            <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-25 ml-10 manrope-medium text-sm absolute h-[38px] w-[210px]">{heroSlides[currentSlide].buttonText}</button>
+            <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
+            <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px]">{heroSlides[currentSlide].buttonText}</button>
           </div>
              {/* Mobile Version 2 - Large Mobile (480px to 767px) */}
             <div className="mobile-large w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">

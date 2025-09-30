@@ -104,7 +104,7 @@ export default function Section2() {
                     </div>
                     
                     {/* Book Consultation Button */}
-                    <Link href="/ContactUs">
+                    <Link href="/GetEstimate">
                         <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
                             Book consultation
                             <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">

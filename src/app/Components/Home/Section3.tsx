@@ -70,6 +70,7 @@ export default function Section3() {
         }
     };
 
+    
     return (
         <div>
             <style jsx>{`
@@ -175,7 +176,7 @@ export default function Section3() {
         <div className="block md:hidden bg-[#F1F2F6] py-12">
             <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-5 pl-8">All Interior Service, One Destination</h1>
             
-            <div 
+            <div
                 ref={carouselRef}
                 className="relative h-[560px] flex justify-center items-center -mt-5"
                 onTouchStart={handleTouchStart}
@@ -219,7 +220,7 @@ export default function Section3() {
                                                 {service.title}
                                             </h3>
                                             <p className="text-sm text-gray-600 manrope-medium leading-relaxed">
-                                               {service.description}
+                                            {service.description}
                                             </p>
                                         </div>
                                     </div>
@@ -231,11 +232,11 @@ export default function Section3() {
                 })}
             </div>
             <div className="flex justify-center mt-8">
-              <Link href="/Inspiration">
+            <Link href="/">
                 <button className="bg-[#ef0101] text-white px-8 py-3 rounded-full manrope hover:bg-amber-300 transition-colors">
-                  Explore Services
+                Explore Services
                 </button>
-              </Link>
+            </Link>
             </div>
         </div>
     </div>

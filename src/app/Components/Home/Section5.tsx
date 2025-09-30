@@ -85,7 +85,7 @@ export default function Section5() {
                 </div>
 
                 {/* Main Content */}
-                <div className="flex gap-16 items-start">
+                <div className="flex gap-16 items-center">
                     {/* Left Side - Progress Steps */}
                     <div className="w-1/2 relative">
                         <div className="space-y-12">
@@ -132,8 +132,8 @@ export default function Section5() {
                     </div>
 
                     {/* Right Side - Image */}
-                    <div className="w-1/2">
-                        <div className="relative h-96 rounded-3xl overflow-hidden shadow-xl">
+                    <div className="w-1/2 flex justify-center">
+                        <div className="relative h-96 w-full max-w-xl rounded-3xl overflow-hidden shadow-xl">
                             <Image
                                 src={steps[activeStep].image}
                                 alt={steps[activeStep].title}
