@@ -5,6 +5,7 @@
 // export default function Section33() {
 //     const [currentSlide, setCurrentSlide] = useState(0);
 
+
 //     const scrollToForm = () => {
 //         const formElement = document.getElementById('hero-form');
 //         if (formElement) {
@@ -12,32 +13,39 @@
 //         }
 //     };
 
+
 //     const slides = [
 //         {
 //             img: "j1.webp",
 //             type: "Modren Contemporary Interior",
+
 
 //         },
 //         {
 //             img: "j2.webp",
 //             type: "Modren Asthetic Interior",
 
+
 //         },
 //         {
 //             img: "j3.webp",
 //             type: "Wodden traditional Interior",
+
 
 //         },
 //         {
 //             img: "j4.webp",
 //             type: "Art Deco Interior",
 
+
 //         },
 //         {
 //             img: "j5.webp",
 //             type: "Minimalistic Interior",
 
+
 //         },
+
 
 //     ];
 //     const slide1 = [
@@ -45,20 +53,24 @@
 //             img: "j1.webp",
 //             type: "Modren Contemporary Interior",
 
+
 //         },
 //         {
 //             img: "j2.webp",
 //             type: "Modren Asthetic Interior",
+
 
 //         },
 //         {
 //             img: "j3.webp",
 //             type: "Wodden traditional Interior",
 
+
 //         },
 //         {
 //             img: "j4.webp",
 //             type: "Art Deco Interior",
+
 
 //         },
 
@@ -145,12 +157,15 @@
 //                         const isFourth = idx === (currentSlide + 3) % slides.length;
 //                         const isFifth = idx === (currentSlide + 4) % slides.length;
 
+
 //                         if (!(isTop || isSecond || isThird || isFourth || isFifth)) return null;
+
 
 //                         let offset = 0;
 //                         let scale = 1;
 //                         let z = 5;
 //                         let opacity = 1;
+
 
 //                         if (isSecond) {
 //                             offset = 40;
@@ -173,6 +188,7 @@
 //                             z = 1;
 //                             opacity = 1;
 //                         }
+
 
 //                         return (
 //                             <div
@@ -204,13 +220,13 @@
 // }
 
 
-
 'use client'
 
 import { useState, useEffect } from 'react';
 
 export default function Section3() {
     const [currentSlide, setCurrentSlide] = useState(0);
+
 
     const scrollToForm = () => {
         const formElement = document.getElementById('hero-form');
@@ -219,27 +235,33 @@ export default function Section3() {
         }
     };
 
+
     const slides = [
         {
             img: "j1.webp",
             type: "Modern Contemporary Interior",
+
 
         },
         {
             img: "j2.webp",
             type: "Modern Aesthetic Interior",
 
+
         },
         {
             img: "j3.webp",
             type: "Wooden Traditional Interior",
+
 
         },
         {
             img: "j4.webp",
             type: "Art Deco Interior",
 
+
         },
+
 
     ];
 
@@ -251,9 +273,9 @@ export default function Section3() {
         return () => clearInterval(interval);
     }, [slides.length]);
 
-    // Card and container widths
-    const cardWidth = 380;
-    const gap = 96;
+     // Card and container widths
+     const cardWidth = 380;
+     const gap = 96;
 
     return (
         <>
@@ -261,17 +283,14 @@ export default function Section3() {
             <div className="hidden lg:block">
                 <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
                     <div className='w-[850px]'>
-                        <div className="text-[56px] mt-10 ml-10 manrope-medium w-[490px]">Designs for Every Preference</div>
+                         <div className="text-[56px] mt-10 ml-10 manrope-medium w-[490px]">Designs for Every Preference</div>
                         <div className="ml-10 mt-10">
                             <p className="text-[28px] tracking-wide manrope-medium">From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless balance of modern charm, timeless tradition and artistic sophistication tailored to </p>
                             <p className="text-[28px] tracking-wide manrope-medium">every lifestyle.</p>
-                            {/* <p className="text-[28px] tracking-wide">designed for comfort and elegance we</p>
-                            <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
-                            <p className="text-[28px] tracking-wide">budget</p> */}
                             <button
                                 onClick={scrollToForm}
-                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] font-bold rounded-full text-[20px] hover:bg-red-600 transition-colors"
-                            >
+                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] manrope rounded-full text-[20px] hover:bg-red-600 transition-colors"
+>
                                 Book A Free Design Session
                             </button>
                         </div>
@@ -296,7 +315,7 @@ export default function Section3() {
                                         className="rounded-t-4xl row-span-3 w-full h-[350px] object-cover"
                                     />
                                     <div className="row-span-2 mt-18 ml-5">
-                                        <div className="text-[30px] font-semibold">{slide.type}</div>
+                                        <div className="text-[30px] manrope">{slide.type}</div>
                                     </div>
                                 </div>
                             ))}
@@ -311,40 +330,28 @@ export default function Section3() {
             </div>
 
             {/* mobile */}
-            <div className="lg:hidden w-full max-w-[400px] mx-auto max-h-[950px] bg-[#f1f2f6]">
+            <div className="lg:hidden w-[full] mx-auto   max-h-[950px] bg-[#f1f2f6]">
                 {/* Stacked Card Carousel */}
 
-                <div className='w-[400px]'>
+                <div className=''>
                     <div className="flex">
-                        <div className="w-0.75 h-25  bg-[#ebd657] mt-10 ml-4"></div>
-                        <h1 className="text-4xl pl-3 pt-12 tracking-wide manrope-medium">Designs for Every <div className="text-4xl tracking-wide marope-medium">
-                            Preference
-                        </div></h1>
+                        <div className="w-0.75 h-25   bg-[#ebd657] mt-10 ml-4"></div>
+                        <h1 className="text-4xl pl-4 pt-12 tracking-wide manrope-medium">Designs for Every Preference
+                      </h1>
 
                     </div>
-                    <div className="ml-5 mt-5 manrope-medium">
-                        <p>From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless </p>
-                        <p>balance of modern charm, timeless tradition</p>
-                        <p>and artistic sophistication tailored to every lifestyle.</p>
+                    <div className=" manrope-medium ml-4 mt-4 ">
+                        <p>From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless
+                        balance of modern charm, timeless tradition
+                        and artistic sophistication tailored to every
+                        lifestyle.</p>
                     </div>
-                    <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[400px]"></div>
-                    <div className="ml-10 mt-10">
 
-                        <div className="flex">
-
-                        </div>
-
-                        {/* <button 
-                                onClick={scrollToForm}
-                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] font-bold rounded-full text-[20px] hover:bg-red-600 transition-colors"
-                            >
-                                Book A Free Design Session
-                            </button> */}
-                    </div>
+                    
                 </div>
 
                 <div className='flex justify-center'>
-                    <div className=" relative h-[400px] w-full max-w-[280px]">
+                    <div className=" relative h-[400px] w-full max-w-[280px] manrope-medium">
                         {slides.map((slide, idx) => {
                             // Show only the top 3 cards in the stack for performance
                             const isTop = idx === currentSlide;
@@ -407,6 +414,8 @@ export default function Section3() {
                         })}
                     </div>
                 </div>
+
+
 
 
             </div>

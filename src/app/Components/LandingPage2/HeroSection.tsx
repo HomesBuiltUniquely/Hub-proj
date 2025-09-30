@@ -118,7 +118,7 @@ export function HeroSection() {
                 setTimeout(() => {
                     // Set flag to trigger reload on Thank You page
                     sessionStorage.setItem('formSubmitted', 'true');
-                    router.push('/Thank-You');
+                    router.push('/Submitted-Thank-You');
                 }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");
@@ -192,7 +192,7 @@ export function HeroSection() {
                 setTimeout(() => {
                     // Set flag to trigger reload on Thank You page
                     sessionStorage.setItem('formSubmitted', 'true');
-                    router.push('/Thank-You');
+                    router.push('/Submitted-Thank-You');
                 }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");

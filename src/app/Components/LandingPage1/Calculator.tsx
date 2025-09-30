@@ -156,7 +156,7 @@ const Step1BhkType: React.FC<StepProps> = ({ formData, setFormData }) => {
             >
               {formData.bhkType === option && <div className="w-2 h-2 bg-white rounded-full"></div>}
             </div>
-              <span className="font-semibold text-gray-700 text-base">{option}</span>
+              <span className="manrope text-gray-700 text-base">{option}</span>
           </div>
         ))}
         </div>
@@ -172,7 +172,16 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
     const handleCountChange = (roomName: string, delta: number) => {
         setFormData((prev: FormData) => {
             const currentCount = prev.rooms?.[roomName] || 0;
-            const newCount = Math.max(0, currentCount + delta); // Prevent going below zero
+            let newCount;
+            
+            // Special case for Bedroom: if going from 0 to 1, start with 2
+            if (roomName === "Bedroom" && currentCount === 0 && delta === 1) {
+                newCount = 2;
+            } else {
+                // For Bedroom, minimum is 2; for Kitchen, minimum is 1; for other rooms, minimum is 0
+                const minCount = roomName === "Bedroom" ? 2 : roomName === "Kitchen" ? 1 : 0;
+                newCount = Math.max(minCount, currentCount + delta);
+            }
 
             const newRooms = { ...prev.rooms };
 
@@ -197,15 +206,14 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
             <div className="space-y-4 max-w-md mx-auto">
                 {roomOptions.map(room => {
                     const count = formData.rooms?.[room] || 0;
-                    const isSelected = count > 0;
                     return (
                         <div
                             key={room}
                                 className={`p-6 border rounded-lg flex items-center justify-between transition-all duration-200 ${
-                                    isSelected ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
+                                    'border-gray-300 hover:border-gray-400'
                                 }`}
                             >
-                                <span className={`font-semibold text-lg ${isSelected ? 'text-red-600' : 'text-gray-700'}`}>{room}</span>
+                                <span className={`manrope text-lg text-gray-700`}>{room}</span>
                                 <div className="flex items-center gap-4">
                                     <button
                                         onClick={() => handleCountChange(room, -1)}
@@ -234,15 +242,14 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
                 <div className="space-y-3 max-w-md mx-auto px-4">
                     {roomOptions.map(room => {
                         const count = formData.rooms?.[room] || 0;
-                        const isSelected = count > 0;
                         return (
                             <div
                                 key={room}
                                 className={`p-4 border rounded-lg flex items-center justify-between transition-all duration-200 touch-manipulation ${
-                                isSelected ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                                'border-gray-300'
                             }`}
                         >
-                                <span className={`font-semibold text-sm ${isSelected ? 'text-red-600' : 'text-gray-700'}`}>{room}</span>
+                                <span className={`font-semibold text-sm text-gray-700`}>{room}</span>
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => handleCountChange(room, -1)}
@@ -990,7 +997,7 @@ export default function CalculatorSetup() {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({
     bhkType: '',
-    rooms: {},
+    rooms: { "Bedroom": 2, "Kitchen": 1 },
     wardrobe: {},
     kitchen: {},
     collections: {},
