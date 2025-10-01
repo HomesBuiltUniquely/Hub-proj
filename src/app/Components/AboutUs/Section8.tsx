@@ -230,7 +230,7 @@ const Section6 = () => {
             <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
               <div className='mb-2.5 w-80'>
                 <h1 className='text-3xl manrope text-nowrap, ml-3'>Vision</h1>
-                <p className='text-xs manrope-medium mt-3'> At HUB Interiors, — it's about creating spaces<p>that reflect you.</p>
+                <p className='text-xs manrope-medium mt-3'> At HUB Interiors, — it&#39;s about creating spaces<p>that reflect you.</p>
                 </p>
 
                 <p className='text-xs manrope-medium mt-6'>
@@ -393,4 +393,4 @@ const Section6 = () => {
   );
 };
 
-export default Section6;   
+export default Section6;

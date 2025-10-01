@@ -61,7 +61,7 @@ export default function Section3() {
                             <p className="text-[30px] manrope-medium tracking-wide  text-align: justify;
 ">From cozy living rooms to elegant bedrooms and stylish modular kitchens, we craft dream home interiors that blend comfort,</p>
                             {/* { <p className="text-[30px] manrope-medium tracking-wide  text-align: justify"></p>} */}
-                            {<p className="text-[30px] manrope-medium tracking-wide  text-align: justify">beauty, and functionality, creating spaces you'll love. </p>}
+                            {<p className="text-[30px] manrope-medium tracking-wide  text-align: justify">beauty, and functionality, creating spaces you&#39;ll love. </p>}
                             {/* // <p className="text-[30px] manrope-medium tracking-wide"></p>  */}
                             {/* <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
                             <p className="text-[28px] tracking-wide">budget</p> */}

@@ -41,12 +41,15 @@ export default function Section2() {
     const nextSlide = () => {
         setCurrentSlide((prev) => {
             const maxSlide = Math.max(0, roomCards.length - 3);
-            return prev < maxSlide ? prev + 1 : prev;
+            return prev < maxSlide ? prev + 1 : 0; // loop to first when reaching the end
         });
     };
 
     const prevSlide = () => {
-        setCurrentSlide((prev) => Math.max(0, prev - 1));
+        setCurrentSlide((prev) => {
+            const maxSlide = Math.max(0, roomCards.length - 3);
+            return prev > 0 ? prev - 1 : maxSlide; // loop to last when going backward from first
+        });
     };
 
     // Touch event handlers for mobile swipe
@@ -69,11 +72,11 @@ export default function Section2() {
         // For mobile multi-card layout, we show 2.5 cards at a time
         const maxSlide = Math.max(0, roomCards.length - 2);
         
-        if (isLeftSwipe && currentSlide < maxSlide) {
-            setCurrentSlide(currentSlide + 1);
+        if (isLeftSwipe) {
+            setCurrentSlide((prev) => (prev < maxSlide ? prev + 1 : 0));
         }
-        if (isRightSwipe && currentSlide > 0) {
-            setCurrentSlide(currentSlide - 1);
+        if (isRightSwipe) {
+            setCurrentSlide((prev) => (prev > 0 ? prev - 1 : maxSlide));
         }
     };
 
@@ -95,13 +98,13 @@ export default function Section2() {
                 <div className="flex justify-between items-start mb-12">
                     {/* Title */}
                     <div className="flex-1">
-                        <h1 className="text-4xl wulkan-display-bold text-gray-800 mb-4">
+                        <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-4">
                             Every space has a story, start yours here
                         </h1>
                     </div>
                     
                     {/* Book Consultation Button */}
-                    <Link href="/ContactUs">
+                    <Link href="/GetEstimate">
                         <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
                             Book consultation
                             <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
@@ -140,8 +143,7 @@ export default function Section2() {
                         <div 
                             className="flex gap-8 transition-transform duration-500 ease-in-out"
                             style={{ 
-                                transform: `translateX(-${currentSlide * (320 + 32)}px)`,
-                                width: `${roomCards.length * (320 + 32)}px`
+                                transform: `translateX(-${currentSlide * (320 + 32)}px)`
                             }}
                         >
                             {roomCards.map((room, index) => (
@@ -230,8 +232,7 @@ export default function Section2() {
               <div 
                 className="flex transition-transform duration-300 ease-out gap-4"
                 style={{ 
-                  transform: `translateX(-${currentSlide * (280 + 16)}px)`,
-                  width: `${roomCards.length * (280 + 16)}px`
+                  transform: `translateX(-${currentSlide * (280 + 16)}px)`
                 }}
               >
                 {roomCards.map((room, index) => (

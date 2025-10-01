@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react";
@@ -109,4 +108,3 @@ const BedroomHeroSimple: React.FC = () => {
 };
 
 export default BedroomHeroSimple;
-

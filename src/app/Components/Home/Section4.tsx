@@ -57,7 +57,7 @@ export default function Section4() {
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="flex justify-between items-start mb-12">
-                    <h1 className="text-4xl wulkan-display-bold text-gray-800 max-w-md">
+                    <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md w-[450px] h-[120px]">
                         Trusted by homeowners like you
                     </h1>
                     

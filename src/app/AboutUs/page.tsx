@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+import Footer from "../Components/Home/Footer";
+>>>>>>> 116ceacbd2da1f530627f61fcc12d67d103ba827
 import Herosection from "../Components/AboutUs/Herosection";
 import Section1 from "../Components/AboutUs/Section1";
 import Section10 from "../Components/AboutUs/Section10";

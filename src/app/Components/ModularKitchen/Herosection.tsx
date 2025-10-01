@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 const ContactHeader: React.FC = () => {
 
-   const router = useRouter();
+  const router = useRouter();
 
   const handleClick = () => {
     router.push("/");
