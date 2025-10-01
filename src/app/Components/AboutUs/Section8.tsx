@@ -221,74 +221,37 @@ const Section6 = () => {
       </section>
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden py-8 px-4 bg-white">
+      
+
+
+ <section className="block md:hidden  px-4 mt-55">
         <div className="max-w-sm mx-auto">
-          {/* Mission Header */}
-          <h1 className="text-2xl manrope-medium pt-8 pl-4 leading-tight">
-            Mission
-          </h1>
-          
-          {/* Mission Description */}
-          <p className="w-full ml-4 manrope-medium pt-2 text-xs leading-relaxed">
-            At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-          </p>
-          
-          {/* Mission Points */}
-          <div className="space-y-4">
-            {/* Mission Point 1 */}
-            <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
-            <div className="flex items-start">
-              <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+           <div className='flex items-center ml'>
+            <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
+              <div className='mb-2.5 w-80'>
+                <h1 className='text-3xl manrope text-nowrap, ml-3'>Vision</h1>
+                <p className='text-xs manrope-medium mt-3'> At HUB Interiors, — it&#39;s about creating spaces<p>that reflect you.</p>
+                </p>
+
+                <p className='text-xs manrope-medium mt-6'>
+
+                  To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
+
+                </p>
+
+
+                <img src="Values.png" alt=""  className='mt-10'/>
+
               </div>
             </div>
-            
-            {/* Mission Point 2 */}
-            <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
-            <div className="flex items-start">
-              <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-            
-            {/* Mission Point 3 */}
-            <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
-            <div className="flex items-start">
-              <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-            
-            {/* Mission Point 4 */}
-            <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
-            <div className="flex items-start">
-              <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </div>
-            </div>
-        </div>
+          </div>
+        
       </div>
       </section>
+  
+
+
+
 
       {/* Pure CSS for 3XL - 2560*1440 resolution */}
       <style jsx>{`
@@ -430,4 +393,4 @@ const Section6 = () => {
   );
 };
 
-export default Section6;   
+export default Section6;

@@ -12,7 +12,7 @@ export default function CalculatorPage() {
         <div id="calculator-section" className="w-full h-auto bg-white">
             {/* Mobile Version */}
             <div className="lg:hidden h-[500px]">
-                <h1 className="text-4xl sm:text-3xl text-center px-4 manrope-medium">Get A Free Estimate for Your Interiors</h1>
+                <h1 className="text-4xl sm:text-3xl text-black text-center px-3 manrope-medium">Get A Free Estimate for Your Interiors</h1>
                 <div className="px-4 ">
                     <div className="w-full max-w-sm mx-auto h-auto rounded-3xl mt-8 p-6 shadow-lg bg-[#F1F2F6]">
                         <div className="flex justify-center gap-4 mb-4">

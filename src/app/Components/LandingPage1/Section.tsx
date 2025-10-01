@@ -47,7 +47,7 @@ export default function Section1() {
             className="w-[200px] h-[200px] border-2 border-[#DDCDC1] rounded-2xl flex flex-col items-center justify-center p-4 hover:shadow-lg transition-all"
           >
             <img className="w-16 h-16 mb-4" src={feature.icon} alt={feature.title} />
-            <div className="text-center text-[16px] font-medium">{feature.title}</div>
+            <div className="text-center text-[16px] manrope-medium">{feature.title}</div>
           </div>
         ))}
       </div>
@@ -65,16 +65,16 @@ export default function Section1() {
               >
                 <img 
                   className={`mb-3 ${
-                    feature.title === "34 Days Delivery" ? "w-14 h-14" :
-                    feature.title === "10 Years Warranty" ? "w-12 h-12" :
-                    feature.title === "Validated 150+ Quality Checks" ? "w-10 h-14" :
+                    feature.title === "34 Days Delivery" ? "w-14 h-14 manrope-medium" :
+                    feature.title === "10 Years Warranty" ? "w-12 h-12 manrope-medium" :
+                    feature.title === "Validated 150+ Quality Checks" ? "w-10 h-14 manrope-medium" :
                     feature.title === "0% EMI Options" ? "w-12 h-12" :
-                    "w-10 h-10" // Factory Finish
+                    "w-10 h-10 manrope-medium" // Factory Finish
                   }`} 
                   src={feature.icon} 
                   alt={feature.title} 
                 />
-                <div className="text-center text-lg font-medium">{feature.title}</div>
+                <div className="text-center text-lg manrope-medium">{feature.title}</div>
               </div>
             ))}
           </div>

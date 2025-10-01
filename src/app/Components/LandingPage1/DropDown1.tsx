@@ -1,4 +1,3 @@
-
 const cityOptions = [
 
     "2 BHK Essential Interiors [ Starting at 3.0 Lakhs (Including Modular kitchen, wardrobes, TV unit) ]",

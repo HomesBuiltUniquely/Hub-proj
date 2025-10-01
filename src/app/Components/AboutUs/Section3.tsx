@@ -205,17 +205,16 @@ export default function Section3(){
 
             {/* SM Screen - Small displays and mobile */}
             <div className="block md:hidden">
-                <div className="h-[350px] mx-auto px-4">
+                <div className="h-[30px] mx-auto px-4">
                     
-                    <div className="w-full h-[300px] bg-[#ddcdc1] mx-auto rounded-2xl flex flex-col overflow-hidden">
+                    <div className="w-full h-[460px] bg-[#ddcdc1] mx-auto rounded-2xl flex flex-col overflow-hidden -mt-20">
                         
-                        {/* Left Image - SM optimized */}
-                        <img 
-                            src="j2.webp" 
-                            alt="Interior Design" 
-                            className="w-full h-[150px] rounded-2xl lg:rounded-b-none object-cover" 
-                        />
                         
+                        
+                        <img src="2.png" alt="Interior Design" className="mx-auto w-[280px] h-[170px] rounded-3xl mt-10"/>
+ 
+
+
                         {/* Center Content - SM optimized */}
                         <div className="w-full p-6 flex flex-col justify-center">
                             
@@ -234,10 +233,11 @@ export default function Section3(){
                         </div>
                         
                         {/* Right Brand Text - SM optimized */}
-                        <div className="text-[#ef0101] text-xs px-6 pb-4 text-center">
+                        {/* <div className="text-[#ef0101] text-xs px-6 pb-4 text-center">
                             Brand Hub
                         </div>
-                        
+                         */}
+                         
                     </div>
                     
                 </div>
@@ -337,3 +337,4 @@ export default function Section3(){
         </div>
     )
 }
+

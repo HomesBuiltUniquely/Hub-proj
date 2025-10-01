@@ -11,24 +11,24 @@ const Section10 = () => {
           <div className="aboutus-section10-3xl-layout">
             <div className="aboutus-section10-3xl-background">
               {/* Background Image - 3XL optimized */}
-              <img 
-                src="ab2.png" 
-                className="aboutus-section10-3xl-bg-image" 
+              <img
+                src="ab2.png"
+                className="aboutus-section10-3xl-bg-image"
                 alt="Interior Design Background"
               />
-              
+
               {/* Overlay Content - 3XL optimized */}
               <div className="aboutus-section10-3xl-overlay">
                 {/* Heading - 3XL optimized */}
                 <h1 className="aboutus-section10-3xl-heading">
                   Shape the Future of Interior Design With Us
                 </h1>
-                
+
                 {/* Description - 3XL optimized */}
                 <p className="aboutus-section10-3xl-description">
                   Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
                 </p>
-                
+
                 {/* Button - 3XL optimized */}
                 <button className="aboutus-section10-3xl-button">
                   Join Our Team
@@ -44,34 +44,34 @@ const Section10 = () => {
         <div className="mt-20  w-full h-[550px] px-16">
           <div className="max-w-8xl mx-auto">
             <div className="w-full h-auto min-h-[550px] bg-red-300 relative rounded-2xl overflow-hidden mt-10">
-              
+
               {/* Background Image - 2XL optimized */}
-              <img 
-                src="ab2.png" 
-                className="w-full h-full min-h-[450px] rounded-2xl absolute object-cover" 
+              <img
+                src="ab2.png"
+                className="w-full h-full min-h-[450px] rounded-2xl absolute object-cover"
                 alt="Interior Design Background"
               />
-              
+
               {/* Overlay Content - 2XL optimized */}
               <div className="w-[550px] h-auto min-h-[300px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-10 mt-40 rounded-2xl p-8">
-                
+
                 {/* Heading - 2XL optimized */}
                 <h1 className="text-3xl w-[400px] h-[100px] text-white mt-2 pl-6 manrope-medium leading-tight">
                   Shape the Future of Interior Design With Us
                 </h1>
-                
+
                 {/* Description - 2XL optimized */}
                 <p className="text-md manrope-medium pt-3 text-white w-[400px] pl-6 leading-relaxed">
                   Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
                 </p>
-                
+
                 {/* Button - 2XL optimized */}
                 <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                   Join Our Team
                 </button>
-                
+
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -82,34 +82,34 @@ const Section10 = () => {
         <div className="mt-18 w-full h-auto px-12">
           <div className="max-w-7xl mx-auto">
             <div className="w-full h-auto min-h-[400px] bg-red-300 relative rounded-2xl overflow-hidden">
-              
+
               {/* Background Image - XL optimized */}
-              <img 
-                src="ab2.png" 
-                className="w-full h-full min-h-[400px] rounded-2xl absolute object-cover" 
+              <img
+                src="ab2.png"
+                className="w-full h-full min-h-[400px] rounded-2xl absolute object-cover"
                 alt="Interior Design Background"
               />
-              
+
               {/* Overlay Content - XL optimized */}
               <div className="w-[500px] h-auto min-h-[280px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-10 mt-20 rounded-2xl p-8">
-                
+
                 {/* Heading - XL optimized */}
                 <h1 className="text-3xl w-[400px] h-[100px] text-white  manrope-medium leading-tight">
                   Shape the Future of Interior Design With Us
                 </h1>
-                
+
                 {/* Description - XL optimized */}
                 <p className="text-base manrope-medium  text-white w-[400px] leading-relaxed">
                   Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
                 </p>
-                
+
                 {/* Button - XL optimized */}
                 <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                   Join Our Team
                 </button>
-                
+
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -120,34 +120,34 @@ const Section10 = () => {
         <div className="mt-16 ml-6 w-full h-auto px-8">
           <div className="max-w-6xl mx-auto">
             <div className="w-full h-auto min-h-[350px] bg-red-300 relative rounded-2xl overflow-hidden">
-              
+
               {/* Background Image - LG optimized */}
-              <img 
-                src="ab.png" 
-                className="w-full h-full min-h-[350px] rounded-2xl absolute object-cover" 
+              <img
+                src="ab.png"
+                className="w-full h-full min-h-[350px] rounded-2xl absolute object-cover"
                 alt="Interior Design Background"
               />
-              
+
               {/* Overlay Content - LG optimized */}
               <div className="w-[450px] h-auto min-h-[250px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-8 mt-16 rounded-2xl p-8">
-                
+
                 {/* Heading - LG optimized */}
                 <h1 className="text-2xl w-[400px] text-white pt-12 pl-6 manrope-medium leading-tight">
                   Shape the Future of Interior Design With Us
                 </h1>
-                
+
                 {/* Description - LG optimized */}
                 <p className="text-base manrope-medium pt-4 text-white w-[400px] pl-6 leading-relaxed">
                   Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
                 </p>
-                
+
                 {/* Button - LG optimized */}
                 <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                   Join Our Team
                 </button>
-                
+
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -158,73 +158,102 @@ const Section10 = () => {
         <div className="mt-12 ml-4 w-full h-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className="w-full h-auto min-h-[300px] bg-red-300 relative rounded-2xl overflow-hidden">
-              
+
               {/* Background Image - MD optimized */}
-              <img 
-                src="bn.jpg" 
-                className="w-full h-full min-h-[300px] rounded-2xl absolute object-cover" 
+              <img
+                src="bn.jpg"
+                className="w-full h-full min-h-[300px] rounded-2xl absolute object-cover"
                 alt="Interior Design Background"
               />
-              
+
               {/* Overlay Content - MD optimized */}
               <div className="w-[400px] h-auto min-h-[220px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-6 mt-12 rounded-2xl p-6">
-                
+
                 {/* Heading - MD optimized */}
                 <h1 className="text-2xl w-[350px] text-white pt-10 pl-4 manrope-medium leading-tight">
                   Shape the Future of Interior Design With Us
                 </h1>
-                
+
                 {/* Description - MD optimized */}
                 <p className="text-base manrope-medium pt-3 text-white w-[350px] pl-4 leading-relaxed">
                   Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
                 </p>
-                
+
                 {/* Button - MD optimized */}
                 <button className="w-[180px] h-[38px] bg-white rounded-3xl mt-5 ml-4 text-base font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                   Join Our Team
                 </button>
-                
+
               </div>
-              
+
             </div>
           </div>
         </div>
       </section>
 
       {/* SM Screen - Small displays and mobile */}
-      <section className="block md:hidden">
-        <div className="mt-8 ml-2 w-full h-auto px-4">
+      <section className="block md:hidden mt-260 mb-10">
+        <div className="mt-8 ml w-full h-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="w-full h-auto min-h-[250px] bg-red-300 relative rounded-xl overflow-hidden">
-              
+            <div className="w-full h-auto min-h-[250px] relative rounded-xl overflow-hidden">
+
+
+              <div  >
+                
+                <span className='manrope text-2xl ml-25 text-[#ebd457]'>Team</span> 
+                <span className='manrope text-2xl ml-2 '>HUB</span></div>
+
+
               {/* Background Image - SM optimized */}
-              <img 
-                src="bn.jpg" 
-                className="w-full h-full min-h-[250px] rounded-xl absolute object-cover" 
+              <img
+                src="bn.jpg"
+                className="w-full h-full min-h-[250px] rounded-xl absolute object-cover mt-5"
                 alt="Interior Design Background"
               />
-              
-              {/* Overlay Content - SM optimized */}
-              <div className="w-full h-auto min-h-[200px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-4 mt-8 rounded-xl p-4">
-                
-                {/* Heading - SM optimized */}
-                <h1 className="text-xl w-full text-white pt-8 pl-2 manrope-medium leading-tight">
-                  Shape the Future of Interior Design With Us
-                </h1>
-                
-                {/* Description - SM optimized */}
-                <p className="text-sm manrope-medium pt-2 text-white w-full pl-2 leading-relaxed">
-                  Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
-                </p>
-                
-                {/* Button - SM optimized */}
-                <button className="w-[150px] h-[35px] bg-white rounded-full mt-4 ml-2 text-sm font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
-                  Join Our Team
-                </button>
-                
-              </div>
-              
+
+
             </div>
+
+            {/* 
+             <img src="ab2.png" alt="" className='w-full h-full min-h-[200px] rounded-xl  mt-5  bg  backdrop-blur-sm bg-black/20 border-[#ddcdc1]' /> */}
+
+
+            <div className="relative w-full min-h-[200px] mt-5 rounded-xl overflow-hidden">
+              {/* Background Image */}
+              <img
+                src="ab2.png"
+                alt="Background"
+                className="w-full h-full object-cover filter scale-105 /"
+              />
+
+              {/* Text Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className=" p-4 rounded-lg text-center ">
+
+                  {/* Heading - SM optimized */}
+                  <h1 className="text-xl text-white  manrope-medium leading-tight">
+                    Shape the Future of Interior Design With Us
+                  </h1>
+
+                  {/* Description - SM optimized */}
+                  <p className="text-sm manrope-medium pt-2 text-white w-full pl-2 leading-relaxed">
+                    Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
+                  </p>
+
+                  {/* Button - SM optimized */}
+                  <button className="w-[150px] h-[35px] bg-white rounded-full mt-4 ml-2 text-sm font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
+                    Join Our Team
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
           </div>
         </div>
       </section>

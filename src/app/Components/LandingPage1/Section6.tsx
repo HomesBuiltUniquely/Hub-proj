@@ -19,12 +19,14 @@ export default function Section6() {
     }
   };
   
+  
   const categories = [
     {
       name: "Smart Storage",
       slides: [
         {
           image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart1.png",
+
           title: "Tailored Storage Designs For Maximum Space",
           subtitle: "Unlock 25% Extra Space"
         },
@@ -174,8 +176,8 @@ export default function Section6() {
               
               {/* Text Overlay */}
               <div className="absolute bottom-8 left-8 text-white max-w-md">
-                <h2 className="text-4xl font-bold mb-2">{currentSlides[currentSlide].title}</h2>
-                <p className="text-xl mb-6">{currentSlides[currentSlide].subtitle}</p>
+                <h2 className="text-4xl manrope mb-2">{currentSlides[currentSlide].title}</h2>
+                <p className="text-xl manrope-medium mb-6">{currentSlides[currentSlide].subtitle}</p>
               </div>
 
               {/* Meet Our Designers Button */}
@@ -188,12 +190,12 @@ export default function Section6() {
             </div>
 
             {/* Category Navigation */}
-            <div className="absolute bottom-8 right-8 flex gap-3">
+            <div className="absolute bottom-8 right-8 flex gap-3 manrope-medium">
               {categories.map((category, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentCategory(index)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`px-4 py-2 rounded-full text-sm manrope-medium transition-all ${
                     currentCategory === index
                       ? 'bg-white text-black'
                       : 'bg-red-500 bg-opacity-50 text-white hover:bg-opacity-70'
