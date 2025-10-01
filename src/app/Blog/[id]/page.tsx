@@ -162,7 +162,7 @@ export default function BlogDetail() {
 								<img src="/temple1.jpg" alt="Peaceful devotion area" className="w-full h-full object-cover" />
 							</div>
 							<p>For the bedroom, we focused on two main elements: the wardrobe and a window seating area. We went ahead with a U-shape for the cabinets, leaving the middle space open for the window seating area. The wardrobe is tailored (literally) to the space and roomy enough to store everything without overwhelming the room.</p>
-							<p> It&#39;s cozy, and even though it&#39;s not huge, it makes the bedroom feel instantly inviting. It's perfect to unwind after an exhausting day, where one can sit and read a book or have a cup of coffee. The color palette is kept very simple by our interior designers, who went ahead with a combination of white and grey. And how to ignore the solid handle on the door, which serves practicality. </p>
+							<p> It&#39;s cozy, and even though it&#39;s not huge, it makes the bedroom feel instantly inviting. It&#39;s perfect to unwind after an exhausting day, where one can sit and read a book or have a cup of coffee. The color palette is kept very simple by our interior designers, who went ahead with a combination of white and grey. And how to ignore the solid handle on the door, which serves practicality. </p>
 
 							{/* The Lively Living Roome */}
 							<h3 className="text-xl font-semibold text-gray-900 pt-6">The Lively Living Room</h3>
