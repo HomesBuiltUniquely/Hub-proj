@@ -223,44 +223,49 @@ export default function Section2(){
 
             {/* SM Screen - Small displays and mobile */}
             <div className="block md:hidden">
-                <div className="h-auto min-h-[350px] flex flex-col px-4 gap-4 mt-6">
-                    
-                    {/* Left Text Box - SM optimized */}
-                    <div className="w-full h-[250px] bg-[#ebd457] rounded-xl p-6 pt-16 text-xs manrope-medium tracking-wide leading-relaxed">
-                    At Hub Interior, beauty is backed by process.
-                    Every space you see is a result of deep planning, skilled design, and flawless execution.
-                    We don’t just make interiors look good—we make them work better for real lives.
-                    </div>
-                    
-                    {/* Center Image Box - SM optimized */}
-                    <div className="w-full h-[200px] bg-[#ebd457] rounded-xl overflow-hidden">
+                <div className="h-auto min-h-[359px] flex flex-col px-4 mt-10 ">
+                
+                       {/* left Image Box - SM optimized */}
+                    <div className="w-49 h-[220px] rounded-xl center mt-3 mx-auto">
                         <img 
                             src="bed1.jpg" 
-                            className="w-full h-full object-cover rounded-xl" 
+                            className="w-full h-full object-cover rounded-xl -ml-17" 
                             alt="Bedroom Interior"
                         />
-                    </div>
-                    
-                    {/* Right Side Images - SM optimized */}
-                    <div className="flex flex-col gap-3">
-                        {/* Top Image */}
-                        <div className="w-full h-[100px] bg-yellow-300 rounded-xl overflow-hidden">
+
+                             {/*Right Top Image */}
+                        <div className="w-32 h-[80px] rounded-xl ml-36 mb-2">
                             <img 
                                 src="bn.jpg" 
-                                className="w-full h-full object-cover rounded-xl" 
+                                className="w-full h-full object-cover rounded-xl -mt-55" 
                                 alt="Interior Design"
                             />
                         </div>
-                        
-                        {/* Bottom Image */}
-                        <div className="w-full h-[100px] bg-red-400 rounded-xl overflow-hidden">
+
+
+                        {/*Right Bottom Image */}
+                        <div className="w-32 h-[132px] rounded-xl ml-36">
                             <img 
                                 src="j4.webp" 
                                 className="w-full h-full object-cover rounded-xl" 
                                 alt="Interior Design"
                             />
                         </div>
+
+
+
                     </div>
+    
+                       
+
+                    {/* Text Box - SM optimized */}
+                    <div className="w-full h-[250px] rounded-xl pt-8 text-xs manrope-medium tracking-wide leading-relaxed mx-auto">
+                    At Hub Interior, beauty is backed by process.
+                    Every space you see is a result of deep planning, skilled design, and flawless execution.
+                    We don’t just make interiors look good—we make them work better for real lives.
+                    </div>
+                    
+                   
                     
                 </div>
             </div>

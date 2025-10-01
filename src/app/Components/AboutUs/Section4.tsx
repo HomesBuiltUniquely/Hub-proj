@@ -28,7 +28,7 @@ export default function Section4(){
                         
                         {/* Card 1 */}
                         <div className="aboutus-section4-3xl-card">
-                            <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[300px] h-[150px] mt-30 ml-9" />
+                            <img src="/" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[300px] h-[150px] mt-30 ml-9" />
                         </div>
                         
                         {/* Card 2 */}
@@ -230,41 +230,50 @@ export default function Section4(){
 
             {/* SM Screen - Small displays and mobile */}
             <div className="block md:hidden">
-                <div className="h-[400px] px-4">
-                    
+                <div className="h-[400px] px-4 mt-125 mb-20">
+
                     {/* Header Section - SM optimized */}
                     <div className="flex flex-col justify-between h-[150px] gap-4">
-                        
-                        {/* Heading - SM optimized */}
-                        <h1 className="text-2xl manrope-medium mt-8 ml-8 leading-tight">
-                        Brand Eco System
-                        </h1>
-                        
-                        {/* Description - SM optimized */}
-                        <p className="w-full mt-6 ml-8 manrope-medium text-base leading-relaxed">
-                        The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
 
-                        </p>
-                        
+
+                        <div className='flex items-center ml'>
+                            <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
+                                <div className='mb-2.5 w-80'>
+                                    <h1 className='text-3xl manrope text-nowrap, ml-3'>Brand Eco <div>System</div></h1>
+                                    <p className='manrope-medium text-xs w-full leading-relaxed mt-4'> The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    
+
                     {/* Cards Section - SM optimized */}
-                    <div className="flex flex-wrap justify-start gap-3 ml-8">
-                        
+                    <div className="flex flex-wrap justify-start gap-3 mt-15">
+
                         {/* Card 1 */}
-                        <div className="w-[140px] h-[140px] rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
-                        
-                        {/* Card 2 */}
-                        <div className="w-[140px] h-[140px] rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
-                        
-                        {/* Card 3 */}
-                        <div className="w-[140px] h-[140px] rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
-                        
-                        {/* Card 4 */}
-                        <div className="w-[140px] h-[140px] rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
-                        
+                        <div className="w-[700px] h-[240px] mx-auto rounded-xl bg-white shadow-lg ">
+                            <div className="grid grid-cols-2 gap-4 m-8">
+                                
+                            <img src="/b3.png" alt="" className="w-[150px] h-[80px]  shadow-xl rounded-2xl" />
+
+                            <img src="/b2.png" alt="" className="w-[150px] h-[80px]  shadow-xl rounded-2xl" />
+
+
+                            <img src="/b1.png" alt="" className="w-[150px] h-[80px]  shadow-xl rounded-2xl " />
+
+
+                            <img src="/b4.png" alt="" className="w-[150px] h-[80px] shadow-xl rounded-2xl  " />
+
+                            </div>
+                        </div>
+
+
+
+
                     </div>
-                    
+
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const Section5 = () => {
   const stats = [
@@ -23,6 +23,75 @@ const Section5 = () => {
     { year: "2025 – Expanding Horizons", content: "Opened a new Experience Centre in JP Nagar, Bengaluru and our first branch outside the city in Chennai." },
 
   ];
+
+
+  const slides = [
+    {
+      year: '2019',
+      title: ['New Experience', 'Center, Banaswadi'],
+      description: 'The story began with the launch of our very first Experience Centre in Banaswadi.',
+    },
+    {
+      year: '2020',
+      title: ['Instahome'],
+      description: 'Introduced Instahome, making interiors quicker and more accessible for modern homeowners.',
+    },
+    {
+      year: '2021',
+      title: ['Hub Store'],
+      description: 'Expanded with the launch of the HUB Store, bringing curated products and solutions under one roof.',
+    },
+    {
+      year: '2022',
+      title: ['New Experience Centre', 'Sarjapur'],
+      description: 'Opened our second Experience Centre in Sarjapur, strengthening our presence in Bengaluru.',
+    },
+    {
+      year: '2023',
+      title: ['Hubster ERP'],
+      description: 'Launched Hubster, our in-house ERP system, streamlining processes and efficiency.',
+    },
+    {
+      year: '2023',
+      title: ['HUB for Business'],
+      description: 'Extended our expertise with HUB for Business, catering to B2B clients and partnerships.',
+    },
+    {
+      year: '2024',
+      title: ['Fast Track Interiors'],
+      description: 'Introduced 34 Days Fast Track Interiors, setting new benchmarks in speed and quality',
+    },
+    {
+      year: '2024',
+      title: ['Bigger Space, Bigger Team'],
+      description: 'Moved from Banaswadi to a larger Experience Centre in HBR Layout, reflecting our growth.',
+    },
+    {
+      year: '2025',
+      title: ['Rebranding'],
+      description: 'Transformed from Homes Under Budget into HUB Interior, marking a bold new chapter.',
+    },
+    {
+      year: '2025',
+      title: ['Expanding Horizons'],
+      description: 'Opened a new Experience Centre in JP Nagar, Bengaluru and our first branch outside the city in Chennai.',
+    },
+
+  ];
+
+  const [current, setCurrent] = useState(0);
+
+  const prevSlide = () => {
+    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+
+
+
 
   return (
     <div>
@@ -289,38 +358,96 @@ const Section5 = () => {
       </section>
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden py-8 px-4 bg-white">
+      <section className="block md:hidden px-4 ">
         <div className="max-w-sm mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-2 leading-tight">
-              Journey So Far
-            </h2>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              The Path We&#39;ve Paved!
-            </p>
-          </div>
 
-          {/* Main Content */}
-          <div className="flex flex-col gap-4">
-            {/* Left Side - Static Stats */}
-            <div className="w-full bg-gray-50 p-4 rounded-lg">
-              <div className="grid grid-cols-2 gap-3">
-                {stats.map((stat, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <p className="text-lg font-bold text-[#ef0101] leading-tight">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
+
+          <div className="flex flex-col justify-between h-[150px] ">
+
+
+            <div className='flex items-center ml'>
+              <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
+                <div className='mb-2.5 w-80'>
+                  <h1 className='text-3xl manrope text-nowrap, ml-3'> Journey So far</h1>
+                  <p className='manrope-medium text-2xl w-full leading-relaxed mt-4'> The Path We've Paved!
+                  </p>
+
+                </div>
               </div>
             </div>
 
-            {/* Right Side - Scrollable Timeline */}
-            <div className="w-full h-[350px] p-4 rounded-lg relative">
+          </div>
+
+
+          {/* Main Content */}
+
+          {/* Need to continue from carousel */}
+
+          <div>
+
+
+
+            <div className="w-full max-w-2xl mx-auto">
+              {/* Slide */}
+              <div className="w-full h-60 bg-gray-50 p-4 rounded-3xl flex items-center justify-center shadow-xl transition-all duration-500 ease-in-out">
+                <div className="text-center max-w-md">
+                  <h2 className="text-2xl manrope text-[#ef0101]">
+                    {slides[current].year}
+                    {slides[current].title.map((line, idx) => (
+                      <div key={idx} className={`text-black ${idx === 0 ? 'mt-3' : 'mb-3'}`}>
+                        {line}
+                      </div>
+                    ))}
+                  </h2>
+                  <p className="text-sm text-gray-500">{slides[current].description}</p>
+                </div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <div className="flex space-x-4 mt-10 justify-center">
+                <button
+                  onClick={prevSlide}
+                  className="w-12 h-12 flex items-center justify-center border border-black rounded-full text-2xl text-gray-800 bg-white hover:bg-gray-100 active:opacity-70 transition duration-150"
+                  aria-label="Previous"
+                >
+                  &#8592;
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="w-12 h-12 flex items-center justify-center border border-black rounded-full text-2xl text-gray-800 bg-white hover:bg-gray-100 active:opacity-70 transition duration-150"
+                  aria-label="Next"
+                >
+                  &#8594;
+                </button>
+              </div>
+
+
+            </div>
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+          {/* <div className=' bg-amber-50 ml-50 mt-20 rounded-full'>
+
+            <button>&#8594;</button>
+            <span>
+              <button>&#8592;</button>
+            </span>
+          </div> */}
+
+          {/* 
+          <div className='w-[full] h-[240px] rounded-xl bg-white shadow-lg '>
+
+            <div className="w-full h-[350px] rounded-lg relative">
               <div className="h-full overflow-y-scroll pr-2 scrollbar scroll-container always-visible-scrollbar">
                 <div className="space-y-4 min-h-[600px]">
                   {timeline.map((item, index) => (
@@ -336,7 +463,10 @@ const Section5 = () => {
                 </div>
               </div>
             </div>
-          </div>
+
+          </div> */}
+
+
         </div>
       </section>
 

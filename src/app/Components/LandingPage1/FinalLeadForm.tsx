@@ -153,7 +153,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         sessionStorage.setItem('userPhone', formData.phone);
         sessionStorage.setItem('userName', formData.name);
         
-        router.push('/Get-Estimate-Thank-You');
+        router.push('/Form-Submit-Thank-You');
       }
     } catch (e) {
       console.error(e);
@@ -313,4 +313,3 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 };
 
 export default FinalLeadForm;
-
