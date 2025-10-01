@@ -160,7 +160,7 @@ export default function Section6() {
                 {/* Bottom Section */}
                 <div className="flex justify-between items-center mt-8">
                     {/* Explore All Projects Button */}
-                    <Link href="/Project">
+                    <Link href="/">
                         <button className="bg-[#ddcdc1] text-gray-800 px-8 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors">
                             Explore all projects
                         </button>
@@ -230,7 +230,7 @@ export default function Section6() {
             
             {/* Explore Projects Button */}
             <div className="flex justify-center mt-8">
-              <Link href="/Project">
+              <Link href="/">
                 <button className="bg-red-600 text-white px-8 py-3 rounded-full manrope-medium hover:bg-red-700 transition-colors">
                   Explore Projects
                 </button>

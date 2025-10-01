@@ -202,7 +202,7 @@ export default function Section2() {
                     </div>
 
                     {/* Explore Gallery Button */}
-                    <Link href="/Inspiration">
+                    <Link href="/">
                         <button className="bg-[#ddcdc1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors flex-shrink-0">
                             Explore Gallery
                         </button>
@@ -289,7 +289,7 @@ export default function Section2() {
 
             {/* Explore Gallery Button */}
             <div className="flex justify-center mt-8">
-              <Link href="/Inspiration">
+              <Link href="/">
                 <button className="bg-[#ef0101] text-white px-8 py-3 rounded-full manrope hover:bg-amber-300 transition-colors">
                   Explore Gallery
                 </button>

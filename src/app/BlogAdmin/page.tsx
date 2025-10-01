@@ -7,7 +7,8 @@ type Post = {
     title: string; 
     date: string; 
     readTime: string; 
-    img: string 
+    img: string;
+    path?: string;
 };
 
 type TrendingItem = {
@@ -29,7 +30,8 @@ export default function BlogAdmin() {
         title: "",
         date: "",
         readTime: "", 
-        img: ""
+        img: "",
+        path: ""
     });
     
     const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
@@ -57,13 +59,13 @@ export default function BlogAdmin() {
                 setPosts(JSON.parse(savedPosts));
             } else {
                 // If no saved posts, start with default posts so admin can see and manage them
-                const defaultPosts = [
-                    { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png" },
-                    { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png" },
-                    { id: 3, title: "Living Room Makeovers With a Wow Factor", date: "July 30, 2025", readTime: "10 mins read", img: "/3.png" },
-                    { id: 4, title: "Bathroom Design Trends for 2025", date: "August 1, 2025", readTime: "8 mins read", img: "/bn.jpg" },
-                    { id: 5, title: "Small Space Interior Solutions", date: "August 3, 2025", readTime: "15 mins read", img: "/bn.jpg" },
-                    { id: 6, title: "Color Psychology in Interior Design", date: "August 5, 2025", readTime: "12 mins read", img: "/bn.jpg" },
+                const defaultPosts: Post[] = [
+                    { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png", path: "/Blog/[id]/Blog2" },
+                    { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png", path: "/Blog/[id]/Blog3" },
+                    { id: 3, title: "Living Room Makeovers With a Wow Factor", date: "July 30, 2025", readTime: "10 mins read", img: "/3.png", path: "/Blog/[id]/Blog4" },
+                    { id: 4, title: "Bathroom Design Trends for 2025", date: "August 1, 2025", readTime: "8 mins read", img: "/bn.jpg", path: "/Blog/[id]/Blog5" },
+                    { id: 5, title: "Small Space Interior Solutions", date: "August 3, 2025", readTime: "15 mins read", img: "/bn.jpg", path: "/Blog/[id]/Blog6" },
+                    { id: 6, title: "Color Psychology in Interior Design", date: "August 5, 2025", readTime: "12 mins read", img: "/bn.jpg", path: "/Blog/[id]/Blog7" },
                     { id: 7, title: "Sustainable Interior Design Practices", date: "August 7, 2025", readTime: "14 mins read", img: "/bn.jpg" },
                     { id: 8, title: "Home Office Design Ideas", date: "August 9, 2025", readTime: "11 mins read", img: "/bn.jpg" },
                     { id: 9, title: "Lighting Design for Modern Homes", date: "August 11, 2025", readTime: "9 mins read", img: "/bn.jpg" },
@@ -147,7 +149,7 @@ export default function BlogAdmin() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         
-        if (!formData.title || !formData.date || !formData.readTime || !formData.img) {
+        if (!formData.title || !formData.date || !formData.readTime || !formData.img || !formData.path) {
             alert("Please fill all fields");
             return;
         }
@@ -170,7 +172,7 @@ export default function BlogAdmin() {
         }
 
         // Reset form
-        setFormData({ title: "", date: "", readTime: "", img: "" });
+        setFormData({ title: "", date: "", readTime: "", img: "", path: "" });
         setShowForm(false);
     };
     
@@ -210,7 +212,8 @@ export default function BlogAdmin() {
             title: post.title,
             date: post.date,
             readTime: post.readTime,
-            img: post.img
+            img: post.img,
+            path: post.path || ""
         });
         setShowForm(true);
     };
@@ -294,7 +297,7 @@ export default function BlogAdmin() {
     };
 
     const resetForm = () => {
-        setFormData({ title: "", date: "", readTime: "", img: "" });
+        setFormData({ title: "", date: "", readTime: "", img: "", path: "" });
         setEditingPost(null);
         setShowForm(false);
     };
@@ -509,6 +512,21 @@ export default function BlogAdmin() {
                                                 placeholder="e.g., 10 mins read"
                                                 required
                                             />
+                                        </div>
+                                        
+                                        <div className="md:col-span-2">
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Path (static route)
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={formData.path}
+                                                onChange={(e) => setFormData(prev => ({ ...prev, path: e.target.value }))}
+                                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                placeholder="e.g., /Blog/[id]/Blog3"
+                                                required
+                                            />
+                                            <p className="text-xs text-gray-500 mt-1">Must be a valid static path (starts with /). Example: /Blog/[id]/Blog3</p>
                                         </div>
                                     </div>
                                     

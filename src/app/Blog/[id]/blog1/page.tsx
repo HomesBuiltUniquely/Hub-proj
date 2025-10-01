@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Footer } from "../../Components/Footer";
+import { Footer } from "../../../Components/Footer";
 
 type Post = { 
     id: number; 
@@ -98,13 +98,17 @@ export default function BlogDetail() {
 						</div>
 
 						<div className="prose prose-lg max-w-none">
+							{/* Blog 1 Title (inside card) */}
+							<h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+								How Mr. Akhil’s House Became Bhoo Aabharana (And Why We&#39;re Still Obsessed)?
+							</h1>
 							<p className="text-gray-700 leading-relaxed mb-4">Spoiler alert: We had a lot of fun with this one!</p>
 							<p className="text-gray-700 leading-relaxed mb-4">So, our client, Mr. Akhil, reached out to our team at HUB Interior with a vision, and, as the top interior designer in Bangalore, we definitely delivered it. HUB Interior has years of experience delivering the best results to our clients, and we were all excited to achieve the same results for Mr. Akhil.</p>
-							<p className="text-gray-700 leading-relaxed mb-4">Bhoo Aabharana is a love letter to faith, function, and quiet elegance. And yes, we’re obsessed.</p>
+							<p className="text-gray-700 leading-relaxed mb-4">Bhoo Aabharana is a love letter to faith, function, and quiet elegance. And yes, we&#39;re obsessed.</p>
 							<p className="text-gray-700 leading-relaxed mb-4">Let&#39;s rewind a bit.</p>
-							<p className="text-gray-700 leading-relaxed mb-4">When Mr. Akhil first walked us through the space, it was clear he wasn’t chasing trends. He wanted a home that felt personal, peaceful, and just a little bit fancy. Not flashy, not overdone, but just thoughtful design that made sense for his lifestyle.</p>
+							<p className="text-gray-700 leading-relaxed mb-4">When Mr. Akhil first walked us through the space, it was clear he wasn&#39;t chasing trends. He wanted a home that felt personal, peaceful, and just a little bit fancy. Not flashy, not overdone, but just thoughtful design that made sense for his lifestyle.</p>
 							<p className="text-gray-700 leading-relaxed mb-4">And when we walked into Bhoo Aabharana for the first time to check out the project site, we saw the potential immediately. After weeks of planning, measuring, tweaking, and countless site visits, there is nothing more satisfying than walking into a home that feels finished (and loved by our customers).</p>
-							<p className="text-gray-700 leading-relaxed mb-8">Today, we get to share one of those magical transformations: Mr. Akhil’s Bhoo Aabharana home. And let me tell you, it’s a good one. This project had everything: thoughtful storage, cozy corners, a spiritual place, and a modern style.</p>
+							<p className="text-gray-700 leading-relaxed mb-8">Today, we get to share one of those magical transformations: Mr. Akhil&#39;s Bhoo Aabharana home. And let me tell you, it&#39;s a good one. This project had everything: thoughtful storage, cozy corners, a spiritual place, and a modern style.</p>
 						</div>
 
 						{/* Section Title for Image */}
@@ -153,7 +157,7 @@ export default function BlogDetail() {
 							</div>
 							<p>Kitchen and dining room go hand in hand. For the dining room, we added a handwash unit and a crockery display with glass-front cabinets to add a unique touch (and also because why hide your prettiest pieces?). It&#39;s giving “host with the most,” and we&#39;re here for it.</p>
 							<p className="text-gray-600 text-sm mt-3">However, it didn&#39;t follow the average mirror. The abstract mirror and the unique wall panelling with a big grayish handwash basin speak for classy.</p>
-							<p>Overall, Mr. Akhil’s kitchen is proof that functionality doesn&#39;t mean boring.</p>
+							<p>Overall, Mr. Akhil&#39;s kitchen is proof that functionality doesn&#39;t mean boring.</p>
 
 							
 							{/*A Dream Bedroom Makeover*/}
