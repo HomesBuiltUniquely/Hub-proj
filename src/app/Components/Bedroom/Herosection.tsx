@@ -52,15 +52,19 @@ const BedroomHeroSimple: React.FC = () => {
           <div className="relative h-[550px]">
             {/* Rounded image only */}
             <div className="absolute inset-0 rounded-4xl overflow-hidden">
-              <Image
-                src="/bh1.png"
+              {/* <Image
+                src="/bhr.png"
                 alt="Modular Kitchen Background"
                 fill
                 priority
                 className="object-cover"
-              />
+              /> */}
+
+
+              <img src="bhr.png" alt="" />
+
               {/* gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              {/* <div className="absolute inset-0 bg-gradient-to-t w-340  from-black/70 via-black/20 to-transparent" /> */}
             </div>
     
             {/* top logo */}
@@ -70,6 +74,7 @@ const BedroomHeroSimple: React.FC = () => {
     
             {/* text + cta */}
             <div className="absolute bottom-10 left-4 right-4 text-white">
+              
               <h2 className="manrope font-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
                 Bedroom
                 <br />
@@ -79,12 +84,15 @@ const BedroomHeroSimple: React.FC = () => {
                 Designed for rest, styled for you
               </p>
             </div>
+
+
+
               {/* CTA overlapping, positioned above image */}
-              <div className="absolute left-6 -bottom-5 z-20">
-                <button className="bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
+              {/* <div className="absolute left-6 -bottom-5 z-20">
+                <button className="bg-[#ebd657] text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
                   Get Free Quote
                 </button>
-              </div>
+              </div> */}
 
       
           </div>

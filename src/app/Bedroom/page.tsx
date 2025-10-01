@@ -13,10 +13,10 @@ export default function Bedroom(){
         <div>
             <BedroomHeroSimple/> 
             <BedroomSection/>
-      <WardrobeCarousel/>
+  <WardrobeCarousel/>
             <Section3/> 
-            <Section4/>
-            <Footer/>
+           <Section4/>
+            <Footer/> 
         </div>
     )
 }

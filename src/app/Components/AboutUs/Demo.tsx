@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-const Section5 = () => {
+const Carousel = () => {
   const stats = [
     { value: "5000+", label: "Happy Homes" },
     { value: "60+", label: "Expert Designers" },
@@ -25,6 +25,7 @@ const Section5 = () => {
   ];
 
 
+  const Carousel = () => {
   const slides = [
     {
       year: '2019',
@@ -41,42 +42,6 @@ const Section5 = () => {
       title: ['Hub Store'],
       description: 'Expanded with the launch of the HUB Store, bringing curated products and solutions under one roof.',
     },
-    {
-      year: '2022',
-      title: ['New Experience Centre', 'Sarjapur'],
-      description: 'Opened our second Experience Centre in Sarjapur, strengthening our presence in Bengaluru.',
-    },
-    {
-      year: '2023',
-      title: ['Hubster ERP'],
-      description: 'Launched Hubster, our in-house ERP system, streamlining processes and efficiency.',
-    },
-    {
-      year: '2023',
-      title: ['HUB for Business'],
-      description: 'Extended our expertise with HUB for Business, catering to B2B clients and partnerships.',
-    },
-    {
-      year: '2024',
-      title: ['Fast Track Interiors'],
-      description: 'Introduced 34 Days Fast Track Interiors, setting new benchmarks in speed and quality',
-    },
-    {
-      year: '2024',
-      title: ['Bigger Space, Bigger Team'],
-      description: 'Moved from Banaswadi to a larger Experience Centre in HBR Layout, reflecting our growth.',
-    },
-    {
-      year: '2025',
-      title: ['Rebranding'],
-      description: 'Transformed from Homes Under Budget into HUB Interior, marking a bold new chapter.',
-    },
-    {
-      year: '2025',
-      title: ['Expanding Horizons'],
-      description: 'Opened a new Experience Centre in JP Nagar, Bengaluru and our first branch outside the city in Chennai.',
-    },
-
   ];
 
   const [current, setCurrent] = useState(0);
@@ -90,9 +55,7 @@ const Section5 = () => {
   };
 
 
-
-
-
+  
   return (
     <div>
       {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
@@ -357,8 +320,12 @@ const Section5 = () => {
         </div>
       </section>
 
-      {/* SM Screen - Small displays */}
-      <section className="block md:hidden px-4 ">
+      
+
+
+
+ {/* SM Screen - Small displays */}
+      <section className="block md:hidden py px-4 ">
         <div className="max-w-sm mx-auto">
           {/* Header Section */}
 
@@ -384,65 +351,44 @@ const Section5 = () => {
 
           {/* Need to continue from carousel */}
 
-          <div>
-
-
-
-            <div className="w-full max-w-2xl mx-auto">
-              {/* Slide */}
-              <div className="w-full h-60 bg-gray-50 p-4 rounded-3xl flex items-center justify-center shadow-xl transition-all duration-500 ease-in-out">
-                <div className="text-center max-w-md">
-                  <h2 className="text-2xl manrope text-[#ef0101]">
-                    {slides[current].year}
-                    {slides[current].title.map((line, idx) => (
-                      <div key={idx} className={`text-black ${idx === 0 ? 'mt-3' : 'mb-3'}`}>
-                        {line}
-                      </div>
-                    ))}
-                  </h2>
-                  <p className="text-sm text-gray-500">{slides[current].description}</p>
-                </div>
+          <div className="w-full max-w-2xl mx-auto">
+      {/* Slide */}
+      <div className="w-full h-60 bg-gray-50 p-4 rounded-3xl flex items-center justify-center shadow-xl transition-all duration-500 ease-in-out">
+        <div className="text-center max-w-md">
+          <h2 className="text-2xl manrope text-[#ef0101]">
+            {slides[current].year}
+            {slides[current].title.map((line, idx) => (
+              <div key={idx} className={`text-black ${idx === 0 ? 'mt-3' : 'mb-3'}`}>
+                {line}
               </div>
+            ))}
+          </h2>
+          <p className="text-sm text-gray-500">{slides[current].description}</p>
+        </div>
+      </div>
 
-              {/* Navigation Buttons */}
-              <div className="flex space-x-4 mt-10 justify-center">
-                <button
-                  onClick={prevSlide}
-                  className="w-12 h-12 flex items-center justify-center border border-black rounded-full text-2xl text-gray-800 bg-white hover:bg-gray-100 active:opacity-70 transition duration-150"
-                  aria-label="Previous"
-                >
-                  &#8592;
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="w-12 h-12 flex items-center justify-center border border-black rounded-full text-2xl text-gray-800 bg-white hover:bg-gray-100 active:opacity-70 transition duration-150"
-                  aria-label="Next"
-                >
-                  &#8594;
-                </button>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
+      {/* Navigation Buttons */}
+      <div className="flex space-x-4 mt-10 justify-center">
+        <button
+          onClick={prevSlide}
+          className="w-12 h-12 flex items-center justify-center border border-black rounded-full text-2xl text-gray-800 hover:bg-gray-200 transition"
+          aria-label="Previous"
+        >
+          &#8592;
+        </button>
+        <button
+          onClick={nextSlide}
+          className="w-12 h-12 flex items-center justify-center border border-black rounded-full text-2xl text-gray-800 hover:bg-gray-200 transition"
+          aria-label="Next"
+        >
+          &#8594;
+        </button>
+      </div>
+    </div>
 
 
+        
 
-
-
-
-
-          {/* <div className=' bg-amber-50 ml-50 mt-20 rounded-full'>
-
-            <button>&#8594;</button>
-            <span>
-              <button>&#8592;</button>
-            </span>
-          </div> */}
 
           {/* 
           <div className='w-[full] h-[240px] rounded-xl bg-white shadow-lg '>
@@ -469,6 +415,9 @@ const Section5 = () => {
 
         </div>
       </section>
+
+
+
 
       {/* Pure CSS for 3XL - 2560*1440 resolution */}
       <style jsx>{`
@@ -704,8 +653,13 @@ const Section5 = () => {
           background: #d00101 !important;
         }
       `}</style>
+
+       
+
     </div>
+
+  
   );
 };
-
-export default Section5;
+}
+export default Carousel;

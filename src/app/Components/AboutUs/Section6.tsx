@@ -20,13 +20,13 @@ const Section6 = () => {
                   At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                 </p>
               </div>
-              
+
               {/* Mission Points */}
               <div className="aboutus-section6-3xl-points">
-              To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+                To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
               </div>
             </div>
-            
+
             {/* Right Side - Image */}
             <div className="aboutus-section6-3xl-image-container">
               <img src="/5.png" alt="Mission Image" className="aboutus-section6-3xl-image"></img>
@@ -38,46 +38,46 @@ const Section6 = () => {
       {/* 2XL Screen - Large displays */}
       <section className="aboutus-section6-2xl-section hidden 2xl:block 3xl:hidden px-30 bg-[#f1f2f6] py-10">
         <div className='flex justify-between'>
-        <div className="max-w-7xl">
-          {/* Mission Header */}
-          <h1 className="text-6xl manrope-medium pt-20 leading-tight">
-            Mission
-          </h1>
-          
-          {/* Mission Description */}
-          <p className="w-[400px]  manrope-medium pt-3 text-xl leading-relaxed">
-            At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-          </p>
-          
-          {/* Mission Points */}
-          <div className="w-[400px]  manrope-medium pt-10 text-xl leading-relaxed">
-          To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step. 
+          <div className="max-w-7xl">
+            {/* Mission Header */}
+            <h1 className="text-6xl manrope-medium pt-20 leading-tight">
+              Mission
+            </h1>
+
+            {/* Mission Description */}
+            <p className="w-[400px]  manrope-medium pt-3 text-xl leading-relaxed">
+              At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+            </p>
+
+            {/* Mission Points */}
+            <div className="w-[400px]  manrope-medium pt-10 text-xl leading-relaxed">
+              To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+            </div>
           </div>
-        </div>
-        <img src="/5.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
+          <img src="/5.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
         </div>
       </section>
 
       {/* XL Screen - Extra large displays */}
       <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6]">
         <div className="flex justify-evenly">
-        <div className="max-w-6xl mt-12 mr-70">
-          {/* Mission Header */}
-          <h1 className="text-5xl manrope-medium leading-tight">
-            Mission
-          </h1>
-          
-          {/* Mission Description */}
-          <p className="w-[350px]  manrope-medium pt-3 text-lg leading-relaxed">
-            At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-          </p>
-          
-          {/* Mission Points */}
-          <div className="w-[400px]  manrope-medium pt-10 text-lg leading-relaxed">
-          To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+          <div className="max-w-6xl mt-12 mr-70">
+            {/* Mission Header */}
+            <h1 className="text-5xl manrope-medium leading-tight">
+              Mission
+            </h1>
+
+            {/* Mission Description */}
+            <p className="w-[350px]  manrope-medium pt-3 text-lg leading-relaxed">
+              At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+            </p>
+
+            {/* Mission Points */}
+            <div className="w-[400px]  manrope-medium pt-10 text-lg leading-relaxed">
+              To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+            </div>
           </div>
-      </div>
-      <img src="/5.png" className="w-[500px] h-[500px] rounded-2xl"></img>
+          <img src="/5.png" className="w-[500px] h-[500px] rounded-2xl"></img>
         </div>
       </section>
 
@@ -88,12 +88,12 @@ const Section6 = () => {
           <h1 className="text-4xl manrope-medium pt-16 pl-8 leading-tight">
             Mission
           </h1>
-          
+
           {/* Mission Description */}
           <p className="w-[300px] ml-8 manrope-medium pt-3 text-base leading-relaxed">
             At HUB Interiors, — it&#39;s about creating spaces that reflect you.
           </p>
-          
+
           {/* Mission Points */}
           <div className="space-y-8">
             {/* Mission Point 1 */}
@@ -101,47 +101,47 @@ const Section6 = () => {
             <div className="flex items-start">
               <div className="w-[45px] h-[45px] rounded-lg bg-[#ddcdc1] mt-5 ml-8 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-700">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-              </svg>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
               </div>
               <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
             </div>
-            
+
             {/* Mission Point 2 */}
             <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
             <div className="flex items-start">
               <div className="w-[45px] h-[45px] rounded-lg bg-[#ddcdc1] mt-5 ml-8 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-700">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-              </svg>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
               </div>
               <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
             </div>
-            
+
             {/* Mission Point 3 */}
             <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
             <div className="flex items-start">
               <div className="w-[45px] h-[45px] rounded-lg bg-[#ddcdc1] mt-5 ml-8 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-700">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-              </svg>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
               </div>
               <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
             </div>
-            
+
             {/* Mission Point 4 */}
             <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
             <div className="flex items-start">
               <div className="w-[45px] h-[45px] rounded-lg bg-[#ddcdc1] mt-5 ml-8 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-700">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-              </svg>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
               </div>
               <div className="pl-3 pt-5 w-[350px] text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
@@ -158,12 +158,12 @@ const Section6 = () => {
           <h1 className="text-3xl manrope-medium pt-12 pl-6 leading-tight">
             Mission
           </h1>
-          
+
           {/* Mission Description */}
           <p className="w-[250px] ml-6 manrope-medium pt-2 text-sm leading-relaxed">
             At HUB Interiors, — it&#39;s about creating spaces that reflect you.
           </p>
-          
+
           {/* Mission Points */}
           <div className="space-y-6">
             {/* Mission Point 1 */}
@@ -178,7 +178,7 @@ const Section6 = () => {
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
             </div>
-            
+
             {/* Mission Point 2 */}
             <div className="w-[350px] h-0 border-t border-[#ddcdc1] mt-6 ml-6"></div>
             <div className="flex items-start">
@@ -191,7 +191,7 @@ const Section6 = () => {
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
             </div>
-            
+
             {/* Mission Point 3 */}
             <div className="w-[350px] h-0 border-t border-[#ddcdc1] mt-6 ml-6"></div>
             <div className="flex items-start">
@@ -204,7 +204,7 @@ const Section6 = () => {
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
             </div>
-            
+
             {/* Mission Point 4 */}
             <div className="w-[350px] h-0 border-t border-[#ddcdc1] mt-6 ml-6"></div>
             <div className="flex items-start">
@@ -215,29 +215,46 @@ const Section6 = () => {
               </div>
               <div className="pl-3 pt-4 w-[300px] text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </section>
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden py-8 px-4 bg-white">
+      <section className="block md:hidden py-10 px-4">
+
+
+        <div className="flex flex-col justify-between h-[150px] gap-4">
+
+
+          <div className='flex items-center ml'>
+            <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
+              <div className='mb-2.5 w-80'>
+                <h1 className='text-3xl manrope text-nowrap, ml-3'>Mission</h1>
+                <p className='text-xs manrope-medium mt-3'> At HUB Interiors, — it's about creating spaces<p>that reflect you.</p></p>
+                <p className='text-xs manrope-medium mt-6'>
+                  To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step. </p>
+
+                <img src="5.png" alt="Interior Design" className='rounded-3xl mt-8'/>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
         <div className="max-w-sm mx-auto">
           {/* Mission Header */}
-          <h1 className="text-2xl manrope-medium pt-8 pl-4 leading-tight">
-            Mission
-          </h1>
-          
-          {/* Mission Description */}
-          <p className="w-full ml-4 manrope-medium pt-2 text-xs leading-relaxed">
-            At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-          </p>
-          
+
+
           {/* Mission Points */}
-          <div className="space-y-4">
+          {/* <div className="space-y-4"> */}
             {/* Mission Point 1 */}
-            <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -247,10 +264,10 @@ const Section6 = () => {
               <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
-            </div>
-            
+            </div> */}
+
             {/* Mission Point 2 */}
-            <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -260,10 +277,10 @@ const Section6 = () => {
               <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
-            </div>
-            
+            </div> */}
+
             {/* Mission Point 3 */}
-            <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -273,10 +290,10 @@ const Section6 = () => {
               <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
-            </div>
-            
+            </div> */}
+
             {/* Mission Point 4 */}
-            <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -286,9 +303,9 @@ const Section6 = () => {
               <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </div>
-            </div>
+            </div> */}
+          {/* </div> */}
         </div>
-      </div>
       </section>
 
       {/* Pure CSS for 3XL - 2560*1440 resolution */}

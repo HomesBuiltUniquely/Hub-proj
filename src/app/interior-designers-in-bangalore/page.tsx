@@ -20,20 +20,20 @@ export default function InteriorDesignersInBangalore() {
   return (
     <div>
       <HeroSections />
-    <Section1 />
-  <Section2 />
+      <Section1 />
+      <Section2 />
       <Section3 />
-           <Section33/>
-         <Section10/>
-  <Section4 />
-     <Section5 />
-       <Section6 />
-       <CalculatorPage/>
+      <Section33/>
+      <Section10/>
+      <Section4 />
+      <Section5 />
+      <Section6 />
+      <CalculatorPage/>
       <Section7 />
-    <Section8 />
-       <Section9 />
+      <Section8 />
+      <Section9 />
       <BrandCarousel />
-   <QAsection />  
+      <QAsection />
 
     </div>
   )

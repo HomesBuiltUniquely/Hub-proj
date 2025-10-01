@@ -13,7 +13,7 @@ const Section7 = () => {
             <div className="aboutus-section7-3xl-image">
               <img src="/6.png" alt="Values Image" className=" h-[900px] rounded-2xl " />
             </div>
-            
+
             {/* Right Side - Values Content */}
             <div className="aboutus-section7-3xl-values">
               {/* Values Header */}
@@ -22,7 +22,7 @@ const Section7 = () => {
                   Values
                 </h1>
               </div>
-              
+
               {/* Values Points */}
               <div className="aboutus-section7-3xl-points">
                 {/* Value Point 1 */}
@@ -35,11 +35,11 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                    Integrity: Building trust through honesty, transparency, and respect in everything we do.
+                      Integrity: Building trust through honesty, transparency, and respect in everything we do.
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Value Point 2 */}
                 <div className="aboutus-section7-3xl-point">
                   <div className="aboutus-section7-3xl-divider"></div>
@@ -50,7 +50,7 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                    Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
+                      Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
                     </div>
                   </div>
                 </div>
@@ -64,13 +64,13 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                    Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
+                      Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
 
                     </div>
                   </div>
                 </div>
 
-                
+
                 {/* Value Point 3 */}
                 <div className="aboutus-section7-3xl-point">
                   <div className="aboutus-section7-3xl-divider"></div>
@@ -81,12 +81,12 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                    Excellence: Designing homes that are timeless, functional, and crafted with precision.
+                      Excellence: Designing homes that are timeless, functional, and crafted with precision.
 
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Value Point 4 */}
                 <div className="aboutus-section7-3xl-point">
                   <div className="aboutus-section7-3xl-divider"></div>
@@ -97,7 +97,7 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                    Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
+                      Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
                     </div>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const Section7 = () => {
                       </svg>
                     </div>
                     <div className="aboutus-section7-3xl-text">
-                    Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
+                      Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
                     </div>
                   </div>
                 </div>
@@ -131,15 +131,15 @@ const Section7 = () => {
               <img src="/6.png" alt="Values Image" className="w-full h-[580px] rounded-2xl" >
               </img>
             </div>
-            
+
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 mb-10">
               {/* Values Header */}
               <h1 className="text-6xl manrope-medium pt-20 pl-10 leading-tight">
                 Values
               </h1>
-              
-              
+
+
               {/* Values Points */}
               <div className="">
                 {/* Value Point 1 */}
@@ -151,10 +151,10 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                  Integrity: Building trust through honesty, transparency, and respect in everything we do.
+                    Integrity: Building trust through honesty, transparency, and respect in everything we do.
                   </div>
                 </div>
-                
+
                 {/* Value Point 2 */}
                 <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
@@ -164,10 +164,10 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                  Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
+                    Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
                   </div>
                 </div>
-                
+
                 {/* Value Point 3 */}
                 <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
@@ -177,10 +177,10 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                  Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
+                    Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
                   </div>
                 </div>
-                
+
                 {/* Value Point 4 */}
                 <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
@@ -190,7 +190,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                  Excellence: Designing homes that are timeless, functional, and crafted with precision.
+                    Excellence: Designing homes that are timeless, functional, and crafted with precision.
                   </div>
                 </div>
 
@@ -202,11 +202,11 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                  Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
+                    Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
                   </div>
                 </div>
 
-                 <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
+                <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
                   <div className="w-[40px] h-[40px] rounded-xl bg-[#ddcdc1] mt-6 ml-10 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-gray-700">
@@ -214,7 +214,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 pt-6 w-[450px] text-lg leading-relaxed">
-                  Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
+                    Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
                   </div>
                 </div>
 
@@ -233,17 +233,17 @@ const Section7 = () => {
               {/* Image placeholder - can be replaced with actual image */}
               <img src="/6.png" alt="Values Image" className="w-[600px] h-[550px]  ml-5" />
             </div>
-            
+
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 ml-56">
               {/* Values Header */}
               <h1 className="text-5xl manrope-medium  pl-10 leading-tight">
                 Values
               </h1>
-              
+
               {/* Values Description */}
-             
-              
+
+
               {/* Values Points */}
               <div className="space-y-5">
                 {/* Value Point 1 */}
@@ -255,10 +255,10 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 w-[400px] text-base leading-relaxed">
-                  Integrity: Building trust through honesty, transparency, and respect in everything we do.
+                    Integrity: Building trust through honesty, transparency, and respect in everything we do.
                   </div>
                 </div>
-                
+
                 {/* Value Point 2 */}
                 <div className="w-[450px] h-0 border-t border-[#ddcdc1]  ml-10"></div>
                 <div className="flex items-start">
@@ -268,11 +268,11 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4  w-[400px] text-base leading-relaxed">
-                  Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
+                    Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
 
                   </div>
                 </div>
-                
+
                 {/* Value Point 3 */}
                 <div className="w-[450px] h-0 border-t border-[#ddcdc1]  ml-10"></div>
                 <div className="flex items-start">
@@ -282,10 +282,10 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4 w-[400px] text-base leading-relaxed">
-                  Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
+                    Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
                   </div>
                 </div>
-                
+
                 {/* Value Point 4 */}
                 <div className="w-[450px] h-0 border-t border-[#ddcdc1] ml-10"></div>
                 <div className="flex items-start">
@@ -295,7 +295,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4  w-[400px] text-base leading-relaxed">
-                  Excellence: Designing homes that are timeless, functional, and crafted with precision.
+                    Excellence: Designing homes that are timeless, functional, and crafted with precision.
                   </div>
                 </div>
                 <div className="w-[450px] h-0 border-t border-[#ddcdc1] ml-10"></div>
@@ -306,7 +306,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4  w-[400px] text-base leading-relaxed">
-                  Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
+                    Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
                   </div>
                 </div>
                 <div className="w-[450px] h-0 border-t border-[#ddcdc1] ml-10"></div>
@@ -317,7 +317,7 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-4  w-[450px] text-base leading-relaxed">
-                  Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
+                    Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
                   </div>
                 </div>
               </div>
@@ -332,21 +332,20 @@ const Section7 = () => {
           <div className="flex flex-col lg:flex-row justify-between gap-12">
             {/* Left Side - Image Container */}
             <div className="w-full lg:w-[300px] h-[500px] bg-red-400 mt-16 ml-6 rounded-xl">
-              {/* Image placeholder - can be replaced with actual image */}
-            </div>
-            
+              {/* Image placeholder - can be replaced with actual image */}</div>
+
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 mr-12 mb-16">
               {/* Values Header */}
               <h1 className="text-5xl manrope-medium pt-16 pl-8 leading-tight">
                 Values
               </h1>
-              
+
               {/* Values Description */}
               <p className="w-[300px] ml-8 manrope-medium pt-3 text-base leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </p>
-              
+
               {/* Values Points */}
               <div className="space-y-8">
                 {/* Value Point 1 */}
@@ -361,7 +360,7 @@ const Section7 = () => {
                     At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
-                
+
                 {/* Value Point 2 */}
                 <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
                 <div className="flex items-start">
@@ -374,7 +373,7 @@ const Section7 = () => {
                     At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
-                
+
                 {/* Value Point 3 */}
                 <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
                 <div className="flex items-start">
@@ -387,7 +386,7 @@ const Section7 = () => {
                     At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
-                
+
                 {/* Value Point 4 */}
                 <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
                 <div className="flex items-start">
@@ -414,19 +413,19 @@ const Section7 = () => {
             <div className="w-full h-[400px] bg-red-400 mt-12 ml-4 rounded-lg">
               {/* Image placeholder - can be replaced with actual image */}
             </div>
-            
+
             {/* Right Side - Values Content */}
             <div className="w-full mb-12">
               {/* Values Header */}
               <h1 className="text-4xl manrope-medium pt-12 pl-6 leading-tight">
                 Values
               </h1>
-              
+
               {/* Values Description */}
               <p className="w-[250px] ml-6 manrope-medium pt-2 text-sm leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
               </p>
-              
+
               {/* Values Points */}
               <div className="space-y-6">
                 {/* Value Point 1 */}
@@ -441,7 +440,7 @@ const Section7 = () => {
                     At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
-                
+
                 {/* Value Point 2 */}
                 <div className="w-[350px] h-0 border-t border-[#ddcdc1] mt-6 ml-6"></div>
                 <div className="flex items-start">
@@ -454,7 +453,7 @@ const Section7 = () => {
                     At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
-                
+
                 {/* Value Point 3 */}
                 <div className="w-[350px] h-0 border-t border-[#ddcdc1] mt-6 ml-6"></div>
                 <div className="flex items-start">
@@ -467,7 +466,7 @@ const Section7 = () => {
                     At HUB Interiors, — it&#39;s about creating spaces that reflect you.
                   </div>
                 </div>
-                
+
                 {/* Value Point 4 */}
                 <div className="w-[350px] h-0 border-t border-[#ddcdc1] mt-6 ml-6"></div>
                 <div className="flex items-start">
@@ -487,43 +486,58 @@ const Section7 = () => {
       </section>
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden py-8 px-4 bg-white">
+      <section className="block md:hidden py-105 px-4 ">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col gap-6">
             {/* Left Side - Image Container */}
-            <div className="w-full h-[300px] bg-red-400 mt-8 ml-0 rounded-lg">
-              {/* Image placeholder - can be replaced with actual image */}
-            </div>
-            
+
+
             {/* Right Side - Values Content */}
             <div className="w-full mb-8">
               {/* Values Header */}
-              <h1 className="text-3xl manrope-medium pt-8 pl-4 leading-tight">
+              {/* <h1 className="text-3xl manrope-medium pt-8 pl-4 leading-tight">
                 Values
-              </h1>
-              
+              </h1> */}
+
               {/* Values Description */}
-              <p className="w-full ml-4 manrope-medium pt-2 text-xs leading-relaxed">
+              {/* <p className="w-full ml-4 manrope-medium pt-2 text-xs leading-relaxed">
                 At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </p>
+              </p> */}
+
+              {/* Mobile Version Starts here */}
+
+
+
               
-              {/* Values Points */}
-              <div className="space-y-4">
-                {/* Value Point 1 */}
-                <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
-                <div className="flex items-start">
-                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
+                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div> */}
+              <div className="space-y-4 ">
+
+                <div className='flex items-center ml'>
+                  <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
+                    <div className='mb-2.5 w-80'>
+                      <h1 className='text-3xl manrope text-nowrap, ml-3'>Values</h1>
+
+
+                   {/* Values Points */}
+              {/* Value Point 1 */}
+
+                  <div className='bg-white h-95 rounded-3xl mt-8'>
+
+                  <div className="flex items-start">
+                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center m">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
                   <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                    Integrity: Building trust through honesty, transparency, and respect in everything we do.
                   </div>
                 </div>
-                
+
+
+
                 {/* Value Point 2 */}
-                <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
                 <div className="flex items-start">
                   <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -531,12 +545,12 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                    Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
                   </div>
                 </div>
-                
+
                 {/* Value Point 3 */}
-                <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
                 <div className="flex items-start">
                   <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -544,12 +558,13 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                    Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
+
                   </div>
                 </div>
-                
+
                 {/* Value Point 4 */}
-                <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
                 <div className="flex items-start">
                   <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -557,9 +572,48 @@ const Section7 = () => {
                     </svg>
                   </div>
                   <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    At HUB Interiors, — it&#39;s about creating spaces that reflect you.
+                    Excellence: Designing homes that are timeless, functional, and crafted with precision.
                   </div>
                 </div>
+
+
+
+                {/* Value Point 5 */}
+                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
+                <div className="flex items-start">
+                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
+                    Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
+                  </div>
+                </div>
+
+
+
+                {/* Value Point 6 */}
+                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
+                <div className="flex items-start">
+                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
+                    Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
+                  </div>
+                </div>
+</div>
+
+                  <img src="6.png" alt="" className='mt-10'/>
+
+                    </div>
+                  </div>
+                </div>
+
+
               </div>
             </div>
           </div>
