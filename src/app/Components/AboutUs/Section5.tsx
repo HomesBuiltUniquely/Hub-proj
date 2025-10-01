@@ -370,7 +370,7 @@ const Section5 = () => {
               <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
                 <div className='mb-2.5 w-80'>
                   <h1 className='text-3xl manrope text-nowrap, ml-3'> Journey So far</h1>
-                  <p className='manrope-medium text-2xl w-full leading-relaxed mt-4'> The Path We've Paved!
+                  <p className='manrope-medium text-2xl w-full leading-relaxed mt-4'> The Path We&#39;ve Paved!
                   </p>
 
                 </div>

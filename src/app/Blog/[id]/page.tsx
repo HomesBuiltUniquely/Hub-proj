@@ -152,8 +152,8 @@ export default function BlogDetail() {
 								<img src="/Ukitchen.png" alt="Functional modern kitchen" className="w-full h-full object-cover" />
 							</div>
 							<p>Kitchen and dining room go hand in hand. For the dining room, we added a handwash unit and a crockery display with glass-front cabinets to add a unique touch (and also because why hide your prettiest pieces?). It’s giving “host with the most,” and we’re here for it.</p>
-							<p className="text-gray-600 text-sm mt-3">However, it didn't follow the average mirror. The abstract mirror and the unique wall panelling with a big grayish handwash basin speak for classy.</p>
-							<p>Overall, Mr. Akhil’s kitchen is proof that functionality doesn’t mean boring.</p>
+							<p className="text-gray-600 text-sm mt-3">However, it didn&#39;t follow the average mirror. The abstract mirror and the unique wall panelling with a big grayish handwash basin speak for classy.</p>
+							<p>Overall, Mr. Akhil’s kitchen is proof that functionality doesn&#39;t mean boring.</p>
 
 							
 							{/*A Dream Bedroom Makeover*/}
