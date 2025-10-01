@@ -15,8 +15,7 @@ export default function Section1() {
                     {/* Description - 3XL optimized */}
                     <p className="aboutus-section1-3xl-description text-center">
                         Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.
-                        No templates. No compromises. Just interiors that truly fit you.
-                    </p>
+                        No templates. No compromises. Just interiors that truly fit you.</p>
 
                 </div>
             </div>
