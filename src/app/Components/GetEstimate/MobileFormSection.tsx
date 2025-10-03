@@ -136,5 +136,3 @@ const MobileFormSection: React.FC = () => {
     </div>
   );
 };
-
-export default MobileFormSection;
