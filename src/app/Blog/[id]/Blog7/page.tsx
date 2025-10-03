@@ -37,7 +37,7 @@ export default function Blog7() {
 
                         <div className="prose prose-lg max-w-none">
                             <p className="text-gray-700 leading-relaxed mb-4">Create beautiful, eco-friendly interiors that are kind to the planet and your health.</p>
-                            <p className="text-gray-700 leading-relaxed mb-8">Sustainable design isn't just about being environmentally conscious - it's about creating healthier, more durable spaces that stand the test of time.</p>
+                            <p className="text-gray-700 leading-relaxed mb-8">Sustainable design isn&#39;t just about being environmentally conscious - it&#39;s about creating healthier, more durable spaces that stand the test of time.</p>
                         </div>
 
                         <div className="relative w-full h-80 rounded-xl overflow-hidden mb-4">

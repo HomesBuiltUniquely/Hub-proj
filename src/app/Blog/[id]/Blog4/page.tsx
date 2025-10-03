@@ -38,7 +38,7 @@ export default function Blog4() {
                         <div className="prose prose-lg max-w-none">
                             <p className="text-gray-700 leading-relaxed mb-4">Every home has a vision!</p>
                             <p className="text-gray-700 leading-relaxed mb-4">Some families wish to have spaces filled with light and air. Others desire a home that is ideally suited for their day-to-day life. And some seek the best of both worlds. At HUB Interior, we hold the belief that every design should be a reflection of the inhabitants themselves.</p>
-                            <p className="text-gray-700 leading-relaxed mb-4">Our latest project at the Royal Tulip Villa in Bengaluru is the testament to this conviction. From a simple house, it now exudes warmth, sophistication, and ageless style. Every nook is made for comfort and carefree living. Let's have a glimpse of how we remodeled this villa with our latest luxury villa interior design approach!</p>
+                            <p className="text-gray-700 leading-relaxed mb-4">Our latest project at the Royal Tulip Villa in Bengaluru is the testament to this conviction. From a simple house, it now exudes warmth, sophistication, and ageless style. Every nook is made for comfort and carefree living. Let&#39;s have a glimpse of how we remodeled this villa with our latest luxury villa interior design approach!</p>
                         </div>
 
                         <div className="relative w-full h-80 rounded-xl overflow-hidden mb-4">
@@ -49,10 +49,10 @@ export default function Blog4() {
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                             <h2 className="text-2xl font-bold text-gray-900 pt-4">The Royal Tulip Story – A Luxury Villa Interior Design Experience in Bengaluru</h2>
                             <p>When Mr. and Mrs. George transferred to their villa at Royal Tulip, they desired more than interiors alone. They envisioned a home that was warm and ageless and simple to reside in. They hoped for a kitchen where dialogue is the norm, a dining space where memories are created with family, and bedrooms that provide a quiet escape after a day out.</p>
-                            <p>They brought this vision to HUB Interior and together we made it happen. Each decision had an eye on beauty and functionality. For the Georges, it wasn't about fixtures or décor, but creating a home that reflected their journey and memories. Here is where luxury villa interior design in Bengaluru is brought to life, a house that is designed around real life and enduring comfort.</p>
+                            <p>They brought this vision to HUB Interior and together we made it happen. Each decision had an eye on beauty and functionality. For the Georges, it wasn&#39;t about fixtures or décor, but creating a home that reflected their journey and memories. Here is where luxury villa interior design in Bengaluru is brought to life, a house that is designed around real life and enduring comfort.</p>
 
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6">HUB Interior's Approach to Luxury Villa Interiors</h2>
-                            <p>The design process began with a clear goal to create a home that feels warm yet contemporary. HUB Interior Bengaluru shaped each room around the family's lifestyle, blending comfort with utility.</p>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6">HUB Interior&#39;s Approach to Luxury Villa Interiors</h2>
+                            <p>The design process began with a clear goal to create a home that feels warm yet contemporary. HUB Interior Bengaluru shaped each room around the family&#39;s lifestyle, blending comfort with utility.</p>
                             <p>Some of the most important luxury villa interior aspects were:</p>
                             <ul className="list-disc list-inside ml-4 space-y-2">
                                 <li>Entry gate decoration and shoe rack for an organised and inviting first impression.</li>
@@ -114,7 +114,7 @@ export default function Blog4() {
                                 <li>The lighting was carefully layered so that every room seemed bright but soothing.</li>
                                 <li>Textures and materials like warm wood on the dining table and soft wall panels added depth without suffocating the senses.</li>
                                 <li>Colours remained balanced from cheerful, bright bedding in the bedroom to classic wood finishes in the dining area.</li>
-                                <li>Functionality was never sacrificed. Each unit, from the kitchen tambour cabinet to the shoe rack, was made practical but that didn't interfere with its contribution to style.</li>
+                                <li>Functionality was never sacrificed. Each unit, from the kitchen tambour cabinet to the shoe rack, was made practical but that didn&#39;t interfere with its contribution to style.</li>
                             </ul>
                             <p>These details reflect luxury villa interior solutions that adapt to real lifestyles while preserving elegance.</p>
 
@@ -127,10 +127,10 @@ export default function Blog4() {
                             <p>The bedrooms also have an intimate charm. The wardrobes and TV unit add efficiency, and the vibrant linen adds vibrancy. Both of these features make the rooms feel lived-in, cosy, and warm. For inspiration, the Georges relied on bedroom interior designs that were simple as well as colorful to ensure peaceful yet lively spaces.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Timeless Luxury Interior Design for Villas in Bengaluru</h2>
-                            <p>What makes this project unique is its focus on creating a home that evolves with the Georges' family, practical, flexible, and timeless. HUB Interior achieved this through eternal palettes, durable materials, and versatile layouts. The kitchen tambour unit ensures seamless storage, the study nook doubles as a workspace and reading spot, and the interior design for villas makes large spaces cosy yet grand.</p>
+                            <p>What makes this project unique is its focus on creating a home that evolves with the Georges&#39; family, practical, flexible, and timeless. HUB Interior achieved this through eternal palettes, durable materials, and versatile layouts. The kitchen tambour unit ensures seamless storage, the study nook doubles as a workspace and reading spot, and the interior design for villas makes large spaces cosy yet grand.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Why HUB Interior Leads in Luxury Villa Interior Design?</h2>
-                            <p>Here's a glimpse of our signature style and strengths:</p>
+                            <p>Here&#39;s a glimpse of our signature style and strengths:</p>
                             <ul className="list-disc list-inside ml-4 space-y-2">
                                 <li><strong>Fast-Track Delivery:</strong> High-quality interiors completed in just 34 days, without compromising on design or precision.</li>
                                 <li><strong>Enduring Assurance:</strong> A 10-year warranty ensures peace of mind and long-lasting performance of every design element.</li>

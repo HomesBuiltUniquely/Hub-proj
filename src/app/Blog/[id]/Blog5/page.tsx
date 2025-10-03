@@ -38,8 +38,8 @@ export default function Blog5() {
                         <div className="prose prose-lg max-w-none">
                             <p className="text-gray-700 leading-relaxed mb-4">Have you ever walked into a home and felt it really understood you?</p>
                             <p className="text-gray-700 leading-relaxed mb-4">A place where every corner feels made for the way you live? That is exactly what Mr. Allen and Mrs. Ann felt when they worked with HUB Interior for their Serenity Heights Apartment in Bangalore. They did not want just furniture or pretty decorations. They wanted a home that told their story, a home that was elegant, comfortable, and easy to live in while still feeling like their own.</p>
-                            <p className="text-gray-700 leading-relaxed mb-4">HUB Interior treated the apartment like a blank page. Every choice, from colors and textures to lights and furniture, was carefully thought out to fit the family's life. The goal was to make spaces that look amazing, work well, and feel welcoming. Homes that feel alive.</p>
-                            <p className="text-gray-700 leading-relaxed mb-8">Walking through Serenity Heights, you can see the results everywhere. The kitchen is not only useful but also warm and inviting, perfect for talking and spending time together. The bedrooms are calm and cozy. Decorative wall panels and special ceilings add a little extra style. Even the Devotion Place combines peace and modern design. Every part shows HUB Interior's idea and personalised interior designs that are personal, useful, and built to last. Keep reading to find out more!</p>
+                            <p className="text-gray-700 leading-relaxed mb-4">HUB Interior treated the apartment like a blank page. Every choice, from colors and textures to lights and furniture, was carefully thought out to fit the family&#39;s life. The goal was to make spaces that look amazing, work well, and feel welcoming. Homes that feel alive.</p>
+                            <p className="text-gray-700 leading-relaxed mb-8">Walking through Serenity Heights, you can see the results everywhere. The kitchen is not only useful but also warm and inviting, perfect for talking and spending time together. The bedrooms are calm and cozy. Decorative wall panels and special ceilings add a little extra style. Even the Devotion Place combines peace and modern design. Every part shows HUB Interior&#39;s idea and personalised interior designs that are personal, useful, and built to last. Keep reading to find out more!</p>
                         </div>
 
                         <div className="relative w-full h-80 rounded-xl overflow-hidden mb-4">
@@ -94,7 +94,7 @@ export default function Blog5() {
                                 </ul>
                             </div>
                             
-                            <p>This study unit illustrates HUB Interior's skill in creating bedroom interiors and home office spaces that are as functional as they are beautiful. It proves that even small corners can elevate lifestyle when designed thoughtfully</p>
+                            <p>This study unit illustrates HUB Interior&#39;s skill in creating bedroom interiors and home office spaces that are as functional as they are beautiful. It proves that even small corners can elevate lifestyle when designed thoughtfully</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Wall Panelling and Decorative Details</h2>
                             <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
@@ -114,7 +114,7 @@ export default function Blog5() {
                             <p>Decorative wall elements are not just about aesthetics; they are about creating spaces that speak, blending practicality with refined luxury.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Elegant Fall Ceiling Designs</h2>
-                            <p>Ceilings often define a room's character, and HUB Interior's design demonstrates that beautifully</p>
+                            <p>Ceilings often define a room&#39;s character, and HUB Interior&#39;s design demonstrates that beautifully</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
                                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Ceiling Design Features:</h3>
@@ -125,7 +125,7 @@ export default function Blog5() {
                                 </ul>
                             </div>
                             
-                            <p>These ceilings elevate every room, showcasing HUB Interior's expertise in creating modern luxury interiors that impress without overwhelming.</p>
+                            <p>These ceilings elevate every room, showcasing HUB Interior&#39;s expertise in creating modern luxury interiors that impress without overwhelming.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Bedrooms Interior Design: Comfort in Style</h2>
                             <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
@@ -142,7 +142,7 @@ export default function Blog5() {
                                 </ul>
                             </div>
                             
-                            <p>HUB Interior's bedroom interiors exemplify how luxury meets lifestyle, ensuring every night and morning feels effortless and refreshing.</p>
+                            <p>HUB Interior&#39;s bedroom interiors exemplify how luxury meets lifestyle, ensuring every night and morning feels effortless and refreshing.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Living Room Interior Design: TV Unit and Entertainment</h2>
                             <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
@@ -165,7 +165,7 @@ export default function Blog5() {
                             <p>What sets us apart is their ability to deeply understand the people who live in each space. Instead of following fleeting trends, they explore lifestyle, routines, and personal preferences to craft interiors that are both beautiful and practical. Each design is highly personalised, reflecting the character of the residents while creating harmony and flow throughout the home.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">HUB Interior's unique strengths elevate every project:</h3>
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3">HUB Interior&#39;s unique strengths elevate every project:</h3>
                                 <ul className="space-y-2">
                                     <li><strong>34 day fast-track interiors</strong> for quicker move-ins</li>
                                     <li><strong>10 year warranty</strong> for lasting peace of mind</li>
@@ -177,7 +177,7 @@ export default function Blog5() {
                             <p>They do not just design homes; they create spaces that stay with you, blending style, comfort, and individuality.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Final Words</h2>
-                            <p>From the serene Devotion Place to the sleek kitchen and elegant bedrooms, Serenity Heights Apartment is a masterclass in HUB Interior's approach to luxury living. Every corner blends beauty with function, reflecting an understanding of how the family truly lives.</p>
+                            <p>From the serene Devotion Place to the sleek kitchen and elegant bedrooms, Serenity Heights Apartment is a masterclass in HUB Interior&#39;s approach to luxury living. Every corner blends beauty with function, reflecting an understanding of how the family truly lives.</p>
                         </div>
                     </div>
                 </article>

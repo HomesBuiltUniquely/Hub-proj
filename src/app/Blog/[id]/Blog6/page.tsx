@@ -36,8 +36,8 @@ export default function Blog6() {
                         </div>
 
                         <div className="prose prose-lg max-w-none">
-                            <p className="text-gray-700 leading-relaxed mb-4">Ever opened your kitchen and felt like it's working against you? Counters cluttered, cabinets difficult to reach, lighting too dim for cooking? A kitchen is the heart of a home, and in Bengaluru's fast-paced life, it needs to support your daily routine effortlessly while looking stylish. The right kitchen interior not only simplifies cooking but also makes the space a place to connect, create, and enjoy every meal.</p>
-                            <p className="text-gray-700 leading-relaxed mb-8">Here's a practical guide with eight actionable steps to design a kitchen that balances style and function.</p>
+                            <p className="text-gray-700 leading-relaxed mb-4">Ever opened your kitchen and felt like it&#39;s working against you? Counters cluttered, cabinets difficult to reach, lighting too dim for cooking? A kitchen is the heart of a home, and in Bengaluru&#39;s fast-paced life, it needs to support your daily routine effortlessly while looking stylish. The right kitchen interior not only simplifies cooking but also makes the space a place to connect, create, and enjoy every meal.</p>
+                            <p className="text-gray-700 leading-relaxed mb-8">Here&#39;s a practical guide with eight actionable steps to design a kitchen that balances style and function.</p>
                         </div>
 
                         <div className="relative w-full h-80 rounded-xl overflow-hidden mb-4">
@@ -144,7 +144,7 @@ export default function Blog6() {
                             <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
                                 <img src="/kb1.jpg" alt="Functional kitchen features" className="w-full h-full object-cover" />
                             </div>
-                            <p>Functionality doesn't have to be boring. Stylish kitchen interior solutions make storage, appliances, and work surfaces both practical and visually appealing.</p>
+                            <p>Functionality doesn&#39;t have to be boring. Stylish kitchen interior solutions make storage, appliances, and work surfaces both practical and visually appealing.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
                                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Key features to consider:</h3>
@@ -179,7 +179,7 @@ export default function Blog6() {
                             <p>With HUB Interior, you get more than a kitchen, you get a space tailored to your life, combining quality, convenience, and peace of mind, making your home truly yours.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Conclusion: A Kitchen That Supports Your Lifestyle</h2>
-                            <p>A kitchen is more than just a cooking area, it's a space where life unfolds. From modular kitchen interiors in Bengaluru to small kitchen interior designs and luxury kitchen interior in Bengaluru, thoughtful design ensures every movement is effortless, every item has a place, and every meal is enjoyable.</p>
+                            <p>A kitchen is more than just a cooking area, it&#39;s a space where life unfolds. From modular kitchen interiors in Bengaluru to small kitchen interior designs and luxury kitchen interior in Bengaluru, thoughtful design ensures every movement is effortless, every item has a place, and every meal is enjoyable.</p>
                             <p>Ready to bring your dream kitchen to life? Connect with HUB Interior today and get personalised design solutions that combine modern aesthetics, functionality, and innovation. Turn your kitchen into a space you love to cook, entertain, and live in every day.</p>
                         </div>
                     </div>
