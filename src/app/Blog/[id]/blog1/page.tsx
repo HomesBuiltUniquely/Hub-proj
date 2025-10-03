@@ -72,7 +72,7 @@ export default function Blog1() {
 							<p>Oh, the kitchen! The instructions for the kitchen were pretty clear: go simple yet modern. We went with a lot of storage cabinets, which was a combination of glass-front cabinets, slab cabinets, and a tambour unit. Why the mix? Because kitchens are not just about storage, they&#39;re about smart storage.</p>
 							<p>For the color we chose a combination of black, white, and light beige. Also, we may or may not have spent an hour debating the exact shade of cabinet finish. Totally worth it.</p>
 							<p>Kitchen and dining room go hand in hand. For the dining room, we added a handwash unit and a crockery display with glass-front cabinets to add a unique touch (and also because why hide your prettiest pieces?). It&#39;s giving “host with the most,” and we&#39;re here for it.</p>
-							<p>However, it didn't follow the average mirror. The abstract mirror and the unique wall panelling with a big grayish handwash basin speak for classy.</p>
+							<p>However, it didn&#39;t follow the average mirror. The abstract mirror and the unique wall panelling with a big grayish handwash basin speak for classy.</p>
 							<p>Overall, Mr. Akhil&#39;s kitchen is proof that functionality doesn&#39;t mean boring.</p>
 
 							<h2 className="text-2xl font-bold text-gray-900 pt-4">A Dream Bedroom Makeover</h2>
@@ -80,7 +80,7 @@ export default function Blog1() {
 								<img src="/bed3.jpg" alt="Bedroom makeover" className="w-full h-full object-cover" />
 							</div>
 							<p>For the bedroom, we focused on two main elements: the wardrobe and a window seating area. We went ahead with a U-shape for the cabinets, leaving the middle space open for the window seating area. The wardrobe is tailored (literally) to the space and roomy enough to store everything without overwhelming the room.</p>
-							<p>It&#39;s cozy, and even though it&#39;s not huge, it makes the bedroom feel instantly inviting. It's perfect to unwind after an exhausting day, where one can sit and read a book or have a cup of coffee. The color palette is kept very simple by our interior designers, who went ahead with a combination of white and grey. And how to ignore the solid handle on the door, which serves practicality.</p>
+							<p>It&#39;s cozy, and even though it&#39;s not huge, it makes the bedroom feel instantly inviting. It&#39;s perfect to unwind after an exhausting day, where one can sit and read a book or have a cup of coffee. The color palette is kept very simple by our interior designers, who went ahead with a combination of white and grey. And how to ignore the solid handle on the door, which serves practicality.</p>
 
 							<h2 className="text-2xl font-bold text-gray-900 pt-4">The Lively Living Room</h2>
 							<div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">

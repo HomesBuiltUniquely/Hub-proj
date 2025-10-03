@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -136,3 +137,5 @@ const MobileFormSection: React.FC = () => {
     </div>
   );
 };
+
+export default MobileFormSection;

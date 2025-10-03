@@ -96,14 +96,14 @@ export default function Blog2() {
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">The Outcome</h3>
                             <p>When we walk through the Azizam Home in Prestige Primrose Hill, Bengaluru, now, it doesn&#39;t feel like a project. It feels lived-in. And you can see the smile and satisfaction on Rijul&#39;s face after seeing the home. It&#39;s the kind of space that supports a busy family without getting in the way.</p>
-                            <p>And if you ask us? That's the kind of design that lasts.</p>
-                            <p>If you've got a home waiting for its own story, HUB Interior would love to design it with you. Contact us today!</p>
+                            <p>And if you ask us? That&#39;s the kind of design that lasts.</p>
+                            <p>If you&#39;ve got a home waiting for its own story, HUB Interior would love to design it with you. Contact us today!</p>
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">The False Ceiling</h3>
                             <p>The highlight of the house was the false ceiling. Now, let me tell you: false ceilings are often underestimated. Done right, they don&#39;t just hide wires or lighting fixtures; they actually transform a space.</p>
                             <p>In Bhoo Aabharana, the false ceiling detail of triangles and rhombuses gave the living room a pulled-together look.</p>
                             <p>Good design is in the details, and this home interior designer&#39;s Bangalore project had plenty of them. From the wall panelling to the fall ceiling, every decision was made to balance form and function. And honestly? We wouldn&#39;t change a thing.</p>
-                            <p>This reveal has been such a joy to share. If you're also dreaming of a home like Bhoo Aabharana that feels just as tailored as Mr. Akhil&#39;s requests, HUB Interior would love to help.</p>
+                            <p>This reveal has been such a joy to share. If you&#39;re also dreaming of a home like Bhoo Aabharana that feels just as tailored as Mr. Akhil&#39;s requests, HUB Interior would love to help.</p>
                             <p>Reach out to us today and get your home transformed.</p>
                         </div>
                     </div>
