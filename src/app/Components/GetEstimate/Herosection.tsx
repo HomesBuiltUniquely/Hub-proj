@@ -110,7 +110,45 @@ const HeroSection: React.FC = () => {
     </div>
   </div>
 
-  <div className="block md:hidden">
+  <div className="block md:hidden ">
+
+  <div className="relative h-[550px] w-[360px] mx-auto pb-10">
+        {/* Rounded image only */}
+        <div className="absolute inset-0 rounded-4xl overflow-hidden">
+          <Image
+            src="/gh11.png"
+            alt="Modular Kitchen Background"
+            fill
+            priority
+            className="object-cover"
+          />
+          {/* gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        </div>
+
+        {/* top logo */}
+        <div className="absolute top-2 -mt-5 -mx-5" onClick={handleClick}>
+          <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={25} className="cursor-pointer" />
+        </div>
+
+        {/* text + cta */}
+        <div className="absolute bottom-10 left-4 right-4 text-white">
+          <h2 className="manrope font-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            Modular
+            <br />
+            Kitchen
+          </h2>
+          <p className="mt-2 text-[13px] manrope-medium opacity-90">
+            Modular Kitchens Design for Style, Comfort & Everyday Living
+          </p>
+        </div>
+          {/* CTA overlapping, positioned above image */}
+          <div className="absolute left-6 -bottom-5 z-20">
+            <button className="bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
+              Get Free Quote
+            </button>
+          </div>
+      </div>
    
   </div>
   </div>

@@ -4,12 +4,15 @@ import nodemailer from 'nodemailer';
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, phoneNumber, pincode, tellUsMore } = body;
+    const { name, email, phoneNumber, phone, pincode, tellUsMore } = body;
+
+    // Handle both desktop form (phoneNumber) and mobile form (phone) field names
+    const phoneNumberFinal = phoneNumber || phone;
 
     console.log('Get Estimate API route called with data:', {
       name,
       email,
-      phoneNumber,
+      phoneNumberFinal,
       pincode,
       tellUsMore,
     });
@@ -42,7 +45,7 @@ export async function POST(req) {
         <h3>Get Estimate Form Submission</h3>
         <p><strong>Name:</strong> ${name || 'Not provided'}</p>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-        <p><strong>Phone Number:</strong> ${phoneNumber || 'Not provided'}</p>
+        <p><strong>Phone Number:</strong> ${phoneNumberFinal || 'Not provided'}</p>
         <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
         <p><strong>Tell Us More:</strong> ${tellUsMore || 'Not provided'}</p>
         <hr/>
@@ -53,7 +56,7 @@ export async function POST(req) {
     console.log('Sending email with Get Estimate data:', {
       name,
       email,
-      phoneNumber,
+      phoneNumberFinal,
       pincode,
       tellUsMore,
     });

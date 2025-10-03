@@ -1,4 +1,5 @@
 import HeroSection from "../Components/GetEstimate/Herosection";
+import MobileFormSection from "../Components/GetEstimate/MobileFormSection";
 import BrandCarousel from "../Components/Home/BrandCarosel";
 import Footer from "../Components/Home/Footer";
 
@@ -15,6 +16,7 @@ export default function GetEstimate() {
   return (
     <div>
       <HeroSection/>
+      <MobileFormSection/>
       <Section1/>
       <Section2/>
       <Section3/>

@@ -24,7 +24,7 @@ const ProgressBar: React.FC<{ steps: string[]; currentStep: number }> = ({ steps
             >
               {currentStep > index ? '✓' : index + 1}
             </div>
-            <p className={`mt-2 text-xs font-semibold transition-all duration-300 ${currentStep >= index ? 'text-gray-800' : 'text-gray-400'}`}>
+            <p className={`mt-2 text-xs manrope transition-all duration-300 ${currentStep >= index ? 'text-gray-800' : 'text-gray-400'}`}>
               {step}
             </p>
           </div>

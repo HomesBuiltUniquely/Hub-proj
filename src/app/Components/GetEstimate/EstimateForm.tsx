@@ -1,7 +1,9 @@
 "use client"
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const EstimateForm: React.FC = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,6 +41,8 @@ const EstimateForm: React.FC = () => {
       if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', phoneNumber: '', pincode: '', tellUsMore: '' });
+        // Redirect to thank you page after successful submission
+        router.push('/Form-Submit-Thank-You');
       } else {
         setSubmitStatus('error');
       }
@@ -51,99 +55,64 @@ const EstimateForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-transparent backdrop-blur-sm rounded-2xl p-6 shadow-2xl max-w-md mx-auto  ">
-      <h2 className="text-xl font-bold text-gray-800 mb-4 text-center text-white">
-        Get Your Free Estimate
-      </h2>
-      
-      <form onSubmit={handleSubmit} className="space-y-3">
-        {/* Name and Pincode side by side */}
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label htmlFor="name" className="block text-sm manrope-medium text-white mb-1">
-              Name *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-black bg-white"
-              placeholder="Enter your full name"
-            />
-          </div>
-          <div>
-            <label htmlFor="pincode" className="block text-sm manrope-medium text-white mb-1">
-              Pincode *
-            </label>
-            <input
-              type="text"
-              id="pincode"
-              name="pincode"
-              value={formData.pincode}
-              onChange={handleInputChange}
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-black bg-white"
-              placeholder="Enter your pincode"
-            />
-          </div>
-        </div>
-
-        {/* Email and Phone Number side by side */}
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label htmlFor="email" className="block text-sm manrope-medium text-gray-700 mb-1 text-white">
-              Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-black bg-white"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div>
-            <label htmlFor="phoneNumber" className="block text-sm manrope-medium text-gray-700 mb-1 text-white">
-              Phone Number *
-            </label>
-            <input
-              type="tel"
-              id="phoneNumber"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-black bg-white"
-              placeholder="Enter your phone number"
-            />
-          </div>
+    <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-2xl w-[450px] mx-auto border border-white/30">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+            className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+            placeholder="Name*"
+          />
         </div>
 
         <div>
-          <label htmlFor="tellUsMore" className="block text-sm manrope-medium text-white mb-1">
-            Tell Us More
-          </label>
-          <textarea
-            id="tellUsMore"
-            name="tellUsMore"
-            value={formData.tellUsMore}
+          <input
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            value={formData.phoneNumber}
             onChange={handleInputChange}
-            rows={4}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 resize-none text-black bg-white"
-            placeholder="Tell us more about your project..."
+            required
+            className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+            placeholder="Phone Number*"
+          />
+        </div>
+
+        <div>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+            className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+            placeholder="Email*"
+          />
+        </div>
+
+        <div>
+          <input
+            type="text"
+            id="pincode"
+            name="pincode"
+            value={formData.pincode}
+            onChange={handleInputChange}
+            required
+            className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+            placeholder="Pincode*"
           />
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white manrope py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
+          className="w-full bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed text-base"
         >
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
