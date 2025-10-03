@@ -1,4 +1,6 @@
 'use client';
+// ...existing code...
+
 export default function Section7() {
     return (
         <div>
@@ -30,7 +32,7 @@ export default function Section7() {
                         <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 pl-100">
                             <h1 className="text-white text-4xl wulkan-display-bold">Meet our interior designers</h1>
                             <p className="text-white text-xl manrope-medium mt-4  pl-[3rem]">Experts Creating Spaces You&39;ll Love</p>
-                            <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-3xl mt-4 ml-30 manrope-medium">Book your consultation </button>
+                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 mt-4 ml-30">Book your consultation</button>
                         </div>
                     </div>
                 </div>
@@ -41,7 +43,7 @@ export default function Section7() {
                         <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 pl-100">
                             <h1 className="text-white text-4xl wulkan-display-bold">Meet our interior designers</h1>
                             <p className="text-white text-xl manrope-medium mt-4  pl-[3rem]">Experts Creating Spaces You&39;ll Love</p>
-                            <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-3xl mt-4 ml-30 manrope-medium">Book your consultation </button>
+                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 mt-4 ml-30">Book your consultation</button>
                         </div>
                     </div>
                 </div>
@@ -52,9 +54,9 @@ export default function Section7() {
                         <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 ">
                             <h1 className="text-white text-4xl wulkan-display-bold text-center">Meet our interior designers</h1>
                             <p className="text-white text-xl manrope-medium mt-4 text-center w-[260px] mx-auto">Experts Creating Spaces You’ll Love</p>
-                           <div className="bg-[#ddcdc1] text-black text-center px-4 py-3 rounded-3xl mt-10 manrope-medium w-[250px] mx-auto">
-                           <button className="">Book your consultation </button>
-                           </div>
+                                                     <div className="text-center mt-10 w-[250px] mx-auto">
+                                                         <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 w-full">Book your consultation</button>
+                                                     </div>
                         </div>
                     </div>
                 </div>

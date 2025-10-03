@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React, { useState, useRef } from 'react';
+// ...existing code...
 
 // Note: Replaced Next.js specific imports with standard tags for compatibility.
 // import Link from "next/link"; 
@@ -100,7 +101,7 @@ export default function Section3() {
                 <div className="flex flex-row justify-between items-center mb-12">
                     <h1 className="text-4xl wulkan-display-bold text-gray-800 ">All Interior Service, One Destination</h1>
                     <a href="/ContactUs">
-                        <button className="bg-[#DDCDC1] text-gray-800 px-6 py-3 rounded-full manrope-medium hover:bg-amber-300 transition-colors flex items-center gap-2">
+                        <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium flex items-center gap-2">
                             Book consultation
                             <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                 <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,8 +158,8 @@ export default function Section3() {
                                         <div className="p-8 flex-1 flex flex-col text-center">
                                             <h3 className="text-2xl font-bold text-gray-800 mb-4 manrope-semibold">{service.title}</h3>
                                             <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
-                                            <a href={service.link} className="mt-auto">
-                                                <button className="w-full bg-transparent border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full manrope-medium hover:bg-gray-50 transition-colors">
+                                            <a href={service.link} className="mt-auto block">
+                                                <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium">
                                                     Request service
                                                 </button>
                                             </a>
@@ -233,8 +234,8 @@ export default function Section3() {
             </div>
             <div className="flex justify-center mt-8">
             <Link href="/">
-                <button className="bg-[#ef0101] text-white px-8 py-3 rounded-full manrope hover:bg-amber-300 transition-colors">
-                Explore Services
+                <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
+                    Explore Services
                 </button>
             </Link>
             </div>
