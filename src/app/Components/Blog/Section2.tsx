@@ -6,7 +6,8 @@ type Post = {
     title: string; 
     date: string; 
     readTime: string; 
-    img: string 
+    img: string; 
+    path?: string;
 };
 
 type TrendingItem = {
@@ -24,8 +25,12 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
     // Get the latest 5 posts for Section2
     const latestPosts = posts.slice(0, 5);
 
-    const handleReadMore = (postId: number) => {
-        router.push(`/Blog/${postId}`);
+    const handleReadMore = (post: Post) => {
+        if (post.path && post.path.startsWith('/')) {
+            router.push(post.path);
+        } else {
+            router.push(`/Blog/${post.id}`);
+        }
     };
     
     // Load trending data from localStorage
@@ -289,7 +294,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                     </div>
                                     <h3 className="section2-ultrawide-left-title">{latestPosts[1].title}</h3>
                                     <button 
-                                        onClick={() => handleReadMore(latestPosts[1].id)}
+                                        onClick={() => handleReadMore(latestPosts[1])}
                                         className="section2-ultrawide-left-button"
                                     >
                                         Read More
@@ -319,7 +324,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                     </div>
                                     <h3 className="section2-ultrawide-left-title">{latestPosts[2].title}</h3>
                                     <button 
-                                        onClick={() => handleReadMore(latestPosts[2].id)}
+                                        onClick={() => handleReadMore(latestPosts[2])}
                                         className="section2-ultrawide-left-button"
                                     >
                                         Read More
@@ -355,7 +360,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                     </div>
                                     <h2 className="section2-ultrawide-middle-title">{latestPosts[0].title}</h2>
                                     <button 
-                                        onClick={() => handleReadMore(latestPosts[0].id)}
+                                        onClick={() => handleReadMore(latestPosts[0])}
                                         className="section2-ultrawide-middle-button"
                                     >
                                         Read More
@@ -417,7 +422,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 </div>
                                 <p className="pt-4 pl-2 text-center pr-3 manrope mb-4">{latestPosts[1].title}</p>
                                 <button 
-                                    onClick={() => handleReadMore(latestPosts[1].id)}
+                                    onClick={() => handleReadMore(latestPosts[1])}
                                     className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium mx-2"
                                 >
                                     Read More
@@ -448,7 +453,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 </div>
                                 <p className="pt-4 pl-2 text-center pr-3 manrope mb-4">{latestPosts[2].title}</p>
                                 <button 
-                                    onClick={() => handleReadMore(latestPosts[2].id)}
+                                    onClick={() => handleReadMore(latestPosts[2])}
                                     className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium mx-2"
                                 >
                                     Read More
@@ -487,7 +492,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 </div>
                                 <div className="w-[400px] mx-auto">
                                     <button 
-                                        onClick={() => handleReadMore(latestPosts[0].id)}
+                                        onClick={() => handleReadMore(latestPosts[0])}
                                         className="w-full bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors font-medium text-lg"
                                     >
                                         Read More

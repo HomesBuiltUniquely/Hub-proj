@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
-type Post = { id: number; title: string; date: string; readTime: string; img: string };
+type Post = { id: number; title: string; date: string; readTime: string; img: string; path?: string };
 
 const allPostsInit: Post[] = [
   { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png" },
@@ -39,8 +39,12 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentPosts = remainingPosts.slice(startIndex, startIndex + itemsPerPage);
 
-  const handleReadMore = (postId: number) => {
-    router.push(`/Blog/${postId}`);
+  const handleReadMore = (post: Post) => {
+    if (post.path && post.path.startsWith('/')) {
+      router.push(post.path);
+    } else {
+      router.push(`/Blog/${post.id}`);
+    }
   };
 
   // Update posts when posts prop changes
@@ -325,7 +329,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                       </div>
                       <h3 className="blog-ultrawide-title-text">{post.title}</h3>
                       <button 
-                        onClick={() => handleReadMore(post.id)}
+                        onClick={() => handleReadMore(post)}
                         className="blog-ultrawide-button"
                       >
                         Read More
@@ -415,7 +419,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                   </div>
                   <h3 className="font-semibold text-lg mb-3">{post.title}</h3>
                   <button 
-                    onClick={() => handleReadMore(post.id)}
+                    onClick={() => handleReadMore(post)}
                     className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium flex items-center justify-center gap-2"
                   >
                     Read More

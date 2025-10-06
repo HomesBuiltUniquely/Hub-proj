@@ -64,7 +64,7 @@ const OverlapNavBar: React.FC = () => {
     }
 
     if(tabId === 'gallery'){
-      router.push("/Inspiration")
+      router.push("/")
     }
   };
 
