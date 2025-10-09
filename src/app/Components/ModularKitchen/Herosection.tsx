@@ -16,13 +16,18 @@ const ContactHeader: React.FC = () => {
     router.push("/");
   };
 
+    const handleGetEstimate = () => {
+    router.push('/GetEstimate');
+  };
+  
+
   return(
   <div>
     {/* Desktop Version */}
   <div className=" hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
     {/* Navbar */}
     <div className="flex items-center justify-between -mt-15">
-      <div onClick={handleClick} className="cursor-pointer"> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
+      <div onClick={handleClick} className="cursor-pointer"> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-2" /></div>
       <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
       <OfferingsDropdown textColor="text-white" />
       <ExploreRoomsDropdown textColor="text-white" />
@@ -36,7 +41,7 @@ const ContactHeader: React.FC = () => {
       <p className="w-[1200px] text-2xl manrope-medium mb-8 drop-shadow-lg pl-62">Modular Kitchens Design for Style, Comfort & Everyday Living
       </p>
       <div className="flex gap-4">
-        <button className="bg-yellow-300 text-black px-6 py-3 rounded-full font-semibold shadow mr-68">Get Free Quote
+        <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-6 py-3 rounded-full font-semibold shadow mr-68">Get Free Quote
         </button>
       </div>
     </div>
@@ -75,7 +80,7 @@ const ContactHeader: React.FC = () => {
         </div>
           {/* CTA overlapping, positioned above image */}
           <div className="absolute left-6 -bottom-5 z-20">
-            <button className="bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
+            <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
               Get Free Quote
             </button>
           </div>

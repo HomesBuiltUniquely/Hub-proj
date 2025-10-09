@@ -24,7 +24,7 @@ const ProgressBar: React.FC<{ steps: string[]; currentStep: number }> = ({ steps
             >
               {currentStep > index ? '✓' : index + 1}
             </div>
-            <p className={`mt-2 text-xs font-semibold transition-all duration-300 ${currentStep >= index ? 'text-gray-800' : 'text-gray-400'}`}>
+            <p className={`mt-2 text-xs manrope transition-all duration-300 ${currentStep >= index ? 'text-gray-800' : 'text-gray-400'}`}>
               {step}
             </p>
           </div>
@@ -172,14 +172,23 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
     const handleCountChange = (roomName: string, delta: number) => {
         setFormData((prev: FormData) => {
             const currentCount = prev.rooms?.[roomName] || 0;
-            const newCount = Math.max(0, currentCount + delta); // Prevent going below zero
+            
+            // Set minimum values for specific rooms
+            let minCount = 0;
+            if (roomName === "Bedroom") {
+                minCount = 2;
+            } else if (roomName === "Kitchen") {
+                minCount = 1;
+            }
+            
+            const newCount = Math.max(minCount, currentCount + delta);
 
             const newRooms = { ...prev.rooms };
 
-            if (newCount > 0) {
+            if (newCount > minCount || newCount === minCount) {
                 newRooms[roomName] = newCount;
             } else {
-                delete newRooms[roomName]; // Clean up the state if count is zero
+                delete newRooms[roomName]; // Clean up the state if count is below minimum
             }
 
             return {
@@ -197,19 +206,17 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
             <div className="space-y-4 max-w-md mx-auto">
                 {roomOptions.map(room => {
                     const count = formData.rooms?.[room] || 0;
-                    const isSelected = count > 0;
+                    const minCount = room === "Bedroom" ? 2 : room === "Kitchen" ? 1 : 0;
                     return (
                         <div
                             key={room}
-                                className={`p-6 border rounded-lg flex items-center justify-between transition-all duration-200 ${
-                                    isSelected ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
-                                }`}
+                                className="p-6 border rounded-lg flex items-center justify-between transition-all duration-200 border-gray-300 hover:border-gray-400"
                             >
-                                <span className={`font-semibold text-lg ${isSelected ? 'text-red-600' : 'text-gray-700'}`}>{room}</span>
+                                <span className="font-semibold text-lg text-gray-700">{room}</span>
                                 <div className="flex items-center gap-4">
                                     <button
                                         onClick={() => handleCountChange(room, -1)}
-                                        disabled={count === 0}
+                                        disabled={count <= minCount}
                                         className="w-10 h-10 rounded-full bg-gray-200 text-gray-700 font-bold text-xl disabled:opacity-50 hover:bg-gray-300 transition-colors"
                                     >
                                         -
@@ -234,19 +241,17 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
                 <div className="space-y-3 max-w-md mx-auto px-4">
                     {roomOptions.map(room => {
                         const count = formData.rooms?.[room] || 0;
-                        const isSelected = count > 0;
+                        const minCount = room === "Bedroom" ? 2 : room === "Kitchen" ? 1 : 0;
                         return (
                             <div
                                 key={room}
-                                className={`p-4 border rounded-lg flex items-center justify-between transition-all duration-200 touch-manipulation ${
-                                isSelected ? 'border-red-500 bg-red-50' : 'border-gray-300'
-                            }`}
+                                className="p-4 border rounded-lg flex items-center justify-between transition-all duration-200 touch-manipulation border-gray-300"
                         >
-                                <span className={`font-semibold text-sm ${isSelected ? 'text-red-600' : 'text-gray-700'}`}>{room}</span>
+                                <span className="font-semibold text-sm text-gray-700">{room}</span>
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => handleCountChange(room, -1)}
-                                    disabled={count === 0}
+                                    disabled={count <= minCount}
                                         className="w-10 h-10 rounded-full bg-gray-200 text-gray-700 font-bold text-lg disabled:opacity-50 hover:bg-gray-300 active:bg-gray-400 transition-colors touch-manipulation"
                                 >
                                     -
@@ -990,7 +995,7 @@ export default function CalculatorSetup() {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({
     bhkType: '',
-    rooms: {},
+    rooms: {Bedroom: 2, Kitchen: 1},
     wardrobe: {},
     kitchen: {},
     collections: {},

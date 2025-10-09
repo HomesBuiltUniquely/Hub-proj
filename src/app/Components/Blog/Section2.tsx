@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-type Post = {
-    id: number;
-    title: string;
-    date: string;
-    readTime: string;
-    img: string
+type Post = { 
+    id: number; 
+    title: string; 
+    date: string; 
+    readTime: string; 
+    img: string; 
+    path?: string;
 };
 
 type TrendingItem = {
@@ -24,8 +25,12 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
     // Get the latest 5 posts for Section2
     const latestPosts = posts.slice(0, 5);
 
-    const handleReadMore = (postId: number) => {
-        router.push(`/Blog/${postId}`);
+    const handleReadMore = (post: Post) => {
+        if (post.path && post.path.startsWith('/')) {
+            router.push(post.path);
+        } else {
+            router.push(`/Blog/${post.id}`);
+        }
     };
 
     // Load trending data from localStorage

@@ -114,19 +114,19 @@ const Section1: React.FC = () => {
             {wardrobes.map((item, idx) => (
               <div
                 key={idx}
-                className="min-w-[400px] h-[520px]  bg-white rounded-4xl shadow-lg"
+                className="min-w-[400px] max-w-[400px] w-[400px] h-[520px] bg-white rounded-4xl shadow-lg"
               >
                 <img
                   src={item.img}
                   alt={item.label}
                   className="w-full h-130 object-cover rounded-4xl"
                 />
-                <div className="p-4 flex items-center -mt-50 h-[270px]">
-                  <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
-                  <div className="text-lg">
-                    {item.label}<br/>
-                  </div>
-                  <div className="manrope-medium">{item.subtitle}</div>
+                <div className="p-4 flex items-center -mt-50 h-[270px] w-[400px]">
+                  <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm w-[360px] block">
+                    <div className="text-lg">
+                      {item.label}<br/>
+                    </div>
+                    <div className="manrope-medium">{item.subtitle}</div>
                     <button className="border-1 border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
                   </span>
                 </div>

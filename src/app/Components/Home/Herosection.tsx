@@ -126,7 +126,7 @@ const Herosection: React.FC = () => {
         <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
           {heroSlides[currentSlide].title} 
         </h1>
-        <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-160 mt-4 transition-all duration-1000 manrope-medium">
+        <button className="bg-[#ddcdc1] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-160 mt-4 transition-all duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
           {heroSlides[currentSlide].buttonText}
         </button>
       </div>
@@ -180,7 +180,7 @@ const Herosection: React.FC = () => {
         <h1 className=" w-[1000px] text-5xl lg:text-7xl mb-drop-shadow-lg transition-all ml-45 duration-1000">
           {heroSlides[currentSlide].title} 
         </h1>
-        <button className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl font-semibold shadow mr-150 mt-4 transition-all duration-1000 manrope-medium">
+        <button className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl font-semibold shadow mr-150 mt-4 transition-all duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
           {heroSlides[currentSlide].buttonText}
         </button>
       </div>
@@ -221,7 +221,7 @@ const Herosection: React.FC = () => {
             <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
              {/* Horizontal line above button */}
             <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
-            <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px]">{heroSlides[currentSlide].buttonText}</button>
+            <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
           </div>
              {/* Mobile Version 2 - Large Mobile (480px to 767px) */}
             <div className="mobile-large w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
@@ -239,7 +239,7 @@ const Herosection: React.FC = () => {
             <div className="-mt-62 w-[300px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
              {/* Horizontal line above button */}
             <div className="w-[300px] -mt-33 h-[1px] bg-gray-300 absolute -mt-8 ml-8"></div>
-            <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-28 ml-8 manrope-medium absolute">{heroSlides[currentSlide].buttonText}</button>
+            <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-28 ml-8 manrope-medium absolute shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
           </div>
           <OverlapNavBar />
       </div>
