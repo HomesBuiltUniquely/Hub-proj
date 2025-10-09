@@ -19,7 +19,7 @@ export default function Section2() {
         {
             title: "Kids Room",
             image: "/kids2.jpg",
-            link: "/Kids-Room"
+            link: "/"
         },
         {
             title: "BedRoom",
@@ -29,18 +29,18 @@ export default function Section2() {
         {
             title: "Living Room",
             image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img4.jpg",
-            link: "/LivingRoom"
+            link: "/"
         },
         {
             title: "Devotional Room",
             image: "/temple2.jpg",
-            link: "/Temple"
+            link: "/"
         }
     ];
 
     // DESKTOP: 3 cards per view
     const desktopCardsPerView = 3;
-    const desktopMaxSlide = Math.ceil(roomCards.length / desktopCardsPerView) - 1;
+    const desktopMaxSlide = Math.ceil(roomCards.length / desktopCardsPerView) - 1.5;
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev < desktopMaxSlide ? prev + 1 : 0));
@@ -51,7 +51,7 @@ export default function Section2() {
     };
 
     // MOBILE: 2 cards per view
-    const mobileCardsPerView = 2;
+    const mobileCardsPerView = 1;
     const mobileMaxSlide = Math.ceil(roomCards.length / mobileCardsPerView) - 1;
 
     const handleTouchStart = (e: React.TouchEvent) => {
@@ -86,12 +86,12 @@ export default function Section2() {
                     {/* Header */}
                     <div className="flex justify-between items-start mb-12">
                         <div className="flex-1">
-                            <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-4">
+                            <h1 className="text-5xl wulkan-display-bold text-gray-800 mt-3 -ml-7">
                                 Every space has a story, start yours here
                             </h1>
                         </div>
                         <Link href="/GetEstimate">
-                            <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
+                            <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-5 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
                                 Book consultation
                                 <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ export default function Section2() {
                     {/* Carousel */}
                     <div className="relative">
                         {/* Controls */}
-                        <div className="flex gap-6 mb-8">
+                        <div className="flex gap-6 mb-8 -ml-7 mb-10">
                             <button onClick={prevSlide} className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
                                 <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -119,7 +119,7 @@ export default function Section2() {
                         </div>
 
                         {/* Cards */}
-                        <div className="overflow-hidden">
+                        <div className="overflow-hidden w-[1350px] -ml-8">
                             <div
                                 className="flex gap-5 transition-transform duration-500 ease-in-out"
                                 style={{
@@ -204,7 +204,7 @@ export default function Section2() {
                             }}
                         >
                             {roomCards.map((room, index) => (
-                                <div key={index} className="flex-shrink-0 w-[280px]">
+                                <div key={index} className="flex-shrink-0 w-[295px]">
                                     <Link href={room.link} className="block">
                                         <div className="relative w-full h-[380px] rounded-3xl overflow-hidden shadow-xl">
                                             <Image

@@ -15,31 +15,31 @@ export default function Section6() {
             title: "Classic Minimal",
             subtitle: "2 BHK",
             image: "/img3.jpg",
-            link: "/Project"
+            link: "/"
         },
         {
             title: "Modern Living",
             subtitle: "3 BHK",
             image: "/bed1.jpg",
-            link: "/Project"
+            link: "/"
         },
         {
             title: "Contemporary Style",
             subtitle: "2 BHK",
             image: "/kids1.jpg",
-            link: "/Project"
+            link: "/"
         },
         {
             title: "Luxury Design",
             subtitle: "4 BHK",
             image: "/1.png",
-            link: "/Project"
+            link: "/"
         },
         {
             title: "Elegant Space",
             subtitle: "2 BHK",
             image: "/img5.jpg",
-            link: "/Project"
+            link: "/"
         }
     ];
 
@@ -95,7 +95,7 @@ export default function Section6() {
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md">
-                            Recent Interior Design Projects
+                            Recent interior design projects
                         </h1>
                         <div className="flex gap-4">
                             <button
@@ -163,7 +163,7 @@ export default function Section6() {
                 <div className="bg-[#F1F2F6] py-8 px-4 w-full">
                     <div className="mb-8">
                         <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-4">
-                            Recent Interior Design Projects
+                            Recent interior design projects
                         </h1>
                     </div>
 
@@ -172,7 +172,7 @@ export default function Section6() {
                         <div
                             className="flex transition-transform duration-300 ease-out"
                             style={{
-                                transform: `translateX(-${mobileSlide * 60}%)`,
+                                transform: `translateX(-${mobileSlide * 74}%)`,
                                 touchAction: 'pan-y'
                             }}
                             onTouchStart={handleTouchStart}

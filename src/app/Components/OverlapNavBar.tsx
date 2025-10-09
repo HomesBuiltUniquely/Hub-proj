@@ -64,12 +64,12 @@ const OverlapNavBar: React.FC = () => {
     }
 
     if(tabId === 'gallery'){
-      router.push("/")
+      router.push("/ModularKitchen");
     }
   };
 
   const handleLetsBeginClick = () => {
-    console.log('Let\'s begin clicked!');
+    router.push('/GetEstimate');
     
   };
     

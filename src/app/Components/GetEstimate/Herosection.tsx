@@ -132,22 +132,16 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* text + cta */}
-        <div className="absolute bottom-10 left-4 right-4 text-white">
+        <div className="absolute bottom-25 left-4 right-4 text-white">
           <h2 className="manrope font-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-            Modular
+            Get your
             <br />
-            Kitchen
+            estimate
           </h2>
           <p className="mt-2 text-[13px] manrope-medium opacity-90">
-            Modular Kitchens Design for Style, Comfort & Everyday Living
+            Your ideas, our cost estimate
           </p>
         </div>
-          {/* CTA overlapping, positioned above image */}
-          <div className="absolute left-6 -bottom-5 z-20">
-            <button className="bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
-              Get Free Quote
-            </button>
-          </div>
       </div>
    
   </div>

@@ -52,7 +52,7 @@ const ContactHeader: React.FC = () => {
         {/* Rounded image only */}
         <div className="absolute inset-0 rounded-4xl overflow-hidden">
           <Image
-            src="/mkh1.png"
+            src="/Mkh1.png"
             alt="Modular Kitchen Background"
             fill
             priority
