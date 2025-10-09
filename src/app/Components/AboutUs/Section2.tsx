@@ -8,7 +8,7 @@ export default function Section2(){
                 <div className="aboutus-section2-3xl-layout">
                     
                     {/* Left Text Box - 3XL optimized */}
-                    <div className="aboutus-section2-3xl-textbox">
+                    <div className="aboutus-section2-3xl-textbox manrope-medium">
                     At Hub Interior, beauty is backed by process.
                             Every space you see is a result of deep planning, skilled design, and flawless execution.
                             We don’t just make interiors look good—we make them work better for real lives.                    </div>

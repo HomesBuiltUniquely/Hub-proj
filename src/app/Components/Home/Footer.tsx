@@ -16,12 +16,12 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Company</h1>
                                     <div className="space-y-3">
-                                        <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">About</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
-                                        <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
-                                        <Link href="/Project"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
-                                        <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
-                                        <Link href="/Life@Hub"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                        <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]   transition-colors duration-300 cursor-pointer mt-3">About</p></Link>
+                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
+                                        <Link href="/Project"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
+                                        <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
+                                        <Link href="/Life@Hub"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
                                     </div>
                                 </div>
                                 
@@ -29,13 +29,13 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Offerings</h1>
                                     <div className="space-y-3">
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Full Home Interior</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Interior</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Renovation</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Space Management</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Fast Track</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Automations</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Full Home Interior</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Modular Interior</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Renovation</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Space Management</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Fast Track</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Automations</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
                                     </div>
                                 </div>
                                 
@@ -43,20 +43,20 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Explore Room</h1>
                                     <div className="space-y-3">
-                                        <Link href="/ModularKitchen"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
-                                        <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></Link>
-                                        <Link href="/Living-Room"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Living Room</p></Link>
-                                        <Link href="/Kids-Room"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Kids Room</p></Link>
-                                        <Link href="/Pooja-Unit"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Pooja Unit</p></Link>
-                                        <Link href="/TV-Unit"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></Link>
-                                        <Link href="/Wardrobe-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></Link>
-                                        <Link href="/Dining-Room-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></Link>
-                                        <Link href="/False-Ceiling-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">False Ceiling Design</p></Link>
-                                        <Link href="/Wall-Decor-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></Link>
-                                        <Link href="/Study-Room-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></Link>
-                                        <Link href="/Bar-Unit-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bar Unit Design</p></Link>
-                                        <Link href="/Flooring-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Flooring Design</p></Link>
-                                        <Link href="/Bathroom-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bathroom Design</p></Link>
+                                        <Link href="/ModularKitchen"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
+                                        <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></Link>
+                                        <Link href="/Living-Room"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Living Room</p></Link>
+                                        <Link href="/Kids-Room"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Kids Room</p></Link>
+                                        <Link href="/Pooja-Unit"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Pooja Unit</p></Link>
+                                        <Link href="/TV-Unit"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></Link>
+                                        <Link href="/Wardrobe-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></Link>
+                                        <Link href="/Dining-Room-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></Link>
+                                        <Link href="/False-Ceiling-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">False Ceiling Design</p></Link>
+                                        <Link href="/Wall-Decor-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></Link>
+                                        <Link href="/Study-Room-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></Link>
+                                        <Link href="/Bar-Unit-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Bar Unit Design</p></Link>
+                                        <Link href="/Flooring-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Flooring Design</p></Link>
+                                        <Link href="/Bathroom-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Bathroom Design</p></Link>
                                     </div>
                                 </div>
                                 
@@ -64,15 +64,15 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
-                                        <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact US</p></Link>
-                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p></Link>
-                                        <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
+                                        <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact US</p></Link>
+                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p></Link>
+                                        <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex justify-between mt-10">
+                            <div className="flex justify-between mt-10 ">
                                 <Link href="/"><Image src="/LOGO.png" alt="HUB Logo" width={100} height={40} className="w-[100px] h-[40px]" /></Link>
-                                <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
+                                <Link href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
@@ -96,12 +96,12 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope mb-6">Company</h1>
                                     <div className="space-y-3">
-                                        <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">About</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
-                                        <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
-                                        <Link href="/Project"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
-                                        <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
-                                        <Link href="/Life@Hub"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                        <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">About</p></Link>
+                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
+                                        <Link href="/Project"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
+                                        <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
+                                        <Link href="/Life@Hub"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
                                     </div>
                                 </div>
                                 
@@ -109,13 +109,13 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Offerings</h1>
                                     <div className="space-y-3">
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Full Home Interior</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Interior</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Renovation</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Space Management</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Fast Track</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Automations</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Full Home Interior</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Modular Interior</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Renovation</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Space Management</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Fast Track</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Automations</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
                                     </div>
                                 </div>
                                 
@@ -123,20 +123,20 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Explore Room</h1>
                                     <div className="space-y-3">
-                                        <Link href="/ModularKitchen"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer ">Modular Kitchen</p></Link>
-                                        <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></Link>
-                                        <Link href="/Living-Room"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Living Room</p></Link>
-                                        <Link href="/Kids-Room"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Kids Room</p></Link>
-                                        <Link href="/Pooja-Unit"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Pooja Unit</p></Link>
-                                        <Link href="/TV-Unit"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></Link>
-                                        <Link href="/Wardrobe-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></Link>
-                                        <Link href="/Dining-Room-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></Link>
-                                        <Link href="/False-Ceiling-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">False Ceiling Design</p></Link>
-                                        <Link href="/Wall-Decor-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></Link>
-                                        <Link href="/Study-Room-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></Link>
-                                        <Link href="/Bar-Unit-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bar Unit Design</p></Link>
-                                        <Link href="/Flooring-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Flooring Design</p></Link>
-                                        <Link href="/Bathroom-Design"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bathroom Design</p></Link>
+                                        <Link href="/ModularKitchen"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer ">Modular Kitchen</p></Link>
+                                        <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></Link>
+                                        <Link href="/Living-Room"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Living Room</p></Link>
+                                        <Link href="/Kids-Room"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Kids Room</p></Link>
+                                        <Link href="/Pooja-Unit"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Pooja Unit</p></Link>
+                                        <Link href="/TV-Unit"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></Link>
+                                        <Link href="/Wardrobe-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></Link>
+                                        <Link href="/Dining-Room-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657] ansition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></Link>
+                                        <Link href="/False-Ceiling-Design"><p className="text-[14px] manrope-mediu hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">False Ceiling Design</p></Link>
+                                        <Link href="/Wall-Decor-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></Link>
+                                        <Link href="/Study-Room-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></Link>
+                                        <Link href="/Bar-Unit-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bar Unit Design</p></Link>
+                                        <Link href="/Flooring-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Flooring Design</p></Link>
+                                        <Link href="/Bathroom-Design"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bathroom Design</p></Link>
                                     </div>
                                 </div>
                                 
@@ -144,15 +144,15 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Information</h1>
                                     <div className="space-y-3">
-                                        <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact US</p></Link>
-                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p></Link>
-                                        <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
+                                        <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact US</p></Link>
+                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p></Link>
+                                        <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
                                     </div>
                                 </div>
                             </div>
                             <div className="flex justify-between mt-10">
                                 <Link href="/"><Image src="/LOGO.png" alt="HUB Logo" width={100} height={40} className="w-[100px] h-[40px]" /></Link>
-                                <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
+                                <Link href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
@@ -176,12 +176,12 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6 ">Company</h1>
                                     <div className="space-y-3">
-                                       <a href="/AboutUs"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer ">About</p></a>
-                                        <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></a>
-                                        <a href="/CustomerReviews"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></a>
-                                        <a href="#"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></a>
-                                        <a href="#"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></a>
-                                        <a href="#"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></a>
+                                       <a href="/AboutUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer ">About</p></a>
+                                        <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></a>
+                                        <a href="/CustomerReviews"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></a>
+                                        <a href="#"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Project</p></a>
+                                        <a href="#"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Blogs</p></a>
+                                        <a href="#"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></a>
                                     </div>
                                 </div>
                                 
@@ -189,13 +189,13 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Offerings</h1>
                                     <div className="space-y-3">
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Full Home Interior</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Interior</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Renovation</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Space Management</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Fast Track</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Automations</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Full Home Interior</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Interior</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Renovation</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Space Management</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Fast Track</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Automations</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
                                     </div>
                                 </div>
                                 
@@ -203,20 +203,20 @@ export default function Footer(){
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Explore Room</h1>
                                     <div className="space-y-3">
-                                       <a href="/Modular-Kitchen"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Kitchen</p></a>
-                                        <a href="/Bedroom"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></a>
-                                        <a href="/Living-Room"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Living Room</p></a>
-                                        <a href="/Kids-Room"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Kids Room</p></a>
-                                        <a href="/Pooja-Unit"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Pooja Unit</p></a>
-                                        <a href="/TV-Unit"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></a>
-                                        <a href="/Wardrobe-Design"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></a>
-                                        <a href="/Dining-Room-Design"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></a>
-                                        <a href="/False-Ceiling-Design"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3 ">False Ceiling Design</p></a>
-                                        <a href="/Wall-Decor-Design"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></a>
-                                       <a href="/Study-Room-Design"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></a>
-                                        <a href="/Bar-Unit-Design"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bar Unit Design</p></a>
-                                        <a href="/Flooring-Design"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Flooring Design</p></a>
-                                        <a href="/Bathroom-Design"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Bathroom Design</p></a>
+                                       <a href="/Modular-Kitchen"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p></a>
+                                        <a href="/Bedroom"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></a>
+                                        <a href="/Living-Room"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Living Room</p></a>
+                                        <a href="/Kids-Room"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Kids Room</p></a>
+                                        <a href="/Pooja-Unit"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Pooja Unit</p></a>
+                                        <a href="/TV-Unit"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></a>
+                                        <a href="/Wardrobe-Design"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></a>
+                                        <a href="/Dining-Room-Design"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></a>
+                                        <a href="/False-Ceiling-Design"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3 ">False Ceiling Design</p></a>
+                                        <a href="/Wall-Decor-Design"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></a>
+                                       <a href="/Study-Room-Design"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></a>
+                                        <a href="/Bar-Unit-Design"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Bar Unit Design</p></a>
+                                        <a href="/Flooring-Design"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Flooring Design</p></a>
+                                        <a href="/Bathroom-Design"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Bathroom Design</p></a>
                                     </div>
                                 </div>
                                 
@@ -224,9 +224,9 @@ export default function Footer(){
                         <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
-                                       <a href="/ContactUs"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact US</p> </a>
-                                        <a href="/Policy"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p> </a>
-                                        <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
+                                       <a href="/ContactUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact US</p> </a>
+                                        <a href="/Policy"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p> </a>
+                                        <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
                                     </div>
                                 </div>
                             </div>
@@ -257,13 +257,13 @@ export default function Footer(){
                                 <div className="mt-12">
                                     <h1 className="text-[16px] manrope font-medium mb-6">Company</h1>
                                     <div className="space-y-3">
-                                        <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">About</p></Link>
-                                        <Link href="/ModularKitchen"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
-                                        <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
-                                        <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Franchise</p></Link>
-                                        <Link href="/Life@Hub"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Career</p></Link>
-                                        <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact us</p></Link>
+                                        <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">About</p></Link>
+                                        <Link href="/ModularKitchen"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
+                                        <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
+                                        <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Franchise</p></Link>
+                                        <Link href="/Life@Hub"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
+                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact us</p></Link>
                                     </div>
                                 </div>
                                 
@@ -271,11 +271,11 @@ export default function Footer(){
                                 <div className="mt-12">
                                     <h1 className="text-[16px] manrope font-medium mb-6">Services</h1>
                                     <div className="space-y-3">
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Interior Design</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Kitchen</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Wardrobe Design</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Renovation</p>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Consultation</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Interior Design</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Wardrobe Design</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Renovation</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Consultation</p>
                                     </div>
                                 </div>
                                 
@@ -283,11 +283,11 @@ export default function Footer(){
                                 <div className="mt-12">
                                     <h1 className="text-[16px] manrope font-medium mb-6">Other</h1>
                                     <div className="space-y-3">
-                                        <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Blog</p></Link>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Gallery</p>
-                                        <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Reviews</p></Link>
-                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Privacy Policy</p></Link>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Terms of Service</p>
+                                        <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Blog</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Gallery</p>
+                                        <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Reviews</p></Link>
+                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Privacy Policy</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Terms of Service</p>
                                     </div>
                                 </div>
                                 
@@ -295,10 +295,10 @@ export default function Footer(){
                                 <div className="mt-12">
                                     <h1 className="text-[16px] manrope font-medium mb-6">Connect Us</h1>
                                     <div className="space-y-3">
-                                        <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Facebook</p></Link>
-                                        <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Instagram</p></Link>
-                                        <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">linkedin</p></Link>
-                                        <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">YouTube</p></Link>
+                                        <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium cursor-pointer">Facebook</p></Link>
+                                        <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium cursor-pointer">Instagram</p></Link>
+                                        <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium  cursor-pointer">linkedin</p></Link>
+                                        <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium  cursor-pointer">YouTube</p></Link>
                                         <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">WhatsApp</p>
                                     </div>
                                 </div>
@@ -318,13 +318,13 @@ export default function Footer(){
                                 <div className="mt-10">
                                     <h1 className="text-base manrope font-medium mb-5">Company</h1>
                                     <div className="space-y-3">
-                                        <Link href="/AboutUs"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">About</p></Link>
-                                        <Link href="/ModularKitchen"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
-                                        <Link href="/Bedroom"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
-                                        <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Franchise</p></Link>
-                                        <Link href="/Life@Hub"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/Career"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Career</p></Link>
-                                        <Link href="/ContactUs"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact us</p></Link>
+                                        <Link href="/AboutUs"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">About</p></Link>
+                                        <Link href="/ModularKitchen"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
+                                        <Link href="/Bedroom"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
+                                        <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Franchise</p></Link>
+                                        <Link href="/Life@Hub"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
+                                        <Link href="/Career"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <Link href="/ContactUs"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact us</p></Link>
                                     </div>
                                 </div>
                                 
@@ -332,11 +332,11 @@ export default function Footer(){
                                 <div className="mt-10">
                                     <h1 className="text-base manrope font-medium mb-5">Services</h1>
                                     <div className="space-y-3">
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Interior Design</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Modular Kitchen</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Wardrobe Design</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Home Renovation</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Consultation</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Interior Design</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Wardrobe Design</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Renovation</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Consultation</p>
                                     </div>
                                 </div>
                                 
@@ -344,11 +344,11 @@ export default function Footer(){
                                 <div className="mt-10">
                                     <h1 className="text-base manrope font-medium mb-5">Other</h1>
                                     <div className="space-y-3">
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Blog</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Gallery</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Reviews</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Privacy Policy</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Terms of Service</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Blog</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Gallery</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Reviews</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Privacy Policy</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Terms of Service</p>
                                     </div>
                                 </div>
                                 
@@ -356,11 +356,11 @@ export default function Footer(){
                                 <div className="mt-10">
                                     <h1 className="text-base manrope font-medium mb-5">Connect Us</h1>
                                     <div className="space-y-3">
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Facebook</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Instagram</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">LinkedIn</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">YouTube</p>
-                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">WhatsApp</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Facebook</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Instagram</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">LinkedIn</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">YouTube</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">WhatsApp</p>
                                     </div>
                                 </div>
                             </div>
@@ -379,12 +379,12 @@ export default function Footer(){
                             <div>
                                 <h3 className="text-sm manrope mb-4 manrope">Company</h3>
                                 <div className="space-y-2">
-                                    <Link href="/AboutUs"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">About</p></Link>
-                                    <Link href="/Career"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Career</p></Link>
-                                    <Link href="/CustomerReviews"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Customer Review</p></Link>
-                                    <Link href="/Project"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Project</p></Link>
-                                    <Link href="/Blog"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Blogs</p></Link>
-                                    <Link href="/Life@Hub"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Life at hub</p></Link>
+                                    <Link href="/AboutUs"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">About</p></Link>
+                                    <Link href="/Career"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Career</p></Link>
+                                    <Link href="/CustomerReviews"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Customer Review</p></Link>
+                                    <Link href="/Project"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Project</p></Link>
+                                    <Link href="/Blog"><p className="text-xs manrope-medium hover:text-[#ebd657] transition-colors cursor-pointer pt-2">Blogs</p></Link>
+                                    <Link href="/Life@Hub"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Life at hub</p></Link>
                                 </div>
                             </div>
                             
@@ -392,13 +392,13 @@ export default function Footer(){
                             <div>
                                 <h3 className="text-sm manrope mb-4 manrope">Offerings</h3>
                                 <div className="space-y-2">
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Full Home Interior</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Modular Interior</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Home Renovation</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Space Management</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Fast Track</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Home Automations</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Home Interior Price Calculator</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Full Home Interior</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Modular Interior</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Home Renovation</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Space Management</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Fast Track</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Home Automations</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Home Interior Price Calculator</p>
                                 </div>
                             </div>
                             
@@ -406,20 +406,20 @@ export default function Footer(){
                             <div>
                                 <h3 className="text-sm manrope mb-4 manrope">Explore Rooms</h3>
                                 <div className="space-y-2">
-                                    <Link href="/ModularKitchen"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Modular Kitchen</p></Link>
-                                    <Link href="/Bedroom"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Bedroom</p></Link>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Living Room</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Kids Room</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Pooja Unit</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">TV Unit</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Wardrobe Design</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Dining Room Design</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">False Ceiling Design</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Wall Decor Design</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Study Room Design</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Bar Unit Design</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Flooring Design</p>
-                                    <p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Bathroom Design</p>
+                                    <Link href="/ModularKitchen"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Modular Kitchen</p></Link>
+                                    <Link href="/Bedroom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bedroom</p></Link>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Living Room</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Kids Room</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Pooja Unit</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">TV Unit</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Wardrobe Design</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Dining Room Design</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">False Ceiling Design</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Wall Decor Design</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Study Room Design</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bar Unit Design</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Flooring Design</p>
+                                    <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bathroom Design</p>
                                 </div>
                             </div>
                             
@@ -427,9 +427,9 @@ export default function Footer(){
                             <div>
                                 <h3 className="text-sm manrope mb-4 manrope">Information</h3>
                                 <div className="space-y-2">
-                                    <Link href="/ContactUs"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer">Contact Us</p></Link>
-                                    <Link href="/Policy"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Privacy Policy</p></Link>
-                                    <Link href="/interior-design-franchise"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors cursor-pointer pt-2">Franchise</p></Link>
+                                    <Link href="/ContactUs"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Contact Us</p></Link>
+                                    <Link href="/Policy"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Privacy Policy</p></Link>
+                                    <Link href="/interior-design-franchise"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Franchise</p></Link>
                                 </div>
                             </div>
                         </div>
@@ -459,7 +459,7 @@ export default function Footer(){
                                         <span className="text-white text-xs font-bold"><img src="/facebook.png" className="w-[25px] h-[25px] "></img></span>
                                     </Link>
                                     <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                        <span className="text-white text-xs font-bold"><img src="/twitter.png" className="w-[23px] h-[23px] "></img></span>
+                                        <span className="text-white text-xs font-bold"><img src="/twitter.png" className="w-[23px] h-[23px] hover:text-[#ebd657] transition-colors duration-300"></img></span>
                                     </Link>
                                 </div>
                                 

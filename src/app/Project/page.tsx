@@ -1,14 +1,16 @@
 
-import Footer from "../Components/AboutUs/Footer";
 import ContactHeader from "../Components/Project/HeroSection";
 import FeaturedProjectsAndEbook from "../Components/Project/Section2";
+import Faq from "../Components/Project/FAQ";
+import Footer from "../Components/Home/Footer";
 
 export default function ProjectPage() {
   return (
     <div>
-      <ContactHeader/>
-      <FeaturedProjectsAndEbook/>
-      <Footer/>
+      <ContactHeader />
+    <FeaturedProjectsAndEbook />
+     <Faq />
+         <Footer />
     </div>
   );
 }

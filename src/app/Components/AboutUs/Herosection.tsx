@@ -154,7 +154,7 @@ export default function Herosection() {
                     <div className="aboutus-hero-3xl-overlay"></div>
 
                     {/* Get Free Estimate Button - 3XL 2560*1440 optimized */}
-                    <button className="aboutus-hero-3xl-button">Get Free Estimate</button>
+                    <button className="aboutus-hero-3xl-button manrope-medium">Get Free Estimate</button>
 
                     {/* Header - 3XL 2560*1440 optimized */}
                     <div className="aboutus-hero-3xl-header">
@@ -192,7 +192,7 @@ export default function Herosection() {
 
                         {/* Get Free Estimate Button - 2XL optimized */}
                         <div className="absolute top-8 right-8 z-30">
-                            <button className="w-[230px] h-[50px] manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg  2xl-1850:bg-red-500">Get Free Estimate</button>
+                            <button className="w-[230px] h-[50px] manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg  2xl-1850:bg-red-500 ">Get Free Estimate</button>
                         </div>
 
                         {/* Header - 2XL optimized */}
@@ -216,9 +216,9 @@ export default function Herosection() {
 
                         {/* Main Content - 2XL optimized */}
                         <div className="absolute  left-16 -translate-y-1/2 text-white -mt-60">
-                            <div className="text-6xl manrope-medium leading-tight ">HOMES,</div>
+                            <div className="text-6xl manrope-medium leading-tight ">homes,</div>
                             <div className="text-7xl wulkan-display my-6 leading-tight">uniquely</div>
-                            <div className="text-6xl manrope-medium leading-tight">BUILT</div>
+                            <div className="text-6xl manrope-medium leading-tight">built</div>
                         </div>
                     </div>
                 </div>
@@ -256,9 +256,9 @@ export default function Herosection() {
 
                         {/* Main Content - XL optimized */}
                         <div className="absolute top-1/2 ml-20 -translate-y-1/2 text-white mt-70">
-                            <div className="text-6xl manrope-medium leading-tight">HOMES,</div>
+                            <div className="text-6xl manrope-medium leading-tight">homes,</div>
                             <div className="text-7xl wulkan-display my-4 leading-tight">uniquely</div>
-                            <div className="text-6xl manrope-medium leading-tight">BUILT</div>
+                            <div className="text-6xl manrope-medium leading-tight">built</div>
                         </div>
                     </div>
                 </div>
@@ -296,9 +296,9 @@ export default function Herosection() {
 
                         {/* Main Content - LG optimized */}
                         <div className="absolute top-1/2 left-6 -translate-y-1/2 text-white">
-                            <div className="text-4xl manrope-medium leading-tight">HOMES,</div>
+                            <div className="text-4xl manrope-medium leading-tight">hpmes,</div>
                             <div className="text-5xl wulkan-display my-3 leading-tight">uniquely</div>
-                            <div className="text-4xl manrope-medium leading-tight">BUILT</div>
+                            <div className="text-4xl manrope-medium leading-tight">built</div>
                         </div>
                     </div>
                 </div>
@@ -336,9 +336,9 @@ export default function Herosection() {
 
                         {/* Main Content - MD optimized */}
                         <div className="absolute top-1/2 left-4 -translate-y-1/2 text-white">
-                            <div className="text-3xl manrope-medium leading-tight"></div>
+                            <div className="text-3xl manrope-medium leading-tight">homes</div>
                             <div className="text-4xl wulkan-display my-2 leading-tight">uniquely</div>
-                            <div className="text-3xl manrope-medium leading-tight">BUILT</div>
+                            <div className="text-3xl manrope-medium leading-tight">built</div>
                         </div>
                     </div>
                 </div>
@@ -376,9 +376,9 @@ export default function Herosection() {
 
                         {/* Main Content - SM optimized */}
                         <div className="absolute top-1/2 left-3 -translate-y-1/2 text-white">
-                            <div className="text-2xl manrope-medium leading-tight">HOMES,</div>
+                            <div className="text-2xl manrope-medium leading-tight">homes,</div>
                             <div className="text-3xl wulkan-display my-1 leading-tight">uniquely</div>
-                            <div className="text-2xl manrope-medium leading-tight">BUILT</div>
+                            <div className="text-2xl manrope-medium leading-tight">built</div>
                         </div>
                     </div>
                 </div>

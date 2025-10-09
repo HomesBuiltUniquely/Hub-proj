@@ -1,139 +1,312 @@
-'use client';
-import React, { useState } from "react";
 
-// Example project/video data
-const featuredProjects = [
-  {
-    id: 1,
-    videoSrc:
-      "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/DemoVideo.mp4",
-    thumbnail: "iam.webp", // shown before play
-    title: "Mr Srinivas’s Villa",
-    location: "Jakkur",
-    testimonial: `“Homes Under Budget is a best interior designer in Bangalore, I have come across while searching to design my dream abode. They've got the taste and passion to convert a shell into a place I love and always thought of. Their team managed the project and I didn't have to check their work twice. Wonderful experience with HUB team.”`,
-    label: "Villa Interiors",
-  },
-  {
-    id: 2,
-    videoSrc:
-      "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/DemoVideo.mp4",
-    thumbnail: "iam.webp",
-    title: "Mr Rohan’s Apartment",
-    location: "Whitefield",
-    testimonial:
-      "“Seamless experience from design to execution. Absolutely satisfied with the results and quality!”",
-    label: "Apartment Interiors",
-  },
+"use client";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import React, { useEffect, useRef } from "react";
+
+const FeaturedProjects = [
+  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP!.webp", title: "Designed for Life, Not Just Looks", button: "Get free estimate", path: `/GetEstimate`, description: "Warm & Functional Home Interiors by HUB Interior for Mr. Rijul at Azizam", BHK: "BHK", NO: "3BHK" },
+  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP3.webp", title: "Quiet Luxury Meets Thoughtful Living", button: "Get free estimate", path: `/GetEstimate`, description: "HUB Interior’s Modern Home Interior Design at Bhoo Aabharana, Bengaluru", BHK: "BHK", NO: "3BHK" },
+  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP2.webp", title: "Royal Tulip Villa", button: "Get free estimate", path: `/GetEstimate`, description: "HUB Interior Creates a Home Filled with Story, Elegance & Comfort for the George Family", BHK: "BHK", NO: "3BHK" },
+  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/iam.web3.webp", title: "Peaceful Retreat Designed with Care", button: "Get free estimate", path: `/GetEstimate`, description: "Modern Home Interior by HUB for Mr. Allen & Mrs. Ann", BHK: "BHK", NO: "3BHK" },
 ];
 
-const FeaturedProjectsAndEbook = () => {
-  const [current, setCurrent] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
 
-  const prevSlide = () =>
-    setCurrent((prev) =>
-      prev === 0 ? featuredProjects.length - 1 : prev - 1
-    );
-  const nextSlide = () =>
-    setCurrent((prev) =>
-      prev === featuredProjects.length - 1 ? 0 : prev + 1
-    );
+const CardSection = ({
+  cards,
+  scrollDirection = 1,
 
-  const slide = featuredProjects[current];
+}: {
+  cards: typeof FeaturedProjects;
+  scrollDirection?: 1 | -1;
+
+}) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    if (scrollDirection === 1) {
+      el.scrollLeft = el.scrollWidth - el.clientWidth;
+    } else {
+      el.scrollLeft = 0;
+    }
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      el.scrollLeft += e.deltaY * -scrollDirection;
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+    };
+  }, [scrollDirection]);
+
+  const router = useRouter();
 
   return (
-    <section className="bg-[#f1f2f6] pb-24 pt-10 flex flex-col items-center">
-      {/* Featured Projects */}
-      <div className="w-full max-w-5xl px-3">
-        <h2 className="text-[50px]  mt-40 font-bold mb-1 text-gray-900">
-          Featured Projects
-        </h2>
-        <p className="text-gray-600 text-[20px] mb-5">A glimpse at our best work</p>
+    <section className="w-full py-8 md:py-12 bg-[#f1f2f6]">
 
-        <div className="relative rounded-2xl mt-10 overflow-hidden shadow-lg select-none min-h-[520px] flex items-center">
-          {!isPlaying ? (
-            <div className="relative w-full h-[520px] cursor-pointer">
-              <img
-                src={slide.thumbnail}
-                alt={slide.title}
-                className="w-full h-full object-cover"
-                onClick={() => setIsPlaying(true)}
-              />
-              {/* Play button overlay */}
+
+
+      <style jsx>{`
+        /* Hide both sections by default on mobile */
+        .desktop-1440,
+        .desktop-1280 {
+          display: none;
+        }
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
+
+        /* Show 1440px section for screens 1440px and above */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block;
+          }
+        }
+      `}</style>
+
+
+      {/* Desktop Version */}
+      <div className="desktop-1440 hidden md:block w-[1440px] h-[635px] mt-15">
+
+
+        {/* Featured Projects */}
+        <div className="w-full max-w-5xl px-3 ml-12 ">
+          <h2 className="text-[50px]  mb-1  text-gray-900 manrope">
+            Featured Projects
+          </h2>
+          <p className="text-gray-600 text-[20px] mb-10 manrope-medium">A glimpse at our best work</p>
+        </div>
+
+        <div
+          ref={scrollRef}
+          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-15 w-full md:max-w-[1350px] mx-auto ml-18"
+          style={{ paddingRight: "56px" }}
+        >
+          {cards.map((card, idx) => {
+
+            function handleNavigate() {
+              router.push(card.path);
+            }
+
+
+            return (
               <div
-                className="absolute inset-0 bg-opacity-40 flex justify-center items-center"
-                onClick={() => setIsPlaying(true)}
+                key={idx}
+                className="min-w-[350px] max-w-[750] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+                style={{ height: "475px" }}
               >
-                <svg width={64} height={64} viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="12" fill="rgba(255, 255, 255, 0.8)" />
-                  <polygon points="10,8 16,12 10,16" fill="#222" />
-                </svg>
+
+                <Image src={card.img} alt="images" width={470} height={250} className="w-700 h-60" />
+
+                <div className="manrope-medium ml-3 text-bold text-2xl gap-1 m-3 h-15">
+                  {card.title}
+                </div>
+
+                <div className="ml-3 text-sm w-80 h-10 m-5 manrope-medium">
+                  {card.description}
+                </div>
+
+                {/* line */}
+                <div className="w-auto h-0.5 bg-[#f1f2f6]">
+                </div>
+
+                <div className="ml-3 m-3 manrope-medium text-gray-500">
+                  {card.BHK} <div className="text-black manrope">{card.NO}</div>
+                </div>
+
+
+
+                <div className="-mt-10 ml-[160px] flex justify-center">
+                  <button
+                    onClick={handleNavigate}
+                    className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
+                  >
+                    {card.button}
+                  </button>
+                </div>
+
+
               </div>
-            </div>
-          ) : (
-            <video
-              src={slide.videoSrc}
-              className="w-full h-[520px] object-cover"
-              controls
-              autoPlay
-              onEnded={() => setIsPlaying(false)}
-            />
-          )}
+            )
 
-          {/* Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent pointer-events-none" />
-
-          {/* Slide Text */}
-          <div className="absolute bottom-10 left-0 right-0 p-7 text-white z-10">
-            <h3 className="text-xl font-semibold mb-1">
-              {slide.title}
-              <span className="ml-2 text-gray-300 font-normal">
-                , {slide.location}
-              </span>
-            </h3>
-            <p className="mb-2 text-sm leading-relaxed">{slide.testimonial}</p>
-          </div>
-
-          {/* Carousel Controls */}
-          {featuredProjects.length > 1 && (
-            <>
-              <button
-                className="absolute left-3 w-[50px] h-[50px] top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/70 backdrop-blur px-3 py-3 rounded-full shadow z-20"
-                onClick={() => {
-                  prevSlide();
-                  setIsPlaying(false);
-                }}
-                aria-label="Previous project"
-              >
-                ‹
-              </button>
-              <button
-                className="absolute right-3 w-[50px] h-[50px] top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/70 backdrop-blur px-3 py-3 rounded-full shadow z-20"
-                onClick={() => {
-                  nextSlide();
-                  setIsPlaying(false);
-                }}
-                aria-label="Next project"
-              >
-                ›
-              </button>
-            </>
-          )}
+          })}
         </div>
       </div>
 
-      {/* E-Book Promo */}
-      <div className="w-full max-w-2xl mx-auto mt-30 text-center">
-        <p className="mb-2 text-gray-400 text-md">New E-Book</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-5 text-gray-900">
-          Home Buyer’s <span className="text-red-600">Handbook</span>
-        </h2>
-        <button className="mt-3 bg-red-600 hover:bg-red-700 text-white px-10 py-3 rounded-full font-semibold text-lg shadow-lg transition">
-          Buy now for free
-        </button>
+
+
+      {/* 1280 version */}
+
+      <div className="desktop-1280 ">
+
+        <div className=" w-[1280px] h-[800px] mx-auto mt-20 -mb-30 relative">
+
+          <div className="w-full max-w-5xl px-3 ml-5 ">
+            <h2 className="text-[50px]  mb-1  text-gray-900 manrope">
+              Featured Projects
+            </h2>
+            <p className="text-gray-600 text-[20px] mb-10 manrope-medium">A glimpse at our best work</p>
+          </div>
+
+
+
+
+          <div
+            ref={scrollRef}
+            className="flex gap-7 overflow-x-auto scrollbar-none  px-2 md:px-0 pb-12 w-full md:max-w-[1200px] mx-auto ml-10"
+            style={{ paddingRight: "56px" }}
+          >
+            {cards.map((card, idx) => {
+
+              function handleNavigate() {
+                router.push(card.path);
+              }
+
+
+              return (
+                <div
+                  key={idx}
+                  className="min-w-[350px] max-w-[750] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+                  style={{ height: "475px" }}
+                >
+
+                  <Image src={card.img} alt="images" width={470} height={250} className="w-700 h-60" />
+
+                  <div className="manrope-medium ml-3 text-bold text-2xl gap-1 m-3 h-15">
+                    {card.title}
+                  </div>
+
+                  <div className="ml-3 text-sm w-80 h-10 m-5 manrope-medium">
+                    {card.description}
+                  </div>
+
+                  {/* line */}
+                  <div className="w-auto h-0.5 bg-[#f1f2f6]">
+                  </div>
+
+                  <div className="ml-3 m-3 manrope-medium text-gray-500">
+                    {card.BHK} <div className="text-black manrope">{card.NO}</div>
+                  </div>
+
+
+
+                  <div className="-mt-10 ml-[160px] flex justify-center">
+                    <button
+                      onClick={handleNavigate}
+                      className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
+                    >
+                      {card.button}
+                    </button>
+                  </div>
+
+
+                </div>
+              )
+
+            })}
+          </div>
+
+        </div>
+
       </div>
+
+
+      {/* mobile version  */}
+
+
+      <div className="block md:hidden px-4 h-screen w-screen max-w-[425px] mx-auto  ">
+
+       
+
+        <div className=' mt-5 manrope-medium '>
+          <div className="flex flex-row">
+            <div className="w-0.75 h-10 bg-[#ebd657] ml-2">
+            <h2 className="text-3xl tracking-wide manrope-medium text-nowrap ml-3">Featured Projects</h2>
+            </div>
+            <p className="text-gray-600 text-[15px] manrope-bold mt-12  text-nowrap -ml-1">A glimpse at our best work</p>
+          </div>
+        </div>
+
+
+         <div
+            ref={scrollRef}
+            className="flex gap-7 overflow-x-auto scrollbar-none  px-2 md:px-0 pb-12 w-full md:max-w-[425] mx-auto h-[450px]"
+            style={{ paddingRight: "56px" }}
+          >
+            {cards.map((card, idx) => {
+
+              function handleNavigate() {
+                router.push(card.path);
+              }
+
+
+              return (
+                <div
+                  key={idx}
+                  className="min-w-[250px] max-w-[750] bg-white rounded-[23px] shadow-lg overflow-hidden group transition hover:shadow-2xl mt-8"
+                  style={{ height: "355px" }}
+                >
+
+                  <Image src={card.img} alt="images" width={470} height={250} className="w-450 h-40" />
+
+                  <div className="manrope-medium ml-3 text-bold text-xl w-50 gap-1 mt-3 h-15">
+                    {card.title}
+                  </div>
+
+                  <div className="ml-3 text-xs w-50 h-10 mt-1 mb-3 manrope-medium">
+                    {card.description}
+                  </div>
+
+                  <div className="ml-3 mt-5 manrope-medium text-gray-500 text-sm">
+                    {card.BHK} <div className="text-black manrope">{card.NO}</div>
+                  </div>
+
+
+
+                  <div className="-mt-10 ml-[66px] flex justify-center">
+                    <button
+                      onClick={handleNavigate}
+                      className=" px-4 py-2 text-xs mt-1 ml-4 bg-red-500 rounded-full text-white manrope-medium whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
+                    >
+                      {card.button}
+                    </button>
+                  </div>
+
+
+                </div>
+              )
+
+            })}
+          </div>
+
+
+      </div>
+
+
     </section>
+
+
   );
 };
+
+const FeaturedProjectsAndEbook: React.FC = () => (
+  <div className="bg-[#f9fafc] w-screen min-h-screen ">
+    <CardSection
+      cards={FeaturedProjects}
+      scrollDirection={-1}
+    />
+  </div>
+);
+
 
 export default FeaturedProjectsAndEbook;

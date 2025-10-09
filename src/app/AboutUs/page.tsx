@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 
-=======
-import Footer from "../Components/Home/Footer";
->>>>>>> 116ceacbd2da1f530627f61fcc12d67d103ba827
 import Herosection from "../Components/AboutUs/Herosection";
 import Section1 from "../Components/AboutUs/Section1";
 import Section10 from "../Components/AboutUs/Section10";
@@ -22,18 +18,18 @@ import Carousel from "../Components/AboutUs/Demo";
 export default function Aboutus() {
   return (
     <div>
- <Herosection/>
-  <Section1 />
+      <Herosection />
+      <Section1 />
       <Section2 />
       <Section3 />
       <Section4 />
       <Section5 />
-      <Section6 /> 
+       {/*  <Section6 />
       <Section7 />
       <Section8 />
       <Section9 />
       <Section10 />
-      <Footer /> 
+      <Footer /> */}
 
 
 

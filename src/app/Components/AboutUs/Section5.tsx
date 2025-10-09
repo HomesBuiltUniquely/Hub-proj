@@ -101,10 +101,10 @@ const Section5 = () => {
           <div className="aboutus-section5-3xl-layout">
             {/* Header Section */}
             <div className="aboutus-section5-3xl-header">
-              <h2 className="aboutus-section5-3xl-title">
+              <h2 className="aboutus-section5-3xl-title manrope">
                 Journey So Far
               </h2>
-              <p className="aboutus-section5-3xl-subtitle">
+              <p className="aboutus-section5-3xl-subtitle manrope-medium">
                 The Path We&#39;ve Paved!
               </p>
             </div>
@@ -154,10 +154,10 @@ const Section5 = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-2 leading-tight">
+            <h2 className="text-4xl manrope text-gray-900 mb-2 leading-tight">
               Journey So Far
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-600 leading-relaxed manrope-medium">
               The Path We&#39;ve Paved!
             </p>
           </div>
@@ -169,10 +169,10 @@ const Section5 = () => {
               <div className="grid grid-cols-2 gap-6">
                 {stats.map((stat, index) => (
                   <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <p className="text-3xl font-bold text-[#ef0101] leading-tight">
+                    <p className="text-3xl  text-[#ef0101] leading-tight manrope">
                       {stat.value}
                     </p>
-                    <p className="text-base text-gray-600 mt-2 leading-relaxed">
+                    <p className="text-base text-gray-600 mt-2 leading-relaxed manrope-medium">
                       {stat.label}
                     </p>
                   </div>
@@ -186,10 +186,10 @@ const Section5 = () => {
                 <div className="space-y-8 min-h-[800px]">
                   {timeline.map((item, index) => (
                     <div key={index} className="relative pl-8 pb-8 border-l-2 border-[#ef0101]">
-                      <h3 className="text-xl font-semibold text-gray-900 leading-tight">
+                      <h3 className="text-xl manrope text-gray-900 leading-tight">
                         {item.year}
                       </h3>
-                      <p className="mt-2 text-base text-gray-600 leading-relaxed">
+                      <p className="mt-2 manrope-medium text-gray-600 leading-relaxed">
                         {item.content}
                       </p>
                     </div>
@@ -206,10 +206,10 @@ const Section5 = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-2 leading-tight">
+            <h2 className="text-4xl manrope text-gray-900 mb-2 leading-tight">
               Journey So Far
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl manrope-medium text-gray-600 leading-relaxed">
               The Path We&#39;ve Paved!
             </p>
           </div>
@@ -221,10 +221,10 @@ const Section5 = () => {
               <div className="grid grid-cols-2 gap-6">
                 {stats.map((stat, index) => (
                   <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <p className="text-3xl font-bold text-[#ef0101] leading-tight">
+                    <p className="text-3xl manrope text-[#ef0101] leading-tight">
                       {stat.value}
                     </p>
-                    <p className="text-base text-gray-600 mt-2 leading-relaxed">
+                    <p className="text-base text-gray-600 mt-2 leading-relaxed manrope">
                       {stat.label}
                     </p>
                   </div>
@@ -258,7 +258,7 @@ const Section5 = () => {
         <div className="max-w-5xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2 leading-tight">
+            <h2 className="text-3xl manrope text-gray-900 mb-2 leading-tight">
               Journey So Far
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">

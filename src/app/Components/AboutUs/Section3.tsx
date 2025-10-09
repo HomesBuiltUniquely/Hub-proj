@@ -20,12 +20,12 @@ export default function Section3(){
                         <div className="aboutus-section3-3xl-center-content">
                             
                             {/* Main Heading - 3XL optimized */}
-                            <div className="aboutus-section3-3xl-heading">
+                            <div className="aboutus-section3-3xl-heading manrope-medium">
                                 Great design goes beyond aesthetics.
                             </div>
                             
                             {/* Description Text - 3XL optimized */}
-                            <div className="aboutus-section3-3xl-description">
+                            <div className="aboutus-section3-3xl-description manrope-medium">
                             The Brand Hub is the powerhouse behind Hub Interior.
                             It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
                             From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
@@ -34,7 +34,7 @@ export default function Section3(){
                         </div>
                         
                         {/* Right Brand Text - 3XL optimized */}
-                        <div className="aboutus-section3-3xl-brand-text">
+                        <div className="aboutus-section3-3xl-brand-text manrope-medium">
                             Brand Hub
                         </div>
                         
@@ -59,7 +59,7 @@ export default function Section3(){
                         {/* Center Content - 2XL optimized */}
                         <div className="w-[600px] h-auto px-10  lg:ml-8 flex flex-col justify-center pb-20">
 
-                            <div className="text-[#ef0101] ml-2 text-2xl py-20">Brand Hub</div>
+                            <div className="text-[#ef0101] ml-2 mt-15 text-2xl py-5 manrope-medium">Brand Hub</div>
                             
                             {/* Main Heading - 2XL optimized */}
                             <div className="manrope-medium text-5xl w-full leading-tight mb-8">
@@ -95,7 +95,7 @@ export default function Section3(){
                             className="w-[500px] h-auto min-h-[400px] rounded-3xl lg:rounded-l-3xl lg:rounded-r-none object-cover" 
                         />
 
-                        <div className="text-[#ef0101] text-2xl  pt-8 pl-8">Brand Hub</div>
+                        <div className="text-[#ef0101] text-2xl  pt-8 pl-8 manrope-medium">Brand Hub</div>
                         
                         {/* Center Content - XL optimized */}
                         <div className="w-[400px]  flex flex-col justify-center items-end pt-30 ">

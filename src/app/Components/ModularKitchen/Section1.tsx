@@ -156,7 +156,7 @@ const Section1: React.FC = () => {
         <div className="mb-6 mt-7 max-w-[480px] mx-auto">
           {/* Mobile Content Card */}
           <div className="bg-white rounded-md relative max-w-[480px] h-95 mx-auto w-full card">
-            <div className="w-[300px] mx-auto">
+            {/* <div className="w-[300px] mx-auto">
             <div className="absolute top-4 inset-x-0 z-10 flex justify-center menu">
               <div className="w-[310px] bg-[#32261c]/70 rounded-md p-1 flex justify-around text-gray-200/70 font-medium">
                 {kitchenTypes.map((type, idx) => (
@@ -170,7 +170,7 @@ const Section1: React.FC = () => {
                 ))}
               </div>
             </div>
-            </div>
+            </div> */}
             <img
               src={wardrobes[selected].img}
               alt={wardrobes[selected].label}

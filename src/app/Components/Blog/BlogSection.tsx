@@ -32,7 +32,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
   const [allPosts, setAllPosts] = useState<Post[]>(allPostsInit); // Always start with default posts
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 3; // Show 3 posts per page
-  
+
   // Calculate remaining posts (skip first 5 posts that are shown in Section2)
   const remainingPosts = allPosts.length > 5 ? allPosts.slice(5) : [];
   const totalPages = Math.ceil(remainingPosts.length / itemsPerPage);
@@ -85,6 +85,13 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
 
   const goToNext = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const goToPrev = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+
+
+  const [showRemainingPosts, setShowRemainingPosts] = useState(false);
+
+  const handleLoadMore = () => {
+    setShowRemainingPosts(true);
+  };
 
   return (
     <>
@@ -302,31 +309,32 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
         }
       `}</style>
       
+
       {/* Ultra-wide layout for 2560px+ */}
-      <section className="blog-section-ultrawide">
+      <section className="blog-section-ultrawide hidden md:block">
         <div className="blog-ultrawide-container">
           {allPosts.length > 5 ? (
             <>
-              <h2 className="blog-ultrawide-title">More Blog Posts</h2>
+              <h2 className="blog-ultrawide-title manrope">More Blog Posts</h2>
               <div className="blog-ultrawide-grid">
                 {currentPosts.map((post) => (
                   <div key={post.id} className="blog-ultrawide-card">
                     <div className="relative">
-                      <img 
-                        src={post.img} 
-                        alt={post.title} 
+                      <img
+                        src={post.img}
+                        alt={post.title}
                         className="blog-ultrawide-image"
                       />
                     </div>
                     <div className="blog-ultrawide-content">
-                      <div className="blog-ultrawide-meta">
+                      <div className="blog-ultrawide-meta manrope-medium">
                         <span>Blog • {post.readTime}</span>
                         <span>{post.date}</span>
                       </div>
-                      <h3 className="blog-ultrawide-title-text">{post.title}</h3>
-                      <button 
+                      <h3 className="blog-ultrawide-title-text manrope">{post.title}</h3>
+                      <button
                         onClick={() => handleReadMore(post.id)}
-                        className="blog-ultrawide-button"
+                        className="blog-ultrawide-button manrope-medium"
                       >
                         Read More
                         <FaArrowRight className="w-4 h-4" />
@@ -339,23 +347,23 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
               {/* Ultra-wide Pagination */}
               {remainingPosts.length > itemsPerPage && totalPages > 1 && (
                 <div className="blog-ultrawide-pagination">
-                  <button 
-                    onClick={goToPrev} 
+                  <button
+                    onClick={goToPrev}
                     disabled={currentPage === 1}
                   >
                     &lt;
                   </button>
                   {Array.from({ length: totalPages }).map((_, i) => (
-                    <button 
-                      key={i} 
-                      onClick={() => setCurrentPage(i + 1)} 
+                    <button
+                      key={i}
+                      onClick={() => setCurrentPage(i + 1)}
                       className={currentPage === i + 1 ? 'active' : ''}
                     >
                       {i + 1}
                     </button>
                   ))}
-                  <button 
-                    onClick={goToNext} 
+                  <button
+                    onClick={goToNext}
                     disabled={currentPage === totalPages}
                   >
                     &gt;
@@ -365,24 +373,24 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
             </>
           ) : (
             <div className="text-center py-8">
-              <h2 className="blog-ultrawide-title">All Blog Posts</h2>
+              <h2 className="blog-ultrawide-title manrope">All Blog Posts</h2>
               <p className="text-gray-500 text-xl max-w-3xl mx-auto">
-                {allPosts.length <= 5 
-                  ? `Showing all ${allPosts.length} blog posts in the featured section above.` 
+                {allPosts.length <= 5
+                  ? `Showing all ${allPosts.length} blog posts in the featured section above.`
                   : "No additional blog posts to display. The latest 5 posts are shown in the featured section above."
                 }
               </p>
             </div>
           )}
 
-          <h2 className="blog-ultrawide-category-title">Explore by Category</h2>
+          <h2 className="blog-ultrawide-category-title manrope">Explore by Category</h2>
           <div className="blog-ultrawide-category-grid">
             {categoryCards.map((cat) => (
               <div key={cat.id} className="blog-ultrawide-category-card">
                 <img src={cat.img} alt={cat.label} className="blog-ultrawide-category-image" />
                 <div className="blog-ultrawide-category-overlay">
                   <FaArrowRight className="blog-ultrawide-category-icon" />
-                  <span className="blog-ultrawide-category-label">{cat.label}</span>
+                  <span className="blog-ultrawide-category-label manrope-medium">{cat.label}</span>
                 </div>
               </div>
             ))}
@@ -391,101 +399,181 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
       </section>
 
       {/* Regular layout for screens below 2560px */}
-      <section className="blog-section-regular w-full py-8 px-4 sm:px-6 lg:px-12 bg-[#f1f2f6] mt-30">
-      {/* Blog Posts - Remaining posts (starting from 6th) */}
-      {allPosts.length > 5 ? (
-        <>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-gray-900 text-center">
-            More Blog Posts
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto mb-8 h-[500px]">
-            {currentPosts.map((post) => (
-              <div key={post.id} className="w-full max-w-sm mx-auto sm:max-w-none bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="relative">
-                  <img 
-                    src={post.img} 
-                    alt={post.title} 
-                    className="w-full h-80 object-cover"
-                  />
+      <section className="blog-section-regular w-full py-8 px-4 sm:px-6 lg:px-12 bg-[#f1f2f6] mt-30 hidden md:block">
+        {/* Blog Posts - Remaining posts (starting from 6th) */}
+        {allPosts.length > 5 ? (
+          <>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl  manrope mb-12 sm:mb-16 lg:mb-20 text-gray-900 text-center">
+              More Blog Posts
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto mb-8 h-[500px]">
+              {currentPosts.map((post) => (
+                <div key={post.id} className="w-full max-w-sm mx-auto sm:max-w-none bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                  <div className="relative">
+                    <img
+                      src={post.img}
+                      alt={post.title}
+                      className="w-full h-80 object-cover"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <div className="flex justify-between text-black text-xs mb-2  manrope-medium">
+                      <span>Blog • {post.readTime}</span>
+                      <span>{post.date}</span>
+                    </div>
+                    <h3 className="font-semibold text-lg mb-3  manrope">{post.title}</h3>
+                    <button
+                      onClick={() => handleReadMore(post.id)}
+                      className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors  manrope-medium flex items-center justify-center gap-2"
+                    >
+                      Read More
+                      <FaArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-                <div className="p-5">
-                  <div className="flex justify-between text-black text-xs mb-2">
+              ))}
+            </div>
+
+            {/* Pagination - Show when there are more than 3 remaining posts */}
+            {remainingPosts.length > itemsPerPage && totalPages > 1 && (
+              <div className="flex justify-center items-center gap-1 sm:gap-2 mb-10 px-4 ">
+                <button
+                  onClick={goToPrev}
+                  disabled={currentPage === 1}
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
+                >
+                  <span className="text-sm sm:text-base">&lt;</span>
+                </button>
+                <div className="flex gap-1 sm:gap-2 overflow-x-auto max-w-full">
+                  {Array.from({ length: totalPages }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentPage(i + 1)}
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full manrope-medium focus:outline-none transition-colors duration-200 flex items-center justify-center ${currentPage === i + 1
+                        ? "bg-gray-800 text-white"
+                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        }`}
+                    >
+                      <span className="text-sm sm:text-base">{i + 1}</span>
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={goToNext}
+                  disabled={currentPage === totalPages}
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
+                >
+                  <span className="text-sm sm:text-base">&gt;</span>
+                </button>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="text-center py-8 px-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-4 sm:mb-6 text-gray-900">All Blog Posts</h2>
+            <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">
+              {allPosts.length <= 5
+                ? `Showing all ${allPosts.length} blog posts in the featured section above.`
+                : "No additional blog posts to display. The latest 5 posts are shown in the featured section above."
+              }
+            </p>
+          </div>
+        )}
+
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">Explore by Category</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4">
+          {categoryCards.map((cat) => (
+            <div key={cat.id} className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md">
+              <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+              <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
+                <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
+                <span className="text-white text-lg manrope-medium">{cat.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+
+      {/* Mobile Version */}
+
+
+
+      <div className="block md:hidden px-4 py-6 w-[full] max-w-[425px] mx-auto">
+        {allPosts.length > 5 && (
+          <>
+            {/* Show remaining posts only after button is clicked */}
+            {showRemainingPosts && (
+              allPosts.slice(3).map((post) => (
+                <div key={post.id} className="mb-8">
+                  <img
+                    src={post.img}
+                    alt={post.title}
+                    className="w-full h-52 object-cover rounded-xl"
+                  />
+                  <div className="flex justify-between text-sm text-gray-500 mt-2 manrope-medium">
                     <span>Blog • {post.readTime}</span>
                     <span>{post.date}</span>
                   </div>
-                  <h3 className="font-semibold text-lg mb-3">{post.title}</h3>
-                  <button 
+                  <h2 className="text-lg font-semibold mt-2 text-center manrope">
+                    {post.title}
+                  </h2>
+                  <button
                     onClick={() => handleReadMore(post.id)}
-                    className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium flex items-center justify-center gap-2"
+                    className="mt-3 w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium"
                   >
                     Read More
-                    <FaArrowRight className="w-4 h-4" />
                   </button>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))
+            )}
 
-          {/* Pagination - Show when there are more than 3 remaining posts */}
-          {remainingPosts.length > itemsPerPage && totalPages > 1 && (
-            <div className="flex justify-center items-center gap-1 sm:gap-2 mb-10 px-4">
-              <button 
-                onClick={goToPrev} 
-                disabled={currentPage === 1} 
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
+            {/* Show Load More button only if not yet clicked */}
+            {!showRemainingPosts && (
+              <div className="flex justify-center">
+              <button
+                onClick={handleLoadMore}
+                className=" bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-3xl transition-colors manrope"
               >
-                <span className="text-sm sm:text-base">&lt;</span>
+                Load More
               </button>
-              <div className="flex gap-1 sm:gap-2 overflow-x-auto max-w-full">
-                {Array.from({ length: totalPages }).map((_, i) => (
-                  <button 
-                    key={i} 
-                    onClick={() => setCurrentPage(i + 1)} 
-                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full font-medium focus:outline-none transition-colors duration-200 flex items-center justify-center ${
-                      currentPage === i + 1 
-                        ? "bg-gray-800 text-white" 
-                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                    }`}
-                  >
-                    <span className="text-sm sm:text-base">{i + 1}</span>
-                  </button>
-                ))}
               </div>
-              <button 
-                onClick={goToNext} 
-                disabled={currentPage === totalPages} 
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
-              >
-                <span className="text-sm sm:text-base">&gt;</span>
-              </button>
+            )}
+          </>
+        )}
+
+        {/* Fallback if no extra posts */}
+        {allPosts.length <= 3 && (
+          <div className="text-center py-8 px-4">
+            <h2 className="text-xl font-semibold mb-4 text-gray-900 manrope">
+              All Blog Posts
+            </h2>
+            <p className="text-gray-500 text-base max-w-sm mx-auto manrope-medium">
+              Showing all {allPosts.length} blog posts in the featured section above.
+            </p>
+          </div>
+        )}
+
+
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">Explore by Category</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4 manrope-medium">
+          {categoryCards.map((cat) => (
+            <div key={cat.id} className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md">
+              <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+              <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
+                <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
+                <span className="text-white text-lg manrope-medium">{cat.label}</span>
+              </div>
             </div>
-          )}
-        </>
-      ) : (
-        <div className="text-center py-8 px-4">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 sm:mb-6 text-gray-900">All Blog Posts</h2>
-          <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">
-            {allPosts.length <= 5 
-              ? `Showing all ${allPosts.length} blog posts in the featured section above.` 
-              : "No additional blog posts to display. The latest 5 posts are shown in the featured section above."
-            }
-          </p>
+          ))}
         </div>
-      )}
-
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">Explore by Category</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4">
-        {categoryCards.map((cat) => (
-          <div key={cat.id} className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md">
-            <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-            <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
-              <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
-              <span className="text-white text-lg font-semibold">{cat.label}</span>
-            </div>
-          </div>
-        ))}
       </div>
-      </section>
+
+
+      
+
+
     </>
   );
 };

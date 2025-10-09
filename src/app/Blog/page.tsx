@@ -4,14 +4,14 @@ import React, { useState, useEffect } from "react";
 import Herosection from "../Components/Blog/Herosection";
 import Section2 from "../Components/Blog/Section2";
 import HomeShowcase from "../Components/Blog/BlogSection";
-import { Footer } from "../Components/Footer";
+import Footer from "../Components/Home/Footer";
 
-type Post = { 
-    id: number; 
-    title: string; 
-    date: string; 
-    readTime: string; 
-    img: string 
+type Post = {
+    id: number;
+    title: string;
+    date: string;
+    readTime: string;
+    img: string
 };
 
 // Default posts for demonstration
@@ -63,12 +63,12 @@ export default function Blog() {
         };
 
         window.addEventListener('storage', handleStorageChange);
-        
+
         // Also listen for custom events (for same-tab updates)
         const handleCustomStorageChange = () => {
             loadPosts();
         };
-        
+
         window.addEventListener('blogPostsUpdated', handleCustomStorageChange);
 
         return () => {
@@ -79,10 +79,10 @@ export default function Blog() {
 
     return (
         <div>
-            <Herosection />
-            <Section2 posts={posts} />
-            <HomeShowcase posts={posts} />
-            <Footer />
+          {/* <Herosection /> */}
+           <Section2 posts={posts} /> 
+    <HomeShowcase posts={posts} />
+                       <Footer />
         </div>
     );
 }

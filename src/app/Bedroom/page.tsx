@@ -11,12 +11,12 @@ import WardrobeCarousel from "../Components/Bedroom/WardrobeCarousel";
 export default function Bedroom(){
     return(
         <div>
-            <BedroomHeroSimple/> 
-            <BedroomSection/>
-  <WardrobeCarousel/>
+          <BedroomHeroSimple/> 
+           <BedroomSection/>
+ <WardrobeCarousel/>
             <Section3/> 
-           <Section4/>
-            <Footer/> 
+            <Section4/>
+            <Footer/>  
         </div>
     )
 }

@@ -8,29 +8,29 @@ export default function Section1() {
                 <div className="aboutus-section1-3xl-flex">
 
                     {/* Heading - 3XL optimized */}
-                    <h1 className="aboutus-section1-3xl-heading">
+                    <h1 className="aboutus-section1-3xl-heading manrope">
                         About Us
                     </h1>
 
                     {/* Description - 3XL optimized */}
-                    <p className="aboutus-section1-3xl-description text-center">
+                    <p className="aboutus-section1-3xl-description text-center manrope-medium">
                         Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.
-                        No templates. No compromises. Just interiors that truly fit you.</p>
+                        No templates. No compromises. Just interiors that truly fit you. </p>
 
                 </div>
             </div>
 
             {/* 2XL Screen - Large displays */}
             <div className="aboutus-section1-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="flex flex-row justify-between w-full h-[300px] mt-12 ">
+                <div className="flex flex-row justify-between w-full h-[300px] mt-3 ">
 
                     {/* Heading - 2XL optimized */}
-                    <h1 className="text-6xl manrope-medium mt-28 ml-25 leading-tight">
+                    <h1 className="text-6xl manrope -mt-5 ml-25 leading-tight">
                         About Us
                     </h1>
 
                     {/* Description - 2XL optimized */}
-                    <p className="w-[600px] mt-14 mr-20  manrope-medium text-[26px] leading-relaxed">
+                    <p className="w-[600px] -mt-8 mr-20  manrope-medium text-[26px] leading-relaxed">
                         Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.
                         No templates. No compromises. Just interiors that truly fit you.
                     </p>
@@ -43,7 +43,7 @@ export default function Section1() {
                 <div className="flex flex-row justify-between w-full h-[320px] mt-70 px-12">
 
                     {/* Heading - XL optimized */}
-                    <h1 className="text-6xl manrope-medium mt-20 ml-30 leading-tight">
+                    <h1 className="text-6xl manrope mt-20 ml-30 leading-tight">
                         About Us
                     </h1>
 
@@ -61,7 +61,7 @@ export default function Section1() {
                 <div className="flex flex-row justify-between w-full h-[280px] mt-16 px-8">
 
                     {/* Heading - LG optimized */}
-                    <h1 className="text-5xl manrope-medium mt-8 ml-8 leading-tight">
+                    <h1 className="text-5xl manrope mt-8 ml-8 leading-tight">
                         About Us
                     </h1>
 
@@ -80,7 +80,7 @@ export default function Section1() {
                 <div className="flex flex-col justify-between w-full h-auto mt-12 px-6">
                     
                     {/* Heading - MD optimized */}
-                    <h1 className="text-4xl manrope-medium mb-4 leading-tight">
+                    <h1 className="text-4xl manrope mb-4 leading-tight">
                         About Us
                     </h1>
                     
@@ -93,13 +93,13 @@ export default function Section1() {
 
             {/* SM Screen - Small displays and mobile */}
             <div className="block md:hidden">
-                <div className="flex flex-col justify-between w-full h-auto mt-8 px-4">
+                <div className="flex flex-col justify-between w-[full] max-w-[425px] h-auto mt-8 px-4">
 
                     <div className='flex items-center ml'>
                         <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
                             <div className='mb-2.5 w-80'>
                                 <h1 className='text-3xl manrope text-nowrap, ml-3'>About Us</h1>
-                                <p className='manrope-medium text-[1] mt-3'> Hub Interior is India’s most innovative interior design company.We offer <p>tailor-made solutions,  from modular to luxury, crafted around your lifestyle andprofession. No compromises.</p> Just interiors  that truly fit you </p>
+                                <p className='manrope-medium text-[1] mt-3 w-full'> Hub Interior is India’s most innovative interior design company.We offer tailor-made solutions,  from modular to luxury, crafted around your lifestyle andprofession. No compromises. Just interiors  that truly fit you </p>
                                     
                             </div>
 

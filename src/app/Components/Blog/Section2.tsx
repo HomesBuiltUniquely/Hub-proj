@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-type Post = { 
-    id: number; 
-    title: string; 
-    date: string; 
-    readTime: string; 
-    img: string 
+type Post = {
+    id: number;
+    title: string;
+    date: string;
+    readTime: string;
+    img: string
 };
 
 type TrendingItem = {
@@ -20,14 +20,14 @@ type TrendingItem = {
 export default function Section2({ posts = [] }: { posts?: Post[] }) {
     const router = useRouter();
     const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
-    
+
     // Get the latest 5 posts for Section2
     const latestPosts = posts.slice(0, 5);
 
     const handleReadMore = (postId: number) => {
         router.push(`/Blog/${postId}`);
     };
-    
+
     // Load trending data from localStorage
     useEffect(() => {
         const savedTrending = localStorage.getItem('trendingData');
@@ -43,7 +43,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
             ]);
         }
     }, []);
-    
+
     return (
         <>
             <style jsx>{`
@@ -53,6 +53,9 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                         display: none !important;
                     }
                 }
+
+                
+
                 
                 /* Ultra-wide layout for 2560px+ */
                 .section2-ultrawide {
@@ -272,10 +275,35 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                         color: #374151;
                     }
                 }
+
             `}</style>
-            
+
+            <style jsx>{`
+                
+                 /* Hide both sections by default on mobile */
+        .desktop-1440,
+        .desktop-1280 {
+          display: none;
+        }
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
+
+        /* Show 1440px section for screens 1440px and above */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block;
+          }
+        }
+                
+                `}</style>
+
             {/* Ultra-wide layout for 2560px+ */}
-            <div className="section2-ultrawide">
+            <div className="section2-ultrawide hidden 3xl:block">
                 <div className="section2-ultrawide-container">
                     {/* Left Section - 2nd and 3rd Latest Blogs */}
                     <div className="section2-ultrawide-left">
@@ -283,14 +311,14 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                             <div className="section2-ultrawide-left-card">
                                 <img src={latestPosts[1].img} alt="image" className="section2-ultrawide-left-image" />
                                 <div className="section2-ultrawide-left-content">
-                                    <div className="section2-ultrawide-left-meta">
+                                    <div className="section2-ultrawide-left-meta manrope-medium">
                                         <span>Blog • {latestPosts[1].readTime}</span>
                                         <span>{latestPosts[1].date}</span>
                                     </div>
-                                    <h3 className="section2-ultrawide-left-title">{latestPosts[1].title}</h3>
-                                    <button 
+                                    <h3 className="section2-ultrawide-left-title manrope">{latestPosts[1].title}</h3>
+                                    <button
                                         onClick={() => handleReadMore(latestPosts[1].id)}
-                                        className="section2-ultrawide-left-button"
+                                        className="section2-ultrawide-left-button manrope-medium"
                                     >
                                         Read More
                                     </button>
@@ -300,27 +328,27 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                             <div className="section2-ultrawide-left-card">
                                 <img src="bn.jpg" alt="image" className="section2-ultrawide-left-image" />
                                 <div className="section2-ultrawide-left-content">
-                                    <div className="section2-ultrawide-left-meta">
+                                    <div className="section2-ultrawide-left-meta manrope-medium">
                                         <span>Blog • 18 mins read</span>
                                         <span>July 28, 2025</span>
                                     </div>
-                                    <h3 className="section2-ultrawide-left-title">Designing the Heart of Your Home: Bedroom Ideas That Inspire</h3>
+                                    <h3 className="section2-ultrawide-left-title manrope">Designing the Heart of Your Home: Bedroom Ideas That Inspire</h3>
                                 </div>
                             </div>
                         )}
-                        
+
                         {latestPosts.length > 2 ? (
                             <div className="section2-ultrawide-left-card">
                                 <img src={latestPosts[2].img} alt="image" className="section2-ultrawide-left-image" />
                                 <div className="section2-ultrawide-left-content">
-                                    <div className="section2-ultrawide-left-meta">
+                                    <div className="section2-ultrawide-left-meta manrope-medium">
                                         <span>Blog • {latestPosts[2].readTime}</span>
                                         <span>{latestPosts[2].date}</span>
                                     </div>
-                                    <h3 className="section2-ultrawide-left-title">{latestPosts[2].title}</h3>
-                                    <button 
+                                    <h3 className="section2-ultrawide-left-title manrope">{latestPosts[2].title}</h3>
+                                    <button
                                         onClick={() => handleReadMore(latestPosts[2].id)}
-                                        className="section2-ultrawide-left-button"
+                                        className="section2-ultrawide-left-button manrope-medium"
                                     >
                                         Read More
                                     </button>
@@ -330,33 +358,33 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                             <div className="section2-ultrawide-left-card">
                                 <img src="bn.jpg" alt="image" className="section2-ultrawide-left-image" />
                                 <div className="section2-ultrawide-left-content">
-                                    <div className="section2-ultrawide-left-meta">
+                                    <div className="section2-ultrawide-left-meta manrope-medium">
                                         <span>Blog • 18 mins read</span>
                                         <span>July 28, 2025</span>
                                     </div>
-                                    <h3 className="section2-ultrawide-left-title">Designing the Heart of Your Home: Bedroom Ideas That Inspire</h3>
+                                    <h3 className="section2-ultrawide-left-title manrope">Designing the Heart of Your Home: Bedroom Ideas That Inspire</h3>
                                 </div>
                             </div>
                         )}
                     </div>
-                    
+
                     {/* Divider */}
                     <div className="section2-ultrawide-divider"></div>
-                    
+
                     {/* Middle Section - Latest Blog */}
                     <div className="section2-ultrawide-middle">
                         {latestPosts.length > 0 ? (
                             <>
                                 <img src={latestPosts[0].img} alt="image" className="section2-ultrawide-middle-image" />
                                 <div className="section2-ultrawide-middle-content">
-                                    <div className="section2-ultrawide-middle-meta">
+                                    <div className="section2-ultrawide-middle-meta manrope-medium">
                                         <span>Blog • {latestPosts[0].readTime}</span>
                                         <span>{latestPosts[0].date}</span>
                                     </div>
-                                    <h2 className="section2-ultrawide-middle-title">{latestPosts[0].title}</h2>
-                                    <button 
+                                    <h2 className="section2-ultrawide-middle-title manrope">{latestPosts[0].title}</h2>
+                                    <button
                                         onClick={() => handleReadMore(latestPosts[0].id)}
-                                        className="section2-ultrawide-middle-button"
+                                        className="section2-ultrawide-middle-button manrope-medium"
                                     >
                                         Read More
                                     </button>
@@ -366,32 +394,32 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                             <>
                                 <img src="bn.jpg" alt="image" className="section2-ultrawide-middle-image" />
                                 <div className="section2-ultrawide-middle-content">
-                                    <div className="section2-ultrawide-middle-meta">
+                                    <div className="section2-ultrawide-middle-meta manrope-medium">
                                         <span>Blog • 18 mins read</span>
                                         <span>July 28, 2025</span>
                                     </div>
-                                    <h2 className="section2-ultrawide-middle-title">Designing the Heart of Your Home: Bedroom Ideas That Inspire Your Mind</h2>
+                                    <h2 className="section2-ultrawide-middle-title manrope">Designing the Heart of Your Home: Bedroom Ideas That Inspire Your Mind</h2>
                                 </div>
                             </>
                         )}
                     </div>
-                    
+
                     {/* Divider */}
                     <div className="section2-ultrawide-divider"></div>
-                    
+
                     {/* Right Section - Most Trending Items */}
                     <div className="section2-ultrawide-right">
-                        <h3 className="section2-ultrawide-right-title">Most Trending</h3>
+                        <h3 className="section2-ultrawide-right-title manrope">Most Trending</h3>
                         <div className="section2-ultrawide-right-list">
                             {trendingData.map((item) => (
                                 <div key={item.id} className="section2-ultrawide-right-item">
-                                    <div className="section2-ultrawide-right-meta">
+                                    <div className="section2-ultrawide-right-meta manrope-medium">
                                         <span>Blog • {item.readTime}</span>
                                         <span>{item.date}</span>
                                     </div>
                                     <div className="section2-ultrawide-right-content">
-                                        <h4 className="section2-ultrawide-right-item-title">{item.title}</h4>
-                                        <p className="section2-ultrawide-right-item-subtitle">{item.subtitle}</p>
+                                        <h4 className="section2-ultrawide-right-item-title manrope">{item.title}</h4>
+                                        <p className="section2-ultrawide-right-item-subtitle manrope-medium">{item.subtitle}</p>
                                     </div>
                                 </div>
                             ))}
@@ -400,9 +428,163 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                 </div>
             </div>
 
+
+
             {/* Regular layout for screens below 2560px */}
-            <div className="section2-regular">
-            <div className="w-screen h-screen flex">
+            <div className="section2-regular hidden md:block 3xl:hidden">
+                <div className="w-screen h-screen  hidden md:block">
+                    <div className="flex ">
+                        {/* Left Section - 2nd and 3rd Latest Blogs */}
+                        <div className="w-[400px] h-[300px] mt-16 ml-8">
+                            {latestPosts.length > 1 ? (
+                                <>
+                                    <div className="relative">
+                                        <img src={latestPosts[1].img} alt="image" className="w-[400px] h-[250px] rounded-4xl " />
+                                    </div>
+                                    <div className="flex justify-between mt-4 w-[340px] ml-6 manrope-medium">
+                                        <p>Blog • {latestPosts[1].readTime}</p>
+                                        <p>{latestPosts[1].date}</p>
+                                    </div>
+                                    <p className="pt-4 pl-2 text-center pr-3 manrope mb-4">{latestPosts[1].title}</p>
+                                    <button
+                                        onClick={() => handleReadMore(latestPosts[1].id)}
+                                        className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium mx-2"
+                                    >
+                                        Read More
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="relative">
+                                        <img src="bn.jpg" alt="image" className="w-[400px] h-[250px] rounded-4xl" />
+                                    </div>
+                                    <div className="flex justify-between mt-4 w-[340px] ml-6 manrope-medium">
+                                        <p>Blog - 18 mins read</p>
+                                        <p>July 28, 2025</p>
+                                    </div>
+                                    <p className="pt-4 pl-2 text-center pr-3 manrope">Designing the Heart of Your </p>
+                                    <p className="pl-4 text-center manrope">Home: Bedroom Ideas That Inspire</p>
+                                </>
+                            )}
+
+                            {latestPosts.length > 2 ? (
+                                <>
+                                    <div className="relative">
+                                        <img src={latestPosts[2].img} alt="image" className="w-[400px] h-[250px] rounded-4xl mt-6" />
+                                    </div>
+                                    <div className="flex justify-between mt-4 w-[340px] ml-6 manrope-medium">
+                                        <p>Blog • {latestPosts[2].readTime}</p>
+                                        <p>{latestPosts[2].date}</p>
+                                    </div>
+                                    <p className="pt-4 pl-2 text-center pr-3 manrope mb-4">{latestPosts[2].title}</p>
+                                    <button
+                                        onClick={() => handleReadMore(latestPosts[2].id)}
+                                        className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium mx-2"
+                                    >
+                                        Read More
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="relative">
+                                        <img src="bn.jpg" alt="image" className="w-[400px] h-[250px] rounded-4xl mt-6" />
+                                    </div>
+                                    <div className="flex justify-between mt-4 w-[340px] ml-6 manrope-medium">
+                                        <p>Blog - 18 mins read</p>
+                                        <p>July 28, 2025</p>
+                                    </div>
+                                    <p className="pt-4 pl-2 text-center pr-3 manrope">Designing the Heart of Your </p>
+                                    <p className="pl-4 text-center manrope">Home: Bedroom Ideas That Inspire</p>
+                                </>
+                            )}
+                        </div>
+
+                        <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
+
+                        {/* Middle Section - Latest Blog */}
+                        <div className="w-[500px] h-[350px] bg-red-400 ml-10 mt-20 rounded-4xl ">
+                            {latestPosts.length > 0 ? (
+                                <>
+                                    <div className="relative">
+                                        <img src={latestPosts[0].img} className="w-[500px] h-[350px] rounded-4xl" />
+                                    </div>
+                                    <div className="flex justify-between mt-4 w-[340px] ml-20 manrope-medium">
+                                        <p>Blog • {latestPosts[0].readTime}</p>
+                                        <p>{latestPosts[0].date}</p>
+                                    </div>
+                                    <div className="w-[400px] mx-auto pt-10 text-3xl manrope mb-6">
+                                        <div>{latestPosts[0].title}</div>
+                                    </div>
+                                    <div className="w-[400px] mx-auto">
+                                        <button
+                                            onClick={() => handleReadMore(latestPosts[0].id)}
+                                            className="w-full bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors manrope-medium text-lg"
+                                        >
+                                            Read More
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="relative">
+                                        <img src="bn.jpg" className="w-[500px] h-[350px] rounded-4xl" />
+                                    </div>
+                                    <div className="flex justify-between mt-4 w-[340px] ml-20 manrope-medium">
+                                        <p>Blog - 18 mins read</p>
+                                        <p>July 28, 2025</p>
+                                    </div>
+                                    <div className="w-[400px] mx-auto pt-10 text-3xl manrope">
+                                        <div>Designing the Heart of Your </div>
+                                        <div>Home: Bedroom Ideas That Inspire</div>
+                                        <div>Your Mind</div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+
+                        <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
+
+                        {/* Right Section - Most Trending Items Only */}
+                        <div className="w-[400px] h-[600px] mt-16 ml-8">
+                            {/* Most Trending Items - Scrollable */}
+                            <div className="mt-8">
+                                <h3 className="text-2xl font-bold mb-4 text-gray-900 manrope">Most Trending</h3>
+                                <div className="h-[500px] overflow-y-auto pr-2">
+                                    {trendingData.map((item) => (
+                                        <div key={item.id} className="mb-6">
+                                            <div className="flex justify-between text-[14px] w-[340px] manrope-medium">
+                                                <p>Blog • {item.readTime}</p>
+                                                <p>{item.date}</p>
+                                            </div>
+                                            <div className="mt-2 pr-20">
+                                                <p className="pt-4 pr-14 text-center manrope text-[16px]">{item.title}</p>
+                                                <p className="text-center manrope text-[16px]">{item.subtitle}</p>
+                                            </div>
+                                            <div className="w-[350px] h-[1px] bg-amber-900 center mt-4 mb-4 "></div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+            {/* 1280px layout */}
+
+
+            <div className="desktop-1280 w-full h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block">
+
                 <div className="flex ">
                     {/* Left Section - 2nd and 3rd Latest Blogs */}
                     <div className="w-[400px] h-[300px] mt-16 ml-8">
@@ -411,14 +593,14 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 <div className="relative">
                                     <img src={latestPosts[1].img} alt="image" className="w-[400px] h-[250px] rounded-4xl" />
                                 </div>
-                                <div className="flex justify-between mt-4 w-[340px] ml-6">
+                                <div className="flex justify-between mt-4 w-[340px] ml-6 manrope-medium">
                                     <p>Blog • {latestPosts[1].readTime}</p>
                                     <p>{latestPosts[1].date}</p>
                                 </div>
                                 <p className="pt-4 pl-2 text-center pr-3 manrope mb-4">{latestPosts[1].title}</p>
-                                <button 
+                                <button
                                     onClick={() => handleReadMore(latestPosts[1].id)}
-                                    className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium mx-2"
+                                    className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium mx-2"
                                 >
                                     Read More
                                 </button>
@@ -428,7 +610,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 <div className="relative">
                                     <img src="bn.jpg" alt="image" className="w-[400px] h-[250px] rounded-4xl" />
                                 </div>
-                                <div className="flex justify-between mt-4 w-[340px] ml-6">
+                                <div className="flex justify-between mt-4 w-[340px] ml-6 manrope-medium">
                                     <p>Blog - 18 mins read</p>
                                     <p>July 28, 2025</p>
                                 </div>
@@ -436,20 +618,20 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 <p className="pl-4 text-center manrope">Home: Bedroom Ideas That Inspire</p>
                             </>
                         )}
-                        
+
                         {latestPosts.length > 2 ? (
                             <>
                                 <div className="relative">
                                     <img src={latestPosts[2].img} alt="image" className="w-[400px] h-[250px] rounded-4xl mt-6" />
                                 </div>
-                                <div className="flex justify-between mt-4 w-[340px] ml-6">
+                                <div className="flex justify-between mt-4 w-[340px] ml-6 manrope-medium">
                                     <p>Blog • {latestPosts[2].readTime}</p>
                                     <p>{latestPosts[2].date}</p>
                                 </div>
                                 <p className="pt-4 pl-2 text-center pr-3 manrope mb-4">{latestPosts[2].title}</p>
-                                <button 
+                                <button
                                     onClick={() => handleReadMore(latestPosts[2].id)}
-                                    className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium mx-2"
+                                    className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium mx-2"
                                 >
                                     Read More
                                 </button>
@@ -459,7 +641,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 <div className="relative">
                                     <img src="bn.jpg" alt="image" className="w-[400px] h-[250px] rounded-4xl mt-6" />
                                 </div>
-                                <div className="flex justify-between mt-4 w-[340px] ml-6">
+                                <div className="flex justify-between mt-4 w-[340px] ml-6 manrope-medium">
                                     <p>Blog - 18 mins read</p>
                                     <p>July 28, 2025</p>
                                 </div>
@@ -468,9 +650,9 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                             </>
                         )}
                     </div>
-                    
+
                     <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
-                    
+
                     {/* Middle Section - Latest Blog */}
                     <div className="w-[500px] h-[350px] bg-red-400 ml-10 mt-20 rounded-4xl ">
                         {latestPosts.length > 0 ? (
@@ -478,7 +660,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 <div className="relative">
                                     <img src={latestPosts[0].img} className="w-[500px] h-[350px] rounded-4xl" />
                                 </div>
-                                <div className="flex justify-between mt-4 w-[340px] ml-20">
+                                <div className="flex justify-between mt-4 w-[340px] ml-20 manrope-medium">
                                     <p>Blog • {latestPosts[0].readTime}</p>
                                     <p>{latestPosts[0].date}</p>
                                 </div>
@@ -486,9 +668,9 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                     <div>{latestPosts[0].title}</div>
                                 </div>
                                 <div className="w-[400px] mx-auto">
-                                    <button 
+                                    <button
                                         onClick={() => handleReadMore(latestPosts[0].id)}
-                                        className="w-full bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors font-medium text-lg"
+                                        className="w-full bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors manrope-medium text-lg"
                                     >
                                         Read More
                                     </button>
@@ -499,7 +681,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                 <div className="relative">
                                     <img src="bn.jpg" className="w-[500px] h-[350px] rounded-4xl" />
                                 </div>
-                                <div className="flex justify-between mt-4 w-[340px] ml-20">
+                                <div className="flex justify-between mt-4 w-[340px] ml-20 manrope-medium">
                                     <p>Blog - 18 mins read</p>
                                     <p>July 28, 2025</p>
                                 </div>
@@ -511,14 +693,14 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                             </>
                         )}
                     </div>
-                    
+
                     <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
-                    
+
                     {/* Right Section - Most Trending Items Only */}
                     <div className="w-[400px] h-[600px] mt-16 ml-8">
                         {/* Most Trending Items - Scrollable */}
                         <div className="mt-8">
-                            <h3 className="text-2xl font-bold mb-4 text-gray-900">Most Trending</h3>
+                            <h3 className="text-2xl font-bold mb-4 text-gray-900 manrope">Most Trending</h3>
                             <div className="h-[500px] overflow-y-auto pr-2">
                                 {trendingData.map((item) => (
                                     <div key={item.id} className="mb-6">
@@ -528,7 +710,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                                         </div>
                                         <div className="mt-2 pr-20">
                                             <p className="pt-4 pr-14 text-center manrope text-[16px]">{item.title}</p>
-                                            <p className="text-center manrope text-[16px]">{item.subtitle}</p>
+                                            <p className="text-center manrope-medium text-[16px]">{item.subtitle}</p>
                                         </div>
                                         <div className="w-[350px] h-[1px] bg-amber-900 center mt-4 mb-4 "></div>
                                     </div>
@@ -536,9 +718,85 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                             </div>
                         </div>
                     </div>
+
+
                 </div>
+
             </div>
-        </div>
+
+
+
+            {/* Mobile Version */}
+            <div className="block md:hidden px-4 py-6 w-[full] max-w-[425px] mx-auto">
+                {/* Latest Blog Post */}
+                {latestPosts.length > 0 && (
+                    <div className="mb-8">
+                        <img
+                            src={latestPosts[0].img}
+                            alt="Latest blog image"
+                            className="w-full h-52 object-cover rounded-xl"
+                        />
+                        <div className="flex justify-between text-sm text-gray-500 mt-2 manrope-medium">
+                            <span>Blog • {latestPosts[0].readTime}</span>
+                            <span>{latestPosts[0].date}</span>
+                        </div>
+                        <h2 className="text-lg font-semibold mt-2 text-center manrope">
+                            {latestPosts[0].title}
+                        </h2>
+                        <button
+                            onClick={() => handleReadMore(latestPosts[0].id)}
+                            className="mt-3 w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium"
+                        >
+                            Read More
+                        </button>
+                    </div>
+                )}
+
+                {/* 2nd and 3rd Latest Posts */}
+                {[1, 2].map((index) =>
+                    latestPosts.length > index ? (
+                        <div key={latestPosts[index].id} className="mb-8">
+                            <img
+                                src={latestPosts[index].img}
+                                alt={`Blog ${index + 1}`}
+                                className="w-full h-52 object-cover rounded-xl"
+                            />
+                            <div className="flex justify-between text-sm text-gray-500 mt-2 manrope-medium">
+                                <span>Blog • {latestPosts[index].readTime}</span>
+                                <span>{latestPosts[index].date}</span>
+                            </div>
+                            <h2 className="text-lg font-semibold mt-2 text-center manrope">
+                                {latestPosts[index].title}
+                            </h2>
+                            <button
+                                onClick={() => handleReadMore(latestPosts[index].id)}
+                                className="mt-3 w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium"
+                            >
+                                Read More
+                            </button>
+                        </div>
+                    ) : (
+                        <div key={index} className="mb-8">
+                            <img
+                                src="bn.jpg"
+                                alt="Placeholder"
+                                className="w-full h-52 object-cover rounded-xl"
+                            />
+                            <div className="flex justify-between text-sm text-gray-500 mt-2 manrope-medium">
+                                <span>Blog • 18 mins read</span>
+                                <span>July 28, 2025</span>
+                            </div>
+                            <h2 className="text-lg font-semibold mt-2 text-center manrope">
+                                Designing the Heart of Your Home: Bedroom Ideas That Inspire
+                            </h2>
+                        </div>
+                    )
+                )}
+
+
+            </div>
+
+
         </>
     );
 }

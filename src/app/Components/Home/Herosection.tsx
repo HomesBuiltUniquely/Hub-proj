@@ -118,7 +118,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl manrope-medium shadow mr-15 mt-4">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -172,7 +172,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ddcdc1]  hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ddcdc1]  hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope-medium shadow mr-15 mt-4">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
