@@ -135,7 +135,7 @@ export default function Section1() {
     </div>
 
     {/* Mobile version - Adaptive */}
-    <div className="block md:hidden" >
+    <div className="block md:hidden -mt-20" >
       <div className="w-full min-h-[700px] bg-[#F1F2F6] mt-6 px-4">
         <h1 className="text-center text-sm sm:text-base md:text-lg manrope-medium mt-4 px-1">
            HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions from modular kitchen interiors to luxury villa interiors designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.

@@ -16,7 +16,7 @@ type Post = {
 
 // Default posts for demonstration
 const defaultPosts: Post[] = [
-    { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png" },
+    { id: 1, title: "How Mr.Akhil's House Became Bhoo Aabharana (And Why We're Still Obsessed)?", date: "September 5, 2025", readTime: "10 mins read", img: "/reelsiam.png" },
     { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png" },
     { id: 3, title: "Living Room Makeovers With a Wow Factor", date: "July 30, 2025", readTime: "10 mins read", img: "/3.png" },
     { id: 4, title: "Bathroom Design Trends for 2025", date: "August 1, 2025", readTime: "8 mins read", img: "/bn.jpg" },

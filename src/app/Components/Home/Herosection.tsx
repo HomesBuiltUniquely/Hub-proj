@@ -96,7 +96,7 @@ const Herosection: React.FC = () => {
         }
       `}</style>
       {/* Desktop Version - For screens 1440px and above */}
-      <div className="desktop-1440 w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
+      <div className="desktop-1440 w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative">
       {/* Background Image Carousel */}
       <div className="absolute inset-0 w-[1440px]">
         {heroSlides.map((slide, index) => (
@@ -118,7 +118,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className=" manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -166,13 +166,13 @@ const Herosection: React.FC = () => {
 
       {/* Navbar */}
       <div className="relative z-10 flex items-center justify-between -mt-15">
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" />
+        <div onClick={handleClick}><Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" /></div>
         <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5">
           <OfferingsDropdown textColor="text-white" />
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ddcdc1]  hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="manrope-medium bg-[#ddcdc1]  hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -204,20 +204,20 @@ const Herosection: React.FC = () => {
       </div>
 
        {/* Mobile Version - Different Design */}
-      <div className="block md:hidden">
+      <div className="block md:hidden w-[375px] h-[700px] mx-auto rounded-4xl overflow-hidden relative -mt-5 mb-10">
 
           {/* Mobile Version 1 - Small Mobile (320px to 479px) */}
-          <div className="mobile-small w-[350px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+          <div className="mobile-small w-[370px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
              {/* Mobile Header */}
             <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
 
-            <div className="relative z-20 flex items-center justify-between mt-4">
-              <img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6"></img>
+            <div onClick={handleClick} className="relative z-20 flex items-center justify-between mt-4">
+              <img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-10"></img>
             </div>
             </div>
 
             
-            <img className="w-[350px] h-[630px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+            <img className="w-[370px] h-[650px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
             <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
              {/* Horizontal line above button */}
             <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
@@ -228,7 +228,7 @@ const Herosection: React.FC = () => {
              {/* Mobile Header */}
             <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
 
-            <div className="relative z-20 flex items-center justify-between mt-4 ">
+            <div onClick={handleClick} className="relative z-20 flex items-center justify-between mt-4 ">
               <img src="/redlogo.png" className="w-[110px] h-[120px] pb-6 -mt-5 mb-7 pr-8"></img>
             </div>
             </div>
