@@ -122,7 +122,7 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
                           className="object-cover group-hover:scale-105 transition-transform duration-300 "
                         />
                       </div>
-                      <h4 className="text-sm lg:text-[20px] font-medium text-white absolute top-0 ml-3 mt-4 manrope ">{card.title}</h4>
+                      <h4 className="text-sm lg:text-[20px] font-medium text-white absolute top-0 ml-3 mt-4 manrope  ">{card.title}</h4>
                       <div className="p-2 lg:p-3 flex items-center justify-between absolute  bottom-0 right-0">
                         <div className="w-5 h-5 lg:w-6 lg:h-6 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-amber-100 transition-colors">
                           <svg className="w-2 h-2 lg:w-3 lg:h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +145,7 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
               <ul className="space-y-3">
                 {offerings.map((offering, index) => (
                   <li key={index}>
-                    <button className="text-left text-gray-700 hover:text-[#DDCCC1] transition-colors w-full text-sm manrope-medium">
+                    <button className="text-left text-gray-700 hover:text-[#DDCCC1] transition-colors w-full text-sm manrope">
                       {offering}
                     </button>
                   </li>

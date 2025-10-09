@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Section1() {
   return (
-    
+   
     <div>
 
     <style jsx>{`
@@ -28,7 +28,7 @@ export default function Section1() {
           }
         }
       `}</style>
-      
+     
     <div className="desktop-1440 w-full h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block desktop-1440">
       <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto manrope-medium">
        HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
@@ -61,7 +61,7 @@ export default function Section1() {
           <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img6.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
           </div>
           <div className="w-[330px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-10 pl-6  mt-3">
-            Factory 
+            Factory
             <h1 className="text-3xl manrope-medium pt-3">Finish</h1>
             <p className="text-sm manrope-medium pt-2 w-[250px]">Enjoy flawless factory-finish interiors with premium craftsmanship, seamless edges, and unmatched detailing — all tailored to your home.</p>
           </div>
@@ -114,7 +114,7 @@ export default function Section1() {
           <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img6.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
           </div>
           <div className="w-[280px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-6 pl-6  mt-3">
-            Factory 
+            Factory
             <h1 className="text-3xl manrope-medium pt-3">Finish</h1>
             <p className="text-sm manrope-medium pt-2 w-[220px]">Enjoy flawless factory-finish interiors with premium craftsmanship, seamless edges, and unmatched detailing — all tailored to your home.</p>
           </div>
@@ -135,15 +135,15 @@ export default function Section1() {
     </div>
 
     {/* Mobile version - Adaptive */}
-    <div className="block md:hidden -mt-20" >
+    <div className="block md:hidden" >
       <div className="w-full min-h-[700px] bg-[#F1F2F6] mt-6 px-4">
         <h1 className="text-center text-sm sm:text-base md:text-lg manrope-medium mt-4 px-1">
            HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions from modular kitchen interiors to luxury villa interiors designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
         </h1>
-        
+       
         <div className="mt-10 text-4xl sm:text-3xl md:text-4xl wulkan-display-bold pl-4 sm:pl-6"> Why Choose Us</div>
         <p className="text-left text-sm sm:text-base mt-4 manrope-medium pl-4 sm:pl-6 max-w-sm">We dont just deliver projects, we deliver experiences that last.</p>
-        
+       
         {/* Mobile Grid Container */}
         <div className="flex justify-center mt-8 px-4">
           <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-sm">
@@ -159,7 +159,7 @@ export default function Section1() {
                 Warranty
               </div>
             </div>
-            
+           
             <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4">
               <h1 className="text-4xl sm:text-5xl manrope font-bold text-[#ef0101] mb-2  -mt-10">
                 0%
@@ -168,7 +168,7 @@ export default function Section1() {
                 EMI
               </div>
             </div>
-            
+           
             {/* Bottom Row */}
             <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4">
               <h1 className="text-4xl sm:text-5xl manrope font-bold text-[#ef0101] mb-2">
@@ -181,7 +181,7 @@ export default function Section1() {
                 Delivery
               </div>
             </div>
-            
+           
             <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-2">
               <h1 className="text-3xl sm:text-5xl manrope manrope text-[#ef0101] mb-2">
                 Factory
