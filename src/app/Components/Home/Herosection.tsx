@@ -7,6 +7,7 @@ import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import OverlapNavBar from "../OverlapNavBar";
+import Link from "next/link";
 
 const Herosection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -175,7 +176,7 @@ const Herosection: React.FC = () => {
 
       {/* Navbar */}
       <div className="relative z-10 flex items-center justify-between -mt-15">
-        <a href="/"><Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" /></a>
+        <Link href="/"><Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" /></Link>
         <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5">
           <OfferingsDropdown textColor="text-white" />
           <ExploreRoomsDropdown textColor="text-white" />
@@ -218,7 +219,7 @@ const Herosection: React.FC = () => {
           {/* Mobile Header */}
           <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
             <div className="relative z-20 flex items-center justify-between mt-4">
-            <a href="/"><img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6" /></a>
+            <Link href="/"><img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6" /></Link>
             </div>
           </div>
           <img className="w-[350px] h-[630px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
@@ -236,7 +237,7 @@ const Herosection: React.FC = () => {
           {/* Mobile Header */}
           <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
             <div className="relative z-20 flex items-center justify-between mt-4">
-              <a href="/"><img src="/redlogo.png" className="w-[220px] h-[150px] pb-8 -mt-5 mb-7 pr-30 -ml-2 " /></a>
+              <Link href="/"><img src="/redlogo.png" className="w-[220px] h-[150px] pb-8 -mt-5 mb-7 pr-30 -ml-2 " /></Link>
             </div>
           </div>
           <img className="w-[400px] h-[650px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
