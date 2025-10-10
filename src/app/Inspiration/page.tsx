@@ -5,9 +5,9 @@ import Section2 from "../Components/Inspiration/Section2";
 export default function InspirationPage() {
   return (
     <div>
-      {/* <ContactHeader/> */}
+      <ContactHeader/>
  <Section2/>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 }

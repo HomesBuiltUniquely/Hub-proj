@@ -18,18 +18,18 @@ import Carousel from "../Components/AboutUs/Demo";
 export default function Aboutus() {
   return (
     <div>
-      <Herosection />
-      <Section1 />
+      {/* <Herosection /> */}
+       <Section1 />
       <Section2 />
-      <Section3 />
-      <Section4 />
-      <Section5 />
-       {/*  <Section6 />
+    <Section3 />
+    <Section4 />
+        <Section5 />
+   <Section6 />
       <Section7 />
-      <Section8 />
-      <Section9 />
-      <Section10 />
-      <Footer /> */}
+   {/* <Section8 /> */}
+    {/*        <Section9 />
+      <Section10 />*/}
+      <Footer />  
 
 
 

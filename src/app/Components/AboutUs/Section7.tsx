@@ -486,137 +486,126 @@ const Section7 = () => {
       </section>
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden py-105 px-4 ">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col gap-6">
-            {/* Left Side - Image Container */}
+      <section className="block md:hidden py-10 px- mb-150">
+        <div className="w-full max-w-[425px] mx-auto ">
 
 
-            {/* Right Side - Values Content */}
-            <div className="w-full mb-8">
-              {/* Values Header */}
-              {/* <h1 className="text-3xl manrope-medium pt-8 pl-4 leading-tight">
-                Values
-              </h1> */}
-
-              {/* Values Description */}
-              {/* <p className="w-full ml-4 manrope-medium pt-2 text-xs leading-relaxed">
-                At HUB Interiors, — it&#39;s about creating spaces that reflect you.
-              </p> */}
-
-              {/* Mobile Version Starts here */}
+          {/* Mobile Version Starts here */}
 
 
 
-              
-                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div> */}
-              <div className="space-y-4 ">
 
-                <div className='flex items-center ml'>
-                  <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
-                    <div className='mb-2.5 w-80'>
-                      <h1 className='text-3xl manrope text-nowrap, ml-3'>Values</h1>
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div> */}
+          <div className="space-y-4 ">
 
-
-                   {/* Values Points */}
-              {/* Value Point 1 */}
-
-                  <div className='bg-white h-95 rounded-3xl mt-8'>
-
-                  <div className="flex items-start">
-                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center m">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    Integrity: Building trust through honesty, transparency, and respect in everything we do.
-                  </div>
-                </div>
+            <div className='flex items-center ml'>
+              <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
+                <div className='mb-2.5 w-screen  min-w-[320px] max-w-[425px]'>
+                  <h1 className='text-3xl manrope text-nowrap, ml-3'>Values</h1>
 
 
+                  {/* Values Points */}
+                  
 
-                {/* Value Point 2 */}
-                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                <div className="flex items-start">
-                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
-                  </div>
-                </div>
+                  <div className='bg-white h-full w-screen rounded-3xl mt-8'>
 
-                {/* Value Point 3 */}
-                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                <div className="flex items-start">
-                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
+                    {/* Value Point 1 */}
 
-                  </div>
-                </div>
-
-                {/* Value Point 4 */}
-                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                <div className="flex items-start">
-                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    Excellence: Designing homes that are timeless, functional, and crafted with precision.
-                  </div>
-                </div>
+                    <div className="flex items-start">
+                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center m">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
+                        Integrity: Building trust through honesty, transparency, and respect in everything we do.
+                      </div>
+                    </div>
 
 
 
-                {/* Value Point 5 */}
-                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                <div className="flex items-start">
-                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
-                  </div>
-                </div>
+                    {/* Value Point 2 */}
+                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
+                    <div className="flex items-start">
+                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
+                        Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
+                      </div>
+                    </div>
+
+                    {/* Value Point 3 */}
+                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
+                    <div className="flex items-start">
+                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
+                        Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
+
+                      </div>
+                    </div>
+
+                    {/* Value Point 4 */}
+                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
+                    <div className="flex items-start">
+                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
+                        Excellence: Designing homes that are timeless, functional, and crafted with precision.
+                      </div>
+                    </div>
 
 
 
-                {/* Value Point 6 */}
-                {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                <div className="flex items-start">
-                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                    Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
-                  </div>
-                </div>
-</div>
+                    {/* Value Point 5 */}
+                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
+                    <div className="flex items-start">
+                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
+                        Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
+                      </div>
+                    </div>
 
-                  <img src="6.png" alt="" className='mt-10'/>
 
+
+                    {/* Value Point 6 */}
+                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
+                    <div className="flex items-start">
+                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
+                        Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
+                      </div>
                     </div>
                   </div>
+
+
+
+
                 </div>
-
-
               </div>
             </div>
+
           </div>
+
+
+
         </div>
       </section>
 

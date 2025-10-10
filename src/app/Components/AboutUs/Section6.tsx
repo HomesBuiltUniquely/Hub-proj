@@ -222,29 +222,33 @@ const Section6 = () => {
       </section>
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden py-10 px-4">
+      <section className="block md:hidden">
 
 
-        <div className="flex flex-col justify-between h-[150px] gap-4">
+        <div className="w-full max-w-[425px] mx-auto px-4">
+          <div className="flex flex-col justify-between min-h-[150px]">
+            <div className="flex items-start mt-10">
+              {/* Vertical bar */}
+              <div className="bg-[#ebd657] w-[20px] h-10 mr-3"></div>
 
+              {/* Content */}
+              <div className="flex flex-col space-y-4">
+                <h1 className="text-3xl font-semibold manrope whitespace-nowrap">Mission</h1>
 
-          <div className='flex items-center ml'>
-            <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
-              <div className='mb-2.5 w-80'>
-                <h1 className='text-3xl manrope text-nowrap, ml-3'>Mission</h1>
-                <p className='text-xs manrope-medium mt-3'> At HUB Interiors, — it&#39;s about creating spaces<p>that reflect you.</p></p>
-                <p className='text-xs manrope-medium mt-6'>
-                  To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step. </p>
+                <p className="text-md manrope-medium">
+                  At HUB Interiors — it’s about creating spaces that reflect you.
+                </p>
 
-                <img src="5.png" alt="Interior Design" className='rounded-3xl mt-8'/>
+                <p className="text-md manrope-medium">
+                  To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+                </p>
 
+                <img
+                  src="5.png"  alt="Interior Design"  className="rounded-3xl w-full max-w-full mt-4"/>
               </div>
             </div>
           </div>
-
         </div>
-
-
 
 
         <div className="max-w-sm mx-auto">
@@ -253,8 +257,8 @@ const Section6 = () => {
 
           {/* Mission Points */}
           {/* <div className="space-y-4"> */}
-            {/* Mission Point 1 */}
-            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+          {/* Mission Point 1 */}
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -266,8 +270,8 @@ const Section6 = () => {
               </div>
             </div> */}
 
-            {/* Mission Point 2 */}
-            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+          {/* Mission Point 2 */}
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -279,8 +283,8 @@ const Section6 = () => {
               </div>
             </div> */}
 
-            {/* Mission Point 3 */}
-            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+          {/* Mission Point 3 */}
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -292,8 +296,8 @@ const Section6 = () => {
               </div>
             </div> */}
 
-            {/* Mission Point 4 */}
-            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+          {/* Mission Point 4 */}
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -307,6 +311,7 @@ const Section6 = () => {
           {/* </div> */}
         </div>
       </section>
+
 
       {/* Pure CSS for 3XL - 2560*1440 resolution */}
       <style jsx>{`

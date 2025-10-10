@@ -229,28 +229,28 @@ export default function Section4(){
             </div>
 
             {/* SM Screen - Small displays and mobile */}
-            <div className="block md:hidden">
-                <div className="h-[400px] px-4 mt-125 mb-20">
+            <div className="block md:hidden  w-full max-w-[425px] ">
+                <div className="h-[400px] px-4 mt-120 mb-20">
 
                     {/* Header Section - SM optimized */}
-                    <div className="flex flex-col justify-between h-[150px] gap-4">
-
-
-                        <div className='flex items-center ml'>
-                            <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
-                                <div className='mb-2.5 w-80'>
-                                    <h1 className='text-3xl manrope text-nowrap, ml-3'>Brand Eco <div>System</div></h1>
-                                    <p className='manrope-medium text-xs w-full leading-relaxed mt-4'> The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
-                                    </p>
-
-                                </div>
-                            </div>
+                    
+                     
+                <div className="flex flex-col space-y-4">
+                    <div className="flex items-start space-x-3">
+                        <div className="bg-[#ebd657] w-[15px] h-10"></div>
+                        <div>
+                            <h1 className="text-3xl manrope">Brand Eco <div>System</div></h1>
+                            <p className="text-base font-medium manrope-medium mt-3">
+                                The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, offices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
+                            </p>
                         </div>
-
                     </div>
+                </div>
+            
+                    
 
                     {/* Cards Section - SM optimized */}
-                    <div className="flex flex-wrap justify-start gap-3 mt-15">
+                    <div className="flex flex-wrap justify-start gap-3 mt-10">
 
                         {/* Card 1 */}
                         <div className="w-[700px] h-[240px] mx-auto rounded-xl bg-white shadow-lg ">

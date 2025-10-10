@@ -7,14 +7,14 @@ export default function Section9() {
   const travers = [
     {
       img: "/r.png",
-      name: "Ranjit P Raj",
+      name: "Ranjith P Raj",
       title: "Founder",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
       linkedin: "https://www.linkedin.com/in/ranjithpraj/"
     },
     {
       img: "/s.png",
-      name: "Susmitha ",
+      name: "Susmita ",
       title: "Co-Founder",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
       linkedin: "https://www.linkedin.com/in/susmita-mondal-955344b3/"
@@ -322,8 +322,8 @@ export default function Section9() {
       </section>
 
       {/* SM Screen - Small displays and mobile */}
-      <section className="block md:hidden">
-        <div className='bg-[#ebd657] w-[3px] h-10 mt-110 ml-5'>
+      <section className="block md:hidden w-[320px] max-w-[425px] mx-auto">
+        <div className='bg-[#ebd657] w-[3px] h-10 mt-110 '>
           <div className='mb-2.5 w-80'>
             <h1 className='text-3xl manrope text-nowrap, ml-3'>Core <div>Members</div></h1>
             <div>
@@ -332,7 +332,7 @@ export default function Section9() {
 
               <div className=" bg-[#ebd457] flex justify-between  mt-2 rounded-2xl w-full h-20">
    
-                <h1 className='manrope text-nowrap text-2xl ml-2 mt-3'>Ranjith P Raj  <p className='text-sm manrope-medium text-gray-500'>Founder</p></h1>
+                <h1 className='manrope text-nowrap text-2xl ml-2 mt-3'>Ranjith P Raj <p className='text-sm manrope-medium text-gray-500'>Founder</p></h1>
                
 
                 <a href="https://www.linkedin.com/in/ranjithpraj/"><img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-5 mr-2' alt="LinkedIn" /></a>
@@ -349,7 +349,7 @@ export default function Section9() {
 
                 <div className=" bg-[#ebd457] flex justify-between  mt-2 rounded-2xl w-full h-20">
 
-                   <h1 className='manrope text-nowrap text-2xl ml-2 mt-3'>Susmitha<p className='text-sm manrope-medium text-gray-500'>Co-Founder</p></h1>
+                   <h1 className='manrope text-nowrap text-2xl ml-2 mt-3'>Susmita<p className='text-sm manrope-medium text-gray-500'>Co-Founder</p></h1>
                 <a href="https://www.linkedin.com/in/susmita-mondal-955344b3/"><img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-5 mr-2' alt="LinkedIn" /></a>
               </div>
             

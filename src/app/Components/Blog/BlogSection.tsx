@@ -337,7 +337,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                       </div>
                       <h3 className="blog-ultrawide-title-text manrope">{post.title}</h3>
                       <button
-                        onClick={() => handleReadMore(post.id)}
+                        onClick={() => handleReadMore(post)}
                         className="blog-ultrawide-button manrope-medium"
                       >
                         Read More
@@ -427,7 +427,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                     </div>
                     <h3 className="font-semibold text-lg mb-3  manrope">{post.title}</h3>
                     <button
-                      onClick={() => handleReadMore(post.id)}
+                      onClick={() => handleReadMore(post)}
                       className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors  manrope-medium flex items-center justify-center gap-2"
                     >
                       Read More
@@ -524,7 +524,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                     {post.title}
                   </h2>
                   <button
-                    onClick={() => handleReadMore(post.id)}
+                    onClick={() => handleReadMore(post)}
                     className="mt-3 w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium"
                   >
                     Read More

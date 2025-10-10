@@ -78,50 +78,42 @@ export default function Section1() {
             {/* MD Screen - Medium displays */}
             <div className="hidden md:block lg:hidden">
                 <div className="flex flex-col justify-between w-full h-auto mt-12 px-6">
-                    
+
                     {/* Heading - MD optimized */}
                     <h1 className="text-4xl manrope mb-4 leading-tight">
                         About Us
                     </h1>
-                    
+
                     {/* Description - MD optimized */}
-                    <p className="w-full manrope-medium text-lg leading-relaxed"> Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.  
-                    No templates. No compromises. Just interiors that truly fit you.</p>
-                    
+                    <p className="w-full manrope-medium text-lg leading-relaxed"> Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.
+                        No templates. No compromises. Just interiors that truly fit you.</p>
+
                 </div>
             </div>
 
             {/* SM Screen - Small displays and mobile */}
-            <div className="block md:hidden">
-                <div className="flex flex-col justify-between w-[full] max-w-[425px] h-auto mt-8 px-4">
+          
 
-                    <div className='flex items-center ml'>
-                        <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
-                            <div className='mb-2.5 w-80'>
-                                <h1 className='text-3xl manrope text-nowrap, ml-3'>About Us</h1>
-                                <p className='manrope-medium text-[1] mt-3 w-full'> Hub Interior is India’s most innovative interior design company.We offer tailor-made solutions,  from modular to luxury, crafted around your lifestyle andprofession. No compromises. Just interiors  that truly fit you </p>
-                                    
-                            </div>
 
-                            
-
+            <div className="block md:hidden w-full max-w-[425px] px-4 mt-8">
+                <div className="flex flex-col space-y-4">
+                    <div className="flex items-start space-x-3">
+                        <div className="bg-[#ebd657] w-[15px] h-10"></div>
+                        <div>
+                            <h1 className="text-3xl manrope">About Us</h1>
+                            <p className="text-base font-medium manrope-medium mt-2">
+                                Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions—from modular to luxury—crafted around your lifestyle and profession. No compromises. Just interiors that truly fit you.
+                            </p>
                         </div>
-                        
                     </div>
-
-                    {/* Heading - SM optimized */}
-                    {/* <h1 className="text-3xl manrope-medium mb-4 leading-tight">
-                        About Us
-                    </h1> */}
-
-                    {/* Description - SM optimized */}
-                    {/* <p className="w-full manrope-medium text-base leading-relaxed">
-                        Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.
-                        No templates. No compromises. Just interiors that truly fit you.
-                    </p> */}
-
                 </div>
             </div>
+
+
+
+
+
+
 
             {/* Pure CSS for 3XL - 2560*1440 resolution */}
             <style jsx>{`

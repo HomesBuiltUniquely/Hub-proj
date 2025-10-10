@@ -76,11 +76,11 @@ const CardSection = ({
 
 
       {/* Desktop Version */}
-      <div className="desktop-1440 hidden md:block w-[1440px] h-[635px] mt-15">
+      <div className="desktop-1440 hidden md:block w-[1440px] h-[635px] mt-">
 
 
         {/* Featured Projects */}
-        <div className="w-full max-w-5xl px-3 ml-12 ">
+        <div className="w-full max-w-5xl px-5 ml-26 ">
           <h2 className="text-[50px]  mb-1  text-gray-900 manrope">
             Featured Projects
           </h2>
@@ -89,7 +89,7 @@ const CardSection = ({
 
         <div
           ref={scrollRef}
-          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-15 w-full md:max-w-[1350px] mx-auto ml-18"
+          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-15 w-full md:max-w-[1270px] mx-auto ml-30"
           style={{ paddingRight: "56px" }}
         >
           {cards.map((card, idx) => {
@@ -102,11 +102,11 @@ const CardSection = ({
             return (
               <div
                 key={idx}
-                className="min-w-[350px] max-w-[750] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+                className="min-w-[350px] max-w-[950] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
                 style={{ height: "475px" }}
               >
 
-                <Image src={card.img} alt="images" width={470} height={250} className="w-700 h-60" />
+                <Image src={card.img} alt="images" width={870} height={250} className="w-800 h-55" />
 
                 <div className="manrope-medium ml-3 text-bold text-2xl gap-1 m-3 h-15">
                   {card.title}
@@ -149,7 +149,7 @@ const CardSection = ({
 
       <div className="desktop-1280 ">
 
-        <div className=" w-[1280px] h-[800px] mx-auto mt-20 -mb-30 relative">
+        <div className=" w-[1280px] h-[800px] mx-auto mb-5 relative">
 
           <div className="w-full max-w-5xl px-3 ml-5 ">
             <h2 className="text-[50px]  mb-1  text-gray-900 manrope">
@@ -163,9 +163,10 @@ const CardSection = ({
 
           <div
             ref={scrollRef}
-            className="flex gap-7 overflow-x-auto scrollbar-none  px-2 md:px-0 pb-12 w-full md:max-w-[1200px] mx-auto ml-10"
+            className="flex gap-7 overflow-x-scroll  always-show-scrollbar px-2 md:px-0 pb-12 w-full md:max-w-[1200px] mx-auto ml-10"
             style={{ paddingRight: "56px" }}
           >
+
             {cards.map((card, idx) => {
 
               function handleNavigate() {
@@ -176,11 +177,11 @@ const CardSection = ({
               return (
                 <div
                   key={idx}
-                  className="min-w-[350px] max-w-[750] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+                  className="min-w-[350px] max-w-[750] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-10xl"
                   style={{ height: "475px" }}
                 >
 
-                  <Image src={card.img} alt="images" width={470} height={250} className="w-700 h-60" />
+                  <Image src={card.img} alt="images" width={470} height={250} className="w-600 h-55" />
 
                   <div className="manrope-medium ml-3 text-bold text-2xl gap-1 m-3 h-15">
                     {card.title}
@@ -224,14 +225,14 @@ const CardSection = ({
       {/* mobile version  */}
 
 
-      <div className="block md:hidden px-4 h-screen w-screen max-w-[425px] mx-auto  ">
+      <div className="block md:hidden px-4 h-screen w-full max-w-[425px] mx-auto  ">
 
        
 
         <div className=' mt-5 manrope-medium '>
           <div className="flex flex-row">
             <div className="w-0.75 h-10 bg-[#ebd657] ml-2">
-            <h2 className="text-3xl tracking-wide manrope-medium text-nowrap ml-3">Featured Projects</h2>
+            <h2 className="text-3xl tracking-wide manrope text-nowrap ml-3">Featured Projects</h2>
             </div>
             <p className="text-gray-600 text-[15px] manrope-bold mt-12  text-nowrap -ml-1">A glimpse at our best work</p>
           </div>
@@ -240,7 +241,7 @@ const CardSection = ({
 
          <div
             ref={scrollRef}
-            className="flex gap-7 overflow-x-auto scrollbar-none  px-2 md:px-0 pb-12 w-full md:max-w-[425] mx-auto h-[450px]"
+            className="flex gap-7 overflow-x-scroll scrollbar-none  px-2 md:px-0  w-full max-w-[645] ml-2 mx-auto h-[450px]"
             style={{ paddingRight: "56px" }}
           >
             {cards.map((card, idx) => {
@@ -288,6 +289,8 @@ const CardSection = ({
 
             })}
           </div>
+
+          
 
 
       </div>

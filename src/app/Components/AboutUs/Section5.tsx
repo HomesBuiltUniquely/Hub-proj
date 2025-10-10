@@ -359,18 +359,18 @@ const Section5 = () => {
 
       {/* SM Screen - Small displays */}
       <section className="block md:hidden px-4 ">
-        <div className="max-w-sm mx-auto">
+        <div className="w-full max-w-[425px] mx-auto">
           {/* Header Section */}
 
 
           <div className="flex flex-col justify-between h-[150px] ">
 
 
-            <div className='flex items-center ml'>
-              <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
+            <div className='flex items-center mt-20'>
+              <div className='bg-[#ebd657] w-[3px] h-10'>
                 <div className='mb-2.5 w-80'>
                   <h1 className='text-3xl manrope text-nowrap, ml-3'> Journey So far</h1>
-                  <p className='manrope-medium text-2xl w-full leading-relaxed mt-4'> The Path We&#39;ve Paved!
+                  <p className='manrope-medium text-md w-full leading-relaxed mt-3 ml-3'> The Path We&#39;ve Paved!
                   </p>
 
                 </div>
@@ -388,7 +388,7 @@ const Section5 = () => {
 
 
 
-            <div className="w-full max-w-2xl mx-auto">
+            <div className="w-full max-w-2xl mx-auto mt-5">
               {/* Slide */}
               <div className="w-full h-60 bg-gray-50 p-4 rounded-3xl flex items-center justify-center shadow-xl transition-all duration-500 ease-in-out">
                 <div className="text-center max-w-md">
@@ -405,7 +405,7 @@ const Section5 = () => {
               </div>
 
               {/* Navigation Buttons */}
-              <div className="flex space-x-4 mt-10 justify-center">
+              <div className="flex space-x-4 mt-5 justify-center">
                 <button
                   onClick={prevSlide}
                   className="w-12 h-12 flex items-center justify-center border border-black rounded-full text-2xl text-gray-800 bg-white hover:bg-gray-100 active:opacity-70 transition duration-150"

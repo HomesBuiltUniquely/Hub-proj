@@ -97,7 +97,7 @@ const Faq: React.FC = () => {
     
         <div className="desktop-1440 w-screen  ">
           {/* FAQ and Guide */}
-          <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 mt-8 ">
+          <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 mt-15">
             {/* FAQ Left */}
             <div className="md:w-1/3 mb-8 md:mt-4">
               <h2 className="manrope mb-3  text-gray-900 text-4xl">FAQs</h2>
@@ -150,7 +150,7 @@ const Faq: React.FC = () => {
           <div className="desktop-1280 w-screen">
          
           {/* FAQ and Guide */}
-          <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6  ">
+          <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 -mt-45">
             {/* FAQ Left */}
             <div className="md:w-1/3 mb-8 md:mt-4 ml-8">
               <h2 className="manrope mb-3  text-gray-900 text-4xl">FAQs</h2>
@@ -200,7 +200,7 @@ const Faq: React.FC = () => {
 
       {/* Heading */}
 
-      <div className="block md:hidden h-screen -mt-80 mb-5">
+      <div className="block md:hidden h-screen -mt-90 p-1 mb-5">
 
         {/* FAQ and Guide */}
 

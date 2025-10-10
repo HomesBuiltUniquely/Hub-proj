@@ -7,7 +7,7 @@ import Footer from "../Components/Home/Footer";
 export default function ProjectPage() {
   return (
     <div>
-      <ContactHeader />
+      {/* <ContactHeader /> */}
     <FeaturedProjectsAndEbook />
      <Faq />
          <Footer />

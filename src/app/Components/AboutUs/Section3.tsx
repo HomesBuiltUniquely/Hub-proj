@@ -204,22 +204,22 @@ export default function Section3(){
             </div>
 
             {/* SM Screen - Small displays and mobile */}
-            <div className="block md:hidden">
+            <div className="block md:hidden  w-[full] max-w-[425px]">
                 <div className="h-[30px] mx-auto px-4">
                     
-                    <div className="w-full h-[460px] bg-[#ddcdc1] mx-auto rounded-2xl flex flex-col overflow-hidden -mt-20">
+                    <div className="w-full h-[460px] bg-[#ddcdc1] mx-auto rounded-2xl flex flex-col overflow-hidden -mt-30">
                         
                         
                         
-                        <img src="2.png" alt="Interior Design" className="mx-auto w-[280px] h-[170px] rounded-3xl mt-10"/>
+                        <img src="2.png" alt="Interior Design" className="mx-auto w-screen h-[185px] rounded-3xl px-3 mt-8"/>
  
 
 
                         {/* Center Content - SM optimized */}
-                        <div className="w-full p-6 flex flex-col justify-center">
+                        <div className="w-full px-6 flex flex-col justify-center">
                             
                             {/* Main Heading - SM optimized */}
-                            <div className="manrope-medium text-xl w-full leading-tight mb-4">
+                            <div className="manrope-medium text-xl w-full leading-tight mt-5 mb-4">
                                 Great design goes beyond aesthetics.
                             </div>
                             
