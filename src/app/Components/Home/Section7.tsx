@@ -28,22 +28,22 @@ export default function Section7() {
            <div>
                 <div className="desktop-1440 hidden md:block w-screen min-h-[500px] bg-[#F1F2F6]">
                     <div className="max-w-7xl h-[400px] bg-white mx-auto rounded-3xl mt-4 relative">
-                        <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl" />
-                        <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 pl-100">
+                        <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl bg-transparent blur-[2px]" />
+                        <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 pl-100 ">
                             <h1 className="text-white text-4xl wulkan-display-bold">Meet our interior designers</h1>
-                            <p className="text-white text-xl manrope-medium mt-4  pl-[3rem]">Experts Creating Spaces You&39;ll Love</p>
-                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 mt-4 ml-30">Book your consultation</button>
+                            <p className="text-white text-xl manrope-medium mt-4  pl-[3rem]">Experts Creating Spaces You&#39;ll Love</p>
+                            <a href = "/GetEstimate" ><button className="manrope-medium bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 mt-4 ml-30">Book your consultation</button></a>
                         </div>
                     </div>
                 </div>
                 {/* 1280 version */}
                 <div className="desktop-1280 hidden md:block max-w-[1280px] mx-10 min-h-[500px] bg-[#F1F2F6]">
                     <div className="max-w-7xl h-[400px] bg-white mx-auto rounded-3xl mt-4 relative">
-                        <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl" />
+                        <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl " />
                         <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 pl-100">
                             <h1 className="text-white text-4xl wulkan-display-bold">Meet our interior designers</h1>
-                            <p className="text-white text-xl manrope-medium mt-4  pl-[3rem]">Experts Creating Spaces You&39;ll Love</p>
-                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 mt-4 ml-30">Book your consultation</button>
+                            <p className="text-white text-xl manrope-medium mt-4  pl-[3rem]">Experts Creating Spaces You&#39;ll Love</p>
+                            <a href = "/GetEstimate" ><button className="manrope-medium bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 mt-4 ml-30">Book your consultation</button></a>
                         </div>
                     </div>
                 </div>
@@ -53,10 +53,10 @@ export default function Section7() {
                         <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl" />
                         <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 ">
                             <h1 className="text-white text-4xl wulkan-display-bold text-center">Meet our interior designers</h1>
-                            <p className="text-white text-xl manrope-medium mt-4 text-center w-[260px] mx-auto">Experts Creating Spaces You’ll Love</p>
-                                                     <div className="text-center mt-10 w-[250px] mx-auto">
-                                                         <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 w-full">Book your consultation</button>
-                                                     </div>
+                            <p className="text-white text-xl manrope-medium mt-4 text-center w-[260px] mx-auto">Experts Creating Spaces You&#39;ll Love</p>
+                                                    <div className="text-center mt-10 w-[250px] mx-auto">
+                                                        <a href = "/GetEstimate" ><button className="manrope-medium bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 w-full">Book your consultation</button></a>
+                                                    </div>
                         </div>
                     </div>
                 </div>

@@ -10,11 +10,11 @@ import Section2 from "../Components/ModularKitchen/Section2";
 export default function InteriorDesignersInBangalore() {
   return (
     <div>
-      {/* <ModularKitchen /> */}
-      {/* <Section1/>  */}
+      <ModularKitchen />
+      <Section1/> 
       <Section2/>
-     {/*  <KitchenBlogSection/>
-      <Footer/> */}
+      <KitchenBlogSection/>
+      <Footer/>
     </div>
   )
 }
