@@ -1,6 +1,5 @@
-import Section1 from "../Components/LandingPage2/Section";
+
 import { HeroSection } from "../Components/LandingPage2/HeroSection";
-import Section33 from "../Components/LandingPage2/Section3";
 import Section4 from "../Components/LandingPage2/Section4";
 import Section2 from "../Components/LandingPage1/Section2";
 import Section6 from "../Components/LandingPage1/Section6";
