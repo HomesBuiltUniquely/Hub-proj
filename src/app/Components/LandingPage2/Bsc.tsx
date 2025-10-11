@@ -19,21 +19,21 @@ export default function Section3() {
             title: "Modular Interiors for Every Home",
             description: "Efficient layouts and space-saving designs crafted to fit kitchens, wardrobes, and storage — blending style with everyday functionality.",
             image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen5.jpg",
-            link: "/GetEstimate",
+            link: "/best-interior-designers-in-bangalore",
             borderColor: ""
         },
         {
             title: "End-to-End Home Interior Solutions",
             description: "From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing.",
             image: "/bed1.jpg",
-            link: "/GetEstimate",
+            link: "/best-interior-designers-in-bangalore",
             borderColor: ""
         },
         {
             title: "Luxury Interiors Thoughtfully Crafted",
             description: "Luxury interiors thoughtfully built to balance modern design, comfort, and personal expression. elevating everyday lifestyle",
             image: "/bed4.jpg",
-            link: "/GetEstimate",
+            link: "/best-interior-designers-in-bangalore",
             borderColor: ""
         },
     ];
@@ -79,7 +79,7 @@ export default function Section3() {
                 {/* Header Section */}
                 <div className="flex flex-row justify-between items-center mb-12">
                     <h1 className="text-4xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
-                    <a href="/GetEstimate">
+                    <a href="/best-interior-designers-in-bangalore">
                         <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium flex items-center gap-2">
                             Book consultation
                             <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
@@ -212,7 +212,7 @@ export default function Section3() {
                 })}
             </div>
             <div className="flex justify-center mt-8">
-            <Link href="/">
+            <Link href="/best-interior-designers-in-bangalore">
                 <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
                     Explore Services
                 </button>

@@ -7,9 +7,9 @@ import Section7 from "../Components/LandingPage1/Section7";
 import Section9 from "../Components/LandingPage1/Section9";
 import BrandCarousel from "../Components/LandingPage1/Brand";
 import { QAsection } from "../Components/LandingPage1/QASEC";
-import Section3 from "../Components/Home/Section3";
 import Section51 from "../Components/LandingPage2/Section51";
 import Section52 from "../Components/LandingPage2/Section52";
+import Bsc from "../Components/LandingPage2/Bsc";
 
 export default function BestInteriorDesignersInBangalore(){
     return(
@@ -19,7 +19,7 @@ export default function BestInteriorDesignersInBangalore(){
             <Section51/>
             {/* <Section33/> */}
             <Section52/>
-            <Section3/>
+            <Bsc/>
             <Section4/>
             <Section2/>
             <Section6/>

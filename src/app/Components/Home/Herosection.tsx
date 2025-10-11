@@ -7,7 +7,6 @@ import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import OverlapNavBar from "../OverlapNavBar";
-import Link from "next/link";
 
 const Herosection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -64,9 +63,7 @@ const Herosection: React.FC = () => {
         .desktop-1440,
         .desktop-1280,
         .mobile-small,
-        .mobile-large,
-        .mobile-below-360,
-        .mobile-above-360 {
+        .mobile-large {
           display: none;
         }
 
@@ -84,16 +81,9 @@ const Herosection: React.FC = () => {
           }
         }
 
-        /* Show small mobile version for screens 320px to 359px */
-        @media (min-width: 320px) and (max-width: 359px) {
-          .mobile-below-360 {
-            display: block;
-          }
-        }
-
-        /* Show mobile version for screens 360px and above up to 479px */
-        @media (min-width: 360px) and (max-width: 479px) {
-          .mobile-above-360 {
+        /* Show small mobile version for screens 320px to 479px */
+        @media (min-width: 320px) and (max-width: 479px) {
+          .mobile-small {
             display: block;
           }
         }
@@ -128,7 +118,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className=" manrope-medium bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl manrope-medium shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -136,7 +126,7 @@ const Herosection: React.FC = () => {
         <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
           {heroSlides[currentSlide].title} 
         </h1>
-        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl font-semibold shadow mr-145 mt-2 transition-all duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope-medium shadow mr-145 mt-2 transition-all duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
           {heroSlides[currentSlide].buttonText}
         </button>
       </div>
@@ -176,13 +166,13 @@ const Herosection: React.FC = () => {
 
       {/* Navbar */}
       <div className="relative z-10 flex items-center justify-between -mt-15">
-        <Link href="/"><Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" /></Link>
+        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" />
         <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5">
           <OfferingsDropdown textColor="text-white" />
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="manrope-medium bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -213,40 +203,84 @@ const Herosection: React.FC = () => {
         
       </div>
 
-      {/* Mobile Version - Below 360px */}
-      <div className="mobile-below-360 block md:hidden">
-        <div className="w-[350px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto -mt-7">
-          {/* Mobile Header */}
-          <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
-            <div className="relative z-20 flex items-center justify-between mt-4">
-            <Link href="/"><img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6" /></Link>
-            </div>
-          </div>
-          <img className="w-[350px] h-[630px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
-          <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
-          {/* Horizontal line above button */}
-          <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
-          <button onClick={handleGetEstimate} className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
-        </div>
-        <OverlapNavBar />
-      </div>
+       {/* Mobile Version - Different Design for below */}
+      <div className="block md:hidden">
 
-      {/* Mobile Version - Above 360px */}
-      <div className="mobile-above-360 block md:hidden">
-        <div className="w-[400px] h-[650px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto -mt-7">
-          {/* Mobile Header */}
-          <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+          {/* Mobile Version 1 - Small Mobile (320px to 479px) */}
+          <div className="mobile-small w-[350px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto -mt-7">
+             {/* Mobile Header */}
+            <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+
             <div className="relative z-20 flex items-center justify-between mt-4">
-              <Link href="/"><img src="/redlogo.png" className="w-[220px] h-[150px] pb-8 -mt-5 mb-7 pr-30 -ml-2 " /></Link>
+              <img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6"></img>
             </div>
+            </div>
+
+            
+            <img className="w-[350px] h-[630px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+            <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
+             {/* Horizontal line above button */}
+            <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
+            <button onClick={handleGetEstimate} className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
           </div>
-          <img className="w-[400px] h-[650px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
-          <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
-          {/* Horizontal line above button */}
-          <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
-          <button onClick={handleGetEstimate} className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
-        </div>
-        <OverlapNavBar />
+             {/* Mobile Version 2 - Large Mobile (480px to 767px) */}
+            <div className="mobile-large w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+             {/* Mobile Header */}
+            <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
+
+            <div className="relative z-20 flex items-center justify-between mt-4 ">
+              <img src="/redlogo.png" className="w-[110px] h-[120px] pb-6 -mt-5 mb-7 pr-8"></img>
+            </div>
+            </div>
+
+            
+            
+            <img className="w-[340px] h-[500px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+            <div className="-mt-62 w-[300px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
+             {/* Horizontal line above button */}
+            <div className="w-[300px] -mt-33 h-[1px] bg-gray-300 absolute -mt-8 ml-8"></div>
+            <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-28 ml-8 manrope-medium absolute shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+          </div>
+          <OverlapNavBar />
+      </div>
+       {/* Mobile Version - Different Design for above 360 */}
+      <div className="block md:hidden">
+          {/* Mobile Version 1 - Small Mobile (320px to 479px) */}
+          <div className="mobile-small w-[350px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto -mt-7">
+             {/* Mobile Header */}
+            <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+
+            <div className="relative z-20 flex items-center justify-between mt-4">
+              <img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6"></img>
+            </div>
+            </div>
+
+            
+            <img className="w-[350px] h-[630px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+            <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
+             {/* Horizontal line above button */}
+            <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
+            <button onClick={handleGetEstimate} className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+          </div>
+             {/* Mobile Version 2 - Large Mobile (480px to 767px) */}
+            <div className="mobile-large w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+             {/* Mobile Header */}
+            <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
+
+            <div className="relative z-20 flex items-center justify-between mt-4 ">
+              <img src="/redlogo.png" className="w-[110px] h-[120px] pb-6 -mt-5 mb-7 pr-8"></img>
+            </div>
+            </div>
+
+            
+            
+            <img className="w-[340px] h-[500px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+            <div className="-mt-62 w-[300px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
+             {/* Horizontal line above button */}
+            <div className="w-[300px] -mt-33 h-[1px] bg-gray-300 absolute -mt-8 ml-8"></div>
+            <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-28 ml-8 manrope-medium absolute shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+          </div>
+          <OverlapNavBar />
       </div>
     </div>
   );
