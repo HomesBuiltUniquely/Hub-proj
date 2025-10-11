@@ -1,88 +1,180 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Herosection from "../Components/Blog/Herosection";
 import Section2 from "../Components/Blog/Section2";
 import HomeShowcase from "../Components/Blog/BlogSection";
 import { Footer } from "../Components/Footer";
+import { useRouter } from "next/navigation";
 
-type Post = { 
-    id: number; 
-    title: string; 
-    date: string; 
-    readTime: string; 
-    img: string 
+// Post type definition
+type Post = {
+  id: number;
+  title: string;
+  date: string;
+  readTime: string;
+  img: string;
+  path?: string;
 };
 
-// Default posts for demonstration
+// Default posts (fallback)
 const defaultPosts: Post[] = [
-    { id: 1, title: "How Mr.Akhil's House Became Bhoo Aabharana (And Why We're Still Obsessed)?", date: "September 5, 2025", readTime: "10 mins read", img: "/reelsiam.png" },
-    { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png" },
-    { id: 3, title: "Living Room Makeovers With a Wow Factor", date: "July 30, 2025", readTime: "10 mins read", img: "/3.png" },
-    { id: 4, title: "Bathroom Design Trends for 2025", date: "August 1, 2025", readTime: "8 mins read", img: "/bn.jpg" },
-    { id: 5, title: "Small Space Interior Solutions", date: "August 3, 2025", readTime: "15 mins read", img: "/bn.jpg" },
-    { id: 6, title: "Color Psychology in Interior Design", date: "August 5, 2025", readTime: "12 mins read", img: "/bn.jpg" },
-    { id: 7, title: "Sustainable Interior Design Practices", date: "August 7, 2025", readTime: "14 mins read", img: "/bn.jpg" },
-    { id: 8, title: "Home Office Design Ideas", date: "August 9, 2025", readTime: "11 mins read", img: "/bn.jpg" },
-    { id: 9, title: "Lighting Design for Modern Homes", date: "August 11, 2025", readTime: "9 mins read", img: "/bn.jpg" },
-    { id: 10, title: "Furniture Selection Guide", date: "August 13, 2025", readTime: "13 mins read", img: "/bn.jpg" },
-    { id: 11, title: "Wall Decor Ideas and Trends", date: "August 15, 2025", readTime: "7 mins read", img: "/bn.jpg" },
-    { id: 12, title: "Flooring Options for Every Budget", date: "August 17, 2025", readTime: "16 mins read", img: "/bn.jpg" },
+  {
+    id: 1,
+    title: "How Mr. Akhil's House Became Bhoo Aabharana (And Why We're Still Obsessed)?",
+    date: "Sep 2025",
+    readTime: "10 mins read",
+    img: "/reelsiam.png",
+    path: "/Blog/1/Blog1",
+  },
+  {
+    id: 2,
+    title: "Inside Mr. & Mrs. Rijul Azizam's Home, Designed by Hub Interior",
+    date: "Aug 2025",
+    readTime: "8 mins read",
+    img: "/blog2title.png",
+    path: "/Blog/2/Blog2",
+  },
+  {
+    id: 3,
+    title: "Before You Remodel, Check Out These 7 Kitchen Trends to Watch in 2026",
+    date: "Sep 2025",
+    readTime: "6 mins read",
+    img: "/blog3title.jpg",
+    path: "/Blog/3/Blog3",
+  },
+  {
+    id: 4,
+    title: "Luxury Villa Interior Design – The Royal Tulip Project in Bengaluru by HUB Interior",
+    date: "August 1, 2025",
+    readTime: "8 mins read",
+    img: "/blog4title.jpg",
+    path: "/Blog/4/Blog4",
+  },
+  {
+    id: 5,
+    title: "Interior Design Bangalore: How HUB Interior Crafted Serenity Heights Apartment into a Living Masterpiece",
+    date: "August 3, 2025",
+    readTime: "15 mins read",
+    img: "/blog5title.jpg",
+    path: "/Blog/5/Blog5",
+  },
+  {
+    id: 6,
+    title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
+    date: "August 5, 2025",
+    readTime: "12 mins read",
+    img: "/Ukitchen.png",
+    path: "/Blog/6/Blog6",
+  },
+  {
+    id: 7,
+    title: "Sustainable Interior Design Practices",
+    date: "August 7, 2025",
+    readTime: "14 mins read",
+    img: "/bn.jpg",
+    path: "/Blog/7/Blog7",
+  },
+  {
+    id: 8,
+    title: "Home Office Design Ideas",
+    date: "August 9, 2025",
+    readTime: "11 mins read",
+    img: "/bn.jpg",
+  },
+  {
+    id: 9,
+    title: "Lighting Design for Modern Homes",
+    date: "August 11, 2025",
+    readTime: "9 mins read",
+    img: "/bn.jpg",
+  },
+  {
+    id: 10,
+    title: "Furniture Selection Guide",
+    date: "August 13, 2025",
+    readTime: "13 mins read",
+    img: "/bn.jpg",
+  },
+  {
+    id: 11,
+    title: "Wall Decor Ideas and Trends",
+    date: "August 15, 2025",
+    readTime: "7 mins read",
+    img: "/bn.jpg",
+  },
+  {
+    id: 12,
+    title: "Flooring Options for Every Budget",
+    date: "August 17, 2025",
+    readTime: "16 mins read",
+    img: "/bn.jpg",
+  },
 ];
 
 export default function Blog() {
-    const [posts, setPosts] = useState<Post[]>(defaultPosts);
+  const [posts, setPosts] = useState<Post[]>(defaultPosts);
+  const router = useRouter();
 
-    // Load posts from localStorage on component mount and when storage changes
-    useEffect(() => {
-        const loadPosts = () => {
-            const savedPosts = localStorage.getItem('blogPosts');
-            if (savedPosts) {
-                const parsedPosts = JSON.parse(savedPosts);
-                // Always use admin-created posts if they exist, regardless of count
-                if (parsedPosts.length > 0) {
-                    setPosts(parsedPosts);
-                } else {
-                    // Use default posts only if no admin posts exist
-                    setPosts(defaultPosts);
-                }
-            } else {
-                // Use default posts if no localStorage data
-                setPosts(defaultPosts);
-            }
-        };
+  // Load posts from localStorage or fallback to default
+  useEffect(() => {
+    const loadPosts = () => {
+      const savedPosts = localStorage.getItem("blogPosts");
+      if (savedPosts) {
+        try {
+          const parsedPosts: Post[] = JSON.parse(savedPosts);
+          if (Array.isArray(parsedPosts) && parsedPosts.length > 0) {
+            setPosts(parsedPosts);
+          } else {
+            setPosts(defaultPosts);
+          }
+        } catch (error) {
+          console.error("Error parsing blogPosts from localStorage:", error);
+          setPosts(defaultPosts);
+        }
+      } else {
+        setPosts(defaultPosts);
+      }
+    };
 
-        // Load posts initially
+    loadPosts();
+
+    // Listen to storage changes across tabs
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === "blogPosts") {
         loadPosts();
+      }
+    };
 
-        // Listen for storage changes (when admin adds/edits posts)
-        const handleStorageChange = (e: StorageEvent) => {
-            if (e.key === 'blogPosts') {
-                loadPosts();
-            }
-        };
+    // Listen to custom event for same-tab updates
+    const handleCustomUpdate = () => {
+      loadPosts();
+    };
 
-        window.addEventListener('storage', handleStorageChange);
-        
-        // Also listen for custom events (for same-tab updates)
-        const handleCustomStorageChange = () => {
-            loadPosts();
-        };
-        
-        window.addEventListener('blogPostsUpdated', handleCustomStorageChange);
+    window.addEventListener("storage", handleStorageChange);
+    window.addEventListener("blogPostsUpdated", handleCustomUpdate);
 
-        return () => {
-            window.removeEventListener('storage', handleStorageChange);
-            window.removeEventListener('blogPostsUpdated', handleCustomStorageChange);
-        };
-    }, []);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("blogPostsUpdated", handleCustomUpdate);
+    };
+  }, []);
 
-    return (
-        <div>
-            <Herosection />
-            <Section2 posts={posts} />
-            <HomeShowcase posts={posts} />
-            <Footer />
-        </div>
-    );
+  // Handle "Read More" clicks safely
+  const handleReadMore = (path?: string) => {
+    if (path) {
+      router.push(path);
+    } else {
+      console.warn("No path provided for this post.");
+    }
+  };
+
+  return (
+    <div>
+      <Herosection />
+      <Section2 posts={posts} onReadMore={handleReadMore} />
+      <HomeShowcase posts={posts} />
+      <Footer />
+    </div>
+  );
 }

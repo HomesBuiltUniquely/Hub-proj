@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 type Post = { id: number; title: string; date: string; readTime: string; img: string; path?: string };
 
+
 const allPostsInit: Post[] = [
   { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png" },
   { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png" },
@@ -98,213 +99,209 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
           .blog-section-regular {
             display: none !important;
           }
-        }
-        
-        /* Ultra-wide layout for 2560px+ */
-        .blog-section-ultrawide {
-          display: none !important;
-        }
-        
-        @media (min-width: 2560px) {
           .blog-section-ultrawide {
             display: block !important;
             width: 100%;
             padding: 3rem 4rem;
             background-color: #f1f2f6;
-         
-          
-          }
-          
-          .blog-ultrawide-container {
-            max-width: 2400px;
-            margin: 0 auto;
-          }
-          
-          .blog-ultrawide-title {
-            font-size: 4rem;
-            font-weight: 600;
-            margin-bottom: 8rem;
-            text-align: center;
-            color: #111827;
-          }
-          
-          .blog-ultrawide-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-            margin-left: 25rem;
-          }
-          
-          .blog-ultrawide-card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
-         
-          }
-          
-          .blog-ultrawide-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-          }
-          
-          .blog-ultrawide-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-
-          }
-          
-          .blog-ultrawide-content {
-            padding: 1.5rem;
-          }
-          
-          .blog-ultrawide-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            color: #000000;
-            margin-bottom: 0.5rem;
-          }
-          
-          .blog-ultrawide-title-text {
-            font-weight: 600;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #111827;
-            line-height: 1.4;
-          }
-          
-          .blog-ultrawide-button {
-            width: 100%;
-            background-color: #ef4444;
-            color: white;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            border: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-          }
-          
-          .blog-ultrawide-button:hover {
-            background-color: #dc2626;
-          }
-          
-          .blog-ultrawide-pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 3rem;
-            padding: 0 1rem;
-          }
-          
-          .blog-ultrawide-pagination button {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            border: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          .blog-ultrawide-pagination button:not(.active) {
-            background-color: #e5e7eb;
-            color: #374151;
-          }
-          
-          .blog-ultrawide-pagination button:not(.active):hover {
-            background-color: #d1d5db;
-          }
-          
-          .blog-ultrawide-pagination button.active {
-            background-color: #1f2937;
-            color: white;
-          }
-          
-          .blog-ultrawide-pagination button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-          }
-          
-          .blog-ultrawide-category-title {
-            font-size: 3rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            margin-top: 4rem;
-            text-align: center;
-            color: #111827;
-          }
-          
-          .blog-ultrawide-category-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1.5rem;
-            max-width: 2400px;
-            margin: 0 auto;
-          }
-          
-          .blog-ultrawide-category-card {
-            position: relative;
-            height: 200px;
-            border-radius: 1rem;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-          }
-          
-          .blog-ultrawide-category-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-          }
-          
-          .blog-ultrawide-category-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-          
-          .blog-ultrawide-category-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: background 0.3s ease;
-          }
-          
-          .blog-ultrawide-category-card:hover .blog-ultrawide-category-overlay {
-            background: rgba(0, 0, 0, 0.6);
-          }
-          
-          .blog-ultrawide-category-icon {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-            opacity: 0.9;
-          }
-          
-          .blog-ultrawide-category-label {
-            color: white;
-            font-size: 1.125rem;
-            font-weight: 600;
           }
         }
+
+        /* Default: hide ultra-wide section on smaller screens */
+        .blog-section-ultrawide {
+          display: none !important;
+        }
+
+        /* Ultra-wide container */
+        .blog-ultrawide-container {
+          max-width: 2400px;
+          margin: 0 auto;
+        }
+
+        .blog-ultrawide-title {
+          font-size: 4rem;
+          font-weight: 600;
+          margin-bottom: 8rem;
+          text-align: center;
+          color: #111827;
+        }
+
+        /* Blog grid layout */
+        .blog-ultrawide-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          margin-bottom: 3rem;
+          justify-content: center;
+        }
+
+        .blog-ultrawide-card {
+          background: #fff;
+          border-radius: 1rem;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .blog-ultrawide-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-ultrawide-image {
+          width: 100%;
+          height: 400px;
+          object-fit: cover;
+        }
+
+        .blog-ultrawide-content {
+          padding: 1.5rem;
+        }
+
+        .blog-ultrawide-meta {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.875rem;
+          color: #000;
+          margin-bottom: 0.5rem;
+        }
+
+        .blog-ultrawide-title-text {
+          font-weight: 600;
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: #111827;
+          line-height: 1.4;
+        }
+
+        .blog-ultrawide-button {
+          width: 100%;
+          background-color: #ef4444;
+          color: #fff;
+          padding: 0.75rem 1rem;
+          border-radius: 0.5rem;
+          border: none;
+          font-weight: 500;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          transition: background-color 0.3s ease;
+        }
+
+        .blog-ultrawide-button:hover {
+          background-color: #dc2626;
+        }
+
+        /* Pagination */
+        .blog-ultrawide-pagination {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 3rem;
+        }
+
+        .blog-ultrawide-pagination button {
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+          border: none;
+          font-weight: 500;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+        }
+
+        .blog-ultrawide-pagination button:not(.active) {
+          background-color: #e5e7eb;
+          color: #374151;
+        }
+
+        .blog-ultrawide-pagination button:not(.active):hover {
+          background-color: #d1d5db;
+        }
+
+        .blog-ultrawide-pagination button.active {
+          background-color: #1f2937;
+          color: #fff;
+        }
+
+        .blog-ultrawide-pagination button:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        /* Category section */
+        .blog-ultrawide-category-title {
+          font-size: 3rem;
+          font-weight: 600;
+          margin: 4rem 0 2rem 0;
+          text-align: center;
+          color: #111827;
+        }
+
+        .blog-ultrawide-category-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.5rem;
+          max-width: 2400px;
+          margin: 0 auto;
+        }
+
+        .blog-ultrawide-category-card {
+          position: relative;
+          height: 200px;
+          border-radius: 1rem;
+          overflow: hidden;
+          cursor: pointer;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+        }
+
+        .blog-ultrawide-category-card:hover {
+          transform: scale(1.05);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-ultrawide-category-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .blog-ultrawide-category-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.4);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: background 0.3s ease;
+        }
+
+        .blog-ultrawide-category-card:hover .blog-ultrawide-category-overlay {
+          background: rgba(0, 0, 0, 0.6);
+        }
+
+        .blog-ultrawide-category-icon {
+          color: white;
+          font-size: 1.5rem;
+          margin-bottom: 0.25rem;
+          opacity: 0.9;
+        }
+
+        .blog-ultrawide-category-label {
+          color: white;
+          font-size: 1.125rem;
+          font-weight: 600;
+        }
       `}</style>
+
       
       {/* Ultra-wide layout for 2560px+ */}
       <section className="blog-section-ultrawide">
@@ -399,12 +396,12 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
       {/* Blog Posts - Remaining posts (starting from 6th) */}
       {allPosts.length > 5 ? (
         <>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-gray-900 text-center">
+          <h2 className="text-2xl mt-65 sm:text-3xl lg:text-4xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-gray-900 text-center">
             More Blog Posts
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto mb-8 h-[500px]">
             {currentPosts.map((post) => (
-              <div key={post.id} className="w-full max-w-sm mx-auto sm:max-w-none bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div key={post.id} className="w-full h-[510px] max-w-sm mx-auto sm:max-w-none bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <div className="relative">
                   <img 
                     src={post.img} 

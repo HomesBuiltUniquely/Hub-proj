@@ -5,7 +5,7 @@ import React, { useState, useRef } from 'react';
 // ...existing code...
 
 // Note: Replaced Next.js specific imports with standard tags for compatibility.
-// import Link from "next/link"; 
+// import Link from "next/link";
 // import Image from 'next/image';
 
 export default function Section3() {
@@ -23,7 +23,7 @@ export default function Section3() {
             borderColor: ""
         },
         {
-            title: "End-to-End Home Interior Solutions", 
+            title: "End-to-End Home Interior Solutions",
             description: "From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing.",
             image: "/bed1.jpg",
             link: "/GetEstimate",

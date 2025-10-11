@@ -8,7 +8,7 @@ export default function Blog3() {
     const router = useRouter();
 
     return (
-        <div className="min-h-screen bg-[#f1f2f6]">
+        <div className="min-h-screen bg-[#f1f2f6] manrope-medium">
             {/* Header */}
             <div className="bg-white shadow-sm">
                 <div className="max-w-4xl mx-auto px-4 py-6">
