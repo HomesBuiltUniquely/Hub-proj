@@ -14,27 +14,27 @@ export default function Section52() {
         {
             title: "Kitchen",
             image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//kitchen6.jpg",
-            link: "/ModularKitchen"
+            link: "/best-interior-designers-in-bangalore"
         },
         {
             title: "Kids Room",
             image: "/kids2.jpg",
-            link: "/"
+            link: "/best-interior-designers-in-bangalore"
         },
         {
             title: "BedRoom",
             image: "/bed3.jpg",
-            link: "/Bedroom"
+            link: "/best-interior-designers-in-bangalore"
         },
         {
             title: "Living Room",
             image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img4.jpg",
-            link: "/"
+            link: "/best-interior-designers-in-bangalore"
         },
         {
             title: "Devotional Room",
             image: "/temple2.jpg",
-            link: "/"
+            link: "/best-interior-designers-in-bangalore"
         }
     ];
 
