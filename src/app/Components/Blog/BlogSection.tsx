@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 type Post = { id: number; title: string; date: string; readTime: string; img: string; path?: string };
 
+
 const allPostsInit: Post[] = [
   { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png" },
   { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png" },

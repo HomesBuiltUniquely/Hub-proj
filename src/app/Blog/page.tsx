@@ -173,7 +173,7 @@ export default function Blog() {
     <div>
       <Herosection />
       <Section2 posts={posts} onReadMore={handleReadMore} />
-      <HomeShowcase posts={posts} onReadMore={handleReadMore} />
+      <HomeShowcase posts={posts} />
       <Footer />
     </div>
   );
