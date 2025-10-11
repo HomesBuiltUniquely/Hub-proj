@@ -8,7 +8,7 @@ export default function Blog1() {
 	const router = useRouter();
 
 	return (
-		<div className="min-h-screen bg-[#f1f2f6]">
+		<div className="min-h-screen bg-[#f1f2f6] manrope-medium">
 			{/* Header */}
 			<div className="bg-white shadow-sm">
 				<div className="max-w-4xl mx-auto px-4 py-6">
@@ -41,8 +41,8 @@ export default function Blog1() {
 							Bhoo Aabharana is a love letter to faith, function, and quiet elegance. And yes, we&#39;re obsessed.</p>
 						</div>
 
-						<div className="relative w-full h-80 rounded-xl overflow-hidden mb-4">
-							<img src="/bn.jpg" alt="Bhoo Aabharana home" className="w-full h-full object-cover" />
+						<div className="relative w-full h-[800px] rounded-xl overflow-hidden mb-4">
+							<img src="/reelsiam.png" alt="Bhoo Aabharana home" className="w-full h-full object-cover" />
 						</div>
 						<p className="text-gray-700 leading-relaxed mb-8">Bhoo Aabharana is a love letter to faith, function, and quiet elegance. And yes, we&#39;re obsessed.</p>
 

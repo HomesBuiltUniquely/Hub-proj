@@ -9,26 +9,26 @@ export default function Section4() {
     const testimonials = [
         {
             image: "/CUSTOMER2.jpg",
-            quote: "Royal Tulip Villa — A Timeless Blend of Story, Elegance & Comfort by HUB Interior",
-            name: "George Family – Royal Tulip Villa",
+            quote: "Our villa looks elegant and peaceful now. HUB Interior's team beautifully designed our bar unit, open kitchen, and false ceiling.",
+            name: "Mr. & Mrs. George – Royal Tulip Villa",
             avatar: "/CUSTOMER2.jpg"
         },
         {
             image: "/CUTOMER1.jpg",
-            quote: "Warmth with Function — HUB Interior’s Soulful Home Design for Mr. Rijul at Azizam",
-            name: "Mr. Rijul – Azizam Home",
+            quote: "HUB Interior made our 3BHK feel truly like home. The modular kitchen, wardrobe, and TV unit were designed exactly as we dreamed.",
+            name: "Mr. & Mrs. Rijul Azizam – 3BHK Home Interior",
             avatar: "/CUTOMER1.jpg"
         },
         {
             image: "/CUSTOMER3.jpg",
-            quote: "A Peaceful Retreat — HUB Interior’s Modern Home Design for Mr. Allen & Mrs. Ann",
-            name: " Mr. Allen & Mrs. Ann",
+            quote: "HUB Interior gave our home a warm and stylish look. The pastel kitchen, wardrobe, and TV unit make every space feel perfect.",
+            name: " Mr. & Mrs. Ann – Modern Family Home",
             avatar: "/Customer3.jpg"
         },
         {
             image: "/CUSTOMER4.jpg",
-            quote: "Quiet Luxury, Thoughtful Living — Modern Home Interiors by HUB at Bhoo Aabharana",
-            name: "Mr. Akhil – Bhoo Aabharana",
+            quote: "Loved how HUB Interior transformed my 2BHK into a modern space. The kitchen, wardrobe, and TV unit reflect great quality and design.",
+            name: "Mr. Akhil – 2BHK Contemporary Interior",
             avatar: "/Customer4.jpg"
         },
 
