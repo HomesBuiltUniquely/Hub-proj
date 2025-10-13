@@ -43,8 +43,12 @@ export default function Section3(){
                 </div>
             </div>
 
-            {/* 2XL Screen - Large displays */}
-            <div className="aboutus-section3-2xl-section hidden 2xl:block 3xl:hidden  ">
+
+
+             {/* 2XL Screen - Large displays */}
+            <div className="desktop-1440">
+
+            <div className="">
                 <div className="h-[680px] mx-auto mt-4 px-16">
                     
                     <div className="w-full max-w-[1500px] h-[550px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
@@ -53,13 +57,13 @@ export default function Section3(){
                         <img 
                             src="2.png" 
                             alt="Interior Design" 
-                            className="w-[550px] h-[650px] rounded-3xl lg:rounded-l-3xl  object-cover" 
+                            className="w-[550px] h-[650px] rounded-l-3xl lg:rounded-l-3xl  object-cover" 
                         />
                         
                         {/* Center Content - 2XL optimized */}
                         <div className="w-[600px] h-auto px-10  lg:ml-8 flex flex-col justify-center pb-20">
 
-                            <div className="text-[#ef0101] ml-2 mt-15 text-2xl py-5 manrope-medium">Brand Hub</div>
+                            <div className="text-[#ef0101] ml- mt-15 text-2xl py-5 manrope-medium">Brand Hub</div>
                             
                             {/* Main Heading - 2XL optimized */}
                             <div className="manrope-medium text-5xl w-full leading-tight mb-8">
@@ -68,7 +72,7 @@ export default function Section3(){
                             
                             {/* Description Text - 2XL optimized */}
                             <div className="manrope-medium text-xl w-full leading-relaxed">
-                            The Brand Hub is the powerhouse behind Hub Interior.
+                             The Brand Hub is the powerhouse behind Hub Interior.
                                 It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
                                 From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
                             </div>
@@ -80,12 +84,15 @@ export default function Section3(){
                     
                 </div>
             </div>
+            </div>
+
 
             {/* XL Screen - Extra large displays */}
-            <div className="hidden xl:block 2xl:hidden">
-                <div className="h-[500px] mx-auto px-12">
+                <div className="desktop-1280">
+
+                <div className="h-[500px] mx-auto px-12 ">
                     
-                    <div className=" w-[1100px] h-[500px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
+                    <div className=" w-[1100px] h-[500px] bg-[#ddcdc1] mx-auto rounded-3xl flex  overflow-hidden">
 
                         
                         {/* Left Image - XL optimized */}
@@ -94,120 +101,44 @@ export default function Section3(){
                             alt="Interior Design" 
                             className="w-[500px] h-auto min-h-[400px] rounded-3xl lg:rounded-l-3xl lg:rounded-r-none object-cover" 
                         />
-
-                        <div className="text-[#ef0101] text-2xl  pt-8 pl-8 manrope-medium">Brand Hub</div>
                         
-                        {/* Center Content - XL optimized */}
-                        <div className="w-[400px]  flex flex-col justify-center items-end pt-30 ">
-                            
-                            
-                            {/* Main Heading - XL optimized */}
-                            <div className="manrope-medium text-4xl w-[500px] leading-tight mb-10 text-[30px] pr-10">
-                                Great design goes beyond aesthetics.
-                            </div>
-                            
-                            {/* Description Text - XL optimized */}
-                            <div className="manrope-medium text-lg leading-relaxed w-[500px]">
-                            The Brand Hub is the powerhouse behind Hub Interior.
-                            It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
-                            From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
-                            </div>
-                            
-                        </div>
+                        <div className="text-[#ef0101] text-2xl  pt-25 pl-10  manrope-medium">Brand Hub</div>
                         
+                        <div className="mt-20 -ml-5">
+                            {/* Center Content - XL optimized */}
+                            <div className="w-[400px]  flex flex-col justify-center items-end pt-20 ">
+                                
+                                
+                                {/* Main Heading - XL optimized */}
+                                <div className="manrope-medium text-4xl w-[500px] leading-tight mb-10 text-[30px] ">
+                                    Great design goes beyond aesthetics.
+                                </div>
+                                
+                                {/* Description Text - XL optimized */}
+                                <div className="manrope-medium text-lg leading-relaxed w-[500px]">
+                                The Brand Hub is the powerhouse behind Hub Interior.
+                                It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
+                                From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
+                                </div>
+                                
+                            </div>
+                        </div> 
                         {/* Right Brand Text - XL optimized */}
                        
                         
                     </div>
                     
                 </div>
+        
             </div>
 
-            {/* LG Screen - Large displays */}
-            <div className="hidden lg:block xl:hidden">
-                <div className="h-[450px] mx-auto px-8">
-                    
-                    <div className="w-[1000px] h-[400px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
-                        
-                        {/* Left Image - LG optimized */}
-                        <img 
-                            src="j2.webp" 
-                            alt="Interior Design" 
-                            className="w-[400px] h-auto min-h-[350px] rounded-3xl lg:rounded-l-3xl lg:rounded-r-none object-cover" 
-                        />
-                        
-                        {/* Center Content - LG optimized */}
-                        <div className="w-[350px] p-10 lg:mt-0 lg:ml-6 flex flex-col justify-center">
-                            
-                            {/* Main Heading - LG optimized */}
-                            <div className="manrope-medium text-3xl w-full leading-tight mb-8">
-                                Great design goes beyond aesthetics.
-                            </div>
-                            
-                            {/* Description Text - LG optimized */}
-                            <div className="manrope-medium text-base w-full leading-relaxed">
-                            The Brand Hub is the powerhouse behind Hub Interior.
-                            It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
-                            From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
-                            </div>
-                            
-                        </div>
-                        
-                        {/* Right Brand Text - LG optimized */}
-                        <div className="text-[#ef0101] text-base lg:ml-auto lg:mr-4 lg:pt-4 px-6 lg:px-0 pb-4 lg:pb-0 text-center lg:text-left">
-                            Brand Hub
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            {/* MD Screen - Medium displays */}
-            <div className="hidden md:block lg:hidden">
-                <div className="h-[400px] mx-auto px-6">
-                    
-                    <div className="w-full h-[350px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
-                        
-                        {/* Left Image - MD optimized */}
-                        <img 
-                            src="j2.webp" 
-                            alt="Interior Design" 
-                            className="w-[300px] h-auto min-h-[300px] rounded-3xl lg:rounded-l-3xl lg:rounded-r-none object-cover" 
-                        />
-                        
-                        {/* Center Content - MD optimized */}
-                        <div className="w-[250px] p-8 lg:mt-0 lg:ml-4 flex flex-col justify-center">
-                            
-                            {/* Main Heading - MD optimized */}
-                            <div className="manrope-medium text-2xl w-full leading-tight mb-6">
-                                Great design goes beyond aesthetics.
-                            </div>
-                            
-                            {/* Description Text - MD optimized */}
-                            <div className="manrope-medium text-sm w-full leading-relaxed">
-                            The Brand Hub is the powerhouse behind Hub Interior.
-                            It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
-                            From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
-                            </div>
-                            
-                        </div>
-                        
-                        {/* Right Brand Text - MD optimized */}
-                        <div className="text-[#ef0101] text-sm lg:ml-auto lg:mr-3 lg:pt-3 px-6 lg:px-0 pb-3 lg:pb-0 text-center lg:text-left">
-                            Brand Hub
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+            
 
             {/* SM Screen - Small displays and mobile */}
             <div className="block md:hidden  w-[full] max-w-[425px]">
                 <div className="h-[30px] mx-auto px-4">
                     
-                    <div className="w-full h-[460px] bg-[#ddcdc1] mx-auto rounded-2xl flex flex-col overflow-hidden -mt-30">
+                    <div className="w-full h-[540] bg-[#ddcdc1] mx-auto rounded-2xl flex flex-col overflow-hidden -mt-30">
                         
                         
                         
@@ -224,7 +155,7 @@ export default function Section3(){
                             </div>
                             
                             {/* Description Text - SM optimized */}
-                            <div className="manrope-medium text-xs w-full leading-relaxed">
+                            <div className="manrope-medium text-md w-full leading-relaxed">
                             The Brand Hub is the powerhouse behind Hub Interior.
                             It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
                             From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.
@@ -334,6 +265,32 @@ export default function Section3(){
                     }
                 }
             `}</style>
+
+
+                <style jsx>{`
+        /* Hide both sections by default on mobile */
+        .desktop-1440,
+        .desktop-1280 {
+          display: none;
+        }
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
+
+        /* Show 1440px section for screens 1440px and above */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block;
+          }
+        }
+          
+      `}</style>
+
+
         </div>
     )
 }

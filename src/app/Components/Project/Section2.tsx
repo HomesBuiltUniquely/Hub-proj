@@ -126,14 +126,14 @@ const CardSection = ({
 
 
 
-                <div className="-mt-10 ml-[160px] flex justify-center">
+                {/* <div className="-mt-10 ml-[160px] flex justify-center">
                   <button
                     onClick={handleNavigate}
                     className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                   >
                     {card.button}
                   </button>
-                </div>
+                </div> */}
 
 
               </div>
@@ -201,14 +201,14 @@ const CardSection = ({
 
 
 
-                  <div className="-mt-10 ml-[160px] flex justify-center">
+                  {/* <div className="-mt-10 ml-[160px] flex justify-center">
                     <button
                       onClick={handleNavigate}
                       className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                     >
                       {card.button}
                     </button>
-                  </div>
+                  </div> */}
 
 
                 </div>

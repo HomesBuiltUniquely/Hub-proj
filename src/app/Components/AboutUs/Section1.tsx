@@ -20,17 +20,21 @@ export default function Section1() {
                 </div>
             </div>
 
-            {/* 2XL Screen - Large displays */}
-            <div className="aboutus-section1-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="flex flex-row justify-between w-full h-[300px] mt-3 ">
 
-                    {/* Heading - 2XL optimized */}
-                    <h1 className="text-6xl manrope -mt-5 ml-25 leading-tight">
+
+            {/* 2XL Screen - Large displays */}
+         
+
+            <div className="desktop-1440">
+                <div className="flex flex-row justify-between w-full h-[320px] px-12 my-auto mb-10">
+
+                    {/* Heading - XL optimized */}
+                    <h1 className="text-6xl manrope mt-20 ml-30 leading-tight">
                         About Us
                     </h1>
 
-                    {/* Description - 2XL optimized */}
-                    <p className="w-[600px] -mt-8 mr-20  manrope-medium text-[26px] leading-relaxed">
+                    {/* Description - XL optimized */}
+                    <p className="w-[550px] mt-12 mr-18 manrope-medium text-2xl leading-relaxed">
                         Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions, from modular to luxury, crafted around your lifestyle and profession.
                         No templates. No compromises. Just interiors that truly fit you.
                     </p>
@@ -38,9 +42,12 @@ export default function Section1() {
                 </div>
             </div>
 
+
+         
+
             {/* XL Screen - Extra large displays */}
-            <div className="hidden xl:block 2xl:hidden">
-                <div className="flex flex-row justify-between w-full h-[320px] mt-70 px-12">
+            <div className="desktop-1280">
+                <div className="flex flex-row justify-between w-full h-[320px] px-12 my-auto mt-75">
 
                     {/* Heading - XL optimized */}
                     <h1 className="text-6xl manrope mt-20 ml-30 leading-tight">
@@ -160,6 +167,32 @@ export default function Section1() {
                     }
                 }
             `}</style>
+
+            
+                <style global jsx>{`
+        /* Hide both sections by default on mobile */
+        .desktop-1440,
+        .desktop-1280 {
+          display: none;
+        }
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
+
+        /* Show 1440px section for screens 1440px and above */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block;
+          }
+        }
+          
+      `}</style>
+
+
         </div>
     )
 }

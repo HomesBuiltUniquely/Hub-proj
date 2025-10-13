@@ -18,7 +18,7 @@ const Section10 = () => {
               />
 
               {/* Overlay Content - 3XL optimized */}
-              <div className="aboutus-section10-3xl-overlay">
+              <div className="aboutus-section10-3xl-overlay manrope-medium">
                 {/* Heading - 3XL optimized */}
                 <h1 className="aboutus-section10-3xl-heading">
                   Shape the Future of Interior Design With Us
@@ -66,7 +66,7 @@ const Section10 = () => {
                 </p>
 
                 {/* Button - 2XL optimized */}
-                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
+                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                   Join Our Team
                 </button>
 
@@ -104,7 +104,7 @@ const Section10 = () => {
                 </p>
 
                 {/* Button - XL optimized */}
-                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
+                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                   Join Our Team
                 </button>
 
@@ -142,7 +142,7 @@ const Section10 = () => {
                 </p>
 
                 {/* Button - LG optimized */}
-                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
+                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                   Join Our Team
                 </button>
 
@@ -180,7 +180,7 @@ const Section10 = () => {
                 </p>
 
                 {/* Button - MD optimized */}
-                <button className="w-[180px] h-[38px] bg-white rounded-3xl mt-5 ml-4 text-base font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
+                <button className="w-[180px] h-[38px] bg-white rounded-3xl mt-5 ml-4 text-base manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                   Join Our Team
                 </button>
 
@@ -192,16 +192,16 @@ const Section10 = () => {
       </section>
 
       {/* SM Screen - Small displays and mobile */}
-      <section className="block md:hidden mt-260 mb-10">
+      <section className="block md:hidden mt-10 mb-10">
         <div className="mt-8 ml w-full h-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="w-full h-auto min-h-[250px] relative rounded-xl overflow-hidden">
 
 
-              <div  >
-                
-                <span className='manrope text-2xl ml-25 text-[#ebd457]'>Team</span> 
-                <span className='manrope text-2xl ml-2 '>HUB</span></div>
+              <div className="flex justify-center space-x-2 mb-4">
+                <span className="manrope text-2xl text-[#ebd457]">Team</span>
+                <span className="manrope text-2xl ">HUB</span>
+              </div>
 
 
               {/* Background Image - SM optimized */}
@@ -218,12 +218,12 @@ const Section10 = () => {
              <img src="ab2.png" alt="" className='w-full h-full min-h-[200px] rounded-xl  mt-5  bg  backdrop-blur-sm bg-black/20 border-[#ddcdc1]' /> */}
 
 
-            <div className="relative w-full min-h-[200px] mt-5 rounded-xl overflow-hidden">
+            <div className="relative w-full h-full mt-5 rounded-xl overflow-hidden">
               {/* Background Image */}
               <img
                 src="ab2.png"
                 alt="Background"
-                className="w-full h-full object-cover filter scale-105 /"
+                className="w-full h-60 object-cover filter scale-105 /"
               />
 
               {/* Text Overlay */}
@@ -231,7 +231,7 @@ const Section10 = () => {
                 <div className=" p-4 rounded-lg text-center ">
 
                   {/* Heading - SM optimized */}
-                  <h1 className="text-xl text-white  manrope-medium leading-tight">
+                  <h1 className="text-2xl mb-3 text-white  manrope-medium leading-tight">
                     Shape the Future of Interior Design With Us
                   </h1>
 
@@ -241,18 +241,13 @@ const Section10 = () => {
                   </p>
 
                   {/* Button - SM optimized */}
-                  <button className="w-[150px] h-[35px] bg-white rounded-full mt-4 ml-2 text-sm font-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
+                  <button className="w-[150px] h-[35px] mx-auto mt-2 bg-white rounded-full  text-sm manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                     Join Our Team
                   </button>
 
                 </div>
               </div>
             </div>
-
-
-
-
-
 
           </div>
         </div>

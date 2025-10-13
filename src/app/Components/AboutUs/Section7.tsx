@@ -18,13 +18,13 @@ const Section7 = () => {
             <div className="aboutus-section7-3xl-values">
               {/* Values Header */}
               <div className="aboutus-section7-3xl-header">
-                <h1 className="aboutus-section7-3xl-title">
+                <h1 className="aboutus-section7-3xl-title manrope">
                   Values
                 </h1>
               </div>
 
               {/* Values Points */}
-              <div className="aboutus-section7-3xl-points">
+              <div className="aboutus-section7-3xl-points manrope-medium">
                 {/* Value Point 1 */}
                 <div className="aboutus-section7-3xl-point">
                   <div className="aboutus-section7-3xl-divider"></div>
@@ -135,13 +135,13 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 mb-10">
               {/* Values Header */}
-              <h1 className="text-6xl manrope-medium pt-20 pl-10 leading-tight">
+              <h1 className="text-6xl manrope pt-20 pl-10 leading-tight">
                 Values
               </h1>
 
 
               {/* Values Points */}
-              <div className="">
+              <div className="manrope-medium">
                 {/* Value Point 1 */}
                 <div className="w-[500px] h-0 border-t border-[#ddcdc1] mt-3 ml-10"></div>
                 <div className="flex items-start">
@@ -237,7 +237,7 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 ml-56">
               {/* Values Header */}
-              <h1 className="text-5xl manrope-medium  pl-10 leading-tight">
+              <h1 className="text-5xl manrope  pl-10 leading-tight">
                 Values
               </h1>
 
@@ -245,7 +245,7 @@ const Section7 = () => {
 
 
               {/* Values Points */}
-              <div className="space-y-5">
+              <div className="space-y-5 manrope-medium">
                 {/* Value Point 1 */}
                 <div className="w-[450px] h-0 border-t border-[#ddcdc1] mt-6 ml-4"></div>
                 <div className="flex items-start">
@@ -337,7 +337,7 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 mr-12 mb-16">
               {/* Values Header */}
-              <h1 className="text-5xl manrope-medium pt-16 pl-8 leading-tight">
+              <h1 className="text-5xl manrope pt-16 pl-8 leading-tight">
                 Values
               </h1>
 
@@ -347,7 +347,7 @@ const Section7 = () => {
               </p>
 
               {/* Values Points */}
-              <div className="space-y-8">
+              <div className="space-y-8 manrope-medium">
                 {/* Value Point 1 */}
                 <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
                 <div className="flex items-start">
@@ -417,7 +417,7 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full mb-12">
               {/* Values Header */}
-              <h1 className="text-4xl manrope-medium pt-12 pl-6 leading-tight">
+              <h1 className="text-4xl manrope pt-12 pl-6 leading-tight">
                 Values
               </h1>
 
@@ -427,7 +427,7 @@ const Section7 = () => {
               </p>
 
               {/* Values Points */}
-              <div className="space-y-6">
+              <div className="space-y-6 manrope-medium">
                 {/* Value Point 1 */}
                 <div className="w-[350px] h-0 border-t border-[#ddcdc1] mt-6 ml-6"></div>
                 <div className="flex items-start">
@@ -486,128 +486,48 @@ const Section7 = () => {
       </section>
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden py-10 px- mb-150">
-        <div className="w-full max-w-[425px] mx-auto ">
 
 
-          {/* Mobile Version Starts here */}
+      <div className="px-4 py-6 block xl:hidden mt-5">
+        <div className="flex items-start">
+          {/* Left Border Line */}
 
 
-
-
-          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div> */}
-          <div className="space-y-4 ">
-
-            <div className='flex items-center ml'>
-              <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
-                <div className='mb-2.5 w-screen  min-w-[320px] max-w-[425px]'>
-                  <h1 className='text-3xl manrope text-nowrap, ml-3'>Values</h1>
-
-
-                  {/* Values Points */}
-                  
-
-                  <div className='bg-white h-full w-screen rounded-3xl mt-8'>
-
-                    {/* Value Point 1 */}
-
-                    <div className="flex items-start">
-                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center m">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                      </div>
-                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                        Integrity: Building trust through honesty, transparency, and respect in everything we do.
-                      </div>
-                    </div>
-
-
-
-                    {/* Value Point 2 */}
-                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                    <div className="flex items-start">
-                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                      </div>
-                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                        Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.
-                      </div>
-                    </div>
-
-                    {/* Value Point 3 */}
-                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                    <div className="flex items-start">
-                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                      </div>
-                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                        Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.
-
-                      </div>
-                    </div>
-
-                    {/* Value Point 4 */}
-                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                    <div className="flex items-start">
-                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                      </div>
-                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                        Excellence: Designing homes that are timeless, functional, and crafted with precision.
-                      </div>
-                    </div>
-
-
-
-                    {/* Value Point 5 */}
-                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                    <div className="flex items-start">
-                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                      </div>
-                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                        Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.
-                      </div>
-                    </div>
-
-
-
-                    {/* Value Point 6 */}
-                    {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>*/}
-                    <div className="flex items-start">
-                      <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                      </div>
-                      <div className="pl-2 pt-3 w-full text-xs leading-relaxed">
-                        Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams.
-                      </div>
-                    </div>
+          {/* Content */}
+          <div className="w-full max-w-full">
+            <div className='bg-[#ebd657] w-[3px] h-10 mb-8'>
+              <h1 className="text-3xl font-bold manrope mb-4 whitespace-nowrap ml-3">Values</h1>
+            </div>
+            <div className="bg-white rounded-3xl p-4 space-y-4 mt-5 manrope-medium">
+              {/* Value Item */}
+              {[
+                "Integrity: Building trust through honesty, transparency, and respect in everything we do.",
+                "Customer-Centric: Every decision starts with what brings happiness and comfort to our customers.",
+                "Innovation: Blending creativity with modern techniques, smart solutions, and premium materials.",
+                "Excellence: Designing homes that are timeless, functional, and crafted with precision.",
+                "Teamwork: Empowering our Hubsters to collaborate, inspire, and deliver beyond expectations.",
+                "Uniquely Built: Creating homes that are not just designed, but deeply connected to lifestyle, culture, and dreams."
+              ].map((text, index) => (
+                <div key={index} className="flex items-start">
+                  <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] flex items-center justify-center mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 bold text-gray-700">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
                   </div>
-
-
-
+                  <p className="pl-3 text-xs leading-relaxed w-full">{text}</p>
 
                 </div>
-              </div>
+                
+              ))}
+              
             </div>
+               <img
+                  src="6.png"  alt="Interior Design"  className="rounded-3xl w-full max-w-full mt-10"/>
 
           </div>
-
-
-
         </div>
-      </section>
+      </div>
+
 
       {/* Pure CSS for 3XL - 2560*1440 resolution */}
       <style jsx>{`

@@ -3,7 +3,9 @@
 export default function Section2() {
     return (
         <div>
-            {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
+
+
+             {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
             <div className="aboutus-section2-3xl-container hidden">
                 <div className="aboutus-section2-3xl-layout">
 
@@ -45,63 +47,58 @@ export default function Section2() {
                 </div>
             </div>
 
-            {/* 2XL Screen - Large displays */}
-            <div className="aboutus-section2-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="h-[600px] flex flex-row px-16 mt-16 gap-12 ">
 
-                    {/* Left Text Box - 2XL optimized */}
-                    <div className="w-[600px] h-[550px] bg-[#ebd457] rounded-2xl p-16 pt-30 text-xl manrope-medium tracking-wide leading-relaxed">
-                        At Hub Interior, beauty is backed by process.
-                        Every space you see is a result of deep planning, skilled design, and flawless execution.
-                        We don’t just make interiors look good—we make them work better for real lives.
-                    </div>
 
-                    {/* Center Image Box - 2XL optimized */}
-                    <div className="w-[600px] h-[550px] bg-[#ebd457] rounded-2xl overflow-hidden">
-                        <img
-                            src="/1.png"
-                            className="w-full h-full object-cover rounded-2xl"
-                            alt="Bedroom Interior"
-                        />
-                    </div>
 
-                    {/* Right Side Images - 2XL optimized */}
-                    <div className="flex flex-col gap-8">
-                        {/* Top Image */}
-                        <div className="w-[350px] h-[150px] bg-yellow-300 rounded-2xl overflow-hidden">
+            {/*1440 version*/}
+            
+            <div className="desktop-1440">
+                <div className="aboutus-section2-2xl-section mx-auto">
+                    <div className="h-[600px] flex flex-row px-16  gap-12 ">
+                        <div className="w-[600px] h-[525px] bg-[#ebd457] rounded-2xl p-16 pt-30 text-xl manrope-medium tracking-wide leading-relaxed">
+                            At Hub Interior, beauty is backed by process.
+                            Every space you see is a result of deep planning, skilled design, and flawless execution.
+                            We don’t just make interiors look good—we make them work better for real lives.
+                        </div>
+
+                        <div className="w-[600px] h-[525px] bg-[#ebd457] rounded-2xl overflow-hidden">
                             <img
-                                src="/ab.jpg"
+                                src="/1.png"
                                 className="w-full h-full object-cover rounded-2xl"
-                                alt="Interior Design"
+                                alt="Bedroom Interior"
                             />
                         </div>
 
-                        {/* Bottom Image */}
-                        <div className="w-[350px] h-[370px] bg-red-400 rounded-2xl overflow-hidden">
-                            <img
-                                src="/3.png"
-                                className="w-full h-full object-cover rounded-2xl"
-                                alt="Interior Design"
-                            />
+                        <div className="flex flex-col gap-8">
+                            <div className="w-[350px] h-[150px] bg-yellow-300 rounded-2xl overflow-hidden">
+                                <img
+                                    src="/ab.jpg"
+                                    className="w-full h-full object-cover rounded-2xl"
+                                    alt="Interior Design"
+                                />
+                            </div>
+                            <div className="w-[350px] h-[345px] bg-red-400 rounded-2xl overflow-hidden">
+                                <img
+                                    src="/3.png"
+                                    className="w-full h-full object-cover rounded-2xl"
+                                    alt="Interior Design"
+                                />
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             {/* XL Screen - Extra large displays */}
-            <div className="hidden xl:block 2xl:hidden">
-                <div className="h-[600px] flex flex-row px-12  gap-10 mt-6">
-
-                    {/* Left Text Box - XL optimized */}
-                    <div className="w-[450px] h-[470px] bg-[#ebd457] rounded-2xl p-12 pt-32 text-[16px] manrope-medium tracking-wide leading-relaxed">
+            <div className="desktop-1280 hidden xl:block 2xl:hidden">
+                <div className="h-[600px] flex flex-row px-12 gap-10 mt-6">
+                    <div className="w-[450px] h-[470px] bg-[#ebd457] rounded-2xl p-12 pt-32 text-[20px] manrope-medium tracking-wide leading-relaxed">
                         At Hub Interior, beauty is backed by process.
                         Every space you see is a result of deep planning, skilled design, and flawless execution.
                         We don’t just make interiors look good—we make them work better for real lives.
                     </div>
 
-                    {/* Center Image Box - XL optimized */}
-                    <div className="w-[450px] h-[450px] bg-[#ebd457] rounded-2xl overflow-hidden">
+                    <div className="w-[450px] h-[470px] bg-[#ebd457] rounded-2xl overflow-hidden">
                         <img
                             src="/1.png"
                             className="w-full h-full object-cover rounded-2xl"
@@ -109,18 +106,14 @@ export default function Section2() {
                         />
                     </div>
 
-                    {/* Right Side Images - XL optimized */}
                     <div className="flex flex-col gap-8">
-                        {/* Top Image */}
-                        <div className="w-[250px] h-[130px] bg-yellow-300 rounded-2xl overflow-hidden">
+                        <div className="w-[250px] h-[135px] bg-yellow-300 rounded-2xl overflow-hidden">
                             <img
                                 src="/ab.jpg"
                                 className="w-full h-full object-cover rounded-2xl"
                                 alt="Interior Design"
                             />
                         </div>
-
-                        {/* Bottom Image */}
                         <div className="w-[250px] h-[300px] bg-red-400 rounded-2xl overflow-hidden">
                             <img
                                 src="/3.png"
@@ -129,109 +122,14 @@ export default function Section2() {
                             />
                         </div>
                     </div>
-
-                </div>
-            </div>
-
-            {/* LG Screen - Large displays */}
-            <div className="hidden lg:block xl:hidden">
-                <div className="h-[500px] flex flex-row px-8 gap-8 mt-8">
-
-                    {/* Left Text Box - LG optimized */}
-                    <div className="w-[400px] h-[400px] bg-[#ebd457] rounded-2xl p-10 pt-24 text-sm manrope-medium tracking-wide leading-relaxed">
-                        At Hub Interior, beauty is backed by process.
-                        Every space you see is a result of deep planning, skilled design, and flawless execution.
-                        We don’t just make interiors look good—we make them work better for real lives.
-                    </div>
-
-                    {/* Center Image Box - LG optimized */}
-                    <div className="w-[400px] h-[400px] bg-[#ebd457] rounded-2xl overflow-hidden">
-                        <img
-                            src="/bed1.jpg"
-                            className="w-full h-full object-cover rounded-2xl"
-                            alt="Bedroom Interior"
-                        />
-                    </div>
-
-                    {/* Right Side Images - LG optimized */}
-                    <div className="flex flex-col gap-6">
-                        {/* Top Image */}
-                        <div className="w-[220px] h-[120px] bg-yellow-300 rounded-2xl overflow-hidden">
-                            <img
-                                src="/ab.jpg"
-                                className="w-full h-full object-cover rounded-2xl"
-                                alt="Interior Design"
-                            />
-                        </div>
-
-                        {/* Bottom Image */}
-                        <div className="w-[220px] h-[250px] bg-red-400 rounded-2xl overflow-hidden">
-                            <img
-                                src="/j4.webp"
-                                className="w-full h-full object-cover rounded-2xl"
-                                alt="Interior Design"
-                            />
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            {/* MD Screen - Medium displays */}
-            <div className="hidden md:block lg:hidden">
-                <div className="h-auto min-h-[400px] flex flex-col px-6 gap-6 mt-8">
-
-                    {/* Left Text Box - MD optimized */}
-                    <div className="w-full h-[300px] bg-[#ebd457] rounded-2xl p-8 pt-20 text-sm manrope-medium tracking-wide leading-relaxed">
-                        At Hub Interior, beauty is backed by process.
-                        Every space you see is a result of deep planning, skilled design, and flawless execution.
-                        We don’t just make interiors look good—we make them work better for real lives.
-                    </div>
-
-                    {/* Center Image Box - MD optimized */}
-                    <div className="w-full h-[300px] bg-[#ebd457] rounded-2xl overflow-hidden">
-                        <img
-                            src="bed1.jpg"
-                            className="w-full h-full object-cover rounded-2xl"
-                            alt="Bedroom Interior"
-                        />
-                    </div>
-
-                    {/* Right Side Images - MD optimized */}
-                    <div className="flex flex-row gap-4">
-                        {/* Top Image */}
-                        <div className="w-1/2 h-[150px] bg-yellow-300 rounded-2xl overflow-hidden">
-                            <img
-                                src="bn.jpg"
-                                className="w-full h-full object-cover rounded-2xl"
-                                alt="Interior Design"
-                            />
-                        </div>
-
-                        {/* Bottom Image */}
-                        <div className="w-1/2 h-[150px] bg-red-400 rounded-2xl overflow-hidden">
-                            <img
-                                src="j4.webp"
-                                className="w-full h-full object-cover rounded-2xl"
-                                alt="Interior Design"
-                            />
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
             {/* SM Screen - Small displays and mobile */}
-            <div className="block md:hidden w-[full] max-w-[425px] mx-auto">
-
-                
-
-
+            <div className="block md:hidden w-full max-w-[425px] mx-auto mb-13">
                 <div className="flex justify-center mt-10 px-4 md:hidden">
                     <div className="flex w-full max-w-[425px] gap-3">
-
-                        {/* Left Large Image */}
-                        <div className="flex- h-[220px] rounded-xl overflow-hidden">
+                        <div className="flex h-[220px] rounded-xl overflow-hidden">
                             <img
                                 src="bed1.jpg"
                                 alt="Bedroom Interior"
@@ -239,9 +137,7 @@ export default function Section2() {
                             />
                         </div>
 
-                        {/* Right Side Small Images (Stacked Vertically) */}
                         <div className="flex flex-col justify-between gap-2">
-                            {/* Top Small Image */}
                             <div className="w-24 h-[80px] rounded-xl overflow-hidden">
                                 <img
                                     src="bn.jpg"
@@ -249,8 +145,6 @@ export default function Section2() {
                                     className="w-screen h-full object-cover rounded-xl"
                                 />
                             </div>
-
-                            {/* Bottom Small Image */}
                             <div className="w-24 h-[132px] rounded-xl overflow-hidden">
                                 <img
                                     src="j4.webp"
@@ -259,22 +153,18 @@ export default function Section2() {
                                 />
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-
-
-                {/* Text Box - SM optimized */}
-                <div className=" h-[250px]   text-xs manrope-medium tracking-wide leading-relaxed mx-auto ml-5 mr-3 mt-5">
+                <div className="h-[250px] text-md manrope-medium tracking-wide leading-relaxed mx-auto ml-5 mr-3 mt-5">
                     At Hub Interior, beauty is backed by process.
                     Every space you see is a result of deep planning, skilled design, and flawless execution.
                     We don’t just make interiors look good—we make them work better for real lives.
                 </div>
-
             </div>
 
-            {/* Pure CSS for 3XL - 2560*1440 resolution */}
+
+             {/* Pure CSS for 3XL - 2560*1440 resolution */}
             <style jsx>{`
                 /* Ensure only one 3xl section exists */
                 .aboutus-section2-3xl-container {
@@ -364,6 +254,27 @@ export default function Section2() {
                     }
                 }
             `}</style>
+
+
+        
+            <style jsx global>{`
+                .desktop-1440,
+                .desktop-1280 {
+                    display: none;
+                }
+
+                @media (min-width: 768px) and (max-width: 1439px) {
+                    .desktop-1280 {
+                        display: block;
+                    }
+                }
+
+                @media (min-width: 1440px) {
+                    .desktop-1440 {
+                        display: block;
+                    }
+                }
+            `}</style>
         </div>
-    )
+    );
 }

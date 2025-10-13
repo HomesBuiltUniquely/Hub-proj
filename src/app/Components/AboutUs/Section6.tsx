@@ -10,10 +10,10 @@ const Section6 = () => {
         <div className="aboutus-section6-3xl-content">
           <div className="aboutus-section6-3xl-layout">
             {/* Left Side - Mission Content */}
-            <div className="aboutus-section6-3xl-text-content">
+            <div className="aboutus-section6-3xl-text-content manrope-medium">
               {/* Mission Header */}
               <div className="aboutus-section6-3xl-header">
-                <h1 className="aboutus-section6-3xl-title">
+                <h1 className="aboutus-section6-3xl-title manrope">
                   Mission
                 </h1>
                 <p className="aboutus-section6-3xl-subtitle">
@@ -40,7 +40,7 @@ const Section6 = () => {
         <div className='flex justify-between'>
           <div className="max-w-7xl">
             {/* Mission Header */}
-            <h1 className="text-6xl manrope-medium pt-20 leading-tight">
+            <h1 className="text-6xl manrope pt-20 leading-tight">
               Mission
             </h1>
 
@@ -63,7 +63,7 @@ const Section6 = () => {
         <div className="flex justify-evenly">
           <div className="max-w-6xl mt-12 mr-70">
             {/* Mission Header */}
-            <h1 className="text-5xl manrope-medium leading-tight">
+            <h1 className="text-5xl manrope leading-tight">
               Mission
             </h1>
 
@@ -85,7 +85,7 @@ const Section6 = () => {
       <section className="hidden lg:block xl:hidden py-16 px-8 bg-white">
         <div className="max-w-5xl mx-auto">
           {/* Mission Header */}
-          <h1 className="text-4xl manrope-medium pt-16 pl-8 leading-tight">
+          <h1 className="text-4xl manrope pt-16 pl-8 leading-tight">
             Mission
           </h1>
 
@@ -95,7 +95,7 @@ const Section6 = () => {
           </p>
 
           {/* Mission Points */}
-          <div className="space-y-8">
+          <div className="space-y-8 manrope-medium">
             {/* Mission Point 1 */}
             <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
             <div className="flex items-start">
@@ -155,7 +155,7 @@ const Section6 = () => {
       <section className="hidden md:block lg:hidden py-12 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           {/* Mission Header */}
-          <h1 className="text-3xl manrope-medium pt-12 pl-6 leading-tight">
+          <h1 className="text-3xl manrope pt-12 pl-6 leading-tight">
             Mission
           </h1>
 

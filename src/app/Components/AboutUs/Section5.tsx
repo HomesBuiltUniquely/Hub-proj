@@ -116,10 +116,10 @@ const Section5 = () => {
                 <div className="aboutus-section5-3xl-stats-grid">
                   {stats.map((stat, index) => (
                     <div key={index} className="aboutus-section5-3xl-stat-item">
-                      <p className="aboutus-section5-3xl-stat-value">
+                      <p className="aboutus-section5-3xl-stat-value manrope">
                         {stat.value}
                       </p>
-                      <p className="aboutus-section5-3xl-stat-label">
+                      <p className="aboutus-section5-3xl-stat-label manrope-medium">
                         {stat.label}
                       </p>
                     </div>
@@ -133,10 +133,10 @@ const Section5 = () => {
                   <div className="aboutus-section5-3xl-timeline-content">
                     {timeline.map((item, index) => (
                       <div key={index} className="aboutus-section5-3xl-timeline-item">
-                        <h3 className="aboutus-section5-3xl-timeline-year">
+                        <h3 className="aboutus-section5-3xl-timeline-year manrope">
                           {item.year}
                         </h3>
-                        <p className="aboutus-section5-3xl-timeline-text">
+                        <p className="aboutus-section5-3xl-timeline-text manrope-medium">
                           {item.content}
                         </p>
                       </div>
@@ -150,6 +150,7 @@ const Section5 = () => {
       </section>
 
       {/* 2XL Screen - Large displays */}
+      <div className='desktop-1440'>
       <section className="aboutus-section5-2xl-section hidden 2xl:block 3xl:hidden py-20 px-16 bg-white">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
@@ -200,8 +201,11 @@ const Section5 = () => {
           </div>
         </div>
       </section>
+      </div>
 
       {/* XL Screen - Extra large displays */}
+
+      <div className='desktop-1280'>
       <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
@@ -224,7 +228,7 @@ const Section5 = () => {
                     <p className="text-3xl manrope text-[#ef0101] leading-tight">
                       {stat.value}
                     </p>
-                    <p className="text-base text-gray-600 mt-2 leading-relaxed manrope">
+                    <p className="text-base text-gray-600 mt-2 leading-relaxed manrope-medium">
                       {stat.label}
                     </p>
                   </div>
@@ -238,10 +242,10 @@ const Section5 = () => {
                 <div className="space-y-8 min-h-[800px]">
                   {timeline.map((item, index) => (
                     <div key={index} className="relative pl-8 pb-8 border-l-2 border-[#ef0101]">
-                      <h3 className="text-xl font-semibold text-gray-900 leading-tight">
+                      <h3 className="text-xl manrope text-gray-900 leading-tight">
                         {item.year}
                       </h3>
-                      <p className="mt-2 text-base text-gray-600 leading-relaxed">
+                      <p className="mt-2 text-base text-gray-600 leading-relaxed manrope-medium">
                         {item.content}
                       </p>
                     </div>
@@ -252,121 +256,21 @@ const Section5 = () => {
           </div>
         </div>
       </section>
+      </div>
 
-      {/* LG Screen - Large displays */}
-      <section className="hidden lg:block xl:hidden py-16 px-8 bg-white">
-        <div className="max-w-5xl mx-auto">
-          {/* Header Section */}
-          <div className="text-center mb-10">
-            <h2 className="text-3xl manrope text-gray-900 mb-2 leading-tight">
-              Journey So Far
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              The Path We&#39;ve Paved!
-            </p>
-          </div>
 
-          {/* Main Content */}
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left Side - Static Stats */}
-            <div className="w-full lg:w-1/2 bg-gray-50 p-6 rounded-lg">
-              <div className="grid grid-cols-2 gap-4">
-                {stats.map((stat, index) => (
-                  <div key={index} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <p className="text-2xl font-bold text-[#ef0101] leading-tight">
-                      {stat.value}
-                    </p>
-                    <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Side - Scrollable Timeline */}
-            <div className="w-full lg:w-1/2 h-[450px] p-6 rounded-lg relative">
-              <div className="h-full overflow-y-scroll pr-3 scrollbar scroll-container always-visible-scrollbar">
-                <div className="space-y-6 min-h-[750px]">
-                  {timeline.map((item, index) => (
-                    <div key={index} className="relative pl-6 pb-6 border-l-2 border-[#ef0101]">
-                      <h3 className="text-lg font-semibold text-gray-900 leading-tight">
-                        {item.year}
-                      </h3>
-                      <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                        {item.content}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MD Screen - Medium displays */}
-      <section className="hidden md:block lg:hidden py-12 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          {/* Header Section */}
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2 leading-tight">
-              Journey So Far
-            </h2>
-            <p className="text-base text-gray-600 leading-relaxed">
-              The Path We&#39;ve Paved!
-            </p>
-          </div>
-
-          {/* Main Content */}
-          <div className="flex flex-col gap-6">
-            {/* Left Side - Static Stats */}
-            <div className="w-full bg-gray-50 p-6 rounded-lg">
-              <div className="grid grid-cols-2 gap-4">
-                {stats.map((stat, index) => (
-                  <div key={index} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <p className="text-xl font-bold text-[#ef0101] leading-tight">
-                      {stat.value}
-                    </p>
-                    <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Side - Scrollable Timeline */}
-            <div className="w-full h-[400px] p-6 rounded-lg relative">
-              <div className="h-full overflow-y-scroll pr-3 scrollbar scroll-container always-visible-scrollbar">
-                <div className="space-y-6 min-h-[700px]">
-                  {timeline.map((item, index) => (
-                    <div key={index} className="relative pl-6 pb-6 border-l-2 border-[#ef0101]">
-                      <h3 className="text-base font-semibold text-gray-900 leading-tight">
-                        {item.year}
-                      </h3>
-                      <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                        {item.content}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden px-4 ">
-        <div className="w-full max-w-[425px] mx-auto">
+      <section className="block md:hidden px-4">
+        <div className="w-full max-w-[425px] mx-auto mt-110">
           {/* Header Section */}
 
 
           <div className="flex flex-col justify-between h-[150px] ">
 
 
-            <div className='flex items-center mt-20'>
+            <div className='flex items-center mt-30'>
               <div className='bg-[#ebd657] w-[3px] h-10'>
                 <div className='mb-2.5 w-80'>
                   <h1 className='text-3xl manrope text-nowrap, ml-3'> Journey So far</h1>
@@ -388,7 +292,7 @@ const Section5 = () => {
 
 
 
-            <div className="w-full max-w-2xl mx-auto mt-5">
+            <div className="w-full max-w-2xl mx-auto mt-15">
               {/* Slide */}
               <div className="w-full h-60 bg-gray-50 p-4 rounded-3xl flex items-center justify-center shadow-xl transition-all duration-500 ease-in-out">
                 <div className="text-center max-w-md">
@@ -429,42 +333,6 @@ const Section5 = () => {
 
 
           </div>
-
-
-
-
-
-
-
-          {/* <div className=' bg-amber-50 ml-50 mt-20 rounded-full'>
-
-            <button>&#8594;</button>
-            <span>
-              <button>&#8592;</button>
-            </span>
-          </div> */}
-
-          {/* 
-          <div className='w-[full] h-[240px] rounded-xl bg-white shadow-lg '>
-
-            <div className="w-full h-[350px] rounded-lg relative">
-              <div className="h-full overflow-y-scroll pr-2 scrollbar scroll-container always-visible-scrollbar">
-                <div className="space-y-4 min-h-[600px]">
-                  {timeline.map((item, index) => (
-                    <div key={index} className="relative pl-4 pb-4 border-l-2 border-[#ef0101]">
-                      <h3 className="text-sm font-semibold text-gray-900 leading-tight">
-                        {item.year}
-                      </h3>
-                      <p className="mt-1 text-xs text-gray-600 leading-relaxed">
-                        {item.content}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-          </div> */}
 
 
         </div>
@@ -704,6 +572,33 @@ const Section5 = () => {
           background: #d00101 !important;
         }
       `}</style>
+
+
+         <style jsx>{`
+        /* Hide both sections by default on mobile */
+        .desktop-1440,
+        .desktop-1280 {
+          display: none;
+        }
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
+
+        /* Show 1440px section for screens 1440px and above */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block;
+          }
+        }
+          
+      `}</style>
+
+
+
     </div>
   );
 };

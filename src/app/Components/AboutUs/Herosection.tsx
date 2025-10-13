@@ -145,6 +145,32 @@ export default function Herosection() {
                 }
             `}</style>
 
+
+            <style jsx>{`
+        /* Hide both sections by default on mobile */
+        .desktop-1440,
+        .desktop-1280 {
+          display: none;
+        }
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
+
+        /* Show 1440px section for screens 1440px and above */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block;
+          }
+        }
+          
+      `}</style>
+
+
+
             {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) */}
             <div className="aboutus-hero-3xl-container hidden">
 
@@ -183,30 +209,27 @@ export default function Herosection() {
                 </div>
             </div>
 
+
+
             {/* 2XL Screen - Large displays */}
-            <div className="aboutus-hero-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="w-auto h-auto m-6">
+            <div className="desktop-1440">
+                <div className="w-auto h-full m-6 mb-25 mx-auto">
                     <div className="relative w-full h-full">
                         <img src="/ab1.png" alt="Background" className="w-full h-screen rounded-4xl" />
                         <div className="absolute inset-0 bg-opacity-40"></div>
 
                         {/* Get Free Estimate Button - 2XL optimized */}
                         <div className="absolute top-8 right-8 z-30">
-                            <button className="w-[230px] h-[50px] manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg  2xl-1850:bg-red-500 ">Get Free Estimate</button>
+                            <button className="w-[230px] h-[50px] manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg">
+                                Get Free Estimate
+                            </button>
                         </div>
 
                         {/* Header - 2XL optimized */}
-                        <div className="absolute top-0 left-0 w-full p-8 flex items-center  justify-between -mt-26">
-                            <Image
-                                src="/redlogo.png"
-                                alt="LOGO"
-                                width={220}
-                                height={100}
-                                className="mb-170"
+                        <div className="absolute top-0 left-0 w-full p-8 flex items-center justify-between -mt-26">
+                            <Image src="/redlogo.png" alt="LOGO" width={220} height={100} className="mb-170" />
 
-                            />
-
-                            {/* Navigation - 2XL optimized */}
+                            {/* Navigation */}
                             <nav className="text-white text-2xl manrope space-x-10 mr-80 -mt-158">
                                 <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
                                 <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
@@ -214,9 +237,9 @@ export default function Herosection() {
                             </nav>
                         </div>
 
-                        {/* Main Content - 2XL optimized */}
-                        <div className="absolute  left-16 -translate-y-1/2 text-white -mt-60">
-                            <div className="text-6xl manrope-medium leading-tight ">homes,</div>
+                        {/* Main Content */}
+                        <div className="absolute left-16 -translate-y-1/2 text-white -mt-60">
+                            <div className="text-6xl manrope-medium leading-tight">homes,</div>
                             <div className="text-7xl wulkan-display my-6 leading-tight">uniquely</div>
                             <div className="text-6xl manrope-medium leading-tight">built</div>
                         </div>
@@ -224,125 +247,60 @@ export default function Herosection() {
                 </div>
             </div>
 
-            {/* XL Screen - Extra large displays */}
-            <div className="hidden xl:block 2xl:hidden 3xl:hidden">
-                <div className="w-auto h-[550px] m-4 ">
-                    <div className="relative w-full h-full">
-                        <img src="/ab1.png" alt="Background" className="w-full h-[800px] rounded-4xl" />
-                        <div className="absolute inset-0 bg-opacity-40"></div>
+            
 
-                        {/* Get Free Estimate Button - XL optimized */}
-                        <div className="ml-290 -mt-190 ">
-                            <button className="manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg">Get Free Estimate</button>
-                        </div>
+           
 
-                        {/* Header - XL optimized */}
-                        <div className="absolute -mt-50 right-5 w-full p-8 flex items-center justify-between mr-2">
-                            <Image
-                                src="/redlogo.png"
-                                alt="LOGO"
-                                width={240}
-                                height={100}
 
-                            />
 
-                            {/* Navigation - XL optimized */}
-                            <nav className="text-white text-xl manrope space-x-8 pr-65 pb-12 mt-25">
-                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
-                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
-                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
-                            </nav>
-                        </div>
+<div className="desktop-1280">
+  <div className="w-full h-[550px] mb-4 mx-auto">
+    <div className="relative w-full h-full">
+      <img src="/ab1.png" alt="Background" className="w-full h-[800px] rounded-4xl" />
+      <div className="absolute inset-0 bg-opacity-40"></div>
 
-                        {/* Main Content - XL optimized */}
-                        <div className="absolute top-1/2 ml-20 -translate-y-1/2 text-white mt-70">
-                            <div className="text-6xl manrope-medium leading-tight">homes,</div>
-                            <div className="text-7xl wulkan-display my-4 leading-tight">uniquely</div>
-                            <div className="text-6xl manrope-medium leading-tight">built</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      {/* Get Free Estimate Button */}
+      <div className="absolute top-8 right-8 z-30">
+        <button className="manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg">
+          Get Free Estimate
+        </button>
+      </div>
 
-            {/* LG Screen - Large displays */}
-            <div className="hidden lg:block xl:hidden 3xl:hidden">
-                <div className="w-auto h-auto m-6">
-                    <div className="relative w-full h-full">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen object-cover" />
-                        <div className="absolute inset-0 bg-opacity-40"></div>
+      {/* Logo div — fully independent */}
+      <div className='absolute bottom-86 right-5 w-full p-8 z-30'>
+        <div className="logo-container mb-4">
+          <Image
+            src="/redlogo.png"
+            alt="LOGO"
+            width={220}
+            height={100}
+            className=""
+          />
+        </div>
+      </div>
 
-                        {/* Get Free Estimate Button - LG optimized */}
-                        <div className="absolute top-4 right-6 z-30">
-                            <button className="manrope-medium text-base px-6 py-2.5 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-md ">Get Free Estimate</button>
-                        </div>
+      <div className='absolute bottom-112 left-30 w-full p-8 z-30'>
+        <div className="nav-container text-white text-xl manrope font-bold">
+          <nav className="flex justify-center gap-10">
+            <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
+            <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
+            <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
+          </nav>
+        </div>
+      </div>
 
-                        {/* Header - LG optimized */}
-                        <div className="absolute top-0 left-0 w-full p-6 flex items-center justify-between">
-                            <Image
-                                src="/redlogo.png"
-                                alt="LOGO"
-                                width={140}
-                                height={70}
-                                className="w-[140px] h-[70px]"
-                            />
+      {/* Main Content */}
+      <div className="absolute top-120 left-16 -translate-y-1/2 text-white">
+        <div className="text-6xl manrope-medium leading-tight">homes,</div>
+        <div className="text-7xl wulkan-display my-4 leading-tight">uniquely</div>
+        <div className="text-6xl manrope-medium leading-tight">built</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                            {/* Navigation - LG optimized */}
-                            <nav className="text-white text-lg manrope space-x-6 mx-auto">
-                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
-                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
-                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
-                            </nav>
-                        </div>
 
-                        {/* Main Content - LG optimized */}
-                        <div className="absolute top-1/2 left-6 -translate-y-1/2 text-white">
-                            <div className="text-4xl manrope-medium leading-tight">hpmes,</div>
-                            <div className="text-5xl wulkan-display my-3 leading-tight">uniquely</div>
-                            <div className="text-4xl manrope-medium leading-tight">built</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            {/* MD Screen - Medium displays */}
-            <div className="hidden md:block lg:hidden 3xl:hidden">
-                <div className="w-auto h-auto m-4">
-                    <div className="relative w-full h-full">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen object-cover" />
-                        <div className="absolute inset-0 bg-opacity-40"></div>
-
-                        {/* Get Free Estimate Button - MD optimized */}
-                        <div className="absolute top-3 right-4 z-30">
-                            <button className="manrope-medium text-sm px-4 py-1.5 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-md">Get Free Estimate</button>
-                        </div>
-
-                        {/* Header - MD optimized */}
-                        <div className="absolute top-0 left-0 w-full p-4 flex items-center justify-between">
-                            <Image
-                                src="/redlogo.png"
-                                alt="LOGO"
-                                width={100}
-                                height={50}
-                                className="w-[100px] h-[50px]"
-                            />
-
-                            {/* Navigation - MD optimized */}
-                            <nav className="text-white text-base manrope space-x-4 mx-auto">
-                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
-                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
-                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
-                            </nav>
-                        </div>
-
-                        {/* Main Content - MD optimized */}
-                        <div className="absolute top-1/2 left-4 -translate-y-1/2 text-white">
-                            <div className="text-3xl manrope-medium leading-tight">homes</div>
-                            <div className="text-4xl wulkan-display my-2 leading-tight">uniquely</div>
-                            <div className="text-3xl manrope-medium leading-tight">built</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             {/* SM Screen - Small displays and mobile */}
             <div className="block md:hidden 3xl:hidden">
@@ -363,7 +321,7 @@ export default function Herosection() {
                                 alt="LOGO"
                                 width={80}
                                 height={40}
-                             
+
                             />
 
                             {/* Navigation - SM optimized */}
@@ -386,21 +344,6 @@ export default function Herosection() {
 
         </div>
 
-            {/* mobile version */}
-
-            <div className="hidden md:block" >
-
-                <div className="w-[360px] mx-auto pb-25 pt-5">
-
-
-                
-
-
-                </div>
-
-
-
-            </div>
 
         </>
     )
