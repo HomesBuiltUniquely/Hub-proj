@@ -30,7 +30,7 @@ const defaultPosts: Post[] = [
   {
     id: 2,
     title: "Inside Mr. & Mrs. Rijul Azizam's Home, Designed by Hub Interior",
-    date: "Aug 2025",
+    date: "Sep 2025",
     readTime: "8 mins read",
     img: "/blog2title.png",
     path: "/Blog/2/Blog2",
@@ -45,8 +45,8 @@ const defaultPosts: Post[] = [
   },
   {
     id: 4,
-    title: "Luxury Villa Interior Design – The Royal Tulip Project in Bengaluru by HUB Interior",
-    date: "August 1, 2025",
+    title: "Luxury Villa Interior Design ",
+    date: "Sep 1, 2025",
     readTime: "8 mins read",
     img: "/blog4title.jpg",
     path: "/Blog/4/Blog4",
@@ -54,7 +54,7 @@ const defaultPosts: Post[] = [
   {
     id: 5,
     title: "Interior Design Bangalore: How HUB Interior Crafted Serenity Heights Apartment into a Living Masterpiece",
-    date: "August 3, 2025",
+    date: "Sep 3, 2025",
     readTime: "15 mins read",
     img: "/blog5title.jpg",
     path: "/Blog/5/Blog5",
@@ -62,7 +62,7 @@ const defaultPosts: Post[] = [
   {
     id: 6,
     title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
-    date: "August 5, 2025",
+    date: "Sep 5, 2025",
     readTime: "12 mins read",
     img: "/Ukitchen.png",
     path: "/Blog/6/Blog6",
@@ -70,9 +70,9 @@ const defaultPosts: Post[] = [
   {
     id: 7,
     title: "Sustainable Interior Design Practices",
-    date: "August 7, 2025",
+    date: "Sep 7, 2025",
     readTime: "14 mins read",
-    img: "/bn.jpg",
+    img: "/blog2img4.png",
     path: "/Blog/7/Blog7",
   },
   {
@@ -101,13 +101,6 @@ const defaultPosts: Post[] = [
     title: "Wall Decor Ideas and Trends",
     date: "August 15, 2025",
     readTime: "7 mins read",
-    img: "/bn.jpg",
-  },
-  {
-    id: 12,
-    title: "Flooring Options for Every Budget",
-    date: "August 17, 2025",
-    readTime: "16 mins read",
     img: "/bn.jpg",
   },
 ];

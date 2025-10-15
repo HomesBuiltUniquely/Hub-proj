@@ -55,7 +55,7 @@ export default function Blog2() {
                         {/* Sections */}
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                             <h3 className="text-xl font-semibold text-gray-900 pt-2">Starting With The Entry Gate</h3>
-                            <div className="relative w-[500px] h-[500px] md:h-96 rounded-xl overflow-hidden mt-3 ml-30">
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
                                 <img src={'/blog2img2.png'} alt={'Warm living ambience'} className="w-full h-full object-cover" />
                             </div>
                             <p>Let&#39;s start at the beginning, literally!</p>
@@ -63,30 +63,30 @@ export default function Blog2() {
                             <p>We designed a custom shoe rack that&#39;s equal parts practical and pretty and entry gate decor. For the entry gate decor, we went with a white cabinet with black knobs for a contrast. The top part of the cabinet had enough space to keep any decor and showpieces to add colors to the hall. It was extended upward using the same measurements, which makes that section feel separate from the rest of the hall in a really subtle way.</p>
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">A Minimal Yet Calming Puja Unit</h3>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/temple1.jpg" alt="Puja unit design" className="w-full h-full object-cover" />
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog2img3.png" alt="Puja unit design" className="w-full h-full object-cover" />
                             </div>
                             <p>The Rujuls wanted a pooja unit that blended with the house but still stood out and gave a sacred feeling. While space was a problem at first, HUB Interior made sure the couple got what they wanted.</p>
                             <p>We kept the design minimal but meaningful. The cabinets were designed at the bottom for storage, and then we split the upper section with a clean shelf. On top, we added soft lighting so the idol has that warm, divine glow.</p>
                             <p>And since we were following the same palette as the hall, we kept the cabinet knobs black, giving that simple black-and-white contrast, and it&#39;s turned out to be how the couple dreamt it.</p>
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">A Thoughtful Kitchen</h3>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/Ukitchen.png" alt="Thoughtful kitchen design" className="w-full h-full object-cover" />
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog2img4.png" alt="Thoughtful kitchen design" className="w-full h-full object-cover" />
                             </div>
                             <p>This space had to multitask like a parent on a Monday morning. For Rijuls, we decided to design a kitchen that is beautiful to look at and easy to use every day. We gave them glass-front kitchen cabinets, which not only make the space look larger and lighter but also allow them to display their favorite pieces.</p>
                             <p>To balance it out, a tambour unit slid right in, hiding away the toaster, mixer, and all those unglamorous yet essential gadgets. The slab cabinets just added the cherry on top. And for this one also, we followed our black and white theme.</p>
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">Window Seating Area and Study Table Unit</h3>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/bed3.jpg" alt="Window seating area" className="w-full h-full object-cover" />
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog2img5.png" alt="Window seating area" className="w-full h-full object-cover" />
                             </div>
                             <p>The couple wanted a cozy corner that was inviting, matched their theme, and was not over the top. So we made them a window seating area. It holds enough space for two to three people to sit and blends perfectly with the home&#39;s theme. And how can we skip storage?</p>
                             <p>The small cabinets were also added below for storage. Additionally, we also designed a study table unit with small cabinets. The idea was to save space, make the area look big, and deliver what the couple wanted. You can check the results above.</p>
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">The Living Room</h3>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/TVUNIT.jpg" alt="Living room design" className="w-full h-full object-cover" />
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog2img6.png" alt="Living room design" className="w-full h-full object-cover" />
                             </div>
                             <p>The Rijuls wanted their hall to be minimal yet elegant for Azizam&#39;s house. And, we were up for it. And what could be the best way to do this instead of using false ceiling and wall paneling?</p>
                             <p>We went with clean trims on both sides and a textured white panel in the center to break the monotony. It&#39;s simple, soft, and instantly makes the wall look more polished and put-together.</p>
@@ -103,6 +103,9 @@ export default function Blog2() {
                             <p>If you&#39;ve got a home waiting for its own story, HUB Interior would love to design it with you. Contact us today!</p>
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">The False Ceiling</h3>
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog2img7.png" alt="Living room design" className="w-full h-full object-cover" />
+                            </div>
                             <p>The highlight of the house was the false ceiling. Now, let me tell you: false ceilings are often underestimated. Done right, they don&#39;t just hide wires or lighting fixtures; they actually transform a space.</p>
                             <p>In Bhoo Aabharana, the false ceiling detail of triangles and rhombuses gave the living room a pulled-together look.</p>
                             <p>Good design is in the details, and this home interior designer&#39;s Bangalore project had plenty of them. From the wall panelling to the fall ceiling, every decision was made to balance form and function. And honestly? We wouldn&#39;t change a thing.</p>

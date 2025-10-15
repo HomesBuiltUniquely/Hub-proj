@@ -61,7 +61,7 @@ const allPostsInit: Post[] = [
     title: "Sustainable Interior Design Practices",
     date: "August 7, 2025",
     readTime: "14 mins read",
-    img: "/bn.jpg",
+    img: "/blog2img4.png",
     path: "/Blog/7/Blog7",
   },
   {
@@ -478,33 +478,46 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
           <h2 className="text-2xl mt-65 sm:text-3xl lg:text-4xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-gray-900 text-center">
             More Blog Posts
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto mb-8 h-[500px]">
-            {currentPosts.map((post) => (
-              <div key={post.id} className="w-full h-[510px] max-w-sm mx-auto sm:max-w-none bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="relative">
-                  <img 
-                    src={post.img} 
-                    alt={post.title} 
-                    className="w-full h-80 object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex justify-between text-black text-xs mb-2">
-                    <span>Blog • {post.readTime}</span>
-                    <span>{post.date}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-8">
+              {currentPosts.map((post) => (
+                <div
+                  key={post.id}
+                  className="w-full max-w-sm sm:max-w-none mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
+                >
+                  {/* Image Section */}
+                  <div className="relative">
+                    <img
+                      src={post.img}
+                      alt={post.title}
+                      className="w-full h-80 object-cover"
+                    />
                   </div>
-                  <h3 className="font-semibold text-lg mb-3">{post.title}</h3>
-                  <button 
-                    onClick={() => handleReadMore(post)}
-                    className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium flex items-center justify-center gap-2"
-                  >
-                    Read More
-                    <FaArrowRight className="w-4 h-4" />
-                  </button>
+
+                  {/* Content Section */}
+                  <div className="p-5 flex flex-col flex-grow">
+                    <div className="flex justify-between text-black text-xs mb-2">
+                      <span>Blog • {post.readTime}</span>
+                      <span>{post.date}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-semibold text-lg mb-4 line-clamp-2 min-h-[56px]">
+                      {post.title}
+                    </h3>
+
+                    {/* Spacer to push button to bottom if needed */}
+                    <div className="mt-auto">
+                      <button
+                        onClick={() => handleReadMore(post)}
+                        className="w-full h-[44px] bg-red-500 text-white px-4 rounded-lg hover:bg-red-600 transition-colors font-semibold flex items-center justify-center gap-2 whitespace-nowrap"
+                      >
+                        Read More <FaArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
           {/* Pagination - Show when there are more than 3 remaining posts */}
           {remainingPosts.length > itemsPerPage && totalPages > 1 && (

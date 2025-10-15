@@ -83,7 +83,7 @@ const ContactHeader: React.FC = () => {
         <div className="flex items-center justify-between px-6 py-4 -mt-23 -ml-7">
           <Link href="/"><Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250}/></Link>
           <div className="hidden md:flex gap-8 text-xs font-semibold text-white tracking-widest">
-            <a href="#">HOME</a>
+            <a href="/">HOME</a>
             <a href="#">SERVICES</a>
             <a href="#">EXPLORE ROOMS</a>
           </div>

@@ -39,10 +39,6 @@ export default function Blog6() {
                             <p className="text-gray-700 leading-relaxed mb-4">Ever opened your kitchen and felt like it&#39;s working against you? Counters cluttered, cabinets difficult to reach, lighting too dim for cooking? A kitchen is the heart of a home, and in Bengaluru&#39;s fast-paced life, it needs to support your daily routine effortlessly while looking stylish. The right kitchen interior not only simplifies cooking but also makes the space a place to connect, create, and enjoy every meal.</p>
                             <p className="text-gray-700 leading-relaxed mb-8">Here&#39;s a practical guide with eight actionable steps to design a kitchen that balances style and function.</p>
                         </div>
-
-                        <div className="relative w-full h-80 rounded-xl overflow-hidden mb-4">
-                            <img src="/Ukitchen.png" alt="Functional kitchen design" className="w-full h-full object-cover" />
-                        </div>
                         <p className="text-gray-700 leading-relaxed mb-8">A modern, functional kitchen that balances style with practicality for everyday living.</p>
 
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -50,135 +46,252 @@ export default function Blog6() {
                             <p>Before you plan layouts or choose finishes, look closely at how the kitchen is used every day. Think about:</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <ul className="space-y-2">
-                                    <li>How often you cook and for how many people.</li>
-                                    <li>Whether the kitchen doubles as a breakfast, coffee, or casual dining area.</li>
-                                    <li>The storage you actually need for utensils, groceries, and appliances.</li>
+                                <ul className="space-y-3">
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">How often you cook and for how many people.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Whether the kitchen doubles as a breakfast, coffee, or casual dining area.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">The storage you actually need for utensils, groceries, and appliances.</span>
+                                    </li>
                                 </ul>
                             </div>
+
+
+                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog6img1.jpeg" alt="Functional kitchen design" className="w-full h-full object-cover" />
+                            </div>
                             
-                            <p>Understanding your routine ensures the kitchen is designed around your life, rather than forcing you to adapt to the space. Proper planning at this stage sets the foundation for a kitchen interior in Bengaluru that works seamlessly.</p>
+                            <p>Understanding your routine ensures the kitchen is designed around your life, rather than forcing you to adapt to the space. Proper planning at this stage sets the foundation for a <span className="font-black text-black">kitchen interior in Bengaluru</span> that works seamlessly.</p>
                             
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Step 2: Plan the Layout for Effortless Flow</h2>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/Ukitchen.png" alt="Kitchen layout design" className="w-full h-full object-cover" />
-                            </div>
                             <p>Movement in the kitchen should feel natural. Consider separating zones for cooking, prep, and socialising. A smart layout saves time and reduces frustration, even in small spaces.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Tips for an efficient layout:</h3>
-                                <ul className="space-y-2">
-                                    <li>Keep the sink, stove, and fridge within an ergonomic triangle.</li>
-                                    <li>Create a prep area with easy access to knives, cutting boards, and ingredients.</li>
-                                    <li>Designate a breakfast or coffee corner to keep the cooking zone free.</li>
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                                    Tips for an efficient layout:
+                                </h3>
+                                <ul className="space-y-3">
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Keep the sink, stove, and fridge within an ergonomic triangle.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Create a prep area with easy access to knives, cutting boards, and ingredients.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Designate a breakfast or coffee corner to keep the cooking zone free.</span>
+                                    </li>
                                 </ul>
+                            </div>
+
+                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog6img2.jpg" alt="Kitchen layout design" className="w-full h-full object-cover" />
                             </div>
                             
                             <p>Planning the layout carefully ensures the kitchen supports both work and interaction, making it a hub of the home.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Step 3: Choose Durable Materials with Style</h2>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/straightkitchen.png" alt="Kitchen materials" className="w-full h-full object-cover" />
-                            </div>
-                            <p>Material choice affects both usability and appearance. For modern kitchen interior designs, opt for surfaces that are long-lasting, easy to clean, and visually appealing.</p>
+                            <p>Material choice affects both usability and appearance. For <span className="font-black text-black">modern kitchen interior designs</span>, opt for surfaces that are long-lasting, easy to clean, and visually appealing.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <ul className="space-y-2">
-                                    <li><strong>Quartz or engineered stone</strong> for countertops that resist stains and scratches.</li>
-                                    <li><strong>Laminates</strong> for cabinets that provide a sleek finish without maintenance worries.</li>
-                                    <li><strong>Glass-front cabinets</strong> to reflect light and create a sense of space.</li>
+                                <ul className="space-y-3">
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">
+                                        <strong>Quartz or engineered stone</strong> for countertops that resist stains and scratches.
+                                    </span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">
+                                        <strong>Laminates</strong> for cabinets that provide a sleek finish without maintenance worries.
+                                    </span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">
+                                        <strong>Glass-front cabinets</strong> to reflect light and create a sense of space.
+                                    </span>
+                                    </li>
                                 </ul>
                             </div>
 
-                            <p>Combining textures such as wood, stone, and metal adds visual depth, while maintaining a contemporary kitchen interior design that looks polished yet practical.</p>
+
+                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog6img3.jpg" alt="Kitchen materials" className="w-full h-full object-cover"/>
+                            </div>
+
+                            <p>Combining textures such as wood, stone, and metal adds visual depth, while maintaining a <span className="font-black text-black">contemporary kitchen interior design</span> that looks polished yet practical.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Step 4: Maximise Storage with Modular Solutions</h2>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/Lshapekitchen.png" alt="Modular kitchen storage" className="w-full h-full object-cover" />
-                            </div>
                             <p>Storage plays a key role in a well-designed kitchen. A modular kitchen interior in Bengaluru allows you to organise everything efficiently while keeping counters clear.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Creative storage solutions include:</h3>
-                                <ul className="space-y-2">
-                                    <li>Pull-out drawers for spices, utensils, and cutlery.</li>
-                                    <li>Rotating corner carousels for hard-to-reach items.</li>
-                                    <li>Tall cabinets to use vertical space effectively.</li>
-                                    <li>Pantry units for groceries, appliances, and bulk items.</li>
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                                    Creative storage solutions include:
+                                </h3>
+                                <ul className="space-y-3">
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Pull-out drawers for spices, utensils, and cutlery.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Rotating corner carousels for hard-to-reach items.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Tall cabinets to use vertical space effectively.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Pantry units for groceries, appliances, and bulk items.</span>
+                                    </li>
                                 </ul>
                             </div>
-                            
-                            <p>Efficient storage ensures everything has a place, making cooking and cleaning faster and less stressful. Modular solutions also adapt to changing needs, from small apartments to large luxury kitchens.</p>
+
+                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog6img4.jpeg" alt="Modular kitchen storage" className="w-full h-full object-cover" />
+                            </div>
+                            <p>Efficient storage ensures everything has a place, making cooking and cleaning faster and less stressful. Modular solutions also adapt to changing needs, from small apartments to large <span className="font-black text-black">luxury kitchens.</span></p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Step 5: Layer Lighting and Ventilation</h2>
                             <p>Good lighting changes how a kitchen feels and works. Combine different types of light to create a balanced, inviting space.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
                                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Effective lighting ideas:</h3>
-                                <ul className="space-y-2">
-                                    <li>Task lighting under cabinets to illuminate counters.</li>
-                                    <li>Ceiling lights for overall brightness.</li>
-                                    <li>Accent lighting for shelves, islands, or decorative areas.</li>
+                                <ul className="space-y-3">
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Task lighting under cabinets to illuminate counters.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Ceiling lights for overall brightness.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span className="font-semibold text-black">Accent lighting for shelves, islands, or decorative areas.</span>
+                                    </li>
                                 </ul>
                             </div>
 
-                            <p>Proper ventilation is equally important to remove smoke, odours, and moisture. Well-planned lighting design ideas and airflow make the kitchen feel airy, clean, and comfortable.</p>
+                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog6img5.jpeg" alt="Interactive kitchen design" className="w-full h-full object-cover" />
+                            </div>
+                            <p>Proper ventilation is equally important to remove smoke, odours, and moisture. Well-planned <span className="font-black text-black">lighting design ideas</span> and airflow make the kitchen feel airy, clean, and comfortable.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Step 6: Design for Interaction</h2>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/parallelkitchen.png" alt="Interactive kitchen design" className="w-full h-full object-cover" />
-                            </div>
                             <p>Modern kitchens are social spaces that work efficiently. Open layouts, islands, and seating zones allow cooking to happen alongside conversations and shared moments.</p>
                             
-                            <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <ul className="space-y-2">
-                                    <li>Add a breakfast bar or window seating for casual meals.</li>
-                                    <li>Include space for children or family members to engage without disrupting cooking.</li>
-                                    <li>Create visual continuity with the living or dining area for a connected feel.</li>
-                                </ul>
+                        <div className="bg-gray-50 p-6 rounded-lg mt-4">
+                            <ul className="space-y-3">
+                                <li className="flex items-start gap-2">
+                                <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                <span className="font-semibold text-black">Add a breakfast bar or window seating for casual meals.</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                <span className="font-semibold text-black">Include space for children or family members to engage without disrupting cooking.</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                <span className="font-semibold text-black">Create visual continuity with the living or dining area for a connected feel.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog6img6.jpeg" alt="Functional kitchen features" className="w-full h-full object-cover" />
                             </div>
 
                             <p>Designing for interaction turns the kitchen into a lively and inviting space without compromising its practicality.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Step 7: Integrate Functional and Stylish Features</h2>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/kb1.jpg" alt="Functional kitchen features" className="w-full h-full object-cover" />
-                            </div>
-                            <p>Functionality doesn&#39;t have to be boring. Stylish kitchen interior solutions make storage, appliances, and work surfaces both practical and visually appealing.</p>
+                            <p>Functionality doesn&#39;t have to be boring. <span className="font-black text-black">Stylish kitchen interior solutions </span>make storage, appliances, and work surfaces both practical and visually appealing.</p>
                             
-                            <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Key features to consider:</h3>
-                                <ul className="space-y-2">
-                                    <li>Pull-out spice racks, hidden drawers, and multi-tiered storage.</li>
-                                    <li>Kitchen islands that double as prep space and casual seating.</li>
-                                    <li>Integrated appliances for a sleek, uncluttered look.</li>
-                                    <li>Statement backsplashes or lighting accents for visual interest.</li>
-                                </ul>
-                            </div>
+                        <div className="bg-gray-50 p-6 rounded-lg mt-4">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-3">Key features to consider:</h3>
+                            <ul className="space-y-3">
+                                <li className="flex items-start gap-2">
+                                <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                <span className="font-semibold text-black">Pull-out spice racks, hidden drawers, and multi-tiered storage.</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                <span className="font-semibold text-black">Kitchen islands that double as prep space and casual seating.</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                <span className="font-semibold text-black">Integrated appliances for a sleek, uncluttered look.</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                <span className="font-semibold text-black">Statement backsplashes or lighting accents for visual interest.</span>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <p>Combining practical solutions with design elements ensures your kitchen works efficiently while looking modern and elegant. Functional kitchen interior ideas like these make daily routines smoother and more enjoyable.</p>
+
+                            <p>Combining practical solutions with design elements ensures your kitchen works efficiently while looking modern and elegant. <span className="font-black text-black">Functional kitchen interior ideas</span> like these make daily routines smoother and more enjoyable.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Step 8: Work with the Best Kitchen Interior Designers in Bengaluru</h2>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/k1.jpg" alt="HUB Interior kitchen design" className="w-full h-full object-cover" />
-                            </div>
                             <p>At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru, keeping your lifestyle and satisfaction at the heart of every project. Professional expertise ensures your kitchen is not only stylish but also practical and durable.</p>
-                            
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
                                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Why choose HUB Interior:</h3>
-                                <ul className="space-y-2">
-                                    <li><strong>Free 3D Design Consultations:</strong> Visualise your dream kitchen before we start.</li>
-                                    <li><strong>Clear Pricing & On-Time Delivery:</strong> No surprises, just smooth execution.</li>
-                                    <li><strong>High-Quality Materials & Durable Products:</strong> Kitchens built to last.</li>
-                                    <li><strong>Hassle-Free Installation & Smart Storage Planning:</strong> Every detail handled with care.</li>
-                                    <li><strong>34-Day Fast-Track Interiors & 10-Year Warranty:</strong> Enjoy your kitchen sooner with lasting confidence.</li>
-                                    <li><strong>5000+ Projects Delivered:</strong> Experience and reliability you can trust.</li>
+                                <ul className="space-y-3">
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span>
+                                        <span className="font-semibold text-black">Free 3D Design Consultations:</span> Visualise your dream kitchen before we start.
+                                    </span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span>
+                                        <span className="font-semibold text-black">Clear Pricing & On-Time Delivery:</span> No surprises, just smooth execution.
+                                    </span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span>
+                                        <span className="font-semibold text-black">High-Quality Materials & Durable Products:</span> Kitchens built to last.
+                                    </span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span>
+                                        <span className="font-semibold text-black">Hassle-Free Installation & Smart Storage Planning:</span> Every detail handled with care.
+                                    </span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span>
+                                        <span className="font-semibold text-black">34-Day Fast-Track Interiors & 10-Year Warranty:</span> Enjoy your kitchen sooner with lasting confidence.
+                                    </span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                    <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span>
+                                        <span className="font-semibold text-black">5000+ Projects Delivered:</span> Experience and reliability you can trust.
+                                    </span>
+                                    </li>
                                 </ul>
                             </div>
+
                             
                             <p>With HUB Interior, you get more than a kitchen, you get a space tailored to your life, combining quality, convenience, and peace of mind, making your home truly yours.</p>
 
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6">Conclusion: A Kitchen That Supports Your Lifestyle</h2>
+                            <h2 className="text-2xl font-black text-gray-900 pt-6">Conclusion: A Kitchen That Supports Your Lifestyle</h2>
                             <p>A kitchen is more than just a cooking area, it&#39;s a space where life unfolds. From modular kitchen interiors in Bengaluru to small kitchen interior designs and luxury kitchen interior in Bengaluru, thoughtful design ensures every movement is effortless, every item has a place, and every meal is enjoyable.</p>
                             <p>Ready to bring your dream kitchen to life? Connect with HUB Interior today and get personalised design solutions that combine modern aesthetics, functionality, and innovation. Turn your kitchen into a space you love to cook, entertain, and live in every day.</p>
                         </div>

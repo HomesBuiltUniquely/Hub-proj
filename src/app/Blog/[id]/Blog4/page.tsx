@@ -41,17 +41,21 @@ export default function Blog4() {
                             <p className="text-gray-700 leading-relaxed mb-4">Our latest project at the Royal Tulip Villa in Bengaluru is the testament to this conviction. From a simple house, it now exudes warmth, sophistication, and ageless style. Every nook is made for comfort and carefree living. Let&#39;s have a glimpse of how we remodeled this villa with our latest luxury villa interior design approach!</p>
                         </div>
 
-                        <div className="relative w-full h-80 rounded-xl overflow-hidden mb-4">
-                            <img src="/temple1.jpg" alt="Luxury villa interior" className="w-full h-full object-cover" />
-                        </div>
+                        
+                            
                         <p className="text-gray-700 leading-relaxed mb-8">A glimpse into the sophisticated and warm interior design of the Royal Tulip Villa project.</p>
 
                         <div className="space-y-4 text-gray-700 leading-relaxed">
-                            <h2 className="text-2xl font-bold text-gray-900 pt-4">The Royal Tulip Story – A Luxury Villa Interior Design Experience in Bengaluru</h2>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6">The Royal Tulip Story – A Luxury Villa Interior Design Experience in Bengaluru</h2>
+
+                            <img src="/blog4img1.png" alt="Luxury villa interior" className="w-full h-full object-cover rounded-xl" />
                             <p>When Mr. and Mrs. George transferred to their villa at Royal Tulip, they desired more than interiors alone. They envisioned a home that was warm and ageless and simple to reside in. They hoped for a kitchen where dialogue is the norm, a dining space where memories are created with family, and bedrooms that provide a quiet escape after a day out.</p>
                             <p>They brought this vision to HUB Interior and together we made it happen. Each decision had an eye on beauty and functionality. For the Georges, it wasn&#39;t about fixtures or décor, but creating a home that reflected their journey and memories. Here is where luxury villa interior design in Bengaluru is brought to life, a house that is designed around real life and enduring comfort.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">HUB Interior&#39;s Approach to Luxury Villa Interiors</h2>
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog3img4.png" alt="Appliance garage" className="w-full h-full object-cover" />
+                            </div>
                             <p>The design process began with a clear goal to create a home that feels warm yet contemporary. HUB Interior Bengaluru shaped each room around the family&#39;s lifestyle, blending comfort with utility.</p>
                             <p>Some of the most important luxury villa interior aspects were:</p>
                             <ul className="list-disc list-inside ml-4 space-y-2">
@@ -65,6 +69,9 @@ export default function Blog4() {
                             </ul>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Key Interior Design Features</h2>
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog4img4.png" alt="Appliance garage" className="w-full h-full object-cover" />
+                            </div>
                             <div className="overflow-x-auto">
                                 <table className="w-full border-collapse border border-gray-300 mt-4">
                                     <thead>
@@ -107,8 +114,8 @@ export default function Blog4() {
                             <p className="mt-4">The modular kitchen designs in the modular style were especially crucial for the family. With glass cabinets and intelligent storage, the kitchen now seems open, fashionable, and convenient to use. It is a spot where cooking and conversation occur together effortlessly.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Subtle Touches that Elevate Luxury Villa Interiors</h2>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/Ukitchen.png" alt="Modular kitchen design" className="w-full h-full object-cover" />
+                            <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog4img5.png" alt="Modular kitchen design" className="w-full h-full object-cover" />
                             </div>
                             <ul className="list-disc list-inside ml-4 space-y-2 mt-4">
                                 <li>The lighting was carefully layered so that every room seemed bright but soothing.</li>
@@ -119,9 +126,6 @@ export default function Blog4() {
                             <p>These details reflect luxury villa interior solutions that adapt to real lifestyles while preserving elegance.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Bedroom Interior Design That Brings Comfort, Vibrancy, and Style</h2>
-                            <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden mt-3">
-                                <img src="/bed3.jpg" alt="Bedroom interior design" className="w-full h-full object-cover" />
-                            </div>
                             <p>The three-bedroom villa dining area is one of the most impressive areas of the property. With the bar unit in the background and rich wood tones of the dining table, it is not only where one takes meals but also where one gets together, laughs, and shares time together.</p>
                             <p>For the Georges, this was a dream come true. The dining table has now become their center of attraction, an area where family dinners are now made more special. This is the essence of elegant living room design and dining that affords warmth and togetherness with family.</p>
                             <p>The bedrooms also have an intimate charm. The wardrobes and TV unit add efficiency, and the vibrant linen adds vibrancy. Both of these features make the rooms feel lived-in, cosy, and warm. For inspiration, the Georges relied on bedroom interior designs that were simple as well as colorful to ensure peaceful yet lively spaces.</p>
