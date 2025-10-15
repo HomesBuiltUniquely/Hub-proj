@@ -45,15 +45,15 @@ const NavMore: React.FC<OfferingsDropdownProps> = ({
 
   const offerings = [
    {'title':'About Us',
-    link:'/AboutUs'}, 
+    link:'/'}, 
     {'title':'Career',
-    link:'/Career'},
+    link:'/'},
     { 'title':'Contact Us',
     link:'/ContactUs'},
     { 'title':'Privacy Policy',
     link:'/Policy'},
     { 'title':'Life At HUB',
-    link:'/Life@Hub'},
+    link:'/'},
    { 'title':'Franchise',
     link:'/interior-design-franchise'},
   ];

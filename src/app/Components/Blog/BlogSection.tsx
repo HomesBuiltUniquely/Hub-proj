@@ -8,18 +8,97 @@ type Post = { id: number; title: string; date: string; readTime: string; img: st
 
 
 const allPostsInit: Post[] = [
-  { id: 1, title: "Designing the Heart of Your Home: Bedroom Ideas That Inspire", date: "July 26, 2025", readTime: "18 mins read", img: "/1.png" },
-  { id: 2, title: "Modern Kitchen Designs You'll Love", date: "July 28, 2025", readTime: "12 mins read", img: "/2.png" },
-  { id: 3, title: "Living Room Makeovers With a Wow Factor", date: "July 30, 2025", readTime: "10 mins read", img: "/3.png" },
-  { id: 4, title: "Bathroom Design Trends for 2025", date: "August 1, 2025", readTime: "8 mins read", img: "/bn.jpg" },
-  { id: 5, title: "Small Space Interior Solutions", date: "August 3, 2025", readTime: "15 mins read", img: "/bn.jpg" },
-  { id: 6, title: "Color Psychology in Interior Design", date: "August 5, 2025", readTime: "12 mins read", img: "/bn.jpg" },
-  { id: 7, title: "Sustainable Interior Design Practices", date: "August 7, 2025", readTime: "14 mins read", img: "/bn.jpg" },
-  { id: 8, title: "Home Office Design Ideas", date: "August 9, 2025", readTime: "11 mins read", img: "/bn.jpg" },
-  { id: 9, title: "Lighting Design for Modern Homes", date: "August 11, 2025", readTime: "9 mins read", img: "/bn.jpg" },
-  { id: 10, title: "Furniture Selection Guide", date: "August 13, 2025", readTime: "13 mins read", img: "/bn.jpg" },
-  { id: 11, title: "Wall Decor Ideas and Trends", date: "August 15, 2025", readTime: "7 mins read", img: "/bn.jpg" },
-  { id: 12, title: "Flooring Options for Every Budget", date: "August 17, 2025", readTime: "16 mins read", img: "/bn.jpg" },
+{
+    id: 1,
+    title: "How Mr. Akhil's House Became Bhoo Aabharana (And Why We're Still Obsessed)?",
+    date: "Sep 2025",
+    readTime: "10 mins read",
+    img: "/reelsiam.png",
+    path: "/Blog/1/Blog1",
+  },
+  {
+    id: 2,
+    title: "Inside Mr. & Mrs. Rijul Azizam's Home, Designed by Hub Interior",
+    date: "Aug 2025",
+    readTime: "8 mins read",
+    img: "/blog2title.png",
+    path: "/Blog/2/Blog2",
+  },
+  {
+    id: 3,
+    title: "Before You Remodel, Check Out These 7 Kitchen Trends to Watch in 2026",
+    date: "Sep 2025",
+    readTime: "6 mins read",
+    img: "/blog3title.jpg",
+    path: "/Blog/3/Blog3",
+  },
+  {
+    id: 4,
+    title: "Luxury Villa Interior Design – The Royal Tulip Project in Bengaluru by HUB Interior",
+    date: "August 1, 2025",
+    readTime: "8 mins read",
+    img: "/blog4title.jpg",
+    path: "/Blog/4/Blog4",
+  },
+  {
+    id: 5,
+    title: "Interior Design Bangalore: How HUB Interior Crafted Serenity Heights Apartment into a Living Masterpiece",
+    date: "August 3, 2025",
+    readTime: "15 mins read",
+    img: "/blog5title.jpg",
+    path: "/Blog/5/Blog5",
+  },
+  {
+    id: 6,
+    title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
+    date: "August 5, 2025",
+    readTime: "12 mins read",
+    img: "/blog6img2.jpg",
+    path: "/Blog/6/Blog6",
+  },
+  {
+    id: 7,
+    title: "Sustainable Interior Design Practices",
+    date: "August 7, 2025",
+    readTime: "14 mins read",
+    img: "/blog2img4.png",
+    path: "/Blog/7/Blog7",
+  },
+  {
+    id: 8,
+    title: "Home Office Design Ideas",
+    date: "August 9, 2025",
+    readTime: "11 mins read",
+    img: "/bn.jpg",
+  },
+  {
+    id: 9,
+    title: "Lighting Design for Modern Homes",
+    date: "August 11, 2025",
+    readTime: "9 mins read",
+    img: "/bn.jpg",
+  },
+  {
+    id: 10,
+    title: "Furniture Selection Guide",
+    date: "August 13, 2025",
+    readTime: "13 mins read",
+    img: "/bn.jpg",
+  },
+  {
+    id: 11,
+    title: "Wall Decor Ideas and Trends",
+    date: "August 15, 2025",
+    readTime: "7 mins read",
+    img: "/bn.jpg",
+  },
+  {
+    id: 12,
+    title: "Flooring Options for Every Budget",
+    date: "August 17, 2025",
+    readTime: "16 mins read",
+    img: "/bn.jpg",
+  },
 ];
 
 const categoryCards = Array.from({ length: 6 }, (_, i) => ({
@@ -399,33 +478,46 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
           <h2 className="text-2xl mt-65 sm:text-3xl lg:text-4xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-gray-900 text-center">
             More Blog Posts
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto mb-8 h-[500px]">
-            {currentPosts.map((post) => (
-              <div key={post.id} className="w-full h-[510px] max-w-sm mx-auto sm:max-w-none bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="relative">
-                  <img 
-                    src={post.img} 
-                    alt={post.title} 
-                    className="w-full h-80 object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex justify-between text-black text-xs mb-2">
-                    <span>Blog • {post.readTime}</span>
-                    <span>{post.date}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-8">
+              {currentPosts.map((post) => (
+                <div
+                  key={post.id}
+                  className="w-full max-w-sm sm:max-w-none mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
+                >
+                  {/* Image Section */}
+                  <div className="relative">
+                    <img
+                      src={post.img}
+                      alt={post.title}
+                      className="w-full h-80 object-cover"
+                    />
                   </div>
-                  <h3 className="font-semibold text-lg mb-3">{post.title}</h3>
-                  <button 
-                    onClick={() => handleReadMore(post)}
-                    className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium flex items-center justify-center gap-2"
-                  >
-                    Read More
-                    <FaArrowRight className="w-4 h-4" />
-                  </button>
+
+                  {/* Content Section */}
+                  <div className="p-5 flex flex-col flex-grow">
+                    <div className="flex justify-between text-black text-xs mb-2">
+                      <span>Blog • {post.readTime}</span>
+                      <span>{post.date}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-semibold text-lg mb-4 line-clamp-2 min-h-[56px]">
+                      {post.title}
+                    </h3>
+
+                    {/* Spacer to push button to bottom if needed */}
+                    <div className="mt-auto">
+                      <button
+                        onClick={() => handleReadMore(post)}
+                        className="w-full h-[44px] bg-red-500 text-white px-4 rounded-lg hover:bg-red-600 transition-colors font-semibold flex items-center justify-center gap-2 whitespace-nowrap"
+                      >
+                        Read More <FaArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
           {/* Pagination - Show when there are more than 3 remaining posts */}
           {remainingPosts.length > itemsPerPage && totalPages > 1 && (
