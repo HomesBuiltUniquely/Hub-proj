@@ -436,7 +436,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
 
 
             {/* Regular layout for screens below 2560px */}
-            <div className="section2-regular hidden md:block 3xl:hidden">
+            <div className="desktop-1440 section2-regular hidden md:block 3xl:hidden">
                 <div className="w-screen h-screen  hidden md:block">
                     <div className="flex ">
                         {/* Left Section - 2nd and 3rd Latest Blogs */}
@@ -590,7 +590,7 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
 
             <div className="desktop-1280 w-full h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block">
 
-                <div className="flex ">
+                <div className="flex items-start ">
                     {/* Left Section - 2nd and 3rd Latest Blogs */}
                     <div className="w-[400px] h-[300px] mt-16 ml-8">
                         {latestPosts.length > 1 ? (
@@ -656,7 +656,9 @@ export default function Section2({ posts = [] }: { posts?: Post[] }) {
                         )}
                     </div>
 
-                    <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-26 "></div>
+                 <div className="w-[1px] bg-amber-950 h-[600px] ml-10 mt-[104px]"></div>
+
+
 
                     {/* Middle Section - Latest Blog */}
                     <div className="w-[500px] h-[350px] bg-red-400 ml-10 mt-20 rounded-4xl ">

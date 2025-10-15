@@ -504,7 +504,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
 
 
 
-      <div className="block md:hidden px-4 py-6 w-[full] max-w-[425px] mx-auto">
+      <div className="block md:hidden  py- w-[full] max-w-[425px] mx-auto">
         {allPosts.length > 5 && (
           <>
             {/* Show remaining posts only after button is clicked */}

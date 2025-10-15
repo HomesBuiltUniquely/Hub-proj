@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -6,7 +5,7 @@ import React, { useState, useRef } from 'react';
 // ...existing code...
 
 // Note: Replaced Next.js specific imports with standard tags for compatibility.
-// import Link from "next/link"; 
+// import Link from "next/link";
 // import Image from 'next/image';
 
 export default function Section3() {
@@ -20,21 +19,21 @@ export default function Section3() {
             title: "Modular Interiors for Every Home",
             description: "Efficient layouts and space-saving designs crafted to fit kitchens, wardrobes, and storage — blending style with everyday functionality.",
             image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen5.jpg",
-            link: "/Services",
+            link: "/best-interior-designers-in-bangalore",
             borderColor: ""
         },
         {
-            title: "End-to-End Interior Solutions", 
-            description: "From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing under one roof.",
+            title: "End-to-End Home Interior Solutions",
+            description: "From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing.",
             image: "/bed1.jpg",
-            link: "/Services",
+            link: "/best-interior-designers-in-bangalore",
             borderColor: ""
         },
         {
             title: "Luxury Interiors Thoughtfully Crafted",
             description: "Luxury interiors thoughtfully built to balance modern design, comfort, and personal expression. elevating everyday lifestyle",
             image: "/bed4.jpg",
-            link: "/Services",
+            link: "/best-interior-designers-in-bangalore",
             borderColor: ""
         },
     ];
@@ -75,33 +74,12 @@ export default function Section3() {
     
     return (
         <div>
-            <style jsx>{`
-                /* Hide both sections by default on smaller screens */
-                .desktop-1440,
-                .desktop-1280 {
-                    display: none;
-                }
-
-                /* Show 1280px version for medium desktops */
-                @media (min-width: 1280px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block;
-                    }
-                }
-
-                /* Show 1440px version for large desktops */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block;
-                    }
-                }
-            `}</style>
-        <div className="desktop-1440 hidden md:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-8">
+        <div className="hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="flex flex-row justify-between items-center mb-12">
-                    <h1 className="text-4xl wulkan-display-bold text-gray-800 ">All Interior Service, One Destination</h1>
-                    <a href="/ContactUs">
+                    <h1 className="text-4xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
+                    <a href="/best-interior-designers-in-bangalore">
                         <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium flex items-center gap-2">
                             Book consultation
                             <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
@@ -114,7 +92,7 @@ export default function Section3() {
                 </div>
 
                 {/* Carousel Section */}
-                <div className="relative mt-20 mx-auto">
+                <div className="relative mt-20 mx-auto w-full w-[1300px]">
                     {/* Navigation Controls */}
                     <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
                         <button 
@@ -139,16 +117,16 @@ export default function Section3() {
                     </div>
 
                     {/* Service Cards */}
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden w-[1300px] -ml-2">
                         <div 
-                            className="flex gap-6 transition-transform duration-500 ease-in-out"
+                            className="flex gap-4 transition-transform duration-500 ease-in-out"
                             style={{ 
-                                transform: `translateX(-${currentSlide * (100 / serviceCards.length)}%)`,
+                                transform: `translateX(-${currentSlide *(10 / serviceCards.length)}%)`,
                             }}
                         >
                             {serviceCards.map((service, index) => (
-                                <div key={index} className="flex-shrink-0 w-1/3">
-                                    <div className={`bg-white rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300 h-auto flex flex-col`}>
+                                <div key={index} className="flex-shrink-0 w-104 ">
+                                    <div className={`bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300 h-auto flex flex-col`}>
                                         <div className="relative h-96">
                                             <img
                                                 src={service.image}
@@ -234,7 +212,7 @@ export default function Section3() {
                 })}
             </div>
             <div className="flex justify-center mt-8">
-            <Link href="/">
+            <Link href="/best-interior-designers-in-bangalore">
                 <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
                     Explore Services
                 </button>
@@ -244,4 +222,3 @@ export default function Section3() {
     </div>
     )
 }
-

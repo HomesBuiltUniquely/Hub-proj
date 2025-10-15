@@ -79,7 +79,7 @@ export default function Blog() {
 
     return (
         <div>
-          {/* <Herosection /> */}
+          <Herosection />
            <Section2 posts={posts} /> 
     <HomeShowcase posts={posts} />
                        <Footer />
