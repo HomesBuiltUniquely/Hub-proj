@@ -3,6 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { Footer } from "../../Components/Footer";
+import Link from "next/link";
 
 export default function Blog1() {
 	const router = useRouter();
@@ -37,7 +38,7 @@ export default function Blog1() {
 
 						<div className="prose prose-lg max-w-none">
 							<p className="text-gray-700 leading-relaxed mb-4">Spoiler alert: We had a lot of fun with this one!<br/>
-							So, our client, Mr. Akhil, reached out to our team at <a href="/" className="text-red-500 hover:text-red-600 font-semibold">HUB Interior</a> with a vision, and, as the top interior designer in Bangalore, we definitely delivered it.  HUB Interior has years of experience delivering the best results to our clients, and we were all excited to achieve the same results for Mr. Akhil.<br/>
+							So, our client, Mr. Akhil, reached out to our team at <Link href="/" className="text-red-500 hover:text-red-600 font-semibold">HUB Interior</Link> with a vision, and, as the top interior designer in Bangalore, we definitely delivered it.  HUB Interior has years of experience delivering the best results to our clients, and we were all excited to achieve the same results for Mr. Akhil.<br/>
 							Bhoo Aabharana is a love letter to faith, function, and quiet elegance. And yes, we&#39;re obsessed.</p>
 						</div>
 						<p className="text-gray-700 leading-relaxed mb-8">Bhoo Aabharana is a love letter to faith, function, and quiet elegance. And yes, we&#39;re obsessed.</p>

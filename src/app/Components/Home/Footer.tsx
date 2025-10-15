@@ -180,11 +180,11 @@ export default function Footer(){
                                     <h1 className="text-[16px] manrope  mb-6 ">Company</h1>
                                     <div className="space-y-3">
                                         <a href="/AboutUs"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer ">About</p></a>
-                                        <a href="/"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></a>
-                                        <a href="/"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></a>
-                                        <a href="/"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></a>
+                                        <Link href="/"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
+                                        <Link href="/"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <a href="/Blog"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></a>
-                                        <a href="/"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></a>
+                                        <Link href="/"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
                                     </div>
                                 </div>
                                 

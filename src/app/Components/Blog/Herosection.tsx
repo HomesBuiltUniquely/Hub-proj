@@ -1,7 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
