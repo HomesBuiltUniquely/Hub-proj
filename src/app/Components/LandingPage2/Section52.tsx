@@ -14,27 +14,27 @@ export default function Section52() {
         {
             title: "Kitchen",
             image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//kitchen6.jpg",
-            link: "/ModularKitchen"
+            link: "/best-interior-designers-in-bangalore"
         },
         {
             title: "Kids Room",
             image: "/kids2.jpg",
-            link: "/"
+            link: "/best-interior-designers-in-bangalore"
         },
         {
             title: "BedRoom",
             image: "/bed3.jpg",
-            link: "/Bedroom"
+            link: "/best-interior-designers-in-bangalore"
         },
         {
             title: "Living Room",
             image: "https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img4.jpg",
-            link: "/"
+            link: "/best-interior-designers-in-bangalore"
         },
         {
             title: "Devotional Room",
             image: "/temple2.jpg",
-            link: "/"
+            link: "/best-interior-designers-in-bangalore"
         }
     ];
 
@@ -90,7 +90,7 @@ export default function Section52() {
                                 Every space has a story, start yours here
                             </h1>
                         </div>
-                        <Link href="/GetEstimate">
+                        <Link href="/best-interior-designers-in-bangalore">
                             <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-5 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
                                 Book consultation
                                 <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
@@ -172,7 +172,7 @@ export default function Section52() {
                                 />
                             </div>
                         </div>
-                        <Link href="/">
+                        <Link href="/best-interior-designers-in-bangalore">
                             <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
                                 Explore Gallery
                             </button>
@@ -244,7 +244,7 @@ export default function Section52() {
                     </div>
 
                     <div className="flex justify-center mt-8">
-                        <Link href="/">
+                        <Link href="/best-interior-designers-in-bangalore">
                             <button className="manrope-medium bg-[#ef0101] text-white px-8 py-3 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                 Explore Gallery
                             </button>
