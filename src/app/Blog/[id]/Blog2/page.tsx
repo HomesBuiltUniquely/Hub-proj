@@ -38,6 +38,9 @@ export default function Blog2() {
                         </div>
 
                         {/* Intro */}
+                        <div>
+							<img src="/blog2img1.png" alt="Bhoo Aabharana home" className="rounded-xl" />
+						</div>
                         <div className="prose prose-lg max-w-none">
                             <p className="text-gray-700 leading-relaxed mb-4">We call this project the art of filling in the blanks.</p>
                             <p className="text-gray-700 leading-relaxed mb-4">Mr. and Mrs. Rijul didn&#39;t want &#34;fancy.&#34; They wanted &#34;OURS.&#34; And we, being renowned interior designers in Bangalore, were all up for it.</p>
@@ -47,14 +50,14 @@ export default function Blog2() {
                         </div>
 
                         {/* Ambience image */}
-                        <div className="relative w-full h-80 rounded-xl overflow-hidden mb-4">
-                            <img src={'/bn.jpg'} alt={'Warm living ambience'} className="w-full h-full object-cover" />
-                        </div>
                         <p className="text-gray-700 leading-relaxed mb-8">Soft lighting, warm textures, and uncluttered forms set the tone for unhurried living.</p>
 
                         {/* Sections */}
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                             <h3 className="text-xl font-semibold text-gray-900 pt-2">Starting With The Entry Gate</h3>
+                            <div className="relative w-[500px] h-[500px] md:h-96 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src={'/blog2img2.png'} alt={'Warm living ambience'} className="w-full h-full object-cover" />
+                            </div>
                             <p>Let&#39;s start at the beginning, literally!</p>
                             <p>The Rijuls wanted their entry decor to be neat yet different. Sounds simple, right? But as with most design journeys, there were a few challenges, a lot of creativity, and many &#34;oh wow, this looks amazing&#34; moments along the way.</p>
                             <p>We designed a custom shoe rack that&#39;s equal parts practical and pretty and entry gate decor. For the entry gate decor, we went with a white cabinet with black knobs for a contrast. The top part of the cabinet had enough space to keep any decor and showpieces to add colors to the hall. It was extended upward using the same measurements, which makes that section feel separate from the rest of the hall in a really subtle way.</p>
