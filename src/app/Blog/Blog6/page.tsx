@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Footer } from "../../../Components/Footer";
+import { Footer } from "../../Components/Footer";
 
 export default function Blog6() {
     const router = useRouter();

@@ -25,7 +25,7 @@ const defaultPosts: Post[] = [
     date: "Sep 2025",
     readTime: "10 mins read",
     img: "/reelsiam.png",
-    path: "/Blog/1/Blog1",
+    path: "/Blog/Blog1",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const defaultPosts: Post[] = [
     date: "Sep 2025",
     readTime: "8 mins read",
     img: "/blog2title.png",
-    path: "/Blog/2/Blog2",
+    path: "/Blog/Blog2",
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const defaultPosts: Post[] = [
     date: "Sep 2025",
     readTime: "6 mins read",
     img: "/blog3title.jpg",
-    path: "/Blog/3/Blog3",
+    path: "/Blog/Blog3",
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const defaultPosts: Post[] = [
     date: "Sep 1, 2025",
     readTime: "8 mins read",
     img: "/blog4title.jpg",
-    path: "/Blog/4/Blog4",
+    path: "/Blog/Blog4",
   },
   {
     id: 5,
@@ -57,15 +57,15 @@ const defaultPosts: Post[] = [
     date: "Sep 3, 2025",
     readTime: "15 mins read",
     img: "/blog5title.jpg",
-    path: "/Blog/5/Blog5",
+    path: "/Blog/Blog5",
   },
   {
     id: 6,
     title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
     date: "Sep 5, 2025",
     readTime: "12 mins read",
-    img: "/Ukitchen.png",
-    path: "/Blog/6/Blog6",
+    img: "/blog6img2.jpg",
+    path: "/Blog/Blog6",
   },
   {
     id: 7,
@@ -73,21 +73,23 @@ const defaultPosts: Post[] = [
     date: "Sep 7, 2025",
     readTime: "14 mins read",
     img: "/blog2img4.png",
-    path: "/Blog/7/Blog7",
+    path: "/Blog/Blog7",
   },
   {
     id: 8,
     title: "Home Office Design Ideas",
     date: "August 9, 2025",
     readTime: "11 mins read",
-    img: "/bn.jpg",
+    img: "/blog4title.jpg",
+    path: "/Blog/Blog4"
   },
   {
     id: 9,
     title: "Lighting Design for Modern Homes",
     date: "August 11, 2025",
     readTime: "9 mins read",
-    img: "/bn.jpg",
+    img: "/blog5title.jpg",
+    path: "/Blog/Blog5"
   },
   {
     id: 10,

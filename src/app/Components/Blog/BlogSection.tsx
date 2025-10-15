@@ -53,7 +53,7 @@ const allPostsInit: Post[] = [
     title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
     date: "August 5, 2025",
     readTime: "12 mins read",
-    img: "/Ukitchen.png",
+    img: "/blog6img2.jpg",
     path: "/Blog/6/Blog6",
   },
   {

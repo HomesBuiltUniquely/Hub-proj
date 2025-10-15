@@ -50,33 +50,54 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
     } else {
       setTrendingData([
         {
-          id: 1,
-          title: "Designing the Heart of Your ",
-          subtitle: "Home: Bedroom Ideas That Inspire",
-          readTime: "18 mins read",
-          date: "July 28, 2025",
-        },
-        {
-          id: 2,
-          title: "Designing the Heart of Your ",
-          subtitle: "Home: Bedroom Ideas That Inspire",
-          readTime: "18 mins read",
-          date: "July 28, 2025",
-        },
-        {
-          id: 3,
-          title: "Designing the Heart of Your ",
-          subtitle: "Home: Bedroom Ideas That Inspire",
-          readTime: "18 mins read",
-          date: "July 28, 2025",
-        },
-        {
-          id: 4,
-          title: "Designing the Heart of Your ",
-          subtitle: "Home: Bedroom Ideas That Inspire",
-          readTime: "18 mins read",
-          date: "July 28, 2025",
-        },
+    id: 1,
+    title: "How Mr. Akhil's House Became Bhoo Aabharana (And Why We're Still Obsessed)?",
+    subtitle:"ok",
+    date: "Sep 2025",
+    readTime: "10 mins read",
+  },
+  {
+    id: 2,
+    title: "Inside Mr. & Mrs. Rijul Azizam's Home, Designed by Hub Interior",
+    subtitle:"ok",
+    date: "Aug 2025",
+    readTime: "8 mins read",
+  },
+  {
+    id: 3,
+    title: "Before You Remodel, Check Out These 7 Kitchen Trends to Watch in 2026",
+    subtitle:"ok",
+    date: "Sep 2025",
+    readTime: "6 mins read",
+  },
+  {
+    id: 4,
+    title: "Luxury Villa Interior Design – The Royal Tulip Project in Bengaluru by HUB Interior",
+    subtitle:"ok",
+    date: "August 1, 2025",
+    readTime: "8 mins read",
+  },
+  {
+    id: 5,
+    title: "Interior Design Bangalore: How HUB Interior Crafted Serenity Heights Apartment into a Living Masterpiece",
+    subtitle:"ok",
+    date: "August 3, 2025",
+    readTime: "15 mins read",
+  },
+  {
+    id: 6,
+    title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
+    subtitle:"ok",
+    date: "August 5, 2025",
+    readTime: "12 mins read",
+  },
+  {
+    id: 7,
+    title: "Sustainable Interior Design Practices",
+    subtitle:"ok",
+    date: "August 7, 2025",
+    readTime: "14 mins read",
+  },
       ]);
     }
   }, []);
