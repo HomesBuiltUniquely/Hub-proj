@@ -186,7 +186,7 @@ export default function Herosection() {
                     <div className="aboutus-hero-3xl-header">
                         <Image
                             src="/redlogo.png"
-                            alt="LOGO"
+                            alt="LOGO" 
                             width={360}
                             height={120}
                             className="aboutus-hero-3xl-logo"
@@ -247,100 +247,92 @@ export default function Herosection() {
                 </div>
             </div>
 
-            
-
-           
 
 
 
-<div className="desktop-1280">
-  <div className="w-full h-[550px] mb-4 mx-auto">
-    <div className="relative w-full h-full">
-      <img src="/ab1.png" alt="Background" className="w-full h-[800px] rounded-4xl" />
-      <div className="absolute inset-0 bg-opacity-40"></div>
 
-      {/* Get Free Estimate Button */}
-      <div className="absolute top-8 right-8 z-30">
-        <button className="manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg">
-          Get Free Estimate
-        </button>
-      </div>
 
-      {/* Logo div — fully independent */}
-      <div className='absolute bottom-86 right-5 w-full p-8 z-30'>
-        <div className="logo-container mb-4">
-          <Image
-            src="/redlogo.png"
-            alt="LOGO"
-            width={220}
-            height={100}
-            className=""
-          />
-        </div>
-      </div>
 
-      <div className='absolute bottom-112 left-30 w-full p-8 z-30'>
-        <div className="nav-container text-white text-xl manrope font-bold">
-          <nav className="flex justify-center gap-10">
-            <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
-            <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
-            <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
-          </nav>
-        </div>
-      </div>
+            <div className="desktop-1280">
+                <div className="w-full h-[550px] mb-4 mx-auto ml-15">
+                    <div className="relative w-full h-full">
+                        <img src="/ab1.png" alt="Background" className="w-full h-[800px] rounded-4xl" />
+                        <div className="absolute inset-0 bg-opacity-40"></div>
 
-      {/* Main Content */}
-      <div className="absolute top-120 left-16 -translate-y-1/2 text-white">
-        <div className="text-6xl manrope-medium leading-tight">homes,</div>
-        <div className="text-7xl wulkan-display my-4 leading-tight">uniquely</div>
-        <div className="text-6xl manrope-medium leading-tight">built</div>
-      </div>
-    </div>
-  </div>
-</div>
+                        {/* Get Free Estimate Button */}
+                        <div className="absolute top-8 right-8 z-30">
+                            <button className="manrope-medium text-lg px-8 py-3 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-lg">
+                                Get Free Estimate
+                            </button>
+                        </div>
+
+                        {/* Logo div — fully independent */}
+                        <div className='absolute bottom-86 right-5 w-full p-8 z-30'>
+                            <div className="logo-container mb-4">
+                                <Image
+                                    src="/redlogo.png"
+                                    alt="LOGO"
+                                    width={220}
+                                    height={100}
+                                    className=""
+                                />
+                            </div>
+                        </div>
+
+                        <div className='absolute bottom-112 left-30 w-full p-8 z-30'>
+                            <div className="nav-container text-white text-xl manrope font-bold">
+                                <nav className="flex justify-center gap-10">
+                                    <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
+                                    <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
+                                    <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
+                                </nav>
+                            </div>
+                        </div>
+
+                        {/* Main Content */}
+                        <div className="absolute top-120 left-16 -translate-y-1/2 text-white">
+                            <div className="text-6xl manrope-medium leading-tight">homes,</div>
+                            <div className="text-7xl wulkan-display my-4 leading-tight">uniquely</div>
+                            <div className="text-6xl manrope-medium leading-tight">built</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
 
             {/* SM Screen - Small displays and mobile */}
-            <div className="block md:hidden 3xl:hidden">
-                <div className="w-auto h-auto m-2">
-                    <div className="relative w-full h-full">
-                        <img src="/Mask-group.png" alt="Background" className="w-full h-screen object-cover" />
-                        <div className="absolute inset-0 bg-opacity-40"></div>
-
-                        {/* Get Free Estimate Button - SM optimized */}
-                        {/* <div className="absolute top-2 right-3 z-30">
-                            <button className="manrope-medium text-xs px-3 py-1 bg-[#ddcdc1] rounded-full hover:bg-[#ef0101] hover:text-white transition-colors shadow-sm">Get Free Estimate</button>
-                        </div> */}
-
-                        {/* Header - SM optimized */}
-                        <div className="absolute top-0 left-0 w-full p-3 flex items-center justify-between">
-                            <Image
-                                src="/redlogo.png"
-                                alt="LOGO"
-                                width={80}
-                                height={40}
-
-                            />
-
-                            {/* Navigation - SM optimized */}
-                            {/* <nav className="text-white text-sm manrope space-x-3 mx-auto">
-                                <Link href="/" className="hover:text-amber-300 transition-colors">HOME</Link>
-                                <Link href="/Services" className="hover:text-amber-300 transition-colors">SERVICE</Link>
-                                <Link href="/Services" className="hover:text-amber-300 transition-colors">EXPLORE ROOMS</Link>
-                            </nav> */}
+           
+                    <div className="md:hidden w-[full] max-w-[425px] mx-auto mb-15 mt-3">
+                      <div className="relative h-[full]  w-full  px-2">
+                        {/* Rounded image only */}
+                        
+                        <img src="ABH.png" alt="" />
+                        
+                        
+                
+                        {/* top logo */}
+                        <div className="absolute top-2 -mt-5 " >
+                          <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={25} className="cursor-pointer" />
                         </div>
-
-                        {/* Main Content - SM optimized */}
-                        <div className="absolute top-1/2 left-3 -translate-y-1/2 text-white">
-                            <div className="text-2xl manrope-medium leading-tight">homes,</div>
-                            <div className="text-3xl wulkan-display my-1 leading-tight">uniquely</div>
-                            <div className="text-2xl manrope-medium leading-tight">built</div>
+                
+                        {/* text + cta */}
+                   
+                          <h2 className="manrope  leading-tight ">
+                             <div className="absolute w-screen top-40 text-white">
+                            <div className="text-5xl manrope-medium leading-tight ml-3">homes,</div>
+                            <div className="text-6xl wulkan-display my-4 leading-tight ml-3">uniquely</div>
+                            <div className="text-5xl manrope-medium leading-tight ml-3">built</div>
                         </div>
+                          </h2>
+
+                       
+                      </div>
                     </div>
-                </div>
-            </div>
+
+ 
+
 
         </div>
 

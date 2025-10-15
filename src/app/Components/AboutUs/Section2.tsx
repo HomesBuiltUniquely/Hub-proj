@@ -91,8 +91,8 @@ export default function Section2() {
 
             {/* XL Screen - Extra large displays */}
             <div className="desktop-1280 hidden xl:block 2xl:hidden">
-                <div className="h-[600px] flex flex-row px-12 gap-10 mt-6">
-                    <div className="w-[450px] h-[470px] bg-[#ebd457] rounded-2xl p-12 pt-32 text-[20px] manrope-medium tracking-wide leading-relaxed">
+                <div className="h-[600px] flex flex-row px-12 gap-10 mt-6 ml-25">
+                    <div className="w-[450px] h-[470px] bg-[#ebd457] rounded-2xl p-12 pt-20 text-[20px] manrope-medium tracking-wide leading-relaxed">
                         At Hub Interior, beauty is backed by process.
                         Every space you see is a result of deep planning, skilled design, and flawless execution.
                         We don’t just make interiors look good—we make them work better for real lives.

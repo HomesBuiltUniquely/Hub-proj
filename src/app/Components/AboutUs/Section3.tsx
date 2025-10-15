@@ -90,7 +90,7 @@ export default function Section3(){
             {/* XL Screen - Extra large displays */}
                 <div className="desktop-1280">
 
-                <div className="h-[500px] mx-auto px-12 ">
+                <div className="h-[500px] mx-auto px-12 ml-25">
                     
                     <div className=" w-[1100px] h-[500px] bg-[#ddcdc1] mx-auto rounded-3xl flex  overflow-hidden">
 
@@ -138,13 +138,12 @@ export default function Section3(){
             <div className="block md:hidden  w-[full] max-w-[425px]">
                 <div className="h-[30px] mx-auto px-4">
                     
-                    <div className="w-full h-[540] bg-[#ddcdc1] mx-auto rounded-2xl flex flex-col overflow-hidden -mt-30">
+                    <div className="w-full h-[full] bg-[#ddcdc1] mx-auto rounded-2xl flex flex-col overflow-hidden -mt-30 ">
                         
                         
                         
-                        <img src="2.png" alt="Interior Design" className="mx-auto w-screen h-[185px] rounded-3xl px-3 mt-8"/>
+                        <img src="2.png" alt="Interior Design" className="mx-auto w-screen h-[210px] rounded-3xl px-3 mt-8"/>
  
-
 
                         {/* Center Content - SM optimized */}
                         <div className="w-full px-6 flex flex-col justify-center">
@@ -155,7 +154,7 @@ export default function Section3(){
                             </div>
                             
                             {/* Description Text - SM optimized */}
-                            <div className="manrope-medium text-md w-full leading-relaxed">
+                            <div className="manrope-medium text-md w-full leading-relaxed mb-5">
                             The Brand Hub is the powerhouse behind Hub Interior.
                             It’s where innovation, design, and business strategy come together to build focused, high-performing sub-brands.
                             From Homes Under Budget to Hubsolute, every brand is crafted here—with clarity, purpose, and direction.

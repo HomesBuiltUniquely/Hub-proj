@@ -206,7 +206,7 @@ const Section5 = () => {
       {/* XL Screen - Extra large displays */}
 
       <div className='desktop-1280'>
-      <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white">
+      <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white ml-30">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
@@ -288,10 +288,7 @@ const Section5 = () => {
 
           {/* Need to continue from carousel */}
 
-          <div>
-
-
-
+          <div> 
             <div className="w-full max-w-2xl mx-auto mt-15">
               {/* Slide */}
               <div className="w-full h-60 bg-gray-50 p-4 rounded-3xl flex items-center justify-center shadow-xl transition-all duration-500 ease-in-out">

@@ -59,7 +59,7 @@ const Section6 = () => {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6]">
+      <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6] ml-30">
         <div className="flex justify-evenly">
           <div className="max-w-6xl mt-12 mr-70">
             {/* Mission Header */}

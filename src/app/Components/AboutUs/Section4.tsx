@@ -103,8 +103,8 @@ export default function Section4() {
 
             {/* XL Screen */}
             <div className="desktop-1280">
-                <div className="h-auto min-h-[650px] px-16">
-                    <div className="flex flex-row justify-between h-[300px] gap-10">
+                <div className="h-auto min-h-[650px] px-16 ">
+                    <div className="flex flex-row justify-between h-[300px] gap-10 ml-25">
                         <h1 className="text-5xl manrope mt-20 ml-16 leading-tight">
                             Brand Eco System
                         </h1>
@@ -113,25 +113,25 @@ export default function Section4() {
                         </p>
                     </div>
 
-                    <div className="flex flex-wrap justify-start gap-8 mx-auto ml-8">
+                    <div className="flex flex-wrap justify-start gap-8 mx-auto ml-33">
 
                         {/* Card 1 */}
-                        <div className="w-[250px] h-[250px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
+                        <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
                             <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
                         </div>
 
                         {/* Card 2 */}
-                        <div className="w-[250px] h-[250px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
+                        <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
                             <img src="/b2.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
                         </div>
 
                         {/* Card 3 */}
-                        <div className="w-[250px] h-[250px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
+                        <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
                             <img src="/b3.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
                         </div>
 
                         {/* Card 4 */}
-                        <div className="w-[250px] h-[250px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
+                        <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
                             <img src="/b4.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
                         </div>
 

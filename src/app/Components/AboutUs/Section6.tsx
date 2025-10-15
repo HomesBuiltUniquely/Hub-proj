@@ -59,7 +59,7 @@ const Section6 = () => {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6]">
+      <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6]  ml-30">
         <div className="flex justify-evenly">
           <div className="max-w-6xl mt-12 mr-70">
             {/* Mission Header */}
@@ -152,7 +152,7 @@ const Section6 = () => {
       </section>
 
       {/* MD Screen - Medium displays */}
-      <section className="hidden md:block lg:hidden py-12 px-6 bg-white">
+      <section className="hidden md:block lg:hidden py-12 px-6 bg-white ">
         <div className="max-w-4xl mx-auto">
           {/* Mission Header */}
           <h1 className="text-3xl manrope pt-12 pl-6 leading-tight">
@@ -224,16 +224,15 @@ const Section6 = () => {
       {/* SM Screen - Small displays */}
       <section className="block md:hidden">
 
-
         <div className="w-full max-w-[425px] mx-auto px-4">
           <div className="flex flex-col justify-between min-h-[150px]">
-            <div className="flex items-start mt-10">
+            <div className="flex items-start mt-10 relative">
               {/* Vertical bar */}
-              <div className="bg-[#ebd657] w-[20px] h-10 mr-3"></div>
+              <div className="bg-[#ebd657] w-[3px] h-10 absolute left-0"></div>
 
               {/* Content */}
-              <div className="flex flex-col space-y-4">
-                <h1 className="text-3xl font-semibold manrope whitespace-nowrap">Mission</h1>
+              <div className="flex flex-col space-y-4 "> {/* padding-left equals 20px + some gap */}
+                <h1 className="text-3xl font-semibold manrope whitespace-nowrap ml-[20px]">Mission</h1>
 
                 <p className="text-md manrope-medium">
                   At HUB Interiors — it’s about creating spaces that reflect you.
@@ -244,7 +243,7 @@ const Section6 = () => {
                 </p>
 
                 <img
-                  src="5.png"  alt="Interior Design"  className="rounded-3xl w-full max-w-full mt-4"/>
+                  src="5.png" alt="Interior Design" className="rounded-3xl w-full max-w-full mt-4" />
               </div>
             </div>
           </div>

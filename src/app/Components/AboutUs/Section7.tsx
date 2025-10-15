@@ -225,13 +225,13 @@ const Section7 = () => {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden py-10 px-6 bg-white">
+      <section className="hidden xl:block 2xl:hidden py-10 px-6 bg-white  ml-30">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between gap-16">
             {/* Left Side - Image Container */}
-            <div className="w-[600px] lg:w-[600px] h-[550px] mt-10  rounded-2xl">
+            <div className=" h-[550px] mt-10  rounded-2xl">
               {/* Image placeholder - can be replaced with actual image */}
-              <img src="/6.png" alt="Values Image" className="w-[600px] h-[550px]  ml-5" />
+              <img src="/6.png" alt="Values Image" className="w-[700px] h-[550px]  ml-5" />
             </div>
 
             {/* Right Side - Values Content */}

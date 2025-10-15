@@ -47,7 +47,7 @@ export default function Section1() {
 
             {/* XL Screen - Extra large displays */}
             <div className="desktop-1280">
-                <div className="flex flex-row justify-between w-full h-[320px] px-12 my-auto mt-75">
+                <div className="flex flex-row justify-between w-full h-[320px] px-12 my-auto mt-75 ml-15">
 
                     {/* Heading - XL optimized */}
                     <h1 className="text-6xl manrope mt-20 ml-30 leading-tight">

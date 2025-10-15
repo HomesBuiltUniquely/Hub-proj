@@ -8,17 +8,18 @@ const ContactHeader: React.FC = () => (
       {/* Navbar */}
       <div className="flex items-center justify-between px-8 py-4">
         <img src="LOGO.png" className="w-[100px] h-[40px]"></img>
-        <div className="hidden md:flex gap-12 text-sm font-semibold text-white tracking-widest">
+        <div className="hidden md:flex gap-12 manrope text-white tracking-widest">
           <a href="#">HOME</a>
           <a href="#">SERVICES</a>
           <a href="#">EXPLORE ROOMS</a>
         </div>
-        <button className="bg-orange-100 text-black px-4 py-2 rounded-xl font-semibold shadow">GET FREE ESTIMATE</button>
+        <button className="bg-orange-100 text-black px-4 py-2 rounded-xl manrope-medium shadow">GET FREE ESTIMATE</button>
       </div>
       {/* Hero content */}
       <div className="flex w-[600px] flex-col items-center justify-center pt-90 pb-20 text-white text-center pr-30">
-        <div className="text-5xl lg:text-6xl font-extrabold mb-6 drop-shadow-lg w-[500px] ml-10 text-nowrap">Inspiration Board</div>
-        <p className="text-lg font-medium mb-8 drop-shadow-lg w-[600px]">Ideas to Spark Your Next Dream Space</p>
+        <div className="text-5xl lg:text-6xl manrope mb-6 drop-shadow-lg w-[500px] ml-12 text-nowrap">Interior Inspirations</div>
+        <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] ml-25">Every corner of your home holds a story - let’s design it beautifully.
+</p>
       </div>
     </div>
 
@@ -43,8 +44,8 @@ const ContactHeader: React.FC = () => (
       {/* Hero content */}
       
       <div className="text-white">
-        <div className="text-3xl font-manrope-medium drop-shadow-lg w-[20px] text-nowrap mt-40 ml-5">Inspiration Board</div>
-        <p className="font-medium drop-shadow-lg w-[full] ml-5">Ideas to Spark Your Next Dream Space</p>
+        <div className="text-3xl manrope drop-shadow-lg w-[20px] text-nowrap mt-40 ml-5">Interior <div>Inspirations</div></div>
+        <p className="manrope-medium drop-shadow-lg w-[full] mt-3 ml-5">Every corner of your home holds a story - let’s design it beautifully.</p>
       </div>
     </div>
 
