@@ -46,9 +46,9 @@ const ContactHeader: React.FC = () => {
       <div className="relative z-10 flex items-center justify-between -mt-15">
         <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" />
         <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5">
-          <OfferingsDropdown textColor="text-[#32261c]" />
-          <ExploreRoomsDropdown textColor="text-[#32261c]" />
-          <NavMore textColor="text-[#32261c]" />
+          <OfferingsDropdown textColor="text-white" />
+          <ExploreRoomsDropdown textColor="text-white" />
+          <NavMore textColor="text-white" />
         </div>
         <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
