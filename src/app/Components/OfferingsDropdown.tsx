@@ -76,7 +76,7 @@ const OfferingsDropdown: React.FC<OfferingsDropdownProps> = ({
     {
       title: 'Blogs',
       image: '/Slide.jpg',
-      link: '/Blog'
+      link: '/'
     }
   ];
 
