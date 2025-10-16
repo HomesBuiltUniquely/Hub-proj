@@ -63,13 +63,11 @@ const ContactHeader: React.FC = () => {
             Design Journal by HUB
           </h1>
           <p className="text-lg font-medium mb-8 drop-shadow-lg w-[600px] manrope-medium">
-            Get inspired to live a more beautiful and happy life at home.
-            Our mission to show how we are making each home more beautiful
-            with easy-life tips and photos for any range of budgets.
+            A collection of home interior blogs, trends, and guides to inspire your next project.
           </p>
           <div className="flex gap-4">
             <button className="bg-yellow-300 text-black px-6 py-3 rounded-2xl font-semibold manrope-medium shadow">
-              Subscribe Now
+              Get Free Consultation
             </button>
           </div>
         </div>
