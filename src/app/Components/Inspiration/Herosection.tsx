@@ -123,12 +123,6 @@ const ContactHeader: React.FC = () => (
 
 
 
-
-    
-
-
-
-
   </div>
 
 );

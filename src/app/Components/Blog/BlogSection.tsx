@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
+import Link from 'next/link';
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
@@ -21,11 +22,28 @@ const allPostsInit: Post[] = [
   { id: 12, title: "Flooring Options for Every Budget", date: "August 17, 2025", readTime: "16 mins read", img: "/bn.jpg" },
 ];
 
-const categoryCards = Array.from({ length: 6 }, (_, i) => ({
+
+const categories = [
+  { label: "Interiors", img: "img1.jpg" },
+  { label: "Architecture", img: "img2.jpg" },
+  { label: "Landscape", img: "img3.jpg" },
+  { label: "Furniture", img: "img4.jpg" },
+  { label: "Lighting", img: "img5.jpg" },
+  { label: "Decor", img: "img6.jpg" }
+];
+
+const categoryCards = categories.map((item, i) => ({
   id: i + 1,
-  label: "Interiors",
-  img: "bn.jpg",
+  label: item.label,
+  img: item.img
 }));
+
+const categoryCardsMob = categories.map((item, i) => ({
+  id: i + 1,
+  label: item.label,
+  img: item.img
+}));
+
 
 const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
   const router = useRouter();
@@ -402,6 +420,9 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
         </div>
       </section>
 
+
+
+
       {/* Regular layout for screens below 2560px */}
       <section className="blog-section-regular w-full py-8 px-4 sm:px-6 lg:px-12 bg-[#f1f2f6] mt-30 hidden md:block">
         {/* Blog Posts - Remaining posts (starting from 6th) */}
@@ -503,8 +524,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
       {/* Mobile Version */}
 
 
-
-      <div className="block md:hidden  py- w-[full] max-w-[425px] mx-auto">
+      <div className="block md:hidden  py- w-[full] max-w-[425px] mx-auto p-3">
         {allPosts.length > 5 && (
           <>
             {/* Show remaining posts only after button is clicked */}
@@ -562,9 +582,9 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
 
         <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">Explore by Category</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4 manrope-medium">
-          {categoryCards.map((cat) => (
+          {categoryCardsMob .map((cat) => (
             <div key={cat.id} className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md">
-              <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+           
               <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
                 <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
                 <span className="text-white text-lg manrope-medium">{cat.label}</span>

@@ -117,54 +117,45 @@ const ContactHeader: React.FC = () => {
 
       {/* Mobile Version */}
 
-      {/* <div className="w-full max-w-[425px] h-full block md:hidden mx-auto p-3">
-        <div
-          className="w-full max-w-[425px]  h-[490px] mt-4 rounded-3xl overflow-hidden shadow-md bg-cover bg-center relative block md:hidden"
-          style={{ backgroundImage: "url('BLGHM.png')" }}
-        >
-          <div className="relative z-20 flex items-center justify-between mt-4 w-full max-w-[425px] ">
-            <img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6"></img>
+
+
+
+      <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 p-3">
+        <div className="relative w-full h-[500px] sm:h-[550px]">
+          {/* Background image */}
+          <img
+            src="BLGHM.png"
+            alt="Background"
+            className="w-full h-full object-cover rounded-xl"
+          />
+
+          {/* Top logo */}
+          <div className="absolute top-2 left-2 mb-3">
+            <Image
+              src="/redlogo.png"
+              alt="HUB Interior Logo"
+              width={90}
+              height={25}
+              className="cursor-pointer"
+            />
           </div>
-        </div>
-      </div> */}
 
-      <div>
-        <div className="md:hidden w-[full] max-w-[425px] mx-auto mb-5 mt-3">
-          <div className="relative h-[full]  w-full">
-            {/* Rounded image only */}
-
-            <img src="BLGHM.png" alt="" />
-
-
-
-            {/* top logo */}
-            <div className="absolute top-2 -mt-7 -ml-1" >
-              <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={25} className="cursor-pointer" />
-            </div>
-
-            {/* text + cta */}
-
-            <h2 className="manrope  leading-tight ">
-              <div className="absolute w-screen top-40 text-white justify-items-center">
-                <div className="text-3xl manrope leading-tight text-center mt-10">Design Journal by HUB</div>
-                <p className="text-md manrope-medium text-center mt-5 mb- drop-shadow-lg w-[500px] max-w-[90%]">
-                  A collection of home interior blogs, trends, and guides to inspire your next project.
-                </p>
-                <div>
-                  <button
-                    onClick={handleGetEstimate}
-                    className="bg-yellow-300 text-xs text-black px-3 py-2 rounded-2xl manrope-medium shadow mt-3"
-                  >
-                    Get Free Consultation
-                  </button>
-                </div>
-              </div>
+          {/* Overlay text + CTA */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+            <h2 className="manrope text-2xl sm:text-3xl font-semibold text-white leading-tight">
+              Design Journal by HUB
             </h2>
-
-
+            <p className="manrope-medium text-sm sm:text-md text-white mt-3 mb-4 drop-shadow-lg max-w-[90%]">
+              A collection of home interior blogs, trends, and guides to inspire your next project.
+            </p>
+            <button
+              onClick={handleGetEstimate}
+              className="bg-yellow-300 hover:bg-yellow-400 text-black text-xs sm:text-sm px-4 py-2 rounded-2xl manrope-medium shadow transition-colors"
+            >
+              Get Free Consultation
+            </button>
           </div>
         </div>
-
       </div>
 
 
