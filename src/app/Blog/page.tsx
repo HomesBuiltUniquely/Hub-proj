@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Herosection from "../Components/Blog/Herosection";
 import Section2 from "../Components/Blog/Section2";
 import HomeShowcase from "../Components/Blog/BlogSection";
-import { Footer } from "../Components/Footer";
+import Footer from "../Components/Home/Footer";
 import { useRouter } from "next/navigation";
 
 // Post type definition
@@ -168,7 +168,7 @@ export default function Blog() {
     <div>
       <Herosection />
       <Section2 posts={posts} onReadMore={handleReadMore} />
-      <HomeShowcase posts={posts} />
+      <HomeShowcase posts={posts}/>
       <Footer />
     </div>
   );
