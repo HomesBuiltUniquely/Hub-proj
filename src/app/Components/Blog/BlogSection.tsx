@@ -683,9 +683,11 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4 manrope-medium">
               {categoryCards.map((cat) => (
                 <div key={cat.id} className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md">
-                  <Link href="/ModularKitchen"></Link>
+                  
                   <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" /> 
-                  <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
+                  <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300"
+                   onClick={() => router.push(cat.path)}
+                  style={{ cursor: 'pointer' }}>
                     <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
                     <span className="text-white text-lg manrope-medium">{cat.label}</span>
                   </div>
