@@ -68,12 +68,12 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
     {
       title: 'Living Room',
       image: '/1.png',
-      link: '/LivingRoom'
+      link: '/'
     },
     {
       title:'Kids Room',
       image: '/Slide.jpg',
-      link: '/KidsRoom'
+      link: '/'
     }
   ];
 

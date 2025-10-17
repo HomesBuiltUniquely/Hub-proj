@@ -39,7 +39,7 @@ export default function Section7() {
                 {/* 1280 version */}
                 <div className="desktop-1280 hidden md:block max-w-[1280px] mx-10 min-h-[500px] bg-[#F1F2F6]">
                     <div className="max-w-7xl h-[400px] bg-white mx-auto rounded-3xl mt-4 relative">
-                        <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl " />
+                        <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl bg-transparent blur-[2px]" />
                         <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 pl-100">
                             <h1 className="text-white text-4xl wulkan-display-bold">Meet our interior designers</h1>
                             <p className="text-white text-xl manrope-medium mt-4  pl-[3rem]">Experts Creating Spaces You&#39;ll Love</p>
@@ -50,7 +50,7 @@ export default function Section7() {
                 {/* mobile */}
                 <div className="block md:hidden w-[340px] min-h-[500px] bg-[#F1F2F6] mt-15 mx-auto">
                     <div className="max-w-7xl h-[380px] bg-white mx-auto rounded-3xl mt-4 relative">
-                        <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl" />
+                        <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl bg-transparent blur-[2px]" />
                         <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 ">
                             <h1 className="text-white text-4xl wulkan-display-bold text-center">Meet our interior designers</h1>
                             <p className="text-white text-xl manrope-medium mt-4 text-center w-[260px] mx-auto">Experts Creating Spaces You&#39;ll Love</p>
