@@ -186,7 +186,7 @@ export default function Herosection() {
                     <div className="aboutus-hero-3xl-header">
                         <Image
                             src="/redlogo.png"
-                            alt="LOGO" 
+                            alt="LOGO"
                             width={360}
                             height={120}
                             className="aboutus-hero-3xl-logo"
@@ -303,35 +303,37 @@ export default function Herosection() {
 
 
             {/* SM Screen - Small displays and mobile */}
-           
-                    <div className="md:hidden w-[full] max-w-[425px] mx-auto mb-15 mt-3">
-                      <div className="relative h-[full]  w-full  px-2">
-                        {/* Rounded image only */}
-                        
-                        <img src="ABH.png" alt="" />
-                        
-                        
-                
-                        {/* top logo */}
-                        <div className="absolute top-2 -mt-5 " >
-                          <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={25} className="cursor-pointer" />
-                        </div>
-                
-                        {/* text + cta */}
-                   
-                          <h2 className="manrope  leading-tight ">
-                             <div className="absolute w-screen top-40 text-white">
-                            <div className="text-5xl manrope-medium leading-tight ml-3">homes,</div>
-                            <div className="text-6xl wulkan-display my-4 leading-tight ml-3">uniquely</div>
-                            <div className="text-5xl manrope-medium leading-tight ml-3">built</div>
-                        </div>
-                          </h2>
 
-                       
-                      </div>
+            <div className="md:hidden w-full max-w-[425px] mx-auto mb-15 mt-3 overflow-hidden">
+                <div className="relative h-full w-full p-2">
+                    {/* Rounded image only */}
+                    <img src="ABH.png" alt="" />
+
+                    {/* top logo */}
+                    <div className="absolute top-2 -mt-5">
+                        <Image
+                            src="/redlogo.png"
+                            alt="HUB Interior Logo"
+                            width={90}
+                            height={25}
+                            className="cursor-pointer"
+                        />
                     </div>
 
- 
+                    {/* text + cta */}
+                    <h2 className="manrope leading-tight">
+                        <div className="absolute top-40 text-white w-full px-3 ml-3 mt-10">
+                            <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">homes,</div>
+                            <div className="text-[65px] sm:text-6xl wulkan-display my-1 leading-tight">uniquely</div>
+                            <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">built</div>
+                        </div>
+                    </h2>
+                </div>
+            </div>
+
+
+
+
 
 
         </div>

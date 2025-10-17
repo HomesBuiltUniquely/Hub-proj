@@ -263,7 +263,7 @@ const Section5 = () => {
 
       {/* SM Screen - Small displays */}
       <section className="block md:hidden px-4">
-        <div className="w-full max-w-[425px] mx-auto mt-110">
+        <div className="w-full max-w-[425px] mx-auto -mt-20">
           {/* Header Section */}
 
 
