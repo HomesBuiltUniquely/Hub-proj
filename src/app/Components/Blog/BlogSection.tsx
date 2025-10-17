@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+
 
 type Post = { id: number; title: string; date: string; readTime: string; img: string; path?: string };
 
@@ -115,7 +115,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
   const [allPosts, setAllPosts] = useState<Post[]>(allPostsInit); // Always start with default posts
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 3; // Show 3 posts per page
-  
+
   // Calculate remaining posts (skip first 5 posts that are shown in Section2)
   const remainingPosts = allPosts.length > 5 ? allPosts.slice(5) : [];
   const totalPages = Math.ceil(remainingPosts.length / itemsPerPage);
@@ -178,6 +178,9 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
   const handleLoadMore = () => {
     setShowRemainingPosts(true);
   };
+
+
+
 
   return (
     <div>
@@ -438,23 +441,23 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                 {/* Ultra-wide Pagination */}
                 {remainingPosts.length > itemsPerPage && totalPages > 1 && (
                   <div className="blog-ultrawide-pagination">
-                    <button 
-                      onClick={goToPrev} 
+                    <button
+                      onClick={goToPrev}
                       disabled={currentPage === 1}
                     >
                       &lt;
                     </button>
                     {Array.from({ length: totalPages }).map((_, i) => (
-                      <button 
-                        key={i} 
-                        onClick={() => setCurrentPage(i + 1)} 
+                      <button
+                        key={i}
+                        onClick={() => setCurrentPage(i + 1)}
                         className={currentPage === i + 1 ? 'active' : ''}
                       >
                         {i + 1}
                       </button>
                     ))}
-                    <button 
-                      onClick={goToNext} 
+                    <button
+                      onClick={goToNext}
                       disabled={currentPage === totalPages}
                     >
                       &gt;
@@ -464,17 +467,17 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
               </>
             ) : (
               <div className="text-center py-8">
-                <h2 className="blog-ultrawide-title">All Blog Posts</h2>
+                <h2 className="blog-ultrawide-title manrope">All Blog Posts</h2>
                 <p className="text-gray-500 text-xl max-w-3xl mx-auto">
-                  {allPosts.length <= 5 
-                    ? `Showing all ${allPosts.length} blog posts in the featured section above.` 
+                  {allPosts.length <= 5
+                    ? `Showing all ${allPosts.length} blog posts in the featured section above.`
                     : "No additional blog posts to display. The latest 5 posts are shown in the featured section above."
                   }
                 </p>
               </div>
             )}
 
-            <h2 className="blog-ultrawide-category-title">Explore by Category</h2>
+            <h2 className="blog-ultrawide-category-title manrope">Explore by Category</h2>
             <div className="blog-ultrawide-category-grid">
               {categoryCards.map((cat) => (
                 <div 
@@ -486,13 +489,16 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                   <img src={cat.img} alt={cat.label} className="blog-ultrawide-category-image" />
                   <div className="blog-ultrawide-category-overlay">
                     <FaArrowRight className="blog-ultrawide-category-icon" />
-                    <span className="blog-ultrawide-category-label">{cat.label}</span>
+                    <span className="blog-ultrawide-category-label manrope-medium">{cat.label}</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+
+
 
         {/* Regular layout for screens below 2560px */}
         <section className="blog-section-regular w-full py-8 px-4 sm:px-6 lg:px-12 bg-[#f1f2f6] -mt-50">
@@ -590,22 +596,30 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
             </div>
           )}
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">Explore by Category</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4">
-            {categoryCards.map((cat) => (
-              <div key={cat.id} 
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">Explore by Category</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4">
+              {categoryCards.map((cat) => (
+                <div key={cat.id} 
                   className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md"
                   onClick={() => router.push(cat.path)}
                   style={{ cursor: 'pointer' }}>
-                <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
-                  <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
-                  <span className="text-white text-lg font-semibold">{cat.label}</span>
+                  <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
+                    <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
+                    <span className="text-white text-lg manrope-medium">{cat.label}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
         </section>
+
+
+
+
+
+      
+
+
 
         {/* Mobile Version */}
         <div className="section2-mobile">
@@ -668,9 +682,11 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4 manrope-medium">
               {categoryCards.map((cat) => (
                 <div key={cat.id} className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md">
-                  <Link href="/ModularKitchen"></Link>
+                  
                   <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" /> 
-                  <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
+                  <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300"
+                   onClick={() => router.push(cat.path)}
+                  style={{ cursor: 'pointer' }}>
                     <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
                     <span className="text-white text-lg manrope-medium">{cat.label}</span>
                   </div>

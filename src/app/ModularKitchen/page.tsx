@@ -11,7 +11,7 @@ export default function InteriorDesignersInBangalore() {
   return (
     <div>
       <ModularKitchen />
-      <Section1/>
+      <Section1/> 
       <Section2/>
       <KitchenBlogSection/>
       <Footer/>

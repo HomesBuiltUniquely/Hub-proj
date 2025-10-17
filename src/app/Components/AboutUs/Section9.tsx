@@ -7,14 +7,14 @@ export default function Section9() {
   const travers = [
     {
       img: "/r.png",
-      name: "Ranjit P Raj",
+      name: "Ranjith P Raj",
       title: "Founder",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
       linkedin: "https://www.linkedin.com/in/ranjithpraj/"
     },
     {
       img: "/s.png",
-      name: "Susmitha ",
+      name: "Susmita ",
       title: "Co-Founder",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
       linkedin: "https://www.linkedin.com/in/susmita-mondal-955344b3/"
@@ -48,7 +48,7 @@ export default function Section9() {
       <section className="aboutus-section9-3xl-container hidden">
         <div className="aboutus-section9-3xl-content">
           <div className="aboutus-section9-3xl-layout">
-            <div className="aboutus-section9-3xl-title">Core Members</div>
+            <div className="aboutus-section9-3xl-title manrope">Core Members</div>
 
             {/* Carousel Container - 3XL optimized */}
             <div className="aboutus-section9-3xl-carousel">
@@ -73,8 +73,8 @@ export default function Section9() {
                     <div>
                       <div className="aboutus-section9-3xl-card-content">
                         <div>
-                          <h3 className="aboutus-section9-3xl-name">{traver.name}</h3>
-                          <p className="aboutus-section9-3xl-title-text">{traver.title}</p>
+                          <h3 className="aboutus-section9-3xl-name manrope-medium">{traver.name}</h3>
+                          <p className="aboutus-section9-3xl-title-text manrope-medium">{traver.title}</p>
                         </div>
                         <div>
                           <a href={traver.linkedin}>
@@ -131,7 +131,7 @@ export default function Section9() {
                   </div>
                   <div className=" bg-[#ebd457] flex justify-between  mt-5 rounded-2xl">
                     <div className="h-1/2 p-8 flex flex-col">
-                      <h3 className="text-3xl font-bold">{traver.name}</h3>
+                      <h3 className="text-3xl manrope">{traver.name}</h3>
                       <p className="text-gray-500 mb-6 text-xl">{traver.title}</p>
                     </div>
                     <div>
@@ -162,8 +162,8 @@ export default function Section9() {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden bg-white">
-        <div className="w-screen h-screen relative overflow-hidden">
+      <section className="hidden xl:block 2xl:hidden bg-white mb-50">
+        <div className="w-[full] h-full relative overflow-hidden">
           <div className="text-5xl manrope pt-18 pl-12">Core Members</div>
 
           {/* Carousel Container - XL optimized */}
@@ -245,8 +245,8 @@ export default function Section9() {
                       />
                     </div>
                     <div className="h-1/2 p-6 flex flex-col">
-                      <h3 className="text-xl font-bold">{traver.name}</h3>
-                      <p className="text-gray-500 mb-4 text-base">{traver.title}</p>
+                      <h3 className="text-xl manrope">{traver.name}</h3>
+                      <p className="text-gray-500 mb-4 manrope-medium">{traver.title}</p>
                       <p className="text-gray-700 text-sm">{traver.description}</p>
                     </div>
                   </div>
@@ -295,8 +295,8 @@ export default function Section9() {
                       />
                     </div>
                     <div className="h-1/2 p-4 flex flex-col">
-                      <h3 className="text-lg font-bold">{traver.name}</h3>
-                      <p className="text-gray-500 mb-3 text-sm">{traver.title}</p>
+                      <h3 className="text-lg manrope">{traver.name}</h3>
+                      <p className="text-gray-500 mb-3 manrope-medium">{traver.title}</p>
                       <p className="text-gray-700 text-xs">{traver.description}</p>
                     </div>
                   </div>
@@ -322,65 +322,64 @@ export default function Section9() {
       </section>
 
       {/* SM Screen - Small displays and mobile */}
-      <section className="block md:hidden">
-        <div className='bg-[#ebd657] w-[3px] h-10 mt-110 ml-5'>
-          <div className='mb-2.5 w-80'>
-            <h1 className='text-3xl manrope text-nowrap, ml-3'>Core <div>Members</div></h1>
+      
+      <section className="block md:hidden w-full max-w-[425px] px-4 mx-auto mb-10">
+        <div className="flex items-start">
+          {/* Yellow Line */}
+          
+
+          <div className="w-full">
+              <div className='bg-[#ebd657] w-[3px] h-10 mb-13'>
+            <h1 className="text-3xl manrope font-bold ml-3">
+              Core <div>Members</div>
+            </h1>
+</div>
+            {/* Member 1 */}
             <div>
-              <img src="r.png" alt="" className='rounded-3xl mt-5' />
-
-
-              <div className=" bg-[#ebd457] flex justify-between  mt-2 rounded-2xl w-full h-20">
-   
-                <h1 className='manrope text-nowrap text-2xl ml-2 mt-3'>Ranjith P Raj  <p className='text-sm manrope-medium text-gray-500'>Founder</p></h1>
-               
-
-                <a href="https://www.linkedin.com/in/ranjithpraj/"><img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-5 mr-2' alt="LinkedIn" /></a>
+              <img src="r.png" alt="Ranjith" className="rounded-3xl mt-5 w-full object-cover" />
+              <div className="bg-[#ebd457] flex justify-between items-center mt-2 rounded-2xl w-full h-20 px-3">
+                <div>
+                  <h1 className="manrope text-2xl">Ranjith P Raj</h1>
+                  <p className="text-sm manrope-medium text-gray-500">Founder</p>
+                </div>
+                <a href="https://www.linkedin.com/in/ranjithpraj/">
+                  <img src="/linkedin.png" className="w-[40px] h-[40px] rounded-full" alt="LinkedIn" />
+                </a>
               </div>
-
-
             </div>
 
-
-
-
+            {/* Member 2 */}
             <div>
-              <img src="s.png" alt="" className='rounded-3xl mt-5' />
-
-                <div className=" bg-[#ebd457] flex justify-between  mt-2 rounded-2xl w-full h-20">
-
-                   <h1 className='manrope text-nowrap text-2xl ml-2 mt-3'>Susmitha<p className='text-sm manrope-medium text-gray-500'>Co-Founder</p></h1>
-                <a href="https://www.linkedin.com/in/susmita-mondal-955344b3/"><img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-5 mr-2' alt="LinkedIn" /></a>
+              <img src="s.png" alt="Susmita" className="rounded-3xl mt-5 w-full object-cover" />
+              <div className="bg-[#ebd457] flex justify-between items-center mt-2 rounded-2xl w-full h-20 px-3">
+                <div>
+                  <h1 className="manrope text-2xl">Susmita</h1>
+                  <p className="text-sm manrope-medium text-gray-500">Co-Founder</p>
+                </div>
+                <a href="https://www.linkedin.com/in/susmita-mondal-955344b3/">
+                  <img src="/linkedin.png" className="w-[40px] h-[40px] rounded-full" alt="LinkedIn" />
+                </a>
               </div>
-            
-              
-
-
             </div>
 
+            {/* Member 3 */}
             <div>
-              <img src="alex.png" alt="" className='rounded-3xl mt-5' />
-
-              
-                <div className=" bg-[#ebd457] flex justify-between  mt-2 rounded-2xl w-full h-20">
-
-                  <h1 className='manrope text-nowrap text-2xl ml-2 mt-3'>Ebez Alex<p className='text-sm manrope-medium text-gray-500'>Associate Director</p></h1>
-                <a href="https://www.linkedin.com/in/ebezalex/"><img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-5 mr-2' alt="LinkedIn" /></a>
-             
-
+              <img src="alex.png" alt="Alex" className="rounded-3xl mt-5 w-full object-cover" />
+              <div className="bg-[#ebd457] flex justify-between items-center mt-2 rounded-2xl w-full h-20 px-3">
+                <div>
+                  <h1 className="manrope text-2xl">Ebez Alex</h1>
+                  <p className="text-sm manrope-medium text-gray-500">Associate Director</p>
+                </div>
+                <a href="https://www.linkedin.com/in/ebezalex/">
+                  <img src="/linkedin.png" className="w-[40px] h-[40px] rounded-full" alt="LinkedIn" />
+                </a>
               </div>
-
-       
-
             </div>
-
-
-
           </div>
-
-
         </div>
       </section>
+
+
 
       {/* Pure CSS for 3XL - 2560*1440 resolution */}
       <style jsx>{`
