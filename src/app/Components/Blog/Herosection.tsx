@@ -54,7 +54,7 @@ const ContactHeader: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope-medium hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope-medium hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
         {/* Hero Content */}
@@ -63,13 +63,11 @@ const ContactHeader: React.FC = () => {
             Design Journal by HUB
           </h1>
           <p className="text-lg font-medium mb-8 drop-shadow-lg w-[600px] manrope-medium">
-            Get inspired to live a more beautiful and happy life at home.
-            Our mission to show how we are making each home more beautiful
-            with easy-life tips and photos for any range of budgets.
+            A collection of home interior blogs, trends, and guides to inspire your next project.
           </p>
           <div className="flex gap-4">
             <button className="bg-yellow-300 text-black px-6 py-3 rounded-2xl font-semibold manrope-medium shadow">
-              Subscribe Now
+              Get Free Consultation
             </button>
           </div>
         </div>
@@ -88,7 +86,7 @@ const ContactHeader: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-[#32261c]" />
           <NavMore textColor="text-[#32261c]" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
         {/* Hero Content */}
@@ -109,7 +107,6 @@ const ContactHeader: React.FC = () => {
           </div>
         </div>
       </div>
-      
       {/* Mobile Version */}
 
 
