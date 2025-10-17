@@ -102,7 +102,7 @@ export default function Blog2() {
                             <p>And if you ask us? That&#39;s the kind of design that lasts.</p>
                             <p>If you&#39;ve got a home waiting for its own story, HUB Interior would love to design it with you. Contact us today!</p>
 
-<<<<<<< HEAD
+
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">The False Ceiling</h3>
                             <div className="relative w-[500px] h-[500px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
                                 <img src="/blog2img7.png" alt="Living room design" className="w-full h-full object-cover" />
@@ -113,7 +113,7 @@ export default function Blog2() {
                             <p>This reveal has been such a joy to share. If you&#39;re also dreaming of a home like Bhoo Aabharana that feels just as tailored as Mr. Akhil&#39;s requests, HUB Interior would love to help.</p>
                             <p>Reach out to us today and get your home transformed.</p>
 =======
->>>>>>> 9eeca11f0dfc59ac18368ee245554a23e5a16763
+
                         </div>
                     </div>
                 </article>
