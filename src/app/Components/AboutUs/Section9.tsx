@@ -336,7 +336,7 @@ export default function Section9() {
 </div>
             {/* Member 1 */}
             <div>
-              <img src="r.png" alt="Ranjith" className="rounded-3xl mt-5 w-full object-cover" />
+              <img src="/r.png" alt="Ranjith" className="rounded-3xl mt-5 w-full object-cover" />
               <div className="bg-[#ebd457] flex justify-between items-center mt-2 rounded-2xl w-full h-20 px-3">
                 <div>
                   <h1 className="manrope text-2xl">Ranjith P Raj</h1>
@@ -350,7 +350,7 @@ export default function Section9() {
 
             {/* Member 2 */}
             <div>
-              <img src="s.png" alt="Susmita" className="rounded-3xl mt-5 w-full object-cover" />
+              <img src="/s.png" alt="Susmita" className="rounded-3xl mt-5 w-full object-cover" />
               <div className="bg-[#ebd457] flex justify-between items-center mt-2 rounded-2xl w-full h-20 px-3">
                 <div>
                   <h1 className="manrope text-2xl">Susmita</h1>
@@ -364,7 +364,7 @@ export default function Section9() {
 
             {/* Member 3 */}
             <div>
-              <img src="alex.png" alt="Alex" className="rounded-3xl mt-5 w-full object-cover" />
+              <img src="/Alex.png" alt="Alex" className="rounded-3xl mt-5 w-full object-cover" />
               <div className="bg-[#ebd457] flex justify-between items-center mt-2 rounded-2xl w-full h-20 px-3">
                 <div>
                   <h1 className="manrope text-2xl">Ebez Alex</h1>
