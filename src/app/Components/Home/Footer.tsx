@@ -116,7 +116,7 @@ export default function Footer(){
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Fast Track</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Automations</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
-                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
 
                                     </div>
@@ -199,9 +199,9 @@ export default function Footer(){
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Fast Track</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Automations</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
-                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
-                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
                                     </div>
                                 </div>
@@ -302,11 +302,11 @@ export default function Footer(){
                                 <div className="mt-12">
                                     <h1 className="text-[16px] manrope font-medium mb-6">Connect Us</h1>
                                     <div className="space-y-3">
-                                        <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Facebook</p></Link>
-                                        <Link href="https://www.instagram.com/hubinterior_/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Instagram</p></Link>
-                                        <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">linkedin</p></Link>
-                                        <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">YouTube</p></Link>
-                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">WhatsApp</p>
+                                        <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Facebook</p></Link>
+                                        <Link href="https://www.instagram.com/hubinterior_/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Instagram</p></Link>
+                                        <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">linkedin</p></Link>
+                                        <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">YouTube</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">WhatsApp</p>
                                     </div>
                                 </div>
                             </div>
@@ -406,9 +406,9 @@ export default function Footer(){
                                     <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Fast Track</p>
                                     <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Home Automations</p>
                                     <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Home Interior Price Calculator</p>
-                                    <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                    <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
-                                    <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                    <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
                                 </div>
                             </div>
