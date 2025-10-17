@@ -1,6 +1,5 @@
 'use client'
 
-import { Manrope } from 'next/font/google';
 import { useState, useEffect } from 'react';
 
 export default function Section3() {

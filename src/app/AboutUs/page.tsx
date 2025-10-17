@@ -11,7 +11,7 @@ import Section7 from "../Components/AboutUs/Section7";
 import Section8 from "../Components/AboutUs/Section8";
 import Section9 from "../Components/AboutUs/Section9";
 import Footer from "../Components/Home/Footer";
-import Carousel from "../Components/AboutUs/Demo";
+
 
 
 

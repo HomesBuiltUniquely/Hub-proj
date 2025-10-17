@@ -2,26 +2,6 @@
 
 import React, { useState } from "react";
 
-const articles = [
-  {
-    image: "/bb1.jpg", // Replace with your image path
-    title: "Modern Bedroom Interior Trends in Bengaluru Homes",
-    date: "September 05, 2025",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-  },
-  {
-    image: "/bb2.jpg",
-    title: "Luxury Bedroom Interior Designs for Villas and 3BHK Homes",
-    date: "September 05, 2025",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-  },
-  {
-    image: "/bb3.jpg",
-    title: "Sliding vs. Hinged Wardrobe Designs – Which is Best for You?",
-    date: "September 05, 2025",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-  },
-];
 
 const faqs = [
   {

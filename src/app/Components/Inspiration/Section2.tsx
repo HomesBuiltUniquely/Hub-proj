@@ -1,6 +1,6 @@
 "use client";
 
-import React, { JSX, useState, useRef } from "react";
+import React, { JSX, useState } from "react";
 import Image from "next/image";
 
 const topCategories = ["Kitchen", "Living Room", "Bedroom", "Wardrobe", "Kids Room"];

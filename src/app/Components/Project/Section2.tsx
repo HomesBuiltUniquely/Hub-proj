@@ -94,9 +94,6 @@ const CardSection = ({
         >
           {cards.map((card, idx) => {
 
-            function handleNavigate() {
-              router.push(card.path);
-            }
 
 
             return (
@@ -169,9 +166,6 @@ const CardSection = ({
 
             {cards.map((card, idx) => {
 
-              function handleNavigate() {
-                router.push(card.path);
-              }
 
 
               return (
