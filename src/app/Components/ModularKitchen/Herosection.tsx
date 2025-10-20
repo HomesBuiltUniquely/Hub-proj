@@ -44,10 +44,34 @@ const ContactHeader: React.FC = () => {
         }
       `}</style>
 
+
+      <style jsx>{`
+        /* Hide both by default */
+        .desktop-1280,
+        .desktop-1440 {
+          display: none !important;
+        }
+
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
+
+        /* Show 1440px layout for large desktops (>=1440px) */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block !important;
+          }
+        }
+      `}</style>
+
+
       <div>
 
         {/* Desktop Version */}
-        <div className=" hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
+        <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer"> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-2" /></div>
@@ -72,7 +96,73 @@ const ContactHeader: React.FC = () => {
 
       </div>
 
-      
+
+
+      {/* 1280 version */}
+
+  <div className="desktop-1280">
+  <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
+    {/* Inner container with background */}
+    <div
+      className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
+      style={{ backgroundImage: "url('/kh.png')" }}
+    >
+      {/* Navbar */}
+      <div className="flex items-center justify-between px-8">
+        {/* Logo */}
+        <div onClick={handleClick} className="cursor-pointer">
+          <Image
+            src="/redlogo.png"
+            alt="HUB Interior Logo"
+            width={230}
+            height={250}
+            className="w-[full] h-[full] -mt-12 -ml-8"
+          />
+        </div>
+
+        {/* Center Navigation */}
+        <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+          <OfferingsDropdown textColor="text-white" />
+          <ExploreRoomsDropdown textColor="text-white" />
+          <NavMore textColor="text-white" />
+        </div>
+
+        {/* Right CTA */}
+        <button className="bg-orange-100 text-black px-5 py-2 rounded-3xl manrope-medium shadow -mt-12 hover:bg-yellow-200 transition">
+          GET FREE ESTIMATE
+        </button>
+      </div>
+
+{/* Hero content */}
+<div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
+  <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
+    Modular Kitchen Interior
+  </h1>
+
+  <p className="text-2xl manrope-medium drop-shadow-lg">
+    Modular Kitchens Design for Style, Comfort & Everyday Living
+  </p>
+
+  <button
+    onClick={handleGetEstimate}
+    className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
+  >
+    Get Free Quote
+  </button>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
       {/* ===== MOBILE VERSION ===== */}
 
       {/* Mobile Version (360px to 480px) */}
