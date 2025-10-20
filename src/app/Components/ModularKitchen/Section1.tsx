@@ -70,107 +70,117 @@ const Section1: React.FC = () => {
         }
       `}</style>
       {/* Desktop Version (above 768px) */}
-    <div className="hidden md:block text-xl w-[1000px] text-center mx-auto mt-10">At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.</div>
-        
+      <div className="hidden md:block text-xl w-[1000px] manrope-medium text-center mx-auto mt-10">At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.</div>
+
       <div className="hidden md:block max-w-6xl mx-auto px-4 relative mt-30">
         {/* Heading */}
         <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-1">Kitchen Layout</h2>
-            <p className="text-gray-500 text-lg">Smart Space, Seamless Cooking</p>
+            <h2 className="text-3xl manrope text-gray-800 mb-1">Kitchen layout</h2>
+            <p className="text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
           </div>
         </div>
         {/* Carousel with arrows overlapping top left */}
-        <div className="relative">
-          {/* Overlapping Navigation */}
-          <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
-            <button
-              onClick={() => scroll("left")}
-              className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow  transition"
-              aria-label="Scroll Left"
-              type="button"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
-                <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+       <div className="relative">
+  {/* Overlapping Navigation */}
+  <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
+    <button
+      onClick={() => scroll("left")}
+      className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
+      aria-label="Scroll Left"
+      type="button"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
+        <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
+    <button
+      onClick={() => scroll("right")}
+      className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
+      aria-label="Scroll Right"
+      type="button"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
+        <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
+  </div>
+
+  {/* Card Carousel */}
+  <div
+    ref={scrollRef}
+    className="flex gap-7 overflow-x-auto overflow-hidden scroll-smooth no-scrollbar pt-10 pb-2"
+    style={{ scrollBehavior: "smooth" }}
+  >
+    {wardrobes.map((item, idx) => (
+      <div
+        key={idx}
+        className="min-w-[400px] max-w-[400px] w-[400px] h-[520px] bg-white rounded-4xl shadow-lg overflow-hidden"
+      >
+        <img
+          src={item.img}
+          alt={item.label}
+          className="w-full h-130 object-cover rounded-4xl"
+        />
+        <div className="p-4 flex items-center -mt-50 h-[270px] w-[400px]">
+          <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm w-[360px] block">
+            <div className="text-lg">
+              {item.label}
+              <br />
+            </div>
+            <div className="manrope-medium">{item.subtitle}</div>
+            <button className="border-1 border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457]">
+              Book Free Consultation
             </button>
-            <button
-              onClick={() => scroll("right")}
-              className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
-              aria-label="Scroll Right"
-              type="button"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
-                <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-          {/* Card Carousel */}
-          <div
-            ref={scrollRef}
-            className="flex gap-7 overflow-x-auto scroll-smooth no-scrollbar pt-10 pb-2 "
-            style={{ scrollBehavior: "smooth" }}
-          >
-            {wardrobes.map((item, idx) => (
-              <div
-                key={idx}
-                className="min-w-[400px] max-w-[400px] w-[400px] h-[520px] bg-white rounded-4xl shadow-lg"
-              >
-                <img
-                  src={item.img}
-                  alt={item.label}
-                  className="w-full h-130 object-cover rounded-4xl"
-                />
-                <div className="p-4 flex items-center -mt-50 h-[270px] w-[400px]">
-                  <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm w-[360px] block">
-                    <div className="text-lg">
-                      {item.label}<br/>
-                    </div>
-                    <div className="manrope-medium">{item.subtitle}</div>
-                    <button className="border-1 border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          </span>
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
+      </div>
+
+      
 
       {/* Mobile Version (360px to 480px) */}
-      <div className="md:hidden px-4 mk-mobile-360 mobile-360plus">
+      <div className="md:hidden px-4 mk-mobile-360 mobile-360plus -mt-25">
         {/* Mobile Description */}
-        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-2 m-3 desc">
+        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-30 m-3 desc">
           At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
         </div>
 
         {/* Mobile Heading */}
-        <div>
-          <div className="flex relative mt-10">
-            <div className="w-[2px] h-[75px] bg-amber-300 mb-10 ml-4"></div>
-            <h2 className="h-10 text-3xl manrope-medium-bold text-gray-800 m-2">Kitchen Layout</h2>
+        <div className="mb-10">
+          <div className="flex relative">
+            <div className="w-[2px] h-[70px] bg-amber-300 mt-10 ml-3"></div>
+          </div>
+          <div className=" -mt-17">
+          <h2 className="h-10 text-3xl manrope text-gray-800  ml-7 ">Kitchen layout</h2>
+          <p className="ml-7  text-gray-500 text-lg manrope-medium ">Smart Space, Seamless Cooking</p>
           </div>
         </div>
-        <p className="ml-7 -mt-17 text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
+
 
         {/* Mobile Glassmorphism Menu Bar */}
         <div className="mb-6 mt-7 max-w-[480px] mx-auto">
           {/* Mobile Content Card */}
-          <div className="bg-white rounded-md relative max-w-[480px] h-95 mx-auto w-full card">
-            {/* <div className="w-[300px] mx-auto">
-            <div className="absolute top-4 inset-x-0 z-10 flex justify-center menu">
-              <div className="w-[310px] bg-[#32261c]/70 rounded-md p-1 flex justify-around text-gray-200/70 font-medium">
-                {kitchenTypes.map((type, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelected(idx)}
-                    className={` px-3 py-1 text-sm rounded ${selected === idx ? "text-white" : ""} hover:bg-gray-600/30`}
-                  >
-                    {type}
-                  </button>
-                ))}
+          <div className="bg-white rounded-3xl relative max-w-[480px] h-95 mx-auto w-full card">
+            <div className="w-[300px] mx-auto">
+              <div className="absolute top-4 inset-x-0 z-10 flex justify-center menu">
+                <div className="w-[320px] bg-[#32261c]/70 rounded-md p-1 flex justify-around text-nowrap text-gray-200/70 manrope">
+                  {kitchenTypes.map((type, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelected(idx)}
+                      className={` px-3 py-1 text-sm rounded ${selected === idx ? "text-white" : ""} hover:bg-gray-600/30`}
+                    >
+                      {type}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-            </div> */}
             <img
               src={wardrobes[selected].img}
               alt={wardrobes[selected].label}
@@ -178,12 +188,12 @@ const Section1: React.FC = () => {
             />
             <div className="absolute bottom-0 inset-x-0 p-4 flex justify-center items-end overlay">
               <span className="block w-[950%] max-w-[330px] bg-zinc-500/60 text-white manrope px-4 py-2 pt-1 rounded-3xl shadow text-sm h-[100px] mt-18">
-                <div className="text-bold text-base">
+                <div className="manrope text-base">
                   {wardrobes[selected].label}<br />
                 </div>
                 <div className="manrope-medium">{wardrobes[selected].subtitle}</div>
                 <br />
-                <button className="border border-[#ebd457] text-white px-3 -mt-3 mb-1 rounded-full hover:bg-[#ebd457] text-xs py-1">
+                <button className="border border-[#ebd457] text-white px-3 -mt-3 mb-1 rounded-full manrope hover:bg-[#ebd457] text-xs py-1">
                   Book Free Consultation
                 </button>
               </span>
@@ -193,58 +203,60 @@ const Section1: React.FC = () => {
       </div>
 
      {/* Mobile Version (300px to 359px) */}
-  <div className="md:hidden px-4 mk-mobile-300 mobile-300">
-    {/* Mobile Description */}
-    <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-2 m-3 desc">
-      At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
-    </div>
-
-    {/* Mobile Heading */}
-    <div>
-      <div className="flex relative mt-10">
-        <div className="w-[2px] h-[75px] bg-amber-300 mb-10 ml-4"></div>
-        <h2 className="h-10 text-3xl manrope-medium-bold text-gray-800 m-2">Kitchen Layout</h2>
-      </div>
-    </div>
-    <p className="ml-7 -mt-17 text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
-
-    {/* Mobile Glassmorphism Menu Bar */}
-    <div className="mb-6 mt-7 max-w-[359px] mx-auto">
-      {/* Mobile Content Card */}
-      <div className="bg-white rounded-md relative max-w-[480px] h-95 w-full card">
-        <div className="absolute top-4 inset-x-0 z-10 flex justify-center menu">
-          <div className="w-[340px] bg-[#32261c]/70 rounded-md p-2 flex justify-around text-gray-200/70 font-medium">
-            {kitchenTypes.map((type, idx) => (
-              <button
-                key={idx}
-                onClick={() => setSelected(idx)}
-                className={`px-2 py-1 text-sm rounded ${selected === idx ? "text-white" : ""} hover:bg-gray-600/30`}
-              >
-                {type}
-              </button>
-            ))}
+      <div className="md:hidden px-4 mk-mobile-300 mobile-300 ">
+        {/* Mobile Description */}
+        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-2 m-3 mb-3 ">
+          At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
+        </div>
+  {/* Mobile Heading */}
+        <div className="mb-10">
+          <div className="flex relative">
+            <div className="w-[2px] h-[70px] bg-amber-300 mt-10 ml-3"></div>
+          </div>
+          <div className=" -mt-17">
+          <h2 className="h-10 text-3xl manrope text-gray-800  ml-7 ">Kitchen layout</h2>
+          <p className="ml-7  text-gray-500 text-lg manrope-medium ">Smart Space, Seamless Cooking</p>
           </div>
         </div>
-        <img
-          src={wardrobes[selected].img}
-          alt={wardrobes[selected].label}
-          className="w-full h-full object-cover rounded-3xl"
-        />
-        <div className="absolute bottom-0 inset-x-0 p-4 flex justify-center items-end overlay">
-          <span className="block w-[295px] max-w-[310px] bg-zinc-500/60 text-white manrope px-2 py-2 pt-1 rounded-3xl shadow text-sm h-[100px] mt-18">
-            <div className="text-bold text-base">
-              {wardrobes[selected].label}<br />
+
+
+        {/* Mobile Glassmorphism Menu Bar */}
+        <div className="mb-6 mt-7 max-w-[359px] mx-auto">
+          {/* Mobile Content Card */}
+          <div className="bg-white rounded-md relative max-w-[480px] h-95 w-full card">
+            <div className="absolute top-4 inset-x-0 z-10 flex justify-center menu">
+              <div className="w-[340px] text-nowrap bg-[#32261c]/70 rounded-md p-2 flex justify-around text-gray-200/70 manrope">
+                {kitchenTypes.map((type, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelected(idx)}
+                    className={`px-2 py-1 text-sm m rounded ${selected === idx ? "text-white" : ""} hover:bg-gray-600/30`}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="manrope-medium">{wardrobes[selected].subtitle}</div>
-            <br />
-            <button className="border border-[#ebd457] text-white px-3 -mt-3 mb-1 rounded-full hover:bg-[#ebd457] text-xs py-1">
-              Book Free Consultation
-            </button>
-          </span>
+            <img
+              src={wardrobes[selected].img}
+              alt={wardrobes[selected].label}
+              className="w-full h-full object-cover rounded-3xl"
+            />
+            <div className="absolute bottom-0 inset-x-0 p-4 flex justify-center items-end overlay">
+              <span className="block w-[295px] max-w-[310px] bg-zinc-500/60 text-white manrope px-2 py-2 pt-1 rounded-3xl shadow text-sm h-[100px] mt-18">
+                <div className=" text-base">
+                  {wardrobes[selected].label}<br />
+                </div>
+                <div className="manrope-medium">{wardrobes[selected].subtitle}</div>
+                <br />
+                <button className="border border-[#ebd457] text-white px-3 -mt-3 manrope mb-1 rounded-full hover:bg-[#ebd457] text-xs py-1">
+                  Book Free Consultation
+                </button>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
     </section>
   );

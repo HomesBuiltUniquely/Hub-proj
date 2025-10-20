@@ -77,8 +77,8 @@ const Section4: React.FC = () => {
           {/* Heading */}
 
           <div className="max-w-6xl mx-auto px-4 mb-10">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-800">Let’s Talk About Bedroom</h1>
-            <p className="text-gray-500 text-lg mb-7">
+            <h1 className="text-3xl md:text-4xl manrope mb-2 text-gray-800">Let’s Talk About Bedroom</h1>
+            <p className="text-gray-500 manrope-medium text-lg mb-7">
               Read our blog to discover how design meets utility in every Bedroom.
             </p>
           </div>
@@ -92,17 +92,17 @@ const Section4: React.FC = () => {
               >
                 <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
                 <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-base font-semibold text-gray-900 mt-2 mb-1">
+                  <h3 className="text-base manrope-medium text-gray-900 mt-2 mb-1">
                     {article.title}
                   </h3>
-                  <span className="text-xs text-gray-400 mt-4">{article.date}</span>
+                  <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
                 </div>
               </div>
             ))}
           </div>
           {/* View All Button */}
           <div className="text-center mb-10">
-            <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition hover:bg-gray-200 font-medium">
+            <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition hover:bg-gray-200 manrope">
               View All
             </button>
           </div>
@@ -111,9 +111,9 @@ const Section4: React.FC = () => {
           <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 mt-30">
             {/* FAQ Left */}
             <div className="md:w-1/3 mb-8 md:mt-4">
-              <h2 className="text-2xl font-bold mb-3  text-gray-900">FAQs</h2>
-              <p className="text-gray-600 mb-4">Here are answers to questions our clients ask.</p>
-              <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm font-medium">
+              <h2 className="text-2xl manrope mb-3  text-gray-900">FAQs</h2>
+              <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
+              <button className="px-5 py-2 manrope border border-gray-500 rounded-xl text-gray-800 text-sm font-medium">
                 Connect
               </button>
             </div>
@@ -125,7 +125,7 @@ const Section4: React.FC = () => {
                     onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
                     className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
                   >
-                    <span className="font-medium text-gray-700">{faq.question}</span>
+                    <span className="manrope text-gray-700">{faq.question}</span>
                     <span className="ml-2">
                       {openFAQ === i ? (
                         <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -139,7 +139,7 @@ const Section4: React.FC = () => {
                     </span>
                   </button>
                   {openFAQ === i && (
-                    <div className="py-2 pl-3 text-gray-500 text-sm">
+                    <div className="py-2 pl-3 manrope-medium text-gray-500 text-sm">
                       {faq.answer}
                     </div>
                   )}
@@ -150,7 +150,7 @@ const Section4: React.FC = () => {
 
           {/* Download Guide Button */}
           <div className="w-full flex justify-center mt-20">
-            <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg font-semibold shadow-xl hover:bg-[#2a1d10] transition">
+            <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg manrope shadow-xl hover:bg-[#2a1d10] transition">
               Download our Bedroom design guide
             </button>
           </div>
@@ -162,10 +162,10 @@ const Section4: React.FC = () => {
 
       {/* Heading */}
 
-      <div className="block md:hidden">
+      <div className="block md:hidden -mt-15">
 
         <div className='flex items-center ml-5'>
-          <div className='bg-[#ebd657] w-[3px] h-9 mb-31'></div>
+          <div className='bg-[#ebd657] w-[4px] h-9 mb-31'></div>
           <div className='ml-3 mb-2.5'>
             <h1 className='text-3xl manrope'>Let’s Talk  <div> About Bedroom</div></h1>
             <p className='manrope-medium text-[18px] pt-3 mb-4'>Read our blog to discover how design meets utility in every Bedroom.</p>
@@ -175,18 +175,19 @@ const Section4: React.FC = () => {
 
 
         {/* Blog Cards */}
-        <div className="max-w-6xl mx-auto px-4 mb-8 flex flex-col md:flex-row gap-6">
+        <div className="max-w-6xl mx-auto px-4  flex flex-col md:flex-row gap-6">
           {articles.map((article, idx) => (
             <div
               key={idx}
               className="w-full md:w-1/3 flex flex-col"
             >
               <img src={article.image} alt={article.title} className="w-full h-70 object-cover rounded-3xl" />
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-base font-semibold text-gray-900 mt-2 mb-1">
+              <div className="p- flex flex-col flex-1">
+                 <span className="text-xs manrope-medium m-2 text-gray-400 ">{article.date}</span>
+                <h3 className="text-base manrope text-gray-900 ml-2 mb-1">
                   {article.title}
                 </h3>
-                <span className="text-xs text-gray-400 mt-4">{article.date}</span>
+               
               </div>
             </div>
           ))}
@@ -195,7 +196,7 @@ const Section4: React.FC = () => {
         {/* FAQ and Guide */}
 
         {/* FAQ Left */}
-        <div className='flex items-center ml-5 mt-20'>
+        <div className='flex items-center ml-5 mt-15'>
           <div className='bg-[#ebd657] w-[3px] h-9 mb-11'></div>
           <div className='ml-3 mb-2'>
             <h1 className='text-3xl manrope'>Frequently <div>asked question</div></h1>
@@ -210,7 +211,7 @@ const Section4: React.FC = () => {
                   onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
                   className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
                 >
-                  <span className="manrope-medium text-gray-700">{faq.question}</span>
+                  <span className="manrope text-gray-700">{faq.question}</span>
                   <span className="ml-2">
                     {openFAQ === i ? (
                       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -225,7 +226,7 @@ const Section4: React.FC = () => {
                   </span>
                 </button>
                 {openFAQ === i && (
-                  <div className="py-2 pl-3 text-gray-500 text-sm">
+                  <div className="py-2 manrope-medium pl-3 text-gray-500 text-sm">
                     {faq.answer}
                   </div>
                 )}

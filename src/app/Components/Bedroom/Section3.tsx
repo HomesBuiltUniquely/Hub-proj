@@ -56,15 +56,15 @@ const CardSection = ({
   }, [scrollDirection]);
 
   return (
-    <section className="w-screen py-12 bg-[#f1f2f6]">
+    <section className="w-screen py-30 bg-[#f1f2f6]">
       <div className="flex flex-col items-center mb-8 px-2">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center">
+        <h2 className="text-3xl md:text-4xl manrope text-gray-900 mb-2 text-center">
           {title}
         </h2>
-        <p className="text-lg italic text-gray-500 mb-4 text-center">
+        <p className="wulkan-display text-gray-500 text-2xl mb-4 text-center">
           {subtitle}
         </p>
-        <button className="bg-gray-800 text-white px-7 py-2 rounded-full font-semibold text-base mb-6">
+        <button className="bg-gray-800 text-white px-7 py-2 rounded-full manrope-medium text-base mb-6">
           {buttonText}
         </button>
       </div>
@@ -103,7 +103,8 @@ const CardSection = ({
 };
 
 const ModularKitchenShowcase: React.FC = () => (
-  <div className="bg-[#f9fafc] w-screen min-h-screen">
+  <div className=" bg-[#f9fafc]">
+  <div className=" w-screen min-h-screen -mt-25">
     <CardSection
       title="Designed to Fit "
       subtitle="Built to Last."
@@ -111,6 +112,10 @@ const ModularKitchenShowcase: React.FC = () => (
       cards={kitchenAccessories}
       scrollDirection={-1}
     />
+    </div>
+
+
+    <div className="bg-[#f9fafc] w-screen min-h-screen -mt-45">
     <CardSection
       title="Designed to Fit "
       subtitle="Built to Last."
@@ -118,6 +123,7 @@ const ModularKitchenShowcase: React.FC = () => (
       cards={cabinetAccs}
       scrollDirection={-1}
     />
+    </div>
   </div>
 );
 
