@@ -84,8 +84,34 @@ const CardSection = ({
           }
         }
       `}</style>
+
+
+
+      <style jsx>{`
+
+  .desktop-1440,
+        .desktop-1280{
+          display: none;
+        }
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
+
+        /* Show 1440px section for screens 1440px and above */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block;
+          }
+        }
+`}</style>
+
+
       {/* Desktop Version */}
-      <div className="hidden md:block">
+      <div className="desktop-1440 ">
         <div className="flex flex-col items-center mb-8 px-2">
           <h2 className="text-3xl md:text-4xl manrope text-gray-900 mb-2 text-center">
             {title}
@@ -121,6 +147,10 @@ const CardSection = ({
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="desktop-1280 ">
+       
       </div>
 
       {/* Mobile Version (>= 360px) */}

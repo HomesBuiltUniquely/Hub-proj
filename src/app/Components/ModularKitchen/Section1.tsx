@@ -55,14 +55,14 @@ const Section1: React.FC = () => {
         .mobile-360plus,
         .mobile-300 { display: none; }
 
-        /* Show 360–480px mobile variant */
+        /* Show 360-480px mobile variant */
         @media (min-width: 360px) and (max-width: 480px) {
           .mobile-360plus { display: block; }
           /* Center the floating menu */
           .mk-mobile-360 .menu { left: 50%; transform: translateX(-50%) ; width: 90%; height: 12% }
         }
 
-        /* Show 300–359px compact mobile variant */
+        /* Show 300-359px compact mobile variant */
         @media (min-width: 300px) and (max-width: 359px) {
           .mobile-300 { display: block; }
           /* Center the floating menu */
@@ -72,27 +72,30 @@ const Section1: React.FC = () => {
 
 
 
+
+
       <style jsx>{`
-        /* Hide both by default */
-        .desktop-1280,
-        .desktop-1440 {
-          display: none !important;
-        }
 
-        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
-        @media (min-width: 1024px) and (max-width: 1439px) {
-          .desktop-1280 {
-            display: block !important;
-          }
-        }
+  /* Hide both by default */
+  .desktop-1280,
+  .desktop-1440 {
+    display: none !important;
+  }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block !important;
-          }
-        }
-      `}</style>
+  /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    .desktop-1280 {
+      display: block !important;
+    }
+  }
+
+  /* Show 1440px layout for large desktops (>=1440px) */
+  @media (min-width: 1440px) {
+    .desktop-1440 {
+      display: block !important;
+    }
+  }
+`}</style>
 
       {/* Desktop Version (1440) */}
 
@@ -174,13 +177,12 @@ const Section1: React.FC = () => {
 
       {/* 1280 version */}
 
+      {/* Desktop 1280 Version */}
       <div className="desktop-1280">
 
-        <div className="hidden md:block text-xl w-[1000px] manrope-medium text-center mx-auto mt-10">
-          At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
-        </div>
+        <div className=" hidden md:block text-xl w-[1000px] manrope-medium text-center mx-auto mt-10">At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.</div>
 
-        <div className="hidden md:block max-w-[1240px] mx-auto px-4 relative mt-30">
+        <div className="hidden md:block max-w-350 mx-auto px-4 relative mt-30">
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
@@ -188,7 +190,6 @@ const Section1: React.FC = () => {
               <p className="text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
             </div>
           </div>
-
           {/* Carousel with arrows overlapping top left */}
           <div className="relative">
             {/* Overlapping Navigation */}
@@ -238,7 +239,7 @@ const Section1: React.FC = () => {
                         <br />
                       </div>
                       <div className="manrope-medium">{item.subtitle}</div>
-                      <button className="border border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457]">
+                      <button className="border-1 border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457]">
                         Book Free Consultation
                       </button>
                     </span>
@@ -247,10 +248,11 @@ const Section1: React.FC = () => {
               ))}
             </div>
           </div>
+
         </div>
-
-
+       
       </div>
+
 
 
       {/* Mobile Version (360px to 480px) */}
