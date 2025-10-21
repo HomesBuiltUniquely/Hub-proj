@@ -35,9 +35,11 @@ export default function Blog7() {
                             <span>August 7, 2025</span>
                         </div>
 
-                        <div className="prose prose-lg max-w-none">
+                        <div className="prose prose-lg max-w-none ">
                             <p>Struggling with bedroom design solutions is common when your space feels cramped or awkwardly shaped. When choosing furniture, a standard bed height of 18-20 inches (including mattress) provides optimal ease of use and convenience, however, many homeowners overlook this crucial detail.</p>
-                            <p>For small bedroom interior ideas, using light and pastel colors can create the illusion of more space. Additionally, contemporary bedroom interiors benefit from floor-length panel curtains hung near the ceiling instead of at the window frame, making rooms appear more spacious. In fact, modern bedroom designs should embrace the principle that when space is limited, &#34;every inch saved is an inch earned&#34;.</p>
+                            <br></br>
+                            <p>For small bedroom interior ideas, using light and pastel colors can create the illusion of more space. Additionally, <span className="font-black text-black"> contemporary bedroom interiors</span> benefit from floor-length panel curtains hung near the ceiling instead of at the window frame, making rooms appear more spacious. In fact, <span className="font-black text-black"> modern bedroom designs</span> should embrace the principle that when space is limited, &#34;every inch saved is an inch earned&#34;.</p>
+                            <br></br>
                             <p>This guide addresses the most common bedroom interior problems you might face and provides expert solutions to renovate your space. Whether you&#39;re dealing with awkward layouts, furniture that doesn&#39;t fit, or lighting challenges, you&#39;ll find practical advice to create a bedroom that&#39;s both functional and beautiful!</p>
                         </div>
 
@@ -51,7 +53,9 @@ export default function Blog7() {
                         <p>Corners don’t have to go to waste. L-shaped or modular fittings, corner shelves, floor lamps, or custom storage can turn them into functional areas.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2">Better Flow in Small Rooms</h3>
                         <p>Prioritise pathways and choose material that fits. Multi-functional pieces such as beds with storage or wall-mounted shelves keep things organised. Vertical storage and minimal, high-quality furnishing make even compact bedroom designs feel open and effortless.</p>
-
+                        <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                            <img src="/blog7img1.jpeg" alt="Modular kitchen storage" className="w-full h-full object-cover" />
+                        </div>
                         <h2 className="text-2xl font-bold mt-8 mb-4">2. Furniture Choices That Make or Break Your Luxury Bedroom Interiors</h2>
                         <p>The right pieces can turn a bedroom from cramped to comfortable. Poor choices, on the other hand, can make even large rooms feel cluttered and impractical, even in contemporary bedroom interiors or modern home designs.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2">Pick the Right Bed Size</h3>
@@ -63,7 +67,9 @@ export default function Blog7() {
                         <h3 className="text-xl font-semibold mt-6 mb-2">Seating That Works</h3>
                         <p>Modern bedrooms serve multiple purposes. A bench at the foot of the bed offers seating and storage. Compact armchairs near windows create cosy reading spots. Sleek chairs with a desk can double as a work nook.</p>
                         <p>Choose pieces that balance style and functionality to make your bedroom feel spacious, organised, and inviting.</p>
-
+                        <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                            <img src="/blog7img2.jpg" alt="Modular kitchen storage" className="w-full h-full object-cover" />
+                        </div>
                         <h2 className="text-2xl font-bold mt-8 mb-4">3. Common Bedroom Lighting & Ceiling Mistakes</h2>
                         <p>Lighting can completely change a bedroom’s mood, but even well-planned small bedroom interiors in Bengaluru can feel off without the right approach.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2">Ceiling Height Tips</h3>
@@ -80,7 +86,9 @@ export default function Blog7() {
 
                         <h3 className="text-xl font-semibold mt-6 mb-2">False Ceiling Ideas</h3>
                         <p>False ceilings add style and function. They hide wires and allow integrated smart LED lighting controlled via smartphone. Pendant lights hanging from false ceilings bring elegance while keeping the space practical.</p>
-
+                        <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                            <img src="/blog7img3.jpg" alt="Modular kitchen storage" className="w-full h-full object-cover" />
+                        </div>
                         <h2 className="text-2xl font-bold mt-8 mb-4">4. Storage and Decor Challenges in Bedroom Designs</h2>
                         <p>Even the most beautifully designed bedrooms can feel chaotic without proper storage and thoughtful decoration. Small spaces require strategic organisation to maintain both space and style.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2">Creative Storage for Small Bedrooms</h3>
@@ -91,7 +99,9 @@ export default function Blog7() {
                         <p>Floating shelves, wall cubbies, and pegboards provide storage without taking floor space. Alcoves can become shelves or desk nooks.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2">Fixing Color & Concealing Utilities</h3>
                         <p>Follow the 60/30/10 color rule for cohesion. Box, paint, or creatively use exposed pipes and panels to blend style with function.</p>
-
+                        <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                            <img src="/blog7img4.jpg" alt="Modular kitchen storage" className="w-full h-full object-cover" />
+                        </div>
                         <h2 className="text-2xl font-bold mt-8 mb-4">Conclusion</h2>
                         <p>Looking for a bedroom interior that feels like home? At HUB Interior, we design master bedrooms in Bengaluru with smart layouts, warm lighting, and custom wardrobes.</p>
                         <p>With 34-day fast-track interiors, a 10-year warranty, and 5,000+ projects delivered, we create personalised, practical, and beautiful bedroom retreats.</p>
