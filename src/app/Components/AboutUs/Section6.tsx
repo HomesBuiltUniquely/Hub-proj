@@ -10,10 +10,10 @@ const Section6 = () => {
         <div className="aboutus-section6-3xl-content">
           <div className="aboutus-section6-3xl-layout">
             {/* Left Side - Mission Content */}
-            <div className="aboutus-section6-3xl-text-content">
+            <div className="aboutus-section6-3xl-text-content manrope-medium">
               {/* Mission Header */}
               <div className="aboutus-section6-3xl-header">
-                <h1 className="aboutus-section6-3xl-title">
+                <h1 className="aboutus-section6-3xl-title manrope">
                   Mission
                 </h1>
                 <p className="aboutus-section6-3xl-subtitle">
@@ -40,7 +40,7 @@ const Section6 = () => {
         <div className='flex justify-between'>
           <div className="max-w-7xl">
             {/* Mission Header */}
-            <h1 className="text-6xl manrope-medium pt-20 leading-tight">
+            <h1 className="text-6xl manrope pt-20 leading-tight">
               Mission
             </h1>
 
@@ -59,11 +59,11 @@ const Section6 = () => {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6]">
+      <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6]  ml-30">
         <div className="flex justify-evenly">
           <div className="max-w-6xl mt-12 mr-70">
             {/* Mission Header */}
-            <h1 className="text-5xl manrope-medium leading-tight">
+            <h1 className="text-5xl manrope leading-tight">
               Mission
             </h1>
 
@@ -85,7 +85,7 @@ const Section6 = () => {
       <section className="hidden lg:block xl:hidden py-16 px-8 bg-white">
         <div className="max-w-5xl mx-auto">
           {/* Mission Header */}
-          <h1 className="text-4xl manrope-medium pt-16 pl-8 leading-tight">
+          <h1 className="text-4xl manrope pt-16 pl-8 leading-tight">
             Mission
           </h1>
 
@@ -95,7 +95,7 @@ const Section6 = () => {
           </p>
 
           {/* Mission Points */}
-          <div className="space-y-8">
+          <div className="space-y-8 manrope-medium">
             {/* Mission Point 1 */}
             <div className="w-[400px] h-0 border-t border-[#ddcdc1] mt-8 ml-8"></div>
             <div className="flex items-start">
@@ -152,10 +152,10 @@ const Section6 = () => {
       </section>
 
       {/* MD Screen - Medium displays */}
-      <section className="hidden md:block lg:hidden py-12 px-6 bg-white">
+      <section className="hidden md:block lg:hidden py-12 px-6 bg-white ">
         <div className="max-w-4xl mx-auto">
           {/* Mission Header */}
-          <h1 className="text-3xl manrope-medium pt-12 pl-6 leading-tight">
+          <h1 className="text-3xl manrope pt-12 pl-6 leading-tight">
             Mission
           </h1>
 
@@ -222,29 +222,32 @@ const Section6 = () => {
       </section>
 
       {/* SM Screen - Small displays */}
-      <section className="block md:hidden py-10 px-4">
+      <section className="block md:hidden">
 
+        <div className="w-full max-w-[425px] mx-auto px-4">
+          <div className="flex flex-col justify-between min-h-[150px]">
+            <div className="flex items-start mt-10 relative">
+              {/* Vertical bar */}
+              <div className="bg-[#ebd657] w-[3px] h-10 absolute left-0"></div>
 
-        <div className="flex flex-col justify-between h-[150px] gap-4">
+              {/* Content */}
+              <div className="flex flex-col space-y-4 "> {/* padding-left equals 20px + some gap */}
+                <h1 className="text-3xl font-semibold manrope whitespace-nowrap ml-[20px]">Mission</h1>
 
+                <p className="text-md manrope-medium">
+                  At HUB Interiors — it’s about creating spaces that reflect you.
+                </p>
 
-          <div className='flex items-center ml'>
-            <div className='bg-[#ebd657] w-[3px] h-10 mb-31'>
-              <div className='mb-2.5 w-80'>
-                <h1 className='text-3xl manrope text-nowrap, ml-3'>Mission</h1>
-                <p className='text-xs manrope-medium mt-3'> At HUB Interiors, — it&#39;s about creating spaces<p>that reflect you.</p></p>
-                <p className='text-xs manrope-medium mt-6'>
-                  To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step. </p>
+                <p className="text-md manrope-medium">
+                  To deliver high-quality and innovative interior solutions that go beyond design — creating spaces filled with comfort, trust, and timeless value. At HUB Interior, our mission is to make interiors stress-free, on-time, and truly personal by combining creativity, precision, and customer-first service at every step.
+                </p>
 
-                <img src="5.png" alt="Interior Design" className='rounded-3xl mt-8'/>
-
+                <img
+                  src="5.png" alt="Interior Design" className="rounded-3xl w-full max-w-full mt-4" />
               </div>
             </div>
           </div>
-
         </div>
-
-
 
 
         <div className="max-w-sm mx-auto">
@@ -253,8 +256,8 @@ const Section6 = () => {
 
           {/* Mission Points */}
           {/* <div className="space-y-4"> */}
-            {/* Mission Point 1 */}
-            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+          {/* Mission Point 1 */}
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -266,8 +269,8 @@ const Section6 = () => {
               </div>
             </div> */}
 
-            {/* Mission Point 2 */}
-            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+          {/* Mission Point 2 */}
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -279,8 +282,8 @@ const Section6 = () => {
               </div>
             </div> */}
 
-            {/* Mission Point 3 */}
-            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+          {/* Mission Point 3 */}
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -292,8 +295,8 @@ const Section6 = () => {
               </div>
             </div> */}
 
-            {/* Mission Point 4 */}
-            {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
+          {/* Mission Point 4 */}
+          {/* <div className="w-full h-0 border-t border-[#ddcdc1] mt-4 ml-4"></div>
             <div className="flex items-start">
               <div className="w-[35px] h-[35px] rounded-lg bg-[#ddcdc1] mt-3 ml-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-700">
@@ -307,6 +310,7 @@ const Section6 = () => {
           {/* </div> */}
         </div>
       </section>
+
 
       {/* Pure CSS for 3XL - 2560*1440 resolution */}
       <style jsx>{`

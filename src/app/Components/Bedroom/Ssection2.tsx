@@ -27,30 +27,65 @@ const BedroomSection: React.FC = () => (
 
     <div className="block md:hidden">
 
-      {/* <div className=" w-[360px] h-[600px] mx-auto">
+      {/* <div className=" w-[full] max-w-[425px] h-[600px] mx-auto  mb-10">
+        <div className="bg-[#3a2b21] w-[330] h-170 pt-10 mr-7 rounded-3xl justify-items-center">
 
-        <div className="bg-[#3a2b21] w-[330] h-170 pt-10 rounded-3xl">
+          <div className="grid grid-rows-2 ">
 
-          <img src="/bs1.jpg" alt="Ideal Bedroom" className="rounded-3xl w-[280] h-50" />
 
-          <h1 className="manrope-medium text-4xl text-white py-4  ml-3">Ideal Bedroom</h1>
+            <img src="/bs1.jpg" alt="Ideal Bedroom" className="rounded-3xl w-[280] h-50" />
 
-          <p className=" text-white manrope-medium w-70 ml-4 ">
-            An ideal bedroom combines dreams, comfort, and feelings. HUB Interior offers more than just interior design — we create a cozy space that reflects your lifestyle and personality. As a trusted interior designer in Bengaluru, known for our cozy and comfortable bedroom interiors, we help you achieve your vision with warmth, care, and timeless elegance. Every corner of your bedroom is filled with thoughtful details, turning it into a sanctuary of peace and love.
-          </p>
+            <h1 className="manrope-medium text-4xl text-white py-4 ">Ideal Bedroom</h1>
+
+            <p className=" text-white manrope-medium w-70 -mt-32">
+              An ideal bedroom combines dreams, comfort, and feelings. HUB Interior offers more than just interior design — we create a cozy space that reflects your lifestyle and personality. As a trusted interior designer in Bengaluru, known for our cozy and comfortable bedroom interiors, we help you achieve your vision with warmth, care, and timeless elegance. Every corner of your bedroom is filled with thoughtful details, turning it into a sanctuary of peace and love.
+            </p>
+
+          </div>
 
         </div>
 
       </div> */}
 
 
+<div className="block md:hidden">
+
+<div className="md:hidden w-screen min-w-sm max-w-[425px] mx-auto px-4 pt-10 justify-items-center">
+  <div className="relative bg-[#3a2b21] w-full rounded-[32px] pt-10 pb-10 overflow-hidden justify-items-center">
+    
+    
+
+      <div className="grid grid-rows-2 ">
 
 
+            <img src="/bs1.jpg" alt="Ideal Bedroom" className="rounded-3xl w-[280] h-50" />
+
+            <h1 className="manrope-medium text-4xl text-white py-4 ">Ideal Bedroom</h1>
+
+            <p className=" text-white manrope-medium w-70 -mt-32">
+              An ideal bedroom combines dreams, comfort, and feelings. HUB Interior offers more than just interior design — we create a cozy space that reflects your lifestyle and personality. As a trusted interior designer in Bengaluru, known for our cozy and comfortable bedroom interiors, we help you achieve your vision with warmth, care, and timeless elegance. Every corner of your bedroom is filled with thoughtful details, turning it into a sanctuary of peace and love.
+            </p>
+
+          </div>
+
+
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+     
 
       <div className="block md:hidden">
-        <div className="w-[360px] h-[600px] mx-auto">
-          <div className="bg-[#3a2b21] w-[330px] h-170 pt-10 rounded-3xl mx-auto px-4">
-            <img src="/bs1.jpg"  alt="Ideal Bedroom" className="rounded-3xl w-[280px] h-50 object-cover mx-auto"/>
+        {/* <div className="w-[360px] h-[600px] mx-auto">
+
+        <div className="grid grid-rows-2 justify-items-center">
+          <div className="bg-[#3a2b21] w-[330px] h-170 pt-10 rounded-3xl mx-auto ">
+            <img src="/bs1.jpg"  alt="Ideal Bedroom" className="rounded-3xl w-[300px] h-50 object-cover mx-auto"/>
 
             <h1 className="manrope-medium text-4xl text-white py-4 ml-3">
               Ideal Bedroom
@@ -66,7 +101,9 @@ const BedroomSection: React.FC = () => (
               it into a sanctuary of peace and love.
             </p>
           </div>
-        </div>
+         </div>
+
+        </div> */}
       </div>
 
 

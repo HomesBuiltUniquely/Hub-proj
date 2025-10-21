@@ -43,64 +43,45 @@ const BedroomHeroSimple: React.FC = () => {
 
       {/* ===== MOBILE VERSION ===== */}
 
-      <div className="block md:hidden">
-
-
-
-    <div className="w-[360px] mx-auto pb-25 pt-5">
-          <div className="relative h-[550px]">
-            {/* Rounded image only */}
-            <div className="absolute inset-0 rounded-4xl overflow-hidden">
-              {/* <Image
-                src="/bhr.png"
-                alt="Modular Kitchen Background"
-                fill
-                priority
-                className="object-cover"
-              /> */}
-
-
-              <img src="bhr.png" alt="" />
-
-              {/* gradient overlay */}
-              {/* <div className="absolute inset-0 bg-gradient-to-t w-340  from-black/70 via-black/20 to-transparent" /> */}
-            </div>
-    
-            {/* top logo */}
-            <div className="absolute top-2 -mt-5 -mx-5" onClick={handleClick}>
-              <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={25} className="cursor-pointer" />
-            </div>
-    
-            {/* text + cta */}
-            <div className="absolute bottom-10 left-4 right-4 text-white">
-              
-              <h2 className="manrope font-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-                Bedroom
-                <br />
-                Interior
-              </h2>
-              <p className="mt-2 text-[13px] manrope-medium opacity-90">
-                Designed for rest, styled for you
-              </p>
-            </div>
-
-
-
-              {/* CTA overlapping, positioned above image */}
-              {/* <div className="absolute left-6 -bottom-5 z-20">
-                <button className="bg-[#ebd657] text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
-                  Get Free Quote
-                </button>
-              </div> */}
-
-      
-          </div>
-          
+     <div className="md:hidden w-[360px] mx-auto pb-20 pt-10">
+      <div className="relative h-[460] w-[340px] ml-2">
+        {/* Rounded image only */}
+        <div className="absolute inset-0 rounded-4xl overflow-hidden">
+          <Image
+            src="/bh1.png"
+            alt="Modular Kitchen Background"
+            fill
+            priority
+            className="object-cover"
+          />
+          {/* gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         </div>
 
+        {/* top logo */}
+        <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
+          <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
+        </div>
 
-
+        {/* text + cta */}
+        <div className="absolute bottom-10 left-4 right-4 text-white">
+          <h2 className="manrope font-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            Bedroom
+            <br />
+            Interior
+          </h2>
+          <p className="mt-2 text-[13px] manrope-medium opacity-90">
+           Designed for rest, styled for you
+          </p>
+        </div>
+          {/* CTA overlapping, positioned above image */}
+          <div className="absolute left-6 -bottom-5 z-20">
+            <button className="bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold shadow-md shadow-black/20">
+              Get Free Quote
+            </button>
+          </div>
       </div>
+    </div>
 
     </div>
 
