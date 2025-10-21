@@ -240,8 +240,9 @@ export default function Blog6() {
                                 </li>
                             </ul>
                         </div>
-
-
+                        <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="/blog6img7.jpg" alt="Modular kitchen storage" className="w-full h-full object-cover" />
+                        </div>
                             <p>Combining practical solutions with design elements ensures your kitchen works efficiently while looking modern and elegant. <span className="font-black text-black">Functional kitchen interior ideas</span> like these make daily routines smoother and more enjoyable.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Step 8: Work with the Best Kitchen Interior Designers in Bengaluru</h2>
