@@ -33,7 +33,7 @@ const faqs = [
     answer: "Yes! With smart planning, even small rooms can have walk-in wardrobe interiors. At HUB Interior, we design space-saving bedroom & wardrobe interiors in Bengaluru, using clever layouts, mirrors, and modular storage to make walk-in wardrobes practical and stylish even in compact spaces."
   },
   {
-    question: "Closet vs. wardrobe – which is better for bedroom interiors?",
+    question: "Closet vs wardrobe – which is better for bedroom interiors?",
     answer: "A closet is a built-in storage space within walls, while a wardrobe is a free-standing or modular unit. HUB Interior provides both modern bedroom wardrobes and custom closet interiors to suit different needs. With our expertise in Bedroom & Wardrobe Interior in Bengaluru, we ensure the perfect solution for every home."
   },
   {
