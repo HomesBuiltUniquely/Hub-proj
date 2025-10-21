@@ -250,6 +250,40 @@ const ContactHeader: React.FC = () => {
       </div>
 
 
+{/* other specfication for which the above doesn't work */}
+
+
+      <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
+            <div className="relative h-full w-full p-2">
+              {/* Rounded image only */}
+              <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" />
+      
+              {/* top logo */}
+              <div className="absolute top-2 -mt-5 -ml-1">
+                <Image
+                  src="/redlogo.png"
+                  alt="HUB Interior Logo"
+                  width={90}
+                  height={25}
+                  className="cursor-pointer"
+                />
+              </div>
+      
+              {/* text + cta */}
+              <h2 className="manrope leading-tight">
+                <div className="absolute top-40 text-white w-full px-3 mt-5">
+                  <div className="text-3xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
+                    Interior <div>Inspirations</div>
+                  </div>
+                  <p className="manrope-medium w-[300px] shadow-lg  mt-2 ml-3">
+                    Every corner of your home holds a story, let’s design it beautifully.
+                  </p>
+                </div>
+              </h2>
+            </div>
+          </div>
+
+
     </div>
 
 

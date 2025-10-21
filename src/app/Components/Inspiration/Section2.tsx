@@ -487,11 +487,67 @@ const categoryImages: Record<string, Img[]> = {
     { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPB2.jpg", alt: "Bedroom 1" },
     { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPB3.jpg", alt: "Bedroom 2" },
   ],
-    "Living Room": [
-    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPLR1.png", alt: "Bedroom main" },
-    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPB2.jpg", alt: "Bedroom 1" },
-    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPB3.jpg", alt: "Bedroom 2" },
+  "Living Room": [
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPLR1.png", alt: "Living Room main" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPLR2.png", alt: "Living Room 1" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPLR3.png", alt: "Living Room 2" },
   ],
+  Wardrobe: [
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPWAR1.png", alt: "Living Room main" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPWAR2.png", alt: "Living Room 1" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPWAR3.png", alt: "Living Room 2" },
+  ],
+  "Kids Room": [
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPKR1.png", alt: "Living Room main" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPKR2.png", alt: "Living Room 1" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPKR3.png", alt: "Living Room 2" },
+  ],
+  "Dinning Room": [
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRDNR3.png", alt: "Dinner Room main" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRDNR2.png", alt: "Dinner Room 1" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRDNR1.png", alt: "Dinner Room 2" },
+  ],
+  "Pooja Unit": [
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRPR1.png", alt: "Pooja Unit main" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRPR2.png", alt: "Pooja Unit 1" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRPR3.png", alt: "Pooja Unit 2" },
+  ],
+  //  "Fasle Ceiling": [
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRPR1.png", alt: "Fasle Ceiling main" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRPR2.png", alt: "Fasle Ceiling 1" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRPR3.png", alt: "Fasle Ceiling 2" },
+  // ],
+  "Wall Decor": [
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR1.png", alt: "Wall Decor main" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR2.png", alt: "Wall Decor 1" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR3.png", alt: "Wall Decor 2" },
+  ],
+  //  "Study Room": [
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR1.png", alt: "Study Room main" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR2.png", alt: "Study Room 1" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR3.png", alt: "Study Room 2" },
+  // ],
+  // "Spacing Saving": [
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR1.png", alt: "Spacing Saving main" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR2.png", alt: "Spacing Saving 1" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR3.png", alt: "Spacing Saving 2" },
+  // ],
+  // "Door Design": [
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR1.png", alt: "Door Design main" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR2.png", alt: "Door Design 1" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR3.png", alt: "Door Design 2" },
+  // ],
+  //   "Crockery Unit": [
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR1.png", alt: "Crockery Unit main" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR2.png", alt: "Crockery Unit 1" },
+  //   { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRWDR3.png", alt: "Crockery Unit 2" },
+  // ],
+  "Home Bar": [
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRBAR1.png", alt: "Home Bar main" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRBAR2.png", alt: "Home Bar 1" },
+    { src: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSPRBAR3.png", alt: "Home Bar 2" },
+  ],
+
 
 };
 
@@ -544,7 +600,7 @@ export default function InspirationBoard(): JSX.Element {
           {/* Top */}
           <div className="flex flex-wrap justify-center gap-6">
             {topCategories.map((cat) => {
-              const isLocal = cat === "Kitchen" || cat === "Bedroom" || cat === "Living Room"; // only these stay local
+              const isLocal = cat === "Kitchen" || cat === "Bedroom" || cat === "Living Room" || cat === "Wardrobe" || cat === "Kids Room"; // only these stay local
               return (
                 <CategoryButton
                   key={cat}
@@ -559,28 +615,45 @@ export default function InspirationBoard(): JSX.Element {
             })}
           </div>
 
-          {/* Middle (redirect) */}
+
+          {/* Middle Categories */}
           <div className="flex flex-wrap justify-center gap-6">
-            {middleCategories.map((cat) => (
-              <CategoryButton
-                key={cat}
-                label={cat}
-                isActive={false}
-                href={`/`}
-              />
-            ))}
+            {middleCategories.map((cat) => {
+              // only categories with images are clickable
+              const imageCategories = ["Dinning Room", "Pooja Unit", "Wall Decor"];
+              const hasImages = imageCategories.includes(cat);
+
+              return (
+                <CategoryButton
+                  key={cat}
+                  label={cat}
+                  onClick={hasImages ? () => setActive(cat) : undefined}
+                  isActive={active === cat && hasImages}
+                  href={hasImages ? undefined : `/`} // redirect if no images
+                />
+              );
+            })}
           </div>
+
+
 
           {/* Bottom (redirect) */}
           <div className="flex flex-wrap justify-center gap-6">
-            {bottomCategories.map((cat) => (
-              <CategoryButton
-                key={cat}
-                label={cat}
-                isActive={false}
-                href={`/`}
-              />
-            ))}
+            {bottomCategories.map((cat) => {
+              // only categories with images are clickable
+              const imageCategories = ["Home Bar"];
+              const hasImages = imageCategories.includes(cat);
+
+              return (
+                <CategoryButton
+                  key={cat}
+                  label={cat}
+                  onClick={hasImages ? () => setActive(cat) : undefined}
+                  isActive={active === cat && hasImages}
+                  href={hasImages ? undefined : `/`} // redirect if no images
+                />
+              );
+            })}
           </div>
         </div>
 
@@ -634,26 +707,24 @@ export default function InspirationBoard(): JSX.Element {
         <div className="w-full overflow-x-auto scrollbar-hide">
           <div className="flex whitespace-nowrap gap-3 px-2 py-2 mb-3">
             {allCategories.map((cat) => {
-              const isLocal = cat === "Kitchen" || cat === "Bedroom";
-              return isLocal ? (
+              const normalizedCat = cat.trim(); // Remove extra spaces
+              const hasImages = Boolean(categoryImages[normalizedCat]?.length);
+
+              return hasImages ? (
                 <button
-                  key={cat}
-                  onClick={() => setActive(cat)}
-                  className={`px-4 py-2 rounded-full text-sm border flex-shrink-0 ${
-                    active === cat
+                  key={normalizedCat}
+                  onClick={() => setActive(normalizedCat)}
+                  className={`px-4 py-2 rounded-full text-sm border flex-shrink-0 ${active === normalizedCat
                       ? "bg-[#3a2d25] text-white shadow-md"
                       : "bg-white text-gray-700 shadow-sm"
-                  }`}
+                    }`}
                 >
-                  {cat}
+                  {normalizedCat}
                 </button>
               ) : (
-                <Link
-                  key={cat}
-                  href={`/`}
-                >
+                <Link key={normalizedCat} href={`/`}>
                   <button className="px-4 py-2 rounded-full text-sm border flex-shrink-0 bg-white text-gray-700 shadow-sm">
-                    {cat}
+                    {normalizedCat}
                   </button>
                 </Link>
               );
