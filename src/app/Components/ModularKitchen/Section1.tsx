@@ -219,13 +219,13 @@ const Section1: React.FC = () => {
             {/* Card Carousel */}
             <div
               ref={scrollRef}
-              className="flex gap-7 overflow-x-auto overflow-hidden scroll-smooth no-scrollbar pt-10 pb-2"
+              className="flex gap-7 overflow-x-auto overflow-hidden scroll-smooth no-scrollbar pt-5 pb-2"
               style={{ scrollBehavior: "smooth" }}
             >
               {wardrobes.map((item, idx) => (
                 <div
                   key={idx}
-                  className="min-w-[400px] max-w-[400px] w-[400px] h-[520px] bg-white rounded-4xl shadow-lg overflow-hidden"
+                  className="min-w-[350px] max-w-[400px] w-[400px] h-[520px] bg-white rounded-4xl shadow-lg overflow-hidden"
                 >
                   <img
                     src={item.img}

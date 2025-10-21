@@ -14,7 +14,7 @@ export default function InteriorDesignersInBangalore() {
       <Section1 />
       <Section2 />
       <KitchenBlogSection/>
-       {/* <Footer/> */}
+       <Footer/>
     </div>
   )
 }

@@ -151,14 +151,14 @@ const KitchenBlogSection: React.FC = () => {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-10 mt-10">
           <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition manrope hover:bg-gray-200 manrope">
             View All
           </button>
         </div>
 
         {/* FAQ and Guide */}
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row px- gap-6 mt-30">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row px- gap-6 mt-15">
           {/* FAQ Left */}
           <div className="md:w-1/3  md:mb-0 py-[25px] -ml-15 mr-80">
             <h2 className="text-2xl manrope mb-3 text-gray-900">FAQs</h2>
