@@ -37,7 +37,7 @@ export default function Blog12() {
 
                         <div className="prose prose-lg max-w-none">
                             <p className="text-gray-700 leading-relaxed mb-4">If you think “fun” and “storage” don&#39;t belong in the same sentence, stay with us! At <span className="font-black text-black">HUB Interior</span>, we call kids&#39; bedrooms our favorite kind of challenge because who else demands both rocket ships and rainbows in one space?</p>
-                            <p className="text-gray-700 leading-relaxed mb-4">Kids&#39; bedrooms are no longer about storage. In 2026, kids&#39; cupboards are interactive, creative, and practical. And we're here to help you bring this exact concept to life. Being the <span className="font-black text-black">best interior designers in Bangalore</span>, we have helped hundreds of clients get what they wanted for their kids. And here are our five top cupboard designs that will be the new NEW in 2026.</p>
+                            <p className="text-gray-700 leading-relaxed mb-4">Kids&#39; bedrooms are no longer about storage. In 2026, kids&#39; cupboards are interactive, creative, and practical. And we&#39;re here to help you bring this exact concept to life. Being the <span className="font-black text-black">best interior designers in Bangalore</span>, we have helped hundreds of clients get what they wanted for their kids. And here are our five top cupboard designs that will be the new NEW in 2026.</p>
                             <p className="text-gray-700 leading-relaxed mb-8">Let&#39;s dive into it.</p>
                         </div>
 

@@ -93,7 +93,7 @@ export default function Blog10() {
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Mr. Dilip&#39;s Feedback</h2>
                             <p>When we finally wrapped up this project and handed it over to Mr. Dilip, the look on his face said it all (our favorite part of every reveal, honestly). Here&#39;s what Mr. Dilip said of the HUB Interior work:</p>
-                            <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700">"The interiors not only reflect elegance but also carry a sense of warmth and comfort. Your commitment, effort, and sense of design have transformed the space into something truly special, and it deserves the highest praise."</blockquote>
+                            <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700">&#34;The interiors not only reflect elegance but also carry a sense of warmth and comfort. Your commitment, effort, and sense of design have transformed the space into something truly special, and it deserves the highest praise.&#34;</blockquote>
                             
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Our Takeaways?</h2>
                             <p>Projects like Royal Tulip Villa remind us why we love doing what we do. Every corner, every finish, and every panel was chosen to create a home that&#39;s functional, luxurious, and totally welcoming.</p>

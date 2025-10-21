@@ -36,7 +36,7 @@ export default function Blog13() {
                         </div>
 
                         <div className="prose prose-lg max-w-none">
-                            <p className="text-gray-700 leading-relaxed mb-4">Is a wardrobe just for storage space? Let's be honest! When it comes to interior design, wardrobes are often treated as purely storage, a place where we can store our clothes, shoes, and accessories, and maybe a few things we don&#39;t even remember we own.</p>
+                            <p className="text-gray-700 leading-relaxed mb-4">Is a wardrobe just for storage space? Let&#39;s be honest! When it comes to interior design, wardrobes are often treated as purely storage, a place where we can store our clothes, shoes, and accessories, and maybe a few things we don&#39;t even remember we own.</p>
                             <p className="text-gray-700 leading-relaxed mb-4">At <span className="font-black text-black">HUB Interior, Bangalore</span>, we see wardrobes DIFFERENTLY. For years, we&#39;ve been helping our clients turn these everyday spaces into statement pieces. Functional, yes, but also clever problem-solving spaces that make life a little easier (and a lot more stylish).</p>
                             <p className="text-gray-700 leading-relaxed mb-8">And we&#39;re here to help you out! Below are 7 wardrobe design ideas that you should definitely check out. We promise they&#39;ll make you rethink how you organize and interact with your clothes and accessories.</p>
                         </div>
@@ -75,7 +75,7 @@ export default function Blog13() {
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Pull Out Hanging Rods</h2>
-                            <p>Maximize vertical wardrobe space with pull-down hanging rods to access clothes kept in upper sections without using a stool. It's practical, space-saving, and time-saving, making tall wardrobes fully usable while keeping everything organized. We at <span className="font-black text-black">HUB Interior</span> love incorporating these rods into tall or compact wardrobes to add additional space without sacrificing our client&#39;s style.</p>
+                            <p>Maximize vertical wardrobe space with pull-down hanging rods to access clothes kept in upper sections without using a stool. It&#39;s practical, space-saving, and time-saving, making tall wardrobes fully usable while keeping everything organized. We at <span className="font-black text-black">HUB Interior</span> love incorporating these rods into tall or compact wardrobes to add additional space without sacrificing our client&#39;s style.</p>
                             <p>Plus, it can be combined with any finish, be it wooden, mirrored, gloss, or matte laminate. It&#39;s a small (yet big) addition that makes your wardrobe more ergonomic, accessible, and visually appealing.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
@@ -91,8 +91,8 @@ export default function Blog13() {
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Plan for the Future</h2>
-                            <p>Saving the best for last: making an evolved wardrobe. If you're someone who gets bored easily or is still confused about what wardrobe design idea to choose, go for adjustable shelves, movable rods, and modular drawers. These are fully adjustable and help you expand or shrink your space depending on your needs.</p>
-                            <p>Remember, you're designing your wardrobe not just for today, but also for tomorrow. And maybe the day after that!</p>
+                            <p>Saving the best for last: making an evolved wardrobe. If you&#39;re someone who gets bored easily or is still confused about what wardrobe design idea to choose, go for adjustable shelves, movable rods, and modular drawers. These are fully adjustable and help you expand or shrink your space depending on your needs.</p>
+                            <p>Remember, you&#39;re designing your wardrobe not just for today, but also for tomorrow. And maybe the day after that!</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
                                 <img src="/blog13img7.jpeg" alt="Modular wardrobe design" className="w-full h-full object-cover" />
