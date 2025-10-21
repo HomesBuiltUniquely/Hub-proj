@@ -13,8 +13,8 @@ export default function InteriorDesignersInBangalore() {
       <ModularKitchen />
       <Section1 />
       <Section2 />
-       {/* <KitchenBlogSection/>
-      <Footer/> */}
+      <KitchenBlogSection/>
+       {/* <Footer/> */}
     </div>
   )
 }
