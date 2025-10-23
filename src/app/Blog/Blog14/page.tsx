@@ -2,8 +2,9 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Footer } from "../../Components/Footer";
+
 import Link from "next/link";
+import Footer from "@/app/Components/Home/Footer";
 
 export default function Blog14() {
     const router = useRouter();
@@ -13,7 +14,7 @@ export default function Blog14() {
             {/* Header */}
             <div className="bg-white shadow-sm">
                 <div className="max-w-4xl mx-auto px-4 py-6">
-                    <button 
+                    <button
                         onClick={() => router.push('/Blog')}
                         className="flex items-center text-gray-600 hover:text-gray-800 transition-colors mb-4"
                     >
@@ -44,43 +45,42 @@ export default function Blog14() {
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                             <h2 className="text-2xl font-bold text-gray-900 pt-4">1. Minimalist Modern</h2>
                             <p>Minimalism is no longer just an aesthetic, it is a lifestyle. Clean lines, neutral tones and clutter-free spaces make your living room feel larger and calmer. Imagine a soft cream sofa, a sleek coffee table and a single statement artwork on the wall. The floor is free, allowing you to move around easily or enjoy yoga sessions without obstacles.</p>
-                            <p>This approach is perfect for small city apartments. With smart storage options, such as under-sofa drawers or floating shelves, you can hide away items while keeping essentials within reach. <span className="font-black text-black">Space-saving living room designs</span> like this help busy urban professionals live without feeling boxed in.</p>
-                            
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog14img1.jpeg" alt="Minimalist modern living room" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog14img1.png" alt="Minimalist modern living room" className="w-full h-full object-cover" />
                             </div>
+                            <p>This approach is perfect for small city apartments. With smart storage options, such as under-sofa drawers or floating shelves, you can hide away items while keeping essentials within reach. <span className="font-black text-black">Space-saving living room designs</span> like this help busy urban professionals live without feeling boxed in.</p>
+
+
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">2. Contemporary Comfort</h2>
                             <p><span className="font-black text-black">Contemporary living room design</span> focuses on balance between modern style and comfort. Think of plush seating in muted colours paired with textured rugs and soft lighting. Large windows with sheer curtains can make the room feel bright and airy even on a rainy day.</p>
-                            <p>This style also encourages flexible furniture arrangements. A modular sofa can become a lounge area in the evening or extra seating when guests arrive. These <span className="font-black text-black">modern living room ideas</span> cater to both everyday relaxation and occasional entertaining, making your living room a hub of activity without feeling chaotic.</p>
-                            
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog14img2.jpeg" alt="Contemporary comfort living room" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog14img2.png" alt="Minimalist modern living room" className="w-full h-full object-cover" />
                             </div>
+                            <p>This style also encourages flexible furniture arrangements. A modular sofa can become a lounge area in the evening or extra seating when guests arrive. These <span className="font-black text-black">modern living room ideas</span> cater to both everyday relaxation and occasional entertaining, making your living room a hub of activity without feeling chaotic.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">3. Industrial Chic</h2>
                             <p>Exposed brick walls, metal accents and wooden furniture define the industrial look. It may sound bold for urban apartments, but the charm lies in mixing raw elements with soft touches. A velvet armchair or a patterned rug balances the rough textures, creating a space that is both edgy and welcoming.</p>
-                            <p><span className="font-black text-black">Home interior designs in Bengaluru</span> often adopt this theme to bring a contemporary feel to old city apartments. The open layout and visible structural elements make the room feel larger while giving it a distinct character. Lighting plays a key role here. A combination of pendant lights and floor lamps can highlight textures and create a dramatic yet lived-in feel.</p>
-                            
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog14img3.jpeg" alt="Industrial chic living room" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog14img3.png" alt="Industrial chic living room" className="w-full h-full object-cover" />
                             </div>
+                            <p><span className="font-black text-black">Home interior designs in Bengaluru</span> often adopt this theme to bring a contemporary feel to old city apartments. The open layout and visible structural elements make the room feel larger while giving it a distinct character. Lighting plays a key role here. A combination of pendant lights and floor lamps can highlight textures and create a dramatic yet lived-in feel.</p>
+
+
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">4. Scandinavian Simplicity</h2>
                             <p>Scandinavian design is about light, airy spaces with functional furniture. White walls, wooden floors and a few pastel accents instantly make a living room feel fresh. Open shelving and simple storage cabinets keep the space organised.</p>
-                            <p>Scandinavian interiors also encourage natural light and indoor plants. A small balcony or corner garden can make the room feel like a retreat from the busy streets outside. <span className="font-black text-black">Contemporary living room design</span> that follows this style promotes calmness, clarity and a sense of order that city life often lacks.</p>
-                            
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog14img4.jpeg" alt="Scandinavian simplicity living room" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog14img4.png" alt="Industrial chic living room" className="w-full h-full object-cover" />
                             </div>
+                            <p>Scandinavian interiors also encourage natural light and indoor plants. A small balcony or corner garden can make the room feel like a retreat from the busy streets outside. <span className="font-black text-black">Contemporary living room design</span> that follows this style promotes calmness, clarity and a sense of order that city life often lacks.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">5. Eclectic Fusion</h2>
                             <p>For those who love personality and character, eclectic fusion blends colours, patterns and textures without overwhelming the senses. Think of combining a vintage rug with a modern sofa, or bright cushions on neutral seating. The key is cohesion rather than uniformity.</p>
-                            <p>This theme allows you to bring memories into the room. A hand-painted vase from a local market, a family photograph in an unusual frame or a craft piece from a recent trip can all become conversation starters. Eclectic spaces reflect individuality and creativity while still providing a functional living area for everyday life.</p>
-                            
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog14img5.jpeg" alt="Eclectic fusion living room" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog14img5.png" alt="Industrial chic living room" className="w-full h-full object-cover" />
                             </div>
+                            <p>This theme allows you to bring memories into the room. A hand-painted vase from a local market, a family photograph in an unusual frame or a craft piece from a recent trip can all become conversation starters. Eclectic spaces reflect individuality and creativity while still providing a functional living area for everyday life.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">How Layout Makes a Difference?</h2>
                             <p>Choosing the <span className="font-black text-black">best living room layouts for city homes</span> is as important as the theme. Open layouts make small spaces feel bigger, while zones within the room can separate relaxing areas from work or entertainment corners. Furniture with multiple purposes, like ottomans with storage or coffee tables with hidden compartments, maximises space without compromising style.</p>

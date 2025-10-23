@@ -310,7 +310,7 @@ export default function Herosection() {
                     <img src="ABH.png" alt="" />
 
                     {/* top logo */}
-                    <div className="absolute top-2 -mt-5">
+                    <div className="absolute top-2 -mt-5 -ml-1">
                         <Image
                             src="/redlogo.png"
                             alt="HUB Interior Logo"

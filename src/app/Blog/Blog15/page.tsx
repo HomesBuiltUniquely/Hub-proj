@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Footer } from "../../Components/Footer";
+import Footer from "@/app/Components/Home/Footer";
+
 
 export default function Blog15() {
     const router = useRouter();
@@ -48,7 +49,7 @@ export default function Blog15() {
                             <p><span className="font-black text-black">HUB&#39;s approach to modern home interior ideas</span> ensures that ergonomics meet design. Each workstation is customized to the user&#39;s lifestyle.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog15img1.jpeg" alt="Ergonomic workstation design" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog15img1.png" alt="Ergonomic workstation design" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">2. Smart Layouts for Small Spaces</h2>
@@ -57,7 +58,7 @@ export default function Blog15() {
                             <p>Our expertise in <span className="font-black text-black">interior designs Bengaluru</span> helps transform bedrooms or living rooms into dual-purpose areas efficiently.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog15img2.jpeg" alt="Small space workstation layout" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog15img2.png" alt="Small space workstation layout" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">3. Blending Workstations with Home Interiors</h2>
@@ -66,7 +67,7 @@ export default function Blog15() {
                             <p>This approach ensures your <span className="font-black text-black">home interior solutions in Bengaluru</span> remain cohesive across all rooms.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog15img3.jpeg" alt="Blended workstation interior" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog15img3.png" alt="Blended workstation interior" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">4. The Role of Lighting</h2>
@@ -75,7 +76,7 @@ export default function Blog15() {
                             <p>Our Interior ensures every <span className="font-black text-black">work from home interior design</span> has versatile lighting for both work and relaxation.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog15img4.jpeg" alt="Workstation lighting design" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog15img4.png" alt="Workstation lighting design" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">5. Storage Solutions That Work</h2>
@@ -84,7 +85,7 @@ export default function Blog15() {
                             <p>These solutions help maintain neat <span className="font-black text-black">bedroom interior design ideas</span> or <span className="font-black text-black">living room designs Bengaluru</span> while supporting productivity.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog15img5.jpeg" alt="Workstation storage solutions" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog15img5.png" alt="Workstation storage solutions" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">6. Personalisation for Motivation</h2>
@@ -93,7 +94,7 @@ export default function Blog15() {
                             <p><span className="font-black text-black">Modern home interior ideas</span> focus on creating spaces that motivate while keeping work efficient.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog15img6.jpeg" alt="Personalised workstation design" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog15img6.png" alt="Personalised workstation design" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">7. Integrating Technology</h2>
@@ -102,7 +103,7 @@ export default function Blog15() {
                             <p><span className="font-black text-black">HUB workstation interiors</span> combine aesthetics with tech integration for smooth workflow.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog15img7.jpeg" alt="Tech-integrated workstation" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog15img7.png" alt="Tech-integrated workstation" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">8. Workstations in Bedrooms and Living Rooms</h2>
@@ -110,9 +111,7 @@ export default function Blog15() {
                             <p><strong>Design strategies:</strong> Modular furniture and foldable desks. Partitions or room dividers for separation. Storage solutions that double as decor.</p>
                             <p><span className="font-black text-black">HUB Interior</span> ensures that our <span className="font-black text-black">home interior solutions in Bengaluru</span> help maintain balance between personal and professional spaces.</p>
                             
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog15img8.jpeg" alt="Workstation in bedroom or living room" className="w-full h-full object-cover" />
-                            </div>
+                            
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Why Professional Guidance Matters</h2>
                             <p>Creating a productive workspace is not just about furniture placement. Expert designers consider ergonomics, lighting, storage, and style simultaneously. Professional home interior experts ensure that your workstation supports both comfort and efficiency.</p>

@@ -30,7 +30,7 @@ const ContactHeader: React.FC = () => (
     <div className="desktop-1440">
       <div
         className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
-        style={{ backgroundImage: "url('INSPH.PNG')" }}
+        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSDH.png')" }}
       >
         {/* Navbar */}
         <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-0 z-20">
@@ -60,7 +60,8 @@ const ContactHeader: React.FC = () => (
 
 
     <div className="desktop-1280 px-4">
-      <div className="w-[1280px] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center" style={{ backgroundImage: "url('INSPH.PNG')" }}>
+      <div className="w-[1280px] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center"
+        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSDH.png')" }}>
         {/* Logo */}
         <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="-mt-18 -ml-4" />
         {/* Navbar */}
@@ -94,33 +95,40 @@ const ContactHeader: React.FC = () => (
 
 
 
+
+
     {/* Mobile Version */}
-    <div className="w-[full] max-w-[425px] h-full block md:hidden mx-auto p-3">
-      <div
-        className="w-full h-[490px] mt-4 rounded-3xl overflow-hidden shadow-md bg-cover bg-center relative "
-        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp')" }}
-      >
-        {/* Navbar */}
-        <div className="flex items-center justify-between px-8 py-4 -mt-10">
-          <img
-            src="redlogo.png"
-            className="w-[100px] h-full -ml-10"
-            alt="Logo"
+
+
+    <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
+      <div className="relative h-full w-full p-2">
+        {/* Rounded image only */}
+        <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" />
+
+        {/* top logo */}
+        <div className="absolute top-2 -mt-5 -ml-1">
+          <Image
+            src="/redlogo.png"
+            alt="HUB Interior Logo"
+            width={90}
+            height={25}
+            className="cursor-pointer"
           />
-          {/* Mobile nav links and button commented out */}
         </div>
-        {/* Hero content */}
-        <div className="text-white">
-          <div className="text-3xl manrope drop-shadow-lg w-[20px] text-nowrap mt-40 ml-5">
-            Interior <div>Inspirations</div>
+
+        {/* text + cta */}
+        <h2 className="manrope leading-tight">
+          <div className="absolute top-40 text-white w-full px-3 mt-5">
+            <div className="text-3xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
+              Interior <div>Inspirations</div>
+            </div>
+            <p className="manrope-medium w-[300px] shadow-lg  mt-2 ml-3">
+              Every corner of your home holds a story, let’s design it beautifully.
+            </p>
           </div>
-          <p className="manrope-medium w-[300px] drop-shadow-lg  mt-3 ml-5">
-            Every corner of your home holds a story - let’s design it beautifully.
-          </p>
-        </div>
+        </h2>
       </div>
     </div>
-
 
 
   </div>
