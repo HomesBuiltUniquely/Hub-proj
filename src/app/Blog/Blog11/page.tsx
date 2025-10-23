@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Footer } from "../../Components/Footer";
+import Footer from "@/app/Components/Home/Footer";
+
 
 export default function Blog11() {
     const router = useRouter();
@@ -48,6 +49,11 @@ export default function Blog11() {
                             <p>L-shaped kitchen layouts are perfect for small to medium homes (bonus points if you want your kitchen to feel open instead of cramped). It is also a great option for open-plan lovers and anyone who wants a simple, efficient workflow.</p>
                             <p>An L-shaped kitchen maximizes corner space, provides a great work triangle (stove, fridge, sink), is flexible with the dining/breakfast area, and is affordable and remodel-friendly.</p>
                             
+                                   
+                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog11img1.jpg" alt="L-shaped kitchen layout" className="w-full h-full object-cover" />
+                            </div>
+
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
                                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Things to think about:</h4>
                                 <ul className="space-y-3">
@@ -66,15 +72,17 @@ export default function Blog11() {
                                 </ul>
                             </div>
                             <p><strong>Who should avoid it?</strong> In case you have a large family or dream of a central island (sorry, island lovers, L-shapes are all about the side hustle), you should avoid it. Don&#39;t be disappointed. We have listed down other layouts below, through which you can definitely find your perfect kitchen layout.</p>
-                            
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog11img1.jpeg" alt="L-shaped kitchen layout" className="w-full h-full object-cover" />
-                            </div>
+                         
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">U-Shaped Kitchen Layout</h3>
                             <p>U-shaped kitchens are all about maximum storage, maximum efficiency, and keeping everything within arm&#39;s reach. If you have a medium to large family to cook with or for, or your family loves to cook together, go for this one! Also, super organized people, you&#39;re going to love this one.</p>
                             <p>This layout comes with lots of counter and storage space, along with a great work triangle to work in. You can keep your appliances, breakfast area, separate chopping area, mini coffee station, and washing area, keeping the kitchen organized.</p>
                             
+                                                  <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog11img2.jpeg" alt="L-shaped kitchen layout" className="w-full h-full object-cover" />
+                            </div>
+
+
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
                                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Things to think about:</h4>
                                 <ul className="space-y-3">
@@ -94,14 +102,17 @@ export default function Blog11() {
                             </div>
                             <p><strong>Who should avoid it?</strong> If you have a tiny kitchen or you are an open-plan lover, this might not be for you!</p>
                             
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog11img2.jpeg" alt="U-shaped kitchen layout" className="w-full h-full object-cover" />
-                            </div>
+                            
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6">Island Kitchen Layout</h3>
                             <p>Ah, the island kitchen: the “showstopper” of layouts. Basically, it&#39;s the ultimate multitasker…for you and your guests (because everyone loves hovering while someone else cooks, right?).</p>
                             <p>An island layout is perfect for a large kitchen space where you have tons of guests coming over each weekend or have a huge family to cook for with multiple helpers. This layout provides extra counter and storage space, which also works as a dining or prep area. You can also put a sink or stove on it if you&#39;re feeling fancy (and honestly, who wouldn&#39;t?).</p>
                             
+                               <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog11img3.jpg" alt="Island kitchen layout" className="w-full h-full object-cover" />
+                            </div>
+
+
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
                                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Things to think about:</h4>
                                 <ul className="space-y-3">
@@ -122,9 +133,7 @@ export default function Blog11() {
                             <p><strong>Who should avoid it?</strong> If you&#39;re on a limited budget or have a small kitchen, skipping the island kitchen is a good decision. Instead, you can go for L or U depending on your needs.</p>
                             <p>Island kitchens are all about versatility, style, and entertainment. If you love hosting, cooking with friends, or just want that centerpiece kitchen everyone wants to hang out in, this is the one.</p>
                             
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog11img3.jpeg" alt="Island kitchen layout" className="w-full h-full object-cover" />
-                            </div>
+                           
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">Still confused?</h2>
                             <p>Being confused is totally okay, and honestly, you&#39;re not alone. After all, this is a very important decision for your house. Here&#39;s what you can do to remove this confusion: Grab a tape measure, and walk through your kitchen and measure it. Now, compare it with the three layouts and check out our &#34;things to think about&#34; pointers, and you&#39;ll instantly know what works.</p>

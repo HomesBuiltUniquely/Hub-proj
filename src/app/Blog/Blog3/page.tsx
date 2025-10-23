@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Footer } from "../../Components/Footer";
+import Footer from "@/app/Components/Home/Footer";
+
 
 export default function Blog3() {
     const router = useRouter();
@@ -100,7 +101,7 @@ export default function Blog3() {
                 </article>
             </div>
 
-            <Footer />
+            <Footer/>
         </div>
     );
 }

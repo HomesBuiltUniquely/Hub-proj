@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Footer } from "../../Components/Footer";
+import Footer from "@/app/Components/Home/Footer";
+
 
 export default function Blog8() {
     const router = useRouter();
@@ -65,7 +66,7 @@ export default function Blog8() {
                             <p>This layered palette ensures your interiors are calming while staying visually engaging.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog8img1.jpeg" alt="Bedroom colour palette" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img1.jpg" alt="Bedroom colour palette" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">2. Focus on Lighting Design</h2>
@@ -95,7 +96,7 @@ export default function Blog8() {
                             <p>Layered lighting ensures the room feels functional and stylish at every hour.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog8img2.jpeg" alt="Bedroom lighting design" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img2.jpg" alt="Bedroom lighting design" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">3. Invest in Comfortable Bedding and Furniture</h2>
@@ -122,12 +123,15 @@ export default function Blog8() {
                                     </li>
                                 </ul>
                             </div>
-                            <p>The right bedding and furniture strike a balance between indulgence and practicality.</p>
-                            
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog8img3.jpeg" alt="Bedroom bedding and furniture" className="w-full h-full object-cover" />
+
+                                   <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img3.jpg" alt="Bedroom bedding and furniture" className="w-full h-full object-cover" />
                             </div>
 
+
+                            <p>The right bedding and furniture strike a balance between indulgence and practicality.</p>
+                            
+                         
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">4. Maximise Storage Without Clutter</h2>
                             <p>Clutter sometimes makes the bedroom interior feel chaotic. A clutter-free layout makes for a truly relaxing bedroom.</p>
                             
@@ -155,7 +159,7 @@ export default function Blog8() {
                             <p>Smart storage ensures your space looks polished while remaining practical.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog8img4.jpeg" alt="Bedroom storage solutions" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img4.jpg" alt="Bedroom storage solutions" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">5. Incorporate Natural Elements</h2>
@@ -182,10 +186,11 @@ export default function Blog8() {
                                     </li>
                                 </ul>
                             </div>
+
                             <p>These natural details make a relaxing bedroom feel alive and balanced.</p>
                             
                             <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog8img5.jpeg" alt="Natural elements in bedroom" className="w-full h-full object-cover" />
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img5.jpg" alt="Natural elements in bedroom" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6">6. Use Textures and Fabrics for Warmth</h2>
@@ -240,8 +245,8 @@ export default function Blog8() {
                             </div>
                             <p>Personalisation makes the bedroom uniquely yours without disturbing the balance of style and calm.</p>
                             
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="/blog8img7.jpeg" alt="Bedroom art and accessories" className="w-full h-full object-cover" />
+                            <div className="relative w-[280px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-60">
+                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img6.png" alt="Bedroom art and accessories" className="w-full h-full object-cover" />
                             </div>
 
                             <h2 className="text-2xl font-black text-gray-900 pt-6">Conclusion</h2>
@@ -250,8 +255,7 @@ export default function Blog8() {
                     </div>
                 </article>
             </div>
-
-            <Footer />
+            <Footer/>
         </div>
     );
 }

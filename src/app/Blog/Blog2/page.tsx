@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Footer } from "../../Components/Footer";
+import Footer from "@/app/Components/Home/Footer";
+
 
 export default function Blog2() {
     const router = useRouter();
