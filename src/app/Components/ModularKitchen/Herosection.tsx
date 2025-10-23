@@ -283,12 +283,10 @@ const ContactHeader: React.FC = () => {
             </div>
           </div>
 
-
     </div>
-
-
 
   )
 };
 
 export default ContactHeader;
+ 
