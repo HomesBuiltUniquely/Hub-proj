@@ -93,7 +93,7 @@ export default function Blog16() {
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Efficient Project Management and Timely Completion</h2>
-                            <p className="manrope-medium">One of the standout aspects of this project was its <span className="font-black text-black">interior design project completion</span> ahead of schedule. <span className="font-black text-black">HUB Interior</span>'s project team ensured:</p>
+                            <p className="manrope-medium">One of the standout aspects of this project was its <span className="font-black text-black">interior design project completion</span> ahead of schedule. <span className="font-black text-black">HUB Interior</span>&#39;s project team ensured:</p>
                             <ul className="space-y-2 manrope-medium">
                                 <li>Detailed planning before starting any installations</li>
                                 <li>Use of high-quality materials for durability and appearance</li>
@@ -112,8 +112,8 @@ export default function Blog16() {
                             <p className="manrope-medium">These elements collectively demonstrate why professional <span className="font-black text-black">home renovation services</span> are crucial for achieving both style and practicality in residential spaces.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Conclusion</h2>
-                            <p className="manrope-medium">Mrs. Anamika&#39;s home is now a perfect example of <span className="font-black text-black">modern home interior design</span> done right. Every detail, from the L-shaped kitchen to the bedroom wardrobes and living room storage units, was carefully planned and executed by <span className="font-black text-black">HUB Interior</span>. The project showcases the company's ability to provide <span className="font-black text-black">custom home interior solutions Bengaluru</span> while adhering to deadlines and maintaining quality standards.</p>
-                            <p className="manrope-medium">So, are you ready to make your home work as beautiful as it looks? We craft interiors that fit your life, not the other way around. From kitchens that make cooking effortless to bedrooms and living spaces designed for daily ease, every detail is planned with you in mind. With over 5,000 projects delivered, a 10-year warranty, and a fast-track promise, we handle everything so you can enjoy your home without stress. Let's create interiors that feel personal, practical, and just right for you.</p>
+                            <p className="manrope-medium">Mrs. Anamika&#39;s home is now a perfect example of <span className="font-black text-black">modern home interior design</span> done right. Every detail, from the L-shaped kitchen to the bedroom wardrobes and living room storage units, was carefully planned and executed by <span className="font-black text-black">HUB Interior</span>. The project showcases the company&#39;s ability to provide <span className="font-black text-black">custom home interior solutions Bengaluru</span> while adhering to deadlines and maintaining quality standards.</p>
+                            <p className="manrope-medium">So, are you ready to make your home work as beautiful as it looks? We craft interiors that fit your life, not the other way around. From kitchens that make cooking effortless to bedrooms and living spaces designed for daily ease, every detail is planned with you in mind. With over 5,000 projects delivered, a 10-year warranty, and a fast-track promise, we handle everything so you can enjoy your home without stress. Let&#39;s create interiors that feel personal, practical, and just right for you.</p>
                         </div>
                     </div>
                 </article>

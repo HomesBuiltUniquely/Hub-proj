@@ -44,7 +44,7 @@ export default function Blog13() {
 
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                             <h2 className="text-2xl font-bold text-gray-900 pt-4 manrope">Circular Rotating Shelves</h2>
-                            <p className="manrope-medium">Say hello to one of our favorite 2026 wardrobe design upgrades: rotating units! If you're tired of digging through shelves to find that one bag or pair of heels, or accessories, rotating units are your new best friend! Not only do they save space, but they also make everything visible and easy to reach.</p>
+                            <p className="manrope-medium">Say hello to one of our favorite 2026 wardrobe design upgrades: rotating units! If you&#39;re tired of digging through shelves to find that one bag or pair of heels, or accessories, rotating units are your new best friend! Not only do they save space, but they also make everything visible and easy to reach.</p>
                              
                             <div className="flex justify-center">
                                 <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">

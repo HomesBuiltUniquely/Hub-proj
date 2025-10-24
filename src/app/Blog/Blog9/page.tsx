@@ -40,7 +40,7 @@ export default function Blog9() {
                             <h2 className="text-2xl font-bold text-gray-900 mb-4 manrope">How We Transformed Mr. Nagaveni&#39;s Home in Less Than Two Weeks (Yes, Really!)</h2>
                             <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">When we say &#34;11 days,&#34; most people blink twice. But yes, our team at HUB Interior pulled off a complete interior transformation in just 11 days for our amazing client, Mr. Nagaveni.</p>
                             <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">When Mr. Nagaveni first reached out to us, we quickly understood what he wanted: &#34;a home that&#39;s functional and beautiful, and, oh… can we finish it super fast?&#34; And we, as the <span className="font-black text-black">best interior designers of Bangalore</span>, were super ready and excited for this challenge (we thrive on a little adrenaline).</p>
-                            <p className="text-gray-700 leading-relaxed mb-8 manrope-medium">Here&#39;s what Mr. Nagaveni had on his wishlist: Kitchen Interior, Pooja Unit, 2 Bedroom Wardrobe Interiors & TV Unit. Now, that's a lot for less than two weeks. But our team at HUB Interior believes in turning "impossible" into "It's done." And just to brief you, we didn't just check boxes. We made every corner purposeful, beautiful, and yes, a little extra.</p>
+                            <p className="text-gray-700 leading-relaxed mb-8 manrope-medium">Here&#39;s what Mr. Nagaveni had on his wishlist: Kitchen Interior, Pooja Unit, 2 Bedroom Wardrobe Interiors & TV Unit. Now, that&#39;s a lot for less than two weeks. But our team at HUB Interior believes in turning &#34;impossible&#34; into &#34;It&#39;s done.&#34; And just to brief you, we didn&#39;t just check boxes. We made every corner purposeful, beautiful, and yes, a little extra.</p>
                             <p className="text-gray-700 leading-relaxed mb-8 manrope-medium">Let&#39;s take a little tour and see how it all came together!</p>
                         </div>
 
@@ -52,8 +52,8 @@ export default function Blog9() {
                                     <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog9img1.png" alt="Nagaveni kitchen interior" className="w-full h-auto object-cover" />
                                 </div>
                             </div>
-                            <p className="manrope-medium">The brief given by our client was very clear: lots of storage, smooth finishes, and a modern look. For this one, we went with a mix of glass-front cabinets, slab-style units, and a tambour unit (because who doesn't love that sleek roll-top convenience?).</p>
-                            <p className="manrope-medium">The glass front is best to show off the fancy crockery, while the tambour unit was added to keep clutter out of sight. The color for the kitchen was kept navy blue, a super popular choice that added class and a touch of warmth to the whole kitchen. Plus, it makes the cabinets pop and hides tiny smudges, and who doesn't want that! We also played around with matte finish cabinets, which are easy to clean and fit the everyday needs.</p>
+                            <p className="manrope-medium">The brief given by our client was very clear: lots of storage, smooth finishes, and a modern look. For this one, we went with a mix of glass-front cabinets, slab-style units, and a tambour unit (because who doesn&#39;t love that sleek roll-top convenience?).</p>
+                            <p className="manrope-medium">The glass front is best to show off the fancy crockery, while the tambour unit was added to keep clutter out of sight. The color for the kitchen was kept navy blue, a super popular choice that added class and a touch of warmth to the whole kitchen. Plus, it makes the cabinets pop and hides tiny smudges, and who doesn&#39;t want that! We also played around with matte finish cabinets, which are easy to clean and fit the everyday needs.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">The Pooja Unit</h2>
                                    
@@ -63,9 +63,9 @@ export default function Blog9() {
                                 </div>
                             </div>
 
-                            <p className="manrope-medium">Next up: the pooja corner. Our goal was to turn this small space into a big impact. Designing a pooja unit always feels special to us. And for Mr. Nagaveni's home, it was all about simplicity with meaning.</p>
+                            <p className="manrope-medium">Next up: the pooja corner. Our goal was to turn this small space into a big impact. Designing a pooja unit always feels special to us. And for Mr. Nagaveni&#39;s home, it was all about simplicity with meaning.</p>
                             <p className="manrope-medium">The doors of the pooja unit had hanging bell motifs paired with geometric cutouts forming a circular pattern. It was clean, modern, and minimal, just like what our client wished for. The color for the pooja unit was kept white for a bright and serene feeling. It had multiple cabinets and drawers with matching knobs to keep up with the overall design. The inside comprised shelves for display.</p>
-                            <p className="manrope-medium">It's the kind of corner where you can light a candle, take a deep breath, and actually feel calm. Mr. Nagaveni loved it, and so did our team.</p>
+                            <p className="manrope-medium">It&#39;s the kind of corner where you can light a candle, take a deep breath, and actually feel calm. Mr. Nagaveni loved it, and so did our team.</p>
                      
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">The TV Unit</h2>
 
@@ -87,7 +87,7 @@ export default function Blog9() {
                             </div>
 
                             <p className="manrope-medium">Bedrooms were next, and oh boy, wardrobes stole the show. In total, we created two bedroom wardrobes for Mr. Nagaveni. The first was created in a shade of green with sliding doors and tons of cabinets on two sides of the wall.</p>
-                            <p className="manrope-medium">Practicality was the theme, and we can happily say we achieved it (within 11 days). The inside of the first wardrobe had big horizontal shelves where Mr. Nagaveni's family could keep items, be they large or small.</p>
+                            <p className="manrope-medium">Practicality was the theme, and we can happily say we achieved it (within 11 days). The inside of the first wardrobe had big horizontal shelves where Mr. Nagaveni&#39;s family could keep items, be they large or small.</p>
 
                             <div className="flex justify-center">
                                 <div className="relative w-full max-w-[300px] h-auto rounded-xl overflow-hidden my-3">
@@ -99,9 +99,9 @@ export default function Blog9() {
                             <p className="manrope-medium">Every wardrobe decision was made to maximize space, and every shelf and drawer was carefully planned by the team at HUB Interior to avoid clutter.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Our Take On This Project</h2>
-                            <p className="manrope-medium">When we tell it to others, people always ask, "How did you do it in 11 days?!" Honestly, pulling this together in 11 days wasn't easy. It was a mix of planning and precision. We understand that good design blends form, function, and personality. And that's what we brought to Nagaveni's house: personalized storage, modern elements, and small details that make the spaces feel alive.</p>
+                            <p className="manrope-medium">When we tell it to others, people always ask, &#34;How did you do it in 11 days?!&#34; Honestly, pulling this together in 11 days wasn&#39;t easy. It was a mix of planning and precision. We understand that good design blends form, function, and personality. And that&#39;s what we brought to Nagaveni&#39;s house: personalized storage, modern elements, and small details that make the spaces feel alive.</p>
                             <p className="manrope-medium">The Nagaveni house reminds us why we love what we do: turning visions into homes that people actually love to live in. And Mr. Nagaveni? He got his dream home in 11 days, and we got another story to tell you.</p>
-                            <p className="manrope-medium">If you've been dreaming about redoing your home, <span className="font-black text-black">HUB Interior's expert designers in Bangalore</span> are here to make it happen (maybe not always in 11 days, but we promise it'll be worth the wait). Contact us today!</p>
+                            <p className="manrope-medium">If you&#39;ve been dreaming about redoing your home, <span className="font-black text-black">HUB Interior&#39;s expert designers in Bangalore</span> are here to make it happen (maybe not always in 11 days, but we promise it&#39;ll be worth the wait). Contact us today!</p>
                         </div>
                     </div>
                 </article>

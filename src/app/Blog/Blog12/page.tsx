@@ -44,7 +44,7 @@ export default function Blog12() {
 
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                             <h2 className="text-2xl font-bold text-gray-900 pt-4 manrope">5 Creative Cupboards for Kids&#39; Bedrooms That You Should Check Right Now</h2>
-                            <p className="manrope-medium">Before we jump into our top 5 cupboard ideas, a quick little PSA: think about your kid's age and what lights them up. (Don&#39;t worry, we&#39;ve got something for every little personality.) And… make sure the design vibes with the room and actually works as storage (because no one wants a cute cupboard that's impossible to use).</p>
+                            <p className="manrope-medium">Before we jump into our top 5 cupboard ideas, a quick little PSA: think about your kid&#39;s age and what lights them up. (Don&#39;t worry, we&#39;ve got something for every little personality.) And… make sure the design vibes with the room and actually works as storage (because no one wants a cute cupboard that&#39;s impossible to use).</p>
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-4 manrope">Interactive Chalkboard & Magnet Cupboard</h3>
                             <p className="manrope-medium">Meet the cupboard that doubles as a canvas. This one&#39;s for the little doodlers and daydreamers. It is an interactive chalkboard & magnet cupboard that is turned into storage where kids can draw, write, or proudly stick up their latest masterpiece.</p>
@@ -125,7 +125,7 @@ export default function Blog12() {
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Final Thoughts</h2>
                             <p className="manrope-medium">Kids&#39; cupboards in 2026 aren&#39;t just furniture. They&#39;re made for engagement, learning, and independence. When storage becomes interactive, magical, or playful, kids are more likely to use the cupboard correctly and develop problem-solving and organizational skills.</p>
                             <p className="manrope-medium">Be it a rocket ship that lifts off, a Narnia-inspired secret hideout, or a glow-in-the-dark galaxy wardrobe, these designs make storing a fun part of the day.</p>
-                            <p className="manrope-medium">Ready to bring some fun and functionality to your kid's bedroom? Contact <span className="font-black text-black">HUB Interior</span>, the <span className="font-black text-black">best interior designers in Bangalore</span>, and let&#39;s create a space your kids will love!</p>
+                            <p className="manrope-medium">Ready to bring some fun and functionality to your kid&#39;s bedroom? Contact <span className="font-black text-black">HUB Interior</span>, the <span className="font-black text-black">best interior designers in Bangalore</span>, and let&#39;s create a space your kids will love!</p>
                         </div>
                     </div>
                 </article>

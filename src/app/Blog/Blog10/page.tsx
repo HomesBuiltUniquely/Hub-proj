@@ -122,7 +122,7 @@ export default function Blog10() {
                             <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700 manrope-medium">&#34;The interiors not only reflect elegance but also carry a sense of warmth and comfort. Your commitment, effort, and sense of design have transformed the space into something truly special, and it deserves the highest praise.&#34;</blockquote>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Our Takeaways?</h2>
-                            <p className="manrope-medium">Projects like Royal Tulip Villa remind us why we love doing what we do. Every corner, every finish, and every panel was chosen to create a home that'&#39; functional, luxurious, and totally welcoming.</p>
+                            <p className="manrope-medium">Projects like Royal Tulip Villa remind us why we love doing what we do. Every corner, every finish, and every panel was chosen to create a home that&#39;s functional, luxurious, and totally welcoming.</p>
                             <p className="manrope-medium">We&#39;re just delighted that Mr. Dilip trusted <span className="font-black text-black">HUB Interior, the top interior designer in Bangalore</span>, to bring his dream to life.</p>
                             <p className="manrope-medium">Want your own Royal Tulip moment? Let&#39;s make it happen. Get in touch with HUB Interior today, and let&#39;s design a home that reflects only you.</p>
                         </div>
