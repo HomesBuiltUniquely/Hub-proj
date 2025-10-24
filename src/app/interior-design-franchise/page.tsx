@@ -7,8 +7,8 @@ export default function Franchise(){
     return(
         <div>
             <Home/>
-            <Business/>
-           <Footer/>
+        <Business/>
+             <Footer/>
         </div>
     )
 }
