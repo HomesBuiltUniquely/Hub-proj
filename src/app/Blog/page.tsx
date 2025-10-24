@@ -98,6 +98,7 @@ const defaultPosts: Post[] = [
     readTime: "13 mins read",
     img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog10img1.png",
     path: "/Blog/Blog10"
+    
   },
   {
     id: 11,

@@ -15,7 +15,7 @@ export default function Blog8() {
                 <div className="max-w-4xl mx-auto px-4 py-6">
                     <button 
                         onClick={() => router.push('/Blog')}
-                        className="flex items-center text-gray-600 hover:text-gray-800 transition-colors mb-4"
+                        className="flex items-center text-gray-600 hover:text-gray-800 transition-colors mb-4 manrope-medium"
                     >
                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -29,26 +29,26 @@ export default function Blog8() {
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden">
                     <div className="p-8">
-                        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Key Tips to Create Bedroom Interiors That Are Relaxing and Stylish</h1>
+                        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 manrope">Key Tips to Create Bedroom Interiors That Are Relaxing and Stylish</h1>
 
-                        <div className="flex justify-between items-center text-gray-500 text-sm mb-6">
+                        <div className="flex justify-between items-center text-gray-500 text-sm mb-6 manrope-medium">
                             <span>Blog • 10 mins read</span>
                             <span>October 21, 2025</span>
                         </div>
 
                         <div className="prose prose-lg max-w-none">
-                            <p className="text-gray-700 leading-relaxed mb-4">The way we design our bedrooms has changed dramatically in recent years. Bedrooms are no longer just about a bed and storage as they have become sanctuaries of comfort, style, and personal expression. Homeowners today are not just looking for functional spaces but for <span className="font-black text-black">modern bedroom interiors in Bengaluru</span> that improve sleep quality and bring balance to busy lifestyles.</p>
-                            <p className="text-gray-700 leading-relaxed mb-8">A carefully designed bedroom can reduce stress, improve productivity, and even enhance emotional well-being. From calming colour palettes to smart storage, from layered lighting to the right textures, every detail contributes to creating a relaxing bedroom that still looks sophisticated. Whether you are aiming for <span className="font-black text-black">luxury bedroom interiors</span>, a minimalist bedroom, or even experimenting with <span className="font-black text-black">contemporary bedroom interiors</span>, the right design choices can transform your space into a retreat that feels timeless.</p>
-                            <p className="text-gray-700 leading-relaxed mb-8">Here are key tips that blend style with comfort while giving you practical <span className="font-black text-black">bedroom decor ideas</span> to elevate your personal space.</p>
+                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">The way we design our bedrooms has changed dramatically in recent years. Bedrooms are no longer just about a bed and storage as they have become sanctuaries of comfort, style, and personal expression. Homeowners today are not just looking for functional spaces but for <span className="font-black text-black">modern bedroom interiors in Bengaluru</span> that improve sleep quality and bring balance to busy lifestyles.</p>
+                            <p className="text-gray-700 leading-relaxed mb-8 manrope-medium">A carefully designed bedroom can reduce stress, improve productivity, and even enhance emotional well-being. From calming colour palettes to smart storage, from layered lighting to the right textures, every detail contributes to creating a relaxing bedroom that still looks sophisticated. Whether you are aiming for <span className="font-black text-black">luxury bedroom interiors</span>, a minimalist bedroom, or even experimenting with <span className="font-black text-black">contemporary bedroom interiors</span>, the right design choices can transform your space into a retreat that feels timeless.</p>
+                            <p className="text-gray-700 leading-relaxed mb-8 manrope-medium">Here are key tips that blend style with comfort while giving you practical <span className="font-black text-black">bedroom decor ideas</span> to elevate your personal space.</p>
                         </div>
 
                         <div className="space-y-4 text-gray-700 leading-relaxed">
-                            <h2 className="text-2xl font-bold text-gray-900 pt-4">1. Choose the Right Colour Palette</h2>
-                            <p>Colours influence emotions and can set the entire mood of your space. Blue tones help lower stress levels, while green hues enhance relaxation. Warm neutrals like beige and ivory give a timeless appeal to bedroom interiors.</p>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-4 manrope">1. Choose the Right Colour Palette</h2>
+                            <p className="manrope-medium">Colours influence emotions and can set the entire mood of your space. Blue tones help lower stress levels, while green hues enhance relaxation. Warm neutrals like beige and ivory give a timeless appeal to bedroom interiors.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Tips:</h3>
-                                <ul className="space-y-3">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3 manrope">Tips:</h3>
+                                <ul className="space-y-3 manrope-medium">
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
                                         <span className="font-semibold text-black">Use light blues, pale greens, or off-whites for walls to create a relaxing bedroom.</span>
@@ -63,18 +63,20 @@ export default function Blog8() {
                                     </li>
                                 </ul>
                             </div>
-                            <p>This layered palette ensures your interiors are calming while staying visually engaging.</p>
+                            <p className="manrope-medium">This layered palette ensures your interiors are calming while staying visually engaging.</p>
                             
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img1.jpg" alt="Bedroom colour palette" className="w-full h-full object-cover" />
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img1.jpg" alt="Bedroom colour palette" className="w-full h-auto object-cover" />
+                                </div>
                             </div>
 
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6">2. Focus on Lighting Design</h2>
-                            <p>Lighting is one of the most transformative aspects of modern bedroom designs.</p>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">2. Focus on Lighting Design</h2>
+                            <p className="manrope-medium">Lighting is one of the most transformative aspects of modern bedroom designs.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Tips:</h3>
-                                <ul className="space-y-3">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3 manrope">Tips:</h3>
+                                <ul className="space-y-3 manrope-medium">
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
                                         <span className="font-semibold text-black">Ambient lighting: Ceiling-mounted fixtures or concealed cove lights for soft illumination.</span>
@@ -93,18 +95,20 @@ export default function Blog8() {
                                     </li>
                                 </ul>
                             </div>
-                            <p>Layered lighting ensures the room feels functional and stylish at every hour.</p>
+                            <p className="manrope-medium">Layered lighting ensures the room feels functional and stylish at every hour.</p>
                             
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img2.jpg" alt="Bedroom lighting design" className="w-full h-full object-cover" />
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img2.jpg" alt="Bedroom lighting design" className="w-full h-auto object-cover" />
+                                </div>
                             </div>
 
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6">3. Invest in Comfortable Bedding and Furniture</h2>
-                            <p>Sleep quality is closely tied to bedding choices. A well-curated bed is central to <span className="font-black text-black">luxury bedroom interiors</span>.</p>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">3. Invest in Comfortable Bedding and Furniture</h2>
+                            <p className="manrope-medium">Sleep quality is closely tied to bedding choices. A well-curated bed is central to <span className="font-black text-black">luxury bedroom interiors</span>.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Tips:</h3>
-                                <ul className="space-y-3">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3 manrope">Tips:</h3>
+                                <ul className="space-y-3 manrope-medium">
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
                                         <span className="font-semibold text-black">Choose a mattress with the right firmness for your posture, ideally placed at a height of 18–20 inches for comfort.</span>
@@ -124,20 +128,20 @@ export default function Blog8() {
                                 </ul>
                             </div>
 
-                                   <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img3.jpg" alt="Bedroom bedding and furniture" className="w-full h-full object-cover" />
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img3.jpg" alt="Bedroom bedding and furniture" className="w-full h-auto object-cover" />
+                                </div>
                             </div>
 
-
-                            <p>The right bedding and furniture strike a balance between indulgence and practicality.</p>
+                            <p className="manrope-medium">The right bedding and furniture strike a balance between indulgence and practicality.</p>
                             
-                         
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6">4. Maximise Storage Without Clutter</h2>
-                            <p>Clutter sometimes makes the bedroom interior feel chaotic. A clutter-free layout makes for a truly relaxing bedroom.</p>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">4. Maximise Storage Without Clutter</h2>
+                            <p className="manrope-medium">Clutter sometimes makes the bedroom interior feel chaotic. A clutter-free layout makes for a truly relaxing bedroom.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Tips:</h3>
-                                <ul className="space-y-3">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3 manrope">Tips:</h3>
+                                <ul className="space-y-3 manrope-medium">
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
                                         <span className="font-semibold text-black">Use under-bed drawers or lift-up storage beds for seasonal clothing.</span>
@@ -156,18 +160,20 @@ export default function Blog8() {
                                     </li>
                                 </ul>
                             </div>
-                            <p>Smart storage ensures your space looks polished while remaining practical.</p>
+                            <p className="manrope-medium">Smart storage ensures your space looks polished while remaining practical.</p>
                             
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img4.jpg" alt="Bedroom storage solutions" className="w-full h-full object-cover" />
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img4.jpg" alt="Bedroom storage solutions" className="w-full h-auto object-cover" />
+                                </div>
                             </div>
 
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6">5. Incorporate Natural Elements</h2>
-                            <p>Biophilic design is gaining momentum because it reduces stress and promotes well-being. Adding these touches elevates <span className="font-black text-black">bedroom interiors in Bengaluru</span> while fostering quietude.</p>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">5. Incorporate Natural Elements</h2>
+                            <p className="manrope-medium">Biophilic design is gaining momentum because it reduces stress and promotes well-being. Adding these touches elevates <span className="font-black text-black">bedroom interiors in Bengaluru</span> while fostering quietude.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Tips:</h3>
-                                <ul className="space-y-3">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3 manrope">Tips:</h3>
+                                <ul className="space-y-3 manrope-medium">
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
                                         <span className="font-semibold text-black">Place indoor plants like peace lilies or snake plants to purify air.</span>
@@ -187,18 +193,20 @@ export default function Blog8() {
                                 </ul>
                             </div>
 
-                            <p>These natural details make a relaxing bedroom feel alive and balanced.</p>
+                            <p className="manrope-medium">These natural details make a relaxing bedroom feel alive and balanced.</p>
                             
-                            <div className="relative w-[580px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-30">
-                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img5.jpg" alt="Natural elements in bedroom" className="w-full h-full object-cover" />
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img5.jpg" alt="Natural elements in bedroom" className="w-full h-auto object-cover" />
+                                </div>
                             </div>
 
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6">6. Use Textures and Fabrics for Warmth</h2>
-                            <p>Texture layering creates richness in <span className="font-black text-black">luxury bedroom interiors</span>. Mixing fabrics like velvet, linen, and cotton not only adds visual interest but also makes the space feel cosy and inviting.</p>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">6. Use Textures and Fabrics for Warmth</h2>
+                            <p className="manrope-medium">Texture layering creates richness in <span className="font-black text-black">luxury bedroom interiors</span>. Mixing fabrics like velvet, linen, and cotton not only adds visual interest but also makes the space feel cosy and inviting.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Tips:</h3>
-                                <ul className="space-y-3">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3 manrope">Tips:</h3>
+                                <ul className="space-y-3 manrope-medium">
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
                                         <span className="font-semibold text-black">Combine smooth finishes like polished wood with softer fabrics such as linen or velvet.</span>
@@ -217,14 +225,14 @@ export default function Blog8() {
                                     </li>
                                 </ul>
                             </div>
-                            <p>This approach works beautifully in both minimalist bedrooms and bolder, depending on the materials chosen.</p>
+                            <p className="manrope-medium">This approach works beautifully in both minimalist bedrooms and bolder, depending on the materials chosen.</p>
 
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6">7. Personalise with Art and Accessories</h2>
-                            <p>A room only feels complete when it reflects your personality. Generic designs lack warmth, while curated accessories add character. This is where <span className="font-black text-black">bedroom decor ideas</span> bring individuality.</p>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">7. Personalise with Art and Accessories</h2>
+                            <p className="manrope-medium">A room only feels complete when it reflects your personality. Generic designs lack warmth, while curated accessories add character. This is where <span className="font-black text-black">bedroom decor ideas</span> bring individuality.</p>
                             
                             <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">Tips:</h3>
-                                <ul className="space-y-3">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-3 manrope">Tips:</h3>
+                                <ul className="space-y-3 manrope-medium">
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
                                         <span className="font-semibold text-black">Choose calming wall art or framed photography.</span>
@@ -243,14 +251,16 @@ export default function Blog8() {
                                     </li>
                                 </ul>
                             </div>
-                            <p>Personalisation makes the bedroom uniquely yours without disturbing the balance of style and calm.</p>
+                            <p className="manrope-medium">Personalisation makes the bedroom uniquely yours without disturbing the balance of style and calm.</p>
                             
-                            <div className="relative w-[280px] h-[580px] md:h-105 rounded-xl overflow-hidden mt-3 ml-60">
-                                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img6.png" alt="Bedroom art and accessories" className="w-full h-full object-cover" />
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[280px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img6.png" alt="Bedroom art and accessories" className="w-full h-auto object-cover" />
+                                </div>
                             </div>
 
-                            <h2 className="text-2xl font-black text-gray-900 pt-6">Conclusion</h2>
-                            <p>Wanna turn your bedroom into a sanctuary of comfort and elegance? <span className="font-black text-black">HUB Interior</span> specialises in crafting <span className="font-black text-black">master bedrooms in Bengaluru</span> with bespoke wardrobes, ambient lighting, and sophisticated layouts. Backed by a 10-year warranty, over 5,000 projects delivered, and a 34-day fast-track promise, we bring <span className="font-black text-black">luxury bedroom interiors</span> to life with precision and care.</p>
+                            <h2 className="text-2xl font-black text-gray-900 pt-6 manrope">Conclusion</h2>
+                            <p className="manrope-medium">Wanna turn your bedroom into a sanctuary of comfort and elegance? <span className="font-black text-black">HUB Interior</span> specialises in crafting <span className="font-black text-black">master bedrooms in Bengaluru</span> with bespoke wardrobes, ambient lighting, and sophisticated layouts. Backed by a 10-year warranty, over 5,000 projects delivered, and a 34-day fast-track promise, we bring <span className="font-black text-black">luxury bedroom interiors</span> to life with precision and care.</p>
                         </div>
                     </div>
                 </article>

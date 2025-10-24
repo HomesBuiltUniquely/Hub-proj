@@ -1,13 +1,7 @@
-
 'use client';
 
 import Link from 'next/link';
 import React, { useState, useRef } from 'react';
-// ...existing code...
-
-// Note: Replaced Next.js specific imports with standard tags for compatibility.
-// import Link from "next/link"; 
-// import Image from 'next/image';
 
 export default function Section3() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,21 +14,21 @@ export default function Section3() {
             title: "Modular Interiors for Every Home",
             description: "Efficient layouts and space-saving designs crafted to fit kitchens, wardrobes, and storage — blending style with everyday functionality.",
             image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen5.jpg",
-            link: "/Services",
+            link: "/GetEstimate",
             borderColor: ""
         },
         {
-            title: "End-to-End Interior Solutions", 
-            description: "From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing under one roof.",
+            title: "End-to-End Home Interior Solutions",
+            description: "From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing.",
             image: "/bed1.jpg",
-            link: "/Services",
+            link: "/GetEstimate",
             borderColor: ""
         },
         {
             title: "Luxury Interiors Thoughtfully Crafted",
             description: "Luxury interiors thoughtfully built to balance modern design, comfort, and personal expression. elevating everyday lifestyle",
             image: "/bed4.jpg",
-            link: "/Services",
+            link: "/GetEstimate",
             borderColor: ""
         },
     ];
@@ -59,10 +53,9 @@ export default function Section3() {
 
     const handleTouchEnd = () => {
         if (!touchStart || !touchEnd) return;
-        
         const distance = touchStart - touchEnd;
-        const isLeftSwipe = distance > 50; // Swiping left (next)
-        const isRightSwipe = distance < -50; // Swiping right (previous)
+        const isLeftSwipe = distance > 50;
+        const isRightSwipe = distance < -50;
 
         if (isLeftSwipe) {
             nextSlide();
@@ -75,173 +68,149 @@ export default function Section3() {
     
     return (
         <div>
-            <style jsx>{`
-                /* Hide both sections by default on smaller screens */
-                .desktop-1440,
-                .desktop-1280 {
-                    display: none;
-                }
+            <div className="hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-8">
+                <div className="max-w-7xl mx-auto">
+                    {/* Header Section */}
+                    <div className="flex flex-row justify-between items-center mb-12">
+                        <h1 className="text-4xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
+                        <a href="/GetEstimate">
+                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium flex items-center gap-2">
+                                Book consultation
+                                <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
 
-                /* Show 1280px version for medium desktops */
-                @media (min-width: 1280px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block;
-                    }
-                }
-
-                /* Show 1440px version for large desktops */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block;
-                    }
-                }
-            `}</style>
-        <div className="desktop-1440 hidden md:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-8">
-            <div className="max-w-7xl mx-auto">
-                {/* Header Section */}
-                <div className="flex flex-row justify-between items-center mb-12">
-                    <h1 className="text-4xl wulkan-display-bold text-gray-800 ">All Interior Service, One Destination</h1>
-                    <a href="/ContactUs">
-                        <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium flex items-center gap-2">
-                            Book consultation
-                            <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
-                                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {/* Carousel Section */}
+                    <div className="relative mt-20 mx-auto w-full max-w-[1300px] px-4">
+                        {/* Navigation Controls */}
+                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
+                            <button 
+                                onClick={prevSlide}
+                                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                            >
+                                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 translate-x-1/2">
+                            <button 
+                                onClick={nextSlide}
+                                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                            >
+                                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
-                            </div>
-                        </button>
-                    </a>
-                </div>
+                            </button>
+                        </div>
 
-                {/* Carousel Section */}
-                <div className="relative mt-20 mx-auto">
-                    {/* Navigation Controls */}
-                    <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
-                        <button 
-                            onClick={prevSlide}
-                            className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
-                        >
-                            <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 translate-x-1/2">
-                        <button 
-                            onClick={nextSlide}
-                            className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
-                        >
-                            <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    {/* Service Cards */}
-                    <div className="overflow-hidden">
-                        <div 
-                            className="flex gap-6 transition-transform duration-500 ease-in-out"
-                            style={{ 
-                                transform: `translateX(-${currentSlide * (100 / serviceCards.length)}%)`,
-                            }}
-                        >
-                            {serviceCards.map((service, index) => (
-                                <div key={index} className="flex-shrink-0 w-1/3">
-                                    <div className={`bg-white rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300 h-auto flex flex-col`}>
-                                        <div className="relative h-96">
-                                            <img
-                                                src={service.image}
-                                                alt={service.title}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                        <div className="p-8 flex-1 flex flex-col text-center">
-                                            <h3 className="text-2xl font-bold text-gray-800 mb-4 manrope-semibold">{service.title}</h3>
-                                            <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
-                                            <a href={service.link} className="mt-auto block">
-                                                <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium">
-                                                    Request service
-                                                </button>
-                                            </a>
+                        {/* Service Cards */}
+                        <div className="overflow-hidden w-full -ml-2">
+                            <div 
+                                className="flex gap-4 transition-transform duration-500 ease-in-out"
+                                style={{ 
+                                    transform: `translateX(-${currentSlide * 33.33}%)`,
+                                }}
+                            >
+                                {serviceCards.map((service, index) => (
+                                    <div key={index} className="flex-shrink-0 w-104 ">
+                                        <div className={`bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300 h-auto flex flex-col`}>
+                                            <div className="relative h-96">
+                                                <img
+                                                    src={service.image}
+                                                    alt={service.title}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                            <div className="p-8 flex-1 flex flex-col text-center">
+                                                <h3 className="text-2xl font-bold text-gray-800 mb-4 manrope-semibold">{service.title}</h3>
+                                                <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
+                                                <a href={service.link} className="mt-auto block">
+                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium">
+                                                        Request service
+                                                    </button>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Dot Indicators */}
+                        <div className="flex justify-center mt-8 space-x-2">
+                            {serviceCards.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentSlide(index)}
+                                    className={`w-3 h-3 rounded-full transition-colors ${
+                                        index === currentSlide ? 'bg-[#ddcdc1]' : 'bg-gray-300'
+                                    }`}
+                                />
                             ))}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         
         {/* Mobile Overlapping Carousel */}
         <div className="block md:hidden bg-[#F1F2F6] py-12">
             <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-5 pl-8">All Interior Service, One Destination</h1>
             
-            <div
-                ref={carouselRef}
-                className="relative h-[560px] flex justify-center items-center -mt-5"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-            >
-                {serviceCards.map((service, index) => {
-                    const totalCards = serviceCards.length;
-                    let position = (index - currentSlide + totalCards) % totalCards;
-                    if (position > totalCards / 2) {
-                        position -= totalCards;
-                    }
-
-                    let zIndex = 0, transform = '', opacity = 0, scale = 0.8;
-                    
-                    if (position === 0) {
-                        zIndex = 30; transform = 'translateX(0px) translateY(-10px)'; scale = 0.9; opacity = 1;
-                    } else if (position === -1 || position === totalCards - 1) {
-                        zIndex = 20; transform = 'translateX(-50px) translateY(20px)'; scale = 0.9; opacity = 1;
-                    } else if (position === -2 || position === totalCards - 2) {
-                        // FIX: Reduced scale for the rearmost card
-                        zIndex = 10; transform = 'translateX(-90px) translateY(50px)'; scale = 0.85; opacity = 1;
-                    }
-
-                    return (
-                        <div
-                            key={index}
-                            className="absolute transition-all duration-500 ease-in-out ml-20"
-                            style={{ zIndex, transform: `${transform} scale(${scale})`, opacity }}
-                        >
-                            <a href={service.link} className="block">
-                                <div className="w-[260px] h-[420px] rounded-3xl overflow-hidden shadow-xl">
+            <div className="relative px-4 pt-8">
+                <div 
+                    className="flex gap-4 transition-transform duration-300 ease-out py-8 overflow-visible"
+                    style={{ transform: `translateX(-${currentSlide * 60}%)` }}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                >
+                    {serviceCards.map((service, index) => (
+                        <div key={index} className="flex-shrink-0 w-[60%] relative">
+                            <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-auto flex flex-col">
+                                <div className="relative h-48">
                                     <img
                                         src={service.image}
                                         alt={service.title}
                                         className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                                        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
-                                            <h3 className="text-lg font-bold text-gray-800 mb-2 wulkan-display-bold">
-                                                {service.title}
-                                            </h3>
-                                            <p className="text-sm text-gray-600 manrope-medium leading-relaxed">
-                                            {service.description}
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
-                            </a>
+                                <div className="p-6 flex-1 flex flex-col">
+                                    <h3 className="text-lg font-bold text-gray-800 mb-3 manrope-semibold">{service.title}</h3>
+                                    <p className="text-gray-600 mb-4 text-sm leading-relaxed manrope-medium flex-grow">{service.description}</p>
+                                    <a href={service.link} className="mt-auto">
+                                        <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-2xl font-semibold text-sm manrope-medium">
+                                            Request service
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10 w-8 h-8 bg-[#ddcdc1] rounded-full flex items-center justify-center border-4 border-white shadow-lg">
+                                <span className="text-black font-bold text-sm">{index + 1}</span>
+                            </div>
                         </div>
-                        
-                    );
-                })}
-            </div>
-            <div className="flex justify-center mt-8">
-            <Link href="/">
-                <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
-                    Explore Services
-                </button>
-            </Link>
+                    ))}
+                </div>
+                
+                {/* Mobile Dot Indicators */}
+                <div className="flex justify-center mt-8 space-x-2">
+                    {serviceCards.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentSlide(index)}
+                            className={`w-3 h-3 rounded-full transition-colors ${
+                                index === currentSlide ? 'bg-[#ddcdc1]' : 'bg-gray-300'
+                            }`}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
-    </div>
+        </div>
     )
 }
-
