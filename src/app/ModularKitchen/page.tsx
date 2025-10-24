@@ -11,10 +11,10 @@ export default function InteriorDesignersInBangalore() {
   return (
     <div>
       <ModularKitchen />
-      <Section1/>
-      <Section2/>
+      <Section1 />
+      <Section2 />
       <KitchenBlogSection/>
-      <Footer/>
+       <Footer/>
     </div>
   )
 }

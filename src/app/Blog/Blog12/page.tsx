@@ -1,0 +1,137 @@
+"use client"
+
+import React from "react";
+import { useRouter } from "next/navigation";
+import Footer from "@/app/Components/Home/Footer";
+
+
+export default function Blog12() {
+    const router = useRouter();
+
+    return (
+        <div className="min-h-screen bg-[#f1f2f6] manrope-medium">
+            {/* Header */}
+            <div className="bg-white shadow-sm">
+                <div className="max-w-4xl mx-auto px-4 py-6">
+                    <button 
+                        onClick={() => router.push('/Blog')}
+                        className="flex items-center text-gray-600 hover:text-gray-800 transition-colors mb-4 manrope-medium"
+                    >
+                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Back to Blog
+                    </button>
+                </div>
+            </div>
+
+            {/* Blog 12 Content */}
+            <div className="max-w-4xl mx-auto px-4 py-8">
+                <article className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div className="p-8">
+                        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 manrope">5 Kids&#39; Bedroom Cupboard Designs for 2026 – Perfect Blend of Style and Fun</h1>
+
+                        <div className="flex justify-between items-center text-gray-500 text-sm mb-6 manrope-medium">
+                            <span>Blog • 8 mins read</span>
+                            <span>October 21, 2025</span>
+                        </div>
+
+                        <div className="prose prose-lg max-w-none">
+                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">If you think &#34;fun&#34; and &#34;storage&#34; don&#39;t belong in the same sentence, stay with us! At <span className="font-black text-black">HUB Interior</span>, we call kids&#39; bedrooms our favorite kind of challenge because who else demands both rocket ships and rainbows in one space?</p>
+                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">Kids&#39; bedrooms are no longer about storage. In 2026, kids&#39; cupboards are interactive, creative, and practical. And we&#39;re here to help you bring this exact concept to life. Being the <span className="font-black text-black">best interior designers in Bangalore</span>, we have helped hundreds of clients get what they wanted for their kids. And here are our five top cupboard designs that will be the new NEW in 2026.</p>
+                            <p className="text-gray-700 leading-relaxed mb-8 manrope-medium">Let&#39;s dive into it.</p>
+                        </div>
+
+                        <div className="space-y-4 text-gray-700 leading-relaxed">
+                            <h2 className="text-2xl font-bold text-gray-900 pt-4 manrope">5 Creative Cupboards for Kids&#39; Bedrooms That You Should Check Right Now</h2>
+                            <p className="manrope-medium">Before we jump into our top 5 cupboard ideas, a quick little PSA: think about your kid&#39;s age and what lights them up. (Don&#39;t worry, we&#39;ve got something for every little personality.) And… make sure the design vibes with the room and actually works as storage (because no one wants a cute cupboard that&#39;s impossible to use).</p>
+
+                            <h3 className="text-xl font-semibold text-gray-900 pt-4 manrope">Interactive Chalkboard & Magnet Cupboard</h3>
+                            <p className="manrope-medium">Meet the cupboard that doubles as a canvas. This one&#39;s for the little doodlers and daydreamers. It is an interactive chalkboard & magnet cupboard that is turned into storage where kids can draw, write, or proudly stick up their latest masterpiece.</p>
+                            <p className="manrope-medium">Just ask your designer to coat one side of the door with chalkboard paint and line the inside with magnetic panels. Easy, clever, and so much fun. And honestly, this one&#39;s our favorite because it keeps all that creative energy off your actual walls (thank us later).</p>
+                            <p className="manrope-medium">It is perfect for preschoolers or any kid who loves to express themselves without limits or crayons on furniture.</p>
+                            <div className="bg-gray-50 p-6 rounded-lg mt-4">
+                                <h4 className="text-lg font-semibold text-gray-900 mb-3 manrope">Parent Tip:</h4>
+                                <p className="manrope-medium">Keep a small basket of chalk and magnets nearby.</p>
+                            </div>
+                            
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img1.png" alt="Interactive chalkboard cupboard" className="w-full h-auto object-cover" />
+                                </div>
+                            </div>
+
+                            <h3 className="text-xl font-semibold text-gray-900 pt-6 manrope">Puzzle-Solving Wardrobe</h3>
+                            <p className="manrope-medium">Who knew a cupboard could double as a puzzle? (Well, now you do!) If you love the idea of mixing storage with a little brain-boosting fun, the sliding puzzle door cupboard is a must-see. Just ask your designer to add sliding panels that move in sections.</p>
+                            <p className="manrope-medium">And hey, if a full puzzle design isn&#39;t possible, you can still get playful with panels in different colors or shapes. It still feels interactive and fun.</p>
+                            <p className="manrope-medium">This one&#39;s perfect for slightly older kids (around 5–12) who love a little challenge and brain-teasing action.</p>
+                            <div className="bg-gray-50 p-6 rounded-lg mt-4">
+                                <h4 className="text-lg font-semibold text-gray-900 mb-3 manrope">Parent Tip:</h4>
+                                <p className="manrope-medium">Make sure the sliding panels move smoothly and safely, as those little fingers matter!</p>
+                            </div>
+                            
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img2.jpg" alt="Puzzle-solving wardrobe" className="w-full h-auto object-cover" />
+                                </div>
+                            </div>
+
+                            <h3 className="text-xl font-semibold text-gray-900 pt-6 manrope">Rocket Ship Launch Cupboard</h3>
+                            <p className="manrope-medium">Prepare for lift-off! Every space-loving kid dreams of a rocket, so why not make their cupboard one? Ask your designer to turn the wardrobe into a rocket shape with LED &#34;engine&#34; compartments and plenty of drawers for clothes, books, or toys.</p>
+                            <p className="manrope-medium">You can even add hinged panels or sliding doors that &#34;lift off&#34; when opened, making it feel like a real mission control moment every time they get dressed. Paint it in fun colors, add decals, or even add little space stickers inside the drawers for that extra interstellar touch.</p>
+
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img3.png" alt="Rocket ship cupboard" className="w-full h-auto object-cover" />
+                                </div>
+                            </div>
+
+                            <p className="manrope-medium">This one&#39;s perfect for imaginative kids or any little astronaut who&#39;s obsessed with space or superheroes.</p>
+                            <div className="bg-gray-50 p-6 rounded-lg mt-4">
+                                <h4 className="text-lg font-semibold text-gray-900 mb-3 manrope">Parent Tip:</h4>
+                                <p className="manrope-medium">Go for a sturdy hinge or sliding mechanism, especially if little ones are really enthusiastic about &#34;launching&#34; their rocket multiple times a day.</p>
+                            </div>
+
+                            <h3 className="text-xl font-semibold text-gray-900 pt-6 manrope">Narnia-Inspired Cupboard</h3>
+                            <p className="manrope-medium">Okay, real talk: who doesn&#39;t love Narnia? We can&#39;t exactly step into a magical world of Aslan… but we can make your kid&#39;s cupboard feel like one (minus the freezing snow, thankfully).</p>
+
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img4.png" alt="Narnia-inspired cupboard" className="w-full h-auto object-cover" />
+                                </div>
+                            </div>
+
+                            <p className="manrope-medium">Add hidden compartments behind doors or panels to turn storage into a secret world your little explorer will actually want to use. It is perfect for story-loving kids (aka tiny detectives) or someone who is just a fan of Narnia. And yes, it can totally double as a treasure hunt game. Who knows what&#39;s behind the next panel? A book, a favorite toy, or maybe… a secret snack stash.</p>
+                            <div className="bg-gray-50 p-6 rounded-lg mt-4">
+                                <h4 className="text-lg font-semibold text-gray-900 mb-3 manrope">Parent Tip:</h4>
+                                <p className="manrope-medium">Add handles or carvings like lion heads, little trees, or something magical to really make it a fantasy world.</p>
+                            </div>
+
+                            <h3 className="text-xl font-semibold text-gray-900 pt-6 manrope">Galaxy Glow Wardrobe</h3>
+                            <p className="manrope-medium">Okay, confession: this one might actually be our favorite. For galaxy lovers and little astronauts, the Galaxy Glow Wardrobe is basically a dream come true. You can go with deep navy doors with glow-in-the-dark stars and planets.</p>
+                           
+                            <div className="flex justify-center">
+                                <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
+                                    <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img5.png" alt="Galaxy glow wardrobe" className="w-full h-auto object-cover" />
+                                </div>
+                            </div>
+                           
+                            <p className="manrope-medium">It&#39;s not just about looks. This design encourages imaginative play and doubles as a total statement piece for the room. On top of that, it makes storage visually appealing, so kids actually want to use it, and it keeps the room neat while feeding their creativity.</p>
+                            <div className="bg-gray-50 p-6 rounded-lg mt-4">
+                                <h4 className="text-lg font-semibold text-gray-900 mb-3 manrope">Parent Tip:</h4>
+                                <p className="manrope-medium">Pair LED night lights with the glow-in-the-dark stars for the galaxy vibe.</p>
+                            </div>
+
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Final Thoughts</h2>
+                            <p className="manrope-medium">Kids&#39; cupboards in 2026 aren&#39;t just furniture. They&#39;re made for engagement, learning, and independence. When storage becomes interactive, magical, or playful, kids are more likely to use the cupboard correctly and develop problem-solving and organizational skills.</p>
+                            <p className="manrope-medium">Be it a rocket ship that lifts off, a Narnia-inspired secret hideout, or a glow-in-the-dark galaxy wardrobe, these designs make storing a fun part of the day.</p>
+                            <p className="manrope-medium">Ready to bring some fun and functionality to your kid&#39;s bedroom? Contact <span className="font-black text-black">HUB Interior</span>, the <span className="font-black text-black">best interior designers in Bangalore</span>, and let&#39;s create a space your kids will love!</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <Footer />
+        </div>
+    );
+}

@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div>
 
-      <Herosection/>
+      <Herosection/> 
       <Section1/>
       <Section2/>
       <Section3/>

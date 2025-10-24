@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Herosection from "../Components/Blog/Herosection";
 import Section2 from "../Components/Blog/Section2";
 import HomeShowcase from "../Components/Blog/BlogSection";
-import { Footer } from "../Components/Footer";
+import Footer from "../Components/Home/Footer";
 import { useRouter } from "next/navigation";
 
 // Post type definition
@@ -25,15 +25,15 @@ const defaultPosts: Post[] = [
     date: "Sep 2025",
     readTime: "10 mins read",
     img: "/reelsiam.png",
-    path: "/Blog/1/Blog1",
+    path: "/Blog/Blog1",
   },
   {
     id: 2,
     title: "Inside Mr. & Mrs. Rijul Azizam's Home, Designed by Hub Interior",
-    date: "Aug 2025",
+    date: "Sep 2025",
     readTime: "8 mins read",
     img: "/blog2title.png",
-    path: "/Blog/2/Blog2",
+    path: "/Blog/Blog2",
   },
   {
     id: 3,
@@ -41,53 +41,55 @@ const defaultPosts: Post[] = [
     date: "Sep 2025",
     readTime: "6 mins read",
     img: "/blog3title.jpg",
-    path: "/Blog/3/Blog3",
+    path: "/Blog/Blog3",
   },
   {
     id: 4,
-    title: "Luxury Villa Interior Design – The Royal Tulip Project in Bengaluru by HUB Interior",
-    date: "August 1, 2025",
+    title: "Luxury Villa Interior Design ",
+    date: "Sep 1, 2025",
     readTime: "8 mins read",
     img: "/blog4title.jpg",
-    path: "/Blog/4/Blog4",
+    path: "/Blog/Blog4",
   },
   {
     id: 5,
     title: "Interior Design Bangalore: How HUB Interior Crafted Serenity Heights Apartment into a Living Masterpiece",
-    date: "August 3, 2025",
+    date: "Sep 3, 2025",
     readTime: "15 mins read",
     img: "/blog5title.jpg",
-    path: "/Blog/5/Blog5",
+    path: "/Blog/Blog5",
   },
   {
     id: 6,
     title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
-    date: "August 5, 2025",
+    date: "Sep 5, 2025",
     readTime: "12 mins read",
-    img: "/Ukitchen.png",
-    path: "/Blog/6/Blog6",
+    img: "/blog6img2.jpg",
+    path: "/Blog/Blog6",
   },
   {
     id: 7,
     title: "Sustainable Interior Design Practices",
-    date: "August 7, 2025",
+    date: "Sep 7, 2025",
     readTime: "14 mins read",
-    img: "/bn.jpg",
-    path: "/Blog/7/Blog7",
+    img: "/blog2img4.png",
+    path: "/Blog/Blog7",
   },
   {
     id: 8,
     title: "Home Office Design Ideas",
     date: "August 9, 2025",
     readTime: "11 mins read",
-    img: "/bn.jpg",
+    img: "/blog4title.jpg",
+    path: "/Blog/Blog4"
   },
   {
     id: 9,
     title: "Lighting Design for Modern Homes",
     date: "August 11, 2025",
     readTime: "9 mins read",
-    img: "/bn.jpg",
+    img: "/blog5title.jpg",
+    path: "/Blog/Blog5"
   },
   {
     id: 10,
@@ -95,19 +97,13 @@ const defaultPosts: Post[] = [
     date: "August 13, 2025",
     readTime: "13 mins read",
     img: "/bn.jpg",
+    path: "/Blog/Blog8"
   },
   {
     id: 11,
     title: "Wall Decor Ideas and Trends",
     date: "August 15, 2025",
     readTime: "7 mins read",
-    img: "/bn.jpg",
-  },
-  {
-    id: 12,
-    title: "Flooring Options for Every Budget",
-    date: "August 17, 2025",
-    readTime: "16 mins read",
     img: "/bn.jpg",
   },
 ];
@@ -173,7 +169,7 @@ export default function Blog() {
     <div>
       <Herosection />
       <Section2 posts={posts} onReadMore={handleReadMore} />
-      <HomeShowcase posts={posts} />
+      <HomeShowcase posts={posts}/>
       <Footer />
     </div>
   );

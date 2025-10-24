@@ -5,19 +5,19 @@ import Section4 from "../Components/Life@Hub/Section4";
 import Section5 from "../Components/Life@Hub/Section5";
 import Section6 from "../Components/Life@Hub/Section6";
 import Section7 from "../Components/Life@Hub/Section7";
-import Footer from "../Components/AboutUs/Footer";
+import Footer from "../Components/Home/Footer";
 
 export default function LifeAtHub() {
     return (
         <div>
             <ContactHeader />
-            <Section2/>
-            <Section3/>
-            <Section4/>
-            <Section5/>
-            <Section6/>
-            <Section7/>
-            <Footer/>
+            <Section2 />
+            <Section3 />
+            <Section4 />
+            <Section5 />
+            <Section6 />
+            <Section7 />
+            <Footer />
         </div>
     )
 }
