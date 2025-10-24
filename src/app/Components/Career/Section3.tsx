@@ -79,7 +79,7 @@ const JoinUsPage: React.FC = () => {
                 required
                 pattern="[0-9]{10,}"
                 className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-400"
-                placeholder="Your Phone"
+                placeholdbber="Your Phone"
               />
             </div>
           </div>
