@@ -128,20 +128,20 @@ const Home: React.FC = () => {
     }
   };
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // const [currentSlide, setCurrentSlide] = useState(0);
 
   // Auto-slide effect for mobile carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 3); // Cycle through 3 images
-    }, 4000); // Change slide every 4 seconds
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentSlide((prev) => (prev + 1) % 3); // Cycle through 3 images
+  //   }, 4000); // Change slide every 4 seconds
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  const mobileTexts = [
-    "Become a Franchisee!"
-  ];
+  // const mobileTexts = [
+  //   "Become a Franchisee!"
+  // ];
 
   return (
     <>
