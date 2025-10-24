@@ -49,9 +49,9 @@ export default function Blog7() {
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Bed Placement Matters</h3>
                         <p className="manrope-medium">Where you place your bed shapes the entire room. Avoid pushing it into a corner, it can make the space feel off-balance. Ideally, center the bed on the longest wall, leaving at least three feet around it for easy movement. For smaller bedrooms, a low bed frame can make the ceiling feel higher and the room more spacious. If your bed is near a window, pick a lower headboard or a material like rattan that lets light through.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Tackling Awkward Shapes</h3>
-                        <p className="manrope-medium">Slanted ceilings or alcoves don't have to be a problem. Use full-height areas for beds and turn recessed spots into cozy nooks, desks, or shelving.</p>
+                        <p className="manrope-medium">Slanted ceilings or alcoves don&#39;t have to be a problem. Use full-height areas for beds and turn recessed spots into cozy nooks, desks, or shelving.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Avoid Dead Corners</h3>
-                        <p className="manrope-medium">Corners don't have to go to waste. L-shaped or modular fittings, corner shelves, floor lamps, or custom storage can turn them into functional areas.</p>
+                        <p className="manrope-medium">Corners don&#39;t have to go to waste. L-shaped or modular fittings, corner shelves, floor lamps, or custom storage can turn them into functional areas.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Better Flow in Small Rooms</h3>
                         <p className="manrope-medium">Prioritise pathways and choose material that fits. Multi-functional pieces such as beds with storage or wall-mounted shelves keep things organised. Vertical storage and minimal, high-quality furnishing make even compact bedroom designs feel open and effortless.</p>
                         <div className="flex justify-center">
@@ -62,7 +62,7 @@ export default function Blog7() {
                         <h2 className="text-2xl font-bold mt-8 mb-4 manrope">2. Furniture Choices That Make or Break Your Luxury Bedroom Interiors</h2>
                         <p className="manrope-medium">The right pieces can turn a bedroom from cramped to comfortable. Poor choices, on the other hand, can make even large rooms feel cluttered and impractical, even in contemporary bedroom interiors or modern home designs.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Pick the Right Bed Size</h3>
-                        <p className="manrope-medium">Your bed should be the room's focal point without taking over. Leave at least three feet around it for movement. Always check doorways before buying, and consider the room's purpose as multipurpose spaces often need smaller beds. King-size beds suit master bedrooms, while queen or double beds are ideal for smaller spaces.</p>
+                        <p className="manrope-medium">Your bed should be the room&#39;s focal point without taking over. Leave at least three feet around it for movement. Always check doorways before buying, and consider the room's purpose as multipurpose spaces often need smaller beds. King-size beds suit master bedrooms, while queen or double beds are ideal for smaller spaces.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Rethink Bedside Tables</h3>
                         <p className="manrope-medium">Tight spaces often make nightstands tricky. Wall-mounted floating shelves or headboards with built-in storage save space. Slim console tables or repurposed bar carts provide surfaces without bulk.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Smart Wardrobe Solutions</h3>
@@ -76,7 +76,7 @@ export default function Blog7() {
                             </div>
                         </div>
                         <h2 className="text-2xl font-bold mt-8 mb-4 manrope">3. Common Bedroom Lighting & Ceiling Mistakes</h2>
-                        <p className="manrope-medium">Lighting can completely change a bedroom's mood, but even well-planned small bedroom interiors in Bengaluru can feel off without the right approach.</p>
+                        <p className="manrope-medium">Lighting can completely change a bedroom&#39;s mood, but even well-planned small bedroom interiors in Bengaluru can feel off without the right approach.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Ceiling Height Tips</h3>
                         <p className="manrope-medium">For ceilings under 8 feet, choose fixtures that sit close to the ceiling, like flush-mounted LEDs or slim pendants. Light-colored ceilings reflect more light, making the room feel brighter and larger.</p>
                         <h3 className="text-xl font-semibold mt-6 mb-2 manrope">Avoid Harsh Lights</h3>

@@ -29,7 +29,7 @@ export default function Blog16() {
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <article className="bg-white rounded-2xl shadow-lg overflow-hidden">
                     <div className="p-8">
-                        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 manrope">Home Interior Design in Bengaluru: Anamika's Project Completed Before Deadline</h1>
+                        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 manrope">Home Interior Design in Bengaluru: Anamika&#39;s Project Completed Before Deadline</h1>
 
                         <div className="flex justify-between items-center text-gray-500 text-sm mb-6 manrope-medium">
                             <span>Blog • 10 mins read</span>
@@ -38,12 +38,12 @@ export default function Blog16() {
 
                         <div className="prose prose-lg max-w-none">
                             <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">Creating a home that blends functionality, style, and comfort is a challenge many homeowners face. For Mrs. Anamika, her house in Bengaluru needed a complete interior setup that would accommodate modern living while keeping every corner organised and accessible. With a tight timeline in mind, <span className="font-black text-black">HUB Interior</span> took on the task and delivered a seamless <span className="font-black text-black">home interior design Bengaluru</span> project that exceeded expectations.</p>
-                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">From the beginning, the focus was clear: provide a well-planned space, with <span className="font-black text-black">residential interior design solutions</span> that cater to both daily living and aesthetic appeal. Our approach was practical, modern, and fully tailored to the property's layout, ensuring every area had its purpose while looking elegant. Let's take a closer look to see how it all came together!</p>
+                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">From the beginning, the focus was clear: provide a well-planned space, with <span className="font-black text-black">residential interior design solutions</span> that cater to both daily living and aesthetic appeal. Our approach was practical, modern, and fully tailored to the property&#39;s layout, ensuring every area had its purpose while looking elegant. Let&#39;s take a closer look to see how it all came together!</p>
                         </div>
 
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                             <h2 className="text-2xl font-bold text-gray-900 pt-4 manrope">Understanding the Project Scope</h2>
-                            <p className="manrope-medium">Mrs. Anamika's home required a comprehensive <span className="font-black text-black">home makeover Bengaluru</span> that included:</p>
+                            <p className="manrope-medium">Mrs. Anamika&#39;s home required a comprehensive <span className="font-black text-black">home makeover Bengaluru</span> that included:</p>
                             <ul className="space-y-2 manrope-medium">
                                 <li>L-shaped modular kitchen with ample storage</li>
                                 <li>Glass front kitchen cabinets for an open and airy look</li>
@@ -66,7 +66,7 @@ export default function Blog16() {
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Bedroom Wardrobes for Smart Storage</h2>
                             <p className="manrope-medium">In both bedrooms, we designed wardrobes that made storage effortless while maintaining a sleek look.</p>
-                            <p className="manrope-medium"><strong>Key features:</strong> Wardrobes were built to suit the room dimensions perfectly. Smooth, modern finishes added to the room's contemporary style. Internal compartments were arranged to provide easy access to clothes and daily essentials.</p>
+                            <p className="manrope-medium"><strong>Key features:</strong> Wardrobes were built to suit the room dimensions perfectly. Smooth, modern finishes added to the room&#39;s contemporary style. Internal compartments were arranged to provide easy access to clothes and daily essentials.</p>
                             <p className="manrope-medium">This careful planning ensured that <span className="font-black text-black">modern home interior design</span> was reflected not only in visual appeal but also in everyday usability. Every wardrobe installation was done to precision, meeting the highest standards of <span className="font-black text-black">residential interior design in Bengaluru</span>.</p>
                             
                             <div className="flex flex-col md:flex-row justify-center items-center gap-4 my-3">
@@ -79,7 +79,7 @@ export default function Blog16() {
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Living Room Interiors</h2>
-                            <p className="manrope-medium">The living room and TV unit were equally important in Mrs. Anamika's home. The focus was on creating a space that was organised, uncluttered, and visually cohesive. We installed storage cabinets that provided both functionality and style.</p>
+                            <p className="manrope-medium">The living room and TV unit were equally important in Mrs. Anamika&#39;s home. The focus was on creating a space that was organised, uncluttered, and visually cohesive. We installed storage cabinets that provided both functionality and style.</p>
                             <p className="manrope-medium"><strong>Highlights of the living room interiors included:</strong> Integrated storage units for books, electronics, and decorative items. A TV unit with storage to hide cables and devices neatly. Uniform finishes that aligned with the rest of the home. Strategic placement to enhance the flow of the room.</p>
                             <p className="manrope-medium">These additions created a living space that was practical and elegant, contributing to a <span className="font-black text-black">home renovation service</span> standard that balanced modernity with comfort.</p>
                             
@@ -100,19 +100,19 @@ export default function Blog16() {
                                 <li>Coordinated timelines for different work segments</li>
                                 <li>Regular updates and feedback sessions with the client</li>
                             </ul>
-                            <p className="manrope-medium">This approach ensured that Mrs. Anamika's house was ready on time without compromising quality. It reflects our team dedication to delivering <span className="font-black text-black">custom home interior solutions Bengaluru</span> that meet every client's needs.</p>
+                            <p className="manrope-medium">This approach ensured that Mrs. Anamika&#39;s house was ready on time without compromising quality. It reflects our team dedication to delivering <span className="font-black text-black">custom home interior solutions Bengaluru</span> that meet every client&#39;s needs.</p>
                         
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Why HUB Interior Stands Out</h2>
-                            <p className="manrope-medium">Our work goes beyond just installing furniture. The team's focus on planning, precision, and client experience sets them apart as one of the leading <span className="font-black text-black">interior designers in Bengaluru</span>.</p>
+                            <p className="manrope-medium">Our work goes beyond just installing furniture. The team&#39;s focus on planning, precision, and client experience sets them apart as one of the leading <span className="font-black text-black">interior designers in Bengaluru</span>.</p>
                             <p className="manrope-medium"><strong>Key strengths:</strong> Every installation is checked for alignment and finish quality. Materials and finishes are chosen to match <span className="font-black text-black">modern home aesthetics</span>. Interiors are designed to be functional for daily use. Work is completed efficiently without unnecessary delays.</p>
                             <p className="manrope-medium">The combination of these factors made this <span className="font-black text-black">home interior design Bengaluru</span> project a success and highlights our ability to handle complex home setups with ease.</p>
                         
-                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Key Takeaways from Mrs. Anamika's Project</h2>
+                            <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Key Takeaways from Mrs. Anamika&#39;s Project</h2>
                             <p className="manrope-medium"><strong>Key takeaways:</strong> Thoughtful planning ensures every corner serves a purpose. High-quality kitchen and storage interiors improve daily living. Wardrobes and living room units provide organisation without clutter. Modern interior finishes enhance the overall aesthetic of the home. Timely project completion ensures minimal disruption for the homeowner.</p>
                             <p className="manrope-medium">These elements collectively demonstrate why professional <span className="font-black text-black">home renovation services</span> are crucial for achieving both style and practicality in residential spaces.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Conclusion</h2>
-                            <p className="manrope-medium">Mrs. Anamika's home is now a perfect example of <span className="font-black text-black">modern home interior design</span> done right. Every detail, from the L-shaped kitchen to the bedroom wardrobes and living room storage units, was carefully planned and executed by <span className="font-black text-black">HUB Interior</span>. The project showcases the company's ability to provide <span className="font-black text-black">custom home interior solutions Bengaluru</span> while adhering to deadlines and maintaining quality standards.</p>
+                            <p className="manrope-medium">Mrs. Anamika&#39;s home is now a perfect example of <span className="font-black text-black">modern home interior design</span> done right. Every detail, from the L-shaped kitchen to the bedroom wardrobes and living room storage units, was carefully planned and executed by <span className="font-black text-black">HUB Interior</span>. The project showcases the company's ability to provide <span className="font-black text-black">custom home interior solutions Bengaluru</span> while adhering to deadlines and maintaining quality standards.</p>
                             <p className="manrope-medium">So, are you ready to make your home work as beautiful as it looks? We craft interiors that fit your life, not the other way around. From kitchens that make cooking effortless to bedrooms and living spaces designed for daily ease, every detail is planned with you in mind. With over 5,000 projects delivered, a 10-year warranty, and a fast-track promise, we handle everything so you can enjoy your home without stress. Let's create interiors that feel personal, practical, and just right for you.</p>
                         </div>
                     </div>

@@ -37,7 +37,7 @@ export default function Blog17() {
                         </div>
 
                         <div className="prose prose-lg max-w-none">
-                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">Working on Kishan Prasad's project was a challenge we gladly accepted. He wanted a <span className="font-black text-black">modern kitchen interior design</span> ready in just three days. For us at <span className="font-black text-black">HUB Interior</span>, it was an opportunity to show how careful planning, experience, and attention to detail can make a fast-track project successful without compromising quality.</p>
+                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">Working on Kishan Prasad&#39;s project was a challenge we gladly accepted. He wanted a <span className="font-black text-black">modern kitchen interior design</span> ready in just three days. For us at <span className="font-black text-black">HUB Interior</span>, it was an opportunity to show how careful planning, experience, and attention to detail can make a fast-track project successful without compromising quality.</p>
                             <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">We focus on delivering <span className="font-black text-black">home interior design Bengaluru</span> solutions that are not only stylish but also practical for everyday life. This project allowed us to apply our expertise in <span className="font-black text-black">modular kitchen interiors</span> while keeping timelines tight and efficiency high.</p>
                         </div>
 
@@ -59,7 +59,7 @@ export default function Blog17() {
                             </div>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Planning for Speed Without Compromising Quality</h2>
-                            <p className="manrope-medium">Completing a full kitchen in just three days requires strategic planning. We start by assessing the space, understanding the homeowner's requirements, and creating a detailed schedule. Our process included:</p>
+                            <p className="manrope-medium">Completing a full kitchen in just three days requires strategic planning. We start by assessing the space, understanding the homeowner&#39;s requirements, and creating a detailed schedule. Our process included:</p>
                             <ul className="space-y-2 manrope-medium">
                                 <li>Pre-approved designs ready for installation</li>
                                 <li>Materials sourced and prepared in advance to avoid delays</li>
@@ -76,12 +76,12 @@ export default function Blog17() {
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Day Two: Countertops and Work Surfaces</h2>
                             <p className="manrope-medium">The second day was dedicated to installing worktops and countertops. Here, precision mattered the most. Every measurement had to be exact to ensure the workflow remained smooth.</p>
                             <p className="manrope-medium"><strong>Key features:</strong> Durable and easy-to-clean surfaces. Countertops designed to handle intensive daily cooking. Layout arranged to allow multiple people to work comfortably.</p>
-                            <p className="manrope-medium">These surfaces were carefully chosen not just for appearance but also for longevity. A well-installed countertop enhances the kitchen's usability while giving it a modern look.</p>
+                            <p className="manrope-medium">These surfaces were carefully chosen not just for appearance but also for longevity. A well-installed countertop enhances the kitchen&#39;s usability while giving it a modern look.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Day Three: Finishing Touches</h2>
                             <p className="manrope-medium">The final day focused on details that complete the kitchen. Handles, hinges, lighting, and accessories were installed, bringing the design together.</p>
                             <p className="manrope-medium"><strong>Key features:</strong> Integrated storage for appliances and utensils. Coordinated finishes to match the overall kitchen design. Proper lighting for cooking, preparation, and highlighting key areas.</p>
-                            <p className="manrope-medium">At the end of day three, Mr. Kishan's kitchen was fully functional and ready for use. It was a proud moment for us because completing a full <span className="font-black text-black">residential interior design</span> project in just three days is not easy, and it was done with precision.</p>
+                            <p className="manrope-medium">At the end of day three, Mr. Kishan&#39;s kitchen was fully functional and ready for use. It was a proud moment for us because completing a full <span className="font-black text-black">residential interior design</span> project in just three days is not easy, and it was done with precision.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Modular Kitchen Interiors for Practical Living</h2>
                             <p className="manrope-medium">Our <span className="font-black text-black">modular kitchen interiors</span> are designed to make daily life easier. Each cabinet and drawer serves a purpose, reducing clutter and helping the homeowner stay organised.</p>
@@ -89,7 +89,7 @@ export default function Blog17() {
                             <p className="manrope-medium">By designing with practicality in mind, we ensure that homeowners can enjoy a kitchen that feels effortless to use.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Materials and Finishes That Make a Difference</h2>
-                            <p className="manrope-medium">Even on fast-track projects, we prioritise material quality. For Mr. Kishan's kitchen, we selected:</p>
+                            <p className="manrope-medium">Even on fast-track projects, we prioritise material quality. For Mr. Kishan&#39;s kitchen, we selected:</p>
                             <ul className="space-y-2 manrope-medium">
                                 <li>Durable and scratch-resistant surfaces</li>
                                 <li>Easy-to-maintain finishes</li>
@@ -106,7 +106,7 @@ export default function Blog17() {
                                 <li>Timely project completion even on ambitious schedules</li>
                                 <li>Expert installation for flawless execution</li>
                             </ul>
-                            <p className="manrope-medium">Working with specialists ensures that even fast-paced projects like Mr. Kishan's kitchen are completed smoothly, efficiently, and without stress.</p>
+                            <p className="manrope-medium">Working with specialists ensures that even fast-paced projects like Mr. Kishan&#39;s kitchen are completed smoothly, efficiently, and without stress.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Key Features That Set This Kitchen Apart</h2>
                             <p className="manrope-medium"><strong>Key features:</strong> Full modular kitchen with organised storage. Glass front and slab cabinets for style and easy maintenance. Countertops optimised for preparation and cooking. Smooth sliding drawers and efficient layouts. Lighting that enhances both function and style.</p>
@@ -121,10 +121,10 @@ export default function Blog17() {
                                 <li>High-quality finishes maintain aesthetic appeal</li>
                                 <li>Regular quality checks guarantee a functional kitchen</li>
                             </ul>
-                            <p className="manrope-medium">Even with tight timelines, we make sure the end result meets our standards and the homeowner's expectations.</p>
+                            <p className="manrope-medium">Even with tight timelines, we make sure the end result meets our standards and the homeowner&#39;s expectations.</p>
                     
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Conclusion</h2>
-                            <p className="manrope-medium">Mr. Kishan's kitchen showcases what skill, planning, and precision can achieve. Every cabinet, drawer, and countertop enhances usability, storage, and modern appeal. We create interiors that simplify daily life, from <span className="font-black text-black">modular kitchens</span> to full home makeovers. With experience and fast-track expertise, we deliver functional, stylish spaces ready to enjoy from day one, tailored perfectly to your needs.</p>
+                            <p className="manrope-medium">Mr. Kishan&#39;s kitchen showcases what skill, planning, and precision can achieve. Every cabinet, drawer, and countertop enhances usability, storage, and modern appeal. We create interiors that simplify daily life, from <span className="font-black text-black">modular kitchens</span> to full home makeovers. With experience and fast-track expertise, we deliver functional, stylish spaces ready to enjoy from day one, tailored perfectly to your needs.</p>
                         </div>
                     </div>
                 </article>

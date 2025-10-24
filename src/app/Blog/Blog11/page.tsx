@@ -37,9 +37,9 @@ export default function Blog11() {
                         </div>
 
                         <div className="prose prose-lg max-w-none">
-                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">Kitchen renovations are fun, exciting, and also… a slight bit terrifying. You can have the fanciest countertops and the sturdiest cabinets, but if you're constantly bumping elbows or circling around a tiny island, even the best kitchen can feel like a nightmare.</p>
+                            <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">Kitchen renovations are fun, exciting, and also… a slight bit terrifying. You can have the fanciest countertops and the sturdiest cabinets, but if you&#39;re constantly bumping elbows or circling around a tiny island, even the best kitchen can feel like a nightmare.</p>
                             <p className="text-gray-700 leading-relaxed mb-4 manrope-medium">The reason why we at <span className="font-black text-black">HUB Interior</span> understand the need to put the customer first before going on with the kitchen layout.</p>
-                            <p className="text-gray-700 leading-relaxed mb-8 manrope-medium">Today, we're diving into three of the most popular kitchen setups: L-shaped, U-shaped, and island kitchens. However, this is not just your normal guide! We'll break down who they're for, the perks, the quirks, and more. Spoiler alert: each one has its own personality (yes, kitchens totally have personalities).</p>
+                            <p className="text-gray-700 leading-relaxed mb-8 manrope-medium">Today, we&#39;re diving into three of the most popular kitchen setups: L-shaped, U-shaped, and island kitchens. However, this is not just your normal guide! We&#39;ll break down who they&#39;re for, the perks, the quirks, and more. Spoiler alert: each one has its own personality (yes, kitchens totally have personalities).</p>
                         </div>
 
                         <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -72,11 +72,11 @@ export default function Blog11() {
                                     </li>
                                 </ul>
                             </div>
-                            <p className="manrope-medium"><strong>Who should avoid it?</strong> In case you have a large family or dream of a central island (sorry, island lovers, L-shapes are all about the side hustle), you should avoid it. Don't be disappointed. We have listed down other layouts below, through which you can definitely find your perfect kitchen layout.</p>
+                            <p className="manrope-medium"><strong>Who should avoid it?</strong> In case you have a large family or dream of a central island (sorry, island lovers, L-shapes are all about the side hustle), you should avoid it. Don&#39;t be disappointed. We have listed down other layouts below, through which you can definitely find your perfect kitchen layout.</p>
                          
 
                             <h3 className="text-xl font-semibold text-gray-900 pt-6 manrope">U-Shaped Kitchen Layout</h3>
-                            <p className="manrope-medium">U-shaped kitchens are all about maximum storage, maximum efficiency, and keeping everything within arm's reach. If you have a medium to large family to cook with or for, or your family loves to cook together, go for this one! Also, super organized people, you're going to love this one.</p>
+                            <p className="manrope-medium">U-shaped kitchens are all about maximum storage, maximum efficiency, and keeping everything within arm&#39;s reach. If you have a medium to large family to cook with or for, or your family loves to cook together, go for this one! Also, super organized people, you&#39;re going to love this one.</p>
                             <p className="manrope-medium">This layout comes with lots of counter and storage space, along with a great work triangle to work in. You can keep your appliances, breakfast area, separate chopping area, mini coffee station, and washing area, keeping the kitchen organized.</p>
                             
                             <div className="flex justify-center">
@@ -94,7 +94,7 @@ export default function Blog11() {
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
-                                        <span className="font-semibold text-black">Traffic flow can get tricky if the "U" is narrow (kids, pets, spouses…everybody has an opinion).</span>
+                                        <span className="font-semibold text-black">Traffic flow can get tricky if the &#34;U&#34; is narrow (kids, pets, spouses…everybody has an opinion).</span>
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <div className="w-2 h-2 mt-2 bg-gray-700 rounded-full flex-shrink-0"></div>
@@ -105,8 +105,8 @@ export default function Blog11() {
                             <p className="manrope-medium"><strong>Who should avoid it?</strong> If you have a tiny kitchen or you are an open-plan lover, this might not be for you!</p>
                             
                             <h3 className="text-xl font-semibold text-gray-900 pt-6 manrope">Island Kitchen Layout</h3>
-                            <p className="manrope-medium">Ah, the island kitchen: the "showstopper" of layouts. Basically, it's the ultimate multitasker…for you and your guests (because everyone loves hovering while someone else cooks, right?).</p>
-                            <p className="manrope-medium">An island layout is perfect for a large kitchen space where you have tons of guests coming over each weekend or have a huge family to cook for with multiple helpers. This layout provides extra counter and storage space, which also works as a dining or prep area. You can also put a sink or stove on it if you're feeling fancy (and honestly, who wouldn't?).</p>
+                            <p className="manrope-medium">Ah, the island kitchen: the &#34;showstopper&#34; of layouts. Basically, it&#39;s the ultimate multitasker…for you and your guests (because everyone loves hovering while someone else cooks, right?).</p>
+                            <p className="manrope-medium">An island layout is perfect for a large kitchen space where you have tons of guests coming over each weekend or have a huge family to cook for with multiple helpers. This layout provides extra counter and storage space, which also works as a dining or prep area. You can also put a sink or stove on it if you&#39;re feeling fancy (and honestly, who wouldn&#39;t?).</p>
                             
                             <div className="flex justify-center">
                                 <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
@@ -131,16 +131,16 @@ export default function Blog11() {
                                     </li>
                                 </ul>
                             </div>
-                            <p className="manrope-medium"><strong>Who should avoid it?</strong> If you're on a limited budget or have a small kitchen, skipping the island kitchen is a good decision. Instead, you can go for L or U depending on your needs.</p>
+                            <p className="manrope-medium"><strong>Who should avoid it?</strong> If you&#39;re on a limited budget or have a small kitchen, skipping the island kitchen is a good decision. Instead, you can go for L or U depending on your needs.</p>
                             <p className="manrope-medium">Island kitchens are all about versatility, style, and entertainment. If you love hosting, cooking with friends, or just want that centerpiece kitchen everyone wants to hang out in, this is the one.</p>
                             
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Still confused?</h2>
-                            <p className="manrope-medium">Being confused is totally okay, and honestly, you're not alone. After all, this is a very important decision for your house. Here's what you can do to remove this confusion: Grab a tape measure, and walk through your kitchen and measure it. Now, compare it with the three layouts and check out our "things to think about" pointers, and you'll instantly know what works.</p>
-                            <p className="manrope-medium">An additional tip: think about your family, entertaining habits, and whether you'll ever need extra prep space to know better which layout fits your needs.</p>
+                            <p className="manrope-medium">Being confused is totally okay, and honestly, you&#39;re not alone. After all, this is a very important decision for your house. Here&#39;s what you can do to remove this confusion: Grab a tape measure, and walk through your kitchen and measure it. Now, compare it with the three layouts and check out our &#34;things to think about&#34; pointers, and you&#39;ll instantly know what works.</p>
+                            <p className="manrope-medium">An additional tip: think about your family, entertaining habits, and whether you&#39;ll ever need extra prep space to know better which layout fits your needs.</p>
 
                             <h2 className="text-2xl font-bold text-gray-900 pt-6 manrope">Wrapping Up</h2>
-                            <p className="manrope-medium">Here's the tea: picking a kitchen layout isn't just about what looks cute on Instagram. It's about how you cook, who cooks with you, your budget, and how much space you really need.</p>
-                            <p className="manrope-medium">And if you're still confused, contact <span className="font-black text-black">HUB Interior</span> today to get expert advice on which layout fits your space the best. Now that you know the secret to choosing the best layout, tell us, which kitchen style are you falling for?</p>
+                            <p className="manrope-medium">Here&#39;s the tea: picking a kitchen layout isn&#39;t just about what looks cute on Instagram. It&#39;s about how you cook, who cooks with you, your budget, and how much space you really need.</p>
+                            <p className="manrope-medium">And if you&#39;re still confused, contact <span className="font-black text-black">HUB Interior</span> today to get expert advice on which layout fits your space the best. Now that you know the secret to choosing the best layout, tell us, which kitchen style are you falling for?</p>
                             <p className="manrope-medium">Need help with designing? The <span className="font-black text-black">best interior designer in Bangalore</span> is just a click away.</p>
                         </div>
                     </div>
