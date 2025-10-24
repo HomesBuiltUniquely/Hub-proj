@@ -77,33 +77,51 @@ const defaultPosts: Post[] = [
   },
   {
     id: 8,
-    title: "Home Office Design Ideas",
+    title: "Key Tips to Create Bedroom Interiors That Are Relaxing and Stylish",
     date: "August 9, 2025",
     readTime: "11 mins read",
-    img: "/blog4title.jpg",
-    path: "/Blog/Blog4"
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img1.jpg",
+    path: "/Blog/Blog8"
   },
   {
     id: 9,
-    title: "Lighting Design for Modern Homes",
+    title: "Our New Customer Project Completed in Just 11 Days – Kitchen Interior, Pooja Unit, 2 Bedroom Wardrobe Interiors & TV Unit (Nagaveni Project)",
     date: "August 11, 2025",
     readTime: "9 mins read",
-    img: "/blog5title.jpg",
-    path: "/Blog/Blog5"
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog9img1.png",
+    path: "/Blog/Blog9"
   },
   {
     id: 10,
-    title: "Furniture Selection Guide",
+    title: "Royal Tulip Villa – Another Happy Customer Story and Why Royal Tulip Residents Love HUB Interior",
     date: "August 13, 2025",
     readTime: "13 mins read",
-    img: "/bn.jpg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog10img1.png",
+    path: "/Blog/Blog10"
   },
   {
     id: 11,
-    title: "Wall Decor Ideas and Trends",
+    title: "Which Kitchen Layout Suits You Best – L-Shaped, U-Shaped, or Island Kitchen?",
     date: "August 15, 2025",
     readTime: "7 mins read",
-    img: "/bn.jpg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog11img1.jpg",
+    path: "/Blog/Blog11"
+  },
+  {
+    id: 12,
+    title: "5 Kids’ Bedroom Cupboard Designs for 2026 – Perfect Blend of Style and Fun",
+    date: "September 15, 2025",
+    readTime: "9 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img1.png",
+    path: "/Blog/Blog12"
+  },
+  {
+    id: 12,
+    title: "5 Kids’ Bedroom Cupboard Designs for 2026 – Perfect Blend of Style and Fun",
+    date: "September 15, 2025",
+    readTime: "9 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img1.png",
+    path: "/Blog/Blog12"
   },
 ];
 
