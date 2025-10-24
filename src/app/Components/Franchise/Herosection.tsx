@@ -495,10 +495,7 @@ const Home: React.FC = () => {
             </div>
           </section>
         </div>
-
-
-
-      </div>
+     </div>
 
 
 
@@ -637,7 +634,7 @@ const Home: React.FC = () => {
 
           {/* text + cta */}
           <h2 className="manrope leading-tight">
-            <div className="absolute top-40 text-white w-full px-3 mt-5">
+            <div className="absolute top-40 text-white w-full px-3 mt-10">
               <div className="text-4xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
                 Become a <div>Franchisee!</div>
               </div>
