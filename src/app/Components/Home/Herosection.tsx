@@ -118,7 +118,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl manrope-medium shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -126,7 +126,7 @@ const Herosection: React.FC = () => {
         <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
           {heroSlides[currentSlide].title} 
         </h1>
-        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope-medium shadow mr-145 mt-2 transition-all duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope-medium  mr-145 mt-2  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
           {heroSlides[currentSlide].buttonText}
         </button>
       </div>
@@ -172,7 +172,7 @@ const Herosection: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold shadow mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
       {/* Hero content */}
@@ -180,7 +180,7 @@ const Herosection: React.FC = () => {
         <h1 className=" w-[1000px] text-5xl lg:text-7xl mb-drop-shadow-lg transition-all ml-45 duration-1000">
           {heroSlides[currentSlide].title} 
         </h1>
-        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl font-semibold shadow mr-150 mt-4 transition-all duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+        <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl font-semibold  mr-150 mt-4  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
           {heroSlides[currentSlide].buttonText}
         </button>
       </div>
@@ -238,7 +238,7 @@ const Herosection: React.FC = () => {
             <img className="w-[340px] h-[500px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
             <div className="-mt-62 w-[300px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
              {/* Horizontal line above button */}
-            <div className="w-[300px] -mt-33 h-[1px] bg-gray-300 absolute -mt-8 ml-8"></div>
+            <div className="w-[300px]  h-[1px] bg-gray-300 absolute -mt-8 ml-8"></div>
             <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-28 ml-8 manrope-medium absolute shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
           </div>
           <OverlapNavBar />
