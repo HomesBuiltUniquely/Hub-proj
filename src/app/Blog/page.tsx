@@ -97,6 +97,7 @@ const defaultPosts: Post[] = [
     date: "August 13, 2025",
     readTime: "13 mins read",
     img: "/bn.jpg",
+    path: "/Blog/Blog8"
   },
   {
     id: 11,
