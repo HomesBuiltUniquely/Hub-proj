@@ -90,7 +90,7 @@ const CardSection = ({
         <div
           ref={scrollRef}
           className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-15 w-full md:max-w-[1360px] mx-auto "
-          style={{ paddingRight: "10px" }}
+          style={{ paddingRight: "px" }}
         >
           {cards.map((card, idx) => {
 
@@ -161,7 +161,7 @@ const CardSection = ({
           <div
             ref={scrollRef}
             className="flex gap-7 overflow-x-scroll  always-show-scrollbar px-2 md:px-0 pb-12 w-full md:max-w-[1225px] mx-auto ml-7"
-            style={{ paddingRight: "7px" }}
+            style={{ paddingRight: "px" }}
           >
 
             {cards.map((card, idx) => {

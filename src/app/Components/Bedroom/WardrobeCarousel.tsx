@@ -39,6 +39,27 @@ const WardrobeCarousel: React.FC = () => {
       });
     }
   };
+
+
+    // ✅ DESKTOP SCROLL (1280px / 1440px)
+    const scrollRef1280 = useRef<HTMLDivElement>(null);
+    const scrollRef1440 = useRef<HTMLDivElement>(null);
+  
+    const scrollReq = (dir: "left" | "right") => {
+      // pick which ref to use based on current screen width
+      const activeRef =
+        window.innerWidth >= 1440 ? scrollRef1440 : scrollRef1280;
+  
+      if (activeRef.current) {
+        const scrollAmount = activeRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
+        activeRef.current.scrollBy({
+          left: dir === "left" ? -scrollAmount : scrollAmount,
+          behavior: "smooth",
+        });
+      }
+    };
+
+
   const wardrobesTypes = ["Sliding", "Hinged", "Open", "Bi Fold"];
 
 
@@ -107,7 +128,7 @@ const WardrobeCarousel: React.FC = () => {
 
 
       <div className="desktop-1440">
-        <div className="hidden md:block className=max-w-6xl mx-auto px-4  relative">
+      <div className="hidden md:block max-w-350 mx-auto px-4 relative">
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
@@ -120,7 +141,7 @@ const WardrobeCarousel: React.FC = () => {
             {/* Overlapping Navigation */}
             <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
               <button
-                onClick={() => scroll("left")}
+                onClick={() => scrollReq("left")}
                 className="bg-gray-200 hover:bg-[#ebd657] text-gray-700 rounded-full p-2 shadow transition"
                 aria-label="Scroll Left"
                 type="button"
@@ -130,7 +151,7 @@ const WardrobeCarousel: React.FC = () => {
                 </svg>
               </button>
               <button
-                onClick={() => scroll("right")}
+                onClick={() => scrollReq("right")}
                 className="bg-gray-200 hover:bg-[#ebd657] text-gray-700 rounded-full p-2 shadow transition"
                 aria-label="Scroll Right"
                 type="button"
@@ -143,8 +164,8 @@ const WardrobeCarousel: React.FC = () => {
 
             {/* Card Carousel */}
             <div
-              ref={scrollRef}
-              className="flex gap-7 overflow-x-auto scroll-smooth no-scrollbar pt-10 pb-2"
+              ref={scrollRef1440}
+              className="flex gap-7 overflow-x-auto scroll-smooth -ml-1 no-scrollbar pt-5 pb-2"
               style={{ scrollBehavior: "smooth" }}
             >
               {wardrobes.map((item, idx) => (
@@ -190,7 +211,7 @@ const WardrobeCarousel: React.FC = () => {
             {/* Overlapping Navigation */}
             <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
               <button
-                onClick={() => scroll("left")}
+                onClick={() => scrollReq("left")}
                 className="bg-gray-200 hover:bg-[#ebd657] text-gray-700 rounded-full p-2 shadow transition"
                 aria-label="Scroll Left"
                 type="button"
@@ -200,7 +221,7 @@ const WardrobeCarousel: React.FC = () => {
                 </svg>
               </button>
               <button
-                onClick={() => scroll("right")}
+                onClick={() => scrollReq("right")}
                 className="bg-gray-200 hover:bg-[#ebd657] text-gray-700 rounded-full p-2 shadow transition"
                 aria-label="Scroll Right"
                 type="button"
@@ -213,7 +234,7 @@ const WardrobeCarousel: React.FC = () => {
 
             {/* Card Carousel */}
             <div
-              ref={scrollRef}
+              ref={scrollRef1280}
               className="flex gap-7 overflow-x-auto scroll-smooth no-scrollbar pt-5 pb-2"
               style={{ scrollBehavior: "smooth" }}
             >

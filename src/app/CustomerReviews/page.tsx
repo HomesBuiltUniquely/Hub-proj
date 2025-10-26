@@ -8,9 +8,9 @@ export default function CustomerReviewsPage() {
     return (
         <div>
             <ContactHeader />
-            <Section2/>
-            <CustomerReview/>
-            <Footer />
+        <Section2/>
+               {/*  <CustomerReview/>
+            <Footer /> */}
         </div>
     );
     }

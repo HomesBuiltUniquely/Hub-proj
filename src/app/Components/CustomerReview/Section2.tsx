@@ -14,6 +14,7 @@ export default function Section8() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+
   const videoThumbnails: Video[] = [
     {
       id: 1,
@@ -32,7 +33,9 @@ export default function Section8() {
       thumbnail: "fk.webp",
       title: "Kitchen Interior",
       videoUrl: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Video_20250802_150443_314.mp4"
-    }
+    },
+    
+
   ];
 
   const handleVideoClick = (video: Video) => {
@@ -72,110 +75,246 @@ export default function Section8() {
   }, []);
 
   return (
-    <div className="w-full">
-      {/* Desktop Layout */}
-      <div className="hidden lg:block">
-        <div className="w-[1200px] mx-auto mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
-          {/* Background Video */}
-          <div className="absolute inset-0 z-0">
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            {/* Dark overlay for better text contrast */}
-            <div className="absolute inset-0 bg-[#F1F2F6] bg-opacity-40"></div>
-          </div>
 
-          {/* Content Overlay */}
-          <div className="relative z-10 h-full flex flex-col justify-center">
-            <div className="max-w-7xl mx-auto px-6 w-full">
-              {/* Text Header - Matching your screenshot */}
-              <div className="mb-16 text-black manrope-medium">
-                <h2 className="text-5xl md:text-7xl leading-tight tracking-tight manrope-medium">
-                What our customers say about HUB
+    <div>
+      <style jsx>{`
+        /* Hide both by default */
+        .desktop-1280,
+        .desktop-1440 {
+          display: none !important;
+        }
+
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
+
+        /* Show 1440px layout for large desktops (>=1440px) */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block !important;
+          }
+        }
+      `}</style>
+
+      <div className="desktop-1440 w-full">
+        {/* Desktop Layout */}
+        <div className="hidden lg:block">
+          <div className="w-[1400px] mx-auto mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
+            {/* Background Video */}
+            <div className="absolute inset-0 z-0">
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              {/* Dark overlay for better text contrast */}
+              <div className="absolute inset-0 bg-[#F1F2F6] bg-opacity-40"></div>
+            </div>
+
+            {/* Content Overlay */}
+            <div className="relative z-10 h-full flex flex-col justify-center">
+              <div className="max-w-10xl mx-auto px-6 w-full">
+                {/* Text Header - Matching your screenshot */}
+                <div className="mb-10 -mt-55  text-black manrope-medium">
+                  <h2 className="text-5xl md:text-5xl leading-tight tracking-tight manrope">
+                    What our customers say about HUB
+                  </h2>
+
+                </div>
+
+                {/* Video Carousel */}
+                <div className="relative">
+                  {/* Navigation Buttons */}
+                  <button
+                    onClick={prevSlide}
+                    className="absolute -mt-20 ml-300 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+                    aria-label="Previous video"
+                  >
+                    <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  <button
+                    onClick={nextSlide}
+                    className="absolute  -mt-20 ml-315 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+                    aria-label="Next video"
+                  >
+                    <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  {/* Carousel Container */}
+                  <div className="overflow-hidden rounded-xl">
+                    <div
+                      className="flex transition-transform duration-500 ease-in-out"
+                      style={{
+                        transform: (() => {
+                          const slidesToShow = 3; // number of videos visible at once
+                          const totalSlides = videoThumbnails.length;
+                          const maxSlideIndex = Math.max(0, totalSlides - slidesToShow);
+                          const translateX =
+                            currentSlide > maxSlideIndex
+                              ? maxSlideIndex * (100 / slidesToShow)
+                              : currentSlide * (100 / slidesToShow);
+                          return `translateX(-${translateX}%)`;
+                        })(),
+                      }}
+                    >
+                      {videoThumbnails.map((video) => (
+                        <div key={video.id} className="w-1/3 flex-shrink-0 px-4">
+                          <div
+                            className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                            onClick={() => handleVideoClick(video)}
+                          >
+                            <div className="aspect-w-16 aspect-h-9">
+                              <img
+                                src={video.thumbnail}
+                                alt={video.title}
+                                className="w-full h-[550px] object-cover transition-transform duration-500 group-hover:scale-100"
+                              />
+                              <div className="absolute inset-0 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
+                                  <svg
+                                    className="w-6 h-6 text-gray-900 ml-1"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M8 5v14l11-7z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                              <h3 className="text-xl manrope text-white -mb-4">{video.title}</h3>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+
+                  {/* Dots Indicator */}
+                  <div className="flex justify-center mt-8 gap-2">
+                    {Array.from(
+                      { length: Math.max(1, videoThumbnails.length - 3 + 1) }, // slidesToShow = 3
+                      (_, index) => index
+                    ).map((index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
+                            ? 'bg-red-500 scale-125'
+                            : 'bg-gray-300 hover:bg-gray-400'
+                          }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+        {/* Mobile Layout */}
+        <div className="lg:hidden">
+          <div className="w-full bg-[#F1F2F6] py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+              {/* Header */}
+              <div className="mb-12 text-center">
+                <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
+                  <span className="block ">HUB Happy</span>
+                  <span className="block">Customers</span>
                 </h2>
-                <div className="w-24 h-1 bg-red-500 mt-8"></div>
+                <div className="w-16 h-1 bg-red-500 mx-auto"></div>
               </div>
 
               {/* Video Carousel */}
-              <div className="relative">
-                {/* Navigation Buttons */}
+              <div className="relative overflow-hidden">
+                {/* Mobile Navigation Buttons */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300"
                   aria-label="Previous video"
                 >
-                  <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
-                
+
                 <button
                   onClick={nextSlide}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300"
                   aria-label="Next video"
                 >
-                  <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
 
-                {/* Carousel Container */}
-                <div className="overflow-hidden rounded-xl">
-                  <div 
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
-                  >
-                    {videoThumbnails.map((video) => (
-                      <div 
-                        key={video.id} 
-                        className="w-1/3 flex-shrink-0 px-4"
-                      >
-                        <div 
-                          className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-                          onClick={() => handleVideoClick(video)}
-                        >
-                          <div className="aspect-w-16 aspect-h-9">
-                            <img
-                              src={video.thumbnail}
-                              alt={video.title}
-                              className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
-                                <svg className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z"/>
-                                </svg>
-                              </div>
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {videoThumbnails.map((video) => (
+                    <div
+                      key={video.id}
+                      className="w-full flex-shrink-0 px-2"
+                      onClick={() => handleVideoClick(video)}
+                    >
+                      <div className="relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 active:scale-95">
+                        <div className="aspect-w-16 aspect-h-9">
+                          <img
+                            src={video.thumbnail}
+                            alt={video.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0  bg-opacity-30 flex items-center justify-center">
+                            <div className="w-12 h-12 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
+                              <svg className="w-5 h-5 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                              </svg>
                             </div>
                           </div>
-                          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
-                            <h3 className="text-xl font-medium text-white">{video.title}</h3>
-                          </div>
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                          <h3 className="text-lg font-medium text-white">{video.title}</h3>
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Dots Indicator */}
-                <div className="flex justify-center mt-6 gap-2">
+                {/* Mobile Dots Indicator */}
+                <div className="flex justify-center mt-4 gap-2">
                   {videoThumbnails.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        currentSlide === index 
-                          ? 'bg-red-500 scale-125' 
-                          : 'bg-gray-300 hover:bg-gray-400'
-                      }`}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === index
+                        ? 'bg-red-500 scale-125'
+                        : 'bg-gray-300 hover:bg-gray-400'
+                        }`}
                       aria-label={`Go to slide ${index + 1}`}
                     />
                   ))}
@@ -184,129 +323,40 @@ export default function Section8() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Layout */}
-      <div className="lg:hidden">
-        <div className="w-full bg-[#F1F2F6] py-16 px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="mb-12 text-center">
-              <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
-                <span className="block ">HUB Happy</span>
-                <span className="block">Customers</span>
-              </h2>
-              <div className="w-16 h-1 bg-red-500 mx-auto"></div>
-            </div>
-
-            {/* Video Carousel */}
-            <div className="relative overflow-hidden">
-              {/* Mobile Navigation Buttons */}
+        {/* Video Modal */}
+        {isModalOpen && selectedVideo && (
+          <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+            <div className="relative w-full max-w-4xl">
               <button
-                onClick={prevSlide}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300"
-                aria-label="Previous video"
+                onClick={closeModal}
+                className="absolute -top-12 right-0 z-10 text-white hover:text-gray-300 transition-colors"
+                aria-label="Close video modal"
               >
-                <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              
-              <button
-                onClick={nextSlide}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all duration-300"
-                aria-label="Next video"
-              >
-                <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
 
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {videoThumbnails.map((video) => (
-                  <div 
-                    key={video.id} 
-                    className="w-full flex-shrink-0 px-2"
-                    onClick={() => handleVideoClick(video)}
-                  >
-                    <div className="relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 active:scale-95">
-                      <div className="aspect-w-16 aspect-h-9">
-                        <img
-                          src={video.thumbnail}
-                          alt={video.title}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0  bg-opacity-30 flex items-center justify-center">
-                          <div className="w-12 h-12 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
-                            <svg className="w-5 h-5 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z"/>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-                        <h3 className="text-lg font-medium text-white">{video.title}</h3>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+              <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
+                <video
+                  className="w-full h-full"
+                  controls
+                  autoPlay
+                  playsInline
+                  src={selectedVideo.videoUrl}
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
 
-              {/* Mobile Dots Indicator */}
-              <div className="flex justify-center mt-4 gap-2">
-                {videoThumbnails.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentSlide === index 
-                        ? 'bg-red-500 scale-125' 
-                        : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
+              <div className="mt-4 text-center">
+                <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
-
-      {/* Video Modal */}
-      {isModalOpen && selectedVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-          <div className="relative w-full max-w-4xl">
-            <button
-              onClick={closeModal}
-              className="absolute -top-12 right-0 z-10 text-white hover:text-gray-300 transition-colors"
-              aria-label="Close video modal"
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            
-            <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
-              <video
-                className="w-full h-full"
-                controls
-                autoPlay
-                playsInline
-                src={selectedVideo.videoUrl}
-              >
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            
-            <div className="mt-4 text-center">
-              <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
