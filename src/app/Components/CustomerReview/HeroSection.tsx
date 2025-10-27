@@ -13,6 +13,10 @@ const ContactHeader: React.FC = () => {
   const handleClick = () => {
     router.push("/");
   };
+  const handleGetEstimate = () => {
+    router.push('/GetEstimate');
+  };
+
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -53,7 +57,7 @@ const ContactHeader: React.FC = () => {
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button className="bg-orange-100 text-black px-4 py-2 rounded-xl manrope-medium shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-45">
@@ -71,35 +75,38 @@ const ContactHeader: React.FC = () => {
 
       <div className="desktop-1280">
 
-        <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
-          {/* Inner container with background */}
-          <div
-            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-            style={{ backgroundImage: "url('/kh.png')" }}
-          >
-            {/* Navbar */}
-            <div className="flex items-center justify-between -mt-15">
-              <div onClick={handleClick} className="cursor-pointer">
-                <Image src="/redlogo.png" alt="HUB Interior Logo" width={220} height={100} className="w-[225px] h-full -ml-2" />
-              </div>
-              <div className="hidden text-[18px] md:flex gap-12 text-sm  text-white tracking-widest ml-50  mt-4">
-                <OfferingsDropdown textColor="text-white" />
-                <ExploreRoomsDropdown textColor="text-white" />
-                <NavMore textColor="text-white" />
-              </div>
-              <button className="bg-orange-100 text-black px-4 py-2 rounded-xl manrope-medium shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
+
+
+        <div className="w-[1240px] h-[800px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
+          {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={220} height={100} className="w-[225px] h-full  -ml-2" />
             </div>
-            {/* Hero content */}
-            <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-40">
-              <h1 className="w-[800px] text-5xl text-left lg:text-8xl manrope mb-3 drop-shadow-lg -ml-70">HUB Customers&#39; Stories</h1>
-              <p className="w-[550px] text-lg text-left manrope-medium mb-8 drop-shadow-lg -ml-130">From design to delivery, every review reflects our uniquely built home stories and promise.
-              </p>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm text-white tracking-widest ml-50 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
             </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
+
+          {/* Hero content */}
+          <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-40">
+            <h1 className="w-[800px] text-5xl text-left lg:text-8xl manrope mb-3 drop-shadow-lg -ml-70">
+              HUB Customers&#39; Stories
+            </h1>
+            <p className="w-[550px] text-lg text-left manrope-medium mb-8 drop-shadow-lg -ml-130">
+              From design to delivery, every review reflects our uniquely built home stories and promise.
+            </p>
           </div>
         </div>
 
 
+
       </div>
+
+
 
 
       {/* mobile version */}
@@ -235,13 +242,13 @@ const ContactHeader: React.FC = () => {
 
 
         </div>
-             {/* Hero content */}
-            <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center -mt-70">
-              <h1 className="w-[300px] text-3xl text-left lg:text-3xl manrope mb-2 drop-shadow-lg ">HUB Customers&#39; Stories</h1>
-              <p className="w-[300px] text-xs text-left manrope-medium mb-8 drop-shadow-lg ">From design to delivery, every review reflects our uniquely built home stories and promise.
-              </p>
+        {/* Hero content */}
+        <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center -mt-70">
+          <h1 className="w-[300px] text-3xl text-left lg:text-3xl manrope mb-2 drop-shadow-lg ">HUB Customers&#39; Stories</h1>
+          <p className="w-[300px] text-xs text-left manrope-medium mb-8 drop-shadow-lg ">From design to delivery, every review reflects our uniquely built home stories and promise.
+          </p>
 
-            </div>
+        </div>
 
       </div>
 
