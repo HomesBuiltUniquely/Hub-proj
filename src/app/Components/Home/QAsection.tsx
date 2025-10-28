@@ -61,7 +61,7 @@ export function QAsection() {
     <div className="min-h-auto bg-[#F1F2F6] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-48 pt-8 pb-16 md:pt-8 md:pb-20">
       <div className="max-w-screen-xl mx-auto">
         <h1 className="text-3xl sm:text-4xl lg:text-4xl mb-15 sm:mb-10 text-amber-950 wulkan-display-bold text-center tracking-wider">
-          Frequently Asked Questions
+          Frequently asked questions
         </h1>
 
         <div className="space-y-4 sm:space-y-6 mt-16 sm:mt-25 manrope-medium">

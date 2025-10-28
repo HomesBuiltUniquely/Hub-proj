@@ -33,20 +33,39 @@ const wardrobes = [
 ];
 
 const Section1: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  // const scrollRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState(0); // For mobile selection (above 360px)
 
-  const scroll = (dir: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
-      scrollRef.current.scrollBy({
+  // const scroll = (dir: "left" | "right") => {
+  //   if (scrollRef.current) {
+  //     const scrollAmount = scrollRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
+  //     scrollRef.current.scrollBy({
+  //       left: dir === "left" ? -scrollAmount : scrollAmount,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
+
+
+  // ✅ DESKTOP SCROLL (1280px / 1440px)
+  const scrollRef1280 = useRef<HTMLDivElement>(null);
+  const scrollRef1440 = useRef<HTMLDivElement>(null);
+
+  const scrollReq = (dir: "left" | "right") => {
+    // pick which ref to use based on current screen width
+    const activeRef =
+      window.innerWidth >= 1440 ? scrollRef1440 : scrollRef1280;
+
+    if (activeRef.current) {
+      const scrollAmount = activeRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
+      activeRef.current.scrollBy({
         left: dir === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
       });
     }
   };
 
-  const kitchenTypes = ["L Shape", "U Shape", "Straight", "Island"];
+  const kitchenTypes = ["L Shape", "U Shape", "Straight", "Parallel", "Island"];
 
   return (
     <section className="w-full py-12 bg-[#f1f2f6]">
@@ -116,7 +135,7 @@ const Section1: React.FC = () => {
             {/* Overlapping Navigation */}
             <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
               <button
-                onClick={() => scroll("left")}
+                onClick={() => scrollReq("left")}
                 className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
                 aria-label="Scroll Left"
                 type="button"
@@ -126,7 +145,7 @@ const Section1: React.FC = () => {
                 </svg>
               </button>
               <button
-                onClick={() => scroll("right")}
+                onClick={() => scrollReq("right")}
                 className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
                 aria-label="Scroll Right"
                 type="button"
@@ -139,14 +158,14 @@ const Section1: React.FC = () => {
 
             {/* Card Carousel */}
             <div
-              ref={scrollRef}
-              className="flex gap-7 overflow-x-auto overflow-hidden scroll-smooth no-scrollbar pt-10 pb-2"
+              ref={scrollRef1440}
+              className="flex gap-7 overflow-x-auto overflow-hidden scroll-smooth no-scrollbar -ml-1 pt-5 pb-2"
               style={{ scrollBehavior: "smooth" }}
             >
               {wardrobes.map((item, idx) => (
                 <div
                   key={idx}
-                  className="min-w-[400px] max-w-[400px] w-[400px] h-[520px] bg-white rounded-4xl shadow-lg overflow-hidden"
+                  className="min-w-[400px] max-w-[400px] w-[400px] h-[520px] bg-white rounded-4xl  shadow-lg overflow-hidden"
                 >
                   <img
                     src={item.img}
@@ -195,7 +214,7 @@ const Section1: React.FC = () => {
             {/* Overlapping Navigation */}
             <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
               <button
-                onClick={() => scroll("left")}
+                onClick={() => scrollReq("left")}
                 className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
                 aria-label="Scroll Left"
                 type="button"
@@ -205,7 +224,7 @@ const Section1: React.FC = () => {
                 </svg>
               </button>
               <button
-                onClick={() => scroll("right")}
+                onClick={() => scrollReq("right")}
                 className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
                 aria-label="Scroll Right"
                 type="button"
@@ -218,7 +237,7 @@ const Section1: React.FC = () => {
 
             {/* Card Carousel */}
             <div
-              ref={scrollRef}
+              ref={scrollRef1280}
               className="flex gap-7 overflow-x-auto overflow-hidden scroll-smooth no-scrollbar pt-5 pb-2"
               style={{ scrollBehavior: "smooth" }}
             >
@@ -250,7 +269,7 @@ const Section1: React.FC = () => {
           </div>
 
         </div>
-       
+
       </div>
 
 
@@ -265,7 +284,7 @@ const Section1: React.FC = () => {
         {/* Mobile Heading */}
         <div className="mb-10">
           <div className="flex relative">
-            <div className="w-[2px] h-[70px] bg-amber-300 mt-10 ml-3"></div>
+            <div className="w-[2px] h-[70px] bg-[#ebd457] mt-10 ml-3"></div>
           </div>
           <div className=" -mt-17">
             <h2 className="h-10 text-3xl manrope text-gray-800  ml-7 ">Kitchen layout</h2>
@@ -280,7 +299,7 @@ const Section1: React.FC = () => {
           <div className="bg-white rounded-3xl relative max-w-[480px] h-95 mx-auto w-full card">
             <div className="w-[300px] mx-auto">
               <div className="absolute top-4 inset-x-0 z-10 flex justify-center menu">
-                <div className="w-[320px] bg-[#32261c]/70 rounded-md p-1 flex justify-around text-nowrap text-gray-200/70 manrope">
+                <div className="w-[320px] bg-[#32261c]/70 rounded-md p-1 flex justify-around text-nowrap overflow-x-scroll text-gray-200/70 manrope">
                   {kitchenTypes.map((type, idx) => (
                     <button
                       key={idx}
@@ -291,13 +310,19 @@ const Section1: React.FC = () => {
                     </button>
                   ))}
                 </div>
+                {/* ✨ Gradient overlay on right edge */}
+                <div className="pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-[#32261c]/80 to-transparent rounded-lg"></div>
               </div>
+
             </div>
+
             <img
               src={wardrobes[selected].img}
               alt={wardrobes[selected].label}
               className="w-full h-full object-cover rounded-3xl"
+
             />
+
             <div className="absolute bottom-0 inset-x-0 p-4 flex justify-center items-end overlay">
               <span className="block w-[950%] max-w-[330px] bg-zinc-500/60 text-white manrope px-4 py-2 pt-1 rounded-3xl shadow text-sm h-[100px] mt-18">
                 <div className="manrope text-base">
@@ -310,8 +335,11 @@ const Section1: React.FC = () => {
                 </button>
               </span>
             </div>
+
           </div>
+
         </div>
+
       </div>
 
       {/* Mobile Version (300px to 359px) */}
@@ -323,7 +351,7 @@ const Section1: React.FC = () => {
         {/* Mobile Heading */}
         <div className="mb-10">
           <div className="flex relative">
-            <div className="w-[2px] h-[70px] bg-amber-300 mt-10 ml-3"></div>
+            <div className="w-[2px] h-[70px] bg-[#ebd457] mt-10 ml-3"></div>
           </div>
           <div className=" -mt-17">
             <h2 className="h-10 text-3xl manrope text-gray-800  ml-7 ">Kitchen layout</h2>
@@ -337,7 +365,7 @@ const Section1: React.FC = () => {
           {/* Mobile Content Card */}
           <div className="bg-white rounded-md relative max-w-[480px] h-95 w-full card">
             <div className="absolute top-4 inset-x-0 z-10 flex justify-center menu">
-              <div className="w-[340px] text-nowrap bg-[#32261c]/70 rounded-md p-2 flex justify-around text-gray-200/70 manrope">
+              <div className="w-[340px] text-nowrap bg-[#32261c]/70 rounded-md p-2 flex justify-around overflow-x-scroll text-gray-200/70 manrope">
                 {kitchenTypes.map((type, idx) => (
                   <button
                     key={idx}
@@ -347,6 +375,8 @@ const Section1: React.FC = () => {
                     {type}
                   </button>
                 ))}
+                {/* ✨ Gradient overlay on right edge */}
+                <div className="pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-[#32261c]/80 to-transparent rounded-lg"></div>
               </div>
             </div>
             <img

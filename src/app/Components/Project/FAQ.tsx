@@ -77,18 +77,18 @@ const Faq: React.FC = () => {
     
         <div className="desktop-1440 w-screen  ">
           {/* FAQ and Guide */}
-          <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 mt-15">
+          <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 -mt-15 ml-20">
             {/* FAQ Left */}
             <div className="md:w-1/3 mb-8 md:mt-4">
               <h2 className="manrope mb-3  text-gray-900 text-4xl">FAQs</h2>
               <p className="text-gray-600 text-xl manrope-medium">Here are answers to questions </p>
               <p className="text-gray-600 mb-2 text-xl manrope-medium">our clients ask.</p>
-              <button className="px-5 py-1 border border-gray-500 rounded-3xl text-gray-800 text-md manrope hover:bg-gray-200 transition-colors duration-200">
+              <button className="px-5 py-1 -ml-1 border border-gray-500 rounded-3xl text-gray-800 text-md manrope hover:bg-gray-200 transition-colors duration-200">
                 Connect
               </button>
             </div>
             {/* Accordion Right */}
-            <div className="md:w-1/2 ">
+            <div className="md:w-1/1.5 ">
               {faqs.map((faq, i) => (
                 <div key={i} className="border-b">
                   <button

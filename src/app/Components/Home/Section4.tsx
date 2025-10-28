@@ -53,11 +53,11 @@ export default function Section4() {
 
     return (
         <div>
-        <div className="hidden md:block bg-[#F1F2F6] min-h-[650px] py-16 px-8">
+        <div className="hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="flex justify-between items-start mb-12">
-                    <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md w-[450px] h-[120px]">
+                    <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
                         Trusted by homeowners like you
                     </h1>
                     
@@ -83,7 +83,7 @@ export default function Section4() {
                 </div>
 
                 {/* Testimonial Carousel */}
-                <div className="relative overflow-hidden mt-20">
+                <div className="relative overflow-hidden -mt-10">
                     <div className="flex gap-8 items-center max-w-7xl ">
                         {/* Left Side - Image */}
                         <div className="w-[500px]">

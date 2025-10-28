@@ -76,11 +76,11 @@ const CardSection = ({
 
 
       {/* Desktop Version */}
-      <div className="desktop-1440 hidden md:block w-[1440px] h-[635px] mt-">
+      <div className="desktop-1440 hidden md:block  w-[1440px] h-[710px] ">
 
 
         {/* Featured Projects */}
-        <div className="w-full max-w-5xl px-5 ml-26 ">
+        <div className="w-full max-w-5xl px-5 ml-5 ">
           <h2 className="text-[50px]  mb-1  text-gray-900 manrope">
             Featured Projects
           </h2>
@@ -89,8 +89,8 @@ const CardSection = ({
 
         <div
           ref={scrollRef}
-          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-15 w-full md:max-w-[1270px] mx-auto ml-30"
-          style={{ paddingRight: "56px" }}
+          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-15 w-full md:max-w-[1360px] mx-auto "
+          style={{ paddingRight: "px" }}
         >
           {cards.map((card, idx) => {
 
@@ -160,8 +160,8 @@ const CardSection = ({
 
           <div
             ref={scrollRef}
-            className="flex gap-7 overflow-x-scroll  always-show-scrollbar px-2 md:px-0 pb-12 w-full md:max-w-[1200px] mx-auto ml-10"
-            style={{ paddingRight: "56px" }}
+            className="flex gap-7 overflow-x-scroll  always-show-scrollbar px-2 md:px-0 pb-12 w-full md:max-w-[1225px] mx-auto ml-7"
+            style={{ paddingRight: "px" }}
           >
 
             {cards.map((card, idx) => {
@@ -221,70 +221,69 @@ const CardSection = ({
 
       <div className="block md:hidden px-4 h-screen w-full max-w-[425px] mx-auto  ">
 
-       
 
         <div className=' mt-5 manrope-medium '>
           <div className="flex flex-row">
             <div className="w-0.75 h-10 bg-[#ebd657] ml-2">
-            <h2 className="text-3xl tracking-wide manrope text-nowrap ml-3">Featured Projects</h2>
+              <h2 className="text-3xl tracking-wide manrope text-nowrap ml-3">Featured Projects</h2>
             </div>
             <p className="text-gray-600 text-[15px] manrope-bold mt-12  text-nowrap -ml-1">A glimpse at our best work</p>
           </div>
         </div>
 
 
-         <div
-            ref={scrollRef}
-            className="flex gap-7 overflow-x-scroll scrollbar-none  px-2 md:px-0  w-full max-w-[645] ml-2 mx-auto h-[450px]"
-            style={{ paddingRight: "56px" }}
-          >
-            {cards.map((card, idx) => {
+        <div
+          ref={scrollRef}
+          className="flex gap-7 overflow-x-scroll scrollbar-none  px-2 md:px-0 -mt-2  w-full max-w-[645]  mx-auto h-[450px]"
+          style={{ paddingLeft: "px" }}
+        >
+          {cards.map((card, idx) => {
 
-              function handleNavigate() {
-                router.push(card.path);
-              }
-
-
-              return (
-                <div
-                  key={idx}
-                  className="min-w-[250px] max-w-[750] bg-white rounded-[23px] shadow-lg overflow-hidden group transition hover:shadow-2xl mt-8"
-                  style={{ height: "355px" }}
-                >
-
-                  <Image src={card.img} alt="images" width={470} height={250} className="w-450 h-40" />
-
-                  <div className="manrope-medium ml-3 text-bold text-xl w-50 gap-1 mt-3 h-15">
-                    {card.title}
-                  </div>
-
-                  <div className="ml-3 text-xs w-50 h-10 mt-1 mb-3 manrope-medium">
-                    {card.description}
-                  </div>
-
-                  <div className="ml-3 mt-5 manrope-medium text-gray-500 text-sm">
-                    {card.BHK} <div className="text-black manrope">{card.NO}</div>
-                  </div>
+            function handleNavigate() {
+              router.push(card.path);
+            }
 
 
+            return (
+              <div
+                key={idx}
+                className="min-w-[250px] max-w-[750] bg-white rounded-[23px] shadow-lg overflow-hidden group transition hover:shadow-2xl mt-8"
+                style={{ height: "355px" }}
+              >
 
-                  <div className="-mt-10 ml-[66px] flex justify-center">
-                    <button
-                      onClick={handleNavigate}
-                      className=" px-4 py-2 text-xs mt-1 ml-4 bg-red-500 rounded-full text-white manrope-medium whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
-                    >
-                      {card.button}
-                    </button>
-                  </div>
+                <Image src={card.img} alt="images" width={470} height={250} className="w-450 h-40" />
 
-
+                <div className="manrope-medium ml-3 text-bold text-xl w-50 gap-1 mt-3 h-15">
+                  {card.title}
                 </div>
-              )
 
-            })}
-          </div>
+                <div className="ml-3 text-xs w-50 h-10 mt-1 mb-3 manrope-medium">
+                  {card.description}
+                </div>
 
-          
+                <div className="ml-3 mt-5 manrope-medium text-gray-500 text-sm">
+                  {card.BHK} <div className="text-black manrope">{card.NO}</div>
+                </div>
+
+
+
+                <div className="-mt-10 ml-[66px] flex justify-center">
+                  <button
+                    onClick={handleNavigate}
+                    className=" px-4 py-2 text-xs mt-1 ml-4 bg-red-500 rounded-full text-white manrope-medium whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
+                  >
+                    {card.button}
+                  </button>
+                </div>
+
+
+              </div>
+            )
+
+          })}
+        </div>
+
+
 
 
       </div>
