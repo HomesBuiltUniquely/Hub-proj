@@ -33,7 +33,7 @@ const wardrobes = [
 ];
 
 const Section1: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  // const scrollRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState(0); // For mobile selection (above 360px)
 
   // const scroll = (dir: "left" | "right") => {
