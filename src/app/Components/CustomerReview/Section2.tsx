@@ -11,7 +11,7 @@ interface Video {
 export default function Section8() {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const videoThumbnails: Video[] = [

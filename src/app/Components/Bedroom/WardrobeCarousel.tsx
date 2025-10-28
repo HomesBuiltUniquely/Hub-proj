@@ -27,18 +27,18 @@ const wardrobes = [
 ];
 
 const WardrobeCarousel: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  // const scrollRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState(0);
 
-  const scroll = (dir: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
-      scrollRef.current.scrollBy({
-        left: dir === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
+  // const scroll = (dir: "left" | "right") => {
+  //   if (scrollRef.current) {
+  //     const scrollAmount = scrollRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
+  //     scrollRef.current.scrollBy({
+  //       left: dir === "left" ? -scrollAmount : scrollAmount,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
 
 
     // ✅ DESKTOP SCROLL (1280px / 1440px)
