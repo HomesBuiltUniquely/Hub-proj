@@ -9,10 +9,10 @@ import Footer from "../Components/Home/Footer";
 const App: React.FC = () => (
   <div className="bg-gray-50 font-sans min-h-screen">
     <ContactHeader />
-    <HelpCenter />
+    {/* <HelpCenter />
     <Locations />
     <ContactSection/>
-    <Footer/>
+    <Footer/> */}
   </div>
 );
 

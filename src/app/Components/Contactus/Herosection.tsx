@@ -19,8 +19,8 @@ const ContactHeader: React.FC = () => {
   };
 
   return (
-  <div className="">
-     <style jsx>{`
+    <div className="">
+      <style jsx>{`
         /* Hide all sections by default */
         .desktop-1440,
         .desktop-1280,
@@ -57,56 +57,56 @@ const ContactHeader: React.FC = () => {
           }
         }
       `}</style>
-  <div className="desktop-1440 w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/Contactus.png')" }}>
-    {/* Navbar */}
-    <div className="flex items-center justify-between -mt-15 ">
-      <div onClick={handleClick} className="cursor-pointer">
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+      <div className="desktop-1440 w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/Contactus.png')" }}>
+        {/* Navbar */}
+        <div className="flex items-center justify-between -mt-15 ">
+          <div onClick={handleClick} className="cursor-pointer">
+            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+          </div>
+          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+          <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-xl font-semibold shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
+        </div>
+        {/* Hero content */}
+        <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
+          <h1 className="text-5xl lg:text-6xl font-extrabold mb-6 drop-shadow-lg">How Can We Help You</h1>
+
+        </div>
       </div>
-      <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-      <OfferingsDropdown textColor="text-white" />
-      <ExploreRoomsDropdown textColor="text-white" />
-      <NavMore textColor="text-white" />
+      {/* 1280px version */}
+      <div className="desktop-1280 max-w-[1280px] h-[800px] mx-auto  rounded-3xl overflow-hidden relative  bg-cover  bg-center ">
+        {/* Navbar */}
+        <img src={"/Contactus.png"} className=" w-full"></img>
+
+        <div className="flex items-center justify-between -mt-15 absolute top-0 left-0 right-0">
+          <div onClick={handleClick} className="cursor-pointer">
+            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[200px] h-full  ml-4 mt-2" />
+          </div>
+          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-85 mt-4">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+          <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-4xl font-semibold shadow  mr-13 mt-4">GET FREE ESTIMATE</button>
+        </div>
+        {/* Hero content */}
+        <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-70 absolute top-0 left-0 right-0">
+          <h1 className="text-5xl lg:text-6xl manrope drop-shadow-lg">How Can We Help You</h1>
+
+        </div>
       </div>
-      <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-xl font-semibold shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
-    </div>
-    {/* Hero content */}
-    <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
-      <h1 className="text-5xl lg:text-6xl font-extrabold mb-6 drop-shadow-lg">How Can We Help You</h1>
-     
-    </div>
-  </div>
-  {/* 1280px version */}
-  <div className="desktop-1280 max-w-[1280px] h-[800px] mx-auto  rounded-3xl overflow-hidden relative  bg-cover  bg-center ">
-    {/* Navbar */}
-    <img src={"/Contactus.png"} className=" w-full"></img>
 
-    <div className="flex items-center justify-between -mt-15 absolute top-0 left-0 right-0">
-      <div onClick={handleClick} className="cursor-pointer">
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[200px] h-full  ml-4 mt-2" />
+      {/* Mobile Version - Different Design */}
+      <div className="block md:hidden">
+
+
+
+
       </div>
-      <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-85 mt-4">
-      <OfferingsDropdown textColor="text-white" />
-      <ExploreRoomsDropdown textColor="text-white" />
-      <NavMore textColor="text-white" />
-      </div>
-      <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-4xl font-semibold shadow  mr-13 mt-4">GET FREE ESTIMATE</button>
     </div>
-    {/* Hero content */}
-    <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-70 absolute top-0 left-0 right-0">
-      <h1 className="text-5xl lg:text-6xl manrope drop-shadow-lg">How Can We Help You</h1>
-
-    </div>
-  </div>
-
-  {/* Mobile Version - Different Design */}
-  <div className="block md:hidden">
-
-
-
-
-  </div>
-  </div>
   );
 };
 

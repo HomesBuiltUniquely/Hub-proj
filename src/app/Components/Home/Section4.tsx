@@ -108,7 +108,7 @@ export default function Section4() {
 
                             {/* Quote Text */}
                             <blockquote className="text-2xl text-gray-700 leading-relaxed mb-8 manrope-medium">
-                            &#34;{testimonials[currentSlide].quote}&#34;
+                          {testimonials[currentSlide].quote}
                             </blockquote>
 
                             {/* Customer Info */}
@@ -166,7 +166,7 @@ export default function Section4() {
 
               {/* Quote Text */}
               <blockquote className="text-lg text-gray-700 leading-relaxed mb-6 manrope-medium">
-              &#34;{testimonials[currentSlide].quote}&#34;
+              {testimonials[currentSlide].quote}
               </blockquote>
 
               {/* Customer Info */}
