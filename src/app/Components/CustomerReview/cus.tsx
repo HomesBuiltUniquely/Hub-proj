@@ -58,13 +58,13 @@ export function CustomerReview() {
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
 
-const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-  setTouchStartX(e.touches[0].clientX);
-};
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
 
-const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-  setTouchEndX(e.touches[0].clientX);
-};
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
 
   const handleTouchEnd = () => {
     if (touchStartX - touchEndX > 50 && startIdx < reviews.length - 1) {
@@ -135,7 +135,7 @@ const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
               {showCards.map((review, idx) => (
                 <div
                   key={`${review.id}-${idx}`}
-                  className="bg-white border border-gray-200 rounded-2xl px-6 pt-6 pb-5 flex flex-col justify-center hover:shadow-md transition-shadow h-[270px] w-[340px] mx-auto"
+                  className="bg-white border border-gray-200 rounded-2xl px-6 pt-6 pb-5 flex flex-col justify-center hover:shadow-md transition-shadow h-[230px] w-[340px] mx-auto"
                 >
                   {/* Header: Avatar, Name, Location, Google Icon */}
                   <div className="flex items-start justify-between mb-2">
@@ -208,7 +208,7 @@ const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
 
                   {/* Review Text */}
                   <p className="text-gray-800 text-[15px] leading-snug manrope line-clamp-4 max-w-[300px]">
-                    “{review.text}”
+                    {review.text}
                   </p>
                 </div>
               ))}
@@ -271,7 +271,7 @@ const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
               {showCards.map((review, idx) => (
                 <div
                   key={`${review.id}-${idx}`}
-                  className="bg-white shadow-lg rounded-2xl px-6 pt-6 pb-5 flex flex-col justify-center text-left hover:shadow-2xl transition-shadow h-[250px] w-[340px] mx-auto"
+                  className="bg-white shadow-lg rounded-2xl px-6 pt-6 pb-5 flex flex-col justify-center text-left hover:shadow-2xl transition-shadow h-[210px] w-[340px] mx-auto"
                 >
                   {/* Header */}
                   <div className="flex items-start justify-between mb-2">
@@ -327,7 +327,7 @@ const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
 
                   {/* Review Text */}
                   <p className="text-gray-700 text-[15px] leading-snug manrope line-clamp-4 max-w-[300px]">
-                    “{review.text}”
+                    {review.text}
                   </p>
                 </div>
               ))}
@@ -367,7 +367,7 @@ const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
 
 
       <div
-        className="block md:hidden w-full px-4 py-8 -mt-4 overflow-hidden"
+        className="block md:hidden w-full px-4 py-8 -mt-15 overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -396,7 +396,7 @@ const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
                     key={`${review.id}-${idx}`}
                     className="flex-shrink-0 w-full px-2"
                   >
-                    <div className="bg-white shadow-md rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-shadow w-[100%] max-w-[420px] mx-auto mb-5 min-h-[220px]">
+                    <div className="bg-white shadow-md rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-shadow w-[100%] max-w-[420px] mx-auto mb-5 min-h-[180px]">
                       {/* Top Section: Avatar + Name + Google Icon */}
                       <div className="flex items-start justify-between">
                         <div className="flex items-start">
@@ -454,7 +454,7 @@ const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
                       {/* Review Text (less top space for short reviews) */}
                       <div className="flex-grow flex items-start mt-[2px]">
                         <p className="text-gray-700 text-[15px] leading-snug manrope text-left">
-                          “{review.text}”
+                          {review.text}
                         </p>
                       </div>
                     </div>

@@ -25,7 +25,7 @@ const Herosection: React.FC = () => {
     },
     {
       image: "/hh2.png",
-      title: " Get your home interior cost estimate today",
+      title: "Get your home interior cost estimate today",
       subtitle: "a Kitchen that inspires",
       buttonText: "Calculate Now"
     },
@@ -38,9 +38,9 @@ const Herosection: React.FC = () => {
   ];
 
   const mobileTexts = [
-    "From Vision To Reality Interiors in 34 Days",
-    "Get Your Home Interior Cost Estimate Today", 
-    "From Floor Plan to Lifestyle Home, Uniquely Built"
+    "From floor plan to lifestyle home, uniquely built",
+    "Get your home interior cost estimate today", 
+    "From vision to reality — Interiors in 34 days"
   ];
 
   // Auto-slide effect

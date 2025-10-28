@@ -95,6 +95,35 @@ export default function Section8() {
     }
   };
 
+  const getCardStyles = (index: number): React.CSSProperties => {
+    const len = videoThumbnails.length;
+    const offset = (index - currentIndex + len) % len;
+
+    if (offset > 2) {
+      return {
+        opacity: 0,
+        pointerEvents: "none" as React.CSSProperties["pointerEvents"], // ✅ explicit type
+        transform: "translateX(0px) scale(0.95)",
+        zIndex: 0,
+        transition: "all 0.5s cubic-bezier(0.25,0.1,0.25,1)",
+      };
+    }
+
+    const zIndex = 30 - offset;
+    const scale = 1 - offset * 0.05;
+    const translateX = offset * 40;
+    const opacity = 1 - offset * 0.1;
+
+    return {
+      transform: `translateX(${translateX}px) scale(${scale})`,
+      zIndex,
+      opacity,
+      transition: "all 0.5s cubic-bezier(0.25,0.1,0.25,1)",
+    };
+  };
+
+
+
 
   return (
 
@@ -125,43 +154,43 @@ export default function Section8() {
 `}</style>
 
       <div className="desktop-1440 w-full ">
-  {/* Desktop Layout */}
-  <div className="w-[1440px] mx-auto relative h-[720px] overflow-hidden rounded-2xl mt-15">
-    {/* Background Video */}
-    <div className="absolute inset-0 z-0">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover"
-      >
-        <source
-          src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-      {/* Soft overlay for better contrast */}
-      <div className="absolute inset-0 bg-[#F1F2F6]/40"></div>
-    </div>
-
-    {/* Content Overlay */}
-    <div className="relative z-10 h-full flex flex-col justify-center">
-      <div className="max-w-[1400px] mx-auto px-6 w-full">
-
-        {/* Header Row */}
-        <div className="flex items-center justify-between mb-16 text-black manrope-medium relative">
-          {/* Text Header */}
-          <div>
-            <h2 className="text-5xl md:text-5xl leading-tight tracking-tight manrope-medium">
-              What our customers say about HUB
-            </h2>
+        {/* Desktop Layout */}
+        <div className="w-[1440px] mx-auto relative h-[720px] overflow-hidden rounded-2xl mt-15">
+          {/* Background Video */}
+          <div className="absolute inset-0 z-0">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source
+                src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            {/* Soft overlay for better contrast */}
+            <div className="absolute inset-0 bg-[#F1F2F6]/40"></div>
           </div>
 
-          {/* Nav Buttons (Commented out but left for future use) */}
-          {/* 
+          {/* Content Overlay */}
+          <div className="relative z-10 h-full flex flex-col justify-center">
+            <div className="max-w-[1400px] mx-auto px-6 w-full">
+
+              {/* Header Row */}
+              <div className="flex items-center justify-between mb-16 text-black manrope-medium relative">
+                {/* Text Header */}
+                <div>
+                  <h2 className="text-5xl md:text-5xl leading-tight tracking-tight manrope-medium">
+                    What our customers say about HUB
+                  </h2>
+                </div>
+
+                {/* Nav Buttons (Commented out but left for future use) */}
+                {/* 
           <div className="flex items-center gap-4">
             <button
               onClick={prevSlide}
@@ -184,54 +213,54 @@ export default function Section8() {
             </button>
           </div>
           */}
-        </div>
+              </div>
 
-        {/* Video Carousel */}
-        <div className="relative">
-          {/* Carousel Container */}
-          <div className="overflow-hidden rounded-xl">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
-            >
-              {videoThumbnails.map((video) => (
-                <div key={video.id} className="w-1/3 flex-shrink-0 px-4">
+              {/* Video Carousel */}
+              <div className="relative">
+                {/* Carousel Container */}
+                <div className="overflow-hidden rounded-xl">
                   <div
-                    className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:shadow-2xl hover:scale-105"
-                    onClick={() => handleVideoClick(video)}
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
                   >
-                    {/* Thumbnail */}
-                    <div className="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                      <img
-                        src={video.thumbnail}
-                        alt={video.title}
-                        className="w-full h-[550px] object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      {/* Play Button */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
-                          <svg className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
+                    {videoThumbnails.map((video) => (
+                      <div key={video.id} className="w-1/3 flex-shrink-0 px-4">
+                        <div
+                          className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:shadow-2xl hover:scale-105"
+                          onClick={() => handleVideoClick(video)}
+                        >
+                          {/* Thumbnail */}
+                          <div className="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                            <img
+                              src={video.thumbnail}
+                              alt={video.title}
+                              className="w-full h-[550px] object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            {/* Hover Overlay */}
+                            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            {/* Play Button */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
+                                <svg className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
+                            </div>
+                            {/* Title Overlay */}
+                            <div className="absolute -bottom-3 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                              <h3 className="text-xl manrope-medium text-white transition-transform duration-300 group-hover:translate-y-[-3px]">
+                                {video.title}
+                              </h3>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      {/* Title Overlay */}
-                      <div className="absolute -bottom-3 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 className="text-xl manrope-medium text-white transition-transform duration-300 group-hover:translate-y-[-3px]">
-                          {video.title}
-                        </h3>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Dots Indicator (optional) */}
-          {/* 
+                {/* Dots Indicator (optional) */}
+                {/* 
           <div className="flex justify-center mt-6 gap-2">
             {videoThumbnails.map((_, index) => (
               <button
@@ -247,80 +276,80 @@ export default function Section8() {
             ))}
           </div>
           */}
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Video Modal */}
+        {isModalOpen && selectedVideo && (
+          <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+            <div className="relative w-full max-w-4xl">
+              <button
+                onClick={closeModal}
+                className="absolute -top-12 right-0 z-10 text-white hover:text-gray-300 transition-colors"
+                aria-label="Close video modal"
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
+                <video
+                  className="w-full h-full"
+                  controls
+                  autoPlay
+                  playsInline
+                  src={selectedVideo.videoUrl}
+                />
+              </div>
+
+              <div className="mt-4 text-center">
+                <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
-  </div>
-
-  {/* Video Modal */}
-  {isModalOpen && selectedVideo && (
-    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-      <div className="relative w-full max-w-4xl">
-        <button
-          onClick={closeModal}
-          className="absolute -top-12 right-0 z-10 text-white hover:text-gray-300 transition-colors"
-          aria-label="Close video modal"
-        >
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
-          <video
-            className="w-full h-full"
-            controls
-            autoPlay
-            playsInline
-            src={selectedVideo.videoUrl}
-          />
-        </div>
-
-        <div className="mt-4 text-center">
-          <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
-        </div>
-      </div>
-    </div>
-  )}
-</div>
 
       {/* ********desktop 1440 ends******** */}
 
 
       <div className='desktop-1280'>
-  <div className="w-[1240px] mx-auto relative h-auto min-h-[700px] overflow-hidden rounded-2xl">
-    {/* Background Video */}
-    <div className="absolute inset-0 z-0">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover"
-      >
-        <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      {/* Dark overlay for better text contrast */}
-      <div className="absolute inset-0 bg-[#F1F2F6] bg-opacity-40"></div>
-    </div>
-
-    {/* Content Overlay */}
-    <div className="relative z-10 flex flex-col justify-center py-20">
-      <div className="max-w-[1240px] mx-auto px-6 w-full">
-
-        <div className="flex items-center justify-between mb-16 text-black manrope-medium relative">
-          {/* Text Header - Left side */}
-          <div>
-            <h2 className="text-5xl md:text-5xl leading-tight tracking-tight manrope-medium">
-              What our customers say about HUB
-            </h2>
+        <div className="w-[1240px] mx-auto relative h-auto min-h-[700px] overflow-hidden rounded-2xl">
+          {/* Background Video */}
+          <div className="absolute inset-0 z-0">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* Dark overlay for better text contrast */}
+            <div className="absolute inset-0 bg-[#F1F2F6] bg-opacity-40"></div>
           </div>
 
-          {/* Navigation Buttons - Right side */}
-          <div className="flex items-center gap-4">
-            {/* <button
+          {/* Content Overlay */}
+          <div className="relative z-10 flex flex-col justify-center py-20">
+            <div className="max-w-[1240px] mx-auto px-6 w-full">
+
+              <div className="flex items-center justify-between mb-16 text-black manrope-medium relative">
+                {/* Text Header - Left side */}
+                <div>
+                  <h2 className="text-5xl md:text-5xl leading-tight tracking-tight manrope-medium">
+                    What our customers say about HUB
+                  </h2>
+                </div>
+
+                {/* Navigation Buttons - Right side */}
+                <div className="flex items-center gap-4">
+                  {/* <button
               onClick={prevSlide}
               className="bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
               aria-label="Previous video"
@@ -359,63 +388,63 @@ export default function Section8() {
                 />
               </svg>
             </button> */}
-          </div>
-        </div>
+                </div>
+              </div>
 
-        {/* Video Carousel */}
-        <div className="relative">
-          {/* Carousel Container */}
-          <div className="overflow-hidden rounded-xl -mt-5">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
-            >
-              {videoThumbnails.map((video) => (
-                <div key={video.id} className="w-1/3 flex-shrink-0 px-3">
+              {/* Video Carousel */}
+              <div className="relative">
+                {/* Carousel Container */}
+                <div className="overflow-hidden rounded-xl -mt-5">
                   <div
-                    className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:shadow-2xl hover:scale-105"
-                    onClick={() => handleVideoClick(video)}
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
                   >
-                    {/* Thumbnail Wrapper */}
-                    <div className="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                      {/* Actual Thumbnail Image */}
-                      <img
-                        src={video.thumbnail}
-                        alt={video.title}
-                        className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
+                    {videoThumbnails.map((video) => (
+                      <div key={video.id} className="w-1/3 flex-shrink-0 px-3">
+                        <div
+                          className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:shadow-2xl hover:scale-105"
+                          onClick={() => handleVideoClick(video)}
+                        >
+                          {/* Thumbnail Wrapper */}
+                          <div className="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                            {/* Actual Thumbnail Image */}
+                            <img
+                              src={video.thumbnail}
+                              alt={video.title}
+                              className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
 
-                      {/* Subtle Dark Overlay (appears only on hover) */}
-                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            {/* Subtle Dark Overlay (appears only on hover) */}
+                            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                      {/* Play Button (appears with fade-in) */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
-                          <svg
-                            className="w-6 h-6 text-gray-900 ml-1"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
+                            {/* Play Button (appears with fade-in) */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
+                                <svg
+                                  className="w-6 h-6 text-gray-900 ml-1"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
+                            </div>
+
+                            {/* Title Overlay (always visible, slight float on hover) */}
+                            <div className="absolute -bottom-3 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                              <h3 className="text-xl manrope-medium text-white transition-transform duration-300 group-hover:translate-y-[-3px]">
+                                {video.title}
+                              </h3>
+                            </div>
+                          </div>
                         </div>
                       </div>
-
-                      {/* Title Overlay (always visible, slight float on hover) */}
-                      <div className="absolute -bottom-3 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 className="text-xl manrope-medium text-white transition-transform duration-300 group-hover:translate-y-[-3px]">
-                          {video.title}
-                        </h3>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Dots Indicator temporarily blocked till more video be added  */}
-          {/* <div className="flex justify-center mt-6 gap-2">
+                {/* Dots Indicator temporarily blocked till more video be added  */}
+                {/* <div className="flex justify-center mt-6 gap-2">
             {videoThumbnails.map((_, index) => (
               <button
                 key={index}
@@ -428,50 +457,50 @@ export default function Section8() {
               />
             ))}
           </div> */}
-        </div>
-      </div>
-    </div>
-
-    {/* Video Modal */}
-    {isModalOpen && selectedVideo && (
-      <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-        <div className="relative w-full max-w-4xl">
-          <button
-            onClick={closeModal}
-            className="absolute -top-12 right-0 z-10 text-white hover:text-gray-300 transition-colors"
-            aria-label="Close video modal"
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
-            <video
-              className="w-full h-full"
-              controls
-              autoPlay
-              playsInline
-              src={selectedVideo.videoUrl}
-            >
-              Your browser does not support the video tag.
-            </video>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-4 text-center">
-            <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
-          </div>
+          {/* Video Modal */}
+          {isModalOpen && selectedVideo && (
+            <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+              <div className="relative w-full max-w-4xl">
+                <button
+                  onClick={closeModal}
+                  className="absolute -top-12 right-0 z-10 text-white hover:text-gray-300 transition-colors"
+                  aria-label="Close video modal"
+                >
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                <div className="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
+                  <video
+                    className="w-full h-full"
+                    controls
+                    autoPlay
+                    playsInline
+                    src={selectedVideo.videoUrl}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                <div className="mt-4 text-center">
+                  <h3 className="text-xl font-medium text-white">{selectedVideo.title}</h3>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-    )}
-  </div>
-</div>
 
 
 
       {/* Mobile Version */}
 
-      <div className="block md:hidden w-full -mt-15 px-4 py-6">
+      <div className="block md:hidden w-full -mt-10 px-4 py-6">
         {/* Section Header */}
         <div className="flex items-start mb-4">
           <div className="w-[2px] h-[70px] bg-[#ebd457] "></div>
@@ -483,47 +512,37 @@ export default function Section8() {
 
         {/* Stacked Swipe Carousel */}
         <div
-          className="relative w-full h-[520px] -mt-15 flex items-center justify-center"
+          className="relative w-[85%] h-[520px] -mt-15 flex items-center justify-center"
           onTouchStart={(e) => (touchStart.current = e.touches[0].clientX)}
           onTouchMove={(e) => (touchEnd.current = e.touches[0].clientX)}
           onTouchEnd={handleSwipe}
         >
-          {videoThumbnails.map((video, index) => {
-            const isActive = index === currentIndex;
-            const isNext = index === (currentIndex + 1) % videoThumbnails.length;
-            const isPrev =
-              index === (currentIndex - 1 + videoThumbnails.length) % videoThumbnails.length;
+          {videoThumbnails.map((video, index) => (
+            <div
+              key={video.id}
+              className="absolute w-[100%] h-[400px] rounded-[28px] overflow-hidden shadow-xl transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer mr-2"
+              style={getCardStyles(index)}  // 👈 new logic here
+              onClick={() => handleVideoClick(video)}
+            >
+              <img
+                src={video.thumbnail}
+                alt={video.title}
+                className="w-full h-full object-cover rounded-[28px]"
+              />
 
-            return (
-              <div
-                key={video.id}
-                className={`
-            absolute w-[100%] h-[400px] rounded-[32px] overflow-hidden transition-all duration-700 ease-in-out
-            ${isActive ? "z-30 scale-100 translate-y-0 opacity-100 shadow-2xl" : ""}
-            ${isNext ? "z-20 scale-[0.96] translate-y-8 opacity-90" : ""}
-            ${isPrev ? "z-10 scale-[0.93] translate-y-14 opacity-80" : "opacity-0 pointer-events-none"}
-          `}
-                onClick={() => handleVideoClick(video)}
-              >
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="w-full h-full manrope-medium object-cover rounded-[32px]"
-                />
-
-                {/* Play Button Overlay */}
-                <div className="absolute bottom-5 right-5 bg-black/50 rounded-full p-4 backdrop-blur-sm">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
+              {/* Play Button Overlay */}
+              <div className="absolute bottom-5 right-5 bg-black/50 rounded-full p-4 backdrop-blur-sm">
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
               </div>
-            );
-          })}
+            </div>
+          ))}
+
         </div>
 
         {/* Video Modal */}
