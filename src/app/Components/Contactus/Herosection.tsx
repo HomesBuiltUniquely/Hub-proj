@@ -72,7 +72,7 @@ const ContactHeader: React.FC = () => {
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-xl font-semibold shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-xl manrope-medium shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
         </div>
         {/* Hero content */}
         <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
@@ -101,7 +101,7 @@ const ContactHeader: React.FC = () => {
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-4xl font-semibold shadow  mr-13 mt-4">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-4xl manrope-medium shadow  mr-13 mt-4">GET FREE ESTIMATE</button>
         </div>
         {/* Hero content */}
         <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-70 absolute top-0 left-0 right-0">

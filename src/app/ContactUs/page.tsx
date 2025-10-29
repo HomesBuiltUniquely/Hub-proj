@@ -10,9 +10,9 @@ const App: React.FC = () => (
   <div className="bg-gray-50 font-sans min-h-screen">
     <ContactHeader />
    <HelpCenter />
-   {/*   <Locations />
-    <ContactSection/>
-    <Footer/> */}
+   <Locations />
+  <ContactSection/>
+        <Footer/>
   </div>
 );
 

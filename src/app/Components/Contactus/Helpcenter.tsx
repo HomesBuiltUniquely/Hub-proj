@@ -54,9 +54,9 @@ const HelpCenter: React.FC = () => {
       `}</style>
 
       <div className="desktop-1440">
-        <div className="bg-white min-h-screen py-20">
-          <section className="max-w-screen-2xl mx-auto px-8 relative">
-            {/* Title + Buttons in same line (structure retained) */}
+        <div className="min-h-screen py-5 mt-10">
+          <section className="max-w-[1440px] mx-auto px-8 -mt-5 relative">
+            {/* Title + Buttons */}
             <div className="flex items-center justify-between mb-10">
               <h2 className="text-5xl manrope text-gray-800">
                 Connect with the right team
@@ -106,34 +106,37 @@ const HelpCenter: React.FC = () => {
 
             {/* Scrollable Cards */}
             <div
-              ref={scrollRef1440} // ✅ linked correctly
-              className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar pt-4 pb-8"
+              ref={scrollRef1440}
+              className="flex gap-6 overflow-x-auto pt-4 pb-8 "
               style={{ scrollBehavior: "smooth" }}
             >
               {enquiries.map((item) => (
                 <a
                   href={item.link}
                   key={item.title}
-                  className="flex-shrink-0 min-w-[280px] max-w-[300px] min-h-[100px] max-h-[250px] bg-[#ddcdc1] rounded-xl p-6 hover:bg-[#e8d5c8] transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="flex-shrink-0 min-w-[280px] max-w-[300px] min-h-[150px] bg-[#ddcdc1] rounded-xl p-6 hover:bg-[#e8d5c8] transition-all duration-300 shadow-md hover:shadow-lg flex flex-col justify-between"
                 >
-                  <div className="manrope text-lg mb-5 text-gray-800">
+                  {/* Title */}
+                  <div className="manrope text-lg text-gray-800 mb-6">
                     {item.title}
                   </div>
 
-                  <button className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                    <span className="text-3xl -mt-1 text-black">&#8594;</span>
+                  {/* Arrow button left-aligned */}
+                  <button className="w-10 h-10 border-2 border-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                    <span className="text-2xl -mt-1 text-black">&#8594;</span>
                   </button>
                 </a>
               ))}
             </div>
           </section>
         </div>
+
       </div>
 
 
       <div className="desktop-1280">
 
-        <div className="bg-white min-h-screen py-20">
+        <div className=" min-h-screen py-20">
           <section className="max-w-screen-2xl mx-auto px-8 relative">
             {/* Title + Buttons in same line (structure retained) */}
             <div className="flex items-center justify-between mb-10">
@@ -186,7 +189,7 @@ const HelpCenter: React.FC = () => {
             {/* Scrollable Cards */}
             <div
               ref={scrollRef1280} // ✅ linked correctly
-              className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar pt-4 pb-8"
+              className="flex gap-6 overflow-x-auto scroll-smooth  pt-4 pb-8"
               style={{ scrollBehavior: "smooth" }}
             >
               {enquiries.map((item) => (
