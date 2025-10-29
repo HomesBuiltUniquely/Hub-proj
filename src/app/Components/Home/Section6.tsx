@@ -94,7 +94,7 @@ export default function Section6() {
                 <div className="max-w-7xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
-                        <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md">
+                        <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
                         <div className="flex gap-4">

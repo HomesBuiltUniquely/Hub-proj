@@ -75,7 +75,7 @@ export default function Section5() {
 
     return (
         <div>
-        <div ref={sectionRef} className="hidden md:block bg-[#F1F2F6] min-h-[740px] py-16 px-8">
+        <div ref={sectionRef} className="hidden md:block bg-[#F1F2F6] min-h-[740px] py-10 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="mb-16">

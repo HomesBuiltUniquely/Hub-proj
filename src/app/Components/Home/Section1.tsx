@@ -141,7 +141,7 @@ export default function Section1() {
            HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions from modular kitchen interiors to luxury villa interiors designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
         </h1>
        
-        <div className="mt-10 text-4xl sm:text-3xl md:text-4xl wulkan-display-bold pl-4 sm:pl-6"> Why Choose Us</div>
+        <div className="mt-10 text-4xl sm:text-3xl md:text-4xl wulkan-display-bold pl-4 sm:pl-6"> why choose us</div>
         <p className="text-left text-sm sm:text-base mt-4 manrope-medium pl-4 sm:pl-6 max-w-sm">We dont just deliver projects, we deliver experiences that last.</p>
        
         {/* Mobile Grid Container */}
@@ -149,7 +149,7 @@ export default function Section1() {
           <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-sm">
             {/* Top Row */}
             <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4">
-              <h1 className="text-4xl sm:text-4xl manrope manrope text-[#ef0101] mb-2 -mt-6">
+              <h1 className="text-4xl sm:text-4xl manrope  text-[#ef0101] mb-2 -mt-6">
                 10
               </h1>
               <div className="text-lg sm:text-xl manrope-medium text-black">
@@ -161,7 +161,7 @@ export default function Section1() {
             </div>
            
             <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4">
-              <h1 className="text-4xl sm:text-5xl manrope font-bold text-[#ef0101] mb-2  -mt-10">
+              <h1 className="text-4xl sm:text-5xl manrope  text-[#ef0101] mb-2  -mt-10">
                 0%
               </h1>
               <div className="text-lg sm:text-xl manrope-medium text-black ml-1">
@@ -171,7 +171,7 @@ export default function Section1() {
            
             {/* Bottom Row */}
             <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4">
-              <h1 className="text-4xl sm:text-5xl manrope font-bold text-[#ef0101] mb-2">
+              <h1 className="text-4xl sm:text-5xl manrope  text-[#ef0101] mb-2">
                 34
               </h1>
               <div className="text-lg sm:text-xl manrope-medium text-black">
@@ -183,7 +183,7 @@ export default function Section1() {
             </div>
            
             <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-2">
-              <h1 className="text-3xl sm:text-5xl manrope manrope text-[#ef0101] mb-2">
+              <h1 className="text-3xl sm:text-5xl manrope  text-[#ef0101] mb-2">
                 Factory
               </h1>
               <div className="text-lg sm:text-xl manrope-medium text-black">

@@ -13,7 +13,7 @@ export default function Blog17() {
             {/* Header */}
             <div className="bg-white shadow-sm">
                 <div className="max-w-4xl mx-auto px-4 py-6">
-                    <button 
+                    <button
                         onClick={() => router.push('/Blog')}
                         className="flex items-center text-gray-600 hover:text-gray-800 transition-colors mb-4 manrope-medium"
                     >
@@ -51,7 +51,7 @@ export default function Blog17() {
                                 <li>Custom layouts designed specifically for the kitchen space</li>
                             </ul>
                             <p className="manrope-medium">We aimed to create a kitchen where everything had a place, making cooking and storage effortless. Our focus was always on functionality paired with a <span className="font-black text-black">modern kitchen interior design</span> aesthetic.</p>
-                            
+
                             <div className="flex justify-center">
                                 <div className="relative w-full max-w-[580px] h-auto rounded-xl overflow-hidden my-3">
                                     <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog17img1.png" alt="Kitchen design objectives" className="w-full h-auto object-cover" />
@@ -130,7 +130,7 @@ export default function Blog17() {
                 </article>
             </div>
 
-            <Footer/>
+            <Footer />
         </div>
     );
 }

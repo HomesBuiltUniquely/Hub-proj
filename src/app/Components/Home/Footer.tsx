@@ -72,7 +72,7 @@ export default function Footer(){
                             </div>
                             <div className="flex justify-between mt-10 ">
                                 <Link href="/"><Image src="/LOGO.png" alt="HUB Logo" width={100} height={40} className="w-[100px] h-[40px]" /></Link>
-                                <Link href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Privacy Policy Terms & Conditions</p></Link>
+                                <Link href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
@@ -116,7 +116,8 @@ export default function Footer(){
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Fast Track</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Automations</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
-                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 mt-3 cursor-pointer">Inspiration</p></Link>
+                                        <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
 
                                     </div>
@@ -155,7 +156,7 @@ export default function Footer(){
                             </div>
                             <div className="flex justify-between mt-10">
                                 <Link href="/"><Image src="/LOGO.png" alt="HUB Logo" width={100} height={40} className="w-[100px] h-[40px]" /></Link>
-                                <Link href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Privacy Policy Terms & Conditions</p></Link>
+                                <Link href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
@@ -201,8 +202,6 @@ export default function Footer(){
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
                                         <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
-                                        <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
-
                                     </div>
                                 </div>
                                 
@@ -239,7 +238,7 @@ export default function Footer(){
                             </div>
                         <div className="flex justify-between mt-10">
                         <Link href="/"><img src="/LOGO.png" className="w-[100px] h-[40px]"></img></Link>
-                        <a href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Privacy Policy Terms & Conditions</p></a>
+                        <a href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p></a>
                         <div className="flex gap-8">
                        <a href="https://in.linkedin.com/company/hubinterior"> <img src="/linkedin.png " className="w-[25px] h-[25px] "></img></a>
                         <a href="https://www.youtube.com/@homesunderbudget"><img src="/youtube.png" className="w-[25px] h-[25px]  "></img></a>
@@ -406,9 +405,9 @@ export default function Footer(){
                                     <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Fast Track</p>
                                     <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Home Automations</p>
                                     <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Home Interior Price Calculator</p>
-                                    <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
+                                    <Link href='/Inspiration'><p className="text-xs manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>
+                                    <Link href="/"><p className="text-xs manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
-                                    <Link href='/Inspiration'><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Inspiration</p></Link>                                       <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Life at HUB</p></Link>
 
                                 </div>
                             </div>
@@ -476,7 +475,7 @@ export default function Footer(){
                                 
                                 {/* Legal Text */}
                                 <div className="text-center">
-                                    <p className="text-xs text-gray-300 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Privacy Policy Terms & Conditions</p>
+                                    <p className="text-xs text-gray-300 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p>
                                 </div>
                             </div>
                         </div>

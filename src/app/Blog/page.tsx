@@ -77,34 +77,84 @@ const defaultPosts: Post[] = [
   },
   {
     id: 8,
-    title: "Home Office Design Ideas",
+    title: "Key Tips to Create Bedroom Interiors That Are Relaxing and Stylish",
     date: "August 9, 2025",
     readTime: "11 mins read",
-    img: "/blog4title.jpg",
-    path: "/Blog/Blog4"
-  },
-  {
-    id: 9,
-    title: "Lighting Design for Modern Homes",
-    date: "August 11, 2025",
-    readTime: "9 mins read",
-    img: "/blog5title.jpg",
-    path: "/Blog/Blog5"
-  },
-  {
-    id: 10,
-    title: "Furniture Selection Guide",
-    date: "August 13, 2025",
-    readTime: "13 mins read",
-    img: "/bn.jpg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img1.jpg",
     path: "/Blog/Blog8"
   },
   {
+    id: 9,
+    title: "Our New Customer Project Completed in Just 11 Days – Kitchen Interior, Pooja Unit, 2 Bedroom Wardrobe Interiors & TV Unit (Nagaveni Project)",
+    date: "August 11, 2025",
+    readTime: "9 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog9img1.png",
+    path: "/Blog/Blog9"
+  },
+  {
+    id: 10,
+    title: "Royal Tulip Villa – Another Happy Customer Story and Why Royal Tulip Residents Love HUB Interior",
+    date: "August 13, 2025",
+    readTime: "13 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog10img1.png",
+    path: "/Blog/Blog10"
+    
+  },
+  {
     id: 11,
-    title: "Wall Decor Ideas and Trends",
+    title: "Which Kitchen Layout Suits You Best – L-Shaped, U-Shaped, or Island Kitchen?",
     date: "August 15, 2025",
     readTime: "7 mins read",
-    img: "/bn.jpg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog11img1.jpg",
+    path: "/Blog/Blog11"
+  },
+  {
+    id: 12,
+    title: "5 Kids’ Bedroom Cupboard Designs for 2026 – Perfect Blend of Style and Fun",
+    date: "September 15, 2025",
+    readTime: "9 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img1.png",
+    path: "/Blog/Blog12"
+  },
+  {
+    id: 13,
+    title: "7 Wardrobe Design Ideas for 2026 You’ll Wish You’d Seen Sooner",
+    date: "October 17, 2025",
+    readTime: "9 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog13img1.png",
+    path: "/Blog/Blog13"
+  },
+   {
+    id: 14,
+    title: "Top 5 Living Room Design Themes for Modern Urban Homes",
+    date: "September 24, 2025",
+    readTime: "15 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog14img1.png",
+    path: "/Blog/Blog14"
+  },
+    {
+    id: 15,
+    title: "Work From Home Made Easy – HUB Workstation Interiors that Balance Comfort and Productivity",
+    date: "September 7, 2025",
+    readTime: "16 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog15img1.png",
+    path: "/Blog/Blog15"
+  },
+     {
+    id: 16,
+    title: "Home Interior Design in Bengaluru: Anamika’s Project Completed Before Deadline",
+    date: "September 4, 2025",
+    readTime: "11 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog16img1.png",
+    path: "/Blog/Blog16"
+  },
+     {
+    id: 17,
+    title: "Kitchen Interior Design Completed in Just 3 Days – Kishan Prasad Project",
+    date: "October 28, 2025",
+    readTime: "14 mins read",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog17img1.png",
+    path: "/Blog/Blog17"
   },
 ];
 

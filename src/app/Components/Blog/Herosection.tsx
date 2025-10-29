@@ -107,29 +107,27 @@ const ContactHeader: React.FC = () => {
           </div>
         </div>
       </div>
+
+
+      
       {/* Mobile Version */}
 
-
       <div>
-        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-1 p-3">
-        <div className="relative w-full h-[500px] sm:h-[550px]">
-          {/* Background image */}
-          <img
-            src="BLGHM.png"
-            alt="Background"
-            className="w-[340px] h-[480px] object-cover rounded-xl"
-          />
-
-          {/* Top logo */}
-          <div className="absolute top-2 left-2 mb-3 -mt-5 -ml-5">
-            <Image
-              src="/redlogo.png"
-              alt="HUB Interior Logo"
-              width={80}
-              height={25}
-              className="cursor-pointer"
-            />
-          </div>
+        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
+              <div className="relative h-full w-full p-2">
+                {/* Rounded image only */}
+                <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" />
+        
+                {/* top logo */}
+                <div className="absolute top-2 -mt-5 -ml-1">
+                  <Image
+                    src="/redlogo.png"
+                    alt="HUB Interior Logo"
+                    width={90}
+                    height={25}
+                    className="cursor-pointer"
+                  />
+                </div>
 
           {/* Overlay text + CTA */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
