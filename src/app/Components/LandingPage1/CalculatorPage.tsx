@@ -1,12 +1,26 @@
 'use client'
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {useRouter} from "next/navigation";
 
 export default function CalculatorPage() {
     const router = useRouter();
+    const [hideCalculator, setHideCalculator] = useState(false);
+
+    // Hide calculator when gad_source=5 is present in URL
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('gad_source') === '5') {
+                setHideCalculator(true);
+            }
+        }
+    }, []);
     function handelSubmit() {
     router.push('/interior-designers-in-bangalore/Calculator')
+    }
+    if (hideCalculator) {
+        return null;
     }
     return (
         <div id="calculator-section" className="w-full h-auto bg-white">

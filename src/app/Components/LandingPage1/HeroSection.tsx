@@ -36,6 +36,7 @@ export default function HeroSections() {
   const [verificationStatus, setVerificationStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSendingOtpAuto, setIsSendingOtpAuto] = useState(false);
+  const [shouldHideForm, setShouldHideForm] = useState(false);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -56,6 +57,17 @@ export default function HeroSections() {
     email: '',
     phone: ''
   });
+
+  // Check for gad_source=5 parameter to hide form
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const gadSource = urlParams.get('gad_source');
+      if (gadSource === '5') {
+        setShouldHideForm(true);
+      }
+    }
+  }, []);
 
   // Auto-slide effect
   useEffect(() => {
@@ -462,10 +474,78 @@ export default function HeroSections() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} id="hero-form">
+      {shouldHideForm ? (
+        // Display without form when gad_source=5
+        <>
+          {/* ===== MOBILE VERSION WITHOUT FORM ===== */}
+          <div className="w-[full] mx-auto block lg:hidden">
+            {/* Mobile Navbar */}
+            <div className="bg-white w-full py-4 px-4 shadow-sm">
+              <div className="flex items-center justify-between">
+                <img src="/hub.png" alt="Logo" className="h-[38px]" />
+                <button type="button" onClick={scrollToCalculator} className="bg-[#DDCDC1] text-amber-950 rounded-xl px-5 py-2 text-sm manrope shadow-md hover:bg-[#c4b5a8] transition-colors">GET A FREE QUOTE</button>
+              </div>
+            </div>
 
-        {/* ===== MOBILE VERSION ===== */}
-        <div className=" w-[full] mx-auto   block lg:hidden">
+            {/* Mobile Hero Section - Carousel */}
+            <div className="relative w-full h-[420px] sm:h-[420px] mb-0 overflow-hidden">
+              {/* Carousel Images */}
+              <div className="relative w-full h-full">
+                {carouselImages1.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Hero ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover rounded-b-3xl transition-opacity duration-1000 ${index === carouselIndex ? 'opacity-100' : 'opacity-0'
+                      }`}
+                  />
+                ))}
+              </div>
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-opacity-60 rounded-b-3xl"></div>
+
+              {/* Centered Heading and Subheading */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10 pb-64 pr-10">
+                <h1 className="text-white text-[24px] manrope text-left leading-tight drop-shadow-lg mt-6 w-full h-full">Best Interior Designers in <span className="text-red-500  manrope-semibold">Bangalore</span></h1>
+                <p className="text-white text-1 text-left manrope-medium drop-shadow top-3 pt-1 pr-3 w-full h-full">Transforming Bangalore homes with personalized interiors that reflect your lifestyle.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== DESKTOP VERSION WITHOUT FORM ===== */}
+          <div className="hidden lg:block bg-[#f1f2f6] min-h-screen p-4 sm:p-6">
+            <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto lg:mr-30">
+              {/* Left side - Logo only */}
+              <div className="w-full lg:w-auto">
+                <div className="flex justify-center lg:justify-start">
+                  <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2" />
+                </div>
+              </div>
+
+              {/* Right side - Image/Placeholder */}
+              <div className="hidden lg:block min-w-[400px] lg:min-w-[750px] h-[500px] lg:h-[785px] rounded-r-3xl lg:rounded-r-4xl relative overflow-hidden">
+                {/* Carousel Image */}
+                <img
+                  className="min-w-[400px] lg:min-w-[750px] h-[500px] lg:h-[785px] rounded-r-3xl lg:rounded-r-4xl object-cover transition-all duration-500"
+                  src={carouselImages[carouselIndex]}
+                  alt={`Carousel ${carouselIndex + 1}`}
+                />
+                {/* Overlayed Headings and Button */}
+                <div className="absolute left-10 bottom-10 text-left z-10">
+                  <h1 className="text-white text-6xl manrope-medium leading-tight mb-0 drop-shadow-lg">Best Interior<p className="mb-1">Designers In <span className="text-red-500">Bangalore</span></p></h1>
+                  <p className="text-white text-xl manrope-medium drop-shadow mb-1 pt-2">Transforming Bangalore homes with personalized<br />interiors that reflect your lifestyle.</p>
+                </div>
+                <button onClick={scrollToCalculator} className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 absolute -mt-190 ml-132 manrope tracking-wider text-[18px] z-20 hover:bg-[#c4b5a8] transition-colors cursor-pointer"> GET A FREE QUOTE</button>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <form onSubmit={handleSubmit} id="hero-form">
+
+          {/* ===== MOBILE VERSION ===== */}
+          <div className=" w-[full] mx-auto   block lg:hidden">
           {/* Mobile Navbar - Separate Row with White Background */}
           <div className="bg-white w-full py-4 px-4 shadow-sm">
             <div className="flex items-center justify-between">
@@ -816,7 +896,8 @@ export default function HeroSections() {
             </div>
           </div>
         </div>
-      </form>
+        </form>
+      )}
 
       {/* OTP Modal */}
       {showOtpModal && (
