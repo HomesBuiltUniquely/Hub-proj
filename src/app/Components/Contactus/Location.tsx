@@ -15,12 +15,12 @@ const locations = [
   {
     name: "JP Nagar, Bangalore",
     description: "Safa Heights, 2, Dr Puneeth Rajkumar Rd, JP Nagar 4th Phase, Dollar Layout, Bengaluru, Karnataka 560078",
-    mapUrl: "https://maps.app.goo.gl/JP_Nagar_Location",
+    mapUrl: "https://maps.app.goo.gl/Mw3FL7JQbGN4GDB36",
   },
   {
-    name: "OMR, Chennai",
-    description: "131/2A, Moti Towers, Rajiv Gandhi Salai, Perungudi, Chennai, Kanchipuram, Tamil Nadu 600096",
-    mapUrl: "https://maps.app.goo.gl/OMR_Chennai_Location",
+    name: "Chennai",
+    description: "Upcoming",
+    mapUrl: "",
   },
 ];
 
@@ -161,9 +161,10 @@ const Locations: React.FC = () => (
     </div>
 
     {/* Mobile Small (320px - 479px) */}
-    <section className="mobile-small my-6 mx-4 -mt-40">
+    <section className="mobile-small my-6 mx-4 -mt-30 mb-10">
       <div>
-        <div className="">
+       
+         <div className="">
           <div className="flex relative">
             <div className="w-[2px] h-[40px] bg-[#ebd457] mt- "></div>
           </div>
@@ -172,6 +173,7 @@ const Locations: React.FC = () => (
 
           </div>
         </div>
+
         <div className="max-w-full mx-auto rounded-2xl overflow-hidden shadow-lg bg-[url('/bn.jpg')] bg-cover bg-center relative">
           <div className="bg-black/50 py-8 px-4">
 

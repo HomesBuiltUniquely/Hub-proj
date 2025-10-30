@@ -384,8 +384,8 @@ const ContactSection: React.FC = () => {
               {statusMessage && (
                 <div
                   className={`p-3 rounded-md text-sm ${submitStatus === "success"
-                      ? "bg-green-100 text-green-800 border border-green-200"
-                      : "bg-red-100 text-red-800 border border-red-200"
+                    ? "bg-green-100 text-green-800 border border-green-200"
+                    : "bg-red-100 text-red-800 border border-red-200"
                     }`}
                 >
                   {statusMessage}
@@ -499,6 +499,140 @@ const ContactSection: React.FC = () => {
       </div>
 
 
+      {/* Mobile Small (320px - 479px) */}
+      <section className="mobile-small my-6 mx-4 mb-20">
+        <div>
+          <div className="">
+            <div className="flex relative">
+              <div className="w-[2px] h-[80px] bg-[#ebd457]"></div>
+            </div>
+            <div className="-mt-10">
+              <h2 className="h-10 text-[28px] manrope text-gray-800 ml-3 -mt-21"> Still Have Questions ?<br />Lets Talk<br /></h2>
+
+            </div>
+          </div>
+
+          {/* Right: Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-[425px] mx-auto bg-transparent mt-10 manrope-medium px-4"
+          >
+            <div className="flex flex-col items-center space-y-6 border-2 border-[#ddcdc1] rounded-3xl p-6 mt-20 shadow-sm bg-white/40 backdrop-blur-sm">
+              {/* First Name */}
+              <input
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                placeholder="First Name*"
+                disabled={isSubmitting}
+                required
+                className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              />
+
+              {/* Last Name */}
+              <input
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                placeholder="Last Name"
+                disabled={isSubmitting}
+                className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              />
+
+              {/* Email */}
+              <input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Email*"
+                disabled={isSubmitting}
+                required
+                className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              />
+
+              {/* Phone */}
+              <input
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="Phone Number*"
+                disabled={isSubmitting}
+                required
+                className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              />
+
+              {/* Message */}
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Tell us more..."
+                disabled={isSubmitting}
+                className="w-full rounded-3xl border-2 border-[#ddcdc1] manrope-medium  px-4 py-3 h-32 resize-none focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              />
+
+              {/* Status Message */}
+              {statusMessage && (
+                <div
+                  className={`p-3 rounded-full text-sm text-center w-full manrope-medium ${submitStatus === 'success'
+                      ? 'bg-green-100 text-green-800 border border-green-200'
+                      : 'bg-red-100 text-red-800 border border-red-200'
+                    }`}
+                >
+                  {statusMessage}
+                </div>
+              )}
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-[90px] h-[30px] rounded-full text-[15px] flex items-center justify-center transition-all duration-300 manrope-medium text-white ${isSubmitting
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-[#ef0101] hover:bg-red-700'
+                  }`}
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 
+              0 0 5.373 0 12h4zm2 
+              5.291A7.962 7.962 
+              0 014 12H0c0 3.042 1.135 
+              5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  'Submit'
+                )}
+              </button>
+            </div>
+          </form>
+
+
+
+        </div>
+      </section>
 
     </div>
   );
