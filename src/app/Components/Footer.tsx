@@ -52,7 +52,7 @@ export function Footer() {
             <h3 className="text-sm sm:text-base font-bold mb-4 md:mb-5 text-[#2B1D14] manrope-bold">SOCIAL MEDIA</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm sm:text-base text-[#4A3F35]">
               {[
-                { name: "Facebook", href: "https://www.facebook.com/HomesUnderBudget/", icon: "ICONS-06.svg" },
+                { name: "Facebook", href: "https://www.facebook.com/share/1BbD7UWGze/", icon: "ICONS-06.svg" },
                 { name: "Twitter", href: "https://x.com/Homeunderbudget", icon: "ICONS-03.svg" },
                 { name: "Pinterest", href: "https://in.pinterest.com/homesunderbudget/", icon: "ICONS-05.svg" },
                 { name: "Instagram", href: "https://www.instagram.com/homesunderbudget/", icon: "ICONS-02.svg" },

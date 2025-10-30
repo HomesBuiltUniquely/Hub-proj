@@ -75,8 +75,6 @@ const ContactHeader: React.FC = () => {
 
       <div className="desktop-1280">
 
-
-
         <div className="w-[1240px] h-[800px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">

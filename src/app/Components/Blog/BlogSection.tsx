@@ -505,7 +505,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
           {/* Blog Posts - Remaining posts (starting from 6th) */}
           {allPosts.length > 5 ? (
             <>
-              <h2 className="text-2xl mt-65 sm:text-3xl lg:text-4xl font-semibold mb-12 sm:mb-16 lg:mb-20 text-gray-900 text-center">
+              <h2 className="text-2xl mt-65 sm:text-3xl lg:text-4xl manrope mb-12 sm:mb-16 lg:mb-20 text-gray-900 text-center">
                 More Blog Posts
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-8">
@@ -519,19 +519,19 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                       <img
                         src={post.img}
                         alt={post.title}
-                        className="w-full h-96 object-cover"
+                        className="w-full h-96 object-cover manrope-medium"
                       />
                     </div>
 
                     {/* Content Section */}
                     <div className="p-5 flex flex-col flex-grow">
-                      <div className="flex justify-between text-black text-xs mb-2">
+                      <div className="flex justify-between  manrope-medium text-black text-xs mb-2">
                         <span>Blog • {post.readTime}</span>
                         <span>{post.date}</span>
                       </div>
 
                       {/* Title */}
-                      <h3 className="font-semibold text-lg mb-4 line-clamp-2 min-h-[56px]">
+                      <h3 className=" manrope-medium text-lg mb-4 line-clamp-2 min-h-[56px]">
                         {post.title}
                       </h3>
 
@@ -539,7 +539,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                       <div className="mt-auto">
                         <button
                           onClick={() => handleReadMore(post)}
-                          className="w-full h-[44px] bg-red-500 text-white px-4 rounded-lg hover:bg-red-600 transition-colors font-semibold flex items-center justify-center gap-2 whitespace-nowrap"
+                          className="w-full h-[44px] bg-red-500  manrope-medium text-white px-4 rounded-lg hover:bg-red-600 transition-colors font-semibold flex items-center justify-center gap-2 whitespace-nowrap"
                         >
                           Read More <FaArrowRight className="w-4 h-4" />
                         </button>
@@ -551,7 +551,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
 
               {/* Pagination - Show when there are more than 3 remaining posts */}
               {remainingPosts.length > itemsPerPage && totalPages > 1 && (
-                <div className="flex justify-center items-center gap-1 sm:gap-2 mb-10 px-4">
+                <div className="flex justify-center items-center gap-1 sm:gap-2 mb-10 px-4  manrope-medium">
                   <button 
                     onClick={goToPrev} 
                     disabled={currentPage === 1} 

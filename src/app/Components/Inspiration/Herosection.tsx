@@ -2,9 +2,26 @@
 
 import React from "react";
 import Image from "next/image";
+import NavMore from "../NavMore";
+import ExploreRoomsDropdown from "../ExploreRooms";
+import OfferingsDropdown from "../OfferingsDropdown";
+import router from "next/router";
 
-const ContactHeader: React.FC = () => (
-  <div>
+
+const handleClick = () => {
+    router.push("/");
+  };
+
+ const handleGetEstimate = () => {
+    router.push('/GetEstimate');
+  };
+
+
+
+const ContactHeader:React.FC = () => {
+
+  
+  return <div>
     <style jsx>{`
      /* Hide both by default */
         .desktop-1280,
@@ -34,15 +51,16 @@ const ContactHeader: React.FC = () => (
       >
         {/* Navbar */}
         <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-0 z-20">
-          <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="-mt-18" />
-          <div className="hidden md:flex gap-6 manrope-medium text-white tracking-widest ml-108 -mt-20">
-            <a href="#">HOME</a>
-            <a href="#">SERVICES</a>
-            <a href="#">EXPLORE ROOMS</a>
+          <div onClick={handleClick} className="cursor-pointer">
+            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="-mt-18 -ml-5" />
           </div>
-          <button className="bg-orange-100 text-black px-4 py-2 rounded-xl manrope-medium shadow -mt-20">
-            GET FREE ESTIMATE
-          </button>
+          <div className="hidden text-[18px] md:flex gap-12 text-sm  text-white tracking-widest ml-80 -mt-15">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-15 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+
         </div>
 
         {/* Hero content */}
@@ -60,36 +78,31 @@ const ContactHeader: React.FC = () => (
 
 
     <div className="desktop-1280 px-4">
-      <div className="w-[1280px] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center"
-        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSDH.png')" }}>
-        {/* Logo */}
-        <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="-mt-18 -ml-4" />
+      <div className="w-[1240px] h-[800px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSDH.png')" }}>
         {/* Navbar */}
-        <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-4 z-20 rounded-t-3xl">
-
-
-
-          {/* Navigation */}
-          <nav className="hidden md:flex space-x-12 text-white manrope-medium tracking-widest text-xl text-nowrap ml-130 mt-3">
-            <a href="#" className="hover:underline">HOME</a>
-            <a href="#" className="hover:underline">SERVICES</a>
-            <a href="#" className="hover:underline">EXPLORE ROOMS</a>
-          </nav>
-
-          {/* Button */}
-          <button className="bg-white text-black px-5 py-2 rounded-full font-medium hover:bg-gray-200 transition mt-3">
-            GET FREE ESTIMATE
-          </button>
+        <div className="flex items-center justify-between -mt-15">
+          <div onClick={handleClick} className="cursor-pointer">
+            <Image src="/redlogo.png" alt="HUB Interior Logo" width={220} height={100} className="w-[225px] h-full  -ml-2" />
+          </div>
+          <div className="hidden text-[18px] md:flex gap-12 text-sm text-white tracking-widest ml-50 mt-4">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
 
-        {/* Hero Text */}
-        <div className="absolute bottom-8 left-8 text-white max-w-3xl z-20 mb-20">
-          <h1 className="text-7xl manrope drop-shadow-lg">Interior Inspirations</h1>
-          <p className="mt-4 mb-20 text-xl manrope-medium drop-shadow-md">
+        {/* Hero content */}
+        <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-55">
+          <h1 className="w-[1200px] text-7xl text-left  manrope mb-3 drop-shadow-lg ml-5">
+            Interior Inspirations
+          </h1>
+          <p className="w-[650px] text-lg text-left manrope-medium mb-8 drop-shadow-lg -ml-130">
             Every corner of your home holds a story - let’s design it beautifully.
           </p>
         </div>
       </div>
+
 
     </div>
 
@@ -112,8 +125,7 @@ const ContactHeader: React.FC = () => (
             alt="HUB Interior Logo"
             width={90}
             height={25}
-            className="cursor-pointer"
-          />
+            className="cursor-pointer" />
         </div>
 
         {/* text + cta */}
@@ -131,8 +143,11 @@ const ContactHeader: React.FC = () => (
     </div>
 
 
+
+
   </div>
 
-);
+    ;
+};
 
 export default ContactHeader;

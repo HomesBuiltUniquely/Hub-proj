@@ -54,7 +54,7 @@ const Section6 = () => {
               To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
             </div>
           </div>
-          <img src="/values.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
+          <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Values.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
         </div>
       </section>
 

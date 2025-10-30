@@ -54,19 +54,19 @@ const ContactHeader: React.FC = () => {
           <ExploreRoomsDropdown textColor="text-white" />
           <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope-medium hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope-medium hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope-medium mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
         {/* Hero Content */}
         <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
-          <h1 className="text-6xl font-extrabold mb-6 drop-shadow-lg manrope">
+          <h1 className="text-6xl mb-6 drop-shadow-lg manrope">
             Design Journal by HUB
           </h1>
-          <p className="text-lg font-medium mb-8 drop-shadow-lg w-[600px] manrope-medium">
+          <p className="text-lg  mb-8 drop-shadow-lg w-[600px] manrope-medium">
             A collection of home interior blogs, trends, and guides to inspire your next project.
           </p>
           <div className="flex gap-4">
-            <button className="bg-yellow-300 text-black px-6 py-3 rounded-2xl font-semibold manrope-medium shadow">
+            <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-6 py-3 rounded-2xl font-semibold manrope-medium shadow">
               Get Free Consultation
             </button>
           </div>
@@ -81,20 +81,20 @@ const ContactHeader: React.FC = () => {
       {/* Navbar */}
       <div className="relative z-10 flex items-center justify-between -mt-15">
         <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" />
-        <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5">
-          <OfferingsDropdown textColor="text-[#32261c]" />
-          <ExploreRoomsDropdown textColor="text-[#32261c]" />
-          <NavMore textColor="text-[#32261c]" />
+        <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 -mt-1">
+          <OfferingsDropdown textColor="text-white" />
+          <ExploreRoomsDropdown textColor="text-white" />
+          <NavMore textColor="text-white" />
         </div>
-        <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt- shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
       </div>
 
         {/* Hero Content */}
-        <div className="flex flex-col items-center justify-center pt-20 pb-10 text-white text-center">
-          <h1 className="text-5xl font-extrabold manrope mb-5 drop-shadow-lg">
+        <div className="flex flex-col items-center justify-center mt-40 pb-10 text-white text-center">
+          <h1 className="text-5xl  manrope mb-5 drop-shadow-lg">
             Design Journal by HUB
           </h1>
-          <p className="text-base manrope font-medium mb-6 drop-shadow-lg w-[500px] max-w-[90%]">
+          <p className="text-base manrope-medium mb-6 drop-shadow-lg w-[500px] max-w-[90%]">
             A collection of home interior blogs, trends, and guides to inspire your next project.
           </p>
           <div className="flex gap-3">
