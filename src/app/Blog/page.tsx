@@ -15,6 +15,7 @@ type Post = {
   readTime: string;
   img: string;
   path?: string;
+
 };
 
 // Default posts (fallback)

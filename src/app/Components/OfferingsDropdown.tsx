@@ -61,12 +61,12 @@ const OfferingsDropdown: React.FC<OfferingsDropdownProps> = ({
     {
       title: 'Project',
       image: '/img3.jpg',
-      link: '/'
+      link: '/Project'
     },
     {
       title: 'Inspiration',
       image: '/img5.jpg',
-      link: '/'
+      link: '/Inspiration'
     },
     {
       title: 'Customer Review',
@@ -76,7 +76,7 @@ const OfferingsDropdown: React.FC<OfferingsDropdownProps> = ({
     {
       title: 'Blogs',
       image: '/Slide.jpg',
-      link: '/'
+      link: '/Blog'
     }
   ];
 

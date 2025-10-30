@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const TABS = [
   { label: "Privacy Policy", value: "privacy" },
   { label: "What Information is collected from you?", value: "information-collected" },
-  { label: "Cancellation Policy", value: "cancellation" },
+  { label: "Cancellation & Refund Policy", value: "cancellation" },
   { label: "Information Usage", value: "information-usage" },
   { label: "Information Security", value: "security" },
   { label: "Disputes", value: "disputes" },
@@ -41,102 +41,153 @@ const getContent = (tab: string) => {
       return (
         <div className="text-gray-700 text-sm md:text-base leading-relaxed">
 
-          <ol className="list-decimal pl-4 md:pl-6">
-            <li className="manrope mt-8 md:mt-20">CANCELLATION POLICY: 0% – 10% Stage
-            <ul className="list-disc pl-5 pt-4 ">
-              <li className="manrope">Full Refund within 7 Days
-                <ul className="list-disc pl-5 manrope-medium">
-                <li>A complete refund is possible within 7 days of booking only if no site Measuremen (D1) or design discussion has taken place.</li>
-                <li>If D1 or any design discussions have occurred, no refund, even within 7 days.</li>
-                </ul>
-              </li>
-             
-              <li className="manrope pt-4">Zero Refund after 7 Days
-              <ul className="list-disc pl-5 manrope-medium">
-              <li>Post 7 days from booking, no refund is applicable, irrespective of whether site visit or design discussion has occurred.</li>
-              <li>This 7-day period is considered the locking period.</li>
+          <h1 className="manrope text-4xl">HUB Cancellation & Refund Policy</h1>
+
+          <ol className="list-[upper-alpha]  pl-4 md:pl-6 ">
+            <li className="manrope mt-8  md:mt-10 text-2xl">Stage: 0% – 10% (Booking Stage)
+
+              <ul className="list-[decimal] pl-5 pt-4 ">
+                <li className="manrope text-[18px]"> Full Refund Window
+                  <ul className="list-disc text-[15px] pl-5 manrope-medium space-y-2 mt-2">
+                    <li>A <span className="manrope">100% refund</span> is available<span className="manrope"> within 48 hours of booking.</span></li>
+                    <li><span className="manrope"> No refund</span> will be applicable <span className="manrope">after 48 hours,</span> regardless of whether a site visit or design discussion has occurred.</li>
+                    <li>The initial <span className="manrope"> 48-hour period</span> is considered the <span className="manrope"> Locking Period</span>.</li>
+                  </ul>
+                </li>
+
+
+                <li className="manrope pt-4 text-[18px]">Point of Contact (POC)
+                  <ul className="list-disc pl-5 manrope-medium mt-2 text-[15px]">
+                    <li>For any cancellation request  <span className="manrope">within 48 hours,</span> please contact the <span className="manrope">Sales Head</span>.</li>
+
+                  </ul>
+                </li>
+
+                <li className="manrope pt-4 text-[18px]">Booking Token (Less than 10%)
+                  <ul className="list-disc pl-5 manrope-medium text-[15px]">
+                    <li className="mt-2 ">If the <span className="manrope">token amount is less than 10% </span> of the total project value:
+
+                      <ul className="list-[circle] pl-5 manrope-medium mt-2 space-y-2">
+                        <li><span className="manrope">A refund</span> is possible <span className="manrope">only within 7 days of payment</span>.</li>
+                        <li><span className="manrope">No services</span> (including site visits or design work) will commence until the full <span className="manrope">10% booking amount</span> is received.</li>
+                        <li>If the <span className="manrope">10% payment</span> is not completed <span className="manrope">within 7 days</span>, the token <span className="manrope">booking will be automatically cancelled.</span></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
               </ul>
-              </li>
-
-              <li className="manrope pt-4 ">Point of Contact (POC)
-                <ul className="list-disc pl-5 manrope-medium">
-                <li>Within 7 Days: Sales Head</li>
-                <li>After 7 Days: Design Manager / Design Lead / Territory Design Manager (DM / DL / TDM)</li>
-                </ul>
-              </li>
-
-              <li className="manrope pt-4">Booking Token (Less than 10%)
-                <ul className="list-disc pl-5 manrope-medium">
-              <li>If a token amount less than 10% is paid:
-                <ul className="list-disc pl-5 manrope-medium">
-                <li>Refund is possible only within 2 months of payment.</li>
-                  <li>No services will be initiated until the full 10% booking amount is paid.</li>
-                  <li>If 10% is not completed within 2 months, the token will be auto- cancelled.</li>
-                </ul>
-              </li>
-              </ul>
-              </li> 
-
-            </ul>
             </li>
 
 
-            <li className="manrope mt-10">CANCELLATION POLICY: 0% – 10% Stage
-             <p className="pt-4 manrope-medium">Once 10% booking is paid, no refund is applicable in general. However, options vary based on progress status:</p>
-            <ul className="list-disc pl-5 pt-4">
-              <li className="manrope">Scenario 1: Design Discussion ongoing &/or Site Visit Done (D1)
-                <ul className="list-disc pl-5 manrope-medium">
-                <li>25% of the paid amount will be retained as service charges.</li>
-                <li>The remaining 75% can be used to purchase from our Hubstore.</li>
-                <li>Connect with your DMS to place an order.</li>
-                </ul>
-              </li>
-             
-              <li className="manrope pt-4">Scenario 2: All Designs Finalized, Then Cancelled
+            <li className="manrope mt-10 text-2xl"> After 10% Booking Payment
 
-              <ul className="list-disc pl-5 manrope-medium">
-              <li>75% of the paid amount will be retained.</li>
-              <li>25% balance can be utilized at our Hubstore.</li>
-              <li>Connect with your DMS to place an order.</li>
-              <li>All final design files will be shared with the customer.</li>
+              <ul className="pl-5 pt-4">
+                <li className="manrope mb text-xl">Scenario 1: Design Discussion Ongoing / Site Visit Completed (D1)
+                  <ul className="list-disc pl-5 mt-2 manrope-medium space-y-2 text-[15px]">
+                    <li><span className="manrope">25%</span> of the paid amount will be <span className="manrope">retained as service charges</span>.</li>
+                    <li>The remaining <span className="manrope">75%</span> can be <span className="manrope">redeemed</span> against purchases from the <span className="manrope">Hubstore</span>.</li>
+                    <li>Customers can contact their <span className="manrope">DMS</span> to initiate Hubstore purchases.</li>
+                  </ul>
+                </li>
+
+                <li className="manrope pt-6 text-xl">Scenario 2: All Designs Finalised, Then Cancelled
+
+                  <ul className="list-disc pl-5 manrope-medium mt-2 space-y-2 text-[15px]">
+                    <li><span className="manrope">75%</span> of the paid amount will be <span className="manrope">retained</span>.</li>
+                    <li>The remaining <span className="manrope"> 25%</span>  can be <span className="manrope">redeemed at the Hubstore.</span></li>
+                    <li>All <span className="manrope"> final design files</span> will be shared with the customer.</li>
+                  </ul>
+                </li>
+
+                <li className="manrope pt-6 text-xl">Scenario 3: Project Bifurcation into Phases
+                  <ul className="list-disc pl-5">
+                    <li className="manrope mt-2 text-[18px]">
+                      Minimum project value per phase:
+                      <ul className="list-[circle] pl-6 mt-2 text-[15px] space-y-2 manrope-medium">
+                        <li>
+                          To book an order with HUB, the customer’s quote must include a minimum of <span className="manrope">₹2,50,000 in woodwork</span>.
+                        </li>
+                        <li className="mt-2">
+                          Quotes containing woodwork below <span className="manrope"> ₹2,50,000</span> will <span className="manrope">not be accepted</span>.
+                        </li>
+                      </ul>
+                    </li>
+
+
+                    <li className="manrope pt-4 text-[18px]">
+                      Discount adjustments:
+                      <ul className="list-[circle] pl-6 mt-2 manrope-medium text-[15px]">
+                        <li>
+                          Discounts will be <span className="manrope">reduced proportionally</span> if the total sign-up value decreases.
+                        </li>
+                        <li className="mt-2">
+                          For example, for  <span className="manrope"> every ₹1,00,000 reduction</span> from the original sign-up amount, the <span className="manrope">discount will reduce by 5% </span>
+                        </li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </li>
+
+
+
+                <li className="manrope pt-6 text-xl">Scenario 4: Post-Production (Before Final 40% Payment)
+                  <ul className="list-disc pl-5 manrope-medium mt-2 space-y-2 text-[15px]">
+                    <li ><span className="manrope ">No descoping</span> is allowed once the project moves to production.</li>
+                    <li className="pt-2">Any descoping must be completed <span className="manrope">before the first 40% payment</span> (i.e., before pushing to production).</li>
+                    <li>Customers are strongly advised to <span className="manrope">finalize all scope, shades, and approvals </span> before production begins.</li>
+                  </ul>
+                </li>
+
+
+                <li className="manrope pt-6 text-xl">Other Terms
+                  <ul className="list-disc pl-5 text-[15px]">
+                    <li className="manrope-medium mt-2">HUB reserves the right to <span className="manrope">pause or cease services </span> if payments are delayed or incomplete. In such cases, <span className="manrope">no refund</span> will be issued for amounts already paid.</li>
+                    <li className="manrope-medium mt-2">Once the customer has <span className="manrope">agreed to the Terms & Conditions</span> and later chooses not to proceed, <span className="manrope">all paid amounts will be forfeited</span>.</li>
+                    <li className="manrope-medium mt-2">The customer will remain liable for any unpaid balance, as compensation (not penalty) for project-related losses.</li>
+                  </ul>
+                </li>
+
+
+                <li className="manrope pt-6 text-xl">Payment Terms
+                  <ul className="list-disc pl-5 text-[15px]">
+
+                    <li className="manrope-medium mt-2">A <span className="manrope">non-refundable convenience fee of 2% (including GST)</span> may be levied on certain payment modes, including <span className="manrope">Credit Card</span>.</li>
+                    <li className="manrope-medium mt-2">
+                      For <span className="manrope">cash payments</span>, the following limits apply:
+                      <ul className="list-[circle] pl-6 mt-2 space-y-2 manrope-medium">
+                        <li>
+                          <span className="manrope"> Without PAN:</span> Maximum ₹49,999/-s
+                        </li>
+                        <li className="mt-2">
+                          <span className="manrope"> With PAN:</span> Maximum ₹1,99,999/-
+                        </li>
+                        <li className="mt-2">
+                          The<span className="manrope"> PAN must belong to the customer, </span>  and a copy must be submitted to the <span className="manrope">Finance Team</span> for approval.
+
+                        </li>
+                      </ul>
+                    </li>
+                    <li className="manrope-medium mt-2">HUB can accept a <span className="manrope">maximum of ₹1,99,999/- in cash</span>  across all project stages.
+                      .</li>
+                  </ul>
+                </li>
+
+
+                <li className="manrope pt-6 text-xl">Refund Timeline
+                  <ul className="list-disc pl-5 mb-10 text-[15px]">
+                    <li className="manrope-medium mt-2">Any applicable refund will be processed<span className="manrope">  within 21 working days</span> from the date of <span className="manrope">Finance Team confirmation</span>, post project handover.</li>
+                    <li className="manrope-medium mt-2">Refund confirmation and communication will be shared <span className="manrope">via email</span>.</li>
+                  </ul>
+                </li>
+
+
               </ul>
-              </li>
-
-              <li className="manrope pt-4">Scenario 3: Project to Be Bifurcated into Phases
-                <ul className="list-disc pl-5 manrope-medium">
-                <li>The minimum value of each phase should be ₹3,00,000.</li>
-                <li>Discounts will be revised to 20% for both phases.</li>
-                <li>The initial 10% paid will be considered against the total project value (Phase 1 + Phase 2), no adjustment allowed toward Phase 1 alone.</li>
-                <li>The next 40% payment must be on the revised value of Phase 1.</li>
-                </ul>
-              </li>
-              
-              <li className="manrope pt-4">Scenario 4: Post Production (Before the last 40% payment)
-                <ul className="list-disc pl-5 manrope-medium">
-                <li>No cancellation or refund is possible at this stage.</li>
-                <li>Ensure full clarity on scope, shades, and approvals before production is initiated.</li>
-                </ul>
-              </li>
-
-            </ul>
-            </li>
-
-
-
-
-            <li className="manrope mt-10">CANCELLATION POLICY  – Other Terms
-
-            <ul className="list-disc pl-5 pt-6 ">
-                <li className="manrope-medium">Neither of us may terminate this engagement. However, HUB may delay or cease to provide the Services in case the Price payable remains unpaid or is delayed; in which case, HUB shall have no obligation to refund the amounts already paid by you. </li>
-                <li className="pt-6 manrope-medium">After agreeing to these Terms and Conditions, in case you seek to not avail of the Services, you will forfeit all the amounts already paid by you to HUB and also be liable to pay the balance of the Price agreed to be paid to HUB, as due compensation for the losses that will be suffered by HUB in such an eventuality and not as penalty. </li>
-                <li className="pt-6 manrope-medium">Refund Timeline: Any applicable refund will be processed only after project handover and within 21 working days from the finance team’s confirmation to customer via email.</li>
-
-              </ul>
-
 
             </li>
-            
           </ol>
+
 
         </div>
       );
@@ -164,16 +215,16 @@ const getContent = (tab: string) => {
         <div className="text-gray-700 text-sm md:text-base py-3 md:py-5 leading-relaxed">
           <h1 className="text-xl md:text-2xl manrope mb-4">Information Usage</h1>
           <div className="manrope-medium pt-5">We use your personal information to allow it to process your registration, to process any orders that you may make for any products or services displayed on the Website, provide you with improved services, contact you when it is needed by telephone, facsimile and e-mail, and to advise you of products and services which may be of interest to you, inviting you to be a participant or a respondent to an online event that is hosted on Hubointerior.com. Further, the relevant information is used by HUB interior to</div>
-         <ul className="list-disc pl-6 md:pl-10 pt-5 space-y-2">
-          <li>provide you with statements of your account;</li>
-          <li>to communicate with you on any matter relating to the conduct of your account; and</li>
-          <li>to communicate the details of any orders / processing of any orders placed by you relating to products displayed on the Website.</li>
-         </ul>
-         <div className="manrope-medium pt-5">HUB interior may also use aggregate information and statistics for the purposes of monitoring website usage in order to help us develop the Website, our products and services and may provide such Aggregate information to third parties on an aggregate basis. These statistics will not include information that can be used to identify any individual customer.</div>
-         <div className="manrope-medium pt-5">HUB interior may organize contests and surveys and the information collected during these events may be used by HUB interior to improve your overall customer experience. The information will only be shared with third parties on an aggregate basis.</div>
-         <div className="manrope-medium pt-5">[For the purposes of this Policy, “Aggregate information” shall mean and include information that is recorded about users and collected into groups so that it no longer reflects or references an individually identifiable user. Such information does not identify you individually.]</div>
-         <div className="manrope-medium pt-5">Personal data collected by the Website may be transferred to other sites of HUB interior where it is necessary to meet the purpose for which you have submitted the information. By submitting data on this Website, you are providing explicit consent to transmission of data collected on the Website.</div>
-         <div className="manrope-medium pt-5">We use anonymous information like traffic and other data to provide us with information to recognize the access privileges to our Site, track your participation in any of the events, providing you with better content and advertisements, help diagnose the problems with our Site and for the purposes detailed in the Policy.</div>
+          <ul className="list-disc pl-6 md:pl-10 pt-5 space-y-2">
+            <li>provide you with statements of your account;</li>
+            <li>to communicate with you on any matter relating to the conduct of your account; and</li>
+            <li>to communicate the details of any orders / processing of any orders placed by you relating to products displayed on the Website.</li>
+          </ul>
+          <div className="manrope-medium pt-5">HUB interior may also use aggregate information and statistics for the purposes of monitoring website usage in order to help us develop the Website, our products and services and may provide such Aggregate information to third parties on an aggregate basis. These statistics will not include information that can be used to identify any individual customer.</div>
+          <div className="manrope-medium pt-5">HUB interior may organize contests and surveys and the information collected during these events may be used by HUB interior to improve your overall customer experience. The information will only be shared with third parties on an aggregate basis.</div>
+          <div className="manrope-medium pt-5">[For the purposes of this Policy, “Aggregate information” shall mean and include information that is recorded about users and collected into groups so that it no longer reflects or references an individually identifiable user. Such information does not identify you individually.]</div>
+          <div className="manrope-medium pt-5">Personal data collected by the Website may be transferred to other sites of HUB interior where it is necessary to meet the purpose for which you have submitted the information. By submitting data on this Website, you are providing explicit consent to transmission of data collected on the Website.</div>
+          <div className="manrope-medium pt-5">We use anonymous information like traffic and other data to provide us with information to recognize the access privileges to our Site, track your participation in any of the events, providing you with better content and advertisements, help diagnose the problems with our Site and for the purposes detailed in the Policy.</div>
         </div>
       );
     case "security":
@@ -203,10 +254,10 @@ const getContent = (tab: string) => {
     case "covered":
       return (
         <div className="text-gray-700 text-base py-10 text-center">
-         <h1 className="text-2xl manrope ">What is covered in this Policy?</h1>
-         <div className="manrope-medium pt-5 text-center">This Policy covers how HUB interior treats personal information that HUB interior collects and receives, including information related to your past use of the Website products and services.</div>
-         <div className="manrope-medium pt-5 text-center">When you register for our service, we would require your personal information that is personally identifiable like your name, address, email address, or phone number, and other information that is not otherwise publicly available and is essentially required for registering and receiving services from us.</div>
-         <div className="manrope-medium pt-5 text-center">HUB interior is not responsible for any acts, deeds or things done or committed by any person not being directly employed by HUB interior. In addition, certain Hubinterior.com associated/partner companies have their own privacy statements which can be viewed by clicking on their respective links.</div>
+          <h1 className="text-2xl manrope ">What is covered in this Policy?</h1>
+          <div className="manrope-medium pt-5 text-center">This Policy covers how HUB interior treats personal information that HUB interior collects and receives, including information related to your past use of the Website products and services.</div>
+          <div className="manrope-medium pt-5 text-center">When you register for our service, we would require your personal information that is personally identifiable like your name, address, email address, or phone number, and other information that is not otherwise publicly available and is essentially required for registering and receiving services from us.</div>
+          <div className="manrope-medium pt-5 text-center">HUB interior is not responsible for any acts, deeds or things done or committed by any person not being directly employed by HUB interior. In addition, certain Hubinterior.com associated/partner companies have their own privacy statements which can be viewed by clicking on their respective links.</div>
         </div>
       );
     case "collects":
@@ -222,26 +273,26 @@ const getContent = (tab: string) => {
     case "disclosures":
       return (
         <div className="text-gray-700 text-base py-5 ">
-         <h1 className="text-2xl manrope text-center">Information Sharing and Disclosures</h1>
-         <div className="manrope text-xl pt-5 text-left">Profile Information </div>
-         <div className="manrope-medium pt-5 ">We do not rent, sell or share your personal information to third parties –</div>
-         <ul className="list-disc pl-10 pt-5">
-          <li>Unless we have permission from you,</li>
-          <li>Unless we have to provide products and services that are requested by you,</li>
-          <li>Unless we have to help investigate, prevent or take action regarding unlawful and illegal activities, suspected fraud, potential threat to the safety or security of any person or organization or property or asset or rights of the Website from unauthorized use or misuse of the Website, violations of Hubinterior.com terms and conditions or to defend against legal claims/proceedings</li>
-          <li>Unless upon occurrence of special circumstances detailed hereunder –</li>
-          <ol className="list-decimal pl-10">
-            <li>to respond to subpoenas, court orders, judicial proceedings, or other legal processes;</li>
-            <li>to enforce the terms of the Website User Terms and Conditions or the terms of this Policy;</li>
-          </ol>
-          <li>to respond to claims that any photo, text, or other material violates the rights of third parties; or</li>
-          <ol className="list-decimal pl-10">
-            <li className="manrope-medium">to protect the rights, property, or personal safety of HUB interior, its users, or the general public.</li>
-          </ol>
-         </ul>
-         <div className="manrope-medium pt-5">We provide certain required personal and contact information to our subsidiaries, affiliated companies or other trusted business partners for the purpose of providing the required service on our behalf. We require that these parties agree to process such information based on our instructions and in compliance with this Policy and any other appropriate confidentiality and security measures.</div>
-         <div className="manrope-medium pt-5">If Hubi nterior becomes involved in a merger, acquisition, or any form of sale of some or all of its assets, we will inform you through e-mail before personal information is transferred and that may become subject to a different privacy policy.</div>
-         <div className="manrope-medium pt-5">We may share with third parties certain pieces of Aggregate information.</div>
+          <h1 className="text-2xl manrope text-center">Information Sharing and Disclosures</h1>
+          <div className="manrope text-xl pt-5 text-left">Profile Information </div>
+          <div className="manrope-medium pt-5 ">We do not rent, sell or share your personal information to third parties –</div>
+          <ul className="list-disc pl-10 pt-5">
+            <li>Unless we have permission from you,</li>
+            <li>Unless we have to provide products and services that are requested by you,</li>
+            <li>Unless we have to help investigate, prevent or take action regarding unlawful and illegal activities, suspected fraud, potential threat to the safety or security of any person or organization or property or asset or rights of the Website from unauthorized use or misuse of the Website, violations of Hubinterior.com terms and conditions or to defend against legal claims/proceedings</li>
+            <li>Unless upon occurrence of special circumstances detailed hereunder –</li>
+            <ol className="list-decimal pl-10">
+              <li>to respond to subpoenas, court orders, judicial proceedings, or other legal processes;</li>
+              <li>to enforce the terms of the Website User Terms and Conditions or the terms of this Policy;</li>
+            </ol>
+            <li>to respond to claims that any photo, text, or other material violates the rights of third parties; or</li>
+            <ol className="list-decimal pl-10">
+              <li className="manrope-medium">to protect the rights, property, or personal safety of HUB interior, its users, or the general public.</li>
+            </ol>
+          </ul>
+          <div className="manrope-medium pt-5">We provide certain required personal and contact information to our subsidiaries, affiliated companies or other trusted business partners for the purpose of providing the required service on our behalf. We require that these parties agree to process such information based on our instructions and in compliance with this Policy and any other appropriate confidentiality and security measures.</div>
+          <div className="manrope-medium pt-5">If Hubi nterior becomes involved in a merger, acquisition, or any form of sale of some or all of its assets, we will inform you through e-mail before personal information is transferred and that may become subject to a different privacy policy.</div>
+          <div className="manrope-medium pt-5">We may share with third parties certain pieces of Aggregate information.</div>
         </div>
       );
     case "compliance":
@@ -295,7 +346,7 @@ const LegalSection = () => {
             ))}
           </div>
         </div>
-        
+
         {/* Mobile Tabs - Enhanced Dropdown */}
         <div className="md:hidden">
           <div className="relative">
@@ -319,7 +370,7 @@ const LegalSection = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Content */}
       <div className="mx-auto max-w-4xl">
         <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
