@@ -108,8 +108,6 @@ const ContactHeader: React.FC = () => {
 
 
 
-
-
     {/* Mobile Version */}
 
 
@@ -262,11 +260,6 @@ const ContactHeader: React.FC = () => {
 
 
   </div>
-
-
-
-
-
 
     ;
 };

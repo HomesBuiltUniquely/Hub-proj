@@ -265,7 +265,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               className={`w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-lg flex items-center justify-between px-6 cursor-pointer ${!selectedPossession && 'text-gray-400'}`}
             >
               <span>
-                {selectedPossession || "Possession In *"}
+                {selectedPossession || "Project Type & Possession *"}
               </span>
               <span className="text-gray-500">&#9662;</span>
             </div>

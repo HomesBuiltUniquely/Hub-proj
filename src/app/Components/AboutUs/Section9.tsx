@@ -106,12 +106,12 @@ export default function Section9() {
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className="aboutus-section9-2xl-section hidden 2xl:block 3xl:hidden">
-        <div className="w-screen h-[1000px] relative overflow-hidden bg-white">
+      <section className="desktop-1440 hidden 2xl:block 3xl:hidden">
+        <div className="w-screen h-[850px] relative overflow-hidden bg-white">
           <div className="text-6xl manrope pt-20 pl-16">Core Members</div>
 
           {/* Carousel Container - 2XL optimized */}
-          <div className="relative w-full h-[70vh] mt-20 px-16">
+          <div className="relative w-full h-[70vh] mt-10 px-16">
             {/* Slides Container */}
             <div className="flex gap-8 h-full">
               {travers.slice(currentIndex, currentIndex + 3).map((traver, index) => (
@@ -119,7 +119,7 @@ export default function Section9() {
                   key={currentIndex + index}
                   className="flex-1 min-w-0"
                 >
-                  <div className="w-full h-full bg-white shadow-lg rounded-2xl overflow-hidden">
+                  <div className="w-full h-[400px] bg-white shadow-lg rounded-2xl overflow-hidden">
                     <div className="h-full relative">
                       <Image
                         src={traver.img}
@@ -130,7 +130,7 @@ export default function Section9() {
                     </div>
                   </div>
                   <div className=" bg-[#ebd457] flex justify-between  mt-5 rounded-2xl">
-                    <div className="h-1/2 p-8 flex flex-col">
+                    <div className="h-1/2 px-10 py-3 flex flex-col">
                       <h3 className="text-3xl manrope">{traver.name}</h3>
                       <p className="text-gray-500 mb-6 text-xl">{traver.title}</p>
                     </div>
@@ -147,13 +147,13 @@ export default function Section9() {
             {/* Navigation Buttons - 2XL optimized */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition-all duration-300"
+              className="absolute left-4 top-1/3 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition-all duration-300"
             >
               ←
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition-all duration-300"
+              className="absolute right-4 top-1/3 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition-all duration-300"
             >
               →
             </button>
@@ -162,21 +162,21 @@ export default function Section9() {
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden bg-white mb-50">
-        <div className="w-[full] h-full relative overflow-hidden">
-          <div className="text-5xl manrope pt-18 pl-12">Core Members</div>
+      <section className="desktop-1280 hidden 2xl:block 3xl:hidden">
+        <div className="w-screen h-[850px] relative overflow-hidden bg-white">
+          <div className="text-5xl manrope pt-20 pl-16">Core Members</div>
 
-          {/* Carousel Container - XL optimized */}
-          <div className="relative w-[1400px] h-[50vh] mx-auto mt-18 px-12">
+          {/* Carousel Container - 2XL optimized */}
+          <div className="relative w-full h-[70vh] mt-10 px-16">
             {/* Slides Container */}
-            <div className="flex gap-6 h-full">
+            <div className="flex gap-8 h-full">
               {travers.slice(currentIndex, currentIndex + 3).map((traver, index) => (
                 <div
                   key={currentIndex + index}
                   className="flex-1 min-w-0"
                 >
-                  <div className="w-full h-full bg-white shadow-lg rounded-2xl overflow-hidden">
-                    <div className="h-[400px] relative">
+                  <div className="w-full h-[400px] bg-white shadow-lg rounded-2xl overflow-hidden">
+                    <div className="h-full relative">
                       <Image
                         src={traver.img}
                         alt={traver.name}
@@ -184,36 +184,32 @@ export default function Section9() {
                         style={{ objectFit: 'cover' }}
                       />
                     </div>
-
                   </div>
-                  <div className="">
-                    <div className=" h-[100px] p-6 mt-4 flex justify-between bg-[#ebd457] rounded-2xl ">
-                      <div >
-                        <h3 className="text-2xl manrope text-white">{traver.name}</h3>
-                        <p className=" text-gray-100 mb-4 text-lg manrope-medium">{traver.title}</p>
-                      </div>
-                      <div>
-                        <a href={traver.linkedin}>
-                          <img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-2' alt="LinkedIn" />
-                        </a>
-                      </div>
+                  <div className=" bg-[#ebd457] flex justify-between  mt-5 rounded-2xl">
+                    <div className="h-1/2 px-10 py-3 flex flex-col">
+                      <h3 className="text-3xl manrope">{traver.name}</h3>
+                      <p className="text-gray-500 mb-6 text-xl">{traver.title}</p>
                     </div>
-
+                    <div>
+                      <a href={traver.linkedin}>
+                        <img src="/linkedin.png" className='w-[40px] h-[40px] hover:bg-red-500 rounded-full mt-10 mr-10' alt="LinkedIn" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Navigation Buttons - XL optimized */}
+            {/* Navigation Buttons - 2XL optimized */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300"
+              className="absolute left-4 top-1/3 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition-all duration-300"
             >
               ←
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300"
+              className="absolute right-4 top-1/3 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition-all duration-300"
             >
               →
             </button>

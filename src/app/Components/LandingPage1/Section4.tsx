@@ -83,8 +83,8 @@ export function Section4(){
               {/* Mobile version - Fixed padding/margin */}
         <div className="lg:hidden w-full bg-[#f1f2f6] pt-10 pb-6 overflow-hidden">
           <div className='flex'>
-          <div className="w-0.75 h-18 bg-[#ebd657]  ml-8"></div>
-          <h1 className="text-4xl manrope-medium tracking-wide text-left mb-8 mt-4 pl-3">
+        
+          <h1 className="text-4xl manrope-medium tracking-wide text-left mb-8 mt-4 pl-4">
             Our Offerings
           </h1>
           </div>

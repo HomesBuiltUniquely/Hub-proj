@@ -664,7 +664,7 @@ export default function HeroSections() {
                     onChange={e => setSelectedBudget(e.target.value)}
                     className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
                   >
-                    <option className="text-gray-400" value="" disabled>Possession In *</option>
+                    <option className="text-gray-400" value="" disabled>Project Type & Possession *</option>
                     {budgetOptions.map((option: string) => (
                       <option key={option} value={option}>{option}</option>
                     ))}
@@ -818,7 +818,7 @@ export default function HeroSections() {
                       className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] mt-6 sm:mt-10 flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedBudget && 'text-gray-400'}`}
                     >
                       <span>
-                        {selectedBudget || "Possession In"}
+                        {selectedBudget || "Project Type & Possession"}
                       </span>
                       <span className="text-gray-500">&#9662;</span>
                     </div>

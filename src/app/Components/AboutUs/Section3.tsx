@@ -90,7 +90,7 @@ export default function Section3(){
             {/* XL Screen - Extra large displays */}
                 <div className="desktop-1280">
 
-                <div className="h-[500px] mx-auto px-12 ml-25">
+                <div className="h-[500px] mx-auto px-12">
                     
                     <div className=" w-[1100px] h-[500px] bg-[#ddcdc1] mx-auto rounded-3xl flex  overflow-hidden">
 

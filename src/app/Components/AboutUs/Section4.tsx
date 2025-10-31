@@ -104,7 +104,7 @@ export default function Section4() {
             {/* XL Screen */}
             <div className="desktop-1280">
                 <div className="h-auto min-h-[650px] px-16 ">
-                    <div className="flex flex-row justify-between h-[300px] gap-10 ml-25">
+                    <div className="flex flex-row justify-between h-[300px] gap-10 ">
                         <h1 className="text-5xl manrope mt-20 ml-16 leading-tight">
                             Brand Eco System
                         </h1>
@@ -113,7 +113,7 @@ export default function Section4() {
                         </p>
                     </div>
 
-                    <div className="flex flex-wrap justify-start gap-8 mx-auto ml-33">
+                    <div className="flex flex-wrap justify-start gap-8 mx-auto ml-20">
 
                         {/* Card 1 */}
                         <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">

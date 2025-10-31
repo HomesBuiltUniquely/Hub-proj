@@ -56,7 +56,7 @@ export default function Section9() {
           <h3 className=" text-4xl sm:text-4xl manrope-medium mb-4">
             What Our Happy Customers Have to Say!
           </h3>
-      <img className='w-[400px] h-[150px] lg:w-[450px] lg:h-[200px] mx-auto mt-10' src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//REVIEW-01.png"></img>
+      <img className='w-[400px] h-[150px]  lg:w-[450px] lg:h-[175px] mx-auto mt-10' src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//REVIEW-01.png"></img>
         </div>
 
         {/* Desktop Carousel */}
