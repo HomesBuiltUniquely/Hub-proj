@@ -12,9 +12,6 @@ import Section8 from "../Components/AboutUs/Section8";
 import Section9 from "../Components/AboutUs/Section9";
 import Footer from "../Components/Home/Footer";
 
-
-
-
 export default function Aboutus() {
   return (
     <div>
@@ -30,9 +27,6 @@ export default function Aboutus() {
       <Section9 />
       <Section10 />
       <Footer />
-
-
-
     </div>
   )
 }

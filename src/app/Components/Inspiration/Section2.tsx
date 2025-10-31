@@ -569,8 +569,10 @@ export default function InspirationBoard(): JSX.Element {
     href?: string;
   }) => {
     const baseClass =
-      "px-5 py-2 rounded-full manrope-medium transition-shadow border " +
-      (isActive ? "bg-[#3a2d25] text-white shadow-md" : "bg-white text-gray-700 shadow-sm");
+      "px-5 py-2 rounded-full manrope-medium border transition-all duration-300 " +
+      (isActive
+        ? "bg-[#3a2d25] text-white shadow-md"
+        : "bg-white text-gray-700 shadow-sm hover:bg-[#3a2d25] hover:text-white hover:shadow-md");
 
     return href ? (
       <Link href={href}>
@@ -582,6 +584,7 @@ export default function InspirationBoard(): JSX.Element {
       </button>
     );
   };
+
 
   return (
     <>
@@ -715,8 +718,8 @@ export default function InspirationBoard(): JSX.Element {
                   key={normalizedCat}
                   onClick={() => setActive(normalizedCat)}
                   className={`px-4 py-2 rounded-full text-sm border flex-shrink-0 ${active === normalizedCat
-                      ? "bg-[#3a2d25] text-white shadow-md"
-                      : "bg-white text-gray-700 shadow-sm"
+                    ? "bg-[#3a2d25] text-white shadow-md"
+                    : "bg-white text-gray-700 shadow-sm"
                     }`}
                 >
                   {normalizedCat}
