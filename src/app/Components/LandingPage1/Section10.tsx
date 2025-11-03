@@ -71,8 +71,8 @@ return(
             {/* Mobile version - Fixed padding/margin */}
         <div className="lg:hidden w-full bg-[#f1f2f6] pt-14 pb-6 overflow-hidden">
         <div className='flex'>
-        <div className="w-0.75 h-24 bg-[#ebd657]  mb-6 ml-8 " ></div>
-        <h1 className="w-full text-4xl manrope-medium tracking-wide text-left mb-8 my-auto pl-3">
+        
+        <h1 className="w-full text-4xl manrope-medium tracking-wide text-left mb-8 my-auto pl-4">
             Our Interior <div> Solution</div>
         </h1>
         </div>

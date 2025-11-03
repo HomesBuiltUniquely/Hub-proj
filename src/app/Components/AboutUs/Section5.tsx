@@ -151,7 +151,7 @@ const Section5 = () => {
 
       {/* 2XL Screen - Large displays */}
       <div className='desktop-1440'>
-      <section className="aboutus-section5-2xl-section hidden 2xl:block 3xl:hidden py-20 px-16 bg-white">
+      <section className=" py-20 px-16 bg-white">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
@@ -206,7 +206,7 @@ const Section5 = () => {
       {/* XL Screen - Extra large displays */}
 
       <div className='desktop-1280'>
-      <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white ml-30">
+      <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
@@ -571,28 +571,25 @@ const Section5 = () => {
       `}</style>
 
 
-         <style jsx>{`
-        /* Hide both sections by default on mobile */
-        .desktop-1440,
-        .desktop-1280 {
-          display: none;
-        }
+         {/* ✅ Global media query to conditionally show/hide sections */}
+            <style jsx global>{`
+                .desktop-1440,
+                .desktop-1280 {
+                    display: none;
+                }
 
-        /* Show 1280px section for screens between 768px and 1439px */
-        @media (min-width: 768px) and (max-width: 1439px) {
-          .desktop-1280 {
-            display: block;
-          }
-        }
+                @media (min-width: 768px) and (max-width: 1439px) {
+                    .desktop-1280 {
+                        display: block;
+                    }
+                }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block;
-          }
-        }
-          
-      `}</style>
+                @media (min-width: 1440px) {
+                    .desktop-1440 {
+                        display: block;
+                    }
+                }
+            `}</style>
 
 
 

@@ -12,27 +12,21 @@ import Section8 from "../Components/AboutUs/Section8";
 import Section9 from "../Components/AboutUs/Section9";
 import Footer from "../Components/Home/Footer";
 
-
-
-
 export default function Aboutus() {
   return (
     <div>
       <Herosection />
-      <Section1 />
-      <Section2 />
-      <Section3 />
+     <Section1 />
+       <Section2 />
+  <Section3 />
       <Section4 />
-      <Section5 />
-      <Section6 />
-      <Section7 />
-      <Section8 />
-      <Section9 />
-      <Section10 />
-      <Footer />
-
-
-
+        <Section5 />
+         <Section6 />
+   <Section7 />
+     <Section8 />
+     <Section9 />
+    <Section10 />
+           <Footer />
     </div>
   )
 }

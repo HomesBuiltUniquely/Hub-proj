@@ -271,7 +271,7 @@ export default function Section3() {
                             <button
                                 onClick={scrollToForm}
                                 className="text-white bg-red-500 mt-12 w-[300px] h-[50px] manrope rounded-full text-[20px] hover:bg-red-600 transition-colors"
->
+                            >
                                 Book A Free Design Session
                             </button>
                         </div>
@@ -316,19 +316,19 @@ export default function Section3() {
 
                 <div className=''>
                     <div className="flex">
-                        <div className="w-0.75 h-25   bg-[#ebd657] mt-10 ml-4"></div>
-                        <h1 className="text-4xl pl-4 pt-12 tracking-wide manrope-medium">Designs for Every Preference
-                      </h1>
+                       
+                        <h1 className="text-4xl pl-5 pt-12 tracking-wide manrope-medium">Designs for Every Preference
+                        </h1>
 
                     </div>
-                    <div className=" manrope-medium ml-4 mt-4 ">
-                        <p>From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless
-                        balance of modern charm, timeless tradition
-                        and artistic sophistication tailored to every
-                        lifestyle.</p>
+                    <div className="manrope-medium ml-5 mt-4 w-[90%] sm:w-[85%] max-w-full">
+                        <p>
+                            From sleek minimalism to bold patterns and warm wooden finishes, our interiors balance modern charm, timeless tradition, and artistic sophistication for every lifestyle.
+                        </p>
                     </div>
 
-                    
+
+
                     <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[400px]"></div>
                     <div className="ml-10 mt-10">
 
@@ -409,8 +409,6 @@ export default function Section3() {
                         })}
                     </div>
                 </div>
-
-
             </div>
         </>
     )

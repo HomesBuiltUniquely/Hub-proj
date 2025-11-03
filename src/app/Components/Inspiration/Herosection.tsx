@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import NavMore from "../NavMore";
 import ExploreRoomsDropdown from "../ExploreRooms";
@@ -8,19 +8,19 @@ import OfferingsDropdown from "../OfferingsDropdown";
 import router from "next/router";
 
 
-const handleClick = () => {
+
+const ContactHeader: React.FC = () => {
+  const handleClick = () => {
     router.push("/");
   };
 
- const handleGetEstimate = () => {
+  const handleGetEstimate = () => {
     router.push('/GetEstimate');
   };
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 
-const ContactHeader:React.FC = () => {
-
-  
   return <div>
     <style jsx>{`
      /* Hide both by default */
@@ -108,8 +108,6 @@ const ContactHeader:React.FC = () => {
 
 
 
-
-
     {/* Mobile Version */}
 
 
@@ -127,22 +125,138 @@ const ContactHeader:React.FC = () => {
             height={25}
             className="cursor-pointer" />
         </div>
-
-        {/* text + cta */}
-        <h2 className="manrope leading-tight">
-          <div className="absolute top-40 text-white w-full px-3 mt-5">
-            <div className="text-3xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
-              Interior <div>Inspirations</div>
-            </div>
-            <p className="manrope-medium w-[300px] shadow-lg  mt-2 ml-3">
-              Every corner of your home holds a story, let’s design it beautifully.
-            </p>
-          </div>
-        </h2>
       </div>
+
+
+      <div className="absolute top-8 right-1 z-50 ">
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="text-black pr-6"
+        >
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="fixed top-0 right-0 w-64 h-125 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+            <div className="p-4  relative">
+              {/* Close Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="absolute top-3 right-3 text-gray-600 p-2"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="white"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              {/* Navigation Items */}
+              <div className="space-y-4 mt-5">
+                <div>
+                  <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                    OFFERINGS
+                  </h3>
+                  <div className="space-y-1 pl-3">
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Full Home Interior
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Modular Interior
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Home Renovation
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Space Management
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                    EXPLORE ROOMS
+                  </h3>
+                  <div className="space-y-1 pl-3">
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Modular Kitchen
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Bedroom
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Living Room
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Kids Room
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                    MORE
+                  </h3>
+                  <div className="space-y-1 pl-3">
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      About Us
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Projects
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Blog
+                    </p>
+                    <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                      Contact
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+
+      </div>
+
+
+      {/* text + cta */}
+      <h2 className="manrope leading-tight">
+        <div className="absolute top-40 text-white w-full px-3 mt-3">
+          <div className="text-3xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
+            Interior <div>Inspirations</div>
+          </div>
+          <p className="manrope-medium w-[250px] shadow-lg  mt-2 ml-3">
+            Every corner of your home holds a story, let’s design it beautifully.
+          </p>
+        </div>
+      </h2>
+
+
     </div>
-
-
 
 
   </div>
