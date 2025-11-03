@@ -4,11 +4,14 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
+
+
+
 const FeaturedProjects = [
-  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP!.webp", title: "Designed for Life, Not Just Looks", button: "Get free estimate", path: `/GetEstimate`, description: "Warm & Functional Home Interiors by HUB Interior for Mr. Rijul at Azizam", BHK: "BHK", NO: "3BHK" },
-  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP3.webp", title: "Quiet Luxury Meets Thoughtful Living", button: "Get free estimate", path: `/GetEstimate`, description: "HUB Interior’s Modern Home Interior Design at Bhoo Aabharana, Bengaluru", BHK: "BHK", NO: "3BHK" },
-  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP2.webp", title: "Royal Tulip Villa", button: "Get free estimate", path: `/GetEstimate`, description: "HUB Interior Creates a Home Filled with Story, Elegance & Comfort for the George Family", BHK: "BHK", NO: "3BHK" },
-  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/iam.web3.webp", title: "Peaceful Retreat Designed with Care", button: "Get free estimate", path: `/GetEstimate`, description: "Modern Home Interior by HUB for Mr. Allen & Mrs. Ann", BHK: "BHK", NO: "3BHK" },
+  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP!.webp", title: "Designed for Life, Not Just Looks", path: `/Blog/Blog2`, button: "Get free estimate", estpath: `/GetEstimate`, description: "Warm & Functional Home Interiors by HUB Interior for Mr. Rijul at Azizam", BHK: "BHK", NO: "3BHK" },
+  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP3.webp", title: "Quiet Luxury Meets Thoughtful Living", path: `/Blog/Blog1`, button: "Get free estimate", estpath: `/GetEstimate`, description: "HUB Interior’s Modern Home Interior Design at Bhoo Aabharana, Bengaluru", BHK: "BHK", NO: "3BHK" },
+  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP2.webp", title: "Royal Tulip Villa", path: `/Blog/Blog4`, button: "Get free estimate", estpath: `/GetEstimate`, description: "HUB Interior Creates a Home Filled with Story, Elegance & Comfort for the George Family", BHK: "BHK", NO: "3BHK" },
+  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/iam.web3.webp", title: "Peaceful Retreat Designed with Care", path: `/Blog/Blog5`, button: "Get free estimate", estpath: `/GetEstimate`, description: "Modern Home Interior by HUB for Mr. Allen & Mrs. Ann", BHK: "BHK", NO: "3BHK" },
 ];
 
 
@@ -46,6 +49,10 @@ const CardSection = ({
   }, [scrollDirection]);
 
   const router = useRouter();
+
+
+
+
 
   return (
     <section className="w-full py-8 md:py-12 bg-[#f1f2f6]">
@@ -93,12 +100,21 @@ const CardSection = ({
           style={{ paddingRight: "px" }}
         >
           {cards.map((card, idx) => {
+            function handleCardClick() {
+              if (card.path) router.push(card.path);
+            }
+
+            function handleEstimateClick() {
+              router.push(card.estpath);
+            }
+
 
 
 
             return (
               <div
                 key={idx}
+                onClick={handleCardClick}
                 className="min-w-[350px] max-w-[950] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
                 style={{ height: "475px" }}
               >
@@ -123,14 +139,14 @@ const CardSection = ({
 
 
 
-                {/* <div className="-mt-10 ml-[160px] flex justify-center">
+                <div className="-mt-10 ml-[160px] flex justify-center">
                   <button
-                    onClick={handleNavigate}
+                    onClick={handleEstimateClick}
                     className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                   >
                     {card.button}
                   </button>
-                </div> */}
+                </div>
 
 
               </div>
@@ -165,12 +181,20 @@ const CardSection = ({
           >
 
             {cards.map((card, idx) => {
+              function handleCardClick() {
+                if (card.path) router.push(card.path);
+              }
 
+              function handleEstimateClick() {
+                router.push(card.estpath);
+              }
 
 
               return (
                 <div
                   key={idx}
+
+                  onClick={handleCardClick}
                   className="min-w-[350px] max-w-[750] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-10xl"
                   style={{ height: "475px" }}
                 >
@@ -195,14 +219,14 @@ const CardSection = ({
 
 
 
-                  {/* <div className="-mt-10 ml-[160px] flex justify-center">
+                  <div className="-mt-10 ml-[160px] flex justify-center">
                     <button
-                      onClick={handleNavigate}
+                      onClick={handleEstimateClick}
                       className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                     >
                       {card.button}
                     </button>
-                  </div> */}
+                  </div>
 
 
                 </div>
@@ -219,10 +243,10 @@ const CardSection = ({
       {/* mobile version  */}
 
 
-      <div className="block md:hidden px-4 h-screen w-full max-w-[425px] mx-auto  ">
+      <div className="block md:hidden px-4 h-screen w-full max-w-[425px] mx-auto mb-5">
 
 
-        <div className=' mt-5 manrope-medium '>
+        <div className=' mt- manrope-medium '>
           <div className="flex flex-row">
             <div className="w-0.75 h-10 bg-[#ebd657] ml-2">
               <h2 className="text-3xl tracking-wide manrope text-nowrap ml-3">Featured Projects</h2>
@@ -238,15 +262,20 @@ const CardSection = ({
           style={{ paddingLeft: "px" }}
         >
           {cards.map((card, idx) => {
+            function handleCardClick() {
+              if (card.path) router.push(card.path);
+            }
 
-            function handleNavigate() {
-              router.push(card.path);
+            function handleEstimateClick() {
+              router.push(card.estpath);
             }
 
 
             return (
               <div
                 key={idx}
+
+                onClick={handleCardClick}
                 className="min-w-[250px] max-w-[750] bg-white rounded-[23px] shadow-lg overflow-hidden group transition hover:shadow-2xl mt-8"
                 style={{ height: "355px" }}
               >
@@ -269,7 +298,7 @@ const CardSection = ({
 
                 <div className="-mt-10 ml-[66px] flex justify-center">
                   <button
-                    onClick={handleNavigate}
+                    onClick={handleEstimateClick}
                     className=" px-4 py-2 text-xs mt-1 ml-4 bg-red-500 rounded-full text-white manrope-medium whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                   >
                     {card.button}
