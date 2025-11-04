@@ -1,8 +1,11 @@
+import Herosection from "../Components/DinningSpace/Herosection";
+import Footer from "../Components/Home/Footer";
+
 export default function DinningSpace() {
   return (
     <div>
-      <h1>Dinning Space</h1>
-      <p>This page is under construction.</p>
+      <Herosection/>
+      <Footer/>
     </div>
   )
 }

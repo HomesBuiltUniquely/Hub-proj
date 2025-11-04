@@ -1,8 +1,11 @@
+import Footer from "../Components/Home/Footer";
+import Herosection from "../Components/StudyRoom/Herosection";
+
 export default function StudyRoom() {
   return (
     <div>
-      <h1>Study Room</h1>
-      <p>This page is under construction.</p>
+      <Herosection/>
+      <Footer/>
     </div>
   )
 }

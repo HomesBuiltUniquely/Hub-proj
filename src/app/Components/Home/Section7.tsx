@@ -70,7 +70,7 @@ export default function Section7() {
               <h1 className="text-white text-4xl wulkan-display-bold text-center">Meet our interior designers</h1>
               <p className="text-white text-xl manrope-medium mt-4 text-center w-[260px] mx-auto">Experts creating spaces you&#39;ll love</p>
               <div className="text-center mt-10 w-[250px] mx-auto">
-                <a href="/GetEstimate" ><button className="manrope-medium bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 w-full">Book your consultation</button></a>
+                <a href="/GetEstimate" ><button className="manrope-medium bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl   shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 w-full">Book your consultation</button></a>
               </div>
             </div>
           </div>

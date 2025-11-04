@@ -1,8 +1,12 @@
+import Footer from "../Components/Home/Footer";
+import Herosection from "../Components/PoojaUnit/Herosection";
+
 export default function PoojaUnit() {
   return (
     <div>
-      <h1>Pooja Unit</h1>
-      <p>This page is under construction.</p>
+      <Herosection />
+      <Footer />
     </div>
+
   )
 }

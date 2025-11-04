@@ -1,8 +1,11 @@
+import Footer from "../Components/Home/Footer";
+import Herosection from "../Components/LivingRoom/Herosection";
+
 export default function LivingRoom() {
   return (
     <div>
-      <h1>Living Room</h1>
-      <p>This page is under construction.</p>
+     <Herosection/>
+     <Footer/>
     </div>
   )
 }
