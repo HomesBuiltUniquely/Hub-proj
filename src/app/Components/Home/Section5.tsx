@@ -146,7 +146,7 @@ export default function Section5() {
             </div>
         </div>
         {/* Mobile Version - Swipeable Cards Design */}
-        <div className="block md:hidden bg-[#F1F2F6] py-8 px-4">
+        <div className="block md:hidden bg-[#F1F2F6] py-5 px-4">
           {/* Mobile Title */}
           <div className="mb-8">
              <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
@@ -156,7 +156,7 @@ export default function Section5() {
           </div>
 
           {/* Swipeable Cards Container */}
-          <div className="relative overflow-hidden px-4 pt-8">
+          <div className="relative overflow-hidden px-4 pt-5">
             <div 
               className="flex transition-transform duration-300 ease-out"
               style={{ 

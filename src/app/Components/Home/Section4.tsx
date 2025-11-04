@@ -133,7 +133,7 @@ export default function Section4() {
         </div>
       </div>
       {/* Mobile Version - Card Design */}
-      <div className="block md:hidden bg-[#F1F2F6] py-8 px-4 mt-4">
+      <div className="block md:hidden bg-[#F1F2F6] py-8 px-4 -mt-8">
         {/* Mobile Title */}
         <div className="mb-8">
           <div className="w-[2px] h-[37px] bg-[#ebd457] ml-"></div>

@@ -63,7 +63,7 @@ export default function Section7() {
         </div>
 
         {/* mobile */}
-        <div className="block md:hidden w-[340px] min-h-[500px] bg-[#F1F2F6] mt-15 mx-auto">
+        <div className="block md:hidden w-[340px] min-h-[500px] bg-[#F1F2F6] mt-8 -mb-4 mx-auto">
           <div className="max-w-7xl h-[380px] bg-white mx-auto rounded-3xl mt-4 relative">
             <img src="/ab2.png" alt="img" className="w-full h-full object-cover rounded-3xl bg-transparent blur-[2px]" />
             <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 ">
