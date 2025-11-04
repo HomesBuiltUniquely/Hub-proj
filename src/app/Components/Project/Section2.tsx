@@ -141,7 +141,8 @@ const CardSection = ({
 
                 <div className="-mt-10 ml-[160px] flex justify-center">
                   <button
-                    onClick={handleEstimateClick}
+                  
+                    onClick={(e) => {e.stopPropagation(); handleEstimateClick();}}
                     className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                   >
                     {card.button}
@@ -221,7 +222,7 @@ const CardSection = ({
 
                   <div className="-mt-10 ml-[160px] flex justify-center">
                     <button
-                      onClick={handleEstimateClick}
+                     onClick={(e) => {e.stopPropagation(); handleEstimateClick();}}
                       className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                     >
                       {card.button}
@@ -298,7 +299,7 @@ const CardSection = ({
 
                 <div className="-mt-10 ml-[66px] flex justify-center">
                   <button
-                    onClick={handleEstimateClick}
+                    onClick={(e) => {e.stopPropagation(); handleEstimateClick();}}
                     className=" px-4 py-2 text-xs mt-1 ml-4 bg-red-500 rounded-full text-white manrope-medium whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                   >
                     {card.button}

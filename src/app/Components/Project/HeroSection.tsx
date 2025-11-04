@@ -161,11 +161,11 @@ const ContactHeader: React.FC = () => {
         <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
           <div className="relative h-full w-full p-2">
             {/* Rounded image only */}
-           
-        <img
-  className="w-[350px] h-[430px] rounded-4xl relative mt- mx-auto"
-  src={`https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/ProjMH${currentSlide + 1}.png`}
-/>
+
+            <img
+              className="w-[350px] h-[430px] rounded-4xl relative mt- mx-auto"
+              src={`https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/ProjMH${currentSlide + 1}.png`}
+            />
 
 
             {/* top logo */}

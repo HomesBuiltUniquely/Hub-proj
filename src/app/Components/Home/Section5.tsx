@@ -149,7 +149,8 @@ export default function Section5() {
         <div className="block md:hidden bg-[#F1F2F6] py-8 px-4">
           {/* Mobile Title */}
           <div className="mb-8">
-            <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left ml-4">
+             <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
+            <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left ml-3 -mt-8">
               Your dream space in just four steps
             </h1>
           </div>

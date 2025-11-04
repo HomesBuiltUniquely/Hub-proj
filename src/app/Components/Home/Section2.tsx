@@ -370,7 +370,8 @@ export default function Section2() {
                 <div className="block md:hidden">
                     <div className="bg-[#F1F2F6] py-8 px-4">
                         <div className="mb-8">
-                            <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-4">
+                             <div className="w-[2px] h-[38px] bg-[#ebd457] ml-"></div>
+                            <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-4 -mt-9">
                                 Every space has a story, <div className='text-3xl'>start yours here</div>
                             </h1>
                         </div>

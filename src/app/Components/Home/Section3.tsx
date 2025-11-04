@@ -302,7 +302,8 @@ export default function Section3() {
 
             {/* Mobile Overlapping Carousel */}
             <div className="block md:hidden bg-[#F1F2F6] py-12">
-                <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-5 pl-8">All interior service, One destination</h1>
+                   <div className="w-[2px] h-[38px] bg-[#ebd457] ml-5"></div>
+                <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-9 pl-8">All interior service, One destination</h1>
 
                 <div
                     ref={carouselRef}
