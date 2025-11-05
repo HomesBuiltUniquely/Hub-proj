@@ -1,4 +1,4 @@
-import Herosection from "../Components/DinningSpace/Herosection";
+import Herosection from "../Components/DiningSpace/Herosection";
 import Footer from "../Components/Home/Footer";
 
 
