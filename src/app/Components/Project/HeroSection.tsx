@@ -28,11 +28,7 @@ const ContactHeader: React.FC = () => {
 
   ];
 
-  const mobileTexts = [
-    "From floor plan to lifestyle home, uniquely built",
-    "Get your home interior cost estimate today",
-    "From vision to reality — Interiors in 34 days"
-  ];
+ 
 
   // Auto-slide effect
   useEffect(() => {
