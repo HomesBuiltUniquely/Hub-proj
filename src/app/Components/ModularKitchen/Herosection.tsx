@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
@@ -20,6 +20,7 @@ const ContactHeader: React.FC = () => {
     router.push('/GetEstimate');
   };
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
 
@@ -80,7 +81,7 @@ const ContactHeader: React.FC = () => {
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button className="bg-orange-100 text-black px-4 py-2 rounded-xl manrope-medium shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-70 pr-200">
@@ -100,61 +101,59 @@ const ContactHeader: React.FC = () => {
 
       {/* 1280 version */}
 
-  <div className="desktop-1280">
-  <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
-    {/* Inner container with background */}
-    <div
-      className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-      style={{ backgroundImage: "url('/kh.png')" }}
-    >
-      {/* Navbar */}
-      <div className="flex items-center justify-between px-8">
-        {/* Logo */}
-        <div onClick={handleClick} className="cursor-pointer">
-          <Image
-            src="/redlogo.png"
-            alt="HUB Interior Logo"
-            width={230}
-            height={250}
-            className="w-[full] h-[full] -mt-12 -ml-8"
-          />
-        </div>
+      <div className="desktop-1280">
+        <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
+          {/* Inner container with background */}
+          <div
+            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
+            style={{ backgroundImage: "url('/kh.png')" }}
+          >
+            {/* Navbar */}
+            <div className="flex items-center justify-between px-8">
+              {/* Logo */}
+              <div onClick={handleClick} className="cursor-pointer">
+                <Image
+                  src="/redlogo.png"
+                  alt="HUB Interior Logo"
+                  width={230}
+                  height={250}
+                  className="w-[full] h-[full] -mt-12 -ml-8"
+                />
+              </div>
 
-        {/* Center Navigation */}
-        <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
-          <OfferingsDropdown textColor="text-white" />
-          <ExploreRoomsDropdown textColor="text-white" />
-          <NavMore textColor="text-white" />
-        </div>
+              {/* Center Navigation */}
+              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
 
-        {/* Right CTA */}
-        <button className="bg-orange-100 text-black px-5 py-2 rounded-3xl manrope-medium shadow -mt-12 hover:bg-yellow-200 transition">
-          GET FREE ESTIMATE
-        </button>
+              {/* Right CTA */}
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            </div>
+
+            {/* Hero content */}
+            <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
+              <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
+                Modular Kitchen Interior
+              </h1>
+
+              <p className="text-2xl manrope-medium drop-shadow-lg">
+                Modular Kitchens Design for Style, Comfort & Everyday Living
+              </p>
+
+              <button
+                onClick={handleGetEstimate}
+                className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
+              >
+                Get Free Quote
+              </button>
+            </div>
+
+
+          </div>
+        </div>
       </div>
-
-{/* Hero content */}
-<div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
-  <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
-    Modular Kitchen Interior
-  </h1>
-
-  <p className="text-2xl manrope-medium drop-shadow-lg">
-    Modular Kitchens Design for Style, Comfort & Everyday Living
-  </p>
-
-  <button
-    onClick={handleGetEstimate}
-    className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
-  >
-    Get Free Quote
-  </button>
-</div>
-
-
-    </div>
-  </div>
-</div>
 
 
 
@@ -184,6 +183,121 @@ const ContactHeader: React.FC = () => {
           {/* top logo */}
           <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
             <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
+          </div>
+
+
+          {/* Hamburger Menu Button + Mobile Menu */}
+          <div className="absolute top-8 right-1 z-50 ">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-black pr-6"
+            >
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+
+            {/* Mobile Navigation Menu */}
+            {isMobileMenuOpen && (
+              <div className="fixed top-0 right-0 w-64 h-125 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                <div className="p-4  relative">
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="absolute top-3 right-3 text-gray-600 p-2"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="white"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Navigation Items */}
+                  <div className="space-y-4 mt-5">
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                        OFFERINGS
+                      </h3>
+                      <div className="space-y-1 pl-3">
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Full Home Interior
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Modular Interior
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Home Renovation
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Space Management
+                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                        EXPLORE ROOMS
+                      </h3>
+                      <div className="space-y-1 pl-3">
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Modular Kitchen
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Bedroom
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Living Room
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Kids Room
+                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                        MORE
+                      </h3>
+                      <div className="space-y-1 pl-3">
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          About Us
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Projects
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Blog
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Contact
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+
           </div>
 
           {/* text + cta */}
@@ -229,6 +343,122 @@ const ContactHeader: React.FC = () => {
             <Image src="/redlogo.png" alt="HUB Interior Logo" width={82} height={50} className="cursor-pointer" />
           </div>
 
+          {/* Hamburger Menu Button + Mobile Menu */}
+          <div className="absolute top-8 right-1 z-50 ">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-black pr-6"
+            >
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+
+            {/* Mobile Navigation Menu */}
+            {isMobileMenuOpen && (
+              <div className="fixed top-0 right-0 w-64 h-125 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                <div className="p-4  relative">
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="absolute top-3 right-3 text-gray-600 p-2"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="white"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Navigation Items */}
+                  <div className="space-y-4 mt-5">
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                        OFFERINGS
+                      </h3>
+                      <div className="space-y-1 pl-3">
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Full Home Interior
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Modular Interior
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Home Renovation
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Space Management
+                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                        EXPLORE ROOMS
+                      </h3>
+                      <div className="space-y-1 pl-3">
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Modular Kitchen
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Bedroom
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Living Room
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Kids Room
+                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                        MORE
+                      </h3>
+                      <div className="space-y-1 pl-3">
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          About Us
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Projects
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Blog
+                        </p>
+                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          Contact
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+
+          </div>
+
+
+
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
@@ -250,16 +480,16 @@ const ContactHeader: React.FC = () => {
       </div>
 
 
-{/* other specfication for which the above doesn't work */}
+      {/* other specfication for which the above doesn't work */}
 
 
       {/* <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
             <div className="relative h-full w-full p-2"> */}
-              {/* Rounded image only */}
-              {/* <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" /> */}
-      
-              {/* top logo */}
-              {/* <div className="absolute top-2 -mt-5 -ml-1">
+      {/* Rounded image only */}
+      {/* <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" /> */}
+
+      {/* top logo */}
+      {/* <div className="absolute top-2 -mt-5 -ml-1">
                 <Image
                   src="/redlogo.png"
                   alt="HUB Interior Logo"
@@ -269,8 +499,8 @@ const ContactHeader: React.FC = () => {
                 />
               </div>
        */}
-              {/* text + cta */}
-              {/* <h2 className="manrope leading-tight">
+      {/* text + cta */}
+      {/* <h2 className="manrope leading-tight">
                 <div className="absolute top-40 text-white w-full px-3 mt-5">
                   <div className="text-3xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
                     Interior <div>Inspirations</div>
@@ -280,13 +510,12 @@ const ContactHeader: React.FC = () => {
                   </p>
                 </div>
               </h2> */}
-            {/* </div>
+      {/* </div>
           </div>*/}
 
-    </div> 
+    </div>
 
   )
 };
 
 export default ContactHeader;
- 

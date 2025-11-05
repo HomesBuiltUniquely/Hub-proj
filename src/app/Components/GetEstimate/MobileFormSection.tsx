@@ -55,10 +55,10 @@ const MobileFormSection: React.FC = () => {
   };
 
   return (
-    <div className="block md:hidden bg-gray-100 py-16 px-4">
+    <div className="block md:hidden bg-gray-100 py-10 px-4">
       <div className="max-w-md mx-auto">
         {/* Form Container */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-[#DDCDC1]">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <input
@@ -68,7 +68,7 @@ const MobileFormSection: React.FC = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-4 bg-white rounded-2xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+                className="w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
                 placeholder="Name"
               />
             </div>
@@ -81,7 +81,7 @@ const MobileFormSection: React.FC = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-4 bg-white rounded-2xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+                className="w-full px-4 py-4 bg-white  rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
                 placeholder="Email"
               />
             </div>
@@ -94,7 +94,7 @@ const MobileFormSection: React.FC = () => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-4 bg-white rounded-2xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+                className="w-full px-4 py-4 bg-white  rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
                 placeholder="Phone"
               />
             </div>
@@ -107,7 +107,7 @@ const MobileFormSection: React.FC = () => {
                 value={formData.pincode}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-4 bg-white rounded-2xl border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+                className="w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
                 placeholder="Pincode"
               />
             </div>
@@ -115,7 +115,7 @@ const MobileFormSection: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed text-base shadow-lg"
+              className=" bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white manrope py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed text-base shadow-lg"
             >
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>

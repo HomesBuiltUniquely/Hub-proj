@@ -301,12 +301,13 @@ export default function Section3() {
             </div>
 
             {/* Mobile Overlapping Carousel */}
-            <div className="block md:hidden bg-[#F1F2F6] py-12">
-                <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-5 pl-8">All interior service, One destination</h1>
+            <div className="block md:hidden bg-[#F1F2F6] py-10">
+                   <div className="w-[2px] h-[38px] bg-[#ebd457] ml-5"></div>
+                <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-9 pl-8">All interior service, One destination</h1>
 
                 <div
                     ref={carouselRef}
-                    className="relative h-[560px] flex justify-center items-center -mt-5"
+                    className="relative h-[560px] flex justify-center items-center -mt-10"
                     onTouchStart={handleTouchStart}
                     onTouchMove={handleTouchMove}
                     onTouchEnd={handleTouchEnd}
@@ -359,7 +360,7 @@ export default function Section3() {
                         );
                     })}
                 </div>
-                <div className="flex justify-center mt-8">
+                <div className="flex justify-center -mt-4 mb-5">
                     <Link href="/">
                         <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
                             Explore Services

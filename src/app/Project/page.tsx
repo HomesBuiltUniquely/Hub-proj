@@ -8,9 +8,9 @@ export default function ProjectPage() {
   return (
     <div>
       <ContactHeader />
-    <FeaturedProjectsAndEbook />
-     <Faq />
-         <Footer />
+      <FeaturedProjectsAndEbook />
+      <Faq />
+      <Footer />
     </div>
   );
 }

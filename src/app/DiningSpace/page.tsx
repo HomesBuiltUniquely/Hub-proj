@@ -1,7 +1,7 @@
+import Herosection from "../Components/DiningSpace/Herosection";
 import Footer from "../Components/Home/Footer";
-import Herosection from "../Components/StudyRoom/Herosection";
 
-export default function StudyRoom() {
+export default function DinningSpace() {
   return (
     <div>
       <Herosection/>

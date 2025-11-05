@@ -1,8 +1,12 @@
+import Herosection from "../Components/DiningSpace/Herosection";
+import Footer from "../Components/Home/Footer";
+
+
 export default function FalseCeiling() {
   return (
     <div>
-      <h1>False Ceiling</h1>
-      <p>This page is under construction.</p>
+    <Herosection/>
+    <Footer/>
     </div>
   )
 }

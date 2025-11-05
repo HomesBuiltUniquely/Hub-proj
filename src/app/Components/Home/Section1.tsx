@@ -141,9 +141,13 @@ export default function Section1() {
            HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions from modular kitchen interiors to luxury villa interiors designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
         </h1>
        
-        <div className="mt-10 text-4xl sm:text-3xl md:text-4xl wulkan-display-bold pl-4 sm:pl-6"> why choose us</div>
+       <div className="mt-15">
+        <div className="w-[2px] h-[35px] bg-[#ebd457] ml-"></div>
+        <div className="-mt-10 text-4xl sm:text-3xl md:text-4xl wulkan-display-bold pl-4 sm:pl-6"> why choose us</div>
         <p className="text-left text-sm sm:text-base mt-4 manrope-medium pl-4 sm:pl-6 max-w-sm">We dont just deliver projects, we deliver experiences that last.</p>
-       
+       </div>
+
+
         {/* Mobile Grid Container */}
         <div className="flex justify-center mt-8 px-4">
           <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-sm">

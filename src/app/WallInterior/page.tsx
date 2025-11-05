@@ -1,7 +1,7 @@
 import Footer from "../Components/Home/Footer";
-import Herosection from "../Components/TvUnit/Herosection";
+import Herosection from "../Components/WallInterior/Herosection";
 
-export default function TvUnit() {
+export default function WallInterior() {
   return (
    <div>
      <Herosection/>

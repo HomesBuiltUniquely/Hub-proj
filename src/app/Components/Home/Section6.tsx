@@ -162,7 +162,8 @@ export default function Section6() {
             <div className="block md:hidden">
                 <div className="bg-[#F1F2F6] py-8 px-4 w-full">
                     <div className="mb-8">
-                        <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-4">
+                         <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
+                        <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-3 -mt-8">
                             Recent interior design projects
                         </h1>
                     </div>

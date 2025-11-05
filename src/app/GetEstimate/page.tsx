@@ -1,3 +1,4 @@
+import Estimateblog from "../Components/GetEstimate/Estimateblog";
 import HeroSection from "../Components/GetEstimate/Herosection";
 import MobileFormSection from "../Components/GetEstimate/MobileFormSection";
 import BrandCarousel from "../Components/Home/BrandCarosel";
@@ -25,6 +26,7 @@ export default function GetEstimate() {
       <Section6/>
       <Section7/>
       <BrandCarousel/>
+      <Estimateblog/>
       <QAsection/>
       <Footer/>
     </div>

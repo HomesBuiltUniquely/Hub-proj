@@ -260,7 +260,7 @@ export default function Section8() {
                 </div>
 
                 {/* Dots Indicator (optional) */}
-                {/* 
+{/*                 
           <div className="flex justify-center mt-6 gap-2">
             {videoThumbnails.map((_, index) => (
               <button

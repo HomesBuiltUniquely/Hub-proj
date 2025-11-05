@@ -219,9 +219,6 @@ const Herosection: React.FC = () => {
           <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
           <button onClick={handleGetEstimate} className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
         </div>
-
-
-        
         {/* Mobile Version 2 - Large Mobile (480px to 767px) */}
         <div className="mobile-large w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
           {/* Mobile Header */}
