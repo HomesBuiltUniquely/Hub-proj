@@ -6,6 +6,7 @@ import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 
 
@@ -151,7 +152,7 @@ const ContactHeader: React.FC = () => {
                             </h1>
 
                             <p className="text-2xl manrope-medium drop-shadow-lg">
-                               Wardrobe interiors that maximize space without compromising style.
+                                Wardrobe interiors that maximize space without compromising style.
                             </p>
 
                             <button
@@ -224,7 +225,7 @@ const ContactHeader: React.FC = () => {
 
                         {/* Mobile Navigation Menu */}
                         {isMobileMenuOpen && (
-                            <div className="fixed top-0 right-0 w-64 h-125 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                            <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
                                 <div className="p-4  relative">
                                     {/* Close Button */}
                                     <button
@@ -249,63 +250,69 @@ const ContactHeader: React.FC = () => {
                                     {/* Navigation Items */}
                                     <div className="space-y-4 mt-5">
                                         <div>
-                                            <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                                                OFFERINGS
-                                            </h3>
-                                            <div className="space-y-1 pl-3">
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Full Home Interior
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Modular Interior
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Home Renovation
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Space Management
-                                                </p>
+                                            <div>
+                                                <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                                                    OFFERINGS
+                                                </h3>
+                                                <div className="space-y-2 pl-3"> {/* Increased spacing here */}
+                                                    <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                        Full Home Interior
+                                                    </Link>
+                                                    <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                        Modular Interior
+                                                    </Link>
+                                                    <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                        Home Renovation
+                                                    </Link>
+                                                    <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                        Space Management
+                                                    </Link>
+                                                </div>
                                             </div>
+
                                         </div>
 
                                         <div>
-                                            <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                                            <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
                                                 EXPLORE ROOMS
                                             </h3>
-                                            <div className="space-y-1 pl-3">
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                            <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                                                <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Modular Kitchen
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Bedroom
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Living Room
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Kids Room
-                                                </p>
+                                                </Link>
                                             </div>
+
+
                                         </div>
 
                                         <div>
-                                            <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                                            <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
                                                 MORE
                                             </h3>
-                                            <div className="space-y-1 pl-3">
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                            <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                                                <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     About Us
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Projects
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Blog
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Contact
-                                                </p>
+                                                </Link>
+                                                <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                    Contact Us
+                                                </Link>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -322,10 +329,10 @@ const ContactHeader: React.FC = () => {
 
                     <div className="absolute bottom-10 left-4 right-4 text-white">
                         <h2 className="manrope text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-                             Custom Wardrobe Interiors
+                            Custom Wardrobe Interiors
                         </h2>
                         <p className="mt-2 text-[13px] manrope-medium opacity-90">
-                           Wardrobe interiors that maximize space without compromising style.
+                            Wardrobe interiors that maximize space without compromising style.
                         </p>
                     </div>
                     {/* CTA overlapping, positioned above image */}
@@ -383,7 +390,7 @@ const ContactHeader: React.FC = () => {
 
                         {/* Mobile Navigation Menu */}
                         {isMobileMenuOpen && (
-                            <div className="fixed top-0 right-0 w-64 h-125 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                            <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
                                 <div className="p-4  relative">
                                     {/* Close Button */}
                                     <button
@@ -408,63 +415,69 @@ const ContactHeader: React.FC = () => {
                                     {/* Navigation Items */}
                                     <div className="space-y-4 mt-5">
                                         <div>
-                                            <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                                                OFFERINGS
-                                            </h3>
-                                            <div className="space-y-1 pl-3">
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Full Home Interior
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Modular Interior
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Home Renovation
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Space Management
-                                                </p>
+                                            <div>
+                                                <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                                                    OFFERINGS
+                                                </h3>
+                                                <div className="space-y-2 pl-3"> {/* Increased spacing here */}
+                                                    <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                        Full Home Interior
+                                                    </Link>
+                                                    <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                        Modular Interior
+                                                    </Link>
+                                                    <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                        Home Renovation
+                                                    </Link>
+                                                    <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                        Space Management
+                                                    </Link>
+                                                </div>
                                             </div>
+
                                         </div>
 
                                         <div>
-                                            <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                                            <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
                                                 EXPLORE ROOMS
                                             </h3>
-                                            <div className="space-y-1 pl-3">
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                            <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                                                <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Modular Kitchen
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Bedroom
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Living Room
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Kids Room
-                                                </p>
+                                                </Link>
                                             </div>
+
+
                                         </div>
 
                                         <div>
-                                            <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                                            <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
                                                 MORE
                                             </h3>
-                                            <div className="space-y-1 pl-3">
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                            <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                                                <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     About Us
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Projects
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                                                </Link>
+                                                <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                                                     Blog
-                                                </p>
-                                                <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                                                    Contact
-                                                </p>
+                                                </Link>
+                                                <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                                                    Contact Us
+                                                </Link>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -478,7 +491,7 @@ const ContactHeader: React.FC = () => {
                     {/* text + cta */}
                     <div className="absolute bottom-10 left-4 right-4 text-white">
                         <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-                             Custom Wardrobe Interiors
+                            Custom Wardrobe Interiors
                         </h2>
                         <p className="mt-2 text-[13px] manrope-medium opacity-90">
                             Wardrobe interiors that maximize space without compromising style.
