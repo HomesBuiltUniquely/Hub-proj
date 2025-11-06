@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
+import Link from 'next/link';
 
 
 const PolicyHeroSimple: React.FC = () => {
@@ -45,29 +46,6 @@ const PolicyHeroSimple: React.FC = () => {
         }
       `}</style>
 
-      {/* <div className="w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/Policy.png')" }}> */}
-        {/* Navbar */}
-        {/* <div className="flex items-center justify-between -mt-15 ">
-          <div onClick={handleClick} className="cursor-pointer">
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 ml-" />
-          </div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
-          </div>
-          <button className="bg-orange-100 hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-xl font-semibold shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
-        </div> */}
-        {/* Hero content */}
-        {/* <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
-          <h1 className="text-5xl lg:text-6xl font-extrabold mb-6 drop-shadow-lg">Policy Center</h1>
-          <p className="text-lg font-medium mb-8 drop-shadow-lg">Everything You Need to Know.</p>
-          <div className="flex gap-4">
-          </div>
-        </div>
-      </div> */}
-
-
       <div
         className="desktop-1440 w-[1400px] h-[900px] mx-auto mt-3 rounded-3xl overflow-hidden bg-cover bg-center relative"
         style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20H.png')" }}
@@ -89,7 +67,7 @@ const PolicyHeroSimple: React.FC = () => {
             Policy Center
           </h1>
           <p className="text-lg  mb-8 drop-shadow-lg w-[600px] manrope-medium">
-           Everything You Need to Know.
+            Everything You Need to Know.
           </p>
         </div>
       </div>
@@ -101,16 +79,16 @@ const PolicyHeroSimple: React.FC = () => {
       >
         {/* Navbar */}
         <div className="relative z-10 flex items-center justify-between -mt-15">
-        {/* Logo */}
-                      <div onClick={handleClick} className="cursor-pointer">
-                        <Image
-                          src="/redlogo.png"
-                          alt="HUB Interior Logo"
-                          width={230}
-                          height={250}
-                          className="w-[full] h-[full] -mt-3 ml-"
-                        />
-                      </div>
+          {/* Logo */}
+          <div onClick={handleClick} className="cursor-pointer">
+            <Image
+              src="/redlogo.png"
+              alt="HUB Interior Logo"
+              width={230}
+              height={250}
+              className="w-[full] h-[full] -mt-3 ml-"
+            />
+          </div>
           <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 -mt-1">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
@@ -175,7 +153,7 @@ const PolicyHeroSimple: React.FC = () => {
 
               {/* Mobile Navigation Menu */}
               {isMobileMenuOpen && (
-                <div className="fixed top-0 right-0 w-64 h-125 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
                   <div className="p-4  relative">
                     {/* Close Button */}
                     <button
@@ -200,63 +178,69 @@ const PolicyHeroSimple: React.FC = () => {
                     {/* Navigation Items */}
                     <div className="space-y-4 mt-5">
                       <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                          OFFERINGS
-                        </h3>
-                        <div className="space-y-1 pl-3">
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                            Full Home Interior
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                            Modular Interior
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                            Home Renovation
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                            Space Management
-                          </p>
+                        <div>
+                          <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                            OFFERINGS
+                          </h3>
+                          <div className="space-y-2 pl-3"> {/* Increased spacing here */}
+                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                              Full Home Interior
+                            </Link>
+                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                              Modular Interior
+                            </Link>
+                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                              Home Renovation
+                            </Link>
+                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                              Space Management
+                            </Link>
+                          </div>
                         </div>
+
                       </div>
 
                       <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
                           EXPLORE ROOMS
                         </h3>
-                        <div className="space-y-1 pl-3">
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                          <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                             Modular Kitchen
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          </Link>
+                          <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                             Bedroom
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          </Link>
+                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                             Living Room
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          </Link>
+                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                             Kids Room
-                          </p>
+                          </Link>
                         </div>
+
+
                       </div>
 
                       <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
                           MORE
                         </h3>
-                        <div className="space-y-1 pl-3">
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                          <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                             About Us
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          </Link>
+                          <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                             Projects
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
+                          </Link>
+                          <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                             Blog
-                          </p>
-                          <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                            Contact
-                          </p>
+                          </Link>
+                          <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Contact Us
+                          </Link>
                         </div>
+
                       </div>
                     </div>
                   </div>
