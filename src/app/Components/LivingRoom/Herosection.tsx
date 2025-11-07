@@ -181,24 +181,23 @@ const ContactHeader: React.FC = () => {
             <div className="md:hidden px-4 mk-mobile-360 mobile-360plus mt-3 mb-10">
                 <div className="relative h-[450] w-[full] ">
                     {/* Rounded image only */}
-                    <div className="absolute inset-0 rounded-4xl overflow-hidden">
-                        <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/LivingRoom%20MH.png"
-                            alt="Modular Kitchen Background"
-                            fill
-                            priority
-                            className="object-cover"
-                        />
-                        {/* gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-
-                        {/* top logo */}
-                        <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
-                            <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
-                        </div>
-
-                    </div>
+                   
+                             <div className="absolute inset-0 rounded-4xl overflow-hidden">
+                               <Image
+                                 src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/LivingRoom%20MH.png"
+                                 alt="Living Room"
+                                 fill
+                                 priority
+                                 className="object-cover"
+                               />
+                               {/* gradient overlay */}
+                               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                             </div>
+                   
+                             {/* top logo */}
+                             <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
+                               <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
+                             </div>
 
 
                     {/* Hamburger Menu Button + Mobile Menu */}
