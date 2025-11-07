@@ -74,26 +74,27 @@ const ContactHeader: React.FC = () => {
 
             <div>
 
-                {/* Desktop Version */}
-                <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')" }}>
-                    {/* Navbar */}
-                    <div className="flex items-center justify-between -mt-15">
-                        <div onClick={handleClick} className="cursor-pointer"> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-2" /></div>
-                        <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-                            <OfferingsDropdown textColor="text-white" />
-                            <ExploreRoomsDropdown textColor="text-white" />
-                            <NavMore textColor="text-white" />
-                        </div>
-                        <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
-                    </div>
+                 <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20H.png')" }}>
+          {/* Navbar */}
+         <div className="flex items-center justify-between -mt-15">
+           <div onClick={handleClick} className="cursor-pointer">
+                       <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+                     </div>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
                     {/* Hero content */}
                     <div className="flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-70 ml-20">
                         <h1 className="w-[1200px] text-5xl lg:text-7xl manrope mb-6 drop-shadow-lg">
-                            Creative False Ceilings
+                           Dining Spaces Designed
                         </h1>
 
                         <p className="w-[1200px] text-2xl manrope-medium mb-8 drop-shadow-lg">
-                          Modern false ceiling designs that enhance lighting, space, and style.
+                           Interiors that turn every meal into a memorable experience.
 
                         </p>
 
@@ -109,8 +110,15 @@ const ContactHeader: React.FC = () => {
 
                 </div>
 
+
+                
+
             </div>
 
+
+              
+
+              
 
 
             {/* 1280 version */}
@@ -120,7 +128,7 @@ const ContactHeader: React.FC = () => {
                     {/* Inner container with background */}
                     <div
                         className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-                        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')" }}
+                        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20H.png')" }}
                     >
                         {/* Navbar */}
                         <div className="flex items-center justify-between px-8">
@@ -149,11 +157,11 @@ const ContactHeader: React.FC = () => {
                         {/* Hero content */}
                         <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
                             <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
-                                Creative False Ceilings
+                               Dining Spaces Designed
                             </h1>
 
                             <p className="text-2xl manrope-medium drop-shadow-lg">
-                             Modern false ceiling designs that enhance lighting, space, and style.
+                            Interiors that turn every meal into a memorable experience.
 
                             </p>
 
@@ -185,7 +193,7 @@ const ContactHeader: React.FC = () => {
                     {/* Rounded image only */}
                     <div className="absolute inset-0 rounded-4xl overflow-hidden">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
+                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20MH.png"
                             alt="Modular Kitchen Background"
                             fill
                             priority
@@ -331,10 +339,10 @@ const ContactHeader: React.FC = () => {
 
                     <div className="absolute bottom-10 left-4 right-4 text-white">
                         <h2 className="manrope text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-                            Creative False Ceilings
+                           Dining Spaces Designed
                         </h2>
                         <p className="mt-2 text-[13px] manrope-medium opacity-90">
-                          Modern false ceiling designs that enhance lighting, space, and style.
+                          Interiors that turn every meal into a memorable experience.
 
                         </p>
                     </div>
@@ -355,7 +363,7 @@ const ContactHeader: React.FC = () => {
                     {/* Rounded image only */}
                     <div className="absolute inset-0 rounded-4xl overflow-hidden">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
+                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20MH.png"
                             alt="Modular Kitchen Background"
                             fill
                             priority
@@ -493,10 +501,10 @@ const ContactHeader: React.FC = () => {
                     {/* text + cta */}
                     <div className="absolute bottom-10 left-4 right-4 text-white">
                         <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-                          Creative False Ceilings
+                          Dining Spaces Designed
                         </h2>
                         <p className="mt-2 text-[13px] manrope-medium opacity-90">
-                           Modern false ceiling designs that enhance lighting, space, and style.
+                            Interiors that turn every meal into a memorable experience.
 
                         </p>
                     </div>

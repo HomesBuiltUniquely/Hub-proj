@@ -300,6 +300,9 @@ export default function Footer() {
                                         <a href="/TvUnit"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></a>
                                         <a href="/Wardrobe"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></a>
                                         <a href="/DiningSpace"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></a>
+                                        
+                                        
+                                        
                                         <a href="/FalseCeiling"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3 ">False Ceiling Design</p></a>
                                         <a href="/WallInterior"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></a>
                                         <a href="/StudyRoom"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></a>

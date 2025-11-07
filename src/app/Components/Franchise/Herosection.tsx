@@ -8,6 +8,7 @@ import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import Link from "next/link";
+import router from "next/router";
 
 const FRANCHISE_OPTIONS = [
   {
@@ -32,6 +33,11 @@ const FRANCHISE_OPTIONS = [
   },
   // Add more objects if you want more franchise cards
 ];
+
+
+  function handleClick() {
+    router.push("/");
+  }
 
 const Home: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -130,6 +136,12 @@ const Home: React.FC = () => {
     }
   };
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  
+ const handleGetEstimate = () => {
+    router.push('/GetEstimate');
+  };
+
   // const [currentSlide, setCurrentSlide] = useState(0);
 
   // Auto-slide effect for mobile carousel
@@ -167,7 +179,7 @@ const Home: React.FC = () => {
             display: block !important;
           }
         }
-      `}</style>
+      `}</style> 
 
       <div className="desktop-1440">
         <div
@@ -175,30 +187,26 @@ const Home: React.FC = () => {
           style={{ backgroundImage: "url('/kh.png')" }}
         >
           {/* Navbar */}
-          <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-0 z-20">
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={150} className=" h-[250px] -mt-18 -ml-10" />
-
-            <nav className="flex gap-8 items-center  -mt-8 mr-20 ">
-              <OfferingsDropdown textColor="text-white" className="manrope" />
-              <ExploreRoomsDropdown textColor="text-white" className="manrope" />
-              <NavMore textColor="text-white" className="manrope" />
-              <button className="bg-[#ddcdc1] text-black manrope-medium px-5 py-2 rounded-4xl ml-4 hover:bg-[#ef0101]">
-                GET FREE ESTIMATE
-              </button>
-            </nav>
-
-
-
+          <div className="flex items-center justify-between -mt-15">
+           <div onClick={handleClick} className="cursor-pointer">
+                       <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+                     </div>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
 
           {/* Main Content & Form */}
           <div className="relative z-10 flex flex-col gap-10 md:flex-row justify-between px-8 md:px-20 w-full flex-1 py-10 md:py-0">
             {/* Left: Headline & intro */}
             <div className="flex-1 flex flex-col justify-center md:max-w-xl pt-10 md:pt-0">
-              <h1 className="text-white text-4xl md:text-5xl manrope mt-123 mb-2 drop-shadow-lg">
+              <h1 className="text-white text-4xl md:text-7xl manrope mt-75 mb-2 drop-shadow-lg text-nowrap -ml-5">
                 Become a Franchisee!
               </h1>
-              <p className="text-2xl text-gray-100 mb-6 manrope-medium">Future of smart investing</p>
+              <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">Future of smart investing</p>
             </div>
           </div>
 
@@ -317,36 +325,43 @@ const Home: React.FC = () => {
       </div>
 
 
+      
 
-      <div className="desktop-1280 px-3">
-        <div className="w-[full] h-[800] mx-auto rounded-3xl  overflow-hidden relative bg-cover bg-center"
-          style={{ backgroundImage: "url('/kh.png')" }}>
+
+
+      <div className="desktop-1280 px-5">
+        <div className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
+            style={{ backgroundImage: "url('/kh.png')" }}>
 
           {/* Navbar */}
-          <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-0 z-20">
-            <Image
-              src="/redlogo.png"
-              alt="HUB Interior Logo"
-              width={225}
-              height={150}
-              className="h-[225px] -mt-16 -ml-10"
-            />
+        <div className="flex items-center justify-between px-8">
+              {/* Logo */}
+              <div onClick={handleClick} className="cursor-pointer">
+                <Image
+                  src="/redlogo.png"
+                  alt="HUB Interior Logo"
+                  width={230}
+                  height={250}
+                  className="w-[full] h-[full] -mt-12 -ml-8"
+                />
+              </div>
 
-            <nav className="flex gap-8 items-center -mt-8 mr-20 ">
-              <OfferingsDropdown textColor="text-white" className="manrope" />
-              <ExploreRoomsDropdown textColor="text-white" className="manrope" />
-              <NavMore textColor="text-white" className="manrope" />
-              <button className="bg-[#ddcdc1] text-black manrope-medium px-5 py-2 rounded-4xl ml-4 hover:bg-[#ef0101]">
-                GET FREE ESTIMATE
-              </button>
-            </nav>
-          </div>
+              {/* Center Navigation */}
+              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
+
+              {/* Right CTA */}
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            </div>
 
           {/* Main Content & Form */}
           <div className="relative z-10 flex flex-col gap-10 md:flex-row justify-between px-8 md:px-20 w-full flex-1 py-10 md:py-0">
             {/* Left: Headline & intro */}
             <div className="flex-1 flex flex-col justify-center md:max-w-xl pt-10 md:pt-0 -ml-5">
-              <h1 className="text-white text-5xl  manrope mt-123 mb-2 text-nowrap drop-shadow-lg">
+              <h1 className="text-white text-6xl  manrope mt-90 mb-2 text-nowrap drop-shadow-lg">
                 Become a Franchisee!
               </h1>
               <p className="text-2xl text-gray-100 mb-6 manrope-medium">
@@ -498,6 +513,9 @@ const Home: React.FC = () => {
           </section>
         </div>
      </div>
+
+
+    
 
 
 

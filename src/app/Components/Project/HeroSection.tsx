@@ -112,7 +112,6 @@ const ContactHeader: React.FC = () => {
       </div>
 
 
-
       {/* 1280 Version */}
 
       <div className="desktop-1280  w-[1280px] h-[800px] mx-auto mt-4 rounded-3xl overflow-hidden shadow-md bg-cover bg-center relative" >

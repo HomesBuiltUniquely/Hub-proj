@@ -46,66 +46,88 @@ const PolicyHeroSimple: React.FC = () => {
         }
       `}</style>
 
-      <div
-        className="desktop-1440 w-[1400px] h-[900px] mx-auto mt-3 rounded-3xl overflow-hidden bg-cover bg-center relative"
-        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20H.png')" }}
-      >
-        {/* Navbar */}
-        <div className="relative z-10 flex items-center justify-between -mt-23 -ml-3">
-          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] ml-5 mt-5" /></div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-6 ">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
+
+      <div className="desktop-1440">
+
+        <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20H.png')" }}>
+          {/* Navbar */}
+         <div className="flex items-center justify-between -mt-15">
+           <div onClick={handleClick} className="cursor-pointer">
+                       <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+                     </div>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope-medium hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope-medium mr-15 mt-6 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          {/* Hero content */}
+          <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
+            <h1 className="text-7xl mb-6 drop-shadow-lg manrope">
+              Policy Center
+            </h1>
+            <p className="text-lg  mb-8 drop-shadow-lg w-[600px] manrope-medium">
+              Everything You Need to Know.
+            </p>
+          </div>
+
+        </div>
+        <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
+          Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
         </div>
 
-        {/* Hero Content */}
-        <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
-          <h1 className="text-7xl mb-6 drop-shadow-lg manrope">
-            Policy Center
-          </h1>
-          <p className="text-lg  mb-8 drop-shadow-lg w-[600px] manrope-medium">
-            Everything You Need to Know.
-          </p>
-        </div>
       </div>
 
+
+
       {/* 1280px Desktop Layout */}
-      <div
-        className="desktop-1280 max-w-[1280px] h-[800px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center"
-        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20H.png')" }}
-      >
-        {/* Navbar */}
-        <div className="relative z-10 flex items-center justify-between -mt-15">
-          {/* Logo */}
-          <div onClick={handleClick} className="cursor-pointer">
-            <Image
-              src="/redlogo.png"
-              alt="HUB Interior Logo"
-              width={230}
-              height={250}
-              className="w-[full] h-[full] -mt-3 ml-"
-            />
+
+      <div className="desktop-1280">
+        <div className="hidden md:flex justify-center">
+          {/* Inner container with background */}
+          <div
+            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
+            style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20H.png')" }}
+          >
+            {/* Navbar */}
+            <div className="flex items-center justify-between px-8">
+              {/* Logo */}
+              <div onClick={handleClick} className="cursor-pointer">
+                <Image
+                  src="/redlogo.png"
+                  alt="HUB Interior Logo"
+                  width={230}
+                  height={250}
+                  className="w-[full] h-[full] -mt-12 -ml-8"
+                />
+              </div>
+
+              {/* Center Navigation */}
+              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
+
+              {/* Right CTA */}
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            </div>
+
+            {/* Hero content */}
+
+            <div className="flex flex-col items-center justify-center mt-40 pb-10 text-white text-center">
+              <h1 className="text-6xl  manrope mb-5 drop-shadow-lg">
+                Policy Center
+              </h1>
+              <p className="text-base manrope-medium mb-6 drop-shadow-lg w-[500px] max-w-[90%]">
+                Everything You Need to Know.
+              </p>
+            </div>
+
           </div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 -mt-1">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
-          </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt- shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
 
-        {/* Hero Content */}
-        <div className="flex flex-col items-center justify-center mt-40 pb-10 text-white text-center">
-          <h1 className="text-6xl  manrope mb-5 drop-shadow-lg">
-            Policy Center
-          </h1>
-          <p className="text-base manrope-medium mb-6 drop-shadow-lg w-[500px] max-w-[90%]">
-            Everything You Need to Know.
-          </p>
-        </div>
       </div>
 
 
