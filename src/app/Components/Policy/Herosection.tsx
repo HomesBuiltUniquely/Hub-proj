@@ -135,10 +135,13 @@ const PolicyHeroSimple: React.FC = () => {
       {/* Mobile Version */}
 
       <div>
-        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
+        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5  overflow-hidden">
           <div className="relative h-full w-full p-2">
             {/* Rounded image only */}
-            <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20MH.png" alt="" />
+            <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20MH.png" className="rounded-4xl" alt="" />
+
+            
+
 
             {/* top logo */}
             <div className="absolute top-2 -mt-5 -ml-1">

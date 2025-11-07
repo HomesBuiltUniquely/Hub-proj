@@ -352,7 +352,7 @@ const ContactHeader: React.FC = () => {
                     <div className="absolute inset-0 rounded-4xl overflow-hidden">
                         <Image
                             src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/LivingRoom%20MH.png"
-                            alt="Modular Kitchen Background"
+                            alt="Living Room"
                             fill
                             priority
                             className="object-cover"

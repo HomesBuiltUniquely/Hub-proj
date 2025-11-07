@@ -21,7 +21,7 @@ export default function Section4() {
 
                         {/* Description - 3XL optimized */}
                         <p className="aboutus-section4-3xl-description manrope-medium">
-                            The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
+                            The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Merry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
 
                         </p>
 
@@ -69,7 +69,7 @@ export default function Section4() {
                             Brand<div>Eco System</div>
                         </h1>
                         <p className="w-[605px] mt-3 manrope-medium text-[26px] leading-relaxed">
-                            The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
+                            The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Merry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
                         </p>
                     </div>
 
@@ -78,22 +78,22 @@ export default function Section4() {
 
                         {/* Card 1 */}
                         <div className="w-[250px] h-[250px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
-                            <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                            <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[full] h-[full] mt-20" />
                         </div>
 
                         {/* Card 2 */}
                         <div className="w-[250px] h-[250px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
-                            <img src="/b2.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                            <img src="/b2.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[full] h-[full] mt-23" />
                         </div>
 
                         {/* Card 3 */}
                         <div className="w-[250px] h-[250px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
-                            <img src="/b3.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                            <img src="/b3.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[full] h-[] mt-18" />
                         </div>
 
                         {/* Card 4 */}
                         <div className="w-[250px] h-[250px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
-                            <img src="/b4.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                            <img src="/b4.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[full] h-[] mt-14" />
                         </div>
 
 
@@ -109,7 +109,7 @@ export default function Section4() {
                             Brand Eco System
                         </h1>
                         <p className="w-[600px] mt-14 mr-12 manrope-medium text-2xl leading-relaxed">
-                            The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
+                            The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Merry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
                         </p>
                     </div>
 
@@ -117,22 +117,22 @@ export default function Section4() {
 
                         {/* Card 1 */}
                         <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
-                            <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                            <img src="/b1.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[full] h-[full] mt-20" />
                         </div>
 
                         {/* Card 2 */}
                         <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
-                            <img src="/b2.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                            <img src="/b2.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[full] h-[full] mt-23" />
                         </div>
 
                         {/* Card 3 */}
                         <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
-                            <img src="/b3.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                            <img src="/b3.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[full] h-[] mt-18" />
                         </div>
 
                         {/* Card 4 */}
                         <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
-                            <img src="/b4.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[200px] h-[100px] mt-20 ml-5" />
+                            <img src="/b4.png" alt="Homes Under Budget" className="aboutus-section4-3xl-card-image w-[full] h-[] mt-14" />
                         </div>
 
                     </div>
@@ -154,7 +154,7 @@ export default function Section4() {
                             <div className='mb-2.5 w-80'>
                                 <h1 className='text-3xl manrope text-nowrap, ml-3'>Brand <div>Eco System</div></h1>
                                 <p className='manrope-medium text-md w-full leading-relaxed mt-3 ml-3'> The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget
-                                    to Hubsolute, Affices, and Home & Marry, every brand is crafted with focus and
+                                    to Hubsolute, Affices, and Home & merry, every brand is crafted with focus and
                                     direction, shaping a legacy of design and innovation.
                                 </p>
 
@@ -170,22 +170,22 @@ export default function Section4() {
                     <div className="grid grid-cols-2 gap-x-5 gap-y-5 place-items-center w-full">
                         {/* Card 1 */}
                         <div className="w-[40vw] h-[30vw] max-w-[160px] max-h-[120px] rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center border border-gray-100">
-                            <img src="/b1.png" alt="Homes Under Budget" className="w-[70%] h-auto" />
+                            <img src="/b1.png" alt="Homes Under Budget" className="w-[100%] h-auto" />
                         </div>
 
                         {/* Card 2 */}
                         <div className="w-[40vw] h-[30vw] max-w-[160px] max-h-[120px] rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center border border-gray-100">
-                            <img src="/b2.png" alt="Hubsolute" className="w-[70%] h-auto" />
+                            <img src="/b2.png" alt="Hubsolute" className="w-[100%] h-auto" />
                         </div>
 
                         {/* Card 3 */}
                         <div className="w-[40vw] h-[30vw] max-w-[160px] max-h-[120px] rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center border border-gray-100">
-                            <img src="/b3.png" alt="Affices" className="w-[70%] h-auto" />
+                            <img src="/b3.png" alt="Affices" className="w-[100%] h-auto" />
                         </div>
 
                         {/* Card 4 */}
                         <div className="w-[40vw] h-[30vw] max-w-[160px] max-h-[120px] rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center border border-gray-100">
-                            <img src="/b4.png" alt="Home & Marry" className="w-[70%] h-auto" />
+                            <img src="/b4.png" alt="Home & Marry" className="w-[1000%] h-auto" />
                         </div>
                     </div>
                 </div>

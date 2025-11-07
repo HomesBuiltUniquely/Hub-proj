@@ -184,7 +184,7 @@ const ContactHeader: React.FC = () => {
                   <div className="absolute inset-0 rounded-4xl overflow-hidden">
                     <Image
                       src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
-                      alt="TV Unit"
+                      alt="False ceiling"
                       fill
                       priority
                       className="object-cover"

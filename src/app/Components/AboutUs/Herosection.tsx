@@ -122,156 +122,155 @@ const ContactHeader: React.FC = () => {
 
     {/* Mobile Version */}
 
+        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5  overflow-hidden">
+          <div className="relative h-full w-full p-2">
+            {/* Rounded image only */}
+            <img src="/ABH.png" className="rounded-4xl" alt="" />
 
-    <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
-      <div className="relative h-full w-full p-2">
-        {/* Rounded image only */}
-        <img src="/ABH.png" alt="" />
-
-        {/* top logo */}
-        <div className="absolute top-2 -mt-5 -ml-1">
-          <Image
-            src="/redlogo.png"
-            alt="HUB Interior Logo"
-            width={90}
-            height={25}
-            className="cursor-pointer" />
-        </div>
-      </div>
-
-
-      <div className="absolute top-8 right-1 z-50 ">
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-black pr-6"
-        >
-          <svg
-            className="w-8 h-8"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+            {/* top logo */}
+            <div className="absolute top-2 -mt-5 -ml-1">
+              <Image
+                src="/redlogo.png"
+                alt="HUB Interior Logo"
+                width={90}
+                height={25}
+                className="cursor-pointer"
+              />
+            </div>
 
 
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-            <div className="p-4  relative">
-              {/* Close Button */}
+            {/* Hamburger Menu Button + Mobile Menu */}
+            <div className="absolute top-8 right-1 z-50 ">
               <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute top-3 right-3 text-gray-600 p-2"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-white pr-6"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-8 h-8"
                   fill="none"
-                  stroke="white"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
+                    d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
               </button>
 
-              {/* Navigation Items */}
-              <div className="space-y-4 mt-5">
-                <div>
-                  <div>
-                    <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                      OFFERINGS
-                    </h3>
-                    <div className="space-y-2 pl-3"> {/* Increased spacing here */}
-                      <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Full Home Interior
-                      </Link>
-                      <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Modular Interior
-                      </Link>
-                      <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Home Renovation
-                      </Link>
-                      <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Space Management
-                      </Link>
+              {/* Mobile Navigation Menu */}
+              {isMobileMenuOpen && (
+                <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                  <div className="p-4  relative">
+                    {/* Close Button */}
+                    <button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="absolute top-3 right-3 text-gray-600 p-2"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="white"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+
+                    {/* Navigation Items */}
+                    <div className="space-y-4 mt-5">
+                      <div>
+                        <div>
+                          <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                            OFFERINGS
+                          </h3>
+                          <div className="space-y-2 pl-3"> {/* Increased spacing here */}
+                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                              Full Home Interior
+                            </Link>
+                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                              Modular Interior
+                            </Link>
+                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                              Home Renovation
+                            </Link>
+                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                              Space Management
+                            </Link>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div>
+                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                          EXPLORE ROOMS
+                        </h3>
+                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                          <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Modular Kitchen
+                          </Link>
+                          <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Bedroom
+                          </Link>
+                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Living Room
+                          </Link>
+                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Kids Room
+                          </Link>
+                        </div>
+
+
+                      </div>
+
+                      <div>
+                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                          MORE
+                        </h3>
+                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                          <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            About Us
+                          </Link>
+                          <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Projects
+                          </Link>
+                          <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Blog
+                          </Link>
+                          <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Contact Us
+                          </Link>
+                        </div>
+
+                      </div>
                     </div>
                   </div>
-
                 </div>
-
-                <div>
-                  <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                    EXPLORE ROOMS
-                  </h3>
-                  <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                    <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                      Modular Kitchen
-                    </Link>
-                    <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                      Bedroom
-                    </Link>
-                    <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                      Living Room
-                    </Link>
-                    <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                      Kids Room
-                    </Link>
-                  </div>
+              )}
 
 
-                </div>
-
-                <div>
-                  <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                    MORE
-                  </h3>
-                  <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                    <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                      About Us
-                    </Link>
-                    <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                      Projects
-                    </Link>
-                    <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                      Blog
-                    </Link>
-                    <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                      Contact Us
-                    </Link>
-                  </div>
-
-                </div>
-              </div>
             </div>
-          </div>
-        )}
 
 
-      </div>
-
-
-      {/* text + cta */}
-      <h2 className="manrope leading-tight">
+            {/* Overlay text + CTA */}
+           <h2 className="manrope leading-tight">
         <div className="absolute top-40 text-white w-full px-3 ml-3 mt-10">
           <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">homes,</div>
           <div className="text-[65px] sm:text-6xl wulkan-display my- leading-tight">uniquely</div>
           <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">built</div>
         </div>
       </h2>
+          </div>
+        </div>
 
-
-    </div>
 
 
   </div>
