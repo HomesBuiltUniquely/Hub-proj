@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 const OverlapNavBar: React.FC = () => {
   const [activeTab, setActiveTab] = useState('home');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
 
   const router = useRouter();
@@ -63,16 +63,16 @@ const OverlapNavBar: React.FC = () => {
       setIsMobileMenuOpen(!isMobileMenuOpen);
     }
 
-    if(tabId === 'gallery'){
+    if (tabId === 'gallery') {
       router.push("/ModularKitchen");
     }
   };
 
   const handleLetsBeginClick = () => {
     router.push('/GetEstimate');
-    
+
   };
-    
+
   // Close on Escape for accessibility
   React.useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -88,52 +88,51 @@ const OverlapNavBar: React.FC = () => {
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
       <div className="relative">
         {/* Main White Pill-Shaped Navigation Bar */}
-        <div className={`bg-white w-[340px] h-[60px] rounded-full px-5 py-4 shadow-lg flex items-center gap- relative transition-opacity duration-200 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div className={`bg-white w-[340px] h-[60px] rounded-full px-5 py-4 shadow-lg flex items-center justify-between relative transition-opacity duration-200 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           {/* Home Icon */}
           <button
             onClick={() => handleTabClick('home')}
-            className={`p-2 transition-colors duration-200 ${
-              activeTab === 'home' ? 'text-red-600' : 'text-gray-600 hover:text-gray-800'
-            }`}
+            className={`flex flex-col items-center p-2 transition-colors duration-200 ${activeTab === 'home' ? 'text-red-600' : 'text-gray-600 hover:text-gray-800'
+              }`}
           >
             {navItems[0].icon}
+            <span className="text-[10px] mt-1">{navItems[0].label}</span>
           </button>
-          
+
           {/* Gallery Icon */}
           <button
             onClick={() => handleTabClick('gallery')}
-            className={`p-2 transition-colors duration-200 ${
-              activeTab === 'gallery' ? 'text-red-600' : 'text-gray-600 hover:text-gray-800'
-            }`}
+            className={`flex flex-col items-center p-2 transition-colors duration-200 ${activeTab === 'gallery' ? 'text-red-600' : 'text-gray-600 hover:text-gray-800'
+              }`}
           >
             {navItems[1].icon}
+            <span className="text-[10px] mt-1">{navItems[1].label}</span>
           </button>
 
           {/* Spacer under the red button to push icons away */}
           <div className="pointer-events-none w-20" aria-hidden="true"></div>
-          
 
-          
           {/* Calculator Icon */}
           <button
             onClick={() => handleTabClick('calculator')}
-            className={`p-2 transition-colors duration-200 ${
-              activeTab === 'calculator' ? 'text-red-600' : 'text-gray-600 hover:text-gray-800'
-            }`}
+            className={`flex flex-col items-center p-2 transition-colors duration-200 ${activeTab === 'calculator' ? 'text-red-600' : 'text-gray-600 hover:text-gray-800'
+              }`}
           >
             {navItems[2].icon}
+            <span className="text-[10px] mt-1">{navItems[2].label}</span>
           </button>
-          
+
           {/* Menu Icon */}
           <button
             onClick={() => handleTabClick('menu')}
-            className={`p-2 transition-colors duration-200 ${
-              activeTab === 'menu' ? 'text-red-600' : 'text-gray-600 hover:text-gray-800'
-            }`}
+            className={`flex flex-col items-center p-2 transition-colors duration-200 ${activeTab === 'menu' ? 'text-red-600' : 'text-gray-600 hover:text-gray-800'
+              }`}
           >
             {navItems[3].icon}
+            <span className="text-[10px] mt-1">{navItems[3].label}</span>
           </button>
         </div>
+
 
         {/* Mobile Navigation Menu - Bottom Sheet */}
         {isMobileMenuOpen && (
@@ -210,7 +209,7 @@ const OverlapNavBar: React.FC = () => {
             </div>
           </div>
         )}
-        
+
         {/* Red Circular Button - Overlapping the white bar */}
         <button
           onClick={handleLetsBeginClick}
@@ -218,6 +217,8 @@ const OverlapNavBar: React.FC = () => {
         >
           <span>Let&#39;s</span>
           <span>begin</span>
+
+
         </button>
       </div>
     </div>
@@ -225,4 +226,3 @@ const OverlapNavBar: React.FC = () => {
 };
 
 export default OverlapNavBar;
-
