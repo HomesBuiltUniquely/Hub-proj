@@ -18,13 +18,29 @@ const ContactHeader: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const heroSlides = [
     {
-      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/ProjH2.png",
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl1.png",
 
     },
     {
-      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/ProjH3.png",
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl2.png",
 
     },
+    {
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl3.png",
+
+    },
+    {
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl4.png",
+
+    },
+    // {
+    //   image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl5.png",
+
+    // },
+    // {
+    //   image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl6.png",
+
+    // },
 
 
   ];
@@ -73,82 +89,111 @@ const ContactHeader: React.FC = () => {
 
 
       {/* Desktop Version - For screens 1440px and above */}
-      <div className="desktop-1440 w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
-        {/* Background Image Carousel */}
-        <div className="absolute inset-0 w-[1440px]">
-          {heroSlides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 bg-cover transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-                }`}
-              style={{ backgroundImage: `url('${slide.image}')` }}
-            />
-          ))}
-        </div>
+      <div className="desktop-1440 hidden md:block w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center">
 
 
-
-
-
-
-
-        {/* Navbar */}
-        <div className="relative z-10 flex items-center justify-between -mt-23 -ml-3">
-          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] ml-9 mt-5" /></div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5 ">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
+        {/* Background Carousel */}
+        <div>
+          <div className="absolute inset-0 w-full h-full">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                  }`}
+                style={{ backgroundImage: `url('${slide.image}')` }}
+              />
+            ))}
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope-medium hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope-medium mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
 
+        {/* Navbar — fixed position inside hero */}
+         <div className="relative flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+          <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" /> 
+            </div>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
 
-        {/* Hero content */}
-        <div className="flex w-[600px] flex-col items-center justify-center pt-55 pb-20 text-white text-center pr-30">
-          <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-65">HUB Interior Portfolio </div>
-          <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-3">Elegant, Functional & Timeless Designs</p>
+        
+
+        {/* Hero Content */}
+        <div className="absolute inset-0 flex flex-col justify-center items-start text-white text-left z-10 px-15">
+          
+          <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+            HUB Interior Portfolio
+          </h1>
+          <p className="text-lg manrope-medium drop-shadow-lg">
+            Elegant, Functional & Timeless Designs
+          </p>
         </div>
+
       </div>
+
+
+
+
 
 
       {/* 1280 Version */}
 
-      <div className="desktop-1280  w-[1280px] h-[800px] mx-auto mt-4 rounded-3xl overflow-hidden shadow-md bg-cover bg-center relative" >
+      <div className="desktop-1280">
+        <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
+          {/* Inner container with background */}
+          <div
+            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
 
-        {/* Background Image Carousel */}
-        <div className="absolute inset-0">
-          {heroSlides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000  ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-                }`}
-              style={{ backgroundImage: `url('${slide.image}')` }}
-            />
-          ))}
-        </div>
+          >
+            {/* Background Image Carousel */}
+            <div className="absolute inset-0">
+              {heroSlides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000  ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  style={{ backgroundImage: `url('${slide.image}')` }}
+                />
+              ))}
+            </div>
 
 
 
-        {/* Navbar */}
-        <div className="relative z-10 flex items-center justify-between -mt-23 -ml-3">
-          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] ml-9 mt-5" /></div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5 ">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
+            {/* Navbar */}
+            <div className="relative flex items-center justify-between px-8">
+              {/* Logo */}
+              <div onClick={handleClick} className="cursor-pointer">
+                <Image
+                  src="/redlogo.png"
+                  alt="HUB Interior Logo"
+                  width={230}
+                  height={250}
+                  className="w-[] h-[] -mt-12 -ml-8"
+                />
+              </div>
+
+              {/* Center Navigation */}
+              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
+
+              {/* Right CTA */}
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            </div>
+            {/* Hero content */}
+            <div className="flex w-[600px] flex-col items-center justify-center pt-45 pb-20 text-white text-center pr-35">
+              <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
+              <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
+            </div>
+
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope-medium hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope-medium mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
-
-        {/* Hero content */}
-        <div className="flex w-[600px] flex-col items-center justify-center pt-45 pb-20 text-white text-center pr-30">
-          <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
-          <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
-        </div>
-
       </div>
-
 
 
       {/* mobile version */}

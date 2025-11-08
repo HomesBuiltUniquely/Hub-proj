@@ -9,8 +9,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 
-
-
 const ContactHeader: React.FC = () => {
 
   const router = useRouter();
@@ -78,7 +76,9 @@ const ContactHeader: React.FC = () => {
         <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/StudyRoom%20H.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
-            <div onClick={handleClick} className="cursor-pointer"> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-2" /></div>
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+            </div>
             <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
@@ -87,28 +87,16 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-70 ml-20">
-            <h1 className="w-[1200px] text-5xl lg:text-7xl manrope mb-6 drop-shadow-lg">
-              Study Room Interiors
-
-            </h1>
-
-            <p className="w-[1200px] text-2xl manrope-medium mb-8 drop-shadow-lg">
-              Functional study room designs crafted for focus, comfort, and productivity.
-
+          <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-65 pr-140">
+            <h1 className="w-[1200px] text-5xl lg:text-7xl manrope mb-6 drop-shadow-lg">Study Room Interiors</h1>
+            <p className="w-[1200px] text-2xl manrope-medium mb-8 drop-shadow-lg ml-28">Functional study room designs crafted for focus, comfort, and productivity.
 
             </p>
-
             <div className="flex gap-4">
-              <button
-                onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
-              >
-                Get Free Quote
+              <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow -ml-91">Get Free Quote
               </button>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -152,12 +140,10 @@ const ContactHeader: React.FC = () => {
             <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
               <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
                 Study Room Interiors
-
               </h1>
 
               <p className="text-2xl manrope-medium drop-shadow-lg">
                 Functional study room designs crafted for focus, comfort, and productivity.
-
 
               </p>
 
@@ -177,20 +163,16 @@ const ContactHeader: React.FC = () => {
 
 
 
-
-
-
-
       {/* ===== MOBILE VERSION ===== */}
 
       {/* Mobile Version (360px to 480px) */}
-      <div className="md:hidden px-4 mk-mobile-360 mobile-360plus mt-3 mb-10">
+      <div className="md:hidden px-4 mk-mobile-360 mobile-360plus mt-3 mb-9">
         <div className="relative h-[450] w-[full] ">
           {/* Rounded image only */}
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
               src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/StudyRoom%20MH.png"
-              alt="TV Unit"
+              alt="Modular Kitchen Background"
               fill
               priority
               className="object-cover"
@@ -203,8 +185,6 @@ const ContactHeader: React.FC = () => {
           <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
             <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
           </div>
-
-
 
 
           {/* Hamburger Menu Button + Mobile Menu */}
@@ -227,7 +207,6 @@ const ContactHeader: React.FC = () => {
                 />
               </svg>
             </button>
-
 
             {/* Mobile Navigation Menu */}
             {isMobileMenuOpen && (
@@ -326,22 +305,15 @@ const ContactHeader: React.FC = () => {
             )}
 
 
-
-
           </div>
 
-
           {/* text + cta */}
-
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="manrope text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               Study Room Interiors
-
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Functional study room designs crafted for focus, comfort, and productivity.
-
-
             </p>
           </div>
           {/* CTA overlapping, positioned above image */}
@@ -350,19 +322,19 @@ const ContactHeader: React.FC = () => {
               Get Free Quote
             </button>
           </div>
-
         </div>
       </div>
 
 
+
       {/* Mobile Version (300px to 359px) */}
-      <div className="md:hidden p-3 mk-mobile-300 mobile-300 mb-10">
+      <div className="md:hidden p-3 mk-mobile-300 mobile-300 mb-9">
         <div className="relative h-[450] w-[100%]  mt-3">
           {/* Rounded image only */}
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
               src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/StudyRoom%20MH.png"
-              alt="Study room"
+              alt="Modular Kitchen Background"
               fill
               priority
               className="object-cover"
@@ -497,15 +469,14 @@ const ContactHeader: React.FC = () => {
           </div>
 
 
+
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               Study Room Interiors
-
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Functional study room designs crafted for focus, comfort, and productivity.
-
             </p>
           </div>
           {/* CTA overlapping, positioned above image */}
@@ -517,7 +488,10 @@ const ContactHeader: React.FC = () => {
         </div>
       </div>
 
+
+
     </div>
+
   )
 };
 

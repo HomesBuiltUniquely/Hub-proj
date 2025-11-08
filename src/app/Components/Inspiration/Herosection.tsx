@@ -45,56 +45,74 @@ const ContactHeader: React.FC = () => {
         }
     `}</style>
 
-    <div className="desktop-1440">
-      <div
-        className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
-        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSDH.png')" }}
-      >
-        {/* Navbar */}
-        <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-0 z-20">
-          <div onClick={handleClick} className="cursor-pointer">
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="-mt-18 -ml-5" />
-          </div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm  text-white tracking-widest ml-80 -mt-15">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
-          </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-15 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+   
 
-        </div>
+      <div className="desktop-1440">
 
-        {/* Hero content */}
-        <div className="relative z-20 flex flex-col   h-full text-white mt-125 px-8">
-          <h1 className="text-5xl lg:text-7xl manrope  drop-shadow-lg mb-6">
+        <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Inspir%20RH.png')" }}>
+         {/* Navbar */}
+         <div className="flex items-center justify-between -mt-15">
+           <div onClick={handleClick} className="cursor-pointer">
+                       <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+                     </div>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
+          {/* Hero content */}
+          <div className="relative z-20 flex flex-col   h-full text-white mt-100 px-8">
+          <h1 className="text-5xl lg:text-7xl manrope  drop-shadow-lg mb-4">
             Interior Inspirations
           </h1>
           <p className="text-2xl font-manrope manrope-medium drop-shadow-lg max-w-3xl">
             Every corner of your home holds a story - let’s design it beautifully.
           </p>
         </div>
-      </div>
-    </div>
 
-
-
-    <div className="desktop-1280 px-4">
-      <div className="w-[1240px] h-[800px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSDH.png')" }}>
-        {/* Navbar */}
-        <div className="flex items-center justify-between -mt-15">
-          <div onClick={handleClick} className="cursor-pointer">
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={220} height={100} className="w-[225px] h-full  -ml-2" />
-          </div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm text-white tracking-widest ml-50 mt-4">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
-          </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
+       
 
-        {/* Hero content */}
-        <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-55">
+      </div>
+
+    
+
+
+      <div className="desktop-1280">
+        <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
+          {/* Inner container with background */}
+          <div
+            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
+            style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Inspir%20RH.png')" }}
+          >
+            {/* Navbar */}
+            <div className="flex items-center justify-between px-8">
+              {/* Logo */}
+              <div onClick={handleClick} className="cursor-pointer">
+                <Image
+                  src="/redlogo.png"
+                  alt="HUB Interior Logo"
+                  width={230}
+                  height={250}
+                  className="w-[full] h-[full] -mt-12 -ml-8"
+                />
+              </div>
+
+              {/* Center Navigation */}
+              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
+
+              {/* Right CTA */}
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            </div>
+
+            {/* Hero content */}
+           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-55">
           <h1 className="w-[1200px] text-7xl text-left  manrope mb-3 drop-shadow-lg ml-5">
             Interior Inspirations
           </h1>
@@ -102,11 +120,13 @@ const ContactHeader: React.FC = () => {
             Every corner of your home holds a story - let’s design it beautifully.
           </p>
         </div>
+
+          </div>
+
+
+        </div>
+
       </div>
-
-
-    </div>
-
 
 
     {/* Mobile Version */}

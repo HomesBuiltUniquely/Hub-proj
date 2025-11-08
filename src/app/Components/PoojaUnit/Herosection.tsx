@@ -75,7 +75,7 @@ const ContactHeader: React.FC = () => {
             <div>
 
                 {/* Desktop Version */}
-                <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20H.png')" }}>
+                <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20RH.png')" }}>
                     {/* Navbar */}
                     <div className="flex items-center justify-between -mt-15">
                         <div onClick={handleClick} className="cursor-pointer"> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-2" /></div>
@@ -119,7 +119,7 @@ const ContactHeader: React.FC = () => {
                     {/* Inner container with background */}
                     <div
                         className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-                        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20H.png')" }}
+                        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20RH.png')" }}
                     >
                         {/* Navbar */}
                         <div className="flex items-center justify-between px-8">
