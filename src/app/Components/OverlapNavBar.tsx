@@ -15,7 +15,7 @@ const OverlapNavBar: React.FC = () => {
       id: 'home',
       label: 'Home',
       icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-[50px] h-[25px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
         </svg>
       )
@@ -24,7 +24,7 @@ const OverlapNavBar: React.FC = () => {
       id: 'gallery',
       label: 'Gallery',
       icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-[50px] h-[25px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       )
@@ -33,7 +33,7 @@ const OverlapNavBar: React.FC = () => {
       id: 'calculator',
       label: 'Calculator',
       icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-[50px] h-[25px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
         </svg>
       )
@@ -42,7 +42,7 @@ const OverlapNavBar: React.FC = () => {
       id: 'menu',
       label: 'Menu',
       icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-[50px] h-[25px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       )
@@ -88,7 +88,7 @@ const OverlapNavBar: React.FC = () => {
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
       <div className="relative">
         {/* Main White Pill-Shaped Navigation Bar */}
-        <div className={`bg-white w-[340px] rounded-full px-10 py-4 shadow-lg flex items-center gap-7 relative transition-opacity duration-200 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div className={`bg-white w-[340px] h-[60px] rounded-full px-5 py-4 shadow-lg flex items-center gap- relative transition-opacity duration-200 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           {/* Home Icon */}
           <button
             onClick={() => handleTabClick('home')}
@@ -111,6 +111,8 @@ const OverlapNavBar: React.FC = () => {
 
           {/* Spacer under the red button to push icons away */}
           <div className="pointer-events-none w-20" aria-hidden="true"></div>
+          
+
           
           {/* Calculator Icon */}
           <button
@@ -212,7 +214,7 @@ const OverlapNavBar: React.FC = () => {
         {/* Red Circular Button - Overlapping the white bar */}
         <button
           onClick={handleLetsBeginClick}
-          className={` -mt-6 manrope-medium bg-red-600 hover:bg-red-700 text-white w-16 h-16 rounded-full flex flex-col items-center justify-center text-xs transition-colors duration-200 absolute left-1/2 transform -translate-x-1/2 -top-2 shadow-lg ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+          className={` -mt-6 manrope-medium bg-red-600 hover:bg-red-700 text-white w-16 h-16 rounded-full flex flex-col items-center justify-center text-[10px] transition-colors duration-200 absolute left-1/2 transform -translate-x-1/2 -top-2 shadow-lg ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         >
           <span>Let&#39;s</span>
           <span>begin</span>
