@@ -11,13 +11,13 @@ const wardrobes = [
     subtitle: "Smart design for modern homes."
   },
   {
-    img: "/kl2.jpeg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/U-shaped-Stylish-Modular-Kitchen-Design.png",
     label: "U Shape Kitchen Interior",
     subtitle: "Spacious, functional, and stylish."
   },
   {
-    img: "/kl3.jpg",
-    label: "Straight Modular Kitchen Interior",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Linear%20Kitchen.jpg",
+    label: "Linear Modular Kitchen Interior",
     subtitle: "Sleek, simple, and efficient."
   },
   {
