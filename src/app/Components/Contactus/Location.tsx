@@ -17,11 +17,7 @@ const locations = [
     description: "Safa Heights, 2, Dr Puneeth Rajkumar Rd, JP Nagar 4th Phase, Dollar Layout, Bengaluru, Karnataka 560078",
     mapUrl: "https://maps.app.goo.gl/Mw3FL7JQbGN4GDB36",
   },
-  {
-    name: "Chennai",
-    description: "Upcoming",
-    mapUrl: "",
-  },
+  
 ];
 
 // Function to render direction button with consistent styling
@@ -134,20 +130,20 @@ const Locations: React.FC = () => (
 
     <div>
       <section className="desktop-1280 mx-8 -mt-90">
-        <div className="max-w-1280px h-[485px] mx-auto rounded-3xl overflow-hidden shadow-lg bg-[url('/bn.jpg')]  bg-cover bg-center relative">
+        <div className="max-w-1280px  mx-auto rounded-3xl overflow-hidden shadow-lg bg-[url('/bn.jpg')]  bg-cover bg-center relative">
           <div className="bg-black/50 py-25 px-8">
             <h2 className="text-white text-4xl -mt-5 manrope mb-1">Our Locations</h2>
             <p className="text-white text-2xl mb-10 manrope-medium">Find HUB location near you.</p>
-            <div className="flex flex-col md:flex-row gap-3  h-[200px] w-[180px] " >
+            <div className="flex flex-wrap justify-center gap-5 " >
               {locations.map((loc) => (
-                <div key={loc.name} className="flex-1 manrope  bg-white bg-opacity-95 rounded-xl py-2 px-7 shadow text-gray-800 flex flex-col  hover:bg-gray-200 transition-colors">
+                <div key={loc.name} className="flex-1 manrope  bg-white bg-opacity-95 rounded-xl p-7 shadow text-gray-800 flex flex-col  hover:bg-gray-200 transition-colors">
                   <div className="flex items-center  text-md ">
                     <svg className="w-13 -ml-6  text-gray-700" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a6 6 0 016 6c0 3.313-2.99 7.36-5.262 9.97a.881.881 0 01-1.236 0C6.99 15.36 4 11.313 4 8a6 6 0 016-6zm0 8.5A2.5 2.5 0 1010 5a2.5 2.5 0 000 5.5z" /></svg>
                     {loc.name}
                   </div>
 
                   <p className=" -mt-2 ml-7 w-[195px] text-sm text-gray-700 flex-grow manrope-medium">{loc.description}</p>
-                  <div className="mt-auto">
+                  <div className="mt-3">
                     {renderDirectionButton12(loc)}
                   </div>
 

@@ -98,11 +98,14 @@ export default function Section1() {
                 </div>
             </div> */}
 
+
+
+
             {/* SM Screen - Small displays and mobile */}
           
 
 
-            <div className="block md:hidden w-full max-w-[425px] px-4 mt-8">
+            <div className="block md:hidden min-w-[320px] max-w-[425px] px-4 mt-8">
                 <div className="flex flex-col space-y-4">
                     <div className="flex items-start space-x-3">
                         <div className="bg-[#ebd657] w-[15px] h-10"></div>

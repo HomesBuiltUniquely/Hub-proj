@@ -6,7 +6,7 @@ import React, { useRef, useState } from "react";
 // Demo data for wardrobes
 const wardrobes = [
   {
-    img: "/kl1.jpeg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/L%20Shape%20Kitchen.jpg",
     label: "L Shape Modular Kitchen Interior",
     subtitle: "Smart design for modern homes."
   },
@@ -21,12 +21,12 @@ const wardrobes = [
     subtitle: "Sleek, simple, and efficient."
   },
   {
-    img: "/kl5.jpg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Parallel%20kitchen.jpg",
     label: "Parallel Modern Kitchen Interior",
     subtitle: "Perfect balance of comfort and workflow."
   },
   {
-    img: "/kl4.jpg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Island%20Kitchen.png",
     label: "Island Kitchen Interior",
     subtitle: "A touch of luxury for everyday living"
   },
@@ -251,8 +251,8 @@ const Section1: React.FC = () => {
                     alt={item.label}
                     className="w-full h-130 object-cover rounded-4xl"
                   />
-                  <div className="p-4 flex items-center -mt-50 h-[270px] w-[400px]">
-                    <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm w-[360px] block">
+                <div className="px-10 -ml-8 flex items-center justify-center -mt-50 h-[270px] w-[410px]">
+                    <span className="backdrop-blur-md bg-black/5 text-white  manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm w-[360px] block">
                       <div className="text-lg">
                         {item.label}
                         <br />

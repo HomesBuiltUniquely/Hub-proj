@@ -76,7 +76,9 @@ const ContactHeader: React.FC = () => {
         <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
-            <div onClick={handleClick} className="cursor-pointer"> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-2" /></div>
+            <div onClick={handleClick} className="cursor-pointer">
+          <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" /> 
+            </div>
             <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
@@ -118,7 +120,7 @@ const ContactHeader: React.FC = () => {
                   alt="HUB Interior Logo"
                   width={230}
                   height={250}
-                  className="w-[full] h-[full] -mt-12 -ml-8"
+                  className="w-[] h-[] -mt-12 -ml-8"
                 />
               </div>
 
@@ -155,10 +157,6 @@ const ContactHeader: React.FC = () => {
           </div>
         </div>
       </div>
-
-
-
-
 
 
 
@@ -209,100 +207,100 @@ const ContactHeader: React.FC = () => {
             </button>
 
             {/* Mobile Navigation Menu */}
-           {isMobileMenuOpen && (
-                <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-                  <div className="p-4  relative">
-                    {/* Close Button */}
-                    <button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="absolute top-3 right-3 text-gray-600 p-2"
+            {isMobileMenuOpen && (
+              <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                <div className="p-4  relative">
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="absolute top-3 right-3 text-gray-600 p-2"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="white"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="white"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
 
-                    {/* Navigation Items */}
-                    <div className="space-y-4 mt-5">
+                  {/* Navigation Items */}
+                  <div className="space-y-4 mt-5">
+                    <div>
                       <div>
-                        <div>
-                          <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                            OFFERINGS
-                          </h3>
-                          <div className="space-y-2 pl-3"> {/* Increased spacing here */}
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Full Home Interior
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Modular Interior
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Home Renovation
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Space Management
-                            </Link>
-                          </div>
-                        </div>
-
-                      </div>
-
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                          EXPLORE ROOMS
+                        <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                          OFFERINGS
                         </h3>
-                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                          <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Modular Kitchen
+                        <div className="space-y-2 pl-3"> {/* Increased spacing here */}
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Full Home Interior
                           </Link>
-                          <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Bedroom
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Modular Interior
                           </Link>
-                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Living Room
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Home Renovation
                           </Link>
-                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Kids Room
-                          </Link>
-                        </div>
-
-
-                      </div>
-
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                          MORE
-                        </h3>
-                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                          <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            About Us
-                          </Link>
-                          <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Projects
-                          </Link>
-                          <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Blog
-                          </Link>
-                          <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Contact Us
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Space Management
                           </Link>
                         </div>
-
                       </div>
+
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                        EXPLORE ROOMS
+                      </h3>
+                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                        <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Modular Kitchen
+                        </Link>
+                        <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Bedroom
+                        </Link>
+                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Living Room
+                        </Link>
+                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Kids Room
+                        </Link>
+                      </div>
+
+
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                        MORE
+                      </h3>
+                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                        <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          About Us
+                        </Link>
+                        <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Projects
+                        </Link>
+                        <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Blog
+                        </Link>
+                        <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Contact Us
+                        </Link>
+                      </div>
+
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
+            )}
 
 
           </div>
@@ -372,100 +370,100 @@ const ContactHeader: React.FC = () => {
             </button>
 
             {/* Mobile Navigation Menu */}
-           {isMobileMenuOpen && (
-                <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-                  <div className="p-4  relative">
-                    {/* Close Button */}
-                    <button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="absolute top-3 right-3 text-gray-600 p-2"
+            {isMobileMenuOpen && (
+              <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                <div className="p-4  relative">
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="absolute top-3 right-3 text-gray-600 p-2"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="white"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="white"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
 
-                    {/* Navigation Items */}
-                    <div className="space-y-4 mt-5">
+                  {/* Navigation Items */}
+                  <div className="space-y-4 mt-5">
+                    <div>
                       <div>
-                        <div>
-                          <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                            OFFERINGS
-                          </h3>
-                          <div className="space-y-2 pl-3"> {/* Increased spacing here */}
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Full Home Interior
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Modular Interior
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Home Renovation
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Space Management
-                            </Link>
-                          </div>
-                        </div>
-
-                      </div>
-
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                          EXPLORE ROOMS
+                        <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                          OFFERINGS
                         </h3>
-                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                          <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Modular Kitchen
+                        <div className="space-y-2 pl-3"> {/* Increased spacing here */}
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Full Home Interior
                           </Link>
-                          <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Bedroom
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Modular Interior
                           </Link>
-                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Living Room
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Home Renovation
                           </Link>
-                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Kids Room
-                          </Link>
-                        </div>
-
-
-                      </div>
-
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                          MORE
-                        </h3>
-                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                          <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            About Us
-                          </Link>
-                          <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Projects
-                          </Link>
-                          <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Blog
-                          </Link>
-                          <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Contact Us
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Space Management
                           </Link>
                         </div>
-
                       </div>
+
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                        EXPLORE ROOMS
+                      </h3>
+                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                        <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Modular Kitchen
+                        </Link>
+                        <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Bedroom
+                        </Link>
+                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Living Room
+                        </Link>
+                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Kids Room
+                        </Link>
+                      </div>
+
+
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                        MORE
+                      </h3>
+                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                        <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          About Us
+                        </Link>
+                        <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Projects
+                        </Link>
+                        <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Blog
+                        </Link>
+                        <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Contact Us
+                        </Link>
+                      </div>
+
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
+            )}
 
 
           </div>
@@ -493,7 +491,7 @@ const ContactHeader: React.FC = () => {
       </div>
 
 
-      
+
     </div>
 
   )
