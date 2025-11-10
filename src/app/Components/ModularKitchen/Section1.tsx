@@ -65,7 +65,7 @@ const Section1: React.FC = () => {
     }
   };
 
-  const kitchenTypes = ["L Shape", "U Shape", "Straight", "Parallel", "Island"];
+  const kitchenTypes = ["L Shape", "U Shape", "Linear", "Parallel", "Island"];
 
   return (
     <section className="w-full py-12 bg-[#f1f2f6]">
