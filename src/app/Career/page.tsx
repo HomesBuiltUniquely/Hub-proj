@@ -1,4 +1,4 @@
-import Footer from "../Components/AboutUs/Footer";
+import Footer from "../Components/Home/Footer";
 import Herosection from "../Components/Career/HeroSection";
 import Section2 from "../Components/Career/Section2";
 import JoinUsPage from "../Components/Career/Section3";
