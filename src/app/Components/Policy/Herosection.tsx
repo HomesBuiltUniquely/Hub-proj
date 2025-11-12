@@ -64,11 +64,11 @@ const PolicyHeroSimple: React.FC = () => {
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
-            <h1 className="text-7xl mb-6 drop-shadow-lg manrope">
+            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ">
               Policy Center
             </h1>
-            <p className="text-lg  mb-8 drop-shadow-lg w-[600px] manrope-medium">
-              Everything You Need to Know.
+            <p className="text-lg  mb-4 drop-shadow-lg w-[600px] manrope-medium">
+               Everything You Need to Know.
             </p>
           </div>
 

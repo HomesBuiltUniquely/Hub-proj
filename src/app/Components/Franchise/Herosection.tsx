@@ -203,7 +203,7 @@ const Home: React.FC = () => {
           <div className="relative z-10 flex flex-col gap-10 md:flex-row justify-between px-8 md:px-20 w-full flex-1 py-10 md:py-0">
             {/* Left: Headline & intro */}
             <div className="flex-1 flex flex-col justify-center md:max-w-xl pt-10 md:pt-0">
-              <h1 className="text-white text-4xl md:text-7xl manrope mt-75 mb-2 drop-shadow-lg text-nowrap -ml-5">
+              <h1 className="text-white  text-5xl lg:text-6xl wulkan-display-bold mt-70 mb-2 drop-shadow-lg text-nowrap -ml-5">
                 Become a Franchisee!
               </h1>
               <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">Future of smart investing</p>

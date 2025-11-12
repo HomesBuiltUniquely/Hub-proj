@@ -88,20 +88,21 @@ const ContactHeader: React.FC = () => {
             </div>
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
-          {/* Hero content */}
-          <div className="flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-70 ml-20">
-            <h1 className="w-[1200px] text-5xl lg:text-7xl manrope mb-6 drop-shadow-lg">
-              Modern TV Interiors
-            </h1>
 
-            <p className="w-[1200px] text-2xl manrope-medium mb-8 drop-shadow-lg">
-              Modern and space-saving TV unit designs that blend style with entertainment.
+          {/* Hero content */}
+           <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+               Modern TV Interiors
+            </h1> 
+
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+             Modern and space-saving TV unit designs that blend style with entertainment.
             </p>
 
             <div className="flex gap-4">
               <button
                 onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"             
               >
                 Get Free Quote
               </button>

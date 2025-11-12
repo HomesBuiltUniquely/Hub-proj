@@ -89,7 +89,7 @@ const ContactHeader: React.FC = () => {
 
 
       {/* Desktop Version - For screens 1440px and above */}
-      <div className="desktop-1440 hidden md:block w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center">
+      <div className="desktop-1440 hidden md:block w-[1440] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center">
 
 
         {/* Background Carousel */}

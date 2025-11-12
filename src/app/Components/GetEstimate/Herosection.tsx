@@ -67,24 +67,24 @@ const HeroSection: React.FC = () => {
 
       <div className="desktop-1440 w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/gh1.png')" }}>
         {/* Navbar */}
-        <div className="flex items-center justify-between -mt-15 ">
-          <div onClick={handleClick} className="cursor-pointer">
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-4 -ml-4" />
+       <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+            </div>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
-          </div>
-          <button onClick={handleGetEstimate} className="bg-orange-100 text-black px-4 py-2 rounded-xl manrope shadow  mr-15 mt-4">GET FREE ESTIMATE</button>
-        </div>
         {/* Hero content */}
-        <div className="flex justify-between pt-24 pb-20 text-white text-center mt-30">
-          <div className=" w-[310px] mt-4">
-            <h1 className="text-5xl lg:text-6xl manrope mb-6 drop-shadow-lg ml-10">Get free <span className="ml-4"> estimate</span></h1>
-            <p className="manrope-medium ml-10">Your ideas, our cost estimate</p>
+        <div className="flex justify-between pt-24 pb-20 text-white text-center mt-25">
+          <div className=" w-[310px] mt-20">
+            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ml-17 text-nowrap">Get free estimate</h1>
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg -ml-92">Your ideas, our cost estimate</p>
           </div>
-          <div className="-mt-16 mr-10">
+          <div className="-mt-30 mr-20">
             <EstimateForm />
           </div>
         </div>

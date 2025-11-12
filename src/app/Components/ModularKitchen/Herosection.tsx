@@ -73,7 +73,7 @@ const ContactHeader: React.FC = () => {
       <div>
 
         {/* Desktop Version */}
-        <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
+        <div className="desktop-1440 hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
@@ -120,7 +120,7 @@ const ContactHeader: React.FC = () => {
                   alt="HUB Interior Logo"
                   width={230}
                   height={250}
-                  className="w-[] h-[] -mt-12 -ml-8"
+                  className="w-[full] h-[full] -mt-12 -ml-8"
                 />
               </div>
 

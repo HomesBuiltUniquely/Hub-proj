@@ -63,14 +63,16 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="relative z-20 flex flex-col   h-full text-white mt-100 px-8">
-          <h1 className="text-5xl lg:text-7xl manrope  drop-shadow-lg mb-4">
-            Interior Inspirations
-          </h1>
-          <p className="text-2xl font-manrope manrope-medium drop-shadow-lg max-w-3xl">
-            Every corner of your home holds a story - let’s design it beautifully.
-          </p>
-        </div>
+         
+        <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-85 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+             Interior Inspirations
+            </h1>
+
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+              Every corner of your home holds a story - let’s design it beautifully.
+            </p>
+          </div>
 
         </div>
        

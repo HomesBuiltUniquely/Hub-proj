@@ -77,15 +77,17 @@ const ContactHeader: React.FC = () => {
         </div>
         {/* Hero content */}
         <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
-          <h1 className="text-5xl lg:text-6xl  manrope mb-3 drop-shadow-lg">
+          <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
             How can we help you
           </h1>
-          <p className="w-[700px] text-xl text-center manrope-medium mb-8 drop-shadow-lg">
+          <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
             Any questions you have can be resolved here.
           </p>
         </div>
 
+        
 
+        
 
       </div>
       {/* 1280px version */}

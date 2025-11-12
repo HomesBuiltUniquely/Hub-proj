@@ -66,18 +66,19 @@ const ContactHeader: React.FC = () => {
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
-            <h1 className="text-6xl mb-6 drop-shadow-lg manrope">
+            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ">
               Design Journal by HUB
             </h1>
-            <p className="text-lg  mb-8 drop-shadow-lg w-[600px] manrope-medium">
+            <p className="text-lg  mb-4 drop-shadow-lg w-[600px] manrope-medium">
               A collection of home interior blogs, trends, and guides to inspire your next project.
             </p>
             <div className="flex gap-4">
-              <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-6 py-3 rounded-2xl font-semibold manrope-medium shadow">
+              <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-6 py-3 rounded-2xl  manrope-medium shadow">
                 Get Free Consultation
               </button>
             </div>
           </div>
+          
 
         </div>
 
