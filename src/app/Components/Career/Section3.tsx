@@ -335,7 +335,7 @@ const JoinUsPage: React.FC = () => {
               <h1 className="text-3xl  manrope mb-5 ml-3 text-gray-800 w-[250px]">Ready to <div>join us?</div></h1>
             </div>
             <p className="text-gray-500 w-[275px] text-sm ml-4 manrope-medium mb-8">
-              Fill out your destails and lets's create beautiful spaces-together
+              Fill out your destails and lets&#35;s create beautiful spaces-together
             </p>
           </div>
 
