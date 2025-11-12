@@ -65,7 +65,7 @@ const Section1: React.FC = () => {
     }
   };
 
-  const kitchenTypes = ["L Shape", "U Shape", "Straight", "Parallel", "Island"];
+  const kitchenTypes = ["L Shape", "U Shape", "Linear", "Parallel", "Island"];
 
   return (
     <section className="w-full py-12 bg-[#f1f2f6]">
@@ -277,7 +277,7 @@ const Section1: React.FC = () => {
       {/* Mobile Version (360px to 480px) */}
       <div className="md:hidden px-4 mk-mobile-360 mobile-360plus -mt-25">
         {/* Mobile Description */}
-        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-30 m-3 desc">
+        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-25 desc">
           At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
         </div>
 
@@ -345,7 +345,7 @@ const Section1: React.FC = () => {
       {/* Mobile Version (300px to 359px) */}
       <div className="md:hidden px-4 mk-mobile-300 mobile-300 ">
         {/* Mobile Description */}
-        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-2 m-3 mb-3 ">
+        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] -mt-3 mb-8 ">
           At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
         </div>
         {/* Mobile Heading */}

@@ -77,7 +77,7 @@ const ContactHeader: React.FC = () => {
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
-          <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" /> 
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
             </div>
             <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
@@ -167,17 +167,20 @@ const ContactHeader: React.FC = () => {
       <div className="md:hidden px-4 mk-mobile-360 mobile-360plus mt-3">
         <div className="relative h-[450] w-[full] ">
           {/* Rounded image only */}
+
+
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
               src="/Mkh1.png"
               alt="Modular Kitchen Background"
               fill
               priority
-              className="object-cover"
+              className="object-center"
             />
             {/* gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           </div>
+
 
           {/* top logo */}
           <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
@@ -337,7 +340,7 @@ const ContactHeader: React.FC = () => {
               alt="Modular Kitchen Background"
               fill
               priority
-              className="object-cover"
+              className="object-center"
             />
             {/* gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

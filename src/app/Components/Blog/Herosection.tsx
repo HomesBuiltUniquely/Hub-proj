@@ -153,7 +153,7 @@ const ContactHeader: React.FC = () => {
       {/* Mobile Version */}
 
       <div>
-        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
+        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5  overflow-hidden">
           <div className="relative h-full w-full p-2">
             {/* Rounded image only */}
             <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" />
@@ -219,7 +219,7 @@ const ContactHeader: React.FC = () => {
                     <div className="space-y-4 mt-5">
                       <div>
                         <div>
-                          <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                          <h3 className="text-base  text-gray-800 mb-2 manrope">
                             OFFERINGS
                           </h3>
                           <div className="space-y-2 pl-3"> {/* Increased spacing here */}
@@ -241,7 +241,7 @@ const ContactHeader: React.FC = () => {
                       </div>
 
                       <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                        <h3 className="text-base  text-gray-800 mb-3 manrope">
                           EXPLORE ROOMS
                         </h3>
                         <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
@@ -263,7 +263,7 @@ const ContactHeader: React.FC = () => {
                       </div>
 
                       <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                        <h3 className="text-base  text-gray-800 mb-3 manrope">
                           MORE
                         </h3>
                         <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
@@ -293,7 +293,7 @@ const ContactHeader: React.FC = () => {
 
             {/* Overlay text + CTA */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-              <h2 className="manrope text-2xl sm:text-3xl font-semibold text-white leading-tight">
+              <h2 className="manrope text-2xl sm:text-3xl text-white leading-tight">
                 Design Journal by HUB
               </h2>
               <p className="manrope-medium text-sm sm:text-md text-white mt-3 mb-4 drop-shadow-lg max-w-[90%]">

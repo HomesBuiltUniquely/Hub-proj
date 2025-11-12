@@ -199,12 +199,13 @@ const BedroomHeroSimple: React.FC = () => {
               alt="Bedroom Background"
               fill
               priority
-              className="object-cover"
+              className="object-center"
             />
             {/* gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           </div>
 
+         
           {/* top logo */}
           <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
             <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
@@ -352,7 +353,7 @@ const BedroomHeroSimple: React.FC = () => {
           </div>
         </div>
 
-        <div className="manrope-medium  h-[300px] w-full max-w-[480px] mt-15 mb-10 m-3 desc">
+        <div className="manrope-medium  h-[300px] w-full max-w-[480px] mt-12 mb-12  desc">
           Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
         </div>
       </div>
@@ -368,7 +369,7 @@ const BedroomHeroSimple: React.FC = () => {
               alt="Bedroom Background"
               fill
               priority
-              className="object-cover"
+              className="object-center"
             />
             {/* gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -376,7 +377,7 @@ const BedroomHeroSimple: React.FC = () => {
 
           {/* top logo */}
           <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={82} height={50} className="cursor-pointer" />
+            <Image src="/redlogo.png" alt="HUB Interior Logo" width={82} height={50} className="cursor-pointer " />
           </div>
 
 
