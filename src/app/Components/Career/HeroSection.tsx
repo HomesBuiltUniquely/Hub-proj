@@ -64,11 +64,11 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="flex flex-col items-center justify-center  pb-20 text-white text-center mt-30">
+          <div className="flex flex-col items-center justify-center  pb-20 text-white text-center mt-33">
             <h1 className="text-5xl lg:text-6xl wulkan-display tracking-wide">Together,</h1>
             <p className="text-6xl marope-medium mb-2 ">We Build Better.</p>
             <div className="w-[400px] manrope-medium">Be part of a culture that values innovation, growth, and the power of good design.</div>
-            <div className="flex gap-4 mt-3">
+            <div className="flex gap-4">
               <button className="text-md bg-transparent border-1 border-white text-white px-6 py-4 rounded-2xl manrope shadow ">Current Openings</button>
             </div>
           </div>
@@ -120,8 +120,8 @@ const ContactHeader: React.FC = () => {
 
             {/* Hero content */}
             <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-15">
-              <h1 className="text-4xl lg:text-6xl mb-6 wulkan-display tracking-wide">Together,</h1>
-              <p className="text-6xl marope-medium mb-8 ">We Build Better.</p>
+              <h1 className="text-5xl lg:text-6xl wulkan-display tracking-wide">Together,</h1>
+              <p className="text-6xl marope-medium mb-2 ">We Build Better.</p>
               <div className="w-[400px] manrope-medium">Be part of a culture that values innovation, growth, and the power of good design.</div>
               <div className="flex gap-4 mt-6">
                 <button className="text-md bg-transparent border-1 border-white text-white px-6 py-4 rounded-2xl manrope shadow ">Current Openings</button>

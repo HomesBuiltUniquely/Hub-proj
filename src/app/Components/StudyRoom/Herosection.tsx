@@ -89,7 +89,7 @@ const ContactHeader: React.FC = () => {
           {/* Hero content */}
           <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
             <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-             Study Room Interiors
+             Study room interiors
             </h1> 
 
             <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
@@ -147,15 +147,14 @@ const ContactHeader: React.FC = () => {
 
             {/* Hero content */}
             <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
-              <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
-                Study Room Interiors
+              <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+                Study room interiors
               </h1>
 
-              <p className="text-2xl manrope-medium drop-shadow-lg">
+              <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
                 Functional study room designs crafted for focus, comfort, and productivity.
-
               </p>
-
+ 
               <button
                 onClick={handleGetEstimate}
                 className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
@@ -319,7 +318,7 @@ const ContactHeader: React.FC = () => {
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="manrope text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-              Study Room Interiors
+              Study room interiors
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Functional study room designs crafted for focus, comfort, and productivity.
@@ -482,7 +481,7 @@ const ContactHeader: React.FC = () => {
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-              Study Room Interiors
+              Study room interiors
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Functional study room designs crafted for focus, comfort, and productivity.

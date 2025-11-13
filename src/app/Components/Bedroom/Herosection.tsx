@@ -161,14 +161,14 @@ const BedroomHeroSimple: React.FC = () => {
 
             {/* Hero content */}
             <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
-              <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
+              <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
                 Bedroom interior design
               </h1>
 
-              <p className="text-2xl manrope-medium drop-shadow-lg">
+              <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
                 Any questions you have can be resolved here.
               </p>
-
+ 
               <button
                 onClick={handleGetEstimate}
                 className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"

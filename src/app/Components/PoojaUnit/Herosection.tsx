@@ -92,7 +92,7 @@ const ContactHeader: React.FC = () => {
 
                     <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
                         <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-                            Pooja Unit Interiors
+                            Pooja unit interiors
                         </h1>
 
                         <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
@@ -150,12 +150,12 @@ const ContactHeader: React.FC = () => {
 
                         {/* Hero content */}
                         <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
-                            <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
-                                Pooja Unit Interiors
+                            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+                                Pooja unit interiors
                             </h1>
 
-                            <p className="text-2xl manrope-medium drop-shadow-lg">
-                                Elegant pooja unit designs that bring peace, devotion, and harmony to your home.
+                            <p className="w-[700px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+                                 Elegant pooja unit designs that bring peace, devotion, and harmony to your home.
                             </p>
 
                             <button

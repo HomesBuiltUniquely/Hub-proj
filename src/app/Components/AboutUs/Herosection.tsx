@@ -107,11 +107,11 @@ const ContactHeader: React.FC = () => {
 
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-35 ml-10">
-            <h1 className="w-[1200px] text-7xl text-left  manrope mb-3 drop-shadow-lg ml-5">
+            <h1 className="w-[1200px]  text-5xl lg:text-6xl text-left  manrope mb-3 drop-shadow-lg ml-5">
               homes,
             </h1>
-            <div className="w-[1200px] text-7xl wulkan-display  mb-3 drop-shadow-lg -ml-225">uniquely</div>
-            <div className="w-[1200px] text-left text-7xl manrope-medium  mb-3 drop-shadow-lg ml-5">built</div>
+            <div className="w-[1200px]  text-5xl lg:text-6xl text-left ml-3 wulkan-display  mb-3 drop-shadow-lg ">uniquely</div>
+            <div className="w-[1200px] text-left  text-5xl lg:text-6xl manrope  mb-3 drop-shadow-lg ml-5">built</div>
           </div>
 
 
