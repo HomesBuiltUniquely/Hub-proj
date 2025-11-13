@@ -97,7 +97,7 @@ export default function Footer() {
                                     <h1 className="text-[16px] manrope mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">About</p></Link>
-                                        <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
                                         <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="Project"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
@@ -181,7 +181,7 @@ export default function Footer() {
                                     <h1 className="text-[16px] manrope  mb-6 ">Company</h1>
                                     <div className="space-y-3">
                                         <a href="/AboutUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer ">About</p></a>
-                                        <Link href="/"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
                                         <Link href="/CustomerReviews"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="/Project"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <a href="/Blog"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Blogs</p></a>

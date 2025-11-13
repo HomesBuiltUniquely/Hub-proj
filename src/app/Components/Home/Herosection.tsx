@@ -96,9 +96,9 @@ const Herosection: React.FC = () => {
         }
       `}</style>
       {/* Desktop Version - For screens 1440px and above */}
-      <div className="desktop-1440 w-[full] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
+      <div className="desktop-1440 w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
         {/* Background Image Carousel */}
-        <div className="absolute inset-0 w-[screen] h-[screen]">
+        <div className="absolute inset-0 w-[auto] h-[full]">
           {heroSlides.map((slide, index) => (
             <div
               key={index}
