@@ -58,7 +58,7 @@ const HelpCenter: React.FC = () => {
           <section className="max-w-[1440px] mx-auto px-8 -mt-5 relative">
             {/* Title + Buttons */}
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-5xl manrope text-gray-800">
+              <h2 className="text-4xl manrope text-gray-800">
                 Connect with the right team
               </h2>
 
@@ -66,7 +66,7 @@ const HelpCenter: React.FC = () => {
               <div className="flex gap-2">
                 <button
                   onClick={() => scrollReq("left")}
-                  className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                  className="w-12 h-12 border-2 border-gray-400 rounded-full  flex items-center justify-center hover:bg-gray-200 transition-colors"
                 >
                   <svg
                     className="w-5 h-5 text-gray-600"
@@ -107,7 +107,7 @@ const HelpCenter: React.FC = () => {
             {/* Scrollable Cards */}
             <div
               ref={scrollRef1440}
-              className="flex gap-6 overflow-x-auto pt-4 pb-8 "
+              className="flex gap-6 overflow-x-auto pb-4"
               style={{ scrollBehavior: "smooth" }}
             >
               {enquiries.map((item) => (
@@ -140,7 +140,7 @@ const HelpCenter: React.FC = () => {
           <section className="max-w-screen-2xl mx-auto px-8 relative">
             {/* Title + Buttons in same line (structure retained) */}
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-5xl manrope text-gray-800">
+              <h2 className="text-4xl manrope text-gray-800">
                 Connect with the right team
               </h2>
 
@@ -189,7 +189,7 @@ const HelpCenter: React.FC = () => {
             {/* Scrollable Cards */}
             <div
               ref={scrollRef1280} // ✅ linked correctly
-              className="flex gap-6 overflow-x-auto scroll-smooth  pt-4 pb-8"
+              className="flex gap-6 overflow-x-auto scroll-smooth  pb-8"
               style={{ scrollBehavior: "smooth" }}
             >
               {enquiries.map((item) => (

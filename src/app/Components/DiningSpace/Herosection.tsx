@@ -88,12 +88,13 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-70 ml-20">
-            <h1 className="w-[1200px] text-5xl lg:text-7xl manrope mb-6 drop-shadow-lg">
-              Dining Spaces Designed
-            </h1>
 
-            <p className="w-[1200px] text-2xl manrope-medium mb-8 drop-shadow-lg">
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+              Dining spaces designed
+            </h1> 
+
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
               Interiors that turn every meal into a memorable experience.
 
             </p>
@@ -102,6 +103,7 @@ const ContactHeader: React.FC = () => {
               <button
                 onClick={handleGetEstimate}
                 className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+              //  className=" bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope-medium  mr-145 mt-2  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 Get Free Quote
               </button>
@@ -155,16 +157,16 @@ const ContactHeader: React.FC = () => {
             </div>
 
             {/* Hero content */}
+           
             <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
-              <h1 className="text-6xl lg:text-7xl font-semibold manrope drop-shadow-lg">
-                Dining Spaces Designed
+              <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+               Dining spaces designed
               </h1>
 
-              <p className="text-2xl manrope-medium drop-shadow-lg">
+              <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
                 Interiors that turn every meal into a memorable experience.
-
               </p>
-
+ 
               <button
                 onClick={handleGetEstimate}
                 className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
@@ -338,7 +340,7 @@ const ContactHeader: React.FC = () => {
 
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="manrope text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-              Dining Spaces Designed
+              Dining spaces designed
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Interiors that turn every meal into a memorable experience.
@@ -500,7 +502,7 @@ const ContactHeader: React.FC = () => {
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-              Dining Spaces Designed
+              Dining spaces designed
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Interiors that turn every meal into a memorable experience.

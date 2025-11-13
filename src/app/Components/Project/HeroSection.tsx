@@ -89,7 +89,7 @@ const ContactHeader: React.FC = () => {
 
 
       {/* Desktop Version - For screens 1440px and above */}
-      <div className="desktop-1440 hidden md:block w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center">
+      <div className="desktop-1440 hidden md:block w-[1440] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center">
 
 
         {/* Background Carousel */}
@@ -199,12 +199,12 @@ const ContactHeader: React.FC = () => {
       {/* mobile version */}
 
       <div>
-        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
+        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-hidden">
           <div className="relative h-full w-full p-2">
             {/* Rounded image only */}
 
             <img
-              className="w-[350px] h-[430px] rounded-4xl relative mt- mx-auto"
+              className="w-full max-w-[425px] h-[full] rounded-4xl relative mt- mx-auto"
               src={`https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/ProjMH${currentSlide + 1}.png`}
             />
 

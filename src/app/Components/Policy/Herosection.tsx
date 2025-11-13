@@ -51,10 +51,10 @@ const PolicyHeroSimple: React.FC = () => {
 
         <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20H.png')" }}>
           {/* Navbar */}
-         <div className="flex items-center justify-between -mt-15">
-           <div onClick={handleClick} className="cursor-pointer">
-                       <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
-                     </div>
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+            </div>
             <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
@@ -64,11 +64,11 @@ const PolicyHeroSimple: React.FC = () => {
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
-            <h1 className="text-7xl mb-6 drop-shadow-lg manrope">
-              Policy Center
+            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ">
+              Policy center
             </h1>
-            <p className="text-lg  mb-8 drop-shadow-lg w-[600px] manrope-medium">
-              Everything You Need to Know.
+            <p className="text-lg  mb-4 drop-shadow-lg w-[600px] manrope-medium">
+              Everything you need to know.
             </p>
           </div>
 
@@ -116,12 +116,12 @@ const PolicyHeroSimple: React.FC = () => {
 
             {/* Hero content */}
 
-            <div className="flex flex-col items-center justify-center mt-40 pb-10 text-white text-center">
-              <h1 className="text-6xl  manrope mb-5 drop-shadow-lg">
-                Policy Center
+            <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
+              <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ">
+                Policy center
               </h1>
-              <p className="text-base manrope-medium mb-6 drop-shadow-lg w-[500px] max-w-[90%]">
-                Everything You Need to Know.
+              <p className="text-lg  mb-4 drop-shadow-lg w-[600px] manrope-medium">
+                Everything you need to know.
               </p>
             </div>
 
@@ -140,7 +140,7 @@ const PolicyHeroSimple: React.FC = () => {
             {/* Rounded image only */}
             <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20MH.png" className="rounded-4xl" alt="" />
 
-            
+
 
 
             {/* top logo */}
@@ -279,10 +279,10 @@ const PolicyHeroSimple: React.FC = () => {
             {/* Overlay text + CTA */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
               <h2 className="manrope text-3xl text-white leading-tight">
-                Policy Center
+                Policy center
               </h2>
               <p className="manrope-medium text-sm sm:text-md text-white  mb-4 drop-shadow-lg max-w-[90%]">
-                Everything You Need to Know.
+                Everything you need to know.
               </p>
             </div>
           </div>

@@ -126,7 +126,7 @@ const Section1: React.FC = () => {
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl manrope text-gray-800 mb-1">Kitchen layout</h2>
+              <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-1">Kitchen layout</h1>
               <p className="text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
             </div>
           </div>
@@ -205,7 +205,7 @@ const Section1: React.FC = () => {
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl manrope text-gray-800 mb-1">Kitchen layout</h2>
+              <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-1">Kitchen layout</h1>
               <p className="text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
             </div>
           </div>

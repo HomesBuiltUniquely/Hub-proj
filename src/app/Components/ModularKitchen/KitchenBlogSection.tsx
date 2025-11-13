@@ -131,7 +131,7 @@ const KitchenBlogSection: React.FC = () => {
       <div className="desktop-1440 hidden md:block">
         {/* Heading */}
         <div className="max-w-7xl mx-auto px-4 ml-5 mb-10">
-          <h1 className="text-3xl md:text-4xl manrope mb-2 text-gray-800">Let’s Talk Kitchens</h1>
+          <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 text-gray-800">Let’s Talk Kitchens</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every kitchen.
           </p>
@@ -228,7 +228,7 @@ const KitchenBlogSection: React.FC = () => {
       <div className="desktop-1280 hidden md:block">
         {/* Heading */}
         <div className="max-w-7xl mx-auto px-4 ml-5 mb-10">
-          <h1 className="text-3xl md:text-4xl manrope mb-2 text-gray-800">Let’s Talk Kitchens</h1>
+          <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 text-gray-800">Let’s Talk Kitchens</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every kitchen.
           </p>

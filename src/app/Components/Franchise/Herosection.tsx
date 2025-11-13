@@ -35,9 +35,9 @@ const FRANCHISE_OPTIONS = [
 ];
 
 
-  function handleClick() {
-    router.push("/");
-  }
+function handleClick() {
+  router.push("/");
+}
 
 const Home: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -137,8 +137,8 @@ const Home: React.FC = () => {
   };
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  
- const handleGetEstimate = () => {
+
+  const handleGetEstimate = () => {
     router.push('/GetEstimate');
   };
 
@@ -179,7 +179,7 @@ const Home: React.FC = () => {
             display: block !important;
           }
         }
-      `}</style> 
+      `}</style>
 
       <div className="desktop-1440">
         <div
@@ -188,9 +188,9 @@ const Home: React.FC = () => {
         >
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
-           <div onClick={handleClick} className="cursor-pointer">
-                       <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
-                     </div>
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+            </div>
             <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
@@ -203,8 +203,8 @@ const Home: React.FC = () => {
           <div className="relative z-10 flex flex-col gap-10 md:flex-row justify-between px-8 md:px-20 w-full flex-1 py-10 md:py-0">
             {/* Left: Headline & intro */}
             <div className="flex-1 flex flex-col justify-center md:max-w-xl pt-10 md:pt-0">
-              <h1 className="text-white text-4xl md:text-7xl manrope mt-75 mb-2 drop-shadow-lg text-nowrap -ml-5">
-                Become a Franchisee!
+              <h1 className="text-white  text-5xl lg:text-6xl wulkan-display-bold mt-70 mb-2 drop-shadow-lg text-nowrap -ml-5">
+                Become a franchisee!
               </h1>
               <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">Future of smart investing</p>
             </div>
@@ -325,55 +325,54 @@ const Home: React.FC = () => {
       </div>
 
 
-      
+
 
 
 
       <div className="desktop-1280 px-5">
         <div className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-            style={{ backgroundImage: "url('/kh.png')" }}>
+          style={{ backgroundImage: "url('/kh.png')" }}>
 
           {/* Navbar */}
-        <div className="flex items-center justify-between px-8">
-              {/* Logo */}
-              <div onClick={handleClick} className="cursor-pointer">
-                <Image
-                  src="/redlogo.png"
-                  alt="HUB Interior Logo"
-                  width={230}
-                  height={250}
-                  className="w-[full] h-[full] -mt-12 -ml-8"
-                />
-              </div>
-
-              {/* Center Navigation */}
-              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
-                <OfferingsDropdown textColor="text-white" />
-                <ExploreRoomsDropdown textColor="text-white" />
-                <NavMore textColor="text-white" />
-              </div>
-
-              {/* Right CTA */}
-              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <div className="flex items-center justify-between px-8">
+            {/* Logo */}
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image
+                src="/redlogo.png"
+                alt="HUB Interior Logo"
+                width={230}
+                height={250}
+                className="w-[full] h-[full] -mt-12 -ml-8"
+              />
             </div>
+
+            {/* Center Navigation */}
+            <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+
+            {/* Right CTA */}
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
 
           {/* Main Content & Form */}
-          <div className="relative z-10 flex flex-col gap-10 md:flex-row justify-between px-8 md:px-20 w-full flex-1 py-10 md:py-0">
-            {/* Left: Headline & intro */}
-            <div className="flex-1 flex flex-col justify-center md:max-w-xl pt-10 md:pt-0 -ml-5">
-              <h1 className="text-white text-6xl  manrope mt-90 mb-2 text-nowrap drop-shadow-lg">
-                Become a Franchisee!
-              </h1>
-              <p className="text-2xl text-gray-100 mb-6 manrope-medium">
-                Future of smart investing
-              </p>
-            </div>
+
+          <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+              Become a franchisee!
+            </h1>
+
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+              Future of smart investing
+            </p>
           </div>
 
           {/* ✅ Right: Form (same structure, just visually smaller) */}
           <div
             id="franchise-form"
-            className="md:w-[420px] h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-110 ml-190 self-center"
+            className="md:w-[420px] h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-100 ml-190 self-center"
           >
             <div className="text-white text-2xl manrope-medium mb-5">
               Enter your details to get started
@@ -512,10 +511,10 @@ const Home: React.FC = () => {
             </div>
           </section>
         </div>
-     </div>
+      </div>
 
 
-    
+
 
 
 
@@ -560,100 +559,100 @@ const Home: React.FC = () => {
             </button>
 
             {/* Mobile Navigation Menu */}
-           {isMobileMenuOpen && (
-                <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-                  <div className="p-4  relative">
-                    {/* Close Button */}
-                    <button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="absolute top-3 right-3 text-gray-600 p-2"
+            {isMobileMenuOpen && (
+              <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
+                <div className="p-4  relative">
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="absolute top-3 right-3 text-gray-600 p-2"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="white"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="white"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
 
-                    {/* Navigation Items */}
-                    <div className="space-y-4 mt-5">
+                  {/* Navigation Items */}
+                  <div className="space-y-4 mt-5">
+                    <div>
                       <div>
-                        <div>
-                          <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                            OFFERINGS
-                          </h3>
-                          <div className="space-y-2 pl-3"> {/* Increased spacing here */}
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Full Home Interior
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Modular Interior
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Home Renovation
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Space Management
-                            </Link>
-                          </div>
-                        </div>
-
-                      </div>
-
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                          EXPLORE ROOMS
+                        <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
+                          OFFERINGS
                         </h3>
-                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                          <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Modular Kitchen
+                        <div className="space-y-2 pl-3"> {/* Increased spacing here */}
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Full Home Interior
                           </Link>
-                          <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Bedroom
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Modular Interior
                           </Link>
-                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Living Room
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Home Renovation
                           </Link>
-                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Kids Room
-                          </Link>
-                        </div>
-
-
-                      </div>
-
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                          MORE
-                        </h3>
-                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                          <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            About Us
-                          </Link>
-                          <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Projects
-                          </Link>
-                          <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Blog
-                          </Link>
-                          <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Contact Us
+                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                            Space Management
                           </Link>
                         </div>
-
                       </div>
+
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                        EXPLORE ROOMS
+                      </h3>
+                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                        <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Modular Kitchen
+                        </Link>
+                        <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Bedroom
+                        </Link>
+                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Living Room
+                        </Link>
+                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Kids Room
+                        </Link>
+                      </div>
+
+
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
+                        MORE
+                      </h3>
+                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
+                        <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          About Us
+                        </Link>
+                        <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Projects
+                        </Link>
+                        <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Blog
+                        </Link>
+                        <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                          Contact Us
+                        </Link>
+                      </div>
+
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
+            )}
           </div>
 
 

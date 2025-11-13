@@ -96,9 +96,9 @@ const Herosection: React.FC = () => {
         }
       `}</style>
       {/* Desktop Version - For screens 1440px and above */}
-      <div className="desktop-1440 w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
+      <div className="desktop-1440 w-[full] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
         {/* Background Image Carousel */}
-        <div className="absolute inset-0 w-[1440px]">
+        <div className="absolute inset-0 w-[screen] h-[screen]">
           {heroSlides.map((slide, index) => (
             <div
               key={index}
@@ -169,7 +169,7 @@ const Herosection: React.FC = () => {
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl font-semibold  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl   mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
 
           {/* Hero content */}
@@ -177,7 +177,7 @@ const Herosection: React.FC = () => {
             <h1 className=" w-[1000px] text-5xl lg:text-6xl mb-drop-shadow-lg transition-all ml-45 duration-1000">
               {heroSlides[currentSlide].title}
             </h1>
-            <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl font-semibold  mr-150 mt-4  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+            <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl  mr-150 mt-4  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
               {heroSlides[currentSlide].buttonText}
             </button>
           </div>
