@@ -41,23 +41,23 @@ const WardrobeCarousel: React.FC = () => {
   // };
 
 
-    // ✅ DESKTOP SCROLL (1280px / 1440px)
-    const scrollRef1280 = useRef<HTMLDivElement>(null);
-    const scrollRef1440 = useRef<HTMLDivElement>(null);
-  
-    const scrollReq = (dir: "left" | "right") => {
-      // pick which ref to use based on current screen width
-      const activeRef =
-        window.innerWidth >= 1440 ? scrollRef1440 : scrollRef1280;
-  
-      if (activeRef.current) {
-        const scrollAmount = activeRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
-        activeRef.current.scrollBy({
-          left: dir === "left" ? -scrollAmount : scrollAmount,
-          behavior: "smooth",
-        });
-      }
-    };
+  // ✅ DESKTOP SCROLL (1280px / 1440px)
+  const scrollRef1280 = useRef<HTMLDivElement>(null);
+  const scrollRef1440 = useRef<HTMLDivElement>(null);
+
+  const scrollReq = (dir: "left" | "right") => {
+    // pick which ref to use based on current screen width
+    const activeRef =
+      window.innerWidth >= 1440 ? scrollRef1440 : scrollRef1280;
+
+    if (activeRef.current) {
+      const scrollAmount = activeRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
+      activeRef.current.scrollBy({
+        left: dir === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
 
   const wardrobesTypes = ["Sliding", "Hinged", "Open", "Bi Fold"];
@@ -128,12 +128,12 @@ const WardrobeCarousel: React.FC = () => {
 
 
       <div className="desktop-1440">
-      <div className="hidden md:block max-w-350 mx-auto px-4 relative">
+        <div className="hidden md:block max-w-350 mx-auto px-4 relative">
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl manrope text-gray-800 mb-1">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium">Find Your Perfect Fit</p>
+              <h2 className=" text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
+              <p className="text-gray-500 text-lg manrope-medium ">Find Your Perfect Fit</p>
             </div>
           </div>
           {/* Carousel with arrows overlapping top left */}
@@ -202,7 +202,7 @@ const WardrobeCarousel: React.FC = () => {
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl manrope text-gray-800 mb-1">Types of wardrobes</h2>
+              <h2 className=" text-5xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
               <p className="text-gray-500 text-lg manrope-medium">Find Your Perfect Fit</p>
             </div>
           </div>

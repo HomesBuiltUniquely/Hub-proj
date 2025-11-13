@@ -184,7 +184,7 @@ export default function Section8() {
               <div className="flex items-center justify-between mb-16 text-black manrope-medium relative">
                 {/* Text Header */}
                 <div>
-                  <h2 className="text-5xl md:text-5xl leading-tight tracking-tight manrope-medium">
+                  <h2 className="text-4xl md:text-4xl leading-tight tracking-tight manrope-medium">
                     What our customers say about HUB
                   </h2>
                 </div>
@@ -342,7 +342,7 @@ export default function Section8() {
               <div className="flex items-center justify-between mb-16 text-black manrope-medium relative">
                 {/* Text Header - Left side */}
                 <div>
-                  <h2 className="text-5xl md:text-5xl leading-tight tracking-tight manrope-medium">
+                  <h2 className="text-4xl md:text-4xl leading-tight tracking-tight manrope-medium">
                     What our customers say about HUB
                   </h2>
                 </div>

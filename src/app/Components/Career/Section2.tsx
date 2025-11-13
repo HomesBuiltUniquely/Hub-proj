@@ -53,8 +53,8 @@ const CareersSection: React.FC = () => {
     `}</style>
 
             <div className="desktop-1440 min-h-full pt-24 mb-30">
-                <h1 className="text-4xl manrope text-center">Current Openings</h1>
-                <p className="text-xl text-center manrope-medium pt-4">
+                <h1 className="text-5xl lg:text-6xl wulkan-display-bold  text-center">Current Openings</h1>
+                <p className="text-2xl text-center manrope-medium pt-4">
                     Become a part of high performing & collaborative team
                 </p>
 
@@ -199,8 +199,8 @@ const CareersSection: React.FC = () => {
             {/* 1280 Version */}
 
             <div className="desktop-1280 min-h-full pt-24 mb-30">
-                <h1 className="text-4xl manrope text-center">Current Openings</h1>
-                <p className="text-xl text-center manrope-medium pt-4">
+                <h1 className="text-5xl lg:text-6xl wulkan-display-bold text-center">Current Openings</h1>
+                <p className="text-2xl text-center manrope-medium pt-4">
                     Become a part of high performing & collaborative team
                 </p>
 

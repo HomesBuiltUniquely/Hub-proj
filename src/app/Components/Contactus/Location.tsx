@@ -89,7 +89,7 @@ const Locations: React.FC = () => (
           }
         }
       `}</style>
-    <section className="desktop-1440 -mt-100 px-5">
+    <section className="desktop-1440 -mt-105 px-5">
       <div className="max-w-[1440px] mx-auto h-[525px] rounded-3xl overflow-hidden shadow-lg bg-[url('/bn.jpg')] bg-cover bg-center relative">
         <div className="bg-black/50 py-20 px-12">
           <h2 className="text-white text-4xl manrope mb-1 pl-6">Our Locations</h2>
@@ -129,7 +129,7 @@ const Locations: React.FC = () => (
 
 
     <div>
-      <section className="desktop-1280 mx-8 -mt-90">
+      <section className="desktop-1280 mx-8 -mt-95">
         <div className="max-w-1280px  mx-auto rounded-3xl overflow-hidden shadow-lg bg-[url('/bn.jpg')]  bg-cover bg-center relative">
           <div className="bg-black/50 py-25 px-8">
             <h2 className="text-white text-4xl -mt-5 manrope mb-1">Our Locations</h2>

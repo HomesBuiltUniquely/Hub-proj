@@ -218,7 +218,7 @@ export default function Blog() {
 
   return (
     <div>
-      <Herosection />
+      {/* <Herosection /> */}
       <Section2 posts={posts} onReadMore={handleReadMore} />
       <HomeShowcase posts={posts}/>
       <Footer />

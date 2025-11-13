@@ -116,7 +116,7 @@ export function CustomerReview() {
       {/* DESKTOP 1440 VERSION */}
       <div className="desktop-1440 relative">
         <div className="w-full max-w-[1440px] mx-auto px-8 xl:px-16 2xl:px-24 relative">
-          <h2 className="text-4xl lg:text-5xl xl:text-6xl manrope text-gray-800 text-center mt-20 mb-12">
+          <h2 className="text-4xl lg:text-4xl  manrope text-gray-800 text-center mt-20 mb-12">
             Google Reviews
           </h2>
 
@@ -251,7 +251,7 @@ export function CustomerReview() {
       <div className="desktop-1280">
 
         <div className="w-full max-w-[1280px] mx-auto px-6 lg:px-12 relative -mt-25">
-          <h2 className="text-4xl lg:text-5xl manrope text-gray-800 text-center mt-16 mb-10">
+          <h2 className="text-4xl lg:text-4xl manrope text-gray-800 text-center mt-16 mb-10">
             Google Reviews
           </h2>
 

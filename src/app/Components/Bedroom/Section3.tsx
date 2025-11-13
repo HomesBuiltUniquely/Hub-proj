@@ -95,7 +95,7 @@ const CardSection = ({
       {/* Desktop Version */}
       <div className="desktop-1440 ">
         <div className="flex flex-col items-center mb-8 px-2">
-          <h2 className="text-3xl md:text-4xl manrope text-gray-900 mb-2 text-center">
+          <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
             {title}
           </h2>
           <p className=" wulkan-display md:text-3xl text-gray-500 mb-4 text-center">
@@ -130,10 +130,10 @@ const CardSection = ({
       <div className="desktop-1280 ">
 
         <div className="flex flex-col items-center mb-8 px-2">
-          <h2 className="text-3xl md:text-4xl manrope text-gray-900 mb-2 text-center">
+          <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
             {title}
           </h2>
-          <p className=" wulkan-display md:text-3xl text-gray-500 mb-4 text-center">
+          <p className=" wulkan-display md:text-4xl text-gray-500 mb-4 text-center">
             {subtitle}
           </p>
           <button className="bg-gray-800 text-white px-7 py-2 rounded-full manrope-medium text-base mb-6">

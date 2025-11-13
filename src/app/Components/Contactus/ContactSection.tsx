@@ -209,7 +209,7 @@ const ContactSection: React.FC = () => {
           <div className="max-w-[1440px] mx-auto mt-20 mb-8 bg-[#DDCDC1] rounded-3xl px-16 py-20 flex flex-col md:flex-row justify-between items-start gap-120">
             {/* Corporate Office */}
             <div className="flex-1 space-y-5">
-              <h2 className="text-3xl manrope text-black mb-8">Corporate Office</h2>
+              <h2 className="text-4xl manrope text-black mb-8">Corporate Office</h2>
 
               <div className="text-xl flex items-start gap-4 text-black manrope-medium">
                 <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -237,9 +237,9 @@ const ContactSection: React.FC = () => {
 
             {/* Social Links */}
             <div className="flex-1 space-y-6">
-              <h2 className="text-2xl manrope text-black mb-4">
+              <h3 className="text-2xl manrope text-black mb-4">
                 Follow us for daily design drama
-              </h2>
+              </h3>
 
               <div className="flex space-x-8">
                 {/* LinkedIn */}
@@ -408,7 +408,7 @@ const ContactSection: React.FC = () => {
           <div className="max-w-[1280px] mx-auto mt-16 mb-8 bg-[#DDCDC1] rounded-3xl px-12 py-16 flex flex-col md:flex-row justify-between items-start gap-80">
             {/* Corporate Office */}
             <div className="flex-1 space-y-5">
-              <h2 className="text-3xl manrope text-black mb-6">Corporate Office</h2>
+              <h2 className="text-4xl manrope text-black mb-6">Corporate Office</h2>
 
               <div className="text-xl flex items-start gap-4 text-black manrope-medium">
                 <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -436,9 +436,9 @@ const ContactSection: React.FC = () => {
 
             {/* Social Links */}
             <div className="flex-1 space-y-5">
-              <h2 className="text-2xl manrope text-black mb-4">
+              <h3 className="text-2xl manrope text-black mb-4">
                 Follow us for daily design drama
-              </h2>
+              </h3>
 
               <div className="flex space-x-8">
                 {/* LinkedIn */}

@@ -124,7 +124,7 @@ const Section4: React.FC = () => {
       <div className="desktop-1440 hidden md:block">
         {/* Heading */}
         <div className="max-w-7xl mx-auto px-4 ml-5 mb-10">
-          <h1 className="text-3xl md:text-4xl manrope mb-2 text-gray-800">Let’s talk about bedroom</h1>
+          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk about bedroom</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every bedroom.
           </p>
@@ -168,7 +168,7 @@ const Section4: React.FC = () => {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row px- gap-6 mt-15">
           {/* FAQ Left */}
           <div className="md:w-1/3  md:mb-0 py-[25px] -ml-15 mr-80">
-            <h2 className="text-2xl manrope mb-3 text-gray-900">FAQs</h2>
+            <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
             <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
             <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
@@ -220,7 +220,7 @@ const Section4: React.FC = () => {
       <div className="desktop-1280 hidden md:block">
         {/* Heading */}
         <div className="max-w-7xl mx-auto px-4 ml-5 mb-10">
-          <h1 className="text-3xl md:text-4xl manrope mb-2 text-gray-800">Let’s talk about bedroom</h1>
+          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk about bedroom</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every bedroom.
           </p>

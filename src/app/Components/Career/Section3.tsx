@@ -44,10 +44,10 @@ const JoinUsPage: React.FC = () => {
         {/* Left: Text and brochure */}
 
         <div className="flex flex-col justify-start flex-1 px-2 ml-20 ">
-          <h1 className="text-5xl manrope text-gray-900 mb-4 leading-tight">
+          <h1 className="text-5xl lg:text-6xl wulkan-display-bold  mb-3 leading-tight">
             Ready to<br />join us?
           </h1>
-          <p className="text-gray-600 mb-8 manrope-medium">
+          <p className="text-gray-600 mb-2 manrope-medium">
             Fill out your details and let’s create beautiful spaces—together.
           </p>
           <a
@@ -188,10 +188,10 @@ const JoinUsPage: React.FC = () => {
         {/* Left: Text and brochure */}
 
         <div className="flex flex-col justify-start flex-1 px-2  ">
-          <h1 className="text-5xl manrope text-gray-900 mb-4 leading-tight">
+          <h1 className="text-5xl lg:text-6xl wulkan-display-bold  mb-3 leading-tight">
             Ready to<br />join us?
           </h1>
-          <p className="text-gray-600 mb-8 manrope-medium">
+          <p className="text-gray-600 mb-2 manrope-medium">
             Fill out your details and let’s create beautiful spaces—together.
           </p>
           <a
