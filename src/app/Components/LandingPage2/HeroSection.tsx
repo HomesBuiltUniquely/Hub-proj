@@ -152,28 +152,28 @@ export function HeroSection() {
 
             const data = await response.json();
 
-              (async () => {
-                    try {
+            (async () => {
+                try {
                     const home1Payload = {
                         name: updatedForm.name,
                         email: updatedForm.email,
                         phoneNumber: updatedForm.phonennumber,
                         propertyPin: updatedForm.pincode,
                         interiorSetup: updatedForm.property,
-                        possessionIn: updatedForm.Scheduler,  
+                        possessionIn: updatedForm.Scheduler,
                     };
 
                     await fetch('https://hows.hubinterior.com/v1/MetaLead', {
                         method: 'POST',
                         headers: {
-                        'Content-Type': 'application/json',
+                            'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(home1Payload),
                     });
-                    } catch (err) {
+                } catch (err) {
                     console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
-                    }
-                })();
+                }
+            })();
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
@@ -255,30 +255,30 @@ export function HeroSection() {
 
 
             const data = await response.json();
-            
-             // Run fire-and-forget; errors are caught and logged.
-                (async () => {
-                    try {
+
+            // Run fire-and-forget; errors are caught and logged.
+            (async () => {
+                try {
                     const home1Payload = {
                         name: updatedForm.name,
                         email: updatedForm.email,
                         phoneNumber: updatedForm.phonennumber,
                         propertyPin: updatedForm.pincode,
                         interiorSetup: updatedForm.property,
-                        possessionIn: updatedForm.Scheduler,  
+                        possessionIn: updatedForm.Scheduler,
                     };
 
-                    await fetch('https://hows.hubinterior.com/v1/Home1', {
+                    await fetch('https://hows.hubinterior.com/v1/MetaLead', {
                         method: 'POST',
                         headers: {
-                        'Content-Type': 'application/json',
+                            'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(home1Payload),
                     });
-                    } catch (err) {
-                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
-                    }
-                })();
+                } catch (err) {
+                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
+                }
+            })();
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
@@ -518,135 +518,135 @@ export function HeroSection() {
                         </div>
 
                         {/* Mobile Form */}
-                        <form onSubmit={handleMobileSubmit} className="w-[320px] h-[720px] bg-black/40 backdrop-blur-md absolute rounded-3xl top-90 ml-5 overflow-hidden shadow-lg">
-                            {/* Name Input */}
-                            <h1 className="pl-4 pt-10 text-white text-2xl wulkan-display">Complete Home Interiors</h1>
-                            <input
-                                type="text"
-                                name="name"
-                                value={form.name}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }}
-                                className="required w-[260px] h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 mt-8 ml-6 text-white"
-                                placeholder="Name"
-                            />
+                        <div className="absolute left-1/2 -translate-x-1/2 top-64 w-full px-4">
 
-                            {/* Email Input */}
-                            <input
-                                type="email"
-                                name="email"
-                                value={form.email}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }}
-                                className="w-[260px] h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 mt-4 ml-6 text-white"
-                                placeholder="Email"
-                            />
+                            <form
+                                onSubmit={handleMobileSubmit}
+                                className="w-full max-w-[425px] mx-auto px-6 py-10 
+                                    bg-black/40 backdrop-blur-md rounded-3xl shadow-lg 
+                                    overflow-visible space-y-6">
 
-                            {/* Phone Input */}
-                            <input
-                                type="tel"
-                                name="phonennumber"
-                                value={form.phonennumber}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }}
-                                className="w-[260px] h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 mt-4 ml-6 text-white"
-                                placeholder="Phone Number"
-                            />
+                                <h1 className="text-white text-2xl wulkan-display text-center">
+                                    Complete Home Interiors
+                                </h1>
 
-                            {/* Pincode Input */}
-                            {/* Pincode dropdown - mobile (input + filter) */}
-                            <div className="mt-4 relative ml-6 pincode-wrapper">
-                                    <div className="relative">
-                                        <input
-                                            type="text"
-                                            value={pincodeSearch || selectedPincode}
-                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                                const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
-                                                setPincodeSearch(raw);
-                                                setSelectedPincode(raw);
-                                                setForm(prev => ({ ...prev, pincode: raw }));
-                                                setPincodeOpen(true);
-                                            }}
-                                            onFocus={() => setPincodeOpen(true)}
-                                            placeholder="Pincode"
-                                            inputMode="numeric"
-                                            pattern="[0-9]{6}"
-                                            maxLength={6}
-                                            className="w-[260px] h-[50px] border-2 border-[#DDCDC1] rounded-3xl pl-4 pr-4 text-white text-sm bg-transparent"
-                                        />
-                                    </div>
+                                {/* Name Input */}
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={form.name}
+                                    onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+                                    className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 text-white"
+                                    placeholder="Name"
+                                    required
+                                />
 
-                                {pincodeOpen && (
-                                    <div className="absolute z-10 mt-2 w-[260px] max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
-                                        <ul className="py-1 text-gray-700">
-                                            {pincodes
-                                                .filter(pin => pin.toString().includes(pincodeSearch))
-                                                .map((pin) => (
-                                                    <li
-                                                        key={pin}
-                                                        onClick={() => {
-                                                            handlePincodeChange(pin);
-                                                            setPincodeSearch(pin);
-                                                        }}
-                                                        className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm"
-                                                    >
-                                                        {pin}
-                                                    </li>
-                                                ))}
-                                            {pincodes.filter(pin => pin.toString().includes(pincodeSearch)).length === 0 && (
-                                                <li className="px-4 py-2 text-sm text-gray-500">No results</li>
-                                            )}
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
+                                {/* Email Input */}
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={form.email}
+                                    onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+                                    className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 text-white"
+                                    placeholder="Email"
+                                />
 
-                            {/* Property Type Selection */}
-                            <div className="mt-6 ml-6">
-                                <div className="text-white text-lg font-medium mb-3">Property Type</div>
-                                <div className="flex flex-row space-y-2">
-                                    {options.map((option) => (
-                                        <div
-                                            key={option}
-                                            onClick={() => setpropSelect(option)}
-                                            className={` cursor-pointer border-2 border-[#DDCDC1] w-[200px] mr-4 h-[40px] text-center pt-2 rounded-3xl text-white text-sm
-                                        ${propSelect === option ? "bg-[#ef0101] border-[#DDCDC1]" : ""} ${option === "4+BHK/Duplex" ? "w-[300px] px-4" : ""}`}
-                                        >
-                                            {option}
+                                {/* Phone Input */}
+                                <input
+                                    type="tel"
+                                    name="phonennumber"
+                                    value={form.phonennumber}
+                                    onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+                                    className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 text-white"
+                                    placeholder="Phone Number"
+                                />
+
+                                {/* PINCODE */}
+                                <div className="relative pincode-wrapper">
+                                    <input
+                                        type="text"
+                                        value={pincodeSearch || selectedPincode}
+                                        onChange={(e) => {
+                                            const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
+                                            setPincodeSearch(raw);
+                                            setSelectedPincode(raw);
+                                            setForm(prev => ({ ...prev, pincode: raw }));
+                                            setPincodeOpen(true);
+                                        }}
+                                        onFocus={() => setPincodeOpen(true)}
+                                        placeholder="Pincode"
+                                        maxLength={6}
+                                        className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl pl-4 text-white text-sm bg-transparent"
+                                    />
+
+                                    {pincodeOpen && (
+                                        <div className="absolute z-20 mt-2 w-full max-h-40 bg-white border-2 border-[#DDCDC1] rounded-md shadow-lg overflow-y-auto">
+                                            <ul className="py-1 text-gray-700">
+                                                {pincodes
+                                                    .filter(pin => pin.toString().includes(pincodeSearch))
+                                                    .map((pin) => (
+                                                        <li
+                                                            key={pin}
+                                                            onClick={() => { handlePincodeChange(pin); setPincodeSearch(pin); }}
+                                                            className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm"
+                                                        >
+                                                            {pin}
+                                                        </li>
+                                                    ))}
+
+                                                {pincodes.filter(pin => pin.toString().includes(pincodeSearch)).length === 0 && (
+                                                    <li className="px-4 py-2 text-sm text-gray-500">No results</li>
+                                                )}
+                                            </ul>
                                         </div>
-                                    ))}
+                                    )}
                                 </div>
-                            </div>
 
-                            {/* Time Slot Selection */}
-                            <div className="mt-6 ml-6">
-                                <div className="relative">
+                                {/* PROPERTY TYPE */}
+                                <div>
+                                    <div className="text-white text-lg font-medium mb-2">Property Type</div>
+                                    <div className="flex flex-wrap gap-3">
+                                        {options.map((option) => (
+                                            <div
+                                                key={option}
+                                                onClick={() => setpropSelect(option)}
+                                                className={`cursor-pointer border-2 border-[#DDCDC1] px-4 py-2 rounded-3xl text-white text-sm
+                     ${propSelect === option ? "bg-[#ef0101]" : ""}`}
+                                            >
+                                                {option}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Time Slot */}
+                                <div className="relative timeslot-wrapper">
                                     <button
                                         type="button"
                                         onClick={() => setOpen(!open)}
-                                        className="w-[260px] h-[50px] rounded-3xl text-white text-sm border-2 border-[#DDCDC1] flex justify-between items-center px-4"
+                                        className="w-full h-[50px] rounded-3xl border-2 border-[#DDCDC1] text-white text-sm flex justify-between items-center px-4"
                                     >
                                         {Selected}
-                                        {!open ? (
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                        {open ? (
+                                            <svg className="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                                             </svg>
                                         ) : (
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                                            <svg className="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                             </svg>
                                         )}
                                     </button>
 
                                     {open && (
-                                        <div className="absolute z-10 mt-2 w-[260px] max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
+                                        <div className="absolute z-20 mt-2 w-full max-h-40 bg-white border-2 border-[#DDCDC1] rounded-md shadow-lg overflow-y-auto">
                                             <ul className="py-1 text-gray-700">
                                                 {timeSlots.map((slot) => (
                                                     <li
                                                         key={slot}
-                                                        onClick={() => {
-                                                            setSelected(slot);
-                                                            setOpen(false);
-                                                        }}
-                                                        className={`px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm ${Selected === slot ? "bg-gray-200 font-medium" : ""
-                                                            }`}
+                                                        onClick={() => { setSelected(slot); setOpen(false); }}
+                                                        className={`px-4 py-2 text-sm cursor-pointer hover:bg-gray-100 
+                ${Selected === slot ? "bg-gray-200 font-medium" : ""}`}
                                                     >
                                                         {slot}
                                                     </li>
@@ -655,75 +655,59 @@ export function HeroSection() {
                                         </div>
                                     )}
                                 </div>
-                            </div>
 
-                            {/* File Upload Section - Mobile */}
-                            <div className="mt-4 ml-6">
-                                <div className="text-white text-sm mb-2">Upload Files (Optional)</div>
-                                <div className="flex items-start space-x-3">
-                                    <div className="flex flex-col space-y-2">
-                                        <input
-                                            type="file"
-                                            onChange={handleFileChange}
-                                            accept="image/*,.pdf,.doc,.docx"
-                                            className="hidden"
-                                            id="file-upload-mobile"
-                                        />
-                                        <label
-                                            htmlFor="file-upload-mobile"
-                                            className="cursor-pointer bg-[#ef0101] text-white px-3 py-1 rounded text-xs hover:bg-red-700 transition"
-                                        >
-                                            Choose File
-                                        </label>
-                                        {selectedFile && (
-                                            <div className="text-white text-xs truncate max-w-[120px]">
-                                                {selectedFile.name}
+                                {/* FILE UPLOAD */}
+                                <div>
+                                    <div className="text-white text-sm mb-2">Upload Files (Optional)</div>
+                                    <div className="flex gap-3 items-start">
+                                        <div>
+                                            <input type="file" id="file-upload-mobile" onChange={handleFileChange}
+                                                accept="image/*,.pdf,.doc,.docx" className="hidden" />
+
+                                            <label htmlFor="file-upload-mobile"
+                                                className="cursor-pointer bg-[#ef0101] text-white px-3 py-1 rounded text-xs hover:bg-red-700">
+                                                Choose File
+                                            </label>
+
+                                            {selectedFile && <div className="text-white text-xs mt-1 truncate">{selectedFile.name}</div>}
+                                        </div>
+
+                                        {filePreview && (
+                                            <div className="flex flex-col items-center">
+                                                <img src={filePreview} className="w-24 h-20 object-cover rounded border border-[#DDCDC1]" />
+                                                <button type="button" onClick={removeFile}
+                                                    className="text-red-400 hover:text-red-300 text-xs underline mt-1">Remove</button>
                                             </div>
                                         )}
                                     </div>
-                                    {filePreview && (
-                                        <div className="flex flex-col items-center">
-                                            <img
-                                                src={filePreview}
-                                                alt="Floor plan preview"
-                                                className="w-24 h-20 object-cover rounded border border-[#DDCDC1]"
-                                            />
-                                            <button
-                                                type="button"
-                                                onClick={removeFile}
-                                                className="mt-1 text-red-400 hover:text-red-300 text-xs underline"
-                                            >
-                                                Remove
-                                            </button>
-                                        </div>
-                                    )}
                                 </div>
-                            </div>
 
-                            {/* Checkbox */}
-                            <div className="flex mt-4 ml-6">
-                                <input type="checkbox" required className="mt-1" />
-                                <label className="ml-3 text-white text-sm">Yes, all provided details are correct</label>
-                            </div>
+                                {/* CHECKBOX */}
+                                <label className="flex items-center gap-2 text-white text-sm">
+                                    <input type="checkbox" required />
+                                    Yes, all provided details are correct
+                                </label>
 
-                            {/* Submit Message */}
-                            {submitMessage && (
-                                <div className={`mt-4 ml-6 text-xs ${submitMessage.includes('successfully') ? 'text-green-400' : 'text-red-400'}`}>
-                                    {submitMessage}
-                                </div>
-                            )}
+                                {/* MESSAGE */}
+                                {submitMessage && (
+                                    <div className={`text-xs ${submitMessage.includes('success') ? 'text-green-400' : 'text-red-400'}`}>
+                                        {submitMessage}
+                                    </div>
+                                )}
 
-                            {/* Submit Button */}
-                            <div className="mt-4 ml-6">
+                                {/* SUBMIT BUTTON */}
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className={`w-[260px] h-[50px] border-2 border-[#ddcdc1] text-white text-lg rounded-3xl hover:bg-[#ef0101] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                    className={`w-full h-[50px] border-2 border-[#DDCDC1] text-white text-lg rounded-3xl 
+                hover:bg-[#ef0101] transition-all duration-200 
+                ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                                 >
                                     {isSubmitting ? 'Submitting...' : 'Submit'}
                                 </button>
-                            </div>
-                        </form>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

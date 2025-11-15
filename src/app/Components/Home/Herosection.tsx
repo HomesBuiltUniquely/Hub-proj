@@ -106,7 +106,7 @@ const Herosection: React.FC = () => {
 
       <div className="desktop-1920">
 
-        <div className="w-[full] max-w-[1920px] h-[950px] mx-auto rounded-4xl overflow-hidden relative ">
+        <div className="hidden md:block  w-[full] max-w-[1920px] h-[950px] mx-auto rounded-4xl overflow-hidden relative ">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-[auto] h-[full]">
           {heroSlides.map((slide, index) => (
@@ -159,7 +159,7 @@ const Herosection: React.FC = () => {
 
 
       {/* Desktop Version - For screens 1440px */}
-      <div className="desktop-1440 w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
+      <div className="hidden md:block  desktop-1440 w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-[auto] h-[full]">
           {heroSlides.map((slide, index) => (
