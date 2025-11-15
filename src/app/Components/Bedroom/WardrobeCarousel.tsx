@@ -133,7 +133,7 @@ const WardrobeCarousel: React.FC = () => {
           }
         }
 
-         /* Show 1920px layout for large desktops (1441px) */
+        /* Show 1920px layout for large desktops (1441px) */
         @media (min-width: 1441px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
@@ -184,8 +184,8 @@ const WardrobeCarousel: React.FC = () => {
             {/* Card Carousel */}
             <div
               ref={scrollRef1920}
-              className="flex gap-7 overflow-x-auto scroll-smooth -ml-1 no-scrollbar pt-5 pb-2"
-              style={{ scrollBehavior: "smooth" }}
+              className="flex gap-7 overflow-x-auto scroll-smooth pl-6 pr-6 no-scrollbar pt-5 pb-2"
+              style={{ scrollBehavior: "smooth", paddingInline: '1.5rem' }}
             >
               {wardrobes.map((item, idx) => (
                 <div

@@ -576,7 +576,7 @@ export function HeroSection() {
                                         onFocus={() => setPincodeOpen(true)}
                                         placeholder="Pincode"
                                         maxLength={6}
-                                        className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl pl-4 text-white text-sm bg-transparent"
+                                        className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl pl-4 placeholder-white text-sm bg-transparent"
                                     />
 
                                     {pincodeOpen && (

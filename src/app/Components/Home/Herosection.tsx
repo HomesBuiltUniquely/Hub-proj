@@ -62,6 +62,7 @@ const Herosection: React.FC = () => {
         /* Hide all sections by default */
         .desktop-1440,
         .desktop-1280,
+        .desktop-1920,
         .mobile-small,
         .mobile-large {
           display: none;

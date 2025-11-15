@@ -53,7 +53,40 @@ export default function Section4() {
 
   return (
     <div>
-      <div className="hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-8">
+
+
+      <style jsx>{`
+     /* Hide both by default */
+        .desktop-1280,
+        .desktop-1440 {
+          display: none !important;
+        }
+
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
+
+        /* Show 1440px layout for large desktops (>=1440px) */
+        @media (width: 1440px) {
+          .desktop-1440 {
+            display: block !important;
+          }
+        }
+
+          /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+    `}</style>
+
+
+      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
@@ -132,6 +165,8 @@ export default function Section4() {
 
         </div>
       </div>
+
+
       {/* Mobile Version - Card Design */}
       <div className="block md:hidden bg-[#F1F2F6] py-8 px-4 -mt-8">
         {/* Mobile Title */}

@@ -78,7 +78,8 @@ export default function Section3() {
             <style jsx>{`
      /* Hide both by default */
         .desktop-1280,
-        .desktop-1440 {
+        .desktop-1440,
+        .desktop-1920 {
           display: none !important;
         }
 
@@ -90,12 +91,100 @@ export default function Section3() {
         }
 
         /* Show 1440px layout for large desktops (>=1440px) */
-        @media (min-width: 1440px) {
+        @media (width: 1440px) {
           .desktop-1440 {
             display: block !important;
           }
         }
+
+          /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
     `}</style>
+
+
+            <div className="desktop-1920 hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-5">
+                <div className="max-w-8xl mx-auto">
+                    {/* Header Section */}
+                    <div className="flex flex-row justify-between items-center mb-8">
+                        <h1 className="text-5xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
+                        <a href="/GetEstimate">
+                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl font-semibold  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium flex items-center gap-2">
+                                Book consultation
+                                <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+
+                    {/* Carousel Section */}
+                    <div className="relative mt-15 mx-auto w-full ">
+                        {/* Navigation Controls */}
+                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
+                            <button
+                                onClick={prevSlide}
+                                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors ml-3"
+                            >
+                                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 translate-x-1/2">
+                            <button
+                                onClick={nextSlide}
+                                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors mr-3"
+                            >
+                                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/* Service Cards */}
+                        <div className="overflow-hidden w-[full] ml-1">
+                            <div
+                                className="flex gap-4 transition-transform duration-500 ease-in-out"
+                                style={{
+                                    transform: `translateX(-${currentSlide * (10 / serviceCards.length)}%)`,
+                                }}
+                            >
+                                {serviceCards.map((service, index) => (
+                                    <div key={index} className="flex-shrink-0 w-120 ">
+                                        <div className={`bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300 h-auto flex flex-col`}>
+                                            <div className="relative h-96">
+                                                <img
+                                                    src={service.image}
+                                                    alt={service.title}
+                                                    className="w-full h-full object-cover "
+                                                />
+                                            </div>
+                                            <div className="p-8 flex-1 flex flex-col text-center">
+                                                <h3 className="text-2xl  text-gray-800 mb-4 manrope text-nowrap">{service.title}</h3>
+                                                <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
+                                                <a href={service.link} className="mt-auto block">
+                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium">
+                                                        Request service
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {/* 1440 version */}
             <div className="desktop-1440 hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-8">
                 <div className="max-w-7xl mx-auto">
