@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 
@@ -40,6 +40,42 @@ export function HeroSection() {
 
     const pincodes = Pincode; // created a for pincode
     const [pincodeOpen, setPincodeOpen] = useState(false);
+    const [pincodeSearch, setPincodeSearch] = useState("");
+
+    // Close dropdowns (pincode & timeslot) when clicking outside or pressing Escape
+    useEffect(() => {
+        const handleOutside = (e: MouseEvent | TouchEvent) => {
+            const target = e.target as HTMLElement | null;
+            if (!target) return;
+
+            // Close pincode dropdown when click is outside any pincode wrapper
+            if (!target.closest || !target.closest('.pincode-wrapper')) {
+                setPincodeOpen(false);
+            }
+
+            // Close timeslot dropdown when click is outside any timeslot wrapper
+            if (!target.closest || !target.closest('.timeslot-wrapper')) {
+                setOpen(false);
+            }
+        };
+
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setPincodeOpen(false);
+                setOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutside);
+        document.addEventListener('touchstart', handleOutside);
+        document.addEventListener('keydown', handleKey);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutside);
+            document.removeEventListener('touchstart', handleOutside);
+            document.removeEventListener('keydown', handleKey);
+        };
+    }, []);
 
     const handlePincodeChange = (pincode: string) => {
         setSelectedPincode(pincode);
@@ -85,6 +121,12 @@ export function HeroSection() {
             return;
         }
 
+        // Pincode must be exactly 6 numeric digits
+        if (!/^\d{6}$/.test(updatedForm.pincode)) {
+            setSubmitMessage("Please enter a valid 6-digit pincode");
+            return;
+        }
+
         setIsSubmitting(true);
         setSubmitMessage("");
 
@@ -109,6 +151,29 @@ export function HeroSection() {
             });
 
             const data = await response.json();
+
+              (async () => {
+                    try {
+                    const home1Payload = {
+                        name: updatedForm.name,
+                        email: updatedForm.email,
+                        phoneNumber: updatedForm.phonennumber,
+                        propertyPin: updatedForm.pincode,
+                        interiorSetup: updatedForm.property,
+                        possessionIn: updatedForm.Scheduler,  
+                    };
+
+                    await fetch('https://hows.hubinterior.com/v1/MetaLead', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(home1Payload),
+                    });
+                    } catch (err) {
+                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
+                    }
+                })();
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
@@ -159,6 +224,12 @@ export function HeroSection() {
             return;
         }
 
+        // Pincode must be exactly 6 numeric digits
+        if (!/^\d{6}$/.test(updatedForm.pincode)) {
+            setSubmitMessage("Please enter a valid 6-digit pincode");
+            return;
+        }
+
         setIsSubmitting(true);
         setSubmitMessage("");
 
@@ -182,7 +253,32 @@ export function HeroSection() {
                 body: formData, // Send as FormData instead of JSON
             });
 
+
             const data = await response.json();
+            
+             // Run fire-and-forget; errors are caught and logged.
+                (async () => {
+                    try {
+                    const home1Payload = {
+                        name: updatedForm.name,
+                        email: updatedForm.email,
+                        phoneNumber: updatedForm.phonennumber,
+                        propertyPin: updatedForm.pincode,
+                        interiorSetup: updatedForm.property,
+                        possessionIn: updatedForm.Scheduler,  
+                    };
+
+                    await fetch('https://hows.hubinterior.com/v1/Home1', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(home1Payload),
+                    });
+                    } catch (err) {
+                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
+                    }
+                })();
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
@@ -241,37 +337,51 @@ export function HeroSection() {
                                 <div className="flex mt-4">
                                     <input type="text" name="phonennumber" placeholder="PhoneNumber" value={form.phonennumber} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} className="w-[250px] h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl ml-10 placeholder-white manrope"></input>
 
-                                    {/* Pincode dropdown - desktop */}
-                                    <div className="relative ml-18">
-                                        <button
-                                            type="button"
-                                            onClick={() => setPincodeOpen(!pincodeOpen)}
-                                            className="w-[250px] h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-4 flex items-center justify-between text-white"
-                                        >
-                                            <span className="truncate">{selectedPincode || 'Select Pincode (Bangalore)'}</span>
-                                            {!pincodeOpen ? (
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-white">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                                </svg>
-                                            ) : (
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-white">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                                                </svg>
-                                            )}
-                                        </button>
+                                    {/* Pincode input + dropdown - desktop */}
+                                    <div className="relative ml-18 pincode-wrapper">
+                                        <div className="flex items-center">
+                                            <div className="relative">
+                                                <input
+                                                    type="text"
+                                                    value={pincodeSearch || selectedPincode}
+                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                        // allow only digits and limit to 6 characters
+                                                        const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
+                                                        setPincodeSearch(raw);
+                                                        setSelectedPincode(raw);
+                                                        setForm(prev => ({ ...prev, pincode: raw }));
+                                                        setPincodeOpen(true);
+                                                    }}
+                                                    onFocus={() => setPincodeOpen(true)}
+                                                    placeholder="Pincode"
+                                                    inputMode="numeric"
+                                                    pattern="[0-9]{6}"
+                                                    maxLength={6}
+                                                    className="w-[250px] h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-6 text-white bg-transparent"
+                                                />
+                                            </div>
+                                        </div>
 
                                         {pincodeOpen && (
                                             <div className="absolute z-10 mt-2 w-[250px] max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
                                                 <ul className="py-1 text-gray-700">
-                                                    {pincodes.map((pin) => (
-                                                        <li
-                                                            key={pin}
-                                                            onClick={() => handlePincodeChange(pin)}
-                                                            className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm"
-                                                        >
-                                                            {pin}
-                                                        </li>
-                                                    ))}
+                                                    {pincodes
+                                                        .filter(pin => pin.toString().includes(pincodeSearch))
+                                                        .map((pin) => (
+                                                            <li
+                                                                key={pin}
+                                                                onClick={() => {
+                                                                    handlePincodeChange(pin);
+                                                                    setPincodeSearch(pin);
+                                                                }}
+                                                                className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm"
+                                                            >
+                                                                {pin}
+                                                            </li>
+                                                        ))}
+                                                    {pincodes.filter(pin => pin.toString().includes(pincodeSearch)).length === 0 && (
+                                                        <li className="px-4 py-2 text-sm text-gray-500">No results</li>
+                                                    )}
                                                 </ul>
                                             </div>
                                         )}
@@ -292,7 +402,7 @@ export function HeroSection() {
                                     ))}
                                 </div>
 
-                                <div className="relative inline-block  text-left">
+                                <div className="relative inline-block  text-left timeslot-wrapper">
                                     <button type="button" onClick={() => setOpen(!open)} className="w-[580px] h-[60px] mt-14 ml-8 rounded-4xl text-white text-xl border-2 border-[#DDCDC1] flex justify-between p-4 pl-6 manrope">{Selected} {!open ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                     </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
@@ -441,37 +551,48 @@ export function HeroSection() {
                             />
 
                             {/* Pincode Input */}
-                            {/* Pincode dropdown - mobile */}
-                            <div className="mt-4 relative ml-6">
-                                <button
-                                    type="button"
-                                    onClick={() => setPincodeOpen(!pincodeOpen)}
-                                    className="w-[260px] h-[50px] rounded-3xl text-white text-sm border-2 border-[#DDCDC1] flex justify-between items-center px-4"
-                                >
-                                    {selectedPincode || 'Select Pincode (Bangalore)'}
-                                    {!pincodeOpen ? (
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                        </svg>
-                                    ) : (
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                                        </svg>
-                                    )}
-                                </button>
+                            {/* Pincode dropdown - mobile (input + filter) */}
+                            <div className="mt-4 relative ml-6 pincode-wrapper">
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            value={pincodeSearch || selectedPincode}
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
+                                                setPincodeSearch(raw);
+                                                setSelectedPincode(raw);
+                                                setForm(prev => ({ ...prev, pincode: raw }));
+                                                setPincodeOpen(true);
+                                            }}
+                                            onFocus={() => setPincodeOpen(true)}
+                                            placeholder="Pincode"
+                                            inputMode="numeric"
+                                            pattern="[0-9]{6}"
+                                            maxLength={6}
+                                            className="w-[260px] h-[50px] border-2 border-[#DDCDC1] rounded-3xl pl-4 pr-4 text-white text-sm bg-transparent"
+                                        />
+                                    </div>
 
                                 {pincodeOpen && (
                                     <div className="absolute z-10 mt-2 w-[260px] max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
                                         <ul className="py-1 text-gray-700">
-                                            {pincodes.map((pin) => (
-                                                <li
-                                                    key={pin}
-                                                    onClick={() => handlePincodeChange(pin)}
-                                                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm"
-                                                >
-                                                    {pin}
-                                                </li>
-                                            ))}
+                                            {pincodes
+                                                .filter(pin => pin.toString().includes(pincodeSearch))
+                                                .map((pin) => (
+                                                    <li
+                                                        key={pin}
+                                                        onClick={() => {
+                                                            handlePincodeChange(pin);
+                                                            setPincodeSearch(pin);
+                                                        }}
+                                                        className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm"
+                                                    >
+                                                        {pin}
+                                                    </li>
+                                                ))}
+                                            {pincodes.filter(pin => pin.toString().includes(pincodeSearch)).length === 0 && (
+                                                <li className="px-4 py-2 text-sm text-gray-500">No results</li>
+                                            )}
                                         </ul>
                                     </div>
                                 )}

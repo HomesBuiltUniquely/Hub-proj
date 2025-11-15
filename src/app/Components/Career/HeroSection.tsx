@@ -66,7 +66,7 @@ const ContactHeader: React.FC = () => {
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center  pb-20 text-white text-center mt-33">
             <h1 className="text-5xl lg:text-6xl wulkan-display tracking-wide">Together,</h1>
-            <p className="text-6xl marope-medium mb-2 ">We Build Better.</p>
+            <p className="text-6xl manrope-medium mb-2 mt-2">We Build Better</p>
             <div className="w-[400px] manrope-medium mb-2">Be part of a culture that values innovation, growth, and the power of good design.</div>
             <div className="flex gap-4">
               <button className="text-md bg-transparent border-1 border-white text-white px-6 py-4 rounded-2xl manrope shadow ">Current Openings</button>
@@ -121,7 +121,7 @@ const ContactHeader: React.FC = () => {
             {/* Hero content */}
             <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-15">
               <h1 className="text-5xl lg:text-6xl wulkan-display tracking-wide">Together,</h1>
-              <p className="text-6xl marope-medium mb-2 ">We Build Better.</p>
+              <p className="text-6xl manrope-medium mb-2 ">We Build Better.</p>
               <div className="w-[400px] manrope-medium">Be part of a culture that values innovation, growth, and the power of good design.</div>
               <div className="flex gap-4 mt-2">
                 <button className="text-md bg-transparent border-1 border-white text-white px-6 py-4 rounded-2xl manrope shadow ">Current Openings</button>

@@ -85,10 +85,6 @@ const ContactHeader: React.FC = () => {
           </p>
         </div>
 
-        
-
-        
-
       </div>
       {/* 1280px version */}
 
