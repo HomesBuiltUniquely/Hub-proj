@@ -346,7 +346,7 @@ const Section7 = () => {
           {/* Content */}
           <div className="w-full max-w-full">
             <div className='bg-[#ebd657] w-[3px] h-10 mb-8'>
-              <h1 className="text-3xl font-bold manrope mb-4 whitespace-nowrap ml-3">Values</h1>
+              <h1 className="text-3xl  manrope mb-4 whitespace-nowrap ml-3">Values</h1>
             </div>
             <div className="bg-white rounded-3xl p-4 space-y-4 mt-5 manrope-medium">
               {/* Value Item */}

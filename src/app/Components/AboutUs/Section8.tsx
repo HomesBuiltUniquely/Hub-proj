@@ -229,7 +229,7 @@ const Section6 = () => {
             {/* Content */}
             <div className="w-full">
               <div className='bg-[#ebd657] w-[3px] h-10 mb-3'>
-                <h1 className="text-3xl font-bold manrope mb-3 whitespace-nowrap ml-3">Vision</h1>
+                <h1 className="text-3xl  manrope mb-3 whitespace-nowrap ml-3">Vision</h1>
               </div>
               <p className="text-xs manrope-medium leading-relaxed">
                 At HUB Interiors — it’s about creating spaces

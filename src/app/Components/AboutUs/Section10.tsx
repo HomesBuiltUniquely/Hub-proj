@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/dist/client/link';
 import React from 'react';
 
 const Section10 = () => {
@@ -115,9 +116,11 @@ const Section10 = () => {
                 </p>
 
                 {/* Button - 2XL optimized */}
-                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
-                  Join Our Team
-                </button>
+                <Link href="/Career">
+                  <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-red-600 hover:text-white transform hover:scale-105 transition-all duration-300">
+                    Join Our Team
+                  </button>
+                </Link>
 
               </div>
 
@@ -178,9 +181,11 @@ const Section10 = () => {
                 </p>
 
                 {/* Button - XL optimized */}
-                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
-                  Join Our Team
-                </button>
+                <Link href="/Career">
+                  <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-red-600 hover:text-white transform hover:scale-105 transition-all duration-300">
+                    Join Our Team
+                  </button>
+                </Link>
 
               </div>
 
@@ -312,9 +317,9 @@ const Section10 = () => {
                   </p>
 
                   {/* Button */}
-                  <button className="w-[150px] sm:w-[170px] mt-6 h-[36px] bg-white rounded-3xl  text-sm manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
+                  <Link href="/Career"><button className="w-[150px] sm:w-[170px] mt-6 h-[36px] bg-white rounded-3xl  text-sm manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
                     Join Our Team
-                  </button>
+                  </button></Link>
 
                 </div>
               </div>

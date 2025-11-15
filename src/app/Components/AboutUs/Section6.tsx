@@ -232,7 +232,7 @@ const Section6 = () => {
 
               {/* Content */}
               <div className="flex flex-col space-y-4 "> {/* padding-left equals 20px + some gap */}
-                <h1 className="text-3xl font-semibold manrope whitespace-nowrap ml-[20px]">Mission</h1>
+                <h1 className="text-3xl  manrope whitespace-nowrap ml-[20px]">Mission</h1>
 
                 <p className="text-md manrope-medium">
                   At HUB Interiors — it’s about creating spaces that reflect you.
