@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
-import OverlapNavBar from "../OverlapNavBar";
+import OverlapNavBar from "../OverlapNavBar"; 
 
 const Herosection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -106,7 +106,7 @@ const Herosection: React.FC = () => {
 
       <div className="desktop-1920">
 
-        <div className="w-[full] max-w-[1920px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
+        <div className="w-[full] max-w-[1920px] h-[950px] mx-auto rounded-4xl overflow-hidden relative ">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-[auto] h-[full]">
           {heroSlides.map((slide, index) => (
@@ -121,7 +121,7 @@ const Herosection: React.FC = () => {
 
         {/* Navbar */}
         <div className="relative z-10 flex items-center justify-between -mt-15">
-          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
+          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-12" /></div>
           <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />

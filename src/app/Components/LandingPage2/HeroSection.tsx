@@ -152,6 +152,29 @@ export function HeroSection() {
 
             const data = await response.json();
 
+              (async () => {
+                    try {
+                    const home1Payload = {
+                        name: updatedForm.name,
+                        email: updatedForm.email,
+                        phoneNumber: updatedForm.phonennumber,
+                        propertyPin: updatedForm.pincode,
+                        interiorSetup: updatedForm.property,
+                        possessionIn: updatedForm.Scheduler,  
+                    };
+
+                    await fetch('https://hows.hubinterior.com/v1/MetaLead', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(home1Payload),
+                    });
+                    } catch (err) {
+                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
+                    }
+                })();
+
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
                 setForm({
@@ -230,7 +253,32 @@ export function HeroSection() {
                 body: formData, // Send as FormData instead of JSON
             });
 
+
             const data = await response.json();
+            
+             // Run fire-and-forget; errors are caught and logged.
+                (async () => {
+                    try {
+                    const home1Payload = {
+                        name: updatedForm.name,
+                        email: updatedForm.email,
+                        phoneNumber: updatedForm.phonennumber,
+                        propertyPin: updatedForm.pincode,
+                        interiorSetup: updatedForm.property,
+                        possessionIn: updatedForm.Scheduler,  
+                    };
+
+                    await fetch('https://hows.hubinterior.com/v1/Home1', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(home1Payload),
+                    });
+                    } catch (err) {
+                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
+                    }
+                })();
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
@@ -307,7 +355,7 @@ export function HeroSection() {
                                                     onFocus={() => setPincodeOpen(true)}
                                                     placeholder="Pincode"
                                                     inputMode="numeric"
-                                                    pattern="\\d{6}"
+                                                    pattern="[0-9]{6}"
                                                     maxLength={6}
                                                     className="w-[250px] h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-6 text-white bg-transparent"
                                                 />
@@ -519,7 +567,7 @@ export function HeroSection() {
                                             onFocus={() => setPincodeOpen(true)}
                                             placeholder="Pincode"
                                             inputMode="numeric"
-                                            pattern="\\d{6}"
+                                            pattern="[0-9]{6}"
                                             maxLength={6}
                                             className="w-[260px] h-[50px] border-2 border-[#DDCDC1] rounded-3xl pl-4 pr-4 text-white text-sm bg-transparent"
                                         />
@@ -569,7 +617,7 @@ export function HeroSection() {
 
                             {/* Time Slot Selection */}
                             <div className="mt-6 ml-6">
-                                <div className="relative timeslot-wrapper">
+                                <div className="relative">
                                     <button
                                         type="button"
                                         onClick={() => setOpen(!open)}
