@@ -185,7 +185,7 @@ export function QAsection() {
 
 
 
-      <div className="desktop-1280 min-h-auto bg-[#F1F2F6] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-48 pt-8 pb-16 md:pt-8 md:pb-20">
+      <div className="desktop-1280 min-h-auto bg-[#F1F2F6] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-48 pt-8  md:pt-8 md:pb-20">
         <div className="max-w-screen-xl mx-auto">
           <h1 className="text-5xl sm:text-4xl lg:text-5xl mb-15 sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
             Frequently asked questions

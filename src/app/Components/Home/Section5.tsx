@@ -181,7 +181,7 @@ export default function Section5() {
             {/* 1440 Version  */}
 
             <div className='desktop-1440'>
-                <div ref={sectionRef} className="hidden md:block bg-[#F1F2F6] min-h-[740px] py-10 px-8 -ml-3">
+                <div ref={sectionRef} className="hidden md:block bg-[#F1F2F6] min-h-[740px] py-10 px-7">
                     <div className="max-w-8xl mx-auto -mt-5">
                         {/* Header */}
                         <div className="mb-16">

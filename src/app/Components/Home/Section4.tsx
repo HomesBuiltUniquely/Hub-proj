@@ -176,7 +176,7 @@ export default function Section4() {
 
       {/* 1440 Version */}
 
-      <div className="desktop-1440 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-8">
+      <div className="desktop-1440 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-7">
         <div className="max-w-8xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
@@ -257,7 +257,7 @@ export default function Section4() {
       </div>
 
 
-      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-8">
+      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-5">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">

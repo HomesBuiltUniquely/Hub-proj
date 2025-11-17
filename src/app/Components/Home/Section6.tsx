@@ -203,8 +203,8 @@ export default function Section6() {
 
             {/* 1440 Version */}
             
-            <div className="desktop-1440 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-8">
-                <div className="max-w-7xl mx-auto">
+            <div className="desktop-1440 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-6">
+                <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
@@ -242,7 +242,7 @@ export default function Section6() {
                             >
                                 {projects.map((project, index) => (
                                     <Link key={index} href={project.link} className="group flex-shrink-0">
-                                        <div className="w-70 h-80 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <div className="w-80 h-95 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                                             <Image
                                                 src={project.image}
                                                 alt={project.title}
@@ -273,7 +273,7 @@ export default function Section6() {
 
             {/* 1280 Version */}
         
-            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-8">
+            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-6">
                 <div className="max-w-7xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
@@ -312,7 +312,7 @@ export default function Section6() {
                             >
                                 {projects.map((project, index) => (
                                     <Link key={index} href={project.link} className="group flex-shrink-0">
-                                        <div className="w-70 h-80 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <div className="w-75 h-85 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                                             <Image
                                                 src={project.image}
                                                 alt={project.title}

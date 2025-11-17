@@ -88,7 +88,7 @@ export default function Footer() {
 
             {/* 2xl Footer - Tailwind Classes */}
             <div className="aboutus-footer-2xl-section hidden 2xl:block 3xl:hidden">
-                <div className="w-full h-auto min-h-[580px] px-6">
+                <div className="w-full h-auto min-h-[580px] px-5">
                     <div className="max-w-8xl mx-auto">
                         <div className="w-full h-auto min-h-[480px] bg-[#32261c] mt-20 rounded-2xl p-12">
                             <div className="flex flex-row text-white gap-32 justify-center">
@@ -172,9 +172,9 @@ export default function Footer() {
 
             {/* xl Footer - Tailwind Classes */}
             <div className="aboutus-footer-xl-section hidden xl:block 2xl:hidden">
-                <div className="w-full h-auto min-h-[550px] px-12">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="w-full h-auto min-h-[450px] bg-[#32261c] mt-18 rounded-2xl p-12">
+                <div className="w-full h-auto min-h-[550px] px-6">
+                    <div className="max-w-8xl mx-auto">
+                        <div className="w-full h-auto min-h-[450px] bg-[#32261c] mt-18 rounded-2xl px-10 py-12">
                             <div className="flex flex-row text-white gap-20 justify-center">
                                 {/* Company Section */}
                                 <div className="mt-15 mr-10">

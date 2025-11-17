@@ -63,7 +63,7 @@ export default function Section7() {
 
         </div>
 
-        <div className="desktop-1440 hidden md:block  min-h-[500px] bg-[#F1F2F6]">
+        <div className="desktop-1440 hidden md:block  min-h-[500px] bg-[#F1F2F6] px-6">
 
           <div className="w-full h-[410px] rounded-3xl bg-black/5 mx-auto relative overflow-hidden">
             <img
@@ -88,9 +88,9 @@ export default function Section7() {
 
         </div>
         {/* 1280 version */}
-        <div className="desktop-1280 hidden md:block max-w-[1280px] mx-10 min-h-[500px] bg-[#F1F2F6]">
-          <div className="w-[1190px] h-[410px] rounded-3xl bg-black/5 mx-auto relative overflow-hidden">
-            <img src="/ab2.png" alt="img" className="mx-auto w-[1185px] h-[410px] blur-[2px] object-cover" />
+        <div className="desktop-1280 hidden md:block max-w-[1280px] mx-6 min-h-[500px] bg-[#F1F2F6]">
+          <div className="w-full h-[410px] rounded-3xl bg-black/5 mx-auto relative overflow-hidden">
+            <img src="/ab2.png" alt="img" className="mx-auto w-full h-[410px] blur-[2px] object-cover" />
             <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-30 pl-95 ">
               <h1 className="text-white text-4xl wulkan-display-bold">Meet our interior designers</h1>
               <p className="text-white text-xl manrope-medium mt-4  pl-[3rem]">Experts Creating Spaces You&#39;ll Love</p>
