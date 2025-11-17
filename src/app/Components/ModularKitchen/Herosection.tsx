@@ -50,7 +50,8 @@ const ContactHeader: React.FC = () => {
       <style jsx>{`
         /* Hide both by default */
         .desktop-1280,
-        .desktop-1440 {
+        .desktop-1440,
+        .desktop-1920 {
           display: none !important;
         }
 
@@ -61,9 +62,16 @@ const ContactHeader: React.FC = () => {
           }
         }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (min-width: 1440px) {
+        /* Show 1440px layout only at exactly 1440px to avoid overlap */
+        @media (width: 1440px){
           .desktop-1440 {
+            display: block !important;
+          }
+        }
+
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
             display: block !important;
           }
         }
@@ -73,6 +81,52 @@ const ContactHeader: React.FC = () => {
       <div>
 
         {/* Desktop Version */}
+
+
+        {/* 1920 Version */}
+
+        <div className="desktop-1920">
+
+        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
+          {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
+            </div>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
+          {/* Hero content */}
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+             Modular kitchen interior
+            </h1>
+
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+              Modular kitchen design for style, comfort & everyday living
+            </p>
+
+            <div className="flex gap-4">
+              <button
+                onClick={handleGetEstimate}
+                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+              >
+                Get Free Quote
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        </div>
+
+
+        {/* 1440 Version */}
+
         <div className="desktop-1440 hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
