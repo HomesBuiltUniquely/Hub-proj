@@ -118,6 +118,8 @@ export default function Section2() {
             <div>
                 {/* Desktop Carousel */}
 
+                {/* desktop-1920 */}
+
                 <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[580px] pt-14 pb-8 ">
                     <div className="w-full mx-auto">
                         {/* Header */}
@@ -221,17 +223,17 @@ export default function Section2() {
 
                 {/* 1440 version */}
 
-                <div className="desktop-1440 hidden md:block bg-[#F1F2F6] min-h-[580px] pt-14 pb-8 px-8">
-                    <div className="max-w-7xl mx-auto">
+                <div className="desktop-1440  w- hidden md:block bg-[#F1F2F6] min-h-[580px] pt-14 pb-8 px-8">
+                    <div className="max-w-8xl mx-auto">
                         {/* Header */}
-                        <div className="flex justify-between items-start mb-12">
+                        <div className="flex justify-between items-start mb-12 mx-auto">
                             <div className="flex-1">
-                                <h1 className="text-5xl wulkan-display-bold text-gray-800 mt-3 -ml-7">
+                                <h1 className="text-5xl wulkan-display-bold text-gray-800 mt-3 -ml-3">
                                     Every space has a story, start yours here
                                 </h1>
                             </div>
                             <Link href="/GetEstimate">
-                                <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-5 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
+                                <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] -mr-3 transition-colors text-black px-4 py-2 mt-5 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
                                     Book consultation
                                     <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                         <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -243,9 +245,9 @@ export default function Section2() {
                         </div>
 
                         {/* Carousel */}
-                        <div className="relative">
+                        <div className="relative ">
                             {/* Controls */}
-                            <div className="flex gap-6 mb-8 -ml-7 mb-10">
+                            <div className="flex gap-6 mb-8 -ml-3 mb-10">
                                 <button onClick={prevSlide} className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
                                     <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -259,7 +261,7 @@ export default function Section2() {
                             </div>
 
                             {/* Cards */}
-                            <div className="overflow-hidden w-[1350px] -ml-8">
+                            <div className="overflow-hidden w-[1400px] mx-auto -ml-4">
                                 <div
                                     className="flex gap-5 transition-transform duration-500 ease-in-out"
                                     style={{
@@ -324,17 +326,17 @@ export default function Section2() {
 
                 <div className='desktop-1280'>
 
-                    <div className="hidden md:block bg-[#F1F2F6] min-h-[560px] pt-12 pb-8 px-6">
+                    <div className="hidden md:block bg-[#F1F2F6] min-h-[560px] pt-12 pb-8 px-4">
                         <div className="max-w-[1280px] mx-auto">
                             {/* Header */}
                             <div className="flex justify-between items-start mb-10">
                                 <div className="flex-1">
-                                    <h1 className="text-5xl leading-tight wulkan-display-bold text-gray-800 mt-2 ml-3">
+                                    <h1 className="text-5xl leading-tight wulkan-display-bold text-gray-800 mt-2">
                                         Every space has a story, start yours here
                                     </h1>
                                 </div>
                                 <Link href="/GetEstimate">
-                                    <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-4 rounded-4xl mr-5 shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
+                                    <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-4 rounded-4xl  shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
                                         Book consultation
                                         <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                             <svg
@@ -358,7 +360,7 @@ export default function Section2() {
                             {/* Carousel */}
                             <div className="relative">
                                 {/* Controls */}
-                                <div className="flex gap-5 mb-8 ml-5">
+                                <div className="flex gap-5 mb-8">
                                     <button
                                         onClick={prevSlide}
                                         className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
@@ -398,7 +400,7 @@ export default function Section2() {
                                 </div>
 
                                 {/* Cards */}
-                                <div className="overflow-hidden w-[1190px] ml-6">
+                                <div className="overflow-hidden w-[1240px] ">
                                     <div
                                         className="flex gap-5 transition-transform duration-500 ease-in-out"
                                         style={{

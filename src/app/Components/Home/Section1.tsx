@@ -98,7 +98,7 @@ export default function Section1() {
       <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto manrope-medium">
        HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
       </h1>
-      <div className="bg-[#F1F2F6] w-[1350px] h-auto  grid grid-cols-4 mt-10 ml-8 gap-20 2xl:mx-auto">
+      <div className="bg-[#F1F2F6] w-[1400px] h-auto  grid grid-cols-4 mt-10 gap-20 px-6 -ml-1 2xl:mx-auto">
 
       <div className="grid grid-rows-2  mt-10 gap-6">
           <div className="w-[330px] h-[400px] bg-red-500 rounded-3xl">
@@ -145,13 +145,16 @@ export default function Section1() {
 
       </div>
     </div>
+
+
+
     {/* 1280 veersion */}
 
-    <div className="desktop-1280 w-full h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block">
+    <div className="desktop-1280 w-full max-w-[1280px] h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block">
       <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto marope-medium">
        HUB Interior is India’s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
       </h1>
-      <div className="bg-[#F1F2F6] max-w-[1280px] h-auto mt-8 mx-10">
+      <div className="bg-[#F1F2F6]  w-full h-auto mt-8 ">
       <div className="grid grid-cols-4 gap-2">
       <div className="grid grid-rows-2  mt-10 gap-6  mx-auto">
           <div className="w-[280px] h-[400px] bg-red-500 rounded-3xl">
@@ -198,6 +201,8 @@ export default function Section1() {
         </div>
       </div>
     </div>
+
+    
 
     {/* Mobile version - Adaptive */}
     <div className="block md:hidden" >
