@@ -51,9 +51,9 @@ const CardSection = ({
   }, [scrollDirection]);
 
   return (
-    
-<section className="w-full py-8 md:py-12 bg-[#f1f2f6]">
-     <style jsx global>{`
+
+    <section className="w-full py-8 md:py-12 bg-[#f1f2f6]">
+      <style jsx global>{`
          /* Hide all by default */
        .desktop-1280,
         .desktop-1440,
@@ -103,44 +103,8 @@ const CardSection = ({
       {/* Desktop Version */}
 
 
-      <div className="desktop-1920">
+       <div className="desktop-1920 px-4 ">
 
-      <div className="flex flex-col items-center mb-8 px-2">
-          <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
-            {title}
-          </h2>
-          <p className=" wulkan-display md:text-3xl text-gray-500 mb-4 text-center">
-            {subtitle}
-          </p>
-          <button className="bg-gray-800 text-white px-7 py-2 rounded-full manrope-medium text-base mb-6">
-            {buttonText}
-          </button>
-        </div>
-        <div
-          ref={scrollRef}
-          className="flex gap-7 overflow-x-auto scrollbar-none px-2  pb-2 w-full md:max-w-[1490px] mx-auto"
-          style={{ paddingRight: "5px" }}
-        >
-          {cards.map((card, idx) => (
-            <div
-              key={idx}
-              className="min-w-[350px] max-w-[350px] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
-              style={{ height: "400px" }}
-            >
-              <img
-                src={card.img}
-                alt={card.label}
-                className="w-full h-[400px] object-cover transition duration-300"
-              />
-          
-            </div>
-          ))}
-        </div>
-
-      </div>
-
-
-      <div className="desktop-1440 ">
         <div className="flex flex-col items-center mb-8 px-2">
           <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
             {title}
@@ -154,7 +118,43 @@ const CardSection = ({
         </div>
         <div
           ref={scrollRef}
-          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-2 w-full md:max-w-[1360px] mx-auto"
+          className="flex gap-7 overflow-x-auto scrollbar-none   pb-2 w-full md:max-w-[1475px] mx-auto"
+          style={{ paddingRight: "" }}
+        >
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className="min-w-[350px] max-w-[350px] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+              style={{ height: "400px" }}
+            >
+              <img
+                src={card.img}
+                alt={card.label}
+                className="w-full h-[400px] object-cover transition duration-300"
+              />
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+
+      <div className="desktop-1440 px-7">
+        <div className="flex flex-col items-center mb-8 px-2">
+          <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
+            {title}
+          </h2>
+          <p className=" wulkan-display md:text-3xl text-gray-500 mb-4 text-center">
+            {subtitle}
+          </p>
+          <button className="bg-gray-800 text-white px-7 py-2 rounded-full manrope-medium text-base mb-6">
+            {buttonText}
+          </button>
+        </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-2 w-full md:max-w-[1440px] mx-auto"
           style={{ paddingRight: "5px" }}
         >
           {cards.map((card, idx) => (
@@ -168,7 +168,7 @@ const CardSection = ({
                 alt={card.label}
                 className="w-full h-[400px] object-cover transition duration-300"
               />
-          
+
             </div>
           ))}
         </div>
@@ -203,7 +203,7 @@ const CardSection = ({
                 alt={card.label}
                 className="w-full h-[400px] object-cover transition duration-300"
               />
-            
+
             </div>
           ))}
         </div>
@@ -239,7 +239,7 @@ const CardSection = ({
                 alt={card.label}
                 className="w-full h-[320px] object-cover transition duration-300"
               />
-           
+
             </div>
           ))}
         </div>
@@ -274,7 +274,7 @@ const CardSection = ({
                 alt={card.label}
                 className="w-full h-[240px] object-cover transition duration-300"
               />
-             
+
             </div>
           ))}
         </div>

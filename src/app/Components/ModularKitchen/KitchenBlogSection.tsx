@@ -82,63 +82,87 @@ const KitchenBlogSection: React.FC = () => {
   return (
     <div className="w-full min-h-screen bg-[#f1f2f6] py-12">
       <style jsx>{`
-        /* Hide custom mobile variants by default */
+        /* Hide all mobile variants initially */
         .mobile-360plus,
         .mobile-300 {
           display: none;
         }
 
-        /* Show mobile layout for widths >= 360px (up to md breakpoint) */
-        @media (min-width: 360px) and (max-width: 767px) {
+        /* Show 360–480px mobile variant */
+        @media (min-width: 360px) and (max-width: 480px) {
           .mobile-360plus {
             display: block;
           }
+          .mk-mobile-360 .menu {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 12%;
+          }
         }
 
-        /* Show compact mobile for widths between 300px and 359px */
+        /* Show 300–359px compact mobile variant */
         @media (min-width: 300px) and (max-width: 359px) {
           .mobile-300 {
             display: block;
+          }
+          .mk-mobile-300 .menu {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
           }
         }
       `}</style>
 
 
-
+      
       <style jsx>{`
-
-  .desktop-1440,
-        .desktop-1280{
-          display: none;
+        /* Hide both by default */
+        .desktop-1280,
+        .desktop-1440,
+        .desktop-1920 {
+          display: none !important;
         }
 
-        /* Show 1280px section for screens between 768px and 1439px */
-        @media (min-width: 768px) and (max-width: 1439px) {
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
           .desktop-1280 {
-            display: block;
+            display: block !important;
           }
         }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
+        /* Show 1440px layout only at exactly 1440px to avoid overlap */
+        @media (width: 1440px) {
           .desktop-1440 {
-            display: block;
+            display: block !important;
           }
         }
-`}</style>
+
+        /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+      `}</style>
 
 
-      <div className="desktop-1440 hidden md:block">
+      
+      {/* desktop */}
+
+      {/* 1920 version */}
+
+      <div className="desktop-1920 hidden md:block">
         {/* Heading */}
-        <div className="max-w-7xl mx-auto px-4 ml-5 mb-10">
-          <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 text-gray-800">Let’s Talk Kitchens</h1>
+        <div className="max-w-8xl mx-auto  ml-5 mb-8">
+          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk kitchens</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every kitchen.
           </p>
         </div>
 
         {/* Blog Cards */}
-        <div className="max-w-[full] mx-auto px-8 mb-8 flex flex-col md:flex-row gap-6">
+        <div className="max-w-[full] mx-auto px-6 mb-8 flex flex-col md:flex-row gap-6">
           {articles.map((article) => {
             function handleCardClick() {
               if (article.path) {
@@ -150,7 +174,7 @@ const KitchenBlogSection: React.FC = () => {
               <div
                 key={article.title}
                 onClick={handleCardClick}
-                className="bg-white rounded-3xl shadow-md overflow-hidden w-full md:w-1/3 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-3xl  shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
               >
                 <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
                 <div className="p-5 flex flex-col flex-1">
@@ -160,10 +184,9 @@ const KitchenBlogSection: React.FC = () => {
                   <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
-
 
         {/* View All Button */}
         <div className="text-center mb-10 mt-10">
@@ -173,10 +196,105 @@ const KitchenBlogSection: React.FC = () => {
         </div>
 
         {/* FAQ and Guide */}
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row px- gap-6 mt-15">
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row px-6 gap-70 mt-15">
           {/* FAQ Left */}
-          <div className="md:w-1/3  md:mb-0 py-[25px] -ml-15 mr-80">
-            <h2 className="text-2xl manrope mb-3 text-gray-900">FAQs</h2>
+          <div className="md:w-1/3  md:mb-0 py-[25px]  ">
+            <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
+            <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
+            <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+              Connect
+            </button>
+          </div>
+          {/* Accordion Right */}
+          <div className="md:w-2/3">
+            {faqs.map((faq, i) => (
+              <div key={faq.question} className="border-b">
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                  className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
+                >
+                  <span className="manrope text-gray-700">{faq.question}</span>
+                  <span className="ml-2">
+                    {openFAQ === i ? (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </span>
+                </button>
+                {openFAQ === i && (
+                  <div className="py-2 pl-3 text-gray-500 manrope-medium text-sm">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Download Guide Button */}
+        <div className="w-full flex justify-center mt-16">
+          <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg manrope-medium shadow-xl hover:bg-[#2a1d10] transition">
+            Download our kitchen design guide
+          </button>
+        </div>
+
+      </div>
+
+
+
+     <div className="desktop-1440 hidden md:block">
+        {/* Heading */}
+        <div className="max-w-8xl mx-auto px-7 mb-10">
+          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk kitchens</h1>
+          <p className="text-gray-500 manrope-medium mb-7">
+            Read our blog to discover how design meets utility in every kitchen.
+          </p>
+        </div>
+
+        {/* Blog Cards */}
+        <div className="max-w-[full] mx-auto px-6 mb-8 flex flex-col md:flex-row gap-6">
+          {articles.map((article) => {
+            function handleCardClick() {
+              if (article.path) {
+                router.push(article.path);
+              }
+            }
+
+            return (
+              <div
+                key={article.title}
+                onClick={handleCardClick}
+                className="bg-white rounded-3xl  shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
+              >
+                <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-base manrope-medium text-gray-900 mt-2 mb-1">
+                    {article.title}
+                  </h3>
+                  <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mb-10 mt-10">
+          <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition manrope hover:bg-gray-200 manrope">
+            View All
+          </button>
+        </div>
+
+        {/* FAQ and Guide */}
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row px-7 gap-70 mt-15">
+          {/* FAQ Left */}
+          <div className="md:w-1/3  md:mb-0 py-[25px] ">
+            <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
             <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
             <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
@@ -225,17 +343,17 @@ const KitchenBlogSection: React.FC = () => {
 
 
       {/* Desktop Version 1280 */}
-      <div className="desktop-1280 hidden md:block">
+      <div className="desktop-1280 hidden md:block px-4">
         {/* Heading */}
-        <div className="max-w-7xl mx-auto px-4 ml-5 mb-10">
-          <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 text-gray-800">Let’s Talk Kitchens</h1>
+        <div className="max-w-8xl mx-auto  mb-10">
+          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk kitchens</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every kitchen.
           </p>
         </div>
 
         {/* Blog Cards */}
-        <div className="max-w-[full] mx-auto px-8 mb-8 flex flex-col md:flex-row gap-6">
+        <div className="max-w-[full] mx-auto mb-8 flex flex-col md:flex-row gap-6">
           {articles.map((article) => {
             function handleCardClick() {
               if (article.path) {
@@ -258,7 +376,6 @@ const KitchenBlogSection: React.FC = () => {
                 </div>
               </div>
             )
-
           })}
         </div>
 
@@ -270,12 +387,12 @@ const KitchenBlogSection: React.FC = () => {
         </div>
 
         {/* FAQ and Guide */}
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row px- gap-6 mt-15">
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row gap-60 mb-20 mt-15">
           {/* FAQ Left */}
-          <div className="md:w-1/3  md:mb-0 py-[25px] -ml-15 mr-80">
-            <h2 className="text-2xl manrope mb-3 ml-10 text-gray-900">FAQs</h2>
-            <p className="text-gray-600 ml-10 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
-            <button className="px-5 py-2 border ml-10 border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+          <div className="md:w-1/3   py-[25px]">
+            <h2 className="text-3xl manrope mb-3  text-gray-900">FAQs</h2>
+            <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
+            <button className="px-5 py-2 border  border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
             </button>
           </div>

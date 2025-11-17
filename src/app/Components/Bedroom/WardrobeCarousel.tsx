@@ -27,18 +27,9 @@ const wardrobes = [
 ];
 
 const WardrobeCarousel: React.FC = () => {
-  // const scrollRef = useRef<HTMLDivElement>(null);
+
   const [selected, setSelected] = useState(0);
 
-  // const scroll = (dir: "left" | "right") => {
-  //   if (scrollRef.current) {
-  //     const scrollAmount = scrollRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
-  //     scrollRef.current.scrollBy({
-  //       left: dir === "left" ? -scrollAmount : scrollAmount,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // };
 
 
   // ✅ DESKTOP SCROLL (1280px / 1440px / 1920px)
@@ -147,11 +138,11 @@ const WardrobeCarousel: React.FC = () => {
 
       <div className="desktop-1920">
 
-        <div className="hidden md:block max-w-375 mx-auto px-4 relative">
+        <div className="hidden md:block w-full max-w-8xl mx-auto relative px-6">
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className=" text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
+              <h2 className="text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
               <p className="text-gray-500 text-lg manrope-medium ">Find Your Perfect Fit</p>
             </div>
           </div>
@@ -184,13 +175,13 @@ const WardrobeCarousel: React.FC = () => {
             {/* Card Carousel */}
             <div
               ref={scrollRef1920}
-              className="flex gap-7 overflow-x-auto scroll-smooth pl-6 pr-6 no-scrollbar pt-5 pb-2"
-              style={{ scrollBehavior: "smooth", paddingInline: '1.5rem' }}
+              className="flex gap-7 overflow-x-auto scroll-smooth  no-scrollbar pt-5 pb-2"
+              style={{ scrollBehavior: "smooth" }}
             >
               {wardrobes.map((item, idx) => (
                 <div
                   key={idx}
-                  className="relative min-w-[400px] h-[500px] bg-white rounded-4xl shadow-lg overflow-hidden"
+                  className="relative min-w-[420px] h-[500px] bg-white rounded-4xl shadow-lg overflow-hidden"
                 >
                   {/* Full image */}
                   <img
@@ -209,6 +200,10 @@ const WardrobeCarousel: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            
+
+
           </div>
 
         </div>
@@ -217,7 +212,7 @@ const WardrobeCarousel: React.FC = () => {
 
 
       <div className="desktop-1440">
-        <div className="hidden md:block max-w-350 mx-auto px-4 relative">
+        <div className="hidden md:block w-full max-w-8xl mx-auto px-8 relative">
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>

@@ -17,7 +17,7 @@ export default function Section5() {
             icon: "/discussion.png"
         },
         {
-            title: "Get your quote", 
+            title: "Get your quote",
             description: "Receive a transparent, personalized estimate tailored to your needs.",
             image: "/bed1.jpg",
             icon: "/file.png"
@@ -56,7 +56,7 @@ export default function Section5() {
     const onTouchEnd = (e: React.TouchEvent) => {
         e.preventDefault();
         if (!touchStart || !touchEnd) return;
-        
+
         const distance = touchStart - touchEnd;
         const isLeftSwipe = distance > minSwipeDistance;
         const isRightSwipe = distance < -minSwipeDistance;
@@ -67,7 +67,7 @@ export default function Section5() {
         if (isRightSwipe && activeStep > 0) {
             setActiveStep(activeStep - 1);
         }
-        
+
         // Reset touch states
         setTouchStart(null);
         setTouchEnd(null);
@@ -75,125 +75,302 @@ export default function Section5() {
 
     return (
         <div>
-        <div ref={sectionRef} className="hidden md:block bg-[#F1F2F6] min-h-[740px] py-10 px-8">
-            <div className="max-w-7xl mx-auto">
-                {/* Header */}
-                <div className="mb-16">
-                    <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md">
+
+            <style jsx>{`
+     /* Hide both by default */
+        .desktop-1280,
+        .desktop-1440 {
+          display: none !important;
+        }
+
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
+
+        /* Show 1440px layout for large desktops (>=1440px) */
+        @media (width: 1440px) {
+          .desktop-1440 {
+            display: block !important;
+          }
+        }
+
+          /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+    `}</style>
+
+
+            <div className='desktop-1920 hidden'>
+
+             <div ref={sectionRef} className=" md:block bg-[#F1F2F6] min-h-[740px] py-10 mx-6">
+                    <div className="max-w-8xl mx-auto -mt-5">
+                        {/* Header */}
+                        <div className="mb-16">
+                            <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md">
+                                Your dream space in just four steps
+                            </h1>
+                        </div>
+
+                        {/* Main Content */}
+                        <div className="flex gap-16 items-center">
+                            {/* Left Side - Progress Steps */}
+                            <div className="w-1/2 relative">
+                                <div className="space-y-12">
+                                    {steps.map((step, index) => (
+                                        <div key={index} className="flex items-start gap-6 relative">
+                                            {/* Step Circle */}
+                                            <div className="relative z-10">
+                                                <div className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl transition-all duration-500 ${index <= activeStep
+                                                        ? 'bg-[#32261c] text-white shadow-lg'
+                                                        : 'bg-gray-300 text-gray-600'
+                                                    }`}>
+                                                    <Image src={step.icon} alt={step.title} width={25} height={25} />
+                                                </div>
+                                            </div>
+
+                                            {/* Step Content */}
+                                            <div className="flex-1 pt-2 ">
+                                                <h3 className={`text-2xl manrope mb-2 transition-colors duration-500 ${index <= activeStep ? 'text-gray-800' : 'text-gray-500'
+                                                    }`}>
+                                                    {step.title}
+                                                </h3>
+                                                <p className={`text-lg manrope-medium leading-relaxed transition-colors duration-500 ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'
+                                                    }`}>
+                                                    {step.description}
+                                                </p>
+                                            </div>
+
+                                            {/* Connecting Line */}
+                                            {index < steps.length - 1 && (
+                                                <div className="absolute left-8 top-16 w-0.5 h-12 bg-gray-300">
+                                                    <div
+                                                        className={`w-full bg-[#32261c] transition-all duration-500 ${index < activeStep ? 'h-full' : 'h-0'
+                                                            }`}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Right Side - Image */}
+                            <div className="w-1/2 flex justify-end">
+                                <div className="relative h-96 w-full max-w-xl rounded-3xl overflow-hidden shadow-xl ">
+                                    <Image
+                                        src={steps[activeStep].image}
+                                        alt={steps[activeStep].title}
+                                        fill
+                                        className="object-cover transition-opacity duration-500"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+
+            </div>
+
+            {/* 1440 Version  */}
+
+            <div className='desktop-1440'>
+                <div ref={sectionRef} className="hidden md:block bg-[#F1F2F6] min-h-[740px] py-10 px-7">
+                    <div className="max-w-8xl mx-auto -mt-5">
+                        {/* Header */}
+                        <div className="mb-16">
+                            <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md">
+                                Your dream space in just four steps
+                            </h1>
+                        </div>
+
+                        {/* Main Content */}
+                        <div className="flex gap-16 items-center">
+                            {/* Left Side - Progress Steps */}
+                            <div className="w-1/2 relative">
+                                <div className="space-y-12">
+                                    {steps.map((step, index) => (
+                                        <div key={index} className="flex items-start gap-6 relative">
+                                            {/* Step Circle */}
+                                            <div className="relative z-10">
+                                                <div className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl transition-all duration-500 ${index <= activeStep
+                                                        ? 'bg-[#32261c] text-white shadow-lg'
+                                                        : 'bg-gray-300 text-gray-600'
+                                                    }`}>
+                                                    <Image src={step.icon} alt={step.title} width={25} height={25} />
+                                                </div>
+                                            </div>
+
+                                            {/* Step Content */}
+                                            <div className="flex-1 pt-2 ">
+                                                <h3 className={`text-2xl manrope mb-2 transition-colors duration-500 ${index <= activeStep ? 'text-gray-800' : 'text-gray-500'
+                                                    }`}>
+                                                    {step.title}
+                                                </h3>
+                                                <p className={`text-lg manrope-medium leading-relaxed transition-colors duration-500 ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'
+                                                    }`}>
+                                                    {step.description}
+                                                </p>
+                                            </div>
+
+                                            {/* Connecting Line */}
+                                            {index < steps.length - 1 && (
+                                                <div className="absolute left-8 top-16 w-0.5 h-12 bg-gray-300">
+                                                    <div
+                                                        className={`w-full bg-[#32261c] transition-all duration-500 ${index < activeStep ? 'h-full' : 'h-0'
+                                                            }`}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Right Side - Image */}
+                            <div className="w-1/2 flex justify-end">
+                                <div className="relative h-96 w-full max-w-xl rounded-3xl overflow-hidden shadow-xl">
+                                    <Image
+                                        src={steps[activeStep].image}
+                                        alt={steps[activeStep].title}
+                                        fill
+                                        className="object-cover transition-opacity duration-500"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {/* 1280 Version  */}
+
+            <div className='desktop-1280'>
+                <div ref={sectionRef} className="hidden md:block bg-[#F1F2F6] min-h-[740px] py-10 px-8 -ml-3">
+                    <div className="max-w-7xl mx-auto">
+                        {/* Header */}
+                        <div className="mb-16">
+                            <h1 className="text-5xl wulkan-display-bold text-gray-800 max-w-md">
+                                Your dream space in just four steps
+                            </h1>
+                        </div>
+
+                        {/* Main Content */}
+                        <div className="flex gap-16 items-center">
+                            {/* Left Side - Progress Steps */}
+                            <div className="w-1/2 relative">
+                                <div className="space-y-12">
+                                    {steps.map((step, index) => (
+                                        <div key={index} className="flex items-start gap-6 relative">
+                                            {/* Step Circle */}
+                                            <div className="relative z-10">
+                                                <div className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl transition-all duration-500 ${index <= activeStep
+                                                        ? 'bg-[#32261c] text-white shadow-lg'
+                                                        : 'bg-gray-300 text-gray-600'
+                                                    }`}>
+                                                    <Image src={step.icon} alt={step.title} width={25} height={25} />
+                                                </div>
+                                            </div>
+
+                                            {/* Step Content */}
+                                            <div className="flex-1 pt-2 ">
+                                                <h3 className={`text-2xl manrope mb-2 transition-colors duration-500 ${index <= activeStep ? 'text-gray-800' : 'text-gray-500'
+                                                    }`}>
+                                                    {step.title}
+                                                </h3>
+                                                <p className={`text-lg manrope-medium leading-relaxed transition-colors duration-500 ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'
+                                                    }`}>
+                                                    {step.description}
+                                                </p>
+                                            </div>
+
+                                            {/* Connecting Line */}
+                                            {index < steps.length - 1 && (
+                                                <div className="absolute left-8 top-16 w-0.5 h-12 bg-gray-300">
+                                                    <div
+                                                        className={`w-full bg-[#32261c] transition-all duration-500 ${index < activeStep ? 'h-full' : 'h-0'
+                                                            }`}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Right Side - Image */}
+                            <div className="w-1/2 flex justify-center">
+                                <div className="relative h-96 w-full max-w-xl rounded-3xl overflow-hidden shadow-xl">
+                                    <Image
+                                        src={steps[activeStep].image}
+                                        alt={steps[activeStep].title}
+                                        fill
+                                        className="object-cover transition-opacity duration-500"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {/* Mobile Version - Swipeable Cards Design */}
+            <div className="block md:hidden bg-[#F1F2F6] py-5 px-4">
+                {/* Mobile Title */}
+                <div className="mb-8">
+                    <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
+                    <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left ml-3 -mt-8">
                         Your dream space in just four steps
                     </h1>
                 </div>
 
-                {/* Main Content */}
-                <div className="flex gap-16 items-center">
-                    {/* Left Side - Progress Steps */}
-                    <div className="w-1/2 relative">
-                        <div className="space-y-12">
-                            {steps.map((step, index) => (
-                                <div key={index} className="flex items-start gap-6 relative">
-                                    {/* Step Circle */}
-                                    <div className="relative z-10">
-                                        <div className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl transition-all duration-500 ${
-                                            index <= activeStep 
-                                                ? 'bg-[#32261c] text-white shadow-lg' 
-                                                : 'bg-gray-300 text-gray-600'
-                                        }`}>
-                                            <Image src={step.icon} alt={step.title} width={25} height={25} />
+                {/* Swipeable Cards Container */}
+                <div className="relative overflow-hidden px-4 pt-5">
+                    <div
+                        className="flex transition-transform duration-300 ease-out"
+                        style={{
+                            transform: `translateX(-${activeStep * 258}px)`,
+                            touchAction: 'pan-y'
+                        }}
+                        onTouchStart={onTouchStart}
+                        onTouchMove={onTouchMove}
+                        onTouchEnd={onTouchEnd}
+                    >
+                        {steps.map((step, index) => (
+                            <div key={index} className="w-[260px] h-[270px] flex-shrink-0 px-2">
+                                <div className="bg-white h-[240px] rounded-2xl p-6 shadow-sm border-2 border-[#ddcdc1] relative">
+                                    {/* Step Number Circle - Positioned to overlap border */}
+                                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
+                                        <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
+                                            <span className="text-white font-bold text-lg">{index + 1}</span>
                                         </div>
                                     </div>
 
-                                    {/* Step Content */}
-                                    <div className="flex-1 pt-2 ">
-                                        <h3 className={`text-2xl manrope mb-2 transition-colors duration-500 ${
-                                            index <= activeStep ? 'text-gray-800' : 'text-gray-500'
-                                        }`}>
-                                            {step.title}
-                                        </h3>
-                                        <p className={`text-lg manrope-medium leading-relaxed transition-colors duration-500 ${
-                                            index <= activeStep ? 'text-gray-600' : 'text-gray-400'
-                                        }`}>
-                                            {step.description}
-                                        </p>
-                                    </div>
+                                    {/* Step Title */}
+                                    <h3 className="text-xl manrope text-gray-800 text-center mt-8">
+                                        {step.title}
+                                    </h3>
 
-                                    {/* Connecting Line */}
-                                    {index < steps.length - 1 && (
-                                        <div className="absolute left-8 top-16 w-0.5 h-12 bg-gray-300">
-                                            <div 
-                                                className={`w-full bg-[#32261c] transition-all duration-500 ${
-                                                    index < activeStep ? 'h-full' : 'h-0'
-                                                }`}
-                                            />
-                                        </div>
-                                    )}
+                                    {/* Step Description */}
+                                    <p className="text-gray-600 text-center manrope-medium  leading-relaxed">
+                                        {step.description}
+                                    </p>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
 
-                    {/* Right Side - Image */}
-                    <div className="w-1/2 flex justify-center">
-                        <div className="relative h-96 w-full max-w-xl rounded-3xl overflow-hidden shadow-xl">
-                            <Image
-                                src={steps[activeStep].image}
-                                alt={steps[activeStep].title}
-                                fill
-                                className="object-cover transition-opacity duration-500"
-                            />
-                        </div>
-                    </div>
+
                 </div>
             </div>
-        </div>
-        {/* Mobile Version - Swipeable Cards Design */}
-        <div className="block md:hidden bg-[#F1F2F6] py-5 px-4">
-          {/* Mobile Title */}
-          <div className="mb-8">
-             <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
-            <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left ml-3 -mt-8">
-              Your dream space in just four steps
-            </h1>
-          </div>
-
-          {/* Swipeable Cards Container */}
-          <div className="relative overflow-hidden px-4 pt-5">
-            <div 
-              className="flex transition-transform duration-300 ease-out"
-              style={{ 
-                transform: `translateX(-${activeStep * 258}px)`,
-                touchAction: 'pan-y'
-              }}
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onTouchEnd}
-            >
-              {steps.map((step, index) => (
-                <div key={index} className="w-[260px] h-[270px] flex-shrink-0 px-2">
-                  <div className="bg-white h-[240px] rounded-2xl p-6 shadow-sm border-2 border-[#ddcdc1] relative">
-                    {/* Step Number Circle - Positioned to overlap border */}
-                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
-                      <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
-                        <span className="text-white font-bold text-lg">{index + 1}</span>
-                      </div>
-                    </div>
-                    
-                    {/* Step Title */}
-                    <h3 className="text-xl manrope text-gray-800 text-center mt-8">
-                      {step.title}
-                    </h3>
-                    
-                    {/* Step Description */}
-                    <p className="text-gray-600 text-center manrope-medium  leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-
-          </div>
-        </div>
         </div>
     );
 };

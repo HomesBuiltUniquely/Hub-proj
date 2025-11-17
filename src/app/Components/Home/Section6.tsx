@@ -89,8 +89,191 @@ export default function Section6() {
 
     return (
         <div>
+
+        <style jsx>{`
+     /* Hide both by default */
+        .desktop-1440,
+        .desktop-1280,
+        .desktop-1920 {
+          display: none !important;
+        }
+
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
+
+        /* Show 1440px layout for large desktops (>=1440px) */
+        @media (width: 1440px) {
+          .desktop-1440 {
+            display: block !important;
+          }
+        }
+
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+
+    `}</style>
+
+
+
+
             {/* Desktop Version */}
-            <div className="hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-8">
+
+
+
+            {/* 1920 Version */}
+
+            <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[600px] py-14 px-6">
+                <div className="max-w-8xl mx-auto">
+                    {/* Header & Navigation */}
+                    <div className="flex justify-between items-start mb-12">
+                        <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
+                            Recent interior design projects
+                        </h1>
+                        <div className="flex gap-4">
+                            <button
+                                onClick={prevSlide}
+                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button
+                                onClick={nextSlide}
+                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    
+
+                    {/* Carousel */}
+                    <div className="relative">
+                        <div className="overflow-hidden">
+                            <div
+                                className="flex gap-6 transition-transform duration-500 ease-in-out"
+                                style={{
+                                    transform: `translateX(-${currentSlide * (280 + 24)}px)`,
+                                    width: `${projects.length * (280 + 24)}px`
+                                }}
+                            >
+                                {projects.map((project, index) => (
+                                    <Link key={index} href={project.link} className="group flex-shrink-0">
+                                        <div className="w-70 h-80 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                            <Image
+                                                src={project.image}
+                                                alt={project.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                                                <h3 className="text-white text-xl manrope mb-1">{project.title}</h3>
+                                                <p className="text-white/80 text-sm manrope-medium">{project.subtitle}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="flex justify-between items-center mt-8">
+                        <Link href="/">
+                            <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                                Explore all projects
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+
+            {/* 1440 Version */}
+            
+            <div className="desktop-1440 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-6">
+                <div className="max-w-8xl mx-auto">
+                    {/* Header & Navigation */}
+                    <div className="flex justify-between items-start mb-12">
+                        <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
+                            Recent interior design projects
+                        </h1>
+                        <div className="flex gap-4">
+                            <button
+                                onClick={prevSlide}
+                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button
+                                onClick={nextSlide}
+                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Carousel */}
+                    <div className="relative">
+                        <div className="overflow-hidden">
+                            <div
+                                className="flex gap-6 transition-transform duration-500 ease-in-out"
+                                style={{
+                                    transform: `translateX(-${currentSlide * (280 + 24)}px)`,
+                                    width: `${projects.length * (280 + 24)}px`
+                                }}
+                            >
+                                {projects.map((project, index) => (
+                                    <Link key={index} href={project.link} className="group flex-shrink-0">
+                                        <div className="w-80 h-95 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                            <Image
+                                                src={project.image}
+                                                alt={project.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                                                <h3 className="text-white text-xl manrope mb-1">{project.title}</h3>
+                                                <p className="text-white/80 text-sm manrope-medium">{project.subtitle}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="flex justify-between items-center mt-8">
+                        <Link href="/">
+                            <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                                Explore all projects
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+
+            {/* 1280 Version */}
+        
+            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-6">
                 <div className="max-w-7xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
@@ -129,7 +312,7 @@ export default function Section6() {
                             >
                                 {projects.map((project, index) => (
                                     <Link key={index} href={project.link} className="group flex-shrink-0">
-                                        <div className="w-70 h-80 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <div className="w-75 h-85 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                                             <Image
                                                 src={project.image}
                                                 alt={project.title}
