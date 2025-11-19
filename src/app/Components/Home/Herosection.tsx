@@ -8,6 +8,7 @@ import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import OverlapNavBar from "../OverlapNavBar";
 
+
 const Herosection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const router = useRouter();
@@ -55,6 +56,12 @@ const Herosection: React.FC = () => {
   function handleClick() {
     router.push("/");
   }
+
+
+
+  // pop Up 
+
+
 
   return (
     <div>
