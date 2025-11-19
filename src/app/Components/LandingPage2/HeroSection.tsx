@@ -158,9 +158,9 @@ export function HeroSection() {
                         name: updatedForm.name,
                         email: updatedForm.email,
                         phoneNumber: updatedForm.phonennumber,
-                        propertyPin: updatedForm.pincode,
-                        interiorSetup: updatedForm.property,
-                        possessionIn: updatedForm.Scheduler,
+                        pinCode: updatedForm.pincode,
+                        propertyType: updatedForm.property,
+                        bookASlot: updatedForm.Scheduler,
                     };
 
                     await fetch('https://hows.hubinterior.com/v1/MetaLead', {
@@ -263,9 +263,9 @@ export function HeroSection() {
                         name: updatedForm.name,
                         email: updatedForm.email,
                         phoneNumber: updatedForm.phonennumber,
-                        propertyPin: updatedForm.pincode,
-                        interiorSetup: updatedForm.property,
-                        possessionIn: updatedForm.Scheduler,
+                        pinCode : updatedForm.pincode,
+                        propertyType: updatedForm.property,
+                        bookASlot: updatedForm.Scheduler,
                     };
 
                     await fetch('https://hows.hubinterior.com/v1/MetaLead', {
