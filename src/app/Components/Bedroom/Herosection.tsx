@@ -81,9 +81,11 @@ const BedroomHeroSimple: React.FC = () => {
       {/* Desktop Version */}
 
 
-      <div className="desktop-1920">
+      
+ 
+ <div className="desktop-1920">
 
-        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/bh.png')" }}>
+        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('/bh.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
@@ -124,8 +126,6 @@ const BedroomHeroSimple: React.FC = () => {
         </div>
 
       </div>
- 
-
 
       <div className="desktop-1440">
 
