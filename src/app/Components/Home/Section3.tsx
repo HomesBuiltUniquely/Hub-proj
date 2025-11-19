@@ -79,7 +79,8 @@ export default function Section3() {
      /* Hide both by default */
         .desktop-1280,
         .desktop-1440,
-        .desktop-1920 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
@@ -104,8 +105,118 @@ export default function Section3() {
           }
         }
 
+
+         /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+
     `}</style>
 
+
+            {/* 2560 Version */}
+
+            <div className="desktop-2560 hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-75">
+                <div className="max-w-8xl mx-auto">
+                    {/* Header Section */}
+                    <div className="flex flex-row justify-between items-center mb-12">
+                        <h1 className="text-5xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
+                        <a href="/GetEstimate">
+                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium flex items-center gap-2">
+                                Book consultation
+                                <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+
+                    {/* Carousel Section */}
+                    <div className="relative mt-10 mx-auto w-[1400px]">
+                        {/* Navigation Controls */}
+                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
+                            <button
+                                onClick={prevSlide}
+                                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                            >
+                                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 translate-x-1/2">
+                            <button
+                                onClick={nextSlide}
+                                className="w-12 h-12 mr-3 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                            >
+                                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/* Service Cards */}
+
+                        <div className="overflow-hidden w-[1400px]">
+                            <div
+                                className="flex gap-4 transition-transform duration-500 ease-in-out"
+                                style={{
+                                    transform: `translateX(-${currentSlide * (1 / serviceCards.length)}%)`,
+                                }}
+                            >
+                                {serviceCards.map((service, index) => (
+                                    <div key={index} className="flex-shrink-0 w-[455px]">
+
+                                        <div className="bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300 flex flex-col">
+
+                                            {/* Image */}
+                                            <div className="relative h-96">
+                                                <img
+                                                    src={service.image}
+                                                    alt={service.title}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+
+                                            {/* Content with fixed height */}
+                                            <div className="p-8 flex flex-col text-center h-[260px]">
+
+                                                <h3 className="text-2xl font-bold text-gray-800 mb-4 manrope-semibold">
+                                                    {service.title}
+                                                </h3>
+
+                                                {/* Description auto grows, but limited inside container */}
+                                                <p className="text-gray-600 leading-relaxed manrope-medium flex-grow overflow-hidden">
+                                                    {service.description}
+                                                </p>
+
+                                                {/* Button at bottom ALWAYS */}
+                                                <a href={service.link} className="mt-auto block pt-6">
+                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl font-semibold shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200">
+                                                        Request service
+                                                    </button>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            {/* 1920 version */}
 
             <div className="desktop-1920 hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-5">
                 <div className="max-w-8xl mx-auto">

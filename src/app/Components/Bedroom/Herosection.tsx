@@ -89,6 +89,7 @@ const BedroomHeroSimple: React.FC = () => {
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
             </div>
+
             <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
@@ -123,7 +124,7 @@ const BedroomHeroSimple: React.FC = () => {
         </div>
 
       </div>
-
+ 
 
 
       <div className="desktop-1440">

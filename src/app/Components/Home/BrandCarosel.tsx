@@ -83,7 +83,8 @@ export default function BrandCarousel() {
         /* Hide both sections by default on mobile */
         .desktop-1440,
         .desktop-1280,
-        .desktop-1920 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none;
         }
 
@@ -108,7 +109,56 @@ export default function BrandCarousel() {
           }
         }
 
+         
+         /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+
+
       `}</style>
+
+      
+      {/* 2560 Version  */}
+
+
+      <div className="desktop-2560 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-80">
+        <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
+          Trusted partners
+        </h2>
+
+        <div
+          ref={containerRef}
+          className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
+          style={{ scrollbarWidth: 'none' }}
+        >
+          {allLogos.map((logo, idx) => (
+            <div
+              key={`${logo.src}-${idx}`}
+              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
+                }`}
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={0}
+                height={0}
+                sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
+                className="object-contain h-[40px] sm:h-[50px] md:h-[60px] w-auto"
+                loading="lazy"
+                style={{
+                  width: 'auto',
+                  height: '100%',
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+
 
       {/* 1920 version  */}
 

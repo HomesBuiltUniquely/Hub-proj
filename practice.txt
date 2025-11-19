@@ -1,216 +1,377 @@
 'use client';
 
-import Link from 'next/link';
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import OfferingsDropdown from "../OfferingsDropdown";
+import ExploreRoomsDropdown from "../ExploreRooms";
+import NavMore from "../NavMore";
+import OverlapNavBar from "../OverlapNavBar";
 
-export default function Section3() {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [touchStart, setTouchStart] = useState<number | null>(null);
-    const [touchEnd, setTouchEnd] = useState<number | null>(null);
-    const carouselRef = useRef<HTMLDivElement>(null);
-    
-    const serviceCards = [
-        {
-            title: "Modular Interiors for Every Home",
-            description: "Efficient layouts and space-saving designs crafted to fit kitchens, wardrobes, and storage — blending style with everyday functionality.",
-            image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen5.jpg",
-            link: "/GetEstimate",
-            borderColor: ""
-        },
-        {
-            title: "End-to-End Home Interior Solutions",
-            description: "From concept to completion, we provide complete interior solutions — covering every room with design, execution, and finishing.",
-            image: "/bed1.jpg",
-            link: "/GetEstimate",
-            borderColor: ""
-        },
-        {
-            title: "Luxury Interiors Thoughtfully Crafted",
-            description: "Luxury interiors thoughtfully built to balance modern design, comfort, and personal expression. elevating everyday lifestyle",
-            image: "/bed4.jpg",
-            link: "/GetEstimate",
-            borderColor: ""
-        },
-    ];
+const Herosection: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const router = useRouter();
 
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % serviceCards.length);
-    };
+  const handleGetEstimate = () => {
+    router.push('/GetEstimate');
+  };
 
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + serviceCards.length) % serviceCards.length);
-    };
+  const heroSlides = [
+    {
+      image: "/bh.png",
+      title: "From floor plan to lifestyle home, uniquely built",
+      subtitle: "Innovative interior design",
+      buttonText: "Book Free Consultation"
+    },
+    {
+      image: "/hh2.png",
+      title: "Get your home interior cost estimate today",
+      subtitle: "a Kitchen that inspires",
+      buttonText: "Calculate Now"
+    },
+    {
+      image: "/hh3.png",
+      title: "From vision to reality — Interiors in 34 days",
+      subtitle: "Living space today",
+      buttonText: "Book Free Consultation"
+    }
+  ];
 
-    // Touch event handlers for mobile swipe
-    const handleTouchStart = (e: React.TouchEvent) => {
-        setTouchEnd(null);
-        setTouchStart(e.targetTouches[0].clientX);
-    };
+  const mobileTexts = [
+    "From floor plan to lifestyle home, uniquely built",
+    "Get your home interior cost estimate today",
+    "From vision to reality — Interiors in 34 days"
+  ];
 
-    const handleTouchMove = (e: React.TouchEvent) => {
-        setTouchEnd(e.targetTouches[0].clientX);
-    };
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4000); // Change slide every 4 seconds
 
-    const handleTouchEnd = () => {
-        if (!touchStart || !touchEnd) return;
-        const distance = touchStart - touchEnd;
-        const isLeftSwipe = distance > 50;
-        const isRightSwipe = distance < -50;
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
 
-        if (isLeftSwipe) {
-            nextSlide();
+  function handleClick() {
+    router.push("/");
+  }
+
+  return (
+    <div>
+      <style jsx>{`
+        /* Hide all sections by default */
+        .desktop-1440,
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560,
+        .mobile-small,
+        .mobile-large {
+          display: none;
         }
-        if (isRightSwipe) {
-            prevSlide();
+
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
         }
-    };
 
-    
-    return (
-        <div>
-            <div className="hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-8">
-                <div className="max-w-7xl mx-auto">
-                    {/* Header Section */}
-                    <div className="flex flex-row justify-between items-center mb-12">
-                        <h1 className="text-4xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
-                        <a href="/GetEstimate">
-                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium flex items-center gap-2">
-                                Book consultation
-                                <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
-                                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </div>
-                            </button>
-                        </a>
-                    </div>
+        /* Show 1440px section for screens 1440px and above */
+        @media (width: 1440px)  {
+          .desktop-1440 {
+            display: block;
+          }
+        }
 
-                    {/* Carousel Section */}
-                    <div className="relative mt-20 mx-auto w-full max-w-[1300px] px-4">
-                        {/* Navigation Controls */}
-                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
-                            <button 
-                                onClick={prevSlide}
-                                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
-                            >
-                                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                        </div>
-                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 translate-x-1/2">
-                            <button 
-                                onClick={nextSlide}
-                                className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
-                            >
-                                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
 
-                        {/* Service Cards */}
-                        <div className="overflow-hidden w-full -ml-2">
-                            <div 
-                                className="flex gap-4 transition-transform duration-500 ease-in-out"
-                                style={{ 
-                                    transform: `translateX(-${currentSlide * 33.33}%)`,
-                                }}
-                            >
-                                {serviceCards.map((service, index) => (
-                                    <div key={index} className="flex-shrink-0 w-104 ">
-                                        <div className={`bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300 h-auto flex flex-col`}>
-                                            <div className="relative h-96">
-                                                <img
-                                                    src={service.image}
-                                                    alt={service.title}
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-                                            <div className="p-8 flex-1 flex flex-col text-center">
-                                                <h3 className="text-2xl font-bold text-gray-800 mb-4 manrope-semibold">{service.title}</h3>
-                                                <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
-                                                <a href={service.link} className="mt-auto block">
-                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium">
-                                                        Request service
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+         /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
 
-                        {/* Dot Indicators */}
-                        <div className="flex justify-center mt-8 space-x-2">
-                            {serviceCards.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setCurrentSlide(index)}
-                                    className={`w-3 h-3 rounded-full transition-colors ${
-                                        index === currentSlide ? 'bg-[#ddcdc1]' : 'bg-gray-300'
-                                    }`}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        {/* Mobile Overlapping Carousel */}
-        <div className="block md:hidden bg-[#F1F2F6] py-12">
-            <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-5 pl-8">All Interior Service, One Destination</h1>
-            
-            <div className="relative px-4 pt-8">
-                <div 
-                    className="flex gap-4 transition-transform duration-300 ease-out py-8 overflow-visible"
-                    style={{ transform: `translateX(-${currentSlide * 60}%)` }}
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                >
-                    {serviceCards.map((service, index) => (
-                        <div key={index} className="flex-shrink-0 w-[60%] relative">
-                            <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-auto flex flex-col">
-                                <div className="relative h-48">
-                                    <img
-                                        src={service.image}
-                                        alt={service.title}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                <div className="p-6 flex-1 flex flex-col">
-                                    <h3 className="text-lg font-bold text-gray-800 mb-3 manrope-semibold">{service.title}</h3>
-                                    <p className="text-gray-600 mb-4 text-sm leading-relaxed manrope-medium flex-grow">{service.description}</p>
-                                    <a href={service.link} className="mt-auto">
-                                        <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-2xl font-semibold text-sm manrope-medium">
-                                            Request service
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10 w-8 h-8 bg-[#ddcdc1] rounded-full flex items-center justify-center border-4 border-white shadow-lg">
-                                <span className="text-black font-bold text-sm">{index + 1}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                
-                {/* Mobile Dot Indicators */}
-                <div className="flex justify-center mt-8 space-x-2">
-                    {serviceCards.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentSlide(index)}
-                            className={`w-3 h-3 rounded-full transition-colors ${
-                                index === currentSlide ? 'bg-[#ddcdc1]' : 'bg-gray-300'
-                            }`}
-                        />
-                    ))}
-                </div>
-            </div>
+        /* Show small mobile version for screens 320px to 479px */
+        @media (min-width: 320px) and (max-width: 479px) {
+          .mobile-small {
+            display: block;
+          }
+        }
+
+        /* Show large mobile version for screens 480px to 767px */
+        @media (min-width: 480px) and (max-width: 767px) {
+          .mobile-large {
+            display: block;
+          }
+        }
+      `}</style>
+
+
+      <div className="hidden md:block  desktop-2560 w-full max-w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
+        {/* Background Image Carousel */}
+        <div className="absolute inset-0 w-full max-w-8xl h-[full]">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-center transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              style={{ backgroundImage: `url('${slide.image}')` }}
+            />
+          ))}
         </div>
+
+        {/* Navbar */}
+        <div className="relative z-10 flex items-center justify-between -mt-15">
+          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
+          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
-    )
-}
+
+        {/* Hero content */}
+        <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
+          <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
+            {heroSlides[currentSlide].title}
+          </h1>
+          <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope-medium  mr-145 mt-2  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+            {heroSlides[currentSlide].buttonText}
+          </button>
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
+                ? 'bg-white scale-110'
+                : 'bg-white/50 hover:bg-white/60'
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+
+
+{/* 1920 version  */}
+
+      <div className="hidden md:block  desktop-1920 w-full max-w-8xl h-[950px] mx-auto rounded-4xl overflow-hidden relative ">
+        {/* Background Image Carousel */}
+        <div className="absolute inset-0 w-full max-w-8xl h-[950px]">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-cover transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              style={{ backgroundImage: `url('${slide.image}')` }}
+            />
+          ))}
+        </div>
+
+        {/* Navbar */}
+        <div className="relative z-10 flex items-center justify-between -mt-15">
+          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
+          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
+          <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
+            {heroSlides[currentSlide].title}
+          </h1>
+          <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope-medium  mr-145 mt-2  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+            {heroSlides[currentSlide].buttonText}
+          </button>
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
+                ? 'bg-white scale-110'
+                : 'bg-white/50 hover:bg-white/60'
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+
+
+
+      {/* Desktop Version - For screens 1440px */}
+      
+      
+      <div className="hidden md:block  desktop-1440 w-full max-w-8xl h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
+        {/* Background Image Carousel */}
+        <div className="absolute inset-0 w-full max-w-8xl h-[full]">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-cover transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              style={{ backgroundImage: `url('${slide.image}')` }}
+            />
+          ))}
+        </div>
+
+        {/* Navbar */}
+        <div className="relative z-10 flex items-center justify-between -mt-15">
+          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
+          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
+          <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
+            {heroSlides[currentSlide].title}
+          </h1>
+          <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope-medium  mr-145 mt-2  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+            {heroSlides[currentSlide].buttonText}
+          </button>
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
+                ? 'bg-white scale-110'
+                : 'bg-white/50 hover:bg-white/60'
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+
+
+
+
+      {/* 1280 version */}
+      <div>
+
+        <div className="desktop-1280 max-w-[1280px] h-[800px] mx-auto rounded-3xl overflow-hidden relative">
+          {/* Background Image Carousel */}
+          <div className="absolute inset-0">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000  ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                  }`}
+                style={{ backgroundImage: `url('${slide.image}')` }}
+              />
+            ))}
+          </div>
+
+          {/* Navbar */}
+          <div className="relative z-10 flex items-center justify-between -mt-15">
+            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" />
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-60 mt-5">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101]  hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl   mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
+
+          {/* Hero content */}
+          <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
+            <h1 className=" w-[1000px] text-5xl lg:text-6xl mb-drop-shadow-lg transition-all ml-45 duration-1000">
+              {heroSlides[currentSlide].title}
+            </h1>
+            <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl  mr-150 mt-4  duration-1000 manrope-medium shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+              {heroSlides[currentSlide].buttonText}
+            </button>
+          </div>
+
+          {/* Carousel Indicators */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
+                  ? 'bg-white scale-110'
+                  : 'bg-white/50 hover:bg-white/60'
+                  }`}
+              />
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Mobile Version - Different Design for below */}
+      <div className="block md:hidden">
+
+        {/* Mobile Version 1 - Small Mobile (320px to 479px) */}
+        <div className="mobile-small w-[350px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto -mt-7">
+          {/* Mobile Header */}
+          <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+
+            <div className="relative z-20 flex items-center justify-between mt-4">
+              <img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6"></img>
+            </div>
+          </div>
+
+
+          <img className="w-[350px] h-[630px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+          <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
+          {/* Horizontal line above button */}
+          <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
+          <button onClick={handleGetEstimate} className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope-medium text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+        </div>
+
+
+
+        {/* Mobile Version 2 - Large Mobile (480px to 767px) */}
+        <div className="mobile-large w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+          {/* Mobile Header */}
+          <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
+
+            <div className="relative z-20 flex items-center justify-between mt-4 ">
+              <img src="/redlogo.png" className="w-[110px] h-[120px] pb-6 -mt-5 mb-7 pr-8"></img>
+            </div>
+          </div>
+
+
+
+          <img className="w-[340px] h-[500px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+          <div className="-mt-62 w-[300px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
+          {/* Horizontal line above button */}
+          <div className="w-[300px]  h-[1px] bg-gray-300 absolute -mt-8 ml-8"></div>
+          <button className="bg-[#FF0000] text-white px-7 py-2 rounded-4xl -mt-28 ml-8 manrope-medium absolute shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+        </div>
+        <OverlapNavBar />
+      </div>
+      {/* Mobile Version - Different Design for above 360 */}
+
+    </div>
+  );
+};
+
+export default Herosection;
