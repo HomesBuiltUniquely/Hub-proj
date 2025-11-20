@@ -40,6 +40,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
     const [pin, setPin] = useState("");
     const [error, setError] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const pinRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +68,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         setIsOpen(false);
     };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!name.trim() || !phone.trim() || !pin.trim()) {
@@ -84,12 +85,39 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
     }
 
     setError("");
+    setIsSubmitting(true);
 
-    // ✅ Tell parent “form is successful”
-    onFormSuccess();
+    try {
+        const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
+        
+        const response = await fetch('/api/popup-contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name.trim(),
+                phone: phone.trim(),
+                pincode: pin.trim(),
+                pageUrl: pageUrl
+            }),
+        });
 
-    // optional: keep or remove alert
-    alert("Form submitted successfully!");
+        const data = await response.json();
+
+        if (data.success) {
+            // ✅ Tell parent "form is successful"
+            onFormSuccess();
+            alert("Form submitted successfully!");
+        } else {
+            setError("Failed to submit form. Please try again.");
+        }
+    } catch (error) {
+        console.error('Form submission error:', error);
+        setError("An error occurred. Please try again.");
+    } finally {
+        setIsSubmitting(false);
+    }
 };
 
 
@@ -166,9 +194,10 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                             <button
                                 type="submit"
-                                className="py-2 px-4 rounded-full text-white manrope-medium bg-red-500 hover:bg-red-600 transition"
+                                disabled={isSubmitting}
+                                className="py-2 px-4 rounded-full text-white manrope-medium bg-red-500 hover:bg-red-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Submit
+                                {isSubmitting ? 'Submitting...' : 'Submit'}
                             </button>
 
                         </form>
@@ -275,9 +304,10 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                             <div className="flex justify-center">
                                 <button
                                     type="submit"
-                                    className="py-2 px-8 mb-2 rounded-full text-white manrope-medium bg-red-500 hover:bg-red-600 transition"
+                                    disabled={isSubmitting}
+                                    className="py-2 px-8 mb-2 rounded-full text-white manrope-medium bg-red-500 hover:bg-red-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    Submit
+                                    {isSubmitting ? 'Submitting...' : 'Submit'}
                                 </button>
                             </div>
 
