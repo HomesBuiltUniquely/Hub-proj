@@ -350,7 +350,7 @@ export default function HeroSections() {
             possessionIn: requestData.budget,  
           };
 
-          await fetch('http://localhost:8081/v1/Home1', {
+          await fetch('https://hows.hubinterior.com/v1/Home1', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -358,7 +358,7 @@ export default function HeroSections() {
             body: JSON.stringify(home1Payload),
           });
         } catch (err) {
-          console.warn('Failed to POST to http://localhost:8081/v1/Home1', err);
+          console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
         }
       })();
 
