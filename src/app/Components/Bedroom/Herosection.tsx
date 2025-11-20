@@ -51,7 +51,8 @@ const BedroomHeroSimple: React.FC = () => {
         /* Hide both by default */
         .desktop-1280,
         .desktop-1440,
-        .desktop-1920 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
@@ -75,15 +76,71 @@ const BedroomHeroSimple: React.FC = () => {
             display: block !important;
           }
         }
+
+         /* Show 2560px layout for large desktops (>1920px) */
+        @media (min-width: 1921px)  {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+
       `}</style>
 
 
       {/* Desktop Version */}
 
 
+      {/* 2560 Version */}
+
+
+      <div className="desktop-2560">
+
+        <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/bh.png')" }}>
+          {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+            </div>
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
+          {/* Hero content */}
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+              Bedroom interior design
+            </h1>
+
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+              Any questions you have can be resolved here.
+
+            </p>
+
+            <div className="flex gap-4">
+              <button
+                onClick={handleGetEstimate}
+                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+              >
+                Get Free Quote
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
+          Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
+        </div>
+
+      </div>
+
       
- 
- <div className="desktop-1920">
+
+      {/* 1920 Version */}
+
+      <div className="desktop-1920">
 
         <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('/bh.png')" }}>
           {/* Navbar */}
