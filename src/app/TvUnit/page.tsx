@@ -1,11 +1,13 @@
 import Footer from "../Components/Home/Footer";
 import Herosection from "../Components/TvUnit/Herosection";
+import PopUpModal from "../Components/PopupModal";
 
 export default function TvUnit() {
   return (
-   <div>
-     <Herosection/>
-     <Footer/>
+    <div>
+      <PopUpModal />
+      <Herosection />
+      <Footer />
     </div>
   )
 }

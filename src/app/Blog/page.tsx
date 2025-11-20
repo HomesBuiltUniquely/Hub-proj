@@ -6,6 +6,7 @@ import Section2 from "../Components/Blog/Section2";
 import HomeShowcase from "../Components/Blog/BlogSection";
 import Footer from "../Components/Home/Footer";
 import { useRouter } from "next/navigation";
+import PopUpModal from "../Components/PopupModal";
 
 // Post type definition
 type Post = {
@@ -218,6 +219,8 @@ export default function Blog() {
 
   return (
     <div>
+
+      <PopUpModal />
       <Herosection />
       <Section2 posts={posts} onReadMore={handleReadMore} />
       <HomeShowcase posts={posts}/>

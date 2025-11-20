@@ -11,10 +11,12 @@ import Section7 from "../Components/AboutUs/Section7";
 import Section8 from "../Components/AboutUs/Section8";
 import Section9 from "../Components/AboutUs/Section9";
 import Footer from "../Components/Home/Footer";
+import PopUpModal from "../Components/PopupModal";
 
 export default function Aboutus() {
   return (
     <div>
+      <PopUpModal />
       <Herosection />
       <Section1 />
       <Section2 />

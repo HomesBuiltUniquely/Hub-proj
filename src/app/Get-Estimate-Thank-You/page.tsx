@@ -3,6 +3,7 @@
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
 
+
 // Declare gtag function for TypeScript
 declare global {
   interface Window {
