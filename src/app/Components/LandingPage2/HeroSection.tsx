@@ -513,12 +513,12 @@ export function HeroSection() {
                 <div className="w-screen h-[1000px] bg-white">
                     <div className="relative">
                         <div className="relative ">
-                            <img src="jitmob.png" className="absolute h-[700px] w-screen"></img>
+                            <img src="jitmob1.png" className="absolute h-[700px] w-screen"></img>
                             <img src="LOGO.png" alt="Logo" className="absolute top-4 w-[100px] h-[40px] m-4"></img>
                         </div>
 
                         {/* Mobile Form */}
-                        <div className="absolute left-1/2 -translate-x-1/2 top-64 w-full px-4">
+                        <div className="absolute left-1/2 -translate-x-1/2 top-110 w-full px-4">
 
                             <form
                                 onSubmit={handleMobileSubmit}
