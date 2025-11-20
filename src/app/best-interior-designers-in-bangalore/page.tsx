@@ -10,10 +10,12 @@ import { QAsection } from "../Components/LandingPage1/QASEC";
 import Section51 from "../Components/LandingPage2/Section51";
 import Section52 from "../Components/LandingPage2/Section52";
 import Bsc from "../Components/LandingPage2/Bsc";
+import PopUpModal from "../Components/PopupModal";
 
 export default function BestInteriorDesignersInBangalore(){
     return(
         <div>
+            <PopUpModal />
             <HeroSection />
             {/* <Section1/> */}
             <Section51/>

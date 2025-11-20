@@ -12,10 +12,12 @@ import Section4 from "../Components/Home/Section4";
 import Section5 from "../Components/Home/Section5";
 import Section6 from "../Components/Home/Section6";
 import Section7 from "../Components/Home/Section7";
+import PopUpModal from "../Components/PopupModal";
 
 export default function GetEstimate() {
   return (
     <div>
+      <PopUpModal />
       <HeroSection/>
       <MobileFormSection/>
       <Section1/>

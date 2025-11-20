@@ -7,9 +7,11 @@ import Section6 from "../Components/Life@Hub/Section6";
 import Section7 from "../Components/Life@Hub/Section7";
 import Footer from "../Components/Home/Footer";
 
+
 export default function LifeAtHub() {
     return (
         <div>
+          
             <ContactHeader />
             <Section2 />
             <Section3 />
