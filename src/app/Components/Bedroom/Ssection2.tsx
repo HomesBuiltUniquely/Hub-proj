@@ -45,7 +45,8 @@ const BedroomSection: React.FC = () => {
         /* Hide both by default */
         .desktop-1280,
         .desktop-1440,
-        .desktop-1920 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
@@ -69,10 +70,50 @@ const BedroomSection: React.FC = () => {
             display: block !important;
           }
         }
+
+        /* Show 2560px layout for large desktops (>1920px) */
+        @media (min-width: 1921px)  {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+
+
       `}</style>
 
       {/* desktop */}
 
+      {/* 2560 Version */}
+
+      <div className="desktop-2560 ">
+
+        <section className="  bg-[#f1f2f6] h-[600px] flex items-center justify-center py-30">
+          <div className="flex flex-col md:flex-row gap-8 max-w-5xl w-full">
+            {/* Left: Card with description */}
+            <div className=" hidden md:block bg-[#3a2b21] rounded-3xl px-9 py-10  flex-col justify-center md:w-1/2 w-full min-h-[350px]">
+              <h2 className="text-4xl md:text-4xl manrope text-white mb-6">Ideal Bedroom</h2>
+              <p className="text-white/80 text-base md:text-lg leading-relaxed manrope-medium">
+                An ideal bedroom combines dreams, comfort, and feelings. HUB Interior offers more than just interior design — we create a cozy space that reflects your lifestyle and personality. As a trusted interior designer in Bengaluru, known for our cozy and comfortable bedroom interiors, we help you achieve your vision with warmth, care, and timeless elegance. Every corner of your bedroom is filled with thoughtful details, turning it into a sanctuary of peace and love.
+              </p>
+            </div>
+            {/* Right: Bedroom image */}
+            <div className="flex-1 md:w-1/2">
+              <div className="rounded-3xl overflow-hidden shadow-xl md:h-full flex items-center bg-[#e8e5dd]">
+                <img
+                  src="/bs1.jpg" // Replace with your actual bedroom image
+                  alt="Ideal Bedroom"
+                  className="w-full h-full object-cover hidden md:block"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+
+
+      {/* 1920 Version */}
 
       <div className="desktop-1920">
         <section className="  bg-[#f1f2f6] h-[600px] flex items-center justify-center py-30">

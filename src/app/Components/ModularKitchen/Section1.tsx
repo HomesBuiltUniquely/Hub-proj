@@ -92,7 +92,8 @@ const Section1: React.FC = () => {
         /* Hide both by default */
         .desktop-1280,
         .desktop-1440,
-        .desktop-1920 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
@@ -116,7 +117,95 @@ const Section1: React.FC = () => {
             display: block !important;
           }
         }
+
+           /* Show 2560px layout for large desktops (>1920px) */
+        @media (min-width: 1921px)  {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
       `}</style>
+
+
+      {/* desktop-2560 Version */}
+
+
+
+       <div className="desktop-2560">
+
+        <div className=" hidden md:block text-xl w-[1000px] manrope-medium text-center mx-auto mt-10">At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.</div>
+
+        <div className="hidden md:block max-w-350 mx-auto px-4 relative mt-30">
+          {/* Heading */}
+          <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
+            <div>
+              <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-1">Kitchen layout</h1>
+              <p className="text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
+            </div>
+          </div>
+          {/* Carousel with arrows overlapping top left */}
+          <div className="relative">
+            {/* Overlapping Navigation */}
+            <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
+              <button
+                onClick={() => scrollReq("left")}
+                className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
+                aria-label="Scroll Left"
+                type="button"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
+                  <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <button
+                onClick={() => scrollReq("right")}
+                className="bg-gray-200 hover:bg-yellow-300 text-gray-700 rounded-full p-2 shadow transition"
+                aria-label="Scroll Right"
+                type="button"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
+                  <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Card Carousel */}
+            <div
+              ref={scrollRef1440}
+              className="flex gap-7 overflow-x-auto overflow-hidden scroll-smooth no-scrollbar -ml-1 pt-5 pb-2"
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {wardrobes.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="min-w-[400px] max-w-[400px] w-[400px] h-[520px] bg-white rounded-4xl  shadow-lg overflow-hidden"
+                >
+                  <img
+                    src={item.img}
+                    alt={item.label}
+                    className="w-full h-130 object-cover rounded-4xl"
+                  />
+                  <div className="p-4 flex items-center -mt-50 h-[270px] w-[400px]">
+                    <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm w-[360px] block">
+                      <div className="text-lg">
+                        {item.label}
+                        <br />
+                      </div>
+                      <div className="manrope-medium">{item.subtitle}</div>
+                      <button className="border-1 border-[#ebd457] text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457]">
+                        Book Free Consultation
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
 
       {/* Desktop Version (1920) */}
       <div className="desktop-1920">
