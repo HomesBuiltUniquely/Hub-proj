@@ -67,7 +67,8 @@ const CardSection = ({
          /* Hide all by default */
        .desktop-1280,
         .desktop-1440,
-        .desktop-1920, 
+        .desktop-1920,
+        .desktop-2560,
        .mobile-300,
        .mobile-360plus {
          display: none;
@@ -94,6 +95,16 @@ const CardSection = ({
           }
         }
 
+
+         /* Show 2560px layout for large desktops (>1920px) */
+        @media (min-width: 1921px)  {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+
+
+
        /* Mobile 360–480px */
        @media screen and (min-width: 360px) and (max-width: 480px) {
          .mobile-360plus {
@@ -107,11 +118,53 @@ const CardSection = ({
            display: block;
          }
        }
+
      `}</style>
 
 
-
       {/* Desktop Version */}
+
+      {/* 2560 Version */}
+      <div className="desktop-2560 px-7">
+        <div className="flex flex-col items-center mb-8 px-2">
+          <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
+            {title}
+          </h2>
+          <p className=" wulkan-display md:text-3xl text-gray-500 mb-4 text-center">
+            {subtitle}
+          </p>
+          <button className="bg-gray-800 text-white px-7 py-2 rounded-full manrope-medium text-base mb-6">
+            {buttonText}
+          </button>
+        </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-2 w-full md:max-w-[1440px] mx-auto"
+          style={{ paddingRight: "5px" }}
+        >
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className="min-w-[350px] max-w-[350px] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+              style={{ height: "400px" }}
+            >
+              <img
+                src={card.img}
+                alt={card.label}
+                className="w-full h-[400px] object-cover transition duration-300"
+              />
+
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+
+
+
+      {/* 1920 Version */}
+
       <div className="desktop-1920 px-4 -ml-3">
 
         <div className="flex flex-col items-center mb-8 px-2">
@@ -149,6 +202,8 @@ const CardSection = ({
       </div>
 
 
+      {/* 1440 Version    */}
+
       <div className="desktop-1440 px-7">
         <div className="flex flex-col items-center mb-8 px-2">
           <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
@@ -182,6 +237,9 @@ const CardSection = ({
           ))}
         </div>
       </div>
+
+
+      {/* 1280 Version */}
 
       <div className="desktop-1280 ">
 

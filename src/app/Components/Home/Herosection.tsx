@@ -59,9 +59,6 @@ const Herosection: React.FC = () => {
 
 
 
-  // pop Up 
-
-
 
   return (
     <div>

@@ -54,56 +54,106 @@ const CardSection = ({
 
     <section className="w-full py-8 md:py-12 bg-[#f1f2f6]">
       <style jsx global>{`
-         /* Hide all by default */
-       .desktop-1280,
-        .desktop-1440,
-        .desktop-1920, 
-       .mobile-300,
-       .mobile-360plus {
-         display: none;
-       }
+  /* Hide all by default */
+  .desktop-1280,
+  .desktop-1440,
+  .desktop-1920,
+  .desktop-2560,
+  .mobile-300,
+  .mobile-360plus {
+    display: none;
+  }
 
-       /* 1280 layout */
-       @media screen and (min-width: 1024px) and (max-width: 1439px) {
-         .desktop-1280 {
-           display: block;
-         }
-       }
+  /* 1280 layout */
+  @media screen and (min-width: 1024px) and (max-width: 1439px) {
+    .desktop-1280 {
+      display: block;
+    }
+  }
 
-       /* 1440 layout */
-       @media screen and (width: 1440px) {
-         .desktop-1440 {
-           display: block;
-         }
-       }
+  /* 1440 layout */
+  @media screen and (width: 1440px) {
+    .desktop-1440 {
+      display: block;
+    }
+  }
 
-        /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
-          .desktop-1920 {
-            display: block !important;
-          }
-        }
+  /* Show 1920px layout for large desktops (1441px to 1920px) */
+  @media (min-width: 1441px) and (max-width: 1920px) {
+    .desktop-1920 {
+      display: block !important;
+    }
+  }
 
-       /* Mobile 360–480px */
-       @media screen and (min-width: 360px) and (max-width: 480px) {
-         .mobile-360plus {
-           display: block;
-         }
-       }
+  /* Show 2560px layout for >1920px screens */
+  @media (min-width: 1921px) {
+    .desktop-2560 {
+      display: block !important;
+    }
+  }
 
-       /* Mobile 300–359px */
-       @media screen and (min-width: 300px) and (max-width: 359px) {
-         .mobile-300 {
-           display: block;
-         }
-       }
-     `}</style>
+  /* Mobile 360–480 */
+  @media screen and (min-width: 360px) and (max-width: 480px) {
+    .mobile-360plus {
+      display: block;
+    }
+  }
+
+  /* Mobile 300–359 */
+  @media screen and (min-width: 300px) and (max-width: 359px) {
+    .mobile-300 {
+      display: block;
+    }
+  }
+`}</style>
+
 
 
       {/* Desktop Version */}
 
 
-       <div className="desktop-1920 px-4 ">
+      {/* 2560 Version  */}
+
+
+      <div className="desktop-2560 px-7">
+        <div className="flex flex-col items-center mb-8 px-2">
+          <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
+            {title}
+          </h2>
+          <p className=" wulkan-display md:text-3xl text-gray-500 mb-4 text-center">
+            {subtitle}
+          </p>
+          <button className="bg-gray-800 text-white px-7 py-2 rounded-full manrope-medium text-base mb-6">
+            {buttonText}
+          </button>
+        </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-2 w-full md:max-w-[1440px] mx-auto"
+          style={{ paddingRight: "5px" }}
+        >
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className="min-w-[350px] max-w-[350px] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+              style={{ height: "400px" }}
+            >
+              <img
+                src={card.img}
+                alt={card.label}
+                className="w-full h-[400px] object-cover transition duration-300"
+              />
+
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+
+      {/* 1920 Version */}
+
+      <div className="desktop-1920 px-4 ">
 
         <div className="flex flex-col items-center mb-8 px-2">
           <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
@@ -140,6 +190,9 @@ const CardSection = ({
       </div>
 
 
+      {/* 1440 Version  */}
+
+
       <div className="desktop-1440 px-7">
         <div className="flex flex-col items-center mb-8 px-2">
           <h2 className="text-4xl md:text-4xl manrope text-gray-900 mb-2 text-center">
@@ -173,6 +226,9 @@ const CardSection = ({
           ))}
         </div>
       </div>
+
+
+      {/* 1280 Version */}
 
       <div className="desktop-1280 ">
 
