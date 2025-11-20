@@ -1,10 +1,36 @@
 'use client';
 
+import Link from 'next/dist/client/link';
 import React from 'react';
 
 const Section10 = () => {
   return (
     <div>
+
+
+      <style jsx>{`
+
+  /* Hide both by default */
+  .desktop-1280,
+  .desktop-1440 {
+    display: none !important;
+  }
+
+  /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    .desktop-1280 {
+      display: block !important;
+    }
+  }
+
+  /* Show 1440px layout for large desktops (>=1440px) */
+  @media (min-width: 1440px) {
+    .desktop-1440 {
+      display: block !important;
+    }
+  }
+`}</style>
+
       {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
       <section className="aboutus-section10-3xl-container hidden">
         <div className="aboutus-section10-3xl-content">
@@ -40,10 +66,34 @@ const Section10 = () => {
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className="aboutus-section10-2xl-section hidden 2xl:block 3xl:hidden">
+      <section className=" desktop-1440 hidden 2xl:block 3xl:hidden mb-210">
         <div className="mt-20  w-full h-[550px] px-16">
           <div className="max-w-8xl mx-auto">
-            <div className="w-full h-auto min-h-[550px] bg-red-300 relative rounded-2xl overflow-hidden mt-10">
+
+
+            {/* Container for Title + Image */}
+            <div className="flex flex-col items-center justify-center w-full max-w-[1100px] mx-auto mt-16 xl:mt-20">
+
+              {/* Title */}
+              <div className="flex justify-center items-center space-x-2 mb-6">
+                <span className="manrope text-2xl xl:text-6xl text-[#ebd457]">Team</span>
+                <span className="manrope text-2xl xl:text-6xl text-black">HUB</span>
+              </div>
+
+              {/* Background Image */}
+              <div className="w-[900px] xl:w-[1100px] h-[220px] xl:h-[600px] relative rounded-2xl overflow-hidden shadow-md mb-10">
+                <img
+                  src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Team%20Hub.webp"
+                  alt="Interior Design Background"
+                  className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+
+            </div>
+
+
+
+            <div className="w-[1280px] h-auto min-h-[550px] bg-red-300 relative rounded-2xl overflow-hidden mt-10 mx-auto">
 
               {/* Background Image - 2XL optimized */}
               <img
@@ -66,21 +116,48 @@ const Section10 = () => {
                 </p>
 
                 {/* Button - 2XL optimized */}
-                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
-                  Join Our Team
-                </button>
+                <Link href="/Career">
+                  <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-red-600 hover:text-white transform hover:scale-105 transition-all duration-300">
+                    Join Our Team
+                  </button>
+                </Link>
 
               </div>
 
             </div>
+
           </div>
         </div>
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden">
+      <section className="desktop-1280 hidden xl:block 2xl:hidden">
         <div className="mt-18 w-full h-auto px-12">
           <div className="max-w-7xl mx-auto">
+
+            {/* Container for Title + Image */}
+            <div className="flex flex-col items-center justify-center w-full max-w-[1100px] mx-auto mt-16 mb-20 xl:mt-20">
+
+              {/* Title */}
+              <div className="flex justify-center items-center space-x-2 mb-6">
+                <span className="manrope text-2xl xl:text-5xl text-[#ebd457]">Team</span>
+                <span className="manrope text-2xl xl:text-5xl text-black">HUB</span>
+              </div>
+
+              {/* Background Image */}
+              <div className="w-[900px] xl:w-[1000px] h-[220px] xl:h-[500px] relative rounded-2xl overflow-hidden shadow-md">
+                <img
+                  src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Team%20Hub.webp"
+                  alt="Interior Design Background"
+                  className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+
+            </div>
+
+
+
+
             <div className="w-full h-auto min-h-[400px] bg-red-300 relative rounded-2xl overflow-hidden">
 
               {/* Background Image - XL optimized */}
@@ -104,9 +181,11 @@ const Section10 = () => {
                 </p>
 
                 {/* Button - XL optimized */}
-                <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
-                  Join Our Team
-                </button>
+                <Link href="/Career">
+                  <button className="w-[200px] h-[40px] bg-white rounded-4xl mt-6 ml-6 text-base manrope-medium text-gray-800 hover:bg-red-600 hover:text-white transform hover:scale-105 transition-all duration-300">
+                    Join Our Team
+                  </button>
+                </Link>
 
               </div>
 
@@ -213,38 +292,38 @@ const Section10 = () => {
 
             {/* Second Background with Overlay */}
             <div className="relative w-full rounded-xl overflow-hidden">
-  {/* Blurred Background Image */}
-  <img
-    src="ab2.png"
-    alt="Background"
-    className="w-full h-70 object-cover scale-105 blur-[0.25px]"
-  />
+              {/* Blurred Background Image */}
+              <img
+                src="ab2.png"
+                alt="Background"
+                className="w-full h-70 object-cover scale-105 blur-[0.25px]"
+              />
 
-  {/* Dark overlay for better contrast */}
-  <div className="absolute top-0 left-0 w-full h-full bg-black/40" />
+              {/* Dark overlay for better contrast */}
+              <div className="absolute top-0 left-0 w-full h-full bg-black/40" />
 
-  {/* Text Content Overlay */}
-  <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center px-4 shadow-2xl">
-    <div className="w-full max-w-[320px] sm:max-w-[360px] rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center text-white">
+              {/* Text Content Overlay */}
+              <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center px-4 shadow-2xl">
+                <div className="w-full max-w-[320px] sm:max-w-[360px] rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center text-white">
 
-      {/* Heading */}
-      <h1 className=" mt-3 text-xl manrope-medium leading-snug">
-        Shape the Future of Interior Design With Us
-      </h1>
+                  {/* Heading */}
+                  <h1 className=" mt-3 text-xl manrope-medium leading-snug">
+                    Shape the Future of Interior Design With Us
+                  </h1>
 
-      {/* Description */}
-      <p className="text-sm manrope-medium mt-5 leading-relaxed">
-        Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
-      </p>
+                  {/* Description */}
+                  <p className="text-sm manrope-medium mt-5 leading-relaxed">
+                    Come be part of a culture where ideas are valued, growth is constant, and work feels like home.
+                  </p>
 
-      {/* Button */}
-      <button className="w-[150px] sm:w-[170px] mt-6 h-[36px] bg-white rounded-3xl  text-sm manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
-        Join Our Team
-      </button>
+                  {/* Button */}
+                  <Link href="/Career"><button className="w-[150px] sm:w-[170px] mt-6 h-[36px] bg-white rounded-3xl  text-sm manrope-medium text-gray-800 hover:bg-gray-100 transition-colors duration-300">
+                    Join Our Team
+                  </button></Link>
 
-    </div>
-  </div>
-</div>
+                </div>
+              </div>
+            </div>
 
 
           </div>

@@ -28,7 +28,7 @@ export default function Section2(){
             
             {/* MOBILE */}
 
-            <div className="lg:hidden w-full max-w-[400px] h-[420px] bg-white mx-auto rounded-3xl">
+            <div className="lg:hidden w-full max-w-[400px] h-[420px] bg-white mx-auto mb-10 rounded-lg">
               <div className="text-left pt-10 text-4xl pl-6 manrope-medium">Where Trust Meets Design Excellence</div>
               <div className="flex mt-14 gap-6 px-4">
                 <div className="ml-4">

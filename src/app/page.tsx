@@ -9,24 +9,25 @@ import Section4 from "./Components/Home/Section4";
 import Section5 from "./Components/Home/Section5";
 import Section6 from "./Components/Home/Section6";
 import Section7 from "./Components/Home/Section7";
+import PopUpModal from "./Components/PopupModal";
 
 
 
 export default function Home() {
   return (
     <div>
-
-      <Herosection/> 
-      <Section1/>
-      <Section2/>
-      <Section3/>
-      <Section4/>
-      <Section5/>
-      <Section6/>
-      <Section7/>
-      <BrandCarousel/>
-      <QAsection/>
-      <Footer/>
+      <PopUpModal />
+      <Herosection />
+      <Section1 />
+      <Section2 />
+      <Section3 />
+      <Section4 />
+      <Section5 />
+      <Section6 />
+      <Section7 />
+      <BrandCarousel />
+      <QAsection />
+      <Footer />
     </div>
   )
 }

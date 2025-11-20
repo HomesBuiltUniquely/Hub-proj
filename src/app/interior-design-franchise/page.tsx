@@ -4,12 +4,12 @@ import Home from "../Components/Franchise/Herosection";
 import Footer from "../Components/Home/Footer";
 
 
-export default function Franchise(){
-    return(
+export default function Franchise() {
+    return (
         <div>
-            <Home/>
-        <Business/>
-             <Footer/>
+            <Home />
+            <Business />
+            <Footer />
         </div>
     )
 }

@@ -1,25 +1,28 @@
 "use client"
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+
+
 
 const articles = [
   {
-    image: "/bb1.jpg", // Replace with your image path
+    image: "/blog7img1.jpeg",
     title: "Modern Bedroom Interior Trends in Bengaluru Homes",
-    date: "September 05, 2025",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+    date: "August 07, 2025",
+    path: "/Blog/Blog7"
   },
   {
-    image: "/bb2.jpg",
+    image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img1.jpg",
     title: "Luxury Bedroom Interior Designs for Villas and 3BHK Homes",
-    date: "September 05, 2025",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+    date: "Oct 21, 2025",
+    path: "/Blog/Blog8"
   },
   {
     image: "/bb3.jpg",
     title: "Sliding vs. Hinged Wardrobe Designs – Which is Best for You?",
     date: "September 05, 2025",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+    path: "/Blog/Blog8"
   },
 ];
 
@@ -68,7 +71,8 @@ const faqs = [
 
 const Section4: React.FC = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-return (
+  const router = useRouter();
+  return (
     <div className="w-full min-h-screen bg-[#f1f2f6] py-12">
       <style jsx>{`
         /* Hide custom mobile variants by default */
@@ -94,7 +98,7 @@ return (
 
 
 
-       <style jsx>{`
+      <style jsx>{`
 
   .desktop-1440,
         .desktop-1280{
@@ -109,39 +113,55 @@ return (
         }
 
         /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
+        @media (width: 1440px) {
           .desktop-1440 {
             display: block;
+          }
+        }
+
+          /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
           }
         }
 `}</style>
 
 
-       <div className="desktop-1440 hidden md:block">
+      <div className="desktop-1920 hidden md:block">
         {/* Heading */}
-        <div className="max-w-7xl mx-auto px-4 ml-5 mb-10">
-          <h1 className="text-3xl md:text-4xl manrope mb-2 text-gray-800">Let’s talk about bedroom</h1>
+        <div className="max-w-8xl mx-auto  ml-5 mb-8">
+          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk about bedroom</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every bedroom.
           </p>
         </div>
 
         {/* Blog Cards */}
-        <div className="max-w-[full] mx-auto px-8 mb-8 flex flex-col md:flex-row gap-6">
-          {articles.map((article) => (
-            <div
-              key={article.title}
-              className="bg-white rounded-3xl  shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
-            >
-              <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-base manrope-medium text-gray-900 mt-2 mb-1">
-                  {article.title}
-                </h3>
-                <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
+        <div className="max-w-[full] mx-auto px-6 mb-8 flex flex-col md:flex-row gap-6">
+          {articles.map((article) => {
+            function handleCardClick() {
+              if (article.path) {
+                router.push(article.path);
+              }
+            }
+
+            return (
+              <div
+                key={article.title}
+                onClick={handleCardClick}
+                className="bg-white rounded-3xl  shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
+              >
+                <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-base manrope-medium text-gray-900 mt-2 mb-1">
+                    {article.title}
+                  </h3>
+                  <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* View All Button */}
@@ -152,10 +172,10 @@ return (
         </div>
 
         {/* FAQ and Guide */}
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row px- gap-6 mt-15">
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row px-6 gap-70 mt-15">
           {/* FAQ Left */}
-          <div className="md:w-1/3  md:mb-0 py-[25px] -ml-15 mr-80">
-            <h2 className="text-2xl manrope mb-3 text-gray-900">FAQs</h2>
+          <div className="md:w-1/3  md:mb-0 py-[25px]  ">
+            <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
             <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
             <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
@@ -173,11 +193,106 @@ return (
                   <span className="ml-2">
                     {openFAQ === i ? (
                       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"/>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
                       </svg>
                     ) : (
                       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </span>
+                </button>
+                {openFAQ === i && (
+                  <div className="py-2 pl-3 text-gray-500 manrope-medium text-sm">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Download Guide Button */}
+        <div className="w-full flex justify-center mt-16">
+          <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg manrope-medium shadow-xl hover:bg-[#2a1d10] transition">
+            Download our bedroom design guide
+          </button>
+        </div>
+
+      </div>
+
+
+
+      <div className="desktop-1440 hidden md:block">
+        {/* Heading */}
+        <div className="max-w-8xl mx-auto px-7 mb-10">
+          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk about bedroom</h1>
+          <p className="text-gray-500 manrope-medium mb-7">
+            Read our blog to discover how design meets utility in every bedroom.
+          </p>
+        </div>
+
+        {/* Blog Cards */}
+        <div className="max-w-[full] mx-auto px-6 mb-8 flex flex-col md:flex-row gap-6">
+          {articles.map((article) => {
+            function handleCardClick() {
+              if (article.path) {
+                router.push(article.path);
+              }
+            }
+
+            return (
+              <div
+                key={article.title}
+                onClick={handleCardClick}
+                className="bg-white rounded-3xl  shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
+              >
+                <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-base manrope-medium text-gray-900 mt-2 mb-1">
+                    {article.title}
+                  </h3>
+                  <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mb-10 mt-10">
+          <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition manrope hover:bg-gray-200 manrope">
+            View All
+          </button>
+        </div>
+
+        {/* FAQ and Guide */}
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row px-7 gap-70 mt-15">
+          {/* FAQ Left */}
+          <div className="md:w-1/3  md:mb-0 py-[25px] ">
+            <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
+            <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
+            <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+              Connect
+            </button>
+          </div>
+          {/* Accordion Right */}
+          <div className="md:w-2/3">
+            {faqs.map((faq, i) => (
+              <div key={faq.question} className="border-b">
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                  className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
+                >
+                  <span className="manrope text-gray-700">{faq.question}</span>
+                  <span className="ml-2">
+                    {openFAQ === i ? (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
                   </span>
@@ -203,32 +318,41 @@ return (
 
 
 
-       {/* Desktop Version 1280 */}
-      <div className="desktop-1280 hidden md:block">
+      {/* Desktop Version 1280 */}
+      <div className="desktop-1280 hidden md:block px-4">
         {/* Heading */}
-        <div className="max-w-7xl mx-auto px-4 ml-5 mb-10">
-          <h1 className="text-3xl md:text-4xl manrope mb-2 text-gray-800">Let’s talk about bedroom</h1>
+        <div className="max-w-8xl mx-auto  mb-10">
+          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk about bedroom</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every bedroom.
           </p>
         </div>
 
         {/* Blog Cards */}
-        <div className="max-w-[full] mx-auto px-8 mb-8 flex flex-col md:flex-row gap-6">
-          {articles.map((article) => (
-            <div
-              key={article.title}
-              className="bg-white rounded-3xl  shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
-            >
-              <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-base manrope-medium text-gray-900 mt-2 mb-1">
-                  {article.title}
-                </h3>
-                <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
+        <div className="max-w-[full] mx-auto mb-8 flex flex-col md:flex-row gap-6">
+          {articles.map((article) => {
+            function handleCardClick() {
+              if (article.path) {
+                router.push(article.path);
+              }
+            }
+
+            return (
+              <div
+                key={article.title}
+                onClick={handleCardClick}
+                className="bg-white rounded-3xl  shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
+              >
+                <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-base manrope-medium text-gray-900 mt-2 mb-1">
+                    {article.title}
+                  </h3>
+                  <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* View All Button */}
@@ -239,12 +363,12 @@ return (
         </div>
 
         {/* FAQ and Guide */}
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row px- gap-6 mt-15">
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row gap-60 mb-20 mt-15">
           {/* FAQ Left */}
-          <div className="md:w-1/3  md:mb-0 py-[25px] -ml-15 mr-80">
-            <h2 className="text-2xl manrope mb-3 ml-10 text-gray-900">FAQs</h2>
-            <p className="text-gray-600 ml-10 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
-            <button className="px-5 py-2 border ml-10 border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+          <div className="md:w-1/3   py-[25px]">
+            <h2 className="text-3xl manrope mb-3  text-gray-900">FAQs</h2>
+            <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
+            <button className="px-5 py-2 border  border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
             </button>
           </div>
@@ -260,11 +384,11 @@ return (
                   <span className="ml-2">
                     {openFAQ === i ? (
                       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7"/>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
                       </svg>
                     ) : (
                       <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
                   </span>
@@ -291,7 +415,7 @@ return (
 
       {/* Mobile Version (>= 360px) */}
       <div className="md:hidden px-3 mobile-360plus">
-         {/* Heading */}
+        {/* Heading */}
         <div className="mx-auto -mt-8 mb-5">
           <div className="flex mr-1 items-start">
             <div className="w-[2px] h-[70px] bg-amber-300 mb-6 ml-2"></div>
@@ -304,15 +428,26 @@ return (
 
         {/* Blog Cards */}
         <div className="mx-auto mb-5 space-y-5">
-          {articles.map((article) => (
-            <div key={article.title} className=" overflow-hidden w-full ">
-              <img src={article.image} alt={article.title} className=" rounded-2xl w-full h-[200px] object-cover" />
-              <div className="ml-1 mt-1">
-                <span className="block text-[10px] text-gray-400 mt-2 manrope">{article.date}</span>
-                <h3 className="text-base text-gray-900 mt-1 manrope">{article.title}</h3>
+          {articles.map((article) => {
+
+            function handleCardClick() {
+              if (article.path) {
+                router.push(article.path);
+              }
+            }
+
+            return (
+              <div
+                key={article.title}
+                onClick={handleCardClick} className=" overflow-hidden w-full ">
+                <img src={article.image} alt={article.title} className=" rounded-2xl w-full h-[200px] object-cover" />
+                <div className="ml-1 mt-1">
+                  <span className="block text-[10px] text-gray-400 mt-2 manrope">{article.date}</span>
+                  <h3 className="text-base text-gray-900 mt-1 manrope">{article.title}</h3>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* FAQ */}
@@ -322,35 +457,35 @@ return (
             <h2 className="text-2xl manrope text-gray-900 w-[220px] ml-3 mt-5">Frequently asked questions</h2>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row ml-2 py-1.5  ">
-          <div className="md:w-1/2 ">
-            {faqs.map((faq, i) => (
-              <div key={faq.question} className="border-b">
-                <button
-                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-                  className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
-                >
-                  <span className="manrope text-gray-700 text-md">{faq.question}</span>
-                  <span className="ml-2">
-                    {openFAQ === i ? (
+            <div className="md:w-1/2 ">
+              {faqs.map((faq, i) => (
+                <div key={faq.question} className="border-b">
+                  <button
+                    onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                    className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
+                  >
+                    <span className="manrope text-gray-700 text-md">{faq.question}</span>
+                    <span className="ml-2">
+                      {openFAQ === i ? (
                         <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-                      </svg>
-                    ) : (
-                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                      </svg>
-                    )}
-                  </span>
-                </button>
-                {openFAQ === i && (
-                  <div className="py-2 pl-2 text-gray-500 text-[11px] manrope-medium">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                        </svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
+                  {openFAQ === i && (
+                    <div className="py-2 pl-2 text-gray-500 text-[11px] manrope-medium">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
         </div>
       </div>
 
@@ -371,15 +506,26 @@ return (
 
         {/* Blog Cards */}
         <div className="mx-auto mb-5 space-y-5">
-          {articles.map((article) => (
-            <div key={article.title} className=" overflow-hidden w-full ">
-              <img src={article.image} alt={article.title} className=" rounded-2xl w-full h-[200px] object-cover" />
-              <div className="ml-1 mt-1">
-                <span className="block text-[10px] text-gray-400 mt-2 manrope">{article.date}</span>
-                <h3 className="text-base text-gray-900 mt-1 manrope">{article.title}</h3>
+          {articles.map((article) => {
+
+            function handleCardClick() {
+              if (article.path) {
+                router.push(article.path);
+              }
+            }
+
+            return (
+              <div
+                key={article.title}
+                onClick={handleCardClick} className=" overflow-hidden w-full ">
+                <img src={article.image} alt={article.title} className=" rounded-2xl w-full h-[200px] object-cover" />
+                <div className="ml-1 mt-1">
+                  <span className="block text-[10px] text-gray-400 mt-2 manrope">{article.date}</span>
+                  <h3 className="text-base text-gray-900 mt-1 manrope">{article.title}</h3>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* FAQ */}
@@ -389,35 +535,35 @@ return (
             <h2 className="text-2xl manrope text-gray-900 w-[220px] ml-3 mt-5">Frequently asked questions</h2>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row ml-2 py-1.5  ">
-          <div className="md:w-1/2 ">
-            {faqs.map((faq, i) => (
-              <div key={faq.question} className="border-b">
-                <button
-                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-                  className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
-                >
-                  <span className="manrope text-gray-700 text-md">{faq.question}</span>
-                  <span className="ml-2">
-                    {openFAQ === i ? (
+            <div className="md:w-1/2 ">
+              {faqs.map((faq, i) => (
+                <div key={faq.question} className="border-b">
+                  <button
+                    onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                    className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
+                  >
+                    <span className="manrope text-gray-700 text-md">{faq.question}</span>
+                    <span className="ml-2">
+                      {openFAQ === i ? (
                         <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-                      </svg>
-                    ) : (
-                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                      </svg>
-                    )}
-                  </span>
-                </button>
-                {openFAQ === i && (
-                  <div className="py-2 pl-2 text-gray-500 text-[11px] manrope-medium">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                        </svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
+                  {openFAQ === i && (
+                    <div className="py-2 pl-2 text-gray-500 text-[11px] manrope-medium">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

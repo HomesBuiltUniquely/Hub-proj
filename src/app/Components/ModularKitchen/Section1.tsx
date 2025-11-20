@@ -6,55 +6,50 @@ import React, { useRef, useState } from "react";
 // Demo data for wardrobes
 const wardrobes = [
   {
-    img: "/kl1.jpeg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/L%20Shape%20Kitchen.jpg",
     label: "L Shape Modular Kitchen Interior",
     subtitle: "Smart design for modern homes."
   },
   {
-    img: "/kl2.jpeg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/U-shaped-Stylish-Modular-Kitchen-Design.png",
     label: "U Shape Kitchen Interior",
     subtitle: "Spacious, functional, and stylish."
   },
   {
-    img: "/kl3.jpg",
-    label: "Straight Modular Kitchen Interior",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Linear%20Kitchen.jpg",
+    label: "Linear Modular Kitchen Interior",
     subtitle: "Sleek, simple, and efficient."
   },
   {
-    img: "/kl5.jpg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Parallel%20kitchen.jpg",
     label: "Parallel Modern Kitchen Interior",
     subtitle: "Perfect balance of comfort and workflow."
   },
   {
-    img: "/kl4.jpg",
+    img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Island%20Kitchen.png",
     label: "Island Kitchen Interior",
     subtitle: "A touch of luxury for everyday living"
   },
 ];
 
 const Section1: React.FC = () => {
-  // const scrollRef = useRef<HTMLDivElement>(null);
+ 
   const [selected, setSelected] = useState(0); // For mobile selection (above 360px)
-
-  // const scroll = (dir: "left" | "right") => {
-  //   if (scrollRef.current) {
-  //     const scrollAmount = scrollRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
-  //     scrollRef.current.scrollBy({
-  //       left: dir === "left" ? -scrollAmount : scrollAmount,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // };
-
-
+  
   // ✅ DESKTOP SCROLL (1280px / 1440px)
   const scrollRef1280 = useRef<HTMLDivElement>(null);
   const scrollRef1440 = useRef<HTMLDivElement>(null);
+  const scrollRef1920 = useRef<HTMLDivElement>(null);
 
   const scrollReq = (dir: "left" | "right") => {
     // pick which ref to use based on current screen width
-    const activeRef =
-      window.innerWidth >= 1440 ? scrollRef1440 : scrollRef1280;
+    const w = window.innerWidth;
+    let activeRef = scrollRef1280;
+
+    if (w === 1440) activeRef = scrollRef1440;
+    else if (w >= 1441 && w <= 1920) activeRef = scrollRef1920;
+    else if (w >= 1024 && w <= 1439) activeRef = scrollRef1280;
+    else if (w > 1920) activeRef = scrollRef1920;
 
     if (activeRef.current) {
       const scrollAmount = activeRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
@@ -65,7 +60,7 @@ const Section1: React.FC = () => {
     }
   };
 
-  const kitchenTypes = ["L Shape", "U Shape", "Straight", "Parallel", "Island"];
+  const kitchenTypes = ["L Shape", "U Shape", "Linear", "Parallel", "Island"];
 
   return (
     <section className="w-full py-12 bg-[#f1f2f6]">
@@ -94,29 +89,111 @@ const Section1: React.FC = () => {
 
 
       <style jsx>{`
+        /* Hide both by default */
+        .desktop-1280,
+        .desktop-1440,
+        .desktop-1920 {
+          display: none !important;
+        }
 
-  /* Hide both by default */
-  .desktop-1280,
-  .desktop-1440 {
-    display: none !important;
-  }
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
 
-  /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
-  @media (min-width: 1024px) and (max-width: 1439px) {
-    .desktop-1280 {
-      display: block !important;
-    }
-  }
+        /* Show 1440px layout only at exactly 1440px to avoid overlap */
+        @media (width: 1440px) {
+          .desktop-1440 {
+            display: block !important;
+          }
+        }
 
-  /* Show 1440px layout for large desktops (>=1440px) */
-  @media (min-width: 1440px) {
-    .desktop-1440 {
-      display: block !important;
-    }
-  }
-`}</style>
+        /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+      `}</style>
 
-      {/* Desktop Version (1440) */}
+      {/* Desktop Version (1920) */}
+      <div className="desktop-1920">
+
+        <div className=" hidden md:block text-xl w-[1000px] manrope-medium text-center mx-auto mt-10 mb-15">At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.</div>
+
+        <div className="hidden md:block w-full max-w-8xl mx-auto relative px-6">
+          {/* Heading */}
+          <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Kitchen layout</h2>
+              <p className="text-gray-500 text-lg manrope-medium ">Smart Space, Seamless Cooking</p>
+            </div>
+          </div>
+          {/* Carousel with arrows overlapping top left */}
+          <div className="relative">
+            {/* Overlapping Navigation */}
+            <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
+              <button
+                onClick={() => scrollReq("left")}
+                className="bg-gray-200 hover:bg-[#ebd657] text-gray-700 rounded-full p-2 shadow transition"
+                aria-label="Scroll Left"
+                type="button"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
+                  <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <button
+                onClick={() => scrollReq("right")}
+                className="bg-gray-200 hover:bg-[#ebd657] text-gray-700 rounded-full p-2 shadow transition"
+                aria-label="Scroll Right"
+                type="button"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
+                  <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Card Carousel */}
+            <div
+              ref={scrollRef1920}
+              className="flex gap-7 overflow-x-auto scroll-smooth  no-scrollbar pt-5 pb-2"
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {wardrobes.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="relative min-w-[420px] h-[500px] bg-white rounded-4xl shadow-lg overflow-hidden"
+                >
+                  {/* Full image */}
+                  <img
+                    src={item.img}
+                    alt={item.label}
+                    className="w-full h-full object-cover rounded-4xl"
+                  />
+
+                  {/* Blurred overlay content */}
+                  <div className="p-4 flex items-center -mt-50 h-[270px]">
+                    <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
+                      {item.label}<br />
+                      <button className="border-1 border-[#ebd457]  text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* 1440 Version  */}
 
       <div className="desktop-1440">
 
@@ -126,7 +203,7 @@ const Section1: React.FC = () => {
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl manrope text-gray-800 mb-1">Kitchen layout</h2>
+              <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-1">Kitchen layout</h1>
               <p className="text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
             </div>
           </div>
@@ -205,7 +282,7 @@ const Section1: React.FC = () => {
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl manrope text-gray-800 mb-1">Kitchen layout</h2>
+              <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-1">Kitchen layout</h1>
               <p className="text-gray-500 text-lg manrope-medium">Smart Space, Seamless Cooking</p>
             </div>
           </div>
@@ -251,8 +328,8 @@ const Section1: React.FC = () => {
                     alt={item.label}
                     className="w-full h-130 object-cover rounded-4xl"
                   />
-                  <div className="p-4 flex items-center -mt-50 h-[270px] w-[400px]">
-                    <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm w-[360px] block">
+                  <div className="px-10 -ml-8 flex items-center justify-center -mt-50 h-[270px] w-[410px]">
+                    <span className="backdrop-blur-md bg-black/5 text-white  manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm w-[360px] block">
                       <div className="text-lg">
                         {item.label}
                         <br />
@@ -277,7 +354,7 @@ const Section1: React.FC = () => {
       {/* Mobile Version (360px to 480px) */}
       <div className="md:hidden px-4 mk-mobile-360 mobile-360plus -mt-25">
         {/* Mobile Description */}
-        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-30 m-3 desc">
+        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-25 desc">
           At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
         </div>
 
@@ -345,7 +422,7 @@ const Section1: React.FC = () => {
       {/* Mobile Version (300px to 359px) */}
       <div className="md:hidden px-4 mk-mobile-300 mobile-300 ">
         {/* Mobile Description */}
-        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] mt-2 m-3 mb-3 ">
+        <div className="manrope-medium text-m h-[300px] w-full max-w-[480px] -mt-3 mb-8 ">
           At HUB Interior, we design and deliver complete modular kitchen solutions in Bengaluru. We prioritize customer satisfaction. Our services include free 3D design consultations, clear pricing, on-time delivery, and high-quality materials. We handle every step with care. Our team provides hassle-free installation, smart storage planning, and durable products, giving you a beautiful kitchen and peace of mind. With HUB Interior, you invest in reliable service and quality, creating a home that feels uniquely yours.
         </div>
         {/* Mobile Heading */}

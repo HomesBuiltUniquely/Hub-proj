@@ -36,12 +36,12 @@ const Section6 = () => {
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className="aboutus-section6-2xl-section hidden 2xl:block 3xl:hidden px-30 bg-[#f1f2f6] py-10">
+      <section className="desktop-1440 hidden 2xl:block 3xl:hidden px-20 bg-[#f1f2f6] py-10">
         <div className='flex justify-between'>
           <div className="max-w-7xl">
             {/* Mission Header */}
             <h1 className="text-6xl manrope pt-20 leading-tight">
-              Vision
+            Vision
             </h1>
 
             {/* Mission Description */}
@@ -54,12 +54,12 @@ const Section6 = () => {
               To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
             </div>
           </div>
-          <img src="/values.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
+          <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Values.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
         </div>
       </section>
 
       {/* XL Screen - Extra large displays */}
-      <section className="hidden xl:block 2xl:hidden py-10 bg-[#f1f2f6] ml-30">
+      <section className="desktop-1280 hidden xl:block 2xl:hidden py-10 px-15 bg-[#f1f2f6] ">
         <div className="flex justify-evenly">
           <div className="max-w-6xl mt-12 mr-70">
             {/* Mission Header */}
@@ -76,7 +76,7 @@ const Section6 = () => {
             <div className="w-[400px]  manrope-medium pt-10 text-lg leading-relaxed">
               To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.          </div>
           </div>
-          <img src="/values.png" className="w-[500px] h-[500px] rounded-2xl"></img>
+          <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Values.png" className="w-[500px] h-[500px] rounded-2xl"></img>
         </div>
       </section>
 
@@ -229,7 +229,7 @@ const Section6 = () => {
             {/* Content */}
             <div className="w-full">
               <div className='bg-[#ebd657] w-[3px] h-10 mb-3'>
-                <h1 className="text-3xl font-bold manrope mb-3 whitespace-nowrap ml-3">Vision</h1>
+                <h1 className="text-3xl  manrope mb-3 whitespace-nowrap ml-3">Vision</h1>
               </div>
               <p className="text-xs manrope-medium leading-relaxed">
                 At HUB Interiors — it’s about creating spaces
@@ -390,6 +390,28 @@ const Section6 = () => {
           }
         }
       `}</style>
+
+
+         <style jsx global>{`
+                .desktop-1440,
+                .desktop-1280 {
+                    display: none;
+                }
+
+                @media (min-width: 768px) and (max-width: 1439px) {
+                    .desktop-1280 {
+                        display: block;
+                    }
+                }
+
+                @media (min-width: 1440px) {
+                    .desktop-1440 {
+                        display: block;
+                    }
+                }
+            `}</style>
+
+
     </div>
   );
 };

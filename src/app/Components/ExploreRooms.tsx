@@ -57,23 +57,23 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
   const cards = [
     {
       title: 'Bedroom',
-      image: '/img3.jpg',
+      image: 'https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img1.jpg',
       link: '/Bedroom'
     },
     {
       title: 'Kitchen',
-      image: '/img5.jpg',
+      image: '/blog6img2.jpg',
       link: '/ModularKitchen'
     },
     {
       title: 'Living Room',
-      image: '/1.png',
+      image: '/img5.jpg',
       link: '/'
     },
     {
       title:'Kids Room',
-      image: '/Slide.jpg',
-      link: '/'
+      image: 'https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img3.png',
+      link: '/KidsRoom'
     }
   ];
 
@@ -114,7 +114,7 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
                 {cards.map((card, index) => (
                   <Link key={index} href={card.link} className="group">
                     <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 relative">
-                      <div className="relative h-24 lg:h-37">
+                      <div className="relative h-24 lg:h-38">
                         <Image
                           src={card.image}
                           alt={card.title}

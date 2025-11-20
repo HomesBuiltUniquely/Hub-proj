@@ -52,49 +52,49 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
         {
           id: 1,
           title: "How Mr. Akhil's House Became Bhoo Aabharana (And Why We're Still Obsessed)?",
-          subtitle: "ok",
+          subtitle: "",
           date: "Sep 2025",
           readTime: "10 mins read",
         },
         {
           id: 2,
           title: "Inside Mr. & Mrs. Rijul Azizam's Home, Designed by Hub Interior",
-          subtitle: "ok",
+          subtitle: "",
           date: "Aug 2025",
           readTime: "8 mins read",
         },
         {
           id: 3,
           title: "Before You Remodel, Check Out These 7 Kitchen Trends to Watch in 2026",
-          subtitle: "ok",
+          subtitle: "",
           date: "Sep 2025",
           readTime: "6 mins read",
         },
         {
           id: 4,
           title: "Luxury Villa Interior Design – The Royal Tulip Project in Bengaluru by HUB Interior",
-          subtitle: "ok",
+          subtitle: "",
           date: "August 1, 2025",
           readTime: "8 mins read",
         },
         {
           id: 5,
           title: "Interior Design Bangalore: How HUB Interior Crafted Serenity Heights Apartment into a Living Masterpiece",
-          subtitle: "ok",
+          subtitle: "",
           date: "August 3, 2025",
           readTime: "15 mins read",
         },
         {
           id: 6,
           title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
-          subtitle: "ok",
+          subtitle: "",
           date: "August 5, 2025",
           readTime: "12 mins read",
         },
         {
           id: 7,
           title: "Sustainable Interior Design Practices",
-          subtitle: "ok",
+          subtitle: "",
           date: "August 7, 2025",
           readTime: "14 mins read",
         },
@@ -292,7 +292,7 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
               <div className=" mt-5 ml-25">
                 <div className="flex">
                 {/* Left Section - 2nd and 3rd Latest Blogs */}
-                <div className="w-[300px] h-auto ml-8">
+                <div className="w-[300px] h-auto ml-8 manrope-medium">
                   {/* Second Latest */}
                   {latestPosts.length > 1 ? (
                     <>
@@ -307,12 +307,12 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
                         <p>Blog • {latestPosts[1].readTime}</p>
                         <p>{latestPosts[1].date}</p>
                       </div>
-                      <p className="pt-4 text-center px-3 manrope text-sm mb-4">
+                      <p className="pt-4 text-center px-3 manrope-medium text-sm mb-4">
                         {latestPosts[1].title}
                       </p>
                       <button
                         onClick={() => handleReadMore(latestPosts[1])}
-                        className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium"
+                        className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium"
                       >
                         Read More
                       </button>
@@ -337,12 +337,12 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
                         <p>Blog • {latestPosts[2].readTime}</p>
                         <p>{latestPosts[2].date}</p>
                       </div>
-                      <p className="pt-4 text-center px-3 manrope text-sm mb-4">
+                      <p className="pt-4 text-center px-3 manrope-medium text-sm mb-4">
                         {latestPosts[2].title}
                       </p>
                       <button
                         onClick={() => handleReadMore(latestPosts[2])}
-                        className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors font-medium"
+                        className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors manrope-medium"
                       >
                         Read More
                       </button>
@@ -373,13 +373,13 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
                         <p>Blog • {latestPosts[0].readTime}</p>
                         <p>{latestPosts[0].date}</p>
                       </div>
-                      <div className="w-[400px] mx-auto pt-8 text-2xl manrope text-center mb-6">
+                      <div className="w-[400px] mx-auto pt-8 text-2xl manrope-medium text-center mb-6">
                         <div>{latestPosts[0].title}</div>
                       </div>
                       <div className="w-[400px] mx-auto">
                         <button
                           onClick={() => handleReadMore(latestPosts[0])}
-                          className="w-full bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors font-medium text-lg"
+                          className="w-full bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors manrope-medium text-lg"
                         >
                           Read More
                         </button>
@@ -449,7 +449,7 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
                         <p>Blog • {latestPosts[1].readTime}</p>
                         <p>{latestPosts[1].date}</p>
                       </div>
-                      <p className="pt-4 text-center px-3 manrope text-sm mb-4">
+                      <p className="pt-4 text-center px-3 manrope-medium text-sm mb-4">
                         {latestPosts[1].title}
                       </p>
                       <button
@@ -478,7 +478,7 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
                         <p>Blog • {latestPosts[2].readTime}</p>
                         <p>{latestPosts[2].date}</p>
                       </div>
-                      <p className="pt-4 text-center px-3 manrope text-sm mb-4">
+                      <p className="pt-4 text-center px-3 manrope-medium text-sm mb-4">
                         {latestPosts[2].title}
                       </p>
                       <button
@@ -514,7 +514,7 @@ export default function Section2({ posts = [], onReadMore }: Section2Props) {
                         <p>Blog • {latestPosts[0].readTime}</p>
                         <p>{latestPosts[0].date}</p>
                       </div>
-                      <div className="w-[400px] mx-auto pt-8 text-2xl manrope text-center mb-6">
+                      <div className="w-[400px] mx-auto pt-8 text-2xl manrope-medium text-center mb-6">
                         <div>{latestPosts[0].title}</div>
                       </div>
                       <div className="w-[400px] mx-auto">

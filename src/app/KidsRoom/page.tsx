@@ -1,8 +1,15 @@
+import Footer from "../Components/Home/Footer";
+import Herosection from "../Components/KidsRoom/Herosection";
+import PopUpModal from "../Components/PopupModal";
+
 export default function KidsRoom() {
   return (
     <div>
-      <h1>Kids Room</h1>
-      <p>This page is under construction.</p>
+      <PopUpModal />
+      <Herosection />
+      <Footer />
     </div>
   )
 }
+
+

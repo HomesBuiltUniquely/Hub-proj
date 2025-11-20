@@ -16,22 +16,22 @@ export default function Section3() {
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//3.jpg",
             type: "4 BHK",
-            price: "Starting @ 5.5L*"
+            price: "6.0 Lakhs Onwards*"
         },
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//2.jpg",
             type: "3 BHK",
-            price: "Starting @ 4.0L*"
+            price: "4.5 Lakhs Onwards*"
         },
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.jpg",
             type: "2 BHK",
-            price: "Starting @ 3.0L*"
+            price: "3.5 Lakhs Onwards*"
         },
         {
             img: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064686.jpeg",
             type: "Modular Kitchen",
-            price: "Starting @ 1.25L*"
+            price: "1.25 Lakhs Onwards*"
         },
 
     ];
@@ -111,15 +111,13 @@ export default function Section3() {
             <div className="lg:hidden w-full  mx-auto max-h-[900px] bg-[#f1f2f6]">
                 <div className='ml-5 mt-5 manrope-medium '>
                     <div className="flex">
-                        <div className="w-0.75 h-25 bg-[#ebd657] mt-8"></div>
-                        <h1 className="text-4xl pl-4 pt-10 tracking-wide manrope-medium ">Homes For Every Lifestyle</h1>
+                      
+                        <h1 className="text-4xl  pt-10 tracking-wide manrope-medium ">Homes For Every Lifestyle</h1>
                     </div>
-                </div>             
-                    <div className='ml-9 mt-5 manrope-medium'>   
-                    <div className="-ml-3 manrope-medium w-[320px] mt-4">
-                        <p>From cozy living rooms to elegant bedrooms
-                         and stylish modular kitchens, we craft dream home interiors that blend comfort, beauty,and functionality,
-                        creating spaces you&#39;ll love</p>
+                </div>
+                <div className='ml-9 mt-5 manrope-medium'>
+                    <div className="-ml-3 manrope-medium min-w-[320px] max-w-full mt-4">
+                        <p>From cozy living rooms to elegant bedrooms and stylish kitchens, we create dream interiors that blend comfort, beauty and functionality.</p>
                     </div>
                 </div>
 

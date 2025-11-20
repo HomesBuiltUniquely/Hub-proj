@@ -1,8 +1,14 @@
+import Herosection from "../Components/FalseCeiling/Herosection";
+import Footer from "../Components/Home/Footer";
+import PopUpModal from "../Components/PopupModal";
+
+
 export default function FalseCeiling() {
   return (
     <div>
-      <h1>False Ceiling</h1>
-      <p>This page is under construction.</p>
+      <PopUpModal />
+      <Herosection />
+      <Footer />
     </div>
   )
 }

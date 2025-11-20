@@ -1,8 +1,13 @@
+import Footer from "../Components/Home/Footer";
+import Herosection from "../Components/StudyRoom/Herosection";
+import PopUpModal from "../Components/PopupModal";
+
 export default function StudyRoom() {
   return (
     <div>
-      <h1>Study Room</h1>
-      <p>This page is under construction.</p>
+      <PopUpModal />
+      <Herosection/>
+      <Footer/>
     </div>
   )
 }
