@@ -50,7 +50,7 @@ export default function PopUpModal() {
             {/* DESKTOP CLOSE BUTTON */}
             <button
               onClick={() => setOpen(false)}
-              className="absolute -top-6 -right-6 bg-black/60 text-white rounded-full px-3 py-1 text-sm"
+              className="absolute top-12 -right-4 bg-black/60 text-white rounded-full px-3 py-1 text-sm"
             >
               ✕
             </button>

@@ -136,12 +136,12 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             <div className="desktop-wrapper">
 
                 {/** YOUR ENTIRE DESKTOP UI EXACTLY AS YOU PROVIDED */}
-                <div className="w-[700px] h-[470px] bg-gray-100 rounded-3xl flex justify-between items-center mx-auto px-3 mt-20 shadow-lg">
+                <div className="w-[700px] h-[380px] bg-gray-100 rounded-3xl flex justify-between items-center mx-auto px-3 mt-20 shadow-lg">
 
-                    <div className="flex flex-col gap-4 w-1/2">
-                        <h2 className="text-4xl manrope w-[300px]">Grab your offer now!</h2>
+                    <div className="flex flex-col gap-4 w-1/2 mt-2">
+                        <h2 className="text-4xl manrope w-[300px] px-3">Grab your offer now!</h2>
 
-                        <form className="flex flex-col gap-3 py-3 px-1" onSubmit={handleSubmit}>
+                        <form className="flex flex-col gap-3 py-3 px-3" onSubmit={handleSubmit}>
 
                             <input
                                 type="text"
@@ -212,7 +212,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                         </form>
                     </div>
 
-                    <div className="w-[300px] h-[450px] flex justify-end">
+                    <div className="w-[300px] h-[350px] flex justify-end">
                         <Image
                             src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/PopUp.png"
                             alt="Offer Image"
