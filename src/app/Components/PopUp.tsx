@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import router from "next/router";
 
 
 type PopUpProps = {
@@ -108,7 +109,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         if (data.success) {
             // ✅ Tell parent "form is successful"
             onFormSuccess();
-            alert("Form submitted successfully!");
+           router.push('/Submitted-Thank-You');
         } else {
             setError("Failed to submit form. Please try again.");
         }
