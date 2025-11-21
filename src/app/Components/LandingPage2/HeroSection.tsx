@@ -317,13 +317,14 @@ export function HeroSection() {
     return (
 
         <div>
-            <div className="lg:block hidden relative w-screen h-[1000px]">
+            <div className="lg:block hidden relative w-[1440px] h-[1000px]">
                 <Image
-                    src="/Jit Desktop.png"
+                    src="/BLACK FRIDAY-0L.png"
                     alt="Hero background"
                     fill
-                    className="object-cover border-4 rounded-3xl px-3 border-black"
+                    className="object-cover border-4  rounded-3xl border-black"
                     loading="lazy"
+
                 />
                 <div className="absolute inset-0 flex items-center">
                     <div className="relative flex">
@@ -500,7 +501,7 @@ export function HeroSection() {
                             <div>
                             </div>
                         </div>
-                        <div className="text-5xl w-[620px] h-[100px] text-white wulkan-display pt-160 pl-6">Complete Home Interiors
+                        <div className="text-5xl w-[620px] h-[100px] text-white wulkan-display pt-180 pl-6">Complete Home Interiors
                             <div className="text-2xl w-[620px] h-[100px] text-white manrope-medium pt-4 pl-3">Tailored For Every Style & Lifestyle</div>
                         </div>
 
