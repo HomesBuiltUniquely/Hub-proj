@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 
 type PopUpProps = {
@@ -8,6 +9,7 @@ type PopUpProps = {
 };
 
 const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
+    const router = useRouter();
 
     // ----- Your existing states -----
     const Pincode = ["560001", "560002", "560003", "560004", "560005",
@@ -108,7 +110,14 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         if (data.success) {
             // ✅ Tell parent "form is successful"
             onFormSuccess();
-            alert("Form submitted successfully!");
+            
+            // Set flag to trigger reload on Thank You page
+            sessionStorage.setItem('formSubmitted', 'true');
+            
+            // Navigate to Thank-You page after successful submission
+            setTimeout(() => {
+                router.push('/Submitted-Thank-You');
+            }, 500);
         } else {
             setError("Failed to submit form. Please try again.");
         }
