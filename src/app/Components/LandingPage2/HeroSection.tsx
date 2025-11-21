@@ -263,7 +263,7 @@ export function HeroSection() {
                         name: updatedForm.name,
                         email: updatedForm.email,
                         phoneNumber: updatedForm.phonennumber,
-                        pinCode : updatedForm.pincode,
+                        pinCode: updatedForm.pincode,
                         propertyType: updatedForm.property,
                         bookASlot: updatedForm.Scheduler,
                     };
@@ -319,10 +319,10 @@ export function HeroSection() {
         <div>
             <div className="lg:block hidden relative w-screen h-[1000px]">
                 <Image
-                    src="/jit1.png"
+                    src="/Jit Desktop.png"
                     alt="Hero background"
                     fill
-                    className="object-cover border-4 rounded-4xl border-black"
+                    className="object-cover border-4 rounded-3xl px-3 border-black"
                     loading="lazy"
                 />
                 <div className="absolute inset-0 flex items-center">

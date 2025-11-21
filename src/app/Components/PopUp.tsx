@@ -116,7 +116,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             
             // Navigate to Thank-You page after successful submission
             setTimeout(() => {
-                router.push('/Submitted-Thank-You');
+                router.push('/Form-Submit-Thank-You');
             }, 500);
         } else {
             setError("Failed to submit form. Please try again.");

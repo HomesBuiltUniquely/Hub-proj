@@ -48,7 +48,7 @@ export default function PopUpModal() {
             <PopUp onFormSuccess={handleFormSuccess} />
 
             {/* DESKTOP CLOSE BUTTON */}
-            <button
+            <button 
               onClick={() => setOpen(false)}
               className="absolute top-12 -right-4 bg-black/60 text-white rounded-full px-3 py-1 text-sm"
             >
