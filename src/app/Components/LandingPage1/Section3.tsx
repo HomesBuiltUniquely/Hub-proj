@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 
 export default function Section3() {
+
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const scrollToForm = () => {
@@ -33,10 +34,8 @@ export default function Section3() {
             type: "Modular Kitchen",
             price: "1.25 Lakhs Onwards*"
         },
-
     ];
 
-    // Auto slide effect
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -44,26 +43,31 @@ export default function Section3() {
         return () => clearInterval(interval);
     }, [slides.length]);
 
-    // Card and container widths
     const cardWidth = 380;
     const gap = 96;
 
     return (
         <>
-            {/* desktop */}
-            <div className="hidden lg:block">
+
+            {/* DESKTOP 1440 */}
+
+            <div className="desktop-1440 hidden lg:block">
                 <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
                     <div className='w-[850px]'>
-                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">Homes For Every Lifestyle</div>
-                        {/* <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">Homes For Every Lifestyle</div> */}
+                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">
+                            Homes For Every Lifestyle
+                        </div>
+
                         <div className="ml-10 mt-10">
-                            <p className="text-[30px] manrope-medium tracking-wide  text-align: justify;
-">From cozy living rooms to elegant bedrooms and stylish modular kitchens, we craft dream home interiors that blend comfort,</p>
-                            {/* { <p className="text-[30px] manrope-medium tracking-wide  text-align: justify"></p>} */}
-                            {<p className="text-[30px] manrope-medium tracking-wide  text-align: justify">beauty, and functionality, creating spaces you&#39;ll love. </p>}
-                            {/* // <p className="text-[30px] manrope-medium tracking-wide"></p>  */}
-                            {/* <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
-                            <p className="text-[28px] tracking-wide">budget</p> */}
+                            <p className="text-[30px] manrope-medium tracking-wide">
+                                From cozy living rooms to elegant bedrooms and stylish modular kitchens,
+                                we craft dream home interiors that blend comfort,
+                            </p>
+
+                            <p className="text-[30px] manrope-medium tracking-wide">
+                                beauty, and functionality, creating spaces you&#39;ll love.
+                            </p>
+
                             <button
                                 onClick={scrollToForm}
                                 className="text-white bg-red-500 mt-12 w-[300px] h-[50px] manrope rounded-full text-[20px] hover:bg-red-600 transition-colors"
@@ -72,8 +76,9 @@ export default function Section3() {
                             </button>
                         </div>
                     </div>
+
                     <div className="w-[1200px] h-[720px] mt-18 ml-40 relative overflow-hidden flex items-center">
-                        {/* Slider container: 1.5 cards visible */}
+
                         <div
                             className="flex gap-x-24 transition-transform duration-500 ease-in-out h-full"
                             style={{
@@ -98,7 +103,7 @@ export default function Section3() {
                                 </div>
                             ))}
                         </div>
-                        {/* Overlay to create the half-card effect */}
+
                         <div
                             className="pointer-events-none absolute top-0 right-0 h-full"
                             style={{ width: cardWidth / 4, background: '#f1f2f6' }}
@@ -107,25 +112,97 @@ export default function Section3() {
                 </div>
             </div>
 
-            {/* mobile */}
-            <div className="lg:hidden w-full  mx-auto max-h-[900px] bg-[#f1f2f6]">
-                <div className='ml-5 mt-5 manrope-medium '>
-                    <div className="flex">
-                      
-                        <h1 className="text-4xl  pt-10 tracking-wide manrope-medium ">Homes For Every Lifestyle</h1>
+
+
+            {/* (you will add content later)   */}
+
+            <div className="desktop-1280 hidden lg:block">
+                <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
+                    <div className='w-[850px]'>
+                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">
+                            Homes For Every Lifestyle
+                        </div>
+
+                        <div className="ml-10 mt-10">
+                            <p className="text-[30px] manrope-medium tracking-wide">
+                                From cozy living rooms to elegant bedrooms and stylish modular kitchens,
+                                we craft dream home interiors that blend comfort,
+                            </p>
+
+                            <p className="text-[30px] manrope-medium tracking-wide">
+                                beauty, and functionality, creating spaces you&#39;ll love.
+                            </p>
+
+                            <button
+                                onClick={scrollToForm}
+                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] manrope rounded-full text-[20px] hover:bg-red-600 transition-colors"
+                            >
+                                Book A Free Design Session
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="w-[1200px] h-[720px] mt-18 ml-40 relative overflow-hidden flex items-center">
+
+                        <div
+                            className="flex gap-x-24 transition-transform duration-500 ease-in-out h-full"
+                            style={{
+                                width: `${slides.length * cardWidth + (slides.length - 1) * gap}px`,
+                                transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`
+                            }}
+                        >
+                            {slides.map((slide, index) => (
+                                <div
+                                    key={index}
+                                    className="w-[380px] h-[520px] bg-white rounded-4xl grid grid-rows-5 flex-shrink-0"
+                                >
+                                    <img
+                                        src={slide.img}
+                                        alt=""
+                                        className="rounded-t-4xl row-span-3 w-full h-[350px] object-cover"
+                                    />
+                                    <div className="row-span-2 mt-18 ml-5">
+                                        <div className="text-[30px] manrope">{slide.type}</div>
+                                        <div className="mt-1 text-2xl manrope-medium">{slide.price}</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div
+                            className="pointer-events-none absolute top-0 right-0 h-full"
+                            style={{ width: cardWidth / 4, background: '#f1f2f6' }}
+                        />
                     </div>
                 </div>
+            </div>
+
+
+
+            {/* MOBILE VERSION */}
+
+            <div className="lg:hidden w-full mx-auto max-h-[900px] bg-[#f1f2f6]">
+                <div className='ml-5 mt-5 manrope-medium '>
+                    <div className="flex">
+                        <h1 className="text-4xl pt-10 tracking-wide manrope-medium">
+                            Homes For Every Lifestyle
+                        </h1>
+                    </div>
+                </div>
+
                 <div className='ml-9 mt-5 manrope-medium'>
                     <div className="-ml-3 manrope-medium min-w-[320px] max-w-full mt-4">
-                        <p>From cozy living rooms to elegant bedrooms and stylish kitchens, we create dream interiors that blend comfort, beauty and functionality.</p>
+                        <p>
+                            From cozy living rooms to elegant bedrooms and stylish kitchens,
+                            we create dream interiors that blend comfort, beauty and functionality.
+                        </p>
                     </div>
                 </div>
 
                 {/* Stacked Card Carousel */}
-                <div className='flex justify-center'>
+                <div className='flex justify-center ml-5'>
                     <div className="mt-10 relative h-[400px] w-full max-w-[280px]">
                         {slides.map((slide, idx) => {
-                            // Show only the top 3 cards in the stack for performance
                             const isTop = idx === currentSlide;
                             const isSecond = idx === (currentSlide + 1) % slides.length;
                             const isThird = idx === (currentSlide + 2) % slides.length;
@@ -137,29 +214,11 @@ export default function Section3() {
                             let offset = 0;
                             let scale = 1;
                             let z = 5;
-                            let opacity = 1;
 
-                            if (isSecond) {
-                                offset = 40;
-                                scale = 0.95;
-                                z = 4;
-                                opacity = 1;
-                            } else if (isThird) {
-                                offset = 80;
-                                scale = 0.9;
-                                z = 3;
-                                opacity = 1;
-                            } else if (isFourth) {
-                                offset = 120;
-                                scale = 0.85;
-                                z = 2;
-                                opacity = 1;
-                            } else if (isFifth) {
-                                offset = 160;
-                                scale = 0.8;
-                                z = 1;
-                                opacity = 1;
-                            }
+                            if (isSecond) { offset = 40; scale = 0.95; z = 4; }
+                            else if (isThird) { offset = 80; scale = 0.9; z = 3; }
+                            else if (isFourth) { offset = 120; scale = 0.85; z = 2; }
+                            else if (isFifth) { offset = 160; scale = 0.8; z = 1; }
 
                             return (
                                 <div
@@ -168,7 +227,6 @@ export default function Section3() {
                                     style={{
                                         transform: `translateX(-${offset}px) scale(${scale})`,
                                         zIndex: z,
-                                        opacity: opacity,
                                         transition: 'all 0.4s cubic-bezier(.4,2,.6,1)'
                                     }}
                                 >
@@ -186,13 +244,39 @@ export default function Section3() {
                         })}
                     </div>
                 </div>
+
                 <button
                     onClick={scrollToForm}
-                    className='mt-15  text-[18px] w-[250px] h-[50px] bg-red-500 px-auto text-white rounded-xl manrope hover:bg-red-600 ml-16 transition-colors'
+                    className='mt-15 text-[18px] w-[250px] h-[50px] bg-red-500 text-white rounded-xl manrope hover:bg-red-600 ml-16 transition-colors'
                 >
                     Book A Free Design Session
                 </button>
             </div>
+
+            <style jsx global>{`
+
+                /* Hide both by default */
+                .desktop-1280,
+                .desktop-1440 {
+                    display: none !important;
+                }
+
+                /* 1024px → 1439px = desktop-1280 */
+                @media (min-width: 1024px) and (max-width: 1439px) {
+                    .desktop-1280 {
+                        display: block !important;
+                    }
+                }
+
+                /* 1440px and above = desktop-1440 */
+                @media (min-width: 1440px) {
+                    .desktop-1440 {
+                        display: block !important;
+                    }
+                }
+
+            `}</style>
+
         </>
     )
 }

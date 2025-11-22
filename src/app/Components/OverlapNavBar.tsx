@@ -94,9 +94,9 @@ const OverlapNavBar: React.FC = () => {
         {/* ✅ Floating red circle */}
         <button
           onClick={handleLetsBeginClick}
-          className="absolute -top-12 left-1/2 -translate-x-1/2 bg-[#e53935] hover:bg-[#d32f2f] text-white w-[70px] h-[70px] rounded-full flex flex-col justify-center items-center shadow-xl text-sm manrope-medium leading-tight"
+          className="absolute -top-12 left-1/2 -translate-x-1/2 bg-[#ef0101] hover:bg-[#d32f2f] text-white w-[70px] h-[70px] rounded-full flex flex-col justify-center items-center shadow-xl text-sm manrope-medium leading-tight"
         >
-          <span>Let&#39;</span>
+          <span>Let&#39;s</span>
           <span>begin</span>
         </button>
 

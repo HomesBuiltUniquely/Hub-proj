@@ -64,9 +64,40 @@ export default function Section8() {
   }, []);
 
   return (
+
+
+
     <div className="w-full">
+
+    <style global jsx>{`
+
+                /* Hide both by default */
+                .desktop-1280,
+                .desktop-1440 {
+                    display: none !important;
+                }
+
+                /* 1024px → 1439px = desktop-1280 */
+                @media (min-width: 1024px) and (max-width: 1439px) {
+                    .desktop-1280 {
+                        display: block !important;
+                    }
+                }
+
+                /* 1440px and above = desktop-1440 */
+                @media (min-width: 1440px) {
+                    .desktop-1440 {
+                        display: block !important;
+                    }
+                }
+
+            `}</style>
+
+
       {/* Desktop Layout */}
-      <div className="hidden lg:block">
+
+      {/* 1440 Version */}
+      <div className=" desktop-1440 hidden lg:block">
         <div className="w-[1200px] ml-30 mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
           {/* Background Video */}
           <div className="absolute inset-0 z-0">
@@ -129,6 +160,74 @@ export default function Section8() {
           </div>
         </div>
       </div>
+
+
+      {/* 1280 Version */}
+
+       <div className=" desktop-1280 hidden lg:block">
+        <div className="w-[1200px] mx-auto mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
+          {/* Background Video */}
+          <div className="absolute inset-0 z-0">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* Dark overlay for better text contrast */}
+            <div className="absolute inset-0 bg-[#F1F2F6] bg-opacity-40"></div>
+          </div>
+
+          {/* Content Overlay */}
+          <div className="relative z-10 h-full flex flex-col justify-center">
+            <div className="max-w-7xl mx-auto px-6 w-full">
+              {/* Text Header - Matching your screenshot */}
+              <div className="mb-16 text-black manrope-medium">
+                <h2 className="text-5xl md:text-7xl leading-tight tracking-tight manrope-medium">
+                  HUB Happy Customers
+                </h2>
+                <div className="w-24 h-1 bg-red-500 mt-8"></div>
+              </div>
+
+              {/* Video Thumbnails Grid */}
+              <div className="grid grid-cols-3 gap-8">
+                {videoThumbnails.map((video) => (
+                  <div 
+                    key={video.id} 
+                    className="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                    onClick={() => handleVideoClick(video)}
+                  >
+                    <div className="aspect-w-16 aspect-h-9">
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-110"
+                        // Check here
+                      />
+                      <div className="absolute inset-0 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
+                          <svg className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                      {/* <h3 className="text-xl font-medium text-white">{video.title}</h3> */}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       {/* Mobile Layout */}
       <div className="lg:hidden">

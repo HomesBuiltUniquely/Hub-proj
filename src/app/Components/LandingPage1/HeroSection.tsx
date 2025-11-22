@@ -739,7 +739,7 @@ export default function HeroSections() {
           {/* ===== DESKTOP VERSION ===== */}
 
           {/* 1440 Version */}
-          <div className=" desktop-1440 hidden lg:block bg-[#f1f2f6] min-h-screen p-4 sm:p-6">
+          <div className=" desktop-1440 hidden lg:block bg-[#f1f2f6] justify-center min-h-screen p-4 sm:p-6">
             <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto lg:mr-30">
               {/* Left side - Form */}
               <div className="w-full lg:w-auto">
@@ -939,7 +939,7 @@ export default function HeroSections() {
                 <div className="bg-white w-[500px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
 
                   {/* Heading */}
-                  <p className="mb-6 whitespace-nowrap manrope mt-15">Interiors For Every Home</p>
+                  <p className="mb-6 whitespace-nowrap manrope mt-5">Interiors For Every Home</p>
 
                   {/* Name + Email */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
@@ -1075,7 +1075,11 @@ export default function HeroSections() {
                       </label>
                     </div>
 
-                    {/* Submit */}
+                   
+                  </div>
+
+                   {/* Submit */}
+                    <div className='mt-5'>
                     <button
                       type="submit"
                       disabled={isSubmitting || isSendingOtpAuto}
@@ -1088,7 +1092,7 @@ export default function HeroSections() {
                         </svg>
                       )}
                     </button>
-                  </div>
+                    </div>
 
                   {/* Legal */}
                   <div className="text-xs sm:text-sm lg:text-[14px] mt-6 manrope-medium text-center sm:text-left whitespace-nowrap">
