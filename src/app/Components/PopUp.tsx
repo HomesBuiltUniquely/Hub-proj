@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 
 type PopUpProps = {
-  onFormSuccess: () => void;   // 🔥 callback from parent
+    onFormSuccess: () => void;   // 🔥 callback from parent
 };
 
 const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
@@ -70,64 +70,70 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         setIsOpen(false);
     };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
 
-    if (!name.trim() || !phone.trim() || !pin.trim()) {
-        setError("All fields are mandatory");
-        return;
-    }
-    if (phone.length !== 10) {
-        setError("Enter a valid 10-digit phone number");
-        return;
-    }
-    if (pin.length !== 6) {
-        setError("Enter a valid 6-digit pincode");
-        return;
-    }
-
-    setError("");
-    setIsSubmitting(true);
-
-    try {
-        const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
-        
-        const response = await fetch('/api/popup-contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name.trim(),
-                phone: phone.trim(),
-                pincode: pin.trim(),
-                pageUrl: pageUrl
-            }),
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            // ✅ Tell parent "form is successful"
-            onFormSuccess();
-            
-            // Set flag to trigger reload on Thank You page
-            sessionStorage.setItem('formSubmitted', 'true');
-            
-            // Navigate to Thank-You page after successful submission
-            setTimeout(() => {
-                router.push('/Form-Submit-Thank-You');
-            }, 500);
-        } else {
-            setError("Failed to submit form. Please try again.");
+        if (!name.trim() || !phone.trim() || !pin.trim()) {
+            setError("All fields are mandatory");
+            return;
         }
-    } catch (error) {
-        console.error('Form submission error:', error);
-        setError("An error occurred. Please try again.");
-    } finally {
-        setIsSubmitting(false);
-    }
-};
+        if (phone.length !== 10) {
+            setError("Enter a valid 10-digit phone number");
+            return;
+        }
+        if (pin.length !== 6) {
+            setError("Enter a valid 6-digit pincode");
+            return;
+        }
+
+        if (!Pincode.includes(pin)) {
+            setError("Service unavailable for this pincode");
+            return;
+        }
+
+
+        setError("");
+        setIsSubmitting(true);
+
+        try {
+            const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+            const response = await fetch('/api/popup-contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name.trim(),
+                    phone: phone.trim(),
+                    pincode: pin.trim(),
+                    pageUrl: pageUrl
+                }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                // ✅ Tell parent "form is successful"
+                onFormSuccess();
+
+                // Set flag to trigger reload on Thank You page
+                sessionStorage.setItem('formSubmitted', 'true');
+
+                // Navigate to Thank-You page after successful submission
+                setTimeout(() => {
+                    router.push('/Form-Submit-Thank-You');
+                }, 500);
+            } else {
+                setError("Failed to submit form. Please try again.");
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            setError("An error occurred. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
 
     return (

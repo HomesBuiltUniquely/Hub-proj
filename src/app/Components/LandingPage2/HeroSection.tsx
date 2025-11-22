@@ -127,6 +127,13 @@ export function HeroSection() {
             return;
         }
 
+        // ❗ NEW: pincode must exist in imported Pincode list
+        if (!pincodes.includes(updatedForm.pincode)) {
+            setSubmitMessage("Service unavailable for this pincode");
+            return;
+        }
+
+
         setIsSubmitting(true);
         setSubmitMessage("");
 
@@ -229,6 +236,12 @@ export function HeroSection() {
             setSubmitMessage("Please enter a valid 6-digit pincode");
             return;
         }
+
+        if (!pincodes.includes(updatedForm.pincode)) {
+            setSubmitMessage("Service unavailable for this pincode");
+            return;
+        }
+
 
         setIsSubmitting(true);
         setSubmitMessage("");
@@ -358,7 +371,7 @@ export function HeroSection() {
                                                     inputMode="numeric"
                                                     pattern="[0-9]{6}"
                                                     maxLength={6}
-                                                    className="w-[250px] h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-6 text-white bg-transparent"
+                                                    className="w-[250px] h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-6 placeholder-white text-white bg-transparent"
                                                 />
                                             </div>
                                         </div>

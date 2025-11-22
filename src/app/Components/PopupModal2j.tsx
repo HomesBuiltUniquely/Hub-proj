@@ -6,6 +6,7 @@ import PopUp2j from "./PopUp2j";
 export default function PopUpModal2j() {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [reopenCount, setReopenCount] = useState(0); // reopen count
 
   // Check if submitted before
   useEffect(() => {
@@ -19,16 +20,19 @@ export default function PopUpModal2j() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Reopen every 15s until submitted
-  useEffect(() => {
-    if (submitted) return;
+   // Reopen every 15s but only 3 times (reopenCount < 3)
+useEffect(() => {
+  if (submitted) return;
 
-    const interval = setInterval(() => {
-      setOpen(true);
-    }, 15000);
+  if (reopenCount >= 3) return; // ❌ Stop reopening after 3 times
 
-    return () => clearInterval(interval);
-  }, [submitted]);
+  const interval = setInterval(() => {
+    setOpen(true);
+    setReopenCount(prev => prev + 1); // 🔥 increment
+  }, 15000);
+
+  return () => clearInterval(interval);
+}, [submitted, reopenCount]);
 
   const handleFormSuccess = () => {
     setSubmitted(true);

@@ -120,7 +120,7 @@ export default function BrandCarousel() {
 
       `}</style>
 
-      
+
       {/* 2560 Version  */}
 
 
@@ -268,7 +268,7 @@ export default function BrandCarousel() {
         </div>
       </div>
 
-      
+
       {/* Mobile Version */}
 
       <div className=" md:hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
