@@ -50,7 +50,7 @@ export default function Section3() {
         <>
 
             {/* DESKTOP 1440 */}
-          
+
             <div className="desktop-1440 hidden lg:block">
                 <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
                     <div className='w-[850px]'>
@@ -113,10 +113,10 @@ export default function Section3() {
             </div>
 
 
-            
+
             {/* (you will add content later)   */}
-            
-           <div className="desktop-1280 hidden lg:block">
+
+            <div className="desktop-1280 hidden lg:block">
                 <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
                     <div className='w-[850px]'>
                         <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">
@@ -178,9 +178,9 @@ export default function Section3() {
             </div>
 
 
-          
+
             {/* MOBILE VERSION */}
-          
+
             <div className="lg:hidden w-full mx-auto max-h-[900px] bg-[#f1f2f6]">
                 <div className='ml-5 mt-5 manrope-medium '>
                     <div className="flex">
@@ -253,7 +253,7 @@ export default function Section3() {
                 </button>
             </div>
 
-            <style global jsx>{`
+            <style jsx global>{`
 
                 /* Hide both by default */
                 .desktop-1280,

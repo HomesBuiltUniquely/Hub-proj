@@ -27,12 +27,12 @@ export default function InteriorDesignersInBangalore() {
       <Section10 />
       <Section4 />
       <Section5 />
-       <Section6 />
+      <Section6 />
       <CalculatorPage />
-    <Section7 />
-        <Section8 />
+      <Section7 />
+      <Section8 />
       <Section9 />
-       <BrandCarousel />
+      <BrandCarousel />
       <QAsection />
 
     </div>

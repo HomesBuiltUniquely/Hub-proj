@@ -190,7 +190,7 @@ export default function Section3() {
             </div>
 
             {/* mobile */}
-            <div className="lg:hidden w-[full] mx-auto   max-h-[950px] bg-[#f1f2f6]">
+            <div className="lg:hidden w-[full] mx-auto max-h-[950px] bg-[#f1f2f6]">
                 {/* Stacked Card Carousel */}
 
                 <div className=''>
@@ -225,7 +225,7 @@ export default function Section3() {
                 </div>
 
                 <div className='flex justify-center'>
-                    <div className=" relative h-[400px] w-full max-w-[280px] manrope-medium">
+                    <div className=" relative h-[400px] w-full max-w-[280px] manrope-medium ml-5">
                         {slides.map((slide, idx) => {
                             // Show only the top 3 cards in the stack for performance
                             const isTop = idx === currentSlide;
