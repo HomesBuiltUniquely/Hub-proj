@@ -6,7 +6,8 @@ import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
-import Link from "next/link";
+import OverlapNavBar from "../OverlapNavBar";
+
 
 const ContactHeader: React.FC = () => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const ContactHeader: React.FC = () => {
   };
 
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
 
   return (
 
@@ -152,126 +153,6 @@ const ContactHeader: React.FC = () => {
           </div>
         </div>
 
-
-        {/* Hamburger Menu Button + Mobile Menu */}
-        <div className="absolute top-8 right-1 z-50 ">
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-black pr-6"
-          >
-            <svg
-              className="w-8 h-8"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-
-          {/* Mobile Navigation Menu */}
-          {isMobileMenuOpen && (
-            <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-              <div className="p-4  relative">
-                {/* Close Button */}
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="absolute top-3 right-3 text-gray-600 p-2"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="white"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-
-                {/* Navigation Items */}
-                <div className="space-y-4 mt-5">
-                  <div>
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                        OFFERINGS
-                      </h3>
-                      <div className="space-y-2 pl-3"> {/* Increased spacing here */}
-                        <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Full Home Interior
-                        </Link>
-                        <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Modular Interior
-                        </Link>
-                        <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Home Renovation
-                        </Link>
-                        <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Space Management
-                        </Link>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div>
-                    <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                      EXPLORE ROOMS
-                    </h3>
-                    <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                      <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Modular Kitchen
-                      </Link>
-                      <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Bedroom
-                      </Link>
-                      <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Living Room
-                      </Link>
-                      <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Kids Room
-                      </Link>
-                    </div>
-
-
-                  </div>
-
-                  <div>
-                    <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                      MORE
-                    </h3>
-                    <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                      <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        About Us
-                      </Link>
-                      <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Projects
-                      </Link>
-                      <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Blog
-                      </Link>
-                      <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                        Contact Us
-                      </Link>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-
-        </div>
         {/* Hero content */}
         <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center -mt-70">
           <h1 className="w-[300px] text-3xl text-left lg:text-3xl manrope mb-2 drop-shadow-lg ">HUB Customers&#39; Stories</h1>
@@ -279,7 +160,7 @@ const ContactHeader: React.FC = () => {
           </p>
 
         </div>
-
+        <OverlapNavBar />
       </div>
 
     </div>

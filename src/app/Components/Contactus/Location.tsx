@@ -157,12 +157,12 @@ const Locations: React.FC = () => (
     </div>
 
     {/* Mobile Small (320px - 479px) */}
-    <section className="mobile-small my-6 mx-4 -mt-30 mb-10">
+    <section className="mobile-small my-6 mx-4 -mt-60 mb-10">
       <div>
        
          <div className="">
           <div className="flex relative">
-            <div className="w-[2px] h-[40px] bg-[#ebd457] mt- "></div>
+            <div className="w-[2px] h-[40px] bg-[#ebd457]"></div>
           </div>
           <div className="-mt-10">
             <h2 className="h-10 text-3xl manrope text-gray-800 ml-3 mb-5">Our Locations</h2>

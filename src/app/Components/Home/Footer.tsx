@@ -458,8 +458,8 @@ export default function Footer() {
                         </div>
 
                         {/* Bottom Section with Logo and Social Media */}
-                        <div className="border-t border-gray-600 pt-6">
-                            <div className="flex flex-col items-center space-y-4">
+                        <div className="border-t border-gray-600 pt-6 ">
+                            <div className="flex flex-col items-center space-y-4 ">
                                 {/* Logo */}
                                 <Link href="/">
                                     <Image src="/LOGO.png" alt="HUB Logo" width={80} height={32} className="w-20 h-auto" />
@@ -487,7 +487,7 @@ export default function Footer() {
                                 </div>
 
                                 {/* Legal Text */}
-                                <div className="text-center">
+                                <div className="text-center mb-35">
                                     <p className="text-xs text-gray-300 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p>
                                 </div>
                             </div>

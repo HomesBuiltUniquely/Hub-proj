@@ -82,7 +82,7 @@ export default function RootLayout({
             fbq('track', 'PageView');`}
         </Script>
 
-        <Script 
+        {/* <Script 
       id="whatsapp-conditional"
       strategy="afterInteractive"
       dangerouslySetInnerHTML={{
@@ -120,9 +120,10 @@ export default function RootLayout({
               console.log('WhatsApp widget hidden for this page');
             }
           }
+
         `
       }}
-    />
+    /> */}
    
 
         <noscript>
