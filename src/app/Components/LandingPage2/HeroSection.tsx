@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
+import OverlapNavBar from "../OverlapNavBar";
 
 export function HeroSection() {
     const router = useRouter();
@@ -724,6 +725,7 @@ export function HeroSection() {
                         </div>
                     </div>
                 </div>
+                <OverlapNavBar />
             </div>
         </div>
     );
