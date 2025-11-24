@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";

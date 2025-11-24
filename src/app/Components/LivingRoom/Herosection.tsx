@@ -6,7 +6,7 @@ import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import { useRouter } from "next/navigation";
 import OverlapNavBar from "../OverlapNavBar";
-OverlapNavBar
+
 
 
 const ContactHeader: React.FC = () => {
