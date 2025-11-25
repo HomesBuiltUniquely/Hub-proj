@@ -316,7 +316,8 @@ export default function Section5() {
    Desktop layout component
    Fully typed props to eliminate implicit anys
    ------------------------ */
-function DesktopLayout({ activeStep, steps }: DesktopLayoutProps): JSX.Element {
+function DesktopLayout({ activeStep, steps }: DesktopLayoutProps) {
+
     return (
         <div className="bg-[#F1F2F6] min-h-[740px] py-10 px-20">
             <div className="max-w-7xl mx-auto">
@@ -363,7 +364,8 @@ function DesktopLayout({ activeStep, steps }: DesktopLayoutProps): JSX.Element {
 /* ------------------------
    Mobile layout component
    ------------------------ */
-function MobileLayout({ steps, activeStep, onTouchStart, onTouchMove, onTouchEnd }: MobileLayoutProps): JSX.Element {
+function MobileLayout({ steps, activeStep, onTouchStart, onTouchMove, onTouchEnd }: MobileLayoutProps) {
+
     return (
         <div className="block md:hidden bg-[#F1F2F6] py-5 px-4">
             <div className="mb-8">
