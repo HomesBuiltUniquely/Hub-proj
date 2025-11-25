@@ -33,7 +33,8 @@ type MobileLayoutProps = {
     onTouchEnd: (e: React.TouchEvent) => void;
 };
 
-export default function Section5(): JSX.Element {
+export default function Section5() {
+
     const [activeStep, setActiveStep] = useState<number>(0);
     const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -394,7 +395,7 @@ function MobileLayout({ steps, activeStep, onTouchStart, onTouchMove, onTouchEnd
                                 <p className="text-gray-600 text-center manrope-medium leading-relaxed">{step.description}</p>
                             </div>
                         </div>
-                        
+
                     ))}
                 </div>
             </div>
