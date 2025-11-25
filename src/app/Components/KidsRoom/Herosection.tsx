@@ -1,6 +1,6 @@
 "use client"
 
-import React  from "react";
+import React from "react";
 import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
@@ -118,7 +118,7 @@ const ContactHeader: React.FC = () => {
       {/* 1280 version */}
 
       <div className="desktop-1280">
-        <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
+        <div className="hidden md:flex justify-center bg-[#f9f9f9]">
           {/* Inner container with background */}
           <div
             className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
@@ -151,8 +151,7 @@ const ContactHeader: React.FC = () => {
             {/* Hero content */}
             <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
               <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-                Playful Kids interiors
-              </h1>
+                Playful Kids Interiors</h1>
 
               <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
                 Fun, colorful, and functional designs for happy childhood memories.
@@ -220,7 +219,7 @@ const ContactHeader: React.FC = () => {
               Get Free Quote
             </button>
           </div>
-             <OverlapNavBar />
+          <OverlapNavBar />
         </div>
       </div>
 
@@ -262,9 +261,9 @@ const ContactHeader: React.FC = () => {
               Get Free Quote
             </button>
           </div>
-       
+
         </div>
-           <OverlapNavBar />
+        <OverlapNavBar />
       </div>
 
     </div>
