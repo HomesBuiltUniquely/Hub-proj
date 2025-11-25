@@ -162,7 +162,7 @@ export default function BrandCarousel() {
 
       {/* 1920 version  */}
 
-      <div className="desktop-1920  hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-10">
+      <div className="desktop-1920  hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-10 mx-auto">
         <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
           Trusted partners
         </h2>

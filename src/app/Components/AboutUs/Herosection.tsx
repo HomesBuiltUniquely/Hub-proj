@@ -167,7 +167,7 @@ const ContactHeader: React.FC = () => {
 
     <style jsx>{`
         /* Hide both sections by default on mobile */
-        .desktop-1440,
+        .desktop-1920,
         .desktop-1280 {
           display: none;
         }
@@ -179,10 +179,11 @@ const ContactHeader: React.FC = () => {
           }
         }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block;
+       
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px)  and (max-width: 1921px) {
+          .desktop-1920 {
+            display: block !important;
           }
         }
           
@@ -193,16 +194,16 @@ const ContactHeader: React.FC = () => {
     {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) */}
     {/* <div className="aboutus-hero-3xl-container hidden"> */}
 
-{/* 
+    {/* 
       <div className="aboutus-hero-3xl-relative">
         <img src="/ab1.png" alt="Background" className="aboutus-hero-3xl-bg-image" />
         <div className="aboutus-hero-3xl-overlay"></div> */}
 
-        {/* Get Free Estimate Button - 3XL 2560*1440 optimized */}
-        {/* <button className="aboutus-hero-3xl-button manrope-medium">Get Free Estimate</button> */}
+    {/* Get Free Estimate Button - 3XL 2560*1440 optimized */}
+    {/* <button className="aboutus-hero-3xl-button manrope-medium">Get Free Estimate</button> */}
 
-        {/* Header - 3XL 2560*1440 optimized */}
-        {/* <div className="aboutus-hero-3xl-header">
+    {/* Header - 3XL 2560*1440 optimized */}
+    {/* <div className="aboutus-hero-3xl-header">
           <Image
             src="/redlogo.png"
             alt="LOGO"
@@ -211,16 +212,16 @@ const ContactHeader: React.FC = () => {
             className="aboutus-hero-3xl-logo"
           /> */}
 
-          {/* Navigation - 3XL 2560*1440 optimized */}
-          {/* <nav className="aboutus-hero-3xl-nav">
+    {/* Navigation - 3XL 2560*1440 optimized */}
+    {/* <nav className="aboutus-hero-3xl-nav">
             <Link href="/">HOME</Link>
             <Link href="/Services">SERVICE</Link>
             <Link href="/Services">EXPLORE ROOMS</Link>
           </nav>
         </div> */}
 
-        {/* Main Content - 3XL 2560*1440 optimized */}
-        {/* <div className="aboutus-hero-3xl-content">
+    {/* Main Content - 3XL 2560*1440 optimized */}
+    {/* <div className="aboutus-hero-3xl-content">
           <div className="aboutus-hero-3xl-title-1">homes</div>
           <div className="aboutus-hero-3xl-title-2">uniquely</div>
           <div className="aboutus-hero-3xl-title-3">built</div>
@@ -267,20 +268,13 @@ const ContactHeader: React.FC = () => {
     </div>
 
 
-
-
-
-
-
-
-    
-    <div className="desktop-1440 hidden">
-      <div className="w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/ab1.png')" }}>
-    {/* Navbar */}
-    <div className="flex items-center justify-between -mt-15">
+    <div className="desktop-1920 hidden">
+      <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative " style={{ backgroundImage: "url('/ab1.png')" }}>
+        <div className="flex items-center justify-between -mt-15">
           <div onClick={handleClick} className="cursor-pointer">
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
           </div>
+
           <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
@@ -288,13 +282,17 @@ const ContactHeader: React.FC = () => {
           </div>
           <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
-    {/* Hero content */}
-    <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-35">
-          <h1 className="w-[1200px] text-5xl lg:text-6xl text-left  manrope mb-3 drop-shadow-lg -ml-10">
+        {/* Hero content */}
+        <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-35">
+
+        </div>
+
+        <div className="flex flex-col items-start justify-start  pb-20 text-white text-left -mt-10 ml-20">
+          <h1 className="w-[1200px] text-5xl lg:text-6xl text-left  manrope mb-3 drop-shadow-lg ">
             homes,
           </h1>
-          <div className="w-[1200px] text-left  text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg -ml-10">uniquely</div>
-          <div className="w-[1200px] text-left text-5xl lg:text-6xl manrope  mb-3 drop-shadow-lg -ml-10">built</div>
+          <div className="w-[1200px] text-left  text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg ">uniquely</div>
+          <div className="w-[1200px] text-left text-5xl lg:text-6xl manrope  mb-3 drop-shadow-lg ">built</div>
         </div>
       </div>
     </div>
@@ -366,13 +364,13 @@ const ContactHeader: React.FC = () => {
           />
         </div>
 
-        
 
-{/* Hamburger removed(commented) as nav bar is placed *
+
+        {/* Hamburger removed(commented) as nav bar is placed *
 
         {/* Hamburger Menu Button + Mobile Menu */}
         {/* <div className="absolute top-8 right-1 z-50 "> */}
-          {/* <button
+        {/* <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-white pr-6"
           >
@@ -391,12 +389,12 @@ const ContactHeader: React.FC = () => {
             </svg>
           </button> */}
 
-          {/* Mobile Navigation Menu */}
-          {/* {isMobileMenuOpen && (
+        {/* Mobile Navigation Menu */}
+        {/* {isMobileMenuOpen && (
             <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
               <div className="p-4  relative"> */}
-                {/* Close Button */}
-                {/* <button
+        {/* Close Button */}
+        {/* <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="absolute top-3 right-3 text-gray-600 p-2"
                 >
@@ -415,8 +413,8 @@ const ContactHeader: React.FC = () => {
                   </svg>
                 </button> */}
 
-                {/* Navigation Items */}
-                {/* <div className="space-y-4 mt-5">
+        {/* Navigation Items */}
+        {/* <div className="space-y-4 mt-5">
                   <div>
                     <div>
                       <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
@@ -483,11 +481,11 @@ const ContactHeader: React.FC = () => {
 
                   </div>
                 </div> */}
-              {/* </div>
+        {/* </div>
             </div>
           )} */}
         {/* </div> */}
-{/* Hamburger removed(commented) as nav bar is placed *
+        {/* Hamburger removed(commented) as nav bar is placed *
 
 
 
@@ -501,11 +499,11 @@ const ContactHeader: React.FC = () => {
         </h2>
       </div>
 
-    <OverlapNavBar />
+      <OverlapNavBar />
 
     </div>
 
-    
+
   </div>
 
 

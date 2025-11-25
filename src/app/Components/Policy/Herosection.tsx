@@ -1,6 +1,6 @@
 "use client"
 
-import React  from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
@@ -164,8 +164,9 @@ const PolicyHeroSimple: React.FC = () => {
               </p>
             </div>
           </div>
+          <OverlapNavBar />
         </div>
-        <OverlapNavBar />
+
       </div>
 
     </div>

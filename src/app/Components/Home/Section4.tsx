@@ -58,7 +58,7 @@ export default function Section4() {
       <style jsx>{`
      /* Hide both by default */
         .desktop-1280,
-        .desktop-1440,
+        .desktop-1920,
         .desktop-2560  {
           display: none !important;
         }
@@ -70,15 +70,8 @@ export default function Section4() {
           }
         }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (width: 1440px) {
-          .desktop-1440 {
-            display: block !important;
-          }
-        }
-
           /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
+        @media (min-width: 1440px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
@@ -95,10 +88,10 @@ export default function Section4() {
 
 
 
-        {/* 2560 version  */}
+      {/* 2560 version  */}
 
 
-        <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-80">
+      <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-80">
         <div className="max-w-8xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
@@ -158,14 +151,6 @@ export default function Section4() {
 
                 {/* Customer Info */}
                 <div className="flex items-center gap-4">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                    <Image
-                      src={testimonials[currentSlide].avatar}
-                      alt={testimonials[currentSlide].name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
                   <div>
                     <h4 className="text-xl font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
                   </div>
@@ -185,11 +170,11 @@ export default function Section4() {
 
       <div className="desktop-1920 hidden">
 
-        <div className="md:block bg-[#F1F2F6] min-h-[650px] py-10 px-5">
+        <div className="md:block bg-[#F1F2F6] min-h-[650px] py-10 mx-20">
           <div className="w-full mx-auto">
             {/* Header Section */}
             <div className="flex justify-between items-start mb-12">
-              <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
+              <h1 className="text-5xl  wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
                 Trusted by homeowners like you
               </h1>
 
@@ -245,14 +230,7 @@ export default function Section4() {
 
                   {/* Customer Info */}
                   <div className="flex items-center gap-4">
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                      <Image
-                        src={testimonials[currentSlide].avatar}
-                        alt={testimonials[currentSlide].name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+
                     <div>
                       <h4 className="text-xl font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
                     </div>
@@ -267,87 +245,6 @@ export default function Section4() {
 
       </div>
 
-      {/* 1440 Version */}
-
-      <div className="desktop-1440 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-7">
-        <div className="max-w-8xl mx-auto">
-          {/* Header Section */}
-          <div className="flex justify-between items-start mb-12">
-            <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
-              Trusted by homeowners like you
-            </h1>
-
-            {/* Navigation Controls */}
-            <div className="flex gap-4">
-              <button
-                onClick={prevSlide}
-                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-              >
-                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={nextSlide}
-                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-              >
-                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Testimonial Carousel */}
-          <div className="relative overflow-hidden -mt-10">
-            <div className="flex gap-8 items-center max-w-8xl ">
-              {/* Left Side - Image */}
-              <div className="w-[500px]">
-                <div className="relative h-96 rounded-3xl overflow-hidden">
-                  <Image
-                    src={testimonials[currentSlide].image}
-                    alt="Interior Design"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Right Side - Testimonial */}
-              <div className="w-[1000px] h-96 p-8 bg-[#ddcdc1] rounded-3xl flex flex-col justify-center">
-                {/* Quote Icon */}
-                <div className="mb-6">
-                  <svg className="w-12 h-16 text-[#32261c] ml-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                  </svg>
-                </div>
-
-                {/* Quote Text */}
-                <blockquote className="text-2xl text-gray-700 leading-relaxed mb-8 manrope-medium">
-                  {testimonials[currentSlide].quote}
-                </blockquote>
-
-                {/* Customer Info */}
-                <div className="flex items-center gap-4">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                    <Image
-                      src={testimonials[currentSlide].avatar}
-                      alt={testimonials[currentSlide].name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
 
 
       <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-5">
@@ -410,14 +307,6 @@ export default function Section4() {
 
                 {/* Customer Info */}
                 <div className="flex items-center gap-4">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                    <Image
-                      src={testimonials[currentSlide].avatar}
-                      alt={testimonials[currentSlide].name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
                   <div>
                     <h4 className="text-xl font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
                   </div>
@@ -471,14 +360,7 @@ export default function Section4() {
 
             {/* Customer Info */}
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                <Image
-                  src={testimonials[currentSlide].avatar}
-                  alt={testimonials[currentSlide].name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+
               <div>
                 <h4 className="text-lg font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
               </div>
