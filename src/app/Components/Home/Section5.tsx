@@ -394,6 +394,7 @@ function MobileLayout({ steps, activeStep, onTouchStart, onTouchMove, onTouchEnd
                                 <p className="text-gray-600 text-center manrope-medium leading-relaxed">{step.description}</p>
                             </div>
                         </div>
+                        
                     ))}
                 </div>
             </div>
