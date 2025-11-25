@@ -81,7 +81,6 @@ export default function BrandCarousel() {
     <div>
       <style jsx>{`
         /* Hide both sections by default on mobile */
-        .desktop-1440,
         .desktop-1280,
         .desktop-1920,
         .desktop-2560 {
@@ -95,15 +94,10 @@ export default function BrandCarousel() {
           }
         }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (width: 1440px) {
-          .desktop-1440 {
-            display: block;
-          }
-        }
+     
 
         /* Show 1920px section for screens 1440px and above */
-        @media (min-width: 1441px) and (max-width: 1920px) {
+        @media (min-width: 1440px) and (max-width: 1920px) {
           .desktop-1920 {
             display: block;
           }
@@ -162,7 +156,7 @@ export default function BrandCarousel() {
 
       {/* 1920 version  */}
 
-      <div className="desktop-1920  hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-10 mx-auto">
+      <div className="desktop-1920  hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-5 px-20">
         <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
           Trusted partners
         </h2>
@@ -175,7 +169,7 @@ export default function BrandCarousel() {
           {allLogos.map((logo, idx) => (
             <div
               key={`${logo.src}-${idx}`}
-              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
+              className={`inline-flex flex-shrink-0 items-center justify-center mx-auto  ${brandStyles[logo.alt] || ''
                 }`}
             >
               <Image
@@ -196,45 +190,10 @@ export default function BrandCarousel() {
         </div>
       </div>
 
-      {/* 1440 version  */}
-
-      <div className="desktop-1440 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
-        <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
-          Trusted partners
-        </h2>
-
-        <div
-          ref={containerRef}
-          className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
-          style={{ scrollbarWidth: 'none' }}
-        >
-          {allLogos.map((logo, idx) => (
-            <div
-              key={`${logo.src}-${idx}`}
-              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
-                }`}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={0}
-                height={0}
-                sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
-                className="object-contain h-[40px] sm:h-[50px] md:h-[60px] w-auto"
-                loading="lazy"
-                style={{
-                  width: 'auto',
-                  height: '100%',
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* 1280 version  */}
 
-      <div className="desktop-1280 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
+      <div className="desktop-1280 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-15">
         <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
           Trusted partners
         </h2>
@@ -247,7 +206,7 @@ export default function BrandCarousel() {
           {allLogos.map((logo, idx) => (
             <div
               key={`${logo.src}-${idx}`}
-              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
+              className={`inline-flex flex-shrink-0 items-center mx-auto ${brandStyles[logo.alt] || ''
                 }`}
             >
               <Image

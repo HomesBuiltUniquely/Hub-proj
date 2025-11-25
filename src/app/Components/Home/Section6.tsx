@@ -90,7 +90,7 @@ export default function Section6() {
     return (
         <div>
 
-        <style jsx>{`
+            <style jsx>{`
      /* Hide both by default */
         .desktop-1280,
         .desktop-1920,
@@ -134,7 +134,7 @@ export default function Section6() {
             {/* 2560 version  */}
 
 
-             <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-85">
+            <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-85">
                 <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
@@ -208,7 +208,7 @@ export default function Section6() {
 
             {/* 1920 Version */}
 
-            <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[600px] py-14 px-20">
+            <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-25 px-20">
                 <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
@@ -235,7 +235,7 @@ export default function Section6() {
                         </div>
                     </div>
 
-                    
+
 
                     {/* Carousel */}
                     <div className="relative">
@@ -243,7 +243,7 @@ export default function Section6() {
                             <div
                                 className="flex gap-6 transition-transform duration-500 ease-in-out"
                                 style={{
-                                    transform: `translateX(-${currentSlide * (280 + 24)}px)`,
+                                    transform: `translateX(-${currentSlide * (120 + 24)}px)`,
                                     width: `${projects.length * (280 + 24)}px`
                                 }}
                             >
@@ -279,9 +279,9 @@ export default function Section6() {
             </div>
 
             {/* 1280 Version */}
-        
-            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-6">
-                <div className="max-w-7xl mx-auto">
+
+            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px]  px-6">
+                <div className="max-w-6xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
@@ -313,8 +313,8 @@ export default function Section6() {
                             <div
                                 className="flex gap-6 transition-transform duration-500 ease-in-out"
                                 style={{
-                                    transform: `translateX(-${currentSlide * (280 + 24)}px)`,
-                                    width: `${projects.length * (280 + 24)}px`
+                                    transform: `translateX(-${currentSlide * (450 + 4)}px)`,
+                                    width: `${projects.length * (450 + 4)}px`
                                 }}
                             >
                                 {projects.map((project, index) => (
@@ -352,7 +352,7 @@ export default function Section6() {
             <div className="block md:hidden">
                 <div className="bg-[#F1F2F6] py-8 px-4 w-full">
                     <div className="mb-8">
-                         <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
+                        <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
                         <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-3 -mt-8">
                             Recent interior design projects
                         </h1>
@@ -396,11 +396,10 @@ export default function Section6() {
                                 <button
                                     key={index}
                                     onClick={() => setMobileSlide(index)}
-                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                        index === mobileSlide
+                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === mobileSlide
                                             ? 'bg-red-600 scale-125'
                                             : 'bg-gray-300 hover:bg-gray-400'
-                                    }`}
+                                        }`}
                                 />
                             ))}
                         </div>

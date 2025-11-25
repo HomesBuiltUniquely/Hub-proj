@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <div>
             {/* 3xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-3xl-container hidden 3xl:block">
+            <div className="aboutus-footer-3xl-container hidden 3xl:block mb-2">
                 <div className="w-full h-auto min-h-[600px] px-20">
                     <div className="max-w-7xl mx-auto">
                         <div className="w-full h-auto min-h-[500px] bg-[#32261c] mt-20 rounded-2xl p-12">
@@ -87,7 +87,7 @@ export default function Footer() {
             </div>
 
             {/* 2xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-2xl-section hidden 2xl:block 3xl:hidden">
+            <div className="aboutus-footer-2xl-section hidden 2xl:block 3xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[580px] px-5">
                     <div className="max-w-8xl mx-auto">
                         <div className="w-full h-auto min-h-[480px] bg-[#32261c] mt-20 rounded-2xl p-12">
@@ -171,7 +171,7 @@ export default function Footer() {
             </div>
 
             {/* xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-xl-section hidden xl:block 2xl:hidden">
+            <div className="aboutus-footer-xl-section hidden xl:block 2xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[550px] px-6">
                     <div className="max-w-8xl mx-auto">
                         <div className="w-full h-auto min-h-[450px] bg-[#32261c] mt-18 rounded-2xl px-10 py-12">
@@ -254,7 +254,7 @@ export default function Footer() {
             </div>
 
             {/* lg Footer - Tailwind Classes */}
-            <div className="aboutus-footer-lg-section hidden lg:block xl:hidden">
+            <div className="aboutus-footer-lg-section hidden lg:block xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[500px] px-8">
                     <div className="max-w-6xl mx-auto">
                         <div className="w-full h-auto min-h-[400px] bg-amber-950 mt-16 rounded-2xl p-10">
@@ -328,7 +328,7 @@ export default function Footer() {
             </div>
 
             {/* md Footer - Tailwind Classes */}
-            <div className="aboutus-footer-md-section hidden md:block lg:hidden">
+            <div className="aboutus-footer-md-section hidden md:block lg:hidden mb-2">
                 <div className="w-full h-auto min-h-[450px] px-6">
                     <div className="max-w-5xl mx-auto">
                         <div className="w-full h-auto min-h-[350px] bg-amber-950 mt-12 rounded-2xl p-8">

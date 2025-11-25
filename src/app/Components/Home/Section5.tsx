@@ -319,7 +319,7 @@ export default function Section5() {
 function DesktopLayout({ activeStep, steps }: DesktopLayoutProps) {
 
     return (
-        <div className="bg-[#F1F2F6] min-h-[740px] py-10 px-20">
+        <div className="bg-[#F1F2F6] min-h-[740px] -mt-10 px-25">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
                     Your dream space in just four steps

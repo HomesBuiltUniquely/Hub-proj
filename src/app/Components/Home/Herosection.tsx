@@ -163,7 +163,7 @@ const Herosection: React.FC = () => {
 
       {/* 1920 version  */}
 
-      <div className="hidden md:block  desktop-1920 w-full max-w-[1920px] h-[900px]  rounded-3xl overflow-hidden  ">
+      <div className="hidden md:block  desktop-1920 w-full max-w-[1920px] h-[900px]  rounded-3xl overflow-hidden">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-full h-[900px]">
           {heroSlides.map((slide, index) => (

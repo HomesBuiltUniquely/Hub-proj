@@ -225,7 +225,7 @@ export default function Section2() {
 
                 {/* desktop-1920 */}
 
-                <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[580px] pt-40 pb-8 ">
+                <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[580px] pt-5 pb-8 ">
                     <div className="w-full mx-auto">
                         {/* Header */}
                         <div className="flex justify-between items-start mb-8 mx-20">
@@ -267,7 +267,7 @@ export default function Section2() {
                                 <div
                                     className="flex gap-5 transition-transform duration-500 ease-in-out"
                                     style={{
-                                        transform: `translateX(-${currentSlide * (200)}px)`
+                                        transform: `translateX(-${currentSlide * (330)}px)`
                                     }}
                                 >
                                     {roomCards.map((room, index) => (
@@ -329,7 +329,7 @@ export default function Section2() {
 
                 <div className='desktop-1280'>
 
-                    <div className="hidden md:block bg-[#F1F2F6] min-h-[560px] pt-12 pb-8 px-4">
+                    <div className="hidden md:block bg-[#F1F2F6] min-h-[560px] pt-12 pb-8 px-4 mx-auto px-15 max-w-[1280px]">
                         <div className="max-w-[1280px] mx-auto">
                             {/* Header */}
                             <div className="flex justify-between items-start mb-10">
@@ -403,7 +403,7 @@ export default function Section2() {
                                 </div>
 
                                 {/* Cards */}
-                                <div className="overflow-hidden w-[1240px] ">
+                                <div className="overflow-hidden w-[1160px] mx-auto">
                                     <div
                                         className="flex gap-5 transition-transform duration-500 ease-in-out"
                                         style={{
@@ -472,7 +472,7 @@ export default function Section2() {
                                     </div>
                                 </div>
                                 <Link href="/">
-                                    <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0 mr-5">
+                                    <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0 ">
                                         Explore Gallery
                                     </button>
                                 </Link>

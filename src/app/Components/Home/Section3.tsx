@@ -111,7 +111,7 @@ export default function Section3() {
 
             {/* 2560 Version */}
 
-            <div className="desktop-2560 hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-75">
+            <div className="desktop-2560 hidden lg:block bg-[#F1F2F6] h-auto pt-5 px-75">
                 <div className="max-w-8xl mx-auto">
                     {/* Header Section */}
                     <div className="flex flex-row justify-between items-center mb-12">
@@ -254,7 +254,7 @@ export default function Section3() {
                         </div>
 
                         {/* Service Cards */}
-                        <div className="overflow-hidden w-[full] ml-1">
+                        <div className="overflow-hidden w-[1680px] ">
                             <div
                                 className="flex gap-4 transition-transform duration-500 ease-in-out"
                                 style={{
@@ -289,12 +289,12 @@ export default function Section3() {
                 </div>
             </div>
 
-            
+
 
             {/* 1280 version */}
             <div className='desktop-1280'>
 
-                <div className="hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-2">
+                <div className="hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-15">
                     <div className="max-w-[1280px] mx-auto">
                         {/* Header Section */}
                         <div className="flex flex-row justify-between items-center mb-10">
@@ -302,7 +302,7 @@ export default function Section3() {
                                 All interior service, one destination
                             </h1>
                             <a href="/GetEstimate">
-                                <button className="bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2 mr-5">
+                                <button className="bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2 ">
                                     Book consultation
                                     <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                         <svg
@@ -324,7 +324,7 @@ export default function Section3() {
                         </div>
 
                         {/* Carousel Section */}
-                        <div className="relative mt-16 mx-auto w-full max-w-[1240px]">
+                        <div className="relative mt-16 mx-auto w-full max-w-[1150px]">
                             {/* Navigation Controls */}
                             <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
                                 <button
@@ -369,7 +369,7 @@ export default function Section3() {
                             </div>
 
                             {/* Service Cards */}
-                            <div className="overflow-hidden w-[1240px] mx-auto relative">
+                            <div className="overflow-hidden w-[1150px] mx-auto relative">
 
                                 <div
                                     className="flex gap-4 transition-transform duration-500 ease-in-out"
@@ -383,9 +383,9 @@ export default function Section3() {
 
                                 >
                                     {serviceCards.map((service, index) => (
-                                        <div key={index} className="flex-shrink-0 w-[400px] ml-1">
-                                            <div className="bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300  flex flex-col h-[650px]">
-                                                <div className="relative h-[360px]">
+                                        <div key={index} className="flex-shrink-0 w-[370px] ">
+                                            <div className="bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300  flex flex-col h-[620px]">
+                                                <div className="relative h-[320px]">
                                                     <img
                                                         src={service.image}
                                                         alt={service.title}
@@ -400,7 +400,7 @@ export default function Section3() {
                                                         {service.description}
                                                     </p>
                                                     <a href={service.link} className="mt-auto block">
-                                                        <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium">
+                                                        <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                                             Request service
                                                         </button>
                                                     </a>
