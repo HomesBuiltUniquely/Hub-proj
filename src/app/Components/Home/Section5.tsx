@@ -1,17 +1,47 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
-export default function Section5() {
-    const [activeStep, setActiveStep] = useState(0);
+/**
+ * Safely extend global Window interface for our accumulator.
+ * This avoids TS errors when we set/read window.__stepScrollAcc
+ */
+declare global {
+    interface Window {
+        __stepScrollAcc?: number;
+    }
+}
+
+type Step = {
+    title: string;
+    description: string;
+    image: string;
+    icon: string;
+};
+
+type DesktopLayoutProps = {
+    activeStep: number;
+    steps: Step[];
+};
+
+type MobileLayoutProps = {
+    steps: Step[];
+    activeStep: number;
+    onTouchStart: (e: React.TouchEvent) => void;
+    onTouchMove: (e: React.TouchEvent) => void;
+    onTouchEnd: (e: React.TouchEvent) => void;
+};
+
+export default function Section5(): JSX.Element {
+    const [activeStep, setActiveStep] = useState<number>(0);
     const sectionRef = useRef<HTMLDivElement | null>(null);
 
-    // Scroll logic refs
-    const activeStepRef = useRef(0);
-    const lockedRef = useRef(false);
-    const cooldownRef = useRef(false);
-    const sectionVisibleRef = useRef(false);
+    // Refs used inside listeners
+    const activeStepRef = useRef<number>(activeStep);
+    const lockedRef = useRef<boolean>(false);
+    const cooldownRef = useRef<boolean>(false);
+    const sectionVisibleRef = useRef<boolean>(false);
 
     const BASE_THRESHOLD = 130;
 
@@ -19,36 +49,36 @@ export default function Section5() {
         activeStepRef.current = activeStep;
     }, [activeStep]);
 
-    const steps = [
+    const steps: Step[] = [
         {
-            title: "Meet our designers",
-            description: "Connect with our experts to share your ideas.",
-            image: "/img3.jpg",
-            icon: "/discussion.png",
+            title: 'Meet our designers',
+            description: 'Connect with our experts to share your ideas.',
+            image: '/img3.jpg',
+            icon: '/discussion.png',
         },
         {
-            title: "Get your quote",
-            description: "Receive a transparent estimate tailored to you.",
-            image: "/bed1.jpg",
-            icon: "/file.png",
+            title: 'Get your quote',
+            description: 'Receive a transparent estimate tailored to you.',
+            image: '/bed1.jpg',
+            icon: '/file.png',
         },
         {
-            title: "Customize your home",
-            description: "Pick layouts, finishes, and designs.",
-            image: "/kids1.jpg",
-            icon: "/home-repair.png",
+            title: 'Customize your home',
+            description: 'Pick layouts, finishes, and designs.',
+            image: '/kids1.jpg',
+            icon: '/home-repair.png',
         },
         {
-            title: "Hassle-free execution",
-            description: "Enjoy on-time delivery with quality assurance.",
-            image: "/bed5.jpg",
-            icon: "/execute.png",
+            title: 'Hassle-free execution',
+            description: 'Enjoy on-time delivery with quality assurance.',
+            image: '/bed5.jpg',
+            icon: '/execute.png',
         },
     ];
 
-    /* ------------------------------------
-       MOBILE: TOUCH SWIPE  
-    ------------------------------------ */
+    /* ------------------------
+       Mobile swipe handlers
+       ------------------------ */
     const [touchStart, setTouchStart] = useState<number | null>(null);
     const [touchEnd, setTouchEnd] = useState<number | null>(null);
     const minSwipeDistance = 50;
@@ -63,24 +93,28 @@ export default function Section5() {
     };
 
     const onTouchEnd = () => {
-        if (!touchStart || !touchEnd) return;
-
+        if (touchStart == null || touchEnd == null) {
+            setTouchStart(null);
+            setTouchEnd(null);
+            return;
+        }
         const distance = touchStart - touchEnd;
-        if (distance > minSwipeDistance && activeStep < steps.length - 1)
+        if (distance > minSwipeDistance && activeStep < steps.length - 1) {
             setActiveStep((s) => s + 1);
-        if (distance < -minSwipeDistance && activeStep > 0)
+        }
+        if (distance < -minSwipeDistance && activeStep > 0) {
             setActiveStep((s) => s - 1);
-
+        }
         setTouchStart(null);
         setTouchEnd(null);
     };
 
-    /* ------------------------------------
-       SECTION VISIBILITY
-    ------------------------------------ */
+    /* ------------------------
+       IntersectionObserver -> section visible state
+       ------------------------ */
     useEffect(() => {
         const el = sectionRef.current;
-        if (!el) return;
+        if (!el || typeof IntersectionObserver === 'undefined') return;
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -88,98 +122,141 @@ export default function Section5() {
                     sectionVisibleRef.current = entry.isIntersecting;
 
                     if (entry.isIntersecting) {
+                        // When section enters viewport, lock and reset to first step
                         lockedRef.current = true;
                         activeStepRef.current = 0;
                         setActiveStep(0);
-                        (window as any).__stepScrollAcc = 0;
+                        if (typeof window !== 'undefined') window.__stepScrollAcc = 0;
                     } else {
+                        // When leaving viewport, unlock
                         lockedRef.current = false;
-                        (window as any).__stepScrollAcc = 0;
+                        if (typeof window !== 'undefined') window.__stepScrollAcc = 0;
                     }
                 });
             },
-            { threshold: 0.15 }
+            {
+                threshold: 0.15,
+            }
         );
 
         observer.observe(el);
         return () => observer.disconnect();
     }, []);
 
-    /* ------------------------------------
-       DESKTOP SCROLL LOGIC
-    ------------------------------------ */
+    /* ------------------------
+       Desktop wheel hijack (virtual scroll accumulator)
+       ------------------------ */
     useEffect(() => {
         const el = sectionRef.current;
         if (!el) return;
+        if (typeof window === 'undefined') return;
 
+        // Only enable for desktop widths
         if (window.innerWidth < 1024) return;
 
-        (window as any).__stepScrollAcc = 0;
+        // initialize accumulator
+        if (typeof window !== 'undefined' && typeof window.__stepScrollAcc === 'undefined') {
+            window.__stepScrollAcc = 0;
+        }
 
         const last = steps.length - 1;
+        const CLAMP = 80;
 
         const handleWheel = (e: WheelEvent) => {
-            if (!sectionVisibleRef.current) return;
+            // If not visible at all, bail and reset acc
+            if (!sectionVisibleRef.current) {
+                window.__stepScrollAcc = 0;
+                lockedRef.current = false;
+                return;
+            }
 
             const rect = el.getBoundingClientRect();
             const viewportH = window.innerHeight;
-            const centered =
-                rect.top <= viewportH * 0.25 &&
-                rect.bottom >= viewportH * 0.75;
 
-            if (!centered) return;
+            // Require roughly center alignment to activate lock
+            const isCentered = rect.top <= viewportH * 0.25 && rect.bottom >= viewportH * 0.75;
+            if (!isCentered) {
+                // Do not change stepping if not centered
+                return;
+            }
 
             lockedRef.current = true;
 
+            // clamp delta to avoid huge spikes
             let delta = e.deltaY;
-            const CLAMP = 80;
             delta = Math.max(-CLAMP, Math.min(CLAMP, delta));
 
+            // allow exit if user actively tries to scroll out at boundaries
             if (activeStepRef.current === 0 && delta < 0) {
                 lockedRef.current = false;
+                window.__stepScrollAcc = 0;
                 return;
             }
-
             if (activeStepRef.current === last && delta > 0) {
                 lockedRef.current = false;
+                window.__stepScrollAcc = 0;
                 return;
             }
 
+            // prevent native page scroll while processing
             e.preventDefault();
 
             if (cooldownRef.current) {
-                (window as any).__stepScrollAcc += delta;
+                window.__stepScrollAcc = (window.__stepScrollAcc || 0) + delta;
                 return;
             }
 
-            (window as any).__stepScrollAcc += delta;
+            window.__stepScrollAcc = (window.__stepScrollAcc || 0) + delta;
 
-            const threshold = Math.max(BASE_THRESHOLD, viewportH * 0.2);
+            const dynamicThreshold = Math.max(BASE_THRESHOLD, Math.round(viewportH * 0.2));
 
-            if ((window as any).__stepScrollAcc > threshold && activeStepRef.current < last) {
-                (window as any).__stepScrollAcc = 0;
+            // Move down a step
+            if (window.__stepScrollAcc > dynamicThreshold && activeStepRef.current < last) {
+                window.__stepScrollAcc = 0;
                 cooldownRef.current = true;
-
                 setTimeout(() => (cooldownRef.current = false), 350);
                 setActiveStep((s) => s + 1);
                 return;
             }
 
-            if ((window as any).__stepScrollAcc < -threshold && activeStepRef.current > 0) {
-                (window as any).__stepScrollAcc = 0;
+            // Move up a step
+            if (window.__stepScrollAcc < -dynamicThreshold && activeStepRef.current > 0) {
+                window.__stepScrollAcc = 0;
                 cooldownRef.current = true;
-
                 setTimeout(() => (cooldownRef.current = false), 350);
                 setActiveStep((s) => s - 1);
                 return;
             }
+
+            // keep accumulator bounded
+            const cap = Math.max(BASE_THRESHOLD * 3, viewportH);
+            if (window.__stepScrollAcc > cap) window.__stepScrollAcc = cap;
+            if (window.__stepScrollAcc < -cap) window.__stepScrollAcc = -cap;
         };
 
-        window.addEventListener("wheel", handleWheel, { passive: false });
+        window.addEventListener('wheel', handleWheel, { passive: false });
+
         return () => {
-            window.removeEventListener("wheel", handleWheel);
+            window.removeEventListener('wheel', handleWheel);
+            if (typeof window !== 'undefined') window.__stepScrollAcc = 0;
         };
     }, [steps.length]);
+
+    /* ------------------------
+       Escape key to unlock
+       ------------------------ */
+    useEffect(() => {
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                lockedRef.current = false;
+                if (typeof window !== 'undefined') window.__stepScrollAcc = 0;
+            }
+        };
+        if (typeof window !== 'undefined') window.addEventListener('keydown', onKey);
+        return () => {
+            if (typeof window !== 'undefined') window.removeEventListener('keydown', onKey);
+        };
+    }, []);
 
     return (
         <div>
@@ -207,25 +284,22 @@ export default function Section5() {
                 }
             `}</style>
 
-            {/* DESKTOP */}
+            {/* Desktop wrapper (single ref across breakpoints) */}
             <div ref={sectionRef} className="hidden md:block">
-                {/* 2560 */}
                 <div className="desktop-2560">
                     <DesktopLayout activeStep={activeStep} steps={steps} />
                 </div>
 
-                {/* 1920 */}
                 <div className="desktop-1920">
                     <DesktopLayout activeStep={activeStep} steps={steps} />
                 </div>
 
-                {/* 1280 */}
                 <div className="desktop-1280">
                     <DesktopLayout activeStep={activeStep} steps={steps} />
                 </div>
             </div>
 
-            {/* MOBILE */}
+            {/* Mobile */}
             <MobileLayout
                 steps={steps}
                 activeStep={activeStep}
@@ -237,10 +311,11 @@ export default function Section5() {
     );
 }
 
-/* -----------------------------------------
-   REUSABLE DESKTOP LAYOUT (cleaned)
------------------------------------------ */
-function DesktopLayout({ activeStep, steps }: any) {
+/* ------------------------
+   Desktop layout component
+   Fully typed props to eliminate implicit anys
+   ------------------------ */
+function DesktopLayout({ activeStep, steps }: DesktopLayoutProps): JSX.Element {
     return (
         <div className="bg-[#F1F2F6] min-h-[740px] py-10 px-20">
             <div className="max-w-7xl mx-auto">
@@ -250,30 +325,23 @@ function DesktopLayout({ activeStep, steps }: any) {
 
                 <div className="flex gap-16 items-center">
                     <div className="w-1/2 space-y-12">
-                        {steps.map((step: any, index: number) => (
+                        {steps.map((step, index) => (
                             <div key={index} className="flex items-start gap-6 relative">
-                                <div className={`w-16 h-16 rounded-full flex items-center justify-center ${index <= activeStep
-                                        ? "bg-[#32261c] text-white shadow-lg"
-                                        : "bg-gray-300 text-gray-600"
-                                    }`}>
+                                <div
+                                    className={`w-16 h-16 rounded-full flex items-center justify-center ${index <= activeStep ? 'bg-[#32261c] text-white shadow-lg' : 'bg-gray-300 text-gray-600'
+                                        }`}
+                                >
                                     <Image src={step.icon} alt={step.title} width={25} height={25} />
                                 </div>
 
                                 <div className="pt-2">
-                                    <h3 className={`text-2xl ${index <= activeStep ? "text-gray-800" : "text-gray-500"}`}>
-                                        {step.title}
-                                    </h3>
-                                    <p className={`text-lg ${index <= activeStep ? "text-gray-600" : "text-gray-400"}`}>
-                                        {step.description}
-                                    </p>
+                                    <h3 className={`text-2xl ${index <= activeStep ? 'text-gray-800' : 'text-gray-500'}`}>{step.title}</h3>
+                                    <p className={`text-lg ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'}`}>{step.description}</p>
                                 </div>
 
                                 {index < steps.length - 1 && (
                                     <div className="absolute left-8 top-16 w-0.5 h-12 bg-gray-300">
-                                        <div
-                                            className={`w-full bg-[#32261c] transition-all duration-500 ${index < activeStep ? "h-full" : "h-0"
-                                                }`}
-                                        />
+                                        <div className={`w-full bg-[#32261c] transition-all duration-500 ${index < activeStep ? 'h-full' : 'h-0'}`} />
                                     </div>
                                 )}
                             </div>
@@ -282,12 +350,7 @@ function DesktopLayout({ activeStep, steps }: any) {
 
                     <div className="w-1/2 flex justify-end">
                         <div className="relative h-96 w-full max-w-xl rounded-3xl overflow-hidden shadow-xl">
-                            <Image
-                                src={steps[activeStep].image}
-                                alt={steps[activeStep].title}
-                                fill
-                                className="object-cover"
-                            />
+                            <Image src={steps[activeStep].image} alt={steps[activeStep].title} fill className="object-cover" />
                         </div>
                     </div>
                 </div>
@@ -296,36 +359,39 @@ function DesktopLayout({ activeStep, steps }: any) {
     );
 }
 
-/* -----------------------------------------
-   MOBILE LAYOUT
------------------------------------------ */
-function MobileLayout({ steps, activeStep, onTouchStart, onTouchMove, onTouchEnd }: any) {
+/* ------------------------
+   Mobile layout component
+   ------------------------ */
+function MobileLayout({ steps, activeStep, onTouchStart, onTouchMove, onTouchEnd }: MobileLayoutProps): JSX.Element {
     return (
         <div className="block md:hidden bg-[#F1F2F6] py-5 px-4">
-            <h1 className="text-3xl mb-8 wulkan-display-bold">
-                Your dream space in just four steps
-            </h1>
+            <div className="mb-8">
+                <div className="w-[2px] h-[33px] bg-[#ebd457]" />
+                <h1 className="text-3xl wulkan-display-bold text-gray-800 ml-3 -mt-8">Your dream space in just four steps</h1>
+            </div>
 
             <div className="relative overflow-hidden px-4 pt-5">
                 <div
-                    className="flex transition-transform duration-300"
+                    className="flex transition-transform duration-300 ease-out"
                     style={{
-                        transform: `translateX(-${activeStep * 258}px)`
+                        transform: `translateX(-${activeStep * 258}px)`,
+                        touchAction: 'pan-y',
                     }}
                     onTouchStart={onTouchStart}
                     onTouchMove={onTouchMove}
                     onTouchEnd={onTouchEnd}
                 >
-                    {steps.map((step: any, index: number) => (
-                        <div key={index} className="w-[260px] flex-shrink-0 px-2">
+                    {steps.map((step, index) => (
+                        <div key={index} className="w-[260px] h-[270px] flex-shrink-0 px-2">
                             <div className="bg-white h-[240px] rounded-2xl p-6 shadow-sm border-2 border-[#ddcdc1] relative">
-                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center border-4 border-white">
-                                        <span className="text-white font-bold">{index + 1}</span>
+                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
+                                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
+                                        <span className="text-white font-bold text-lg">{index + 1}</span>
                                     </div>
                                 </div>
-                                <h3 className="text-xl text-center mt-8">{step.title}</h3>
-                                <p className="text-gray-600 text-center">{step.description}</p>
+
+                                <h3 className="text-xl manrope text-gray-800 text-center mt-8">{step.title}</h3>
+                                <p className="text-gray-600 text-center manrope-medium leading-relaxed">{step.description}</p>
                             </div>
                         </div>
                     ))}
