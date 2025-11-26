@@ -30,7 +30,7 @@ export default function HeroSections() {
   const [selectedPincode, setSelectedPincode] = useState("");
   const [whatsappConsent, setWhatsappConsent] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
-  // const [isVerified, setIsVerified] = useState(false);
+
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otp, setOtp] = useState('');
   const [verificationStatus, setVerificationStatus] = useState('');
@@ -121,7 +121,6 @@ const budgetRef1280 = useRef<HTMLDivElement>(null);
     setShowOtpModal(false);
     setVerificationStatus('');
     setOtp('');
-    setIsVerified(false);
   };
 useEffect(() => {
   const handleClickOutside = (event: MouseEvent) => {
@@ -169,7 +168,7 @@ useEffect(() => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setIsVerified(true);
+       
         setOtp('');
         // Removed alert - no interruption during verification
         setVerificationStatus('Verified User');
@@ -440,7 +439,6 @@ useEffect(() => {
           setSelectedPincode("");
           setWhatsappConsent(true);
           setFormData({ name: '', email: '', phone: '' });
-          setIsVerified(false);
           setShowOtpModal(false);
 
           // Redirect to thank you page
