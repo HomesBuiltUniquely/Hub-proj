@@ -181,7 +181,7 @@ const Herosection: React.FC = () => {
         {/* Navbar */}
         <div className="relative z-10 flex items-center justify-between -mt-15">
           <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
-           <div className="bg-gradient-to-r from-transparent via-black/20 to-transparent rounded-3xl w-[500px] h-[48px] md:flex hidden items-center justify-center gap-12 text-[18px] text-sm manrope text-white tracking-widest ml-80 mt-4">
+          <div className="bg-gradient-to-r from-transparent via-black/20 to-transparent rounded-3xl w-[500px] h-[48px] md:flex hidden items-center justify-center gap-12 text-[18px] text-sm manrope text-white tracking-widest ml-80 mt-4">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
