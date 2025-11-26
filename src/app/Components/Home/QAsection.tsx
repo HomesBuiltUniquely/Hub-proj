@@ -150,11 +150,11 @@ export function QAsection() {
       <div className='desktop-1920'>
         <div className="min-h-auto bg-[#F1F2F6] mx-auto px-25 mt-15">
           <div className="max-w-full mx-auto">
-            <h1 className="text-5xl sm:text-4xl lg:text-5xl mb-15 sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
+            <h1 className="text-5xl sm:text-4xl lg:text-5xl  text-black wulkan-display-bold text-center tracking-wider">
               Frequently asked questions
             </h1>
 
-            <div className="space-y-4 sm:space-y-6 mt-16 sm:mt-25 manrope-medium">
+            <div className="space-y-4 sm:space-y-6 mt-15 manrope-medium">
               {faqData.map((item, index) => (
                 <div key={index} className="pb-4 sm:pb-6">
                   <div
@@ -198,13 +198,13 @@ export function QAsection() {
       {/* 1280 version */}
 
 
-      <div className="desktop-1280 min-h-auto bg-[#F1F2F6] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-48 pt-8  md:pt-8 md:pb-20">
+      <div className="desktop-1280 min-h-auto bg-[#F1F2F6] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-48  md:pt-5">
         <div className="max-w-screen-xl mx-auto">
-          <h1 className="text-5xl sm:text-4xl lg:text-5xl mb-15 sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
+          <h1 className="text-5xl sm:text-4xl lg:text-5xl  text-black wulkan-display-bold text-center tracking-wider">
             Frequently asked questions
           </h1>
 
-          <div className="space-y-4 sm:space-y-6 mt-16 sm:mt-25 manrope-medium">
+          <div className="space-y-4 sm:space-y-6 mt-12 manrope-medium">
             {faqData.map((item, index) => (
               <div key={index} className="pb-4 sm:pb-6">
                 <div

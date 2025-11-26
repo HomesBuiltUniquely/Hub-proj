@@ -99,7 +99,7 @@ export default function Section7() {
 
 
         {/* 1280 version */}
-        <div className="desktop-1280 hidden md:block max-w-[1280px] mx-15 min-h-[500px] bg-[#F1F2F6]">
+        <div className="desktop-1280 hidden md:block max-w-[1280px] -mt-5 -mb-5 mx-15 min-h-[500px] bg-[#F1F2F6]">
           <div className="w-full h-[410px] rounded-3xl bg-black/5 mx-auto relative overflow-hidden">
             <img src="/HOME-CTA.png" alt="img" className="mx-auto w-full h-[410px] blur-[2px] object-center" />
             <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-35 pl-90 ">

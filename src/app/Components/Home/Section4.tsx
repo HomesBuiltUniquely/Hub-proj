@@ -246,8 +246,9 @@ export default function Section4() {
       </div>
 
 
+      {/* 1280 Version */}
 
-      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-5">
+      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] mt-10 py-10 px-5">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
@@ -277,7 +278,7 @@ export default function Section4() {
           </div>
 
           {/* Testimonial Carousel */}
-          <div className="relative overflow-hidden -mt-10">
+          <div className="relative overflow-hidden -mt-15">
             <div className="flex gap-8 items-center max-w-6xl ">
               {/* Left Side - Image */}
               <div className="w-[500px]">

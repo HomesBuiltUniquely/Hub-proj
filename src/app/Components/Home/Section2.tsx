@@ -329,7 +329,7 @@ export default function Section2() {
 
                 <div className='desktop-1280'>
 
-                    <div className="hidden md:block bg-[#F1F2F6] min-h-[560px] pt-12 pb-8 px-4 mx-auto px-15 max-w-[1280px]">
+                    <div className="hidden md:block bg-[#F1F2F6] min-h-[560px] pb-10 px-4 mx-auto px-15 max-w-[1280px]">
                         <div className="max-w-[1280px] mx-auto">
                             {/* Header */}
                             <div className="flex justify-between items-start mb-10">
@@ -363,7 +363,7 @@ export default function Section2() {
                             {/* Carousel */}
                             <div className="relative">
                                 {/* Controls */}
-                                <div className="flex gap-5 mb-8">
+                                <div className="flex gap-5 mb-5 -mt-4">
                                     <button
                                         onClick={prevSlide}
                                         className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"

@@ -278,9 +278,10 @@ export default function Section6() {
                 </div>
             </div>
 
+
             {/* 1280 Version */}
 
-            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px]  px-6">
+            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-35 px-6">
                 <div className="max-w-6xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">

@@ -371,10 +371,12 @@ export default function Section5() {
                     </div>
                 </div>
 
+                {/* 1280 Version */}
+
                 <div className="desktop-1280">
                     <div className="bg-[#F1F2F6] min-h-[740px] -mt-10 px-15">
                         <div className="max-w-6xl mx-auto">
-                            <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
+                            <h1 className="text-5xl mb-10 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
                             </h1>
 

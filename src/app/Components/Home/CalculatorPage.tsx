@@ -80,7 +80,7 @@ export default function CalculatorPage() {
                 {/* 1440 Version */}
 
                 <div className="desktop-1440 hidden lg:block mb-25">
-                    <h1 className="text-5xl text-center pt-10 manrope">Get A Free Estimate for Your Interiors</h1>
+                    <h1 className="text-5xl text-center pt-5 manrope">Get A Free Estimate for Your Interiors</h1>
                     <div>
                         <div className="w-[500px] h-[500px] border-2 rounded-4xl border-[#ef0101] mt-20 mx-auto">
                             <div className="flex justify-between m-10">
@@ -108,9 +108,9 @@ export default function CalculatorPage() {
 
 
                 <div className="desktop-1280 hidden lg:block">
-                    <h1 className="text-5xl text-center pt-10 manrope">Get A Free Estimate for Your Interiors</h1>
+                    <h1 className="text-5xl text-center pt-10 mb-10 manrope">Get A Free Estimate for Your Interiors</h1>
                     <div>
-                        <div className="w-[500px] h-[500px] border-2 rounded-4xl border-[#ef0101] mt-20 mx-auto">
+                        <div className="w-[500px] h-[500px] border-2 rounded-4xl border-[#ef0101] mt-10 mx-auto">
                             <div className="flex justify-between m-10">
                                 <img src="/calimages.png" alt="calimages" className="w-[120px] h-[120px] mx-auto"></img>
 

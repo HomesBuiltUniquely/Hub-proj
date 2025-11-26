@@ -144,7 +144,7 @@ export default function BrandCarousel() {
 
       {/* 2560 Version */}
       <div className="desktop-2560 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-80">
-        <h2 className="text-center mb-16 text-5xl font-light wulkan-display-bold">Trusted partners</h2>
+        <h2 className="text-center mb-8 text-5xl font-light wulkan-display-bold">Trusted partners</h2>
         <div ref={ref2560} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
           {allLogos.map((logo, idx) => (
             <div key={idx} className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}>
@@ -156,7 +156,7 @@ export default function BrandCarousel() {
 
       {/* 1920 Version */}
       <div className="desktop-1920 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-5 px-20">
-        <h2 className="text-center mb-16 text-5xl font-light wulkan-display-bold">Trusted partners</h2>
+        <h2 className="text-center mb-5 text-5xl font-light wulkan-display-bold">Trusted partners</h2>
         <div ref={ref1920} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
           {allLogos.map((logo, idx) => (
             <div key={idx} className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}>
@@ -168,7 +168,7 @@ export default function BrandCarousel() {
 
       {/* 1280 Version */}
       <div className="desktop-1280 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-15">
-        <h2 className="text-center mb-16 text-5xl font-light wulkan-display-bold">Trusted partners</h2>
+        <h2 className="text-center mb-5 text-5xl font-light wulkan-display-bold">Trusted partners</h2>
         <div ref={ref1280} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
           {allLogos.map((logo, idx) => (
             <div key={idx} className={`inline-flex flex-shrink-0 items-center mx-6 ${brandStyles[logo.alt]}`}>
