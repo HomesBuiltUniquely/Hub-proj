@@ -170,7 +170,7 @@ export default function Section4() {
 
       <div className="desktop-1920 hidden">
 
-        <div className="md:block bg-[#F1F2F6] min-h-[650px] py-10 mx-20">
+        <div className="md:block bg-[#F1F2F6] min-h-[650px] mx-20">
           <div className="w-full mx-auto">
             {/* Header Section */}
             <div className="flex justify-between items-start mb-12">
@@ -200,7 +200,7 @@ export default function Section4() {
             </div>
 
             {/* Testimonial Carousel */}
-            <div className="relative overflow-hidden -mt-10">
+            <div className="relative overflow-hidden -mt-15">
               <div className="flex gap-8 items-center max-w-8xl ">
                 {/* Left Side - Image */}
                 <div className="w-[500px]">
@@ -246,9 +246,10 @@ export default function Section4() {
       </div>
 
 
+      {/* 1280 Version */}
 
-      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-5">
-        <div className="max-w-7xl mx-auto">
+      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] mt-10 py-10 px-5">
+        <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
             <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
@@ -277,8 +278,8 @@ export default function Section4() {
           </div>
 
           {/* Testimonial Carousel */}
-          <div className="relative overflow-hidden -mt-10">
-            <div className="flex gap-8 items-center max-w-7xl ">
+          <div className="relative overflow-hidden -mt-15">
+            <div className="flex gap-8 items-center max-w-6xl ">
               {/* Left Side - Image */}
               <div className="w-[500px]">
                 <div className="relative h-96 rounded-3xl overflow-hidden">

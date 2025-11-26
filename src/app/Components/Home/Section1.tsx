@@ -46,7 +46,7 @@ export default function Section1() {
         <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto manrope-medium">
           HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
         </h1>
-        <div className="bg-[#F1F2F6] w-[1400px] h-auto  grid grid-cols-4 mt-10 gap-20 px-6 -ml-1 2xl:mx-auto">
+        <div className="bg-[#F1F2F6] w-[1250px] h-auto  grid grid-cols-4 mt-10 gap-30 mx-85">
 
           <div className="grid grid-rows-2  mt-10 gap-6">
             <div className="w-[330px] h-[400px] bg-red-500 rounded-3xl">
@@ -99,50 +99,50 @@ export default function Section1() {
       <div className="desktop-1920 hidden md:block mx-20">
 
         <div className="w-full h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10">
-          <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto manrope-medium">
+          <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 manrope-medium">
             HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
           </h1>
-          <div className="bg-[#F1F2F6] w-full h-auto grid grid-cols-4 place-items-center mt-10 gap-10">
+          <div className="bg-[#F1F2F6] w-max-[1920px] h-auto grid grid-cols-4 place-items-center ">
 
-            <div className="grid grid-rows-2  mt-10 gap-6">
-              <div className="w-[300px] h-[400px] bg-red-500 rounded-3xl">
+            <div className="grid grid-rows-2  mt-10 gap-4">
+              <div className="w-[325px] h-[400px] bg-red-500 rounded-3xl">
                 <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img4.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
               </div>
-              <div className="w-[300px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-10 pl-6 mt-3">
+              <div className="w-[325px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-8 pl-6 mt-3">
                 10
                 <h1 className="text-3xl manrope-medium pt-3">Years Warranty</h1>
                 <p className="text-sm manrope-medium pt-2 w-[250px]">Every material we use and every detail we craft comes backed with a 10-year warranty — because timeless interiors deserve timeless trust..</p>
               </div>
             </div>
-            <div className="grid grid-rows-2 gap-40 -mt-25">
-              <div className="w-[300px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-10 pl-6">
+            <div className="grid grid-rows-2 gap-37 -mt-26">
+              <div className="w-[325px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-8 pl-6 ">
                 0%
                 <h1 className="text-3xl manrope-medium pt-3">EMI</h1>
                 <p className="text-sm manrope-medium pt-2 w-[250px]">Bring home the interiors you love with our 0% interest EMI plans — flexible, stress-free, and designed around your comfort.
                 </p>
               </div>
-              <div className="w-[300px] h-[400px] bg-red-500 rounded-3xl -mt-35">
+              <div className="w-[325px] h-[400px] bg-red-500 rounded-3xl -mt-35">
                 <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img5.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
               </div>
             </div>
-            <div className="grid grid-rows-2 mt-10 gap-6">
-              <div className="w-[300px] h-[400px] bg-red-500 rounded-3xl">
+            <div className="grid grid-rows-2 mt-10 gap-4">
+              <div className="w-[325px] h-[400px] bg-red-500 rounded-3xl">
                 <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img6.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
               </div>
-              <div className="w-[300px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-10 pl-6  mt-3">
+              <div className="w-[325px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-8 pl-6   mt-3">
                 Factory
                 <h1 className="text-3xl manrope-medium pt-3">Finish</h1>
                 <p className="text-sm manrope-medium pt-2 w-[250px]">Enjoy flawless factory-finish interiors with premium craftsmanship, seamless edges, and unmatched detailing — all tailored to your home.</p>
               </div>
             </div>
-            <div className="grid grid-rows-2 gap-40 -mt-25">
-              <div className="w-[300px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-10 pl-6">
+            <div className="grid grid-rows-2 gap-37 -mt-26">
+              <div className="w-[325px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-8 pl-6 ">
                 34
                 <h1 className="text-3xl manrope-medium pt-3">Days Delivery</h1>
                 <p className="text-sm manrope-medium pt-2 w-[250px]">Experience thoughtfully designed spaces with our fast-track delivery promise — without compromising on quality, detail, or elegance.
                 </p>
               </div>
-              <div className="w-[300px] h-[400px] bg-red-500 rounded-3xl -mt-35">
+              <div className="w-[325px] h-[400px] bg-red-500 rounded-3xl -mt-35">
                 <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img2.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
               </div>
             </div>
@@ -156,57 +156,57 @@ export default function Section1() {
 
       {/* 1280 veersion */}
 
-      <div className="desktop-1280 w-full max-w-[1280px] h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block">
-        <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto marope-medium">
-          HUB Interior is India’s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
-        </h1>
-        <div className="bg-[#F1F2F6]  w-full h-auto mt-8 ">
-          <div className="grid grid-cols-4 gap-2">
-            <div className="grid grid-rows-2  mt-10 gap-6  mx-auto">
-              <div className="w-[280px] h-[400px] bg-red-500 rounded-3xl">
+      <div className="desktop-1280 w-full max-w-[1240px] h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-15 mx-auto px-5">
+          <h1 className=" text-center w-[1120px] mx-auto text-2xl manrope-medium">
+            HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
+          </h1>
+          <div className="bg-[#F1F2F6] w-full h-auto grid grid-cols-4 place-items-center mt-5">
+
+            <div className="grid grid-rows-2  mt-10 gap-3">
+              <div className="w-[285px] h-[400px] bg-red-500 rounded-3xl">
                 <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img4.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
               </div>
-              <div className="w-[280px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-5 pl-6 mt-3">
+              <div className="w-[285px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-8 pl-3 mt-3">
                 10
                 <h1 className="text-3xl manrope-medium pt-3">Years Warranty</h1>
-                <p className="text-sm manrope-medium pt-2 w-[220px]">Every material we use and every detail we craft comes backed with a 10-year warranty — because timeless interiors deserve timeless trust..</p>
+                <p className="text-sm manrope-medium pt-2 w-[250px]">Every material we use and every detail we craft comes backed with a 10-year warranty — because timeless interiors deserve timeless trust..</p>
               </div>
             </div>
-            <div className="grid grid-rows-2 mt-10  mx-auto">
-              <div className="w-[280px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-6 pl-4">
+            <div className="grid grid-rows-2 gap-36 -mt-26">
+              <div className="w-[285px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope  pt-8 pl-3">
                 0%
-                <h1 className="text-3xl manrope-medium pt-3 pl-1">EMI</h1>
-                <p className="text-sm manrope-medium pt-2 w-[220px]">Bring home the interiors you love with our 0% interest EMI plans — flexible, stress-free, and designed around your comfort.
+                <h1 className="text-3xl manrope-medium pt-3">EMI</h1>
+                <p className="text-sm manrope-medium pt-2 w-[250px]">Bring home the interiors you love with our 0% interest EMI plans — flexible, stress-free, and designed around your comfort.
                 </p>
               </div>
-              <div className="w-[280px] h-[400px] bg-red-500 rounded-3xl -mt-35">
+              <div className="w-[285px] h-[400px] bg-red-500 rounded-3xl -mt-35">
                 <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img5.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
               </div>
             </div>
-            <div className="grid grid-rows-2 mt-10 gap-6  mx-auto">
-              <div className="w-[280px] h-[400px] bg-red-500 rounded-3xl">
+            <div className="grid grid-rows-2 mt-10 gap-3">
+              <div className="w-[285px] h-[400px] bg-red-500 rounded-3xl">
                 <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img6.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
               </div>
-              <div className="w-[280px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-6 pl-6  mt-3">
+              <div className="w-[285px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-8 pl-3  mt-3">
                 Factory
                 <h1 className="text-3xl manrope-medium pt-3">Finish</h1>
-                <p className="text-sm manrope-medium pt-2 w-[220px]">Enjoy flawless factory-finish interiors with premium craftsmanship, seamless edges, and unmatched detailing — all tailored to your home.</p>
+                <p className="text-sm manrope-medium pt-2 w-[250px]">Enjoy flawless factory-finish interiors with premium craftsmanship, seamless edges, and unmatched detailing — all tailored to your home.</p>
               </div>
             </div>
-            <div className="grid grid-rows-2  mt-10  mx-auto">
-              <div className="w-[280px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope pt-6 pl-6">
+            <div className="grid grid-rows-2 gap-36 -mt-26">
+              <div className="w-[285px] h-[250px] bg-[#DDCDC1] rounded-3xl text-5xl manrope  pt-8 pl-3">
                 34
                 <h1 className="text-3xl manrope-medium pt-3">Days Delivery</h1>
-                <p className="text-sm manrope-medium pt-2 w-[220px]">Experience thoughtfully designed spaces with our fast-track delivery promise — without compromising on quality, detail, or elegance.
+                <p className="text-sm manrope-medium pt-2 w-[250px]">Experience thoughtfully designed spaces with our fast-track delivery promise — without compromising on quality, detail, or elegance.
                 </p>
               </div>
-              <div className="w-[280px] h-[400px] bg-red-500 rounded-3xl -mt-35">
+              <div className="w-[285px] h-[400px] bg-red-500 rounded-3xl -mt-35">
                 <Image src="https://yzmnmgrkugecsfnsmhib.supabase.co/storage/v1/object/public/videosmp4/img2.jpg" alt="Section 1" width={330} height={400} className="rounded-3xl h-[410px] object-cover" />
               </div>
             </div>
+
           </div>
         </div>
-      </div>
 
 
 

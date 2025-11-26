@@ -57,7 +57,7 @@ const OverlapNavBar: React.FC = () => {
 
     if (tabId === 'home') router.push('/');
     if (tabId === 'gallery') router.push('/ModularKitchen');
-    if (tabId === 'calculator') router.push('/GetEstimate');
+    if (tabId === 'calculator') router.push('/Calculator');
 
     if (tabId === 'menu') {
       setIsMobileMenuOpen(true); // open menu sheet

@@ -77,6 +77,9 @@ export default function Section3() {
         <div>
             <style jsx>{`
      /* Hide both by default */
+     
+        .ServiceCards-1440,
+        .ServiceCards-1920,
         .desktop-1280,
         .desktop-1920,
         .desktop-2560 {
@@ -106,12 +109,27 @@ export default function Section3() {
           }
         }
 
+        /*only for service card aligment in 1920*/
+          @media (width: 1440px) {
+          .ServiceCards-1440 {
+          display: block !important;
+          }
+          }
+          
+        /*only for service card aligment in 1920  >1440*/
+          @media (min-width: 1441px) and (max-width: 1920px) {
+          .ServiceCards-1920 {
+          display: block !important;
+          }
+          }   
+
+
     `}</style>
 
 
             {/* 2560 Version */}
 
-            <div className="desktop-2560 hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-75">
+            <div className="desktop-2560 hidden lg:block bg-[#F1F2F6] h-auto pt-5 px-75">
                 <div className="max-w-8xl mx-auto">
                     {/* Header Section */}
                     <div className="flex flex-row justify-between items-center mb-12">
@@ -211,8 +229,9 @@ export default function Section3() {
 
             {/* 1920 version */}
 
-            <div className="desktop-1920 hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-20">
-                <div className="max-w-8xl mx-auto">
+            <div className="desktop-1920 bg-[#F1F2F6] hidden lg:block pt-8 pb-20">
+                <div className="max-w-8xl mx-auto px-20">
+
                     {/* Header Section */}
                     <div className="flex flex-row justify-between items-center mb-8">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
@@ -229,9 +248,11 @@ export default function Section3() {
                     </div>
 
                     {/* Carousel Section */}
-                    <div className="relative mt-15 mx-auto w-full ">
+                    <div className="relative mt-15">
+
+
                         {/* Navigation Controls */}
-                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
+                        <div className="absolute left- top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
                             <button
                                 onClick={prevSlide}
                                 className="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors ml-3"
@@ -253,16 +274,17 @@ export default function Section3() {
                             </button>
                         </div>
 
-                        {/* Service Cards */}
-                        <div className="overflow-hidden w-[full] ml-1">
+                        {/* Service Cards 1440 version*/}
+                        <div className="overflow-hidden w-full ServiceCards-1440">
                             <div
                                 className="flex gap-4 transition-transform duration-500 ease-in-out"
                                 style={{
-                                    transform: `translateX(-${currentSlide * (10 / serviceCards.length)}%)`,
+                                    transform: `translateX(-${currentSlide * (0 / serviceCards.length)}%)`,
                                 }}
                             >
                                 {serviceCards.map((service, index) => (
-                                    <div key={index} className="flex-shrink-0 w-110 ">
+                                    <div key={index} className="flex-shrink-0 w-[416px]">
+
                                         <div className={`bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300 h-auto flex flex-col`}>
                                             <div className="relative h-96">
                                                 <img
@@ -285,24 +307,59 @@ export default function Section3() {
                                 ))}
                             </div>
                         </div>
+
+
+                        {/* Service Cards >1440 version*/}
+                        <div className=" overflow-hidden w-full ServiceCards-1920">
+                            <div
+                                className="flex gap-4 transition-transform duration-500 ease-in-out"
+                                style={{
+                                    transform: `translateX(-${currentSlide * (12 / serviceCards.length)}%)`,
+                                }}
+                            >
+                                {serviceCards.map((service, index) => (
+                                    <div key={index} className="flex-shrink-0 w-[442px]">
+
+                                        <div className={`bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300 h-auto flex flex-col`}>
+                                            <div className="relative h-96">
+                                                <img
+                                                    src={service.image}
+                                                    alt={service.title}
+                                                    className="w-full h-full object-center "
+                                                />
+                                            </div>
+                                            <div className="p-8 flex-1 flex flex-col text-center">
+                                                <h3 className="text-xl text-nowrap  text-gray-800 mb-4 manrope ">{service.title}</h3>
+                                                <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
+                                                <a href={service.link} className="mt-auto block">
+                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
+                                                        Request service
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            
+
 
             {/* 1280 version */}
             <div className='desktop-1280'>
 
-                <div className="hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-20 px-2">
+                <div className="hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-10 px-15">
                     <div className="max-w-[1280px] mx-auto">
                         {/* Header Section */}
-                        <div className="flex flex-row justify-between items-center mb-10">
+                        <div className="flex flex-row justify-between items-center mb-5">
                             <h1 className="text-5xl leading-tight wulkan-display-bold text-gray-800 ml-2">
                                 All interior service, one destination
                             </h1>
                             <a href="/GetEstimate">
-                                <button className="bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2 mr-5">
+                                <button className="bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2 ">
                                     Book consultation
                                     <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                         <svg
@@ -324,7 +381,7 @@ export default function Section3() {
                         </div>
 
                         {/* Carousel Section */}
-                        <div className="relative mt-16 mx-auto w-full max-w-[1240px]">
+                        <div className="relative mt-10 mx-auto w-full  max-w-[1150px]">
                             {/* Navigation Controls */}
                             <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 -translate-x-1/2">
                                 <button
@@ -369,7 +426,7 @@ export default function Section3() {
                             </div>
 
                             {/* Service Cards */}
-                            <div className="overflow-hidden w-[1240px] mx-auto relative">
+                            <div className="overflow-hidden w-[1150px] mx-auto ml-1 relative">
 
                                 <div
                                     className="flex gap-4 transition-transform duration-500 ease-in-out"
@@ -383,9 +440,9 @@ export default function Section3() {
 
                                 >
                                     {serviceCards.map((service, index) => (
-                                        <div key={index} className="flex-shrink-0 w-[400px] ml-1">
-                                            <div className="bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300  flex flex-col h-[650px]">
-                                                <div className="relative h-[360px]">
+                                        <div key={index} className="flex-shrink-0 w-[370px] ">
+                                            <div className="bg-white rounded-3xl overflow-hidden hover:shadow-xl duration-300  flex flex-col h-[620px]">
+                                                <div className="relative h-[320px]">
                                                     <img
                                                         src={service.image}
                                                         alt={service.title}
@@ -400,7 +457,7 @@ export default function Section3() {
                                                         {service.description}
                                                     </p>
                                                     <a href={service.link} className="mt-auto block">
-                                                        <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope-medium">
+                                                        <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                                             Request service
                                                         </button>
                                                     </a>

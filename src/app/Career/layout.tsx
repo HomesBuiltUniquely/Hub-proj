@@ -1,7 +1,7 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../../app/globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -12,28 +12,28 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin"], 
 });
 
 // ✅ Separate viewport export (only here — NOT inside metadata)
 export const viewport: Viewport = {
   width: "device-width",
-  initialScale: 1, 
+  initialScale: 1,
   maximumScale: 1,
 };
 
 // ✅ Clean metadata without viewport
 export const metadata: Metadata = {
-  title: "HUB Interior | Interior Designers in Bangalore | 34 Days Interiors",
+  title: "Shape Spaces. Shape Your Career. | HUB Interior Jobs",
   description:
-    "Explore complete home interiors, modular interior designs, and customized solutions in Bangalore. Expert designers, smooth execution, and trusted quality throughout.",
-  keywords: ["Bangalore Interior Designer", "Interior Design", "Home Interior Designer", "Villa Interior", "Best Interior Design", "modern interior design", "HUB Interior"],
+    "Turn passion into profession at HUB Interior. Explore open roles and grow with a brand that celebrates creativity, innovation and the art of shaping modern homes.",
+  keywords: ["HUB Interior careers", "jobs Bengaluru", "interior design careers", "design career opportunities", "HUB Interior hiring"],
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
   openGraph: {
     title: "HUB Interior",
-    description: "Explore complete home interiors, modular interior designs, and customized solutions in Bangalore. Expert designers, smooth execution, and trusted quality throughout.",
+    description: "Turn passion into profession at HUB Interior. Explore open roles and grow with a brand that celebrates creativity, innovation and the art of shaping modern homes.",
     url: "https://hubinterior.com",
     siteName: "HUB Interior",
     images: [
@@ -82,11 +82,11 @@ export default function RootLayout({
             fbq('track', 'PageView');`}
         </Script>
 
-        <Script 
-      id="whatsapp-conditional"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
+        <Script
+          id="whatsapp-conditional"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
           if (typeof window !== 'undefined') {
             const currentPath = window.location.pathname;
             const hideWhatsAppPaths = [
@@ -122,9 +122,9 @@ export default function RootLayout({
           }
 
         `
-      }}
-    />
-   
+          }}
+        />
+
 
         <noscript>
           <img
@@ -162,7 +162,7 @@ export default function RootLayout({
         {/* Vercel Analytics */}
         <Analytics />
       </body>
-      
+
     </html>
   );
 }

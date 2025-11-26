@@ -1,4 +1,5 @@
 import BrandCarousel from "./Components/Home/BrandCarosel";
+import CalculatorPage from "./Components/Home/CalculatorPage";
 import Footer from "./Components/Home/Footer";
 import Herosection from "./Components/Home/Herosection";
 import { QAsection } from "./Components/Home/QAsection";
@@ -21,6 +22,7 @@ export default function Home() {
       <Section1 />
       <Section2 />
       <Section3 />
+      <CalculatorPage />
       <Section4 />
       <Section5 />
       <Section6 />

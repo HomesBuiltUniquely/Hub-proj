@@ -1,7 +1,7 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../../app/globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -18,22 +18,22 @@ const geistMono = Geist_Mono({
 // ✅ Separate viewport export (only here — NOT inside metadata)
 export const viewport: Viewport = {
   width: "device-width",
-  initialScale: 1, 
+  initialScale: 1,
   maximumScale: 1,
 };
 
-// ✅ Clean metadata without viewport
+// ✅ Clean metadata without viewport 
 export const metadata: Metadata = {
-  title: "HUB Interior | Interior Designers in Bangalore | 34 Days Interiors",
+  title: "2000+ Modular Kitchen Interior Design in Bangalore",
   description:
-    "Explore complete home interiors, modular interior designs, and customized solutions in Bangalore. Expert designers, smooth execution, and trusted quality throughout.",
-  keywords: ["Bangalore Interior Designer", "Interior Design", "Home Interior Designer", "Villa Interior", "Best Interior Design", "modern interior design", "HUB Interior"],
+    "Explore the HUB Interior range for modular kitchen Interior solutions. Find innovative modular kitchen designs for a stylish and functional kitchen.",
+  keywords: ["modular kitchen designs Bangalore", "modern modular kitchen", "customized kitchen Interiors", "modular kitchen interiors", "HUB Interior", "kitchen design Bangalore"],
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
   openGraph: {
     title: "HUB Interior",
-    description: "Explore complete home interiors, modular interior designs, and customized solutions in Bangalore. Expert designers, smooth execution, and trusted quality throughout.",
+    description: "Explore the HUB Interior range for modular kitchen Interior solutions. Find innovative modular kitchen designs for a stylish and functional kitchen.",
     url: "https://hubinterior.com",
     siteName: "HUB Interior",
     images: [

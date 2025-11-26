@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <div>
             {/* 3xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-3xl-container hidden 3xl:block">
+            <div className="aboutus-footer-3xl-container hidden 3xl:block mb-2">
                 <div className="w-full h-auto min-h-[600px] px-20">
                     <div className="max-w-7xl mx-auto">
                         <div className="w-full h-auto min-h-[500px] bg-[#32261c] mt-20 rounded-2xl p-12">
@@ -87,7 +87,7 @@ export default function Footer() {
             </div>
 
             {/* 2xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-2xl-section hidden 2xl:block 3xl:hidden">
+            <div className="aboutus-footer-2xl-section hidden 2xl:block 3xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[580px] px-5">
                     <div className="max-w-8xl mx-auto">
                         <div className="w-full h-auto min-h-[480px] bg-[#32261c] mt-20 rounded-2xl p-12">
@@ -127,17 +127,17 @@ export default function Footer() {
                                 <div className="mt-15 mr-10">
                                     <h1 className="text-[16px] manrope  mb-6">Explore Room</h1>
                                     <div className="space-y-3">
-                                          <Link href="/ModularKitchen"> <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer ">Modular Kitchen</p></Link>
-                                          <Link href="/Bedroom">        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></Link>
-                                          <Link href="/LivingRoom">     <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Living Room</p></Link>
-                                          <Link href="/KidsRoom">       <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Kids Room</p></Link>
-                                          <Link href="/PoojaUnit">      <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Pooja Unit</p></Link>
-                                          <Link href="/TvUnit">         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></Link>
-                                          <Link href="/Wardrobe">       <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></Link>
-                                          <Link href="/DiningSpace">    <p className="text-[14px] manrope-medium hover:text-[#ebd657] ansition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></Link>
-                                          <Link href="/FalseCeiling">   <p className="text-[14px] manrope-mediu hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">False Ceiling Design</p></Link>
-                                          <Link href="/WallInterior">   <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></Link>
-                                          <Link href="/StudyRoom">      <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></Link>
+                                        <Link href="/ModularKitchen"> <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer ">Modular Kitchen</p></Link>
+                                        <Link href="/Bedroom">        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></Link>
+                                        <Link href="/LivingRoom">     <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Living Room</p></Link>
+                                        <Link href="/KidsRoom">       <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Kids Room</p></Link>
+                                        <Link href="/PoojaUnit">      <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Pooja Unit</p></Link>
+                                        <Link href="/TvUnit">         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></Link>
+                                        <Link href="/Wardrobe">       <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></Link>
+                                        <Link href="/DiningSpace">    <p className="text-[14px] manrope-medium hover:text-[#ebd657] ansition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></Link>
+                                        <Link href="/FalseCeiling">   <p className="text-[14px] manrope-mediu hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">False Ceiling Design</p></Link>
+                                        <Link href="/WallInterior">   <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></Link>
+                                        <Link href="/StudyRoom">      <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></Link>
                                         <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bar Unit Design</p></Link>
                                         <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Flooring Design</p></Link>
                                         <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bathroom Design</p></Link>
@@ -171,7 +171,7 @@ export default function Footer() {
             </div>
 
             {/* xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-xl-section hidden xl:block 2xl:hidden">
+            <div className="aboutus-footer-xl-section hidden xl:block 2xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[550px] px-6">
                     <div className="max-w-8xl mx-auto">
                         <div className="w-full h-auto min-h-[450px] bg-[#32261c] mt-18 rounded-2xl px-10 py-12">
@@ -254,10 +254,10 @@ export default function Footer() {
             </div>
 
             {/* lg Footer - Tailwind Classes */}
-            <div className="aboutus-footer-lg-section hidden lg:block xl:hidden">
+            <div className="aboutus-footer-lg-section hidden lg:block xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[500px] px-8">
                     <div className="max-w-6xl mx-auto">
-                        <div className="w-full h-auto min-h-[400px] bg-amber-950 mt-16 rounded-2xl p-10">
+                        <div className="w-full h-auto min-h-[400px] bg-[#32261c] mt-16 rounded-2xl p-10">
                             <div className="flex flex-row text-white gap-16 justify-center">
                                 {/* Company Section */}
                                 <div className="mt-12">
@@ -300,9 +300,9 @@ export default function Footer() {
                                         <a href="/TvUnit"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">TV Unit</p></a>
                                         <a href="/Wardrobe"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wardrobe Design</p></a>
                                         <a href="/DiningSpace"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Dining Room Design</p></a>
-                                        
-                                        
-                                        
+
+
+
                                         <a href="/FalseCeiling"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3 ">False Ceiling Design</p></a>
                                         <a href="/WallInterior"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Wall Decor Design</p></a>
                                         <a href="/StudyRoom"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Study Room Design</p></a>
@@ -328,10 +328,10 @@ export default function Footer() {
             </div>
 
             {/* md Footer - Tailwind Classes */}
-            <div className="aboutus-footer-md-section hidden md:block lg:hidden">
+            <div className="aboutus-footer-md-section hidden md:block lg:hidden mb-2">
                 <div className="w-full h-auto min-h-[450px] px-6">
                     <div className="max-w-5xl mx-auto">
-                        <div className="w-full h-auto min-h-[350px] bg-amber-950 mt-12 rounded-2xl p-8">
+                        <div className="w-full h-auto min-h-[350px] bg-[#32261c] mt-12 rounded-2xl p-8">
                             <div className="flex flex-col md:flex-row text-white gap-12 justify-center">
                                 {/* Company Section */}
                                 <div className="mt-10">
@@ -431,18 +431,18 @@ export default function Footer() {
                                 <div className="space-y-2">
                                     <Link href="/ModularKitchen"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Modular Kitchen</p></Link>
                                     <Link href="/Bedroom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bedroom</p></Link>
-                                   <Link href="/LivingRoom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Living Room</p></Link>
-                                   <Link href="/KidsRoom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Kids Room</p></Link>
-                                  <Link href="/PoojaUnit"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Pooja Unit</p></Link>
-                                  <Link href="/TvUnit"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">TV Unit</p></Link>
-                                 <Link href="/Wardrobe"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Wardrobe Design</p></Link>
-                                 <Link href="/DiningSpace"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Dining Room Design</p></Link>
-                                  <Link href="/FalseCeiling"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">False Ceiling Design</p></Link>
-                                  <Link href="/WallInterior"> <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Wall Decor Design</p></Link>
-                                  <Link href="/StudyRoom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Study Room Design</p></Link>
-                                   <Link href="/"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bar Unit Design</p></Link>
-                                   <Link href="/">  <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Flooring Design</p></Link>
-                                  <Link href="/"> <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bathroom Design</p></Link>
+                                    <Link href="/LivingRoom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Living Room</p></Link>
+                                    <Link href="/KidsRoom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Kids Room</p></Link>
+                                    <Link href="/PoojaUnit"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Pooja Unit</p></Link>
+                                    <Link href="/TvUnit"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">TV Unit</p></Link>
+                                    <Link href="/Wardrobe"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Wardrobe Design</p></Link>
+                                    <Link href="/DiningSpace"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Dining Room Design</p></Link>
+                                    <Link href="/FalseCeiling"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">False Ceiling Design</p></Link>
+                                    <Link href="/WallInterior"> <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Wall Decor Design</p></Link>
+                                    <Link href="/StudyRoom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Study Room Design</p></Link>
+                                    <Link href="/"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bar Unit Design</p></Link>
+                                    <Link href="/">  <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Flooring Design</p></Link>
+                                    <Link href="/"> <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bathroom Design</p></Link>
                                 </div>
                             </div>
 
