@@ -20,10 +20,10 @@ type Step = {
     icon: string;
 };
 
-type DesktopLayoutProps = {
-    activeStep: number;
-    steps: Step[];
-};
+// type DesktopLayoutProps = {
+//     activeStep: number;
+//     steps: Step[];
+// };
 
 type MobileLayoutProps = {
     steps: Step[];

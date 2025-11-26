@@ -30,7 +30,7 @@ export default function HeroSections() {
   const [selectedPincode, setSelectedPincode] = useState("");
   const [whatsappConsent, setWhatsappConsent] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [isVerified, setIsVerified] = useState(false);
+  // const [isVerified, setIsVerified] = useState(false);
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otp, setOtp] = useState('');
   const [verificationStatus, setVerificationStatus] = useState('');
