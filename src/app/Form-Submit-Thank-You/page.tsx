@@ -132,7 +132,7 @@ export default function ThankUPage() {
           </div>
           
           {/* Main Message */}
-          <div className="absolute top-72 md:top-96 lg:top-104 left-1/2 transform -translate-x-1/2 max-w-4xl px-8">
+          <div className="absolute top-72 md:top-96 lg:top-104 left-1/2  transform -translate-x-1/2 max-w-4xl px-8">
             <div className="text-base md:text-lg lg:text-xl text-center manrope-medium text-gray-700">
               Your appointment is confirmed! Our talented Interior Designer will contact you shortly to
               <br className="hidden md:block" />
@@ -142,7 +142,7 @@ export default function ThankUPage() {
           
           {/* User Data Display - Desktop */}
           {(userData.email || userData.phone) && (
-            <div className="absolute top-80 md:top-112 lg:top-120 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg max-w-md w-full mx-4">
+            <div className="absolute top-90 md:top-112 lg:top-120 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg max-w-md w-full mx-4">
               <h3 className="text-lg font-semibold text-gray-800 mb-3 text-center">Appointment Details:</h3>
               {userData.name && <p id="desktop-name" className="text-gray-700 mb-2 text-center"><span className="font-medium">Name:</span> <span id="user-name">{userData.name}</span></p>}
               {userData.email && <p id="desktop-email" className="text-gray-700 mb-2 text-center"><span className="font-medium">Email:</span> <span id="user-email">{userData.email}</span></p>}
@@ -151,7 +151,7 @@ export default function ThankUPage() {
           )}
           
           {/* Contact Info Bar */}
-          <div className="absolute bottom-20 md:bottom-32 lg:bottom-40 left-1/2 transform -translate-x-1/2 bg-[#ef0101] rounded-3xl shadow-lg">
+          <div className="absolute bottom-60 left-1/2 transform -translate-x-1/2 bg-[#ef0101] rounded-3xl shadow-lg mt-20">
             <div className="flex flex-col md:flex-row justify-between items-center p-4 md:p-6 gap-4 md:gap-8 text-white manrope-medium">
               <div className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6">
@@ -169,6 +169,7 @@ export default function ThankUPage() {
           </div>
         </div>
       </div>
+
       {/* Mobile Layout */}
       <div className="block md:hidden">
         <div className="min-h-screen bg-[#f1f2f6] px-4 py-8">
