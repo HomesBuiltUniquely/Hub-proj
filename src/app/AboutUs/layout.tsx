@@ -1,13 +1,13 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../../app/globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin"], 
 });
 
 const geistMono = Geist_Mono({
@@ -24,16 +24,16 @@ export const viewport: Viewport = {
 
 // ✅ Clean metadata without viewport
 export const metadata: Metadata = {
-  title: "HUB Interior_Home",
+  title: "HUB Interior | India’s Most Innovative Interior Design Company",
   description:
-    "HUB Interior offers uniquely built homes with elegant designs and functionality.",
-  keywords: ["Interior Design", "HUB Interior", "Home Design", "Architecture", "Custom Homes"],
+    "Learn how HUB Interior leads India with tailor-made modular and luxury interiors designed around lifestyle and profession, supported by a strong brand ecosystem built on innovation.",
+  keywords: ["HUB Interior", "innovative interior design", "modular interiors India", "luxury interiors", "Homes Under Budget", "Hubsolute", "Affices", "Home & Merry"],
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
   openGraph: {
     title: "HUB Interior",
-    description: "Homes uniquely built with elegance and purpose.",
+    description: "Learn how HUB Interior leads India with tailor-made modular and luxury interiors designed around lifestyle and profession, supported by a strong brand ecosystem built on innovation.",
     url: "https://hubinterior.com",
     siteName: "HUB Interior",
     images: [

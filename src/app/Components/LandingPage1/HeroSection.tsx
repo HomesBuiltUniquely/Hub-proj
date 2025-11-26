@@ -77,8 +77,14 @@ export default function HeroSections() {
     return () => clearInterval(interval);
   }, []);
 
-  const cityRef = useRef<HTMLDivElement>(null);
-  const budgetRef = useRef<HTMLDivElement>(null);
+// Refs for 1440 version
+const cityRef1440 = useRef<HTMLDivElement>(null);
+const budgetRef1440 = useRef<HTMLDivElement>(null);
+
+// Refs for 1280 version
+const cityRef1280 = useRef<HTMLDivElement>(null);
+const budgetRef1280 = useRef<HTMLDivElement>(null);
+
 
   const handleCitySelect = (value: string) => {
     console.log('City selected:', value);
@@ -92,22 +98,6 @@ export default function HeroSections() {
     setTimeout(() => setBudgetOpen(false), 100);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      setTimeout(() => {
-        if (cityRef.current && !cityRef.current.contains(event.target as Node)) {
-          setCityOpen(false);
-        }
-        if (budgetRef.current && !budgetRef.current.contains(event.target as Node)) {
-          setBudgetOpen(false);
-        }
-      }, 10);
-    };
-    if (typeof window !== 'undefined') {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -133,23 +123,26 @@ export default function HeroSections() {
     setOtp('');
     setIsVerified(false);
   };
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as Node;
 
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    const clickedInsideCity =
+      (cityRef1440.current && cityRef1440.current.contains(target)) ||
+      (cityRef1280.current && cityRef1280.current.contains(target));
 
-    if (verificationStatus === 'Unverified User' && !isVerified && !isOtpVerifying) {
-      timeoutId = setTimeout(async () => {
-        console.log('Auto-closing modal and submitting as unverified after timeout');
-        await handleModalClose();
-      }, 300000); // 5 minutes
-    }
+    const clickedInsideBudget =
+      (budgetRef1440.current && budgetRef1440.current.contains(target)) ||
+      (budgetRef1280.current && budgetRef1280.current.contains(target));
 
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
-  }, [verificationStatus, isVerified, isOtpVerifying]);
+    if (!clickedInsideCity) setCityOpen(false);
+    if (!clickedInsideBudget) setBudgetOpen(false);
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => document.removeEventListener("mousedown", handleClickOutside);
+}, []);
+
 
   const handleOtpSubmit = async () => {
     if (!otp || otp.length !== 6) {
@@ -806,7 +799,8 @@ export default function HeroSections() {
                   {/* Desktop Custom Dropdowns */}
                   <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 space-y-4 sm:space-y-6">
                     {/* City Dropdown */}
-                    <div ref={cityRef}>
+                    <div ref={cityRef1440}>
+
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
@@ -835,7 +829,8 @@ export default function HeroSections() {
                     </div>
 
                     {/* Budget Dropdown */}
-                    <div ref={budgetRef}>
+                    <div ref={budgetRef1440}>
+
                       <div
                         onClick={() => {
                           setBudgetOpen(!budgetOpen);
@@ -1002,7 +997,7 @@ export default function HeroSections() {
                   <div className="relative w-full mx-auto mt-6 space-y-6">
 
                     {/* City Dropdown */}
-                    <div ref={cityRef} className="relative">
+                    <div ref={cityRef1280} className="relative">
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
@@ -1030,7 +1025,7 @@ export default function HeroSections() {
                     </div>
 
                     {/* Budget Dropdown */}
-                    <div ref={budgetRef} className="relative">
+                    <div ref={budgetRef1280} className="relative">
                       <div
                         onClick={() => {
                           setBudgetOpen(!budgetOpen);

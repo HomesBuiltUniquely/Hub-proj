@@ -12,7 +12,7 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"], 
+  subsets: ["latin"],
 });
 
 // ✅ Separate viewport export (only here — NOT inside metadata)
@@ -22,18 +22,18 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-// ✅ Clean metadata without viewport
+// ✅ Clean metadata without viewport 
 export const metadata: Metadata = {
-  title: "HUB Interior Blog | Design Ideas, Tips & Home Inspiration",
+  title: "2000+ Modular Kitchen Interior Design in Bangalore",
   description:
-    "Explore design ideas, expert tips, project stories and home styling guides from HUB Interior. Find inspiration, smart solutions and creative insights for modern homes.",
-  keywords: ["HUB Interior blog", "interior design tips", "home interior ideas", "interior design guides", "home styling inspiration", "interior ideas Bangalore", "HUB Interior articles" ],
+    "Explore the HUB Interior range for modular kitchen Interior solutions. Find innovative modular kitchen designs for a stylish and functional kitchen.",
+  keywords: ["modular kitchen designs Bangalore", "modern modular kitchen", "customized kitchen Interiors", "modular kitchen interiors", "HUB Interior", "kitchen design Bangalore"],
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
   openGraph: {
     title: "HUB Interior",
-    description: "Explore design ideas, expert tips, project stories and home styling guides from HUB Interior. Find inspiration, smart solutions and creative insights for modern homes.",
+    description: "Explore the HUB Interior range for modular kitchen Interior solutions. Find innovative modular kitchen designs for a stylish and functional kitchen.",
     url: "https://hubinterior.com",
     siteName: "HUB Interior",
     images: [

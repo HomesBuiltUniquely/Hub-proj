@@ -6,13 +6,13 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-geist-sans", 
   subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"], 
+  subsets: ["latin"],
 });
 
 // ✅ Separate viewport export (only here — NOT inside metadata)
@@ -24,16 +24,16 @@ export const viewport: Viewport = {
 
 // ✅ Clean metadata without viewport
 export const metadata: Metadata = {
-  title: "HUB Interior Blog | Design Ideas, Tips & Home Inspiration",
+  title: "Bedroom Interior Designs in Bangalore | HUB Interior",
   description:
-    "Explore design ideas, expert tips, project stories and home styling guides from HUB Interior. Find inspiration, smart solutions and creative insights for modern homes.",
-  keywords: ["HUB Interior blog", "interior design tips", "home interior ideas", "interior design guides", "home styling inspiration", "interior ideas Bangalore", "HUB Interior articles" ],
+    "Modern bedroom interior designs crafted for comfort, style and personalized living. HUB Interior delivers custom layouts, smart storage and elegant detailing in Bangalore.",
+  keywords: ["bedroom interior designs", "bedroom interiors Bangalore", "modern bedroom design", "custom bedroom interiors", "wardrobes Bangalore", "HUB Interior bedroom designs"],
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
   openGraph: {
     title: "HUB Interior",
-    description: "Explore design ideas, expert tips, project stories and home styling guides from HUB Interior. Find inspiration, smart solutions and creative insights for modern homes.",
+    description: "Modern bedroom interior designs crafted for comfort, style and personalized living. HUB Interior delivers custom layouts, smart storage and elegant detailing in Bangalore.",
     url: "https://hubinterior.com",
     siteName: "HUB Interior",
     images: [

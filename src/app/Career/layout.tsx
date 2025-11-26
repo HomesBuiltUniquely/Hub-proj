@@ -1,7 +1,7 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../../app/globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -12,7 +12,7 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin"], 
 });
 
 // ✅ Separate viewport export (only here — NOT inside metadata)
@@ -82,11 +82,11 @@ export default function RootLayout({
             fbq('track', 'PageView');`}
         </Script>
 
-        <Script 
-      id="whatsapp-conditional"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
+        <Script
+          id="whatsapp-conditional"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
           if (typeof window !== 'undefined') {
             const currentPath = window.location.pathname;
             const hideWhatsAppPaths = [
@@ -122,9 +122,9 @@ export default function RootLayout({
           }
 
         `
-      }}
-    />
-   
+          }}
+        />
+
 
         <noscript>
           <img
@@ -162,7 +162,7 @@ export default function RootLayout({
         {/* Vercel Analytics */}
         <Analytics />
       </body>
-      
+
     </html>
   );
 }

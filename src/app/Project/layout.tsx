@@ -12,7 +12,7 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"], 
+  subsets: ["latin"],
 });
 
 // ✅ Separate viewport export (only here — NOT inside metadata)
@@ -22,18 +22,18 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-// ✅ Clean metadata without viewport
+// ✅ Clean metadata without viewport 
 export const metadata: Metadata = {
-  title: "HUB Interior Blog | Design Ideas, Tips & Home Inspiration",
+  title: "HUB Interior Projects | Completed Home Interior Designs",
   description:
-    "Explore design ideas, expert tips, project stories and home styling guides from HUB Interior. Find inspiration, smart solutions and creative insights for modern homes.",
-  keywords: ["HUB Interior blog", "interior design tips", "home interior ideas", "interior design guides", "home styling inspiration", "interior ideas Bangalore", "HUB Interior articles" ],
+    "Explore HUB Interior’s project portfolio, featuring bespoke home interiors, modular designs, and personalized spaces crafted in Bangalore with thoughtful detailing and expert execution.",
+  keywords: ["HUB Interior projects", "interior design portfolio", "home interior projects Bangalore", "modular interior designs", "completed interiors", "HUB portfolio"],
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
   openGraph: {
     title: "HUB Interior",
-    description: "Explore design ideas, expert tips, project stories and home styling guides from HUB Interior. Find inspiration, smart solutions and creative insights for modern homes.",
+    description: "Explore HUB Interior’s project portfolio, featuring bespoke home interiors, modular designs, and personalized spaces crafted in Bangalore with thoughtful detailing and expert execution.",
     url: "https://hubinterior.com",
     siteName: "HUB Interior",
     images: [
