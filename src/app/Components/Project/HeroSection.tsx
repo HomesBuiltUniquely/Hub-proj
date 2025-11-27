@@ -44,7 +44,6 @@ const ContactHeader: React.FC = () => {
   ];
 
 
-
   // Auto-slide effect
   useEffect(() => {
     const interval = setInterval(() => {
@@ -136,25 +135,10 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-              Bedroom interior design
-            </h1>
-
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-              Any questions you have can be resolved here.
-
-            </p>
-
-            <div className="flex gap-4">
-              <button
-                onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
-              >
-                Get Free Quote
-              </button>
+         <div className="flex w-[600px] flex-col items-center justify-center pt-100 pb-20 text-white text-center pr-35">
+              <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
+              <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
             </div>
-          </div>
 
         </div>
         <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
@@ -198,25 +182,10 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-100 ml-15">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-              Bedroom interior design
-            </h1>
-
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-              Any questions you have can be resolved here.
-
-            </p>
-
-            <div className="flex gap-4">
-              <button
-                onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
-              >
-                Get Free Quote
-              </button>
+         <div className="flex w-[600px] flex-col items-center justify-center pt-100 pb-20 text-white text-center pr-35">
+              <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
+              <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
             </div>
-          </div>
 
         </div>
       
@@ -272,7 +241,7 @@ const ContactHeader: React.FC = () => {
               <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
             </div>
             {/* Hero content */}
-            <div className="flex w-[600px] flex-col items-center justify-center pt-45 pb-20 text-white text-center pr-35">
+            <div className="flex w-[600px] flex-col items-center justify-center pt-100 pb-20 text-white text-center pr-35">
               <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
               <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
             </div>
@@ -291,7 +260,7 @@ const ContactHeader: React.FC = () => {
 
             <img
               className="w-full max-w-[425px] h-[full] rounded-4xl relative mt- mx-auto"
-              src={`https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/ProjMH${currentSlide + 1}.png`}
+              src={`https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Projm${currentSlide + 1}.png`}
             />
 
 
@@ -307,11 +276,11 @@ const ContactHeader: React.FC = () => {
             </div>
 
             {/* Overlay text + CTA */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 mt-50">
-              <h2 className="manrope text-2xl sm:text-3xl  text-white leading-tight">
+            <div className="absolute inset-0 flex flex-col text-left px-4 mt-85">
+              <h2 className="wulkan-display-bold text-3xl   text-white leading-tight">
                 HUB Interior Portfolio
               </h2>
-              <p className="manrope-medium text-sm sm:text-md text-white mt-3 mb-4 drop-shadow-lg max-w-[90%]">
+              <p className="manrope-medium text-md sm:text-md text-white mb-4 drop-shadow-lg max-w-[90%]">
                 Elegant, Functional & Timeless Designs
               </p>
 
