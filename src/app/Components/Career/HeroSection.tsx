@@ -157,7 +157,7 @@ const ContactHeader: React.FC = () => {
 
             {/* Overlay text + CTA */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3">
-              <div className="flex flex-col text-left items-center  pt-24 pb-20 text-white text-center mt-15">
+              <div className="flex flex-col text-left items-center  mt-54 pb-20 text-white text-center mt-15">
                 <h1 className="text-3xl wulkan-display mb-1 tracking-wide mr-48">Together,</h1>
                 <p className="text-3xl text-nowrap manrope-medium mb-3 mr-23">We Build Better.</p>
                 <div className="w-[330px] ml-5 manrope-medium">Be part of a culture that values innovation, growth, and the power of good design.</div>

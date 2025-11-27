@@ -48,7 +48,7 @@ export default function Section9() {
       <section className="aboutus-section9-3xl-container hidden">
         <div className="aboutus-section9-3xl-content">
           <div className="aboutus-section9-3xl-layout">
-            <div className="aboutus-section9-3xl-title manrope">Core Members</div>
+            <div className="aboutus-section9-3xl-title wulkan-display-bold">Core Members</div>
 
             {/* Carousel Container - 3XL optimized */}
             <div className="aboutus-section9-3xl-carousel">
@@ -108,7 +108,7 @@ export default function Section9() {
       {/* 2XL Screen - Large displays */}
       <section className="desktop-1440 hidden 2xl:block 3xl:hidden">
         <div className="w-screen h-[850px] relative overflow-hidden bg-white">
-          <div className="text-6xl manrope pt-20 pl-16">Core Members</div>
+          <div className="text-6xl wulkan-display-bold pt-20 pl-16">Core Members</div>
 
           {/* Carousel Container - 2XL optimized */}
           <div className="relative w-full h-[70vh] mt-10 px-16">
@@ -164,7 +164,7 @@ export default function Section9() {
       {/* XL Screen - Extra large displays */}
       <section className="desktop-1280 hidden 2xl:block 3xl:hidden">
         <div className="w-screen h-[850px] relative overflow-hidden bg-white">
-          <div className="text-5xl manrope pt-20 pl-16">Core Members</div>
+          <div className="text-5xl wulkan-display-bold pt-20 pl-16">Core Members</div>
 
           {/* Carousel Container - 2XL optimized */}
           <div className="relative w-full h-[70vh] mt-10 px-16">
@@ -220,7 +220,7 @@ export default function Section9() {
       {/* LG Screen - Large displays */}
       <section className="hidden lg:block xl:hidden">
         <div className="w-screen h-screen relative overflow-hidden">
-          <div className="text-4xl manrope pt-16 pl-8">Core Members</div>
+          <div className="text-4xl wulkan-display-bold pt-16 pl-8">Core Members</div>
 
           {/* Carousel Container - LG optimized */}
           <div className="relative w-full h-[70vh] mt-16 px-8">
@@ -270,7 +270,7 @@ export default function Section9() {
       {/* MD Screen - Medium displays */}
       <section className="hidden md:block lg:hidden">
         <div className="w-screen h-screen relative overflow-hidden">
-          <div className="text-3xl manrope pt-12 pl-6">Core Members</div>
+          <div className="text-3xl wulkan-display-bold pt-12 pl-6">Core Members</div>
 
           {/* Carousel Container - MD optimized */}
           <div className="relative w-full h-[70vh] mt-12 px-6">
@@ -318,18 +318,18 @@ export default function Section9() {
       </section>
 
       {/* SM Screen - Small displays and mobile */}
-      
+
       <section className="block md:hidden w-full max-w-[425px] px-4 mx-auto mb-10">
         <div className="flex items-start">
           {/* Yellow Line */}
-          
+
 
           <div className="w-full">
-              <div className='bg-[#ebd657] w-[3px] h-10 mb-13'>
-            <h1 className="text-3xl manrope font-bold ml-3">
-              Core <div>Members</div>
-            </h1>
-</div>
+            <div className='bg-[#ebd657] w-[3px] h-10 mb-13'>
+              <h1 className="text-3xl text-nowrap wulkan-display-bold  ml-3">
+                Core members
+              </h1>
+            </div>
             {/* Member 1 */}
             <div>
               <img src="/r.png" alt="Ranjith" className="rounded-3xl mt-5 w-full object-cover" />

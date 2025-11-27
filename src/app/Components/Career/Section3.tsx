@@ -332,10 +332,10 @@ const JoinUsPage: React.FC = () => {
           <div className="mx-auto ">
             <div className="flex mr-1 items-start">
               <div className="w-[2px] h-[78px] bg-amber-300 mb-3 ml-2"></div>
-              <h1 className="text-3xl  manrope mb-5 ml-3 text-gray-800 w-[250px]">Ready to <div>join us?</div></h1>
+              <h1 className="text-3xl  wulkan-display-bold mb-5 ml-3 text-gray-800 w-[250px]">Ready to <div>join us?</div></h1>
             </div>
             <p className="text-gray-500 w-[275px] text-sm ml-4 manrope-medium mb-8">
-              Fill out your destails and lets&#35;s create beautiful spaces-together
+              Fill out your destails and lets&#39;s create beautiful spaces-together
             </p>
           </div>
 

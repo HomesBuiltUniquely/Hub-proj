@@ -101,11 +101,11 @@ const Section5 = () => {
           <div className="aboutus-section5-3xl-layout">
             {/* Header Section */}
             <div className="aboutus-section5-3xl-header">
-              <h2 className="aboutus-section5-3xl-title manrope">
-                Journey So Far
+              <h2 className="aboutus-section5-3xl-title wulkan-display-bold">
+                Journey so far
               </h2>
               <p className="aboutus-section5-3xl-subtitle manrope-medium">
-                The Path We&#39;ve Paved!
+                The path we&#39;ve paved!
               </p>
             </div>
 
@@ -155,11 +155,11 @@ const Section5 = () => {
           <div className="max-w-7xl mx-auto">
             {/* Header Section */}
             <div className="text-center mb-12">
-              <h2 className="text-4xl manrope text-gray-900 mb-2 leading-tight">
-                Journey So Far
+              <h2 className="text-4xl wulkan-display-bold text-gray-900 mb-2 leading-tight">
+                Journey so far
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed manrope-medium">
-                The Path We&#39;ve Paved!
+                The path we&#39;ve paved!
               </p>
             </div>
 
@@ -210,11 +210,11 @@ const Section5 = () => {
           <div className="max-w-6xl mx-auto">
             {/* Header Section */}
             <div className="text-center mb-12">
-              <h2 className="text-4xl manrope text-gray-900 mb-2 leading-tight">
-                Journey So Far
+              <h2 className="text-4xl wulkan-display-bold text-gray-900 mb-2 leading-tight">
+                Journey so far
               </h2>
               <p className="text-xl manrope-medium text-gray-600 leading-relaxed">
-                The Path We&#39;ve Paved!
+                The path we&#39;ve paved!
               </p>
             </div>
 
@@ -273,8 +273,8 @@ const Section5 = () => {
             <div className='flex items-center mt-30'>
               <div className='bg-[#ebd657] w-[3px] h-10'>
                 <div className='mb-2.5 w-80'>
-                  <h1 className='text-3xl manrope text-nowrap, ml-3'> Journey So far</h1>
-                  <p className='manrope-medium text-md w-full leading-relaxed mt-3 ml-3'> The Path We&#39;ve Paved!
+                  <h1 className='text-3xl wulkan-display-bold text-nowrap, ml-3'> Journey so far</h1>
+                  <p className='manrope-medium text-md w-full leading-relaxed mt-3 ml-3'> The path we&#39;ve paved!
                   </p>
 
                 </div>

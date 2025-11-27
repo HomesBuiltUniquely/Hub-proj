@@ -210,7 +210,7 @@ const ContactHeader: React.FC = () => {
           {/* text + cta */}
 
           <div className="absolute bottom-10 left-4 right-4 text-white">
-            <h2 className="manrope text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <h2 className="wulkan-display-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               Dining spaces designed
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
@@ -254,7 +254,7 @@ const ContactHeader: React.FC = () => {
 
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
-            <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <h2 className="wulkan-display-bold  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               Dining spaces designed
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">

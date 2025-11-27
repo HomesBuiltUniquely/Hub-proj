@@ -155,7 +155,7 @@ const ContactHeader: React.FC = () => {
 
         {/* Hero content */}
         <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center -mt-70">
-          <h1 className="w-[300px] text-3xl text-left lg:text-3xl manrope mb-2 drop-shadow-lg ">HUB Customers&#39; Stories</h1>
+          <h1 className="w-[300px] text-3xl text-left lg:text-3xl wulkan-display-bold mb-2 drop-shadow-lg ">HUB Customers&#39; Stories</h1>
           <p className="w-[300px] text-xs text-left manrope-medium mb-8 drop-shadow-lg ">From design to delivery, every review reflects our uniquely built home stories and promise.
           </p>
 

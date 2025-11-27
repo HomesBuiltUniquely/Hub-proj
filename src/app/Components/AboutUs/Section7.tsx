@@ -18,7 +18,7 @@ const Section7 = () => {
             <div className="aboutus-section7-3xl-values">
               {/* Values Header */}
               <div className="aboutus-section7-3xl-header">
-                <h1 className="aboutus-section7-3xl-title manrope">
+                <h1 className="aboutus-section7-3xl-title wulkan-display-bold">
                   Values
                 </h1>
               </div>
@@ -133,7 +133,7 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 ml-56">
               {/* Values Header */}
-              <h1 className="text-5xl manrope  pl-10 leading-tight">
+              <h1 className="text-5xl wulkan-display-bold  pl-10 leading-tight">
                 Values
               </h1>
 
@@ -237,7 +237,7 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 mb-10">
               {/* Values Header */}
-              <h1 className="text-6xl manrope pt-20 -ml-40 leading-tight">
+              <h1 className="text-6xl wulkan-display-bold pt-20 -ml-40 leading-tight">
                 Values
               </h1>
 
@@ -346,7 +346,7 @@ const Section7 = () => {
           {/* Content */}
           <div className="w-full max-w-full">
             <div className='bg-[#ebd657] w-[3px] h-10 mb-8'>
-              <h1 className="text-3xl  manrope mb-4 whitespace-nowrap ml-3">Values</h1>
+              <h1 className="text-3xl  wulkan-display-bold mb-4 whitespace-nowrap ml-3">Values</h1>
             </div>
             <div className="bg-white rounded-3xl p-4 space-y-4 mt-5 manrope-medium">
               {/* Value Item */}

@@ -18,29 +18,27 @@ const ContactHeader: React.FC = () => {
 
   const heroSlides = [
     {
-      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl1.png",
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj1.png",
 
     },
     {
-      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl2.png",
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj2.png",
 
     },
     {
-      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl3.png",
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj3.png",
 
     },
     {
-      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl4.png",
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj4.png",
+    },
+    {
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj5.png",
 
     },
-    // {
-    //   image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl5.png",
-
-    // },
-    // {
-    //   image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj%20sl6.png",
-
-    // },
+    {
+      image: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Proj6.png",
+    },
 
 
   ];
@@ -65,34 +63,52 @@ const ContactHeader: React.FC = () => {
 
     <>
 
+     
       <style jsx>{`
-        /* Hide both sections by default on mobile */
-        .desktop-1440,
-        .desktop-1280 {
-          display: none;
+        /* Hide both by default */
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none !important;
         }
 
-        /* Show 1280px section for screens between 768px and 1439px */
-        @media (min-width: 768px) and (max-width: 1439px) {
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
           .desktop-1280 {
-            display: block;
+            display: block !important;
           }
         }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block;
+
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
           }
         }
+
+         /* Show 2560px layout for large desktops (>1920px) */
+        @media (min-width: 1921px)  {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+
       `}</style>
 
 
       {/* Desktop Version - For screens 1440px and above */}
-      <div className="desktop-1440 hidden md:block w-[1440] h-[900px] mx-auto rounded-3xl overflow-hidden relative bg-cover bg-center">
 
 
-        {/* Background Carousel */}
+        {/* Desktop 2560 */}
+
+
+      <div className="desktop-2560">
+
+        <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative">
+
+
+         {/* Background Carousel */}
         <div>
           <div className="absolute inset-0 w-full h-full">
             {heroSlides.map((slide, index) => (
@@ -106,10 +122,11 @@ const ContactHeader: React.FC = () => {
           </div>
         </div>
 
-        {/* Navbar — fixed position inside hero */}
-         <div className="relative flex items-center justify-between -mt-15">
+
+          {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
-          <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" /> 
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
             </div>
             <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
@@ -118,23 +135,92 @@ const ContactHeader: React.FC = () => {
             </div>
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
+          {/* Hero content */}
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+              Bedroom interior design
+            </h1>
 
-        
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+              Any questions you have can be resolved here.
 
-        {/* Hero Content */}
-        <div className="absolute inset-0 flex flex-col justify-center items-start text-white text-left z-10 px-15">
-          
-          <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-            HUB Interior Portfolio
-          </h1>
-          <p className="text-lg manrope-medium drop-shadow-lg">
-            Elegant, Functional & Timeless Designs
-          </p>
+            </p>
+
+            <div className="flex gap-4">
+              <button
+                onClick={handleGetEstimate}
+                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+              >
+                Get Free Quote
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
+          Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
         </div>
 
       </div>
 
 
+
+   
+        <div className="desktop-1920">
+
+        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative">
+
+               {/* Background Carousel */}
+        <div>
+          <div className="absolute inset-0 w-full h-full">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                  }`}
+                style={{ backgroundImage: `url('${slide.image}')` }}
+              />
+            ))}
+          </div>
+        </div> 
+
+          {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
+            </div>
+
+            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
+          {/* Hero content */}
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-100 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+              Bedroom interior design
+            </h1>
+
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+              Any questions you have can be resolved here.
+
+            </p>
+
+            <div className="flex gap-4">
+              <button
+                onClick={handleGetEstimate}
+                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+              >
+                Get Free Quote
+              </button>
+            </div>
+          </div>
+
+        </div>
+      
+      </div>
 
 
 

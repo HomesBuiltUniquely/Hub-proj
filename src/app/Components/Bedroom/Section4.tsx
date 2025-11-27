@@ -528,7 +528,7 @@ const Section4: React.FC = () => {
         <div className="mx-auto -mt-8 mb-5">
           <div className="flex mr-1 items-start">
             <div className="w-[2px] h-[70px] bg-amber-300 mb-6 ml-2"></div>
-            <h1 className="text-3xl manrope mb-5 ml-3 text-gray-800 w-[250px]">Let’s talk about bedroom</h1>
+            <h1 className="text-3xl wulkan-display-bold mb-5 ml-3 text-gray-800 w-[250px]">Let’s talk about bedroom</h1>
           </div>
           <p className="text-gray-500 text-sm mb-4 ml-2 manrope-medium -mt-3">
             Read our blog to discover how design meets utility in every bedroom.
@@ -563,7 +563,7 @@ const Section4: React.FC = () => {
         <div className="mx-auto">
           <div className="flex mb-3 items-start">
             <div className="w-[2px] h-[60px] bg-amber-300  ml-2 mt-5"></div>
-            <h2 className="text-2xl manrope text-gray-900 w-[220px] ml-3 mt-5">Frequently asked questions</h2>
+            <h2 className="text-3xl wulkan-display-bold text-gray-900 w-[250px] ml-3 mt-4">Frequently asked questions</h2>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row ml-2 py-1.5  ">
             <div className="md:w-1/2 ">
@@ -606,7 +606,7 @@ const Section4: React.FC = () => {
         <div className="mx-auto -mt-8 mb-2">
           <div className="flex mr-1 items-start">
             <div className="w-[2px] h-[70px] bg-amber-300 mb-6 ml-2"></div>
-            <h1 className="text-3xl manrope mb-5 ml-3 text-gray-800 w-[250px]">Let’s talk about bedroom</h1>
+            <h1 className="text-3xl wulkan-display-bold mb-5 ml-3 text-gray-800 w-[250px]">Let’s talk about bedroom</h1>
           </div>
           <p className="text-gray-500 text-sm mb-4 ml-2 manrope-medium -mt-3">
             Read our blog to discover how design meets utility in every bedroom.
@@ -641,7 +641,7 @@ const Section4: React.FC = () => {
         <div className="mx-auto">
           <div className="flex mb-3 items-start">
             <div className="w-[2px] h-[60px] bg-amber-300  ml-2 mt-5"></div>
-            <h2 className="text-2xl manrope text-gray-900 w-[220px] ml-3 mt-5">Frequently asked questions</h2>
+            <h2 className="text-3xl wulkan-display-bold text-gray-900 w-[250px] ml-3 mt-4">Frequently asked questions</h2>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row ml-2 py-1.5  ">
             <div className="md:w-1/2 ">

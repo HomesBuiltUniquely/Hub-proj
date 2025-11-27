@@ -165,8 +165,7 @@ const Locations: React.FC = () => (
             <div className="w-[2px] h-[40px] bg-[#ebd457]"></div>
           </div>
           <div className="-mt-10">
-            <h2 className="h-10 text-3xl manrope text-gray-800 ml-3 mb-5">Our Locations</h2>
-
+            <h1 className="h-10 text-3xl wulkan-display-bold text-gray-800 ml-3 mb-5">Our Locations</h1>
           </div>
         </div>
 
@@ -194,7 +193,7 @@ const Locations: React.FC = () => (
     <section className="mobile-large my-8 mx-6 ">
       <div className="max-w-full mx-auto rounded-2xl overflow-hidden shadow-lg bg-[url('/bn.jpg')] bg-cover bg-center relative">
         <div className="bg-black/50 py-10 px-6">
-          <h2 className="text-white text-2xl font-extrabold mb-1 pl-6">Our Locations</h2>
+          <h1 className="text-white text-2xl wulkan-display-bold mb-1 pl-6">Our Locations</h1>
           <p className="text-white mb-6 pl-6">Find HUB location near you.</p>
           <div className="grid grid-cols-1 gap-4">
             {locations.map((loc) => (

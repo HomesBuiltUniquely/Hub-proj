@@ -507,7 +507,7 @@ const ContactSection: React.FC = () => {
               <div className="w-[2px] h-[80px] bg-[#ebd457]"></div>
             </div>
             <div className="-mt-10">
-              <h2 className="h-10 text-[28px] manrope text-gray-800 ml-3 -mt-21"> Still Have Questions ?<br />Lets Talk<br /></h2>
+              <h1 className="h-10 text-[28px] wulkan-display-bold text-gray-800 ml-3 -mt-21"> Still Have Questions ?<br />Lets Talk<br /></h1>
 
             </div>
           </div>

@@ -156,7 +156,7 @@ const WardrobeCarousel: React.FC = () => {
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className=" text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium ">Find Your Perfect Fit</p>
+              <p className="text-gray-500 text-lg manrope-medium ">Find your perfect fit</p>
             </div>
           </div>
           {/* Carousel with arrows overlapping top left */}
@@ -229,7 +229,7 @@ const WardrobeCarousel: React.FC = () => {
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className="text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium ">Find Your Perfect Fit</p>
+              <p className="text-gray-500 text-lg manrope-medium ">Find your perfect fit</p>
             </div>
           </div>
           {/* Carousel with arrows overlapping top left */}
@@ -305,7 +305,7 @@ const WardrobeCarousel: React.FC = () => {
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className=" text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium ">Find Your Perfect Fit</p>
+              <p className="text-gray-500 text-lg manrope-medium ">Find your perfect fit</p>
             </div>
           </div>
           {/* Carousel with arrows overlapping top left */}
@@ -375,7 +375,7 @@ const WardrobeCarousel: React.FC = () => {
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className=" text-5xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium">Find Your Perfect Fit</p>
+              <p className="text-gray-500 text-lg manrope-medium">Find your perfect fit</p>
             </div>
           </div>
           {/* Carousel with arrows overlapping top left */}
@@ -450,8 +450,8 @@ const WardrobeCarousel: React.FC = () => {
         <div className='flex items-center mt-15'>
           <div className='bg-[#ebd657] w-[3px] h-10 mb-10'></div>
           <div className='ml-3'>
-            <h1 className='text-3xl manrope'>Types of wardrobes</h1>
-            <p className='manrope-medium text-[18px] pt-3'>Find Your Perfect Fit</p>
+            <h1 className='text-3xl wulkan-display-bold'>Types of wardrobes</h1>
+            <p className='manrope-medium text-[18px] pt-3'>Find your perfect fit</p>
           </div>
         </div>
 
@@ -507,8 +507,8 @@ const WardrobeCarousel: React.FC = () => {
         <div className='flex items-center mt-15'>
           <div className='bg-[#ebd657] w-[3px] h-10 mb-10'></div>
           <div className='ml-3'>
-            <h1 className='text-3xl manrope'>Types of wardrobes</h1>
-            <p className='manrope-medium text-[18px] pt-3'>Find Your Perfect Fit</p>
+            <h1 className='text-3xl wulkan-display-bold'>Types of wardrobes</h1>
+            <p className='manrope-medium text-[18px] pt-3'>Find your perfect fit</p>
           </div>
         </div>
 
