@@ -19,7 +19,7 @@ const ContactHeader: React.FC = () => {
     router.push('/GetEstimate');
   };
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 
   return <div>

@@ -250,7 +250,7 @@ const CardSection = ({
         <div className=' mt- manrope-medium '>
           <div className="flex flex-row">
             <div className="w-0.75 h-10 bg-[#ebd657] ml-2">
-              <h2 className="text-3xl tracking-wide manrope text-nowrap ml-3">Featured Projects</h2>
+              <h2 className="text-3xl tracking-wide wulkan-display-bold text-nowrap ml-3">Featured Projects</h2>
             </div>
             <p className="text-gray-600 text-[15px] manrope-bold mt-12  text-nowrap -ml-1">A glimpse at our best work</p>
           </div>
