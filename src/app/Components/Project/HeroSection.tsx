@@ -62,7 +62,7 @@ const ContactHeader: React.FC = () => {
 
     <>
 
-     
+
       <style jsx>{`
         /* Hide both by default */
         .desktop-1280,
@@ -99,31 +99,31 @@ const ContactHeader: React.FC = () => {
       {/* Desktop Version - For screens 1440px and above */}
 
 
-        {/* Desktop 2560 */}
+      {/* Desktop 2560 */}
 
 
       <div className="desktop-2560">
 
-        <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative">
+        <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  relative">
 
 
-         {/* Background Carousel */}
-        <div>
-          <div className="absolute inset-0 w-full h-full">
-            {heroSlides.map((slide, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-                  }`}
-                style={{ backgroundImage: `url('${slide.image}')` }}
-              />
-            ))}
+          {/* Background Carousel */}
+          <div>
+            <div className="absolute inset-0 w-full h-full">
+              {heroSlides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  style={{ backgroundImage: `url('${slide.image}')` }}
+                />
+              ))}
+            </div>
           </div>
-        </div>
 
 
           {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
+          <div className="flex items-center justify-between -mt-15 relative">
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
             </div>
@@ -135,10 +135,10 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-         <div className="flex w-[600px] flex-col items-center justify-center pt-100 pb-20 text-white text-center pr-35">
-              <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
-              <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
-            </div>
+          <div className="flex w-[600px] flex-col items-center justify-center pt-100 pb-20 text-white text-center pr-35">
+            <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
+            <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
+          </div>
 
         </div>
         <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
@@ -149,27 +149,27 @@ const ContactHeader: React.FC = () => {
 
 
 
-   
-        <div className="desktop-1920">
+
+      <div className="desktop-1920">
 
         <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative">
 
-               {/* Background Carousel */}
-        <div>
-          <div className="absolute inset-0 w-full h-full">
-            {heroSlides.map((slide, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-                  }`}
-                style={{ backgroundImage: `url('${slide.image}')` }}
-              />
-            ))}
+          {/* Background Carousel */}
+          <div>
+            <div className="absolute inset-0 w-full h-full">
+              {heroSlides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  style={{ backgroundImage: `url('${slide.image}')` }}
+                />
+              ))}
+            </div>
           </div>
-        </div> 
 
           {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
+          <div className="flex items-center justify-between -mt-15 relative">
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
             </div>
@@ -182,13 +182,13 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-         <div className="flex w-[600px] flex-col items-center justify-center pt-100 pb-20 text-white text-center pr-35">
-              <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
-              <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
-            </div>
+          <div className="flex w-[600px] flex-col items-center justify-center pt-100 pb-20 text-white text-center pr-35">
+            <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
+            <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
+          </div>
 
         </div>
-      
+
       </div>
 
 

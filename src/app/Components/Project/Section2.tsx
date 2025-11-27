@@ -88,7 +88,7 @@ const CardSection = ({
 
         {/* Featured Projects */}
         <div className="w-full max-w-5xl px-5 ml-5 ">
-          <h2 className="text-[50px]  mb-1  text-gray-900 manrope">
+          <h2 className="text-[50px]  mb-1  text-gray-900 wulkan-display-bold">
             Featured Projects
           </h2>
           <p className="text-gray-600 text-[20px] mb-10 manrope-medium">A glimpse at our best work</p>
@@ -166,7 +166,7 @@ const CardSection = ({
         <div className=" w-[1280px] h-[800px] mx-auto mb-5 relative">
 
           <div className="w-full max-w-5xl px-3 ml-5 ">
-            <h2 className="text-[50px]  mb-1  text-gray-900 manrope">
+            <h2 className="text-[50px]  mb-1  text-gray-900 wulkan-display-bold">
               Featured Projects
             </h2>
             <p className="text-gray-600 text-[20px] mb-10 manrope-medium">A glimpse at our best work</p>
