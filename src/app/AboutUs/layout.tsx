@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"], 
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
@@ -82,11 +82,11 @@ export default function RootLayout({
             fbq('track', 'PageView');`}
         </Script>
 
-        <Script 
-      id="whatsapp-conditional"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
+        <Script
+          id="whatsapp-conditional"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
           if (typeof window !== 'undefined') {
             const currentPath = window.location.pathname;
             const hideWhatsAppPaths = [
@@ -122,9 +122,9 @@ export default function RootLayout({
           }
 
         `
-      }}
-    />
-   
+          }}
+        />
+
 
         <noscript>
           <img
@@ -162,7 +162,7 @@ export default function RootLayout({
         {/* Vercel Analytics */}
         <Analytics />
       </body>
-      
+
     </html>
   );
 }

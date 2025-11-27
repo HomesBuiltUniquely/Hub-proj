@@ -539,7 +539,7 @@ const Home: React.FC = () => {
           {/* text + cta */}
           <h2 className="manrope leading-tight">
             <div className="absolute top-40 text-white w-full px-3 mt-10">
-              <div className="text-4xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
+              <div className="text-4xl wulkan-display-bold drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
                 Become a <div>Franchisee!</div>
               </div>
               <p className="manrope-medium w-[300px] shadow-lg  mt-2 ml-3">

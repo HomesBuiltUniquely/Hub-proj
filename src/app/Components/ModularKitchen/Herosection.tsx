@@ -303,11 +303,11 @@ const ContactHeader: React.FC = () => {
 
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
-            <h2 className="manrope text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <h1 className="wulkan-display-bold  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               Modular
               <br />
               kitchen
-            </h2>
+            </h1>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Modular kitchen design for style, comfort & everyday living
             </p>
@@ -348,11 +348,11 @@ const ContactHeader: React.FC = () => {
 
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
-            <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <h1 className="wulkan-display-bold   text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               Modular
               <br />
               kitchen
-            </h2>
+            </h1>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Modular kitchen design for style, comfort & everyday living
             </p>

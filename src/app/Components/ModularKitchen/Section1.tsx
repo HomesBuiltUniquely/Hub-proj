@@ -450,11 +450,11 @@ const Section1: React.FC = () => {
         {/* Mobile Heading */}
         <div className="mb-10">
           <div className="flex relative">
-            <div className="w-[2px] h-[70px] bg-[#ebd457] mt-10 ml-3"></div>
+            <div className="w-[2px] h-[70px] bg-[#ebd457] mt-10"></div>
           </div>
-          <div className=" -mt-17">
-            <h2 className="h-10 text-3xl manrope text-gray-800  ml-7 ">Kitchen layout</h2>
-            <p className="ml-7  text-gray-500 text-lg manrope-medium ">Smart Space, Seamless Cooking</p>
+          <div className=" -mt-17 ml-3">
+            <h2 className="h-10 text-3xl wulkan-display-bold  text-gray-800">Kitchen layout</h2>
+            <p className="text-gray-500 text-lg manrope-medium ">Smart Space, Seamless Cooking</p>
           </div>
         </div>
 
@@ -517,11 +517,11 @@ const Section1: React.FC = () => {
         {/* Mobile Heading */}
         <div className="mb-10">
           <div className="flex relative">
-            <div className="w-[2px] h-[70px] bg-[#ebd457] mt-10 ml-3"></div>
+            <div className="w-[2px] h-[70px] bg-[#ebd457] mt-10 ml-"></div>
           </div>
-          <div className=" -mt-17">
-            <h2 className="h-10 text-3xl manrope text-gray-800  ml-7 ">Kitchen layout</h2>
-            <p className="ml-7  text-gray-500 text-lg manrope-medium ">Smart Space, Seamless Cooking</p>
+          <div className=" -mt-17 ml-3">
+            <h1 className="h-10 text-3xl wulkan-display-bold  text-gray-800">Kitchen layout</h1>
+            <p className="text-gray-500 text-lg manrope-medium ">Smart Space, Seamless Cooking</p>
           </div>
         </div>
 

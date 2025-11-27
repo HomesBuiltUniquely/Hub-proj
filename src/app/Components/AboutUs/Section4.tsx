@@ -15,8 +15,8 @@ export default function Section4() {
                     <div className="aboutus-section4-3xl-header">
 
                         {/* Heading - 3XL optimized */}
-                        <h1 className="aboutus-section4-3xl-heading manrope">
-                            Brand Eco System
+                        <h1 className="aboutus-section4-3xl-heading wulkan-display-bold">
+                            Brand eco system
                         </h1>
 
                         {/* Description - 3XL optimized */}
@@ -65,8 +65,8 @@ export default function Section4() {
             <div className="desktop-1440">
                 <div className="h-auto min-h-[650px] px-16">
                     <div className="flex flex-row justify-between w-full h-auto min-h-[300px] gap-2">
-                        <h1 className="text-5xl manrope mt-2 ml-7 leading-tight">
-                            Brand<div>Eco System</div>
+                        <h1 className="text-5xl wulkan-display-bold mt-2 ml-7 leading-tight">
+                            Brand<div>eco system</div>
                         </h1>
                         <p className="w-[605px] mt-3 manrope-medium text-[26px] leading-relaxed">
                             The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Merry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
@@ -105,8 +105,8 @@ export default function Section4() {
             <div className="desktop-1280">
                 <div className="h-auto min-h-[650px] px-16 ">
                     <div className="flex flex-row justify-between h-[300px] gap-10 ">
-                        <h1 className="text-5xl manrope mt-20 ml-16 leading-tight">
-                            Brand Eco System
+                        <h1 className="text-5xl wulkan-display-bold mt-20 ml-16 leading-tight">
+                            Brand eco system
                         </h1>
                         <p className="w-[600px] mt-14 mr-12 manrope-medium text-2xl leading-relaxed">
                             The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Merry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
@@ -152,7 +152,7 @@ export default function Section4() {
                     <div className='flex items-center mt-30'>
                         <div className='bg-[#ebd657] w-[3px] h-10'>
                             <div className='mb-2.5 w-80'>
-                                <h1 className='text-3xl manrope text-nowrap, ml-3'>Brand <div>Eco System</div></h1>
+                                <h1 className='text-3xl wulkan-display-bold text-nowrap, ml-3'>Brand eco system</h1>
                                 <p className='manrope-medium text-md w-full leading-relaxed mt-3 ml-3'> The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget
                                     to Hubsolute, Affices, and Home & merry, every brand is crafted with focus and
                                     direction, shaping a legacy of design and innovation.

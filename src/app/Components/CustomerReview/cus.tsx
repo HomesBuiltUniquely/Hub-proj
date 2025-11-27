@@ -376,9 +376,9 @@ export function CustomerReview() {
           {/* Section Header */}
           <div className="flex items-start mb-6">
             <div className="w-[2px] h-[45px] bg-[#ebd457] -ml-3"></div>
-            <h2 className="text-3xl manrope text-gray-800 ml-3 leading-snug">
+            <h1 className="text-3xl wulkan-display-bold text-gray-800 ml-3 leading-snug">
               Google Reviews
-            </h2>
+            </h1>
           </div>
 
           {/* Review Slider */}

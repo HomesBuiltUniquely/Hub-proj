@@ -46,7 +46,7 @@ export default function BrandCarousel() {
   // WAIT FOR IMAGES BEFORE SCROLLING
   // ----------------------------------------- 
 
-  
+
   const waitForImages = (container: HTMLDivElement) => {
     return new Promise<void>((resolve) => {
       const imgs = Array.from(container.querySelectorAll("img"));
@@ -180,7 +180,7 @@ export default function BrandCarousel() {
 
       {/* Mobile Version */}
       <div className="md:hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
-        <h2 className="text-center mb-16 text-5xl font-light wulkan-display-bold">Trusted partners</h2>
+        <h2 className="text-center mb-5 text-4xl font-light wulkan-display-bold">Trusted partners</h2>
         <div ref={refMobile} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
           {allLogos.map((logo, idx) => (
             <div key={idx} className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}>

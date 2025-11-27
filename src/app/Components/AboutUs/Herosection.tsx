@@ -6,7 +6,8 @@ import NavMore from "../NavMore";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import OfferingsDropdown from "../OfferingsDropdown";
 import router from "next/router";
-import Link from 'next/link';
+
+import OverlapNavBar from "../OverlapNavBar";
 
 
 const ContactHeader: React.FC = () => {
@@ -182,7 +183,7 @@ const ContactHeader: React.FC = () => {
 
 
         {/* Hamburger Menu Button + Mobile Menu */}
-        <div className="absolute top-8 right-1 z-50 ">
+        {/* <div className="absolute top-8 right-1 z-50 ">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-white pr-6"
@@ -200,14 +201,14 @@ const ContactHeader: React.FC = () => {
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-          </button>
+          </button> */}
 
-          {/* Mobile Navigation Menu */}
-          {isMobileMenuOpen && (
+        {/* Mobile Navigation Menu */}
+        {/* {isMobileMenuOpen && (
             <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-              <div className="p-4  relative">
-                {/* Close Button */}
-                <button
+              <div className="p-4  relative"> */}
+        {/* Close Button */}
+        {/* <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="absolute top-3 right-3 text-gray-600 p-2"
                 >
@@ -224,16 +225,16 @@ const ContactHeader: React.FC = () => {
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
-                </button>
+                </button> */}
 
-                {/* Navigation Items */}
-                <div className="space-y-4 mt-5">
+        {/* Navigation Items */}
+        {/* <div className="space-y-4 mt-5">
                   <div>
                     <div>
                       <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
                         OFFERINGS
                       </h3>
-                      <div className="space-y-2 pl-3"> {/* Increased spacing here */}
+                      <div className="space-y-2 pl-3"> Increased spacing here
                         <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                           Full Home Interior
                         </Link>
@@ -249,14 +250,14 @@ const ContactHeader: React.FC = () => {
                       </div>
                     </div>
 
-                  </div>
+                  </div> */}
 
-                  <div>
+        {/* <div>
                     <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
                       EXPLORE ROOMS
-                    </h3>
-                    <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                      <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                    </h3> */}
+        {/* <div className="space-y-2 pl-3"> increased vertical spacing */}
+        {/* <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                         Modular Kitchen
                       </Link>
                       <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
@@ -271,14 +272,14 @@ const ContactHeader: React.FC = () => {
                     </div>
 
 
-                  </div>
+                  </div> */}
 
-                  <div>
+        {/* <div>
                     <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
                       MORE
                     </h3>
-                    <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                      <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
+                    <div className="space-y-2 pl-3"> increased vertical spacing */}
+        {/* <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
                         About Us
                       </Link>
                       <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
@@ -296,24 +297,22 @@ const ContactHeader: React.FC = () => {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
 
 
-        </div>
-
-
-        {/* Overlay text + CTA */}
-        <h2 className="manrope leading-tight">
-          <div className="absolute top-40 text-white w-full px-3 ml-3 mt-10">
-            <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">homes,</div>
-            <div className="text-[65px] sm:text-6xl wulkan-display my- leading-tight">uniquely</div>
-            <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">built</div>
-          </div>
-        </h2>
       </div>
+
+
+      {/* Overlay text + CTA */}
+      <h2 className="manrope leading-tight">
+        <div className="absolute top-40 text-white w-full px-3 ml-3 mt-10">
+          <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">homes,</div>
+          <div className="text-[65px] sm:text-6xl wulkan-display my- leading-tight">uniquely</div>
+          <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">built</div>
+        </div>
+      </h2>
+      <OverlapNavBar />
     </div>
-
-
 
   </div>
 

@@ -13,7 +13,7 @@ const Section6 = () => {
             <div className="aboutus-section6-3xl-text-content manrope-medium">
               {/* Mission Header */}
               <div className="aboutus-section6-3xl-header">
-                <h1 className="aboutus-section6-3xl-title manrope">
+                <h1 className="aboutus-section6-3xl-title wulkan-display-bold">
                   Mission
                 </h1>
                 <p className="aboutus-section6-3xl-subtitle">
@@ -40,7 +40,7 @@ const Section6 = () => {
         <div className='flex justify-between'>
           <div className="max-w-7xl">
             {/* Mission Header */}
-            <h1 className="text-6xl manrope pt-20 leading-tight">
+            <h1 className="text-6xl wulkan-display-bold pt-20 leading-tight">
               Mission
             </h1>
 
@@ -63,7 +63,7 @@ const Section6 = () => {
         <div className="flex justify-evenly">
           <div className="max-w-6xl mt-12 mr-50">
             {/* Mission Header */}
-            <h1 className="text-5xl manrope leading-tight">
+            <h1 className="text-5xl wulkan-display-bold leading-tight">
               Mission
             </h1>
 
@@ -85,7 +85,7 @@ const Section6 = () => {
       <section className="hidden lg:block xl:hidden py-16 px-8 bg-white">
         <div className="max-w-5xl mx-auto">
           {/* Mission Header */}
-          <h1 className="text-4xl manrope pt-16 pl-8 leading-tight">
+          <h1 className="text-4xl wulkan-display-bold pt-16 pl-8 leading-tight">
             Mission
           </h1>
 
@@ -155,7 +155,7 @@ const Section6 = () => {
       <section className="hidden md:block lg:hidden py-12 px-6 bg-white ">
         <div className="max-w-4xl mx-auto">
           {/* Mission Header */}
-          <h1 className="text-3xl manrope pt-12 pl-6 leading-tight">
+          <h1 className="text-3xl wulkan-display-bold pt-12 pl-6 leading-tight">
             Mission
           </h1>
 
@@ -232,7 +232,7 @@ const Section6 = () => {
 
               {/* Content */}
               <div className="flex flex-col space-y-4 "> {/* padding-left equals 20px + some gap */}
-                <h1 className="text-3xl  manrope whitespace-nowrap ml-[20px]">Mission</h1>
+                <h1 className="text-3xl  wulkan-display-bold whitespace-nowrap ml-[10px]">Mission</h1>
 
                 <p className="text-md manrope-medium">
                   At HUB Interiors — it’s about creating spaces that reflect you.

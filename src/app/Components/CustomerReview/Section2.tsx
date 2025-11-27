@@ -184,9 +184,9 @@ export default function Section8() {
               <div className="flex items-center justify-between mb-16 text-black manrope-medium relative">
                 {/* Text Header */}
                 <div>
-                  <h2 className="text-4xl md:text-4xl leading-tight tracking-tight manrope-medium">
+                  <h1 className="text-5xl leading-tight tracking-tight wulkan-display-bold">
                     What our customers say about HUB
-                  </h2>
+                  </h1>
                 </div>
 
                 {/* Nav Buttons (Commented out but left for future use) */}
@@ -260,7 +260,7 @@ export default function Section8() {
                 </div>
 
                 {/* Dots Indicator (optional) */}
-{/*                 
+                {/*                 
           <div className="flex justify-center mt-6 gap-2">
             {videoThumbnails.map((_, index) => (
               <button
@@ -342,9 +342,9 @@ export default function Section8() {
               <div className="flex items-center justify-between mb-16 text-black manrope-medium relative">
                 {/* Text Header - Left side */}
                 <div>
-                  <h2 className="text-4xl md:text-4xl leading-tight tracking-tight manrope-medium">
+                  <h1 className="text-5xl leading-tight tracking-tight wulkan-display-bold">
                     What our customers say about HUB
-                  </h2>
+                  </h1>
                 </div>
 
                 {/* Navigation Buttons - Right side */}
@@ -504,9 +504,9 @@ export default function Section8() {
         {/* Section Header */}
         <div className="flex items-start mb-4">
           <div className="w-[2px] h-[70px] bg-[#ebd457] "></div>
-          <h2 className="text-2xl manrope text-gray-800 ml-3 mb-3 leading-snug">
+          <h1 className="text-3xl wulkan-display-bold text-gray-800 ml-3 mb-3 leading-snug">
             What our customers say about HUB
-          </h2>
+          </h1>
         </div>
 
 

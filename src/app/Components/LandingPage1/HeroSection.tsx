@@ -77,13 +77,13 @@ export default function HeroSections() {
     return () => clearInterval(interval);
   }, []);
 
-// Refs for 1440 version
-const cityRef1440 = useRef<HTMLDivElement>(null);
-const budgetRef1440 = useRef<HTMLDivElement>(null);
+  // Refs for 1440 version
+  const cityRef1440 = useRef<HTMLDivElement>(null);
+  const budgetRef1440 = useRef<HTMLDivElement>(null);
 
-// Refs for 1280 version
-const cityRef1280 = useRef<HTMLDivElement>(null);
-const budgetRef1280 = useRef<HTMLDivElement>(null);
+  // Refs for 1280 version
+  const cityRef1280 = useRef<HTMLDivElement>(null);
+  const budgetRef1280 = useRef<HTMLDivElement>(null);
 
 
   const handleCitySelect = (value: string) => {
@@ -122,25 +122,25 @@ const budgetRef1280 = useRef<HTMLDivElement>(null);
     setVerificationStatus('');
     setOtp('');
   };
-useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    const target = event.target as Node;
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
 
-    const clickedInsideCity =
-      (cityRef1440.current && cityRef1440.current.contains(target)) ||
-      (cityRef1280.current && cityRef1280.current.contains(target));
+      const clickedInsideCity =
+        (cityRef1440.current && cityRef1440.current.contains(target)) ||
+        (cityRef1280.current && cityRef1280.current.contains(target));
 
-    const clickedInsideBudget =
-      (budgetRef1440.current && budgetRef1440.current.contains(target)) ||
-      (budgetRef1280.current && budgetRef1280.current.contains(target));
+      const clickedInsideBudget =
+        (budgetRef1440.current && budgetRef1440.current.contains(target)) ||
+        (budgetRef1280.current && budgetRef1280.current.contains(target));
 
-    if (!clickedInsideCity) setCityOpen(false);
-    if (!clickedInsideBudget) setBudgetOpen(false);
-  };
+      if (!clickedInsideCity) setCityOpen(false);
+      if (!clickedInsideBudget) setBudgetOpen(false);
+    };
 
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => document.removeEventListener("mousedown", handleClickOutside);
-}, []);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
 
   const handleOtpSubmit = async () => {
@@ -168,7 +168,7 @@ useEffect(() => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-       
+
         setOtp('');
         // Removed alert - no interruption during verification
         setVerificationStatus('Verified User');
@@ -1068,11 +1068,11 @@ useEffect(() => {
                       </label>
                     </div>
 
-                   
+
                   </div>
 
-                   {/* Submit */}
-                    <div className='mt-5'>
+                  {/* Submit */}
+                  <div className='mt-5'>
                     <button
                       type="submit"
                       disabled={isSubmitting || isSendingOtpAuto}
@@ -1085,7 +1085,7 @@ useEffect(() => {
                         </svg>
                       )}
                     </button>
-                    </div>
+                  </div>
 
                   {/* Legal */}
                   <div className="text-xs sm:text-sm lg:text-[14px] mt-6 manrope-medium text-center sm:text-left whitespace-nowrap">

@@ -156,7 +156,7 @@ const ContactHeader: React.FC = () => {
       {/* text + cta */}
       <h2 className="manrope leading-tight">
         <div className="absolute top-40 text-white w-full px-3 mt-3">
-          <div className="text-3xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
+          <div className="text-3xl wulkan-display-bold drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
             Interior <div>inspirations</div>
           </div>
           <p className="manrope-medium w-[250px] shadow-lg  mt-2 ml-3">
