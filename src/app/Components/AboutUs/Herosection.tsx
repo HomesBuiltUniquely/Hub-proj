@@ -41,14 +41,14 @@ const ContactHeader: React.FC = () => {
 
        
          /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1440px)  and (max-width: 1921px) {
+        @media (min-width: 1440px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
         }
 
          /* Show  layout for large desktops (>1921px) */
-        @media (min-width: 1922px) {
+        @media (min-width: 1921px) {
           .desktop-2560 {
             display: block !important;
           }

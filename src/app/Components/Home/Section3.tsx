@@ -135,7 +135,7 @@ export default function Section3() {
                     <div className="flex flex-row justify-between items-center mb-12">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
                         <a href="/GetEstimate">
-                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2">
+                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2">
                                 Book consultation
                                 <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ export default function Section3() {
 
                                                 {/* Button at bottom ALWAYS */}
                                                 <a href={service.link} className="mt-auto block pt-6">
-                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200">
+                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200">
                                                         Request service
                                                     </button>
                                                 </a>
@@ -236,7 +236,7 @@ export default function Section3() {
                     <div className="flex flex-row justify-between items-center mb-8">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
                         <a href="/GetEstimate">
-                            <button className=" bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2">
+                            <button className=" bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2">
                                 Book consultation
                                 <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -290,14 +290,14 @@ export default function Section3() {
                                                 <img
                                                     src={service.image}
                                                     alt={service.title}
-                                                    className="w-full h-full object-center "
+                                                    className="w-full h-full object-cover "
                                                 />
                                             </div>
                                             <div className="p-8 flex-1 flex flex-col text-center">
                                                 <h3 className="text-2xl   text-gray-800 mb-4 manrope ">{service.title}</h3>
                                                 <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
                                                 <a href={service.link} className="mt-auto block">
-                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
+                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
                                                         Request service
                                                     </button>
                                                 </a>
@@ -325,14 +325,14 @@ export default function Section3() {
                                                 <img
                                                     src={service.image}
                                                     alt={service.title}
-                                                    className="w-full h-full object-center "
+                                                    className="w-full h-full object-cover "
                                                 />
                                             </div>
                                             <div className="p-8 flex-1 flex flex-col text-center">
                                                 <h3 className="text-xl text-nowrap  text-gray-800 mb-4 manrope ">{service.title}</h3>
                                                 <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
                                                 <a href={service.link} className="mt-auto block">
-                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
+                                                    <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
                                                         Request service
                                                     </button>
                                                 </a>
@@ -359,7 +359,7 @@ export default function Section3() {
                                 All interior service, one destination
                             </h1>
                             <a href="/GetEstimate">
-                                <button className="bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2 ">
+                                <button className="bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2 ">
                                     Book consultation
                                     <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                         <svg
@@ -457,7 +457,7 @@ export default function Section3() {
                                                         {service.description}
                                                     </p>
                                                     <a href={service.link} className="mt-auto block">
-                                                        <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                                                        <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457] text-black px-4 py-2 rounded-4xl manrope  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                                             Request service
                                                         </button>
                                                     </a>
@@ -536,7 +536,7 @@ export default function Section3() {
                 </div>
                 <div className="flex justify-center -mt-4 mb-5">
                     <Link href="/">
-                        <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
+                        <button className="bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
                             Explore Services
                         </button>
                     </Link>

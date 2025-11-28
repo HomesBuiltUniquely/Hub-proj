@@ -45,7 +45,7 @@ export default function Section1() {
 
          
 
-            {/* XL Screen - Extra large displays */}
+            {/* 1280 XL Screen - Extra large displays */}
             <div className="desktop-1280">
                 <div className="flex flex-row justify-between w-full h-[320px] px-12 my-auto mt-10">
 
@@ -129,7 +129,7 @@ export default function Section1() {
             <style jsx>{`
                 /* Ensure only one 3xl section exists */
                 .aboutus-section1-3xl-container {
-                    display: none !important;
+                    display: none;
                     margin-left: 7rem;
                 }
                 
@@ -172,28 +172,43 @@ export default function Section1() {
             `}</style>
 
             
-                <style global jsx>{`
-        /* Hide both sections by default on mobile */
+     <style jsx global>{`
+    /* Default hidden for desktop variations */
+    .desktop-1440,
+    .desktop-1280,
+    .aboutus-section1-3xl-container {
+        display: none;
+    }
+
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
+    }
+
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1919px) {
+        .desktop-1440 {
+            display: block;
+        }
+    }
+
+    /* 3XL (2560+) */
+    @media (min-width: 2560px) {
+        .aboutus-section4-3xl-container {
+            display: block !important;
+        }
+
+        /* Hide other layouts */
         .desktop-1440,
         .desktop-1280 {
-          display: none;
+            display: none !important;
         }
+    }
+`}
+</style>
 
-        /* Show 1280px section for screens between 768px and 1439px */
-        @media (min-width: 768px) and (max-width: 1439px) {
-          .desktop-1280 {
-            display: block;
-          }
-        }
-
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block;
-          }
-        }
-          
-      `}</style>
 
 
         </div>

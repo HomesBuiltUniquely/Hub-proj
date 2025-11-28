@@ -45,13 +45,13 @@ export default function Section9() {
   return (
     <div>
       {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
-      <section className="aboutus-section9-3xl-container hidden">
+      <section className="aboutus-section9-3xl-container hidden 3xl:block">
         <div className="aboutus-section9-3xl-content">
           <div className="aboutus-section9-3xl-layout">
             <div className="aboutus-section9-3xl-title wulkan-display-bold">Core Members</div>
 
             {/* Carousel Container - 3XL optimized */}
-            <div className="aboutus-section9-3xl-carousel">
+            <div className="aboutus-section9-3xl-carousel -mt-50">
               {/* Slides Container */}
               <div className="aboutus-section9-3xl-slides">
                 {travers.slice(currentIndex, currentIndex + 3).map((traver, index) => (
@@ -517,6 +517,47 @@ export default function Section9() {
           }
         }
       `}</style>
+
+
+      
+        <style jsx global>{`
+    /* Default hidden for desktop variations */
+    .desktop-1440,
+    .desktop-1280,
+    .aboutus-section9-3xl-container {
+        display: none;
+    }
+
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
+    }
+
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1919px) {
+        .desktop-1440 {
+            display: block;
+        }
+    }
+
+    /* 3XL (2560+) */
+    @media (min-width: 2560px) {
+        .aboutus-section4-3xl-container {
+            display: block !important;
+        }
+
+        /* Hide other layouts */
+        .desktop-1440,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
+`}
+</style>
+
+
     </div>
   );
 }

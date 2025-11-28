@@ -131,7 +131,7 @@ export default function Section2() {
                                 </h1>
                             </div>
                             <Link href="/GetEstimate">
-                                <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] -mr-3 transition-colors text-black px-4 py-2 mt-5 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
+                                <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] -mr-3 transition-colors text-black px-4 py-2 mt-5 rounded-4xl font-semibold shadow hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
                                     Book consultation
                                     <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                         <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -213,7 +213,7 @@ export default function Section2() {
                                 </div>
                             </div>
                             <Link href="/">
-                                <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
+                                <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow  hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
                                     Explore Gallery
                                 </button>
                             </Link>
@@ -235,7 +235,7 @@ export default function Section2() {
                                 </h1>
                             </div>
                             <Link href="/GetEstimate">
-                                <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-5 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
+                                <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-5 rounded-4xl font-semibold shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
                                     Book consultation
                                     <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                         <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -317,7 +317,7 @@ export default function Section2() {
                                 </div>
                             </div>
                             <Link href="/">
-                                <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
+                                <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow  hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
                                     Explore Gallery
                                 </button>
                             </Link>
@@ -339,7 +339,7 @@ export default function Section2() {
                                     </h1>
                                 </div>
                                 <Link href="/GetEstimate">
-                                    <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-4 rounded-4xl  shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
+                                    <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 mt-4 rounded-4xl  shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex items-center gap-2">
                                         Book consultation
                                         <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
                                             <svg
@@ -472,7 +472,7 @@ export default function Section2() {
                                     </div>
                                 </div>
                                 <Link href="/">
-                                    <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl  shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0 ">
+                                    <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0 ">
                                         Explore Gallery
                                     </button>
                                 </Link>
@@ -550,7 +550,7 @@ export default function Section2() {
 
                         <div className="flex justify-center mt-8">
                             <Link href="/">
-                                <button className="manrope bg-[#ef0101] text-white px-8 py-3 rounded-4xl  shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                                <button className="manrope bg-[#ef0101] text-white px-8 py-3 rounded-4xl  shadow hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                     Explore Gallery
                                 </button>
                             </Link>

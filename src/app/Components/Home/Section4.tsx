@@ -145,14 +145,14 @@ export default function Section4() {
                 </div>
 
                 {/* Quote Text */}
-                <blockquote className="text-2xl text-gray-700 leading-relaxed mb-8 manrope-medium">
+                <blockquote className="text-xl text-gray-700 leading-relaxed mb-8 manrope-medium">
                   {testimonials[currentSlide].quote}
                 </blockquote>
 
                 {/* Customer Info */}
                 <div className="flex items-center gap-4">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
+                    <h4 className="text-md font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
                   </div>
                 </div>
               </div>
@@ -224,7 +224,7 @@ export default function Section4() {
                   </div>
 
                   {/* Quote Text */}
-                  <blockquote className="text-2xl text-gray-700 leading-relaxed mb-8 manrope-medium">
+                  <blockquote className="text-xl text-gray-700 leading-relaxed mb-8 manrope-medium">
                     {testimonials[currentSlide].quote}
                   </blockquote>
 
@@ -232,7 +232,7 @@ export default function Section4() {
                   <div className="flex items-center gap-4">
 
                     <div>
-                      <h4 className="text-xl font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
+                      <h4 className="text-md font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
                     </div>
                   </div>
                 </div>
@@ -302,14 +302,14 @@ export default function Section4() {
                 </div>
 
                 {/* Quote Text */}
-                <blockquote className="text-2xl text-gray-700 leading-relaxed mb-8 manrope-medium">
+                <blockquote className="text-xl text-gray-700 leading-relaxed mb-8 manrope-medium">
                   {testimonials[currentSlide].quote}
                 </blockquote>
 
                 {/* Customer Info */}
                 <div className="flex items-center gap-4">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
+                    <h4 className="text-md font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
                   </div>
                 </div>
               </div>
@@ -326,7 +326,7 @@ export default function Section4() {
         {/* Mobile Title */}
         <div className="mb-8">
           <div className="w-[2px] h-[37px] bg-[#ebd457] ml-"></div>
-          <h1 className="text-4xl w-auto wulkan-display-bold text-gray-800 text-left pl-3 -mt-9">
+          <h1 className="text-3xl w-auto wulkan-display-bold text-gray-800 text-left pl-3 -mt-9">
             Trusted by homeowners like you
           </h1>
         </div>
