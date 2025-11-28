@@ -71,9 +71,9 @@ export default function Section7() {
 
         {/* 1920 Version  */}
 
-        <div className="desktop-1920 hidden md:block  min-h-[500px] -mt-10 bg-[#F1F2F6] mx-20">
+        <div className="desktop-1920 hidden md:block  min-h-[500px]  bg-[#F1F2F6] mx-20">
 
-        <div className="w-full h-[410px] rounded-3xl  mx-auto relative overflow-hidden">
+          <div className="w-full h-[410px] rounded-3xl  mx-auto relative overflow-hidden">
             <img
               src="/HOME-CTA.png"
               alt="img"
