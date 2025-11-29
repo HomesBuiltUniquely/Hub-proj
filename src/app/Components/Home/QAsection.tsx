@@ -99,13 +99,13 @@ export function QAsection() {
       {/* 2560 version  */}
 
 
-       <div className=" desktop-2560 min-h-auto bg-[#F1F2F6] px-4 pt-8 pb-16 md:pt-8 md:pb-20">
-        <div className="max-w-screen-xl mx-auto">
-          <h1 className="text-5xl sm:text-4xl lg:text-5xl mb-15 sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
+       <div className=" desktop-2560 min-h-auto bg-[#F1F2F6] px-10 pt-8 pb-16 md:pt-8 md:pb-20">
+        <div className="max-w-screen-xl ">
+          <h1 className="text-5xl sm:text-4xl lg:text-5xl mb-15  sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
             Frequently asked questions
           </h1>
 
-          <div className="space-y-4 sm:space-y-6 mt-16 sm:mt-25 manrope-medium">
+          <div className="space-y-4 sm:space-y-6 mt-16 sm:mt-25 ml-70 manrope-medium">
             {faqData.map((item, index) => (
               <div key={index} className="pb-4 sm:pb-6">
                 <div

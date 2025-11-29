@@ -50,7 +50,7 @@ export default function CalculatorPage() {
             `}</style>
 
 
-            <div id="calculator-section" className="w-full h-auto  mb-5">
+            <div id="calculator-section" className="w-full h-auto mt-15 mb-5">
                 {/* Mobile Version */}
                 <div className="lg:hidden h-[500px]">
                     <h1 className="text-4xl sm:text-3xl text-black text-center px-3 manrope-medium">Get a free estimate for your interiors</h1>

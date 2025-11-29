@@ -285,7 +285,7 @@ export default function Section5() {
             {/* Desktop wrapper (single ref across breakpoints) */}
             <div ref={sectionRef} className="hidden md:block">
                 <div className="desktop-2560">
-                    <div className="bg-[#F1F2F6] min-h-[740px] -mt-10 px-85">
+                    <div className="bg-[#F1F2F6] min-h-[740px] px-85">
                         <div className="max-w-8xl mx-auto">
                             <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps

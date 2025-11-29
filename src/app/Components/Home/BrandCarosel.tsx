@@ -143,14 +143,35 @@ export default function BrandCarousel() {
       `}</style>
 
       {/* 2560 Version */}
-      <div className="desktop-2560 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-80">
-        <h2 className="text-center mb-8 text-5xl font-light wulkan-display-bold">Trusted partners</h2>
-        <div ref={ref2560} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
-          {allLogos.map((logo, idx) => (
-            <div key={idx} className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}>
-              <Image src={logo.src} alt={logo.alt} width={120} height={60} className="object-contain" />
-            </div>
-          ))}
+      <div className="desktop-2560 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-85">
+        <div className="flex items-center justify-between w-full gap-5">
+
+          {/* LEFT TEXT */}
+          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+            Trusted partners
+          </h2>
+
+          {/* RIGHT LOGO SLIDER */}
+          <span
+            ref={ref2560}
+            className="flex overflow-x-auto whitespace-nowrap ml-10 w-[full] scroll-smooth no-scrollbar"
+          >
+            {allLogos.map((logo, idx) => (
+              <div
+                key={idx}
+                className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </span>
+
         </div>
       </div>
 
@@ -210,7 +231,7 @@ export default function BrandCarousel() {
 
           {/* RIGHT LOGO SLIDER */}
           <span
-            ref={ref1920}
+            ref={ref1280}
             className="flex overflow-x-auto whitespace-nowrap ml-10 w-[full] scroll-smooth no-scrollbar"
           >
             {allLogos.map((logo, idx) => (

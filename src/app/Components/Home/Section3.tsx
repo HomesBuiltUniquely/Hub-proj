@@ -134,16 +134,6 @@ export default function Section3() {
                     {/* Header Section */}
                     <div className="flex flex-row justify-between items-center mb-12">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
-                        <a href="/GetEstimate">
-                            <button className="bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2">
-                                Book consultation
-                                <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
-                                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </div>
-                            </button>
-                        </a>
                     </div>
 
                     {/* Carousel Section */}
