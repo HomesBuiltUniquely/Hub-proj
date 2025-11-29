@@ -5,63 +5,70 @@ import Image from "next/image";
 import NavMore from "../NavMore";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import OfferingsDropdown from "../OfferingsDropdown";
-import router from "next/router";
+import { useRouter } from "next/navigation";   // ✅ FIX HERE
 import OverlapNavBar from "../OverlapNavBar";
 
-
-
-
 const ContactHeader: React.FC = () => {
+
+  const router = useRouter();  // ✅ FIX HERE
+
   const handleClick = () => {
     router.push("/");
   };
 
   const handleGetEstimate = () => {
-    router.push('/GetEstimate');
+    router.push("/GetEstimate");   // ✅ ROUTING NOW WORKS
   };
-
-
 
 
   return <div>
     <style jsx>{`
-     /* Hide both by default */
+     /* Hide all by default */
         .desktop-1280,
-        .desktop-1440 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
-        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        /* 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
         @media (min-width: 1024px) and (max-width: 1439px) {
           .desktop-1280 {
             display: block !important;
           }
         }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
+        /* 1920px layout for large desktops (1440px–1920px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+        /* 2560px layout for extra large desktops (>1920px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
             display: block !important;
           }
         }
     `}</style>
 
 
+    {/* 2560 Version */}
 
-    <div className="desktop-1440">
+    <div className="desktop-2560">
 
-      <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Inspir%20RH.png')" }}>
+      <div className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Inspir%20RH.png')" }}>
         {/* Navbar */}
         <div className="flex items-center justify-between -mt-15">
           <div onClick={handleClick} className="cursor-pointer">
             <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
           </div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+          <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
         {/* Hero content */}
 
@@ -77,11 +84,61 @@ const ContactHeader: React.FC = () => {
 
       </div>
 
+    </div>
+
+
+    {/* 1920 Version    */}
+
+    <div className="desktop-1920">
+
+      <div className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Inspir%20RH.png')" }}>
+        {/* Navbar */}
+        <div className="flex items-center justify-between -mt-15">
+          <div onClick={handleClick} className="cursor-pointer">
+            <Image
+              src="/redlogo.png"
+              alt="HUB Interior Logo"
+              width={250}
+              height={100}
+              className="w-[250px] h-full -mt-3 ml-2"
+            />
+          </div>
+
+          <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+          <button
+            onClick={handleGetEstimate}
+            className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-5  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+          >
+            GET FREE ESTIMATE
+          </button>
+        </div>
+        {/* Hero content */}
+
+        <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-85 ml-15">
+          <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+            Interior inspirations
+          </h1>
+
+          <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+            Every corner of your home holds a story - let’s design it beautifully.
+          </p>
+        </div>
+
+      </div>
 
     </div>
 
 
+    
 
+
+
+
+    {/* 1280 Version */}
 
     <div className="desktop-1280">
       <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
@@ -104,14 +161,14 @@ const ContactHeader: React.FC = () => {
             </div>
 
             {/* Center Navigation */}
-            <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
 
             {/* Right CTA */}
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
 
           {/* Hero content */}

@@ -23,7 +23,7 @@ const ContactHeader: React.FC = () => {
     router.push('/GetEstimate');
   };
 
-  
+
 
   return (
 
@@ -50,22 +50,30 @@ const ContactHeader: React.FC = () => {
 
 
       <style jsx>{`
-        /* Hide both by default */
+     /* Hide all by default */
         .desktop-1280,
-        .desktop-1440 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
-        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        /* 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
         @media (min-width: 1024px) and (max-width: 1439px) {
           .desktop-1280 {
             display: block !important;
           }
         }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
+        /* 1920px layout for large desktops (1440px–1920px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+        /* 2560px layout for extra large desktops (>1920px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
             display: block !important;
           }
         }
@@ -74,89 +82,42 @@ const ContactHeader: React.FC = () => {
 
       <div>
 
-        {/* Desktop Version */}
-        <div className="desktop-1440  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')" }}>
-          {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
-            <div onClick={handleClick} className="cursor-pointer">
-              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
-            </div>
-            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-              <OfferingsDropdown textColor="text-white" />
-              <ExploreRoomsDropdown textColor="text-white" />
-              <NavMore textColor="text-white" />
-            </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
-          </div>
-          {/* Hero content */}
-          
 
-
-
-        <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-              Creative false ceilings
-            </h1> 
-
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-               Modern false ceiling designs that enhance lighting, space, and style.
-            </p>
-
-            <div className="flex gap-4">
-              <button
-                onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"             
-              >
-                Get Free Quote
-              </button>
-            </div>
-          </div>
-
-
-
-
-        </div>
-
-      </div>
-
-
-
-      {/* 1280 version */}
-
-      <div className="desktop-1280">
-        <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
-          {/* Inner container with background */}
+        {/* 2560 Version */}
+        <div className="desktop-2560">
           <div
-            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-            style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')" }}
+            className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
+            style={{
+              backgroundImage:
+                "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')",
+            }}
           >
             {/* Navbar */}
-            <div className="flex items-center justify-between px-8">
-              {/* Logo */}
+            <div className="flex items-center justify-between -mt-15">
               <div onClick={handleClick} className="cursor-pointer">
                 <Image
                   src="/redlogo.png"
                   alt="HUB Interior Logo"
-                  width={230}
-                  height={250}
-                  className="w-[full] h-[full] -mt-12 -ml-8"
+                  width={220}
+                  height={100}
+                  className="w-[250px] h-full -mt-2 -ml-2"
                 />
               </div>
-
-              {/* Center Navigation */}
-              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm text-white tracking-widest ml-80 mt-4">
                 <OfferingsDropdown textColor="text-white" />
                 <ExploreRoomsDropdown textColor="text-white" />
                 <NavMore textColor="text-white" />
               </div>
-
-              {/* Right CTA */}
-              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+              <button
+                onClick={handleGetEstimate}
+                className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+              >
+                GET FREE ESTIMATE
+              </button>
             </div>
-
             {/* Hero content */}
-          
-            <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
+
+            <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
               <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
                 Creative false ceilings
               </h1>
@@ -164,117 +125,239 @@ const ContactHeader: React.FC = () => {
               <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
                 Modern false ceiling designs that enhance lighting, space, and style.
               </p>
- 
+
+              <div className="flex gap-4">
+                <button
+                  onClick={handleGetEstimate}
+                  className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+                >
+                  Get Free Quote
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        {/* 1920 Version */}
+
+        <div className="desktop-1920">
+          <div
+            className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
+            style={{
+              backgroundImage:
+                "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')",
+            }}
+          >
+            {/* Navbar */}
+            <div className="flex items-center justify-between -mt-15">
+              <div onClick={handleClick} className="cursor-pointer">
+                <Image
+                  src="/redlogo.png"
+                  alt="HUB Interior Logo"
+                  width={250}
+                  height={100}
+                  className="w-[250px] h-full -mt-3 ml-2"
+                />
+              </div>
+
+              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
               <button
                 onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
+                className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
-                Get Free Quote
+                GET FREE ESTIMATE
               </button>
+            </div>
+
+            {/* Hero content */}
+            <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+              <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+                Creative false ceilings
+              </h1>
+
+              <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+                Modern false ceiling designs that enhance lighting, space, and style.
+              </p>
+
+              <div className="flex gap-4">
+                <button
+                  onClick={handleGetEstimate}
+                  className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+                >
+                  Get Free Quote
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        {/* 1280 version */}
+
+        <div className="desktop-1280">
+          <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
+            {/* Inner container with background */}
+            <div
+              className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
+              style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')" }}
+            >
+              {/* Navbar */}
+              <div className="flex items-center justify-between px-8">
+                {/* Logo */}
+                <div onClick={handleClick} className="cursor-pointer">
+                  <Image
+                    src="/redlogo.png"
+                    alt="HUB Interior Logo"
+                    width={230}
+                    height={250}
+                    className="w-[full] h-[full] -mt-12 -ml-8"
+                  />
+                </div>
+
+                {/* Center Navigation */}
+                <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center   md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+                  <OfferingsDropdown textColor="text-white" />
+                  <ExploreRoomsDropdown textColor="text-white" />
+                  <NavMore textColor="text-white" />
+                </div>
+
+                {/* Right CTA */}
+                <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+              </div>
+
+              {/* Hero content */}
+              <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
+                <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+                  Creative false ceilings
+                </h1>
+
+                <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+                  Modern false ceiling designs that enhance lighting, space, and style.
+                </p>
+
+                <button
+                  onClick={handleGetEstimate}
+                  className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
+                >
+                  Get Free Quote
+                </button>
+              </div>
+
             </div>
 
 
           </div>
+
         </div>
-      </div>
 
 
 
 
 
 
+        {/* ===== MOBILE VERSION ===== */}
+
+        {/* Mobile Version (360px to 480px) */}
+        <div className="md:hidden px-4 mk-mobile-360 mobile-360plus mt-3 mb-10">
+          <div className="relative h-[450] w-[full] ">
+            {/* Rounded image only */}
+            <div className="absolute inset-0 rounded-4xl overflow-hidden">
+              <Image
+                src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
+                alt="False ceiling"
+                fill
+                priority
+                className="object-cover"
+              />
+              {/* gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            </div>
+
+            {/* top logo */}
+            <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
+            </div>
 
 
-      {/* ===== MOBILE VERSION ===== */}
-
-      {/* Mobile Version (360px to 480px) */}
-      <div className="md:hidden px-4 mk-mobile-360 mobile-360plus mt-3 mb-10">
-         <div className="relative h-[450] w-[full] ">
-                  {/* Rounded image only */}
-                  <div className="absolute inset-0 rounded-4xl overflow-hidden">
-                    <Image
-                      src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
-                      alt="False ceiling"
-                      fill
-                      priority
-                      className="object-cover"
-                    />
-                    {/* gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  </div>
-        
-                  {/* top logo */}
-                  <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
-                    <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
-                  </div>
-        
 
 
-        
-          {/* text + cta */}
+            {/* text + cta */}
 
-          <div className="absolute bottom-10 left-4 right-4 text-white">
-            <h2 className="wulkan-display-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-               Creative false ceilings
-            </h2>
-            <p className="mt-2 text-[13px] manrope-medium opacity-90">
-              Modern false ceiling designs that enhance lighting, space, and style.
-            </p>
-          </div>
-          {/* CTA overlapping, positioned above image */}
-          <div className="absolute left-6 -bottom-5 z-20">
-            <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
-              Get Free Quote
-            </button>
-          </div>
-        <OverlapNavBar />
-        </div>
-      </div>
-
-
-      {/* Mobile Version (300px to 359px) */}
-      <div className="md:hidden p-3 mk-mobile-300 mobile-300 mb-10">
-        <div className="relative h-[450] w-[100%]  mt-3">
-          {/* Rounded image only */}
-          <div className="absolute inset-0 rounded-4xl overflow-hidden">
-            <Image
-              src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
-              alt="Modular Kitchen Background"
-              fill
-              priority
-              className="object-cover"
-            />
-            {/* gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-          </div>
-
-          {/* top logo */}
-          <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={82} height={50} className="cursor-pointer" />
-          </div>
-
-          {/* Hamburger Menu Button + Mobile Menu */}
-
-
-          {/* text + cta */}
-          <div className="absolute bottom-10 left-4 right-4 text-white">
-            <h2 className="wulkan-display-bold  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-               Creative false ceilings
-            </h2>
-            <p className="mt-2 text-[13px] manrope-medium opacity-90">
-              Modern false ceiling designs that enhance lighting, space, and style.
-            </p>
-          </div>
-          {/* CTA overlapping, positioned above image */}
-          <div className="absolute left-6 -bottom-5 z-20">
-            <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
-              Get Free Quote
-            </button>
+            <div className="absolute bottom-10 left-4 right-4 text-white">
+              <h2 className="wulkan-display-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+                Creative false ceilings
+              </h2>
+              <p className="mt-2 text-[13px] manrope-medium opacity-90">
+                Modern false ceiling designs that enhance lighting, space, and style.
+              </p>
+            </div>
+            {/* CTA overlapping, positioned above image */}
+            <div className="absolute left-6 -bottom-5 z-20">
+              <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
+                Get Free Quote
+              </button>
+            </div>
+            <OverlapNavBar />
           </div>
         </div>
-        <OverlapNavBar />
-      </div>
 
+
+        {/* Mobile Version (300px to 359px) */}
+        <div className="md:hidden p-3 mk-mobile-300 mobile-300 mb-10">
+          <div className="relative h-[450] w-[100%]  mt-3">
+            {/* Rounded image only */}
+            <div className="absolute inset-0 rounded-4xl overflow-hidden">
+              <Image
+                src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
+                alt="Modular Kitchen Background"
+                fill
+                priority
+                className="object-cover"
+              />
+              {/* gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            </div>
+
+            {/* top logo */}
+            <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={82} height={50} className="cursor-pointer" />
+            </div>
+
+            {/* Hamburger Menu Button + Mobile Menu */}
+
+
+            {/* text + cta */}
+            <div className="absolute bottom-10 left-4 right-4 text-white">
+              <h2 className="wulkan-display-bold  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+                Creative false ceilings
+              </h2>
+              <p className="mt-2 text-[13px] manrope-medium opacity-90">
+                Modern false ceiling designs that enhance lighting, space, and style.
+              </p>
+            </div>
+            {/* CTA overlapping, positioned above image */}
+            <div className="absolute left-6 -bottom-5 z-20">
+              <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
+                Get Free Quote
+              </button>
+            </div>
+          </div>
+          <OverlapNavBar />
+        </div>
+
+      </div>
     </div>
   )
 };
