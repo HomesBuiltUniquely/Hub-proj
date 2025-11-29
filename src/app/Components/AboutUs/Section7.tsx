@@ -383,7 +383,7 @@ const Section7 = () => {
       <style jsx>{`
         /* Ensure only one 3xl section exists */
         .aboutus-section7-3xl-container {
-          display: none !important;
+          display: none ;
         }
         
         /* Hide 2xl section when 3xl is active */
@@ -507,26 +507,42 @@ const Section7 = () => {
       `}</style>
 
         
-         {/* ✅ Global media query to conditionally show/hide sections */}
-            <style jsx global>{`
-                .desktop-1440,
-                .desktop-1280 {
-                    display: none;
-                }
+        <style jsx global>{`
+    /* Default hidden for desktop variations */
+    .desktop-1440,
+    .desktop-1280,
+    .aboutus-section7-3xl-container {
+        display: none;
+    }
 
-                @media (min-width: 768px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block;
-                    }
-                }
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
+    }
 
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block;
-                    }
-                }
-            `}</style>
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1919px) {
+        .desktop-1440 {
+            display: block;
+        }
+    }
 
+    /* 3XL (2560+) */
+    @media (min-width: 2560px) {
+        .aboutus-section4-3xl-container {
+            display: block !important;
+        }
+
+        /* Hide other layouts */
+        .desktop-1440,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
+`}
+</style>
     </div>
   );
 };

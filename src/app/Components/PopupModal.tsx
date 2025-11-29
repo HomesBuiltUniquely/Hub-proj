@@ -25,7 +25,7 @@ export default function PopUpModal() {
   useEffect(() => {
     if (submitted) return;
 
-    if (reopenCount >= 3) return; // ❌ Stop reopening after 3 times
+    if (reopenCount >= 1) return; // ❌ Stop reopening after 3 times
 
     const interval = setInterval(() => {
       setOpen(true);

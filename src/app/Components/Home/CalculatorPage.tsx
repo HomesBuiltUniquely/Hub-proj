@@ -50,10 +50,10 @@ export default function CalculatorPage() {
             `}</style>
 
 
-            <div id="calculator-section" className="w-full h-auto  mb-5">
+            <div id="calculator-section" className="w-full h-auto mt-15 mb-5">
                 {/* Mobile Version */}
                 <div className="lg:hidden h-[500px]">
-                    <h1 className="text-4xl sm:text-3xl text-black text-center px-3 manrope-medium">Get A Free Estimate for Your Interiors</h1>
+                    <h1 className="text-4xl sm:text-3xl text-black text-center px-3 manrope-medium">Get a free estimate for your interiors</h1>
                     <div className="px-4 ">
                         <div className="w-full max-w-sm mx-auto h-auto rounded-3xl mt-8 p-6 shadow-lg bg-[#F1F2F6]">
                             <div className="flex justify-center gap-4 mb-4">
@@ -80,7 +80,7 @@ export default function CalculatorPage() {
                 {/* 1440 Version */}
 
                 <div className="desktop-1440 hidden lg:block mb-25">
-                    <h1 className="text-5xl text-center pt-5 manrope">Get A Free Estimate for Your Interiors</h1>
+                    <h1 className="text-5xl text-center pt-5 manrope">Get a free estimate for your interiors</h1>
                     <div>
                         <div className="w-[500px] h-[500px] border-2 rounded-4xl border-[#ef0101] mt-20 mx-auto">
                             <div className="flex justify-between m-10">
@@ -108,7 +108,7 @@ export default function CalculatorPage() {
 
 
                 <div className="desktop-1280 hidden lg:block">
-                    <h1 className="text-5xl text-center pt-10 mb-10 manrope">Get A Free Estimate for Your Interiors</h1>
+                    <h1 className="text-5xl text-center pt-10 mb-10 manrope">Get a free estimate for your interiors</h1>
                     <div>
                         <div className="w-[500px] h-[500px] border-2 rounded-4xl border-[#ef0101] mt-10 mx-auto">
                             <div className="flex justify-between m-10">

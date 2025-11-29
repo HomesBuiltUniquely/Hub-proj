@@ -285,7 +285,7 @@ export default function Section5() {
             {/* Desktop wrapper (single ref across breakpoints) */}
             <div ref={sectionRef} className="hidden md:block">
                 <div className="desktop-2560">
-                    <div className="bg-[#F1F2F6] min-h-[740px] -mt-10 px-85">
+                    <div className="bg-[#F1F2F6] min-h-[740px] px-85">
                         <div className="max-w-8xl mx-auto">
                             <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
@@ -296,14 +296,14 @@ export default function Section5() {
                                     {steps.map((step, index) => (
                                         <div key={index} className="flex items-start gap-6 relative">
                                             <div
-                                                className={`w-16 h-16 rounded-full flex items-center justify-center ${index <= activeStep ? 'bg-[#32261c] text-white shadow-lg' : 'bg-gray-300 text-gray-600'
+                                                className={`w-16 h-16 rounded-full flex items-center justify-center ${index <= activeStep ? 'bg-amber-950 text-white shadow-lg' : 'bg-gray-300 text-gray-600'
                                                     }`}
                                             >
                                                 <Image src={step.icon} alt={step.title} width={25} height={25} />
                                             </div>
 
-                                            <div className="pt-2">
-                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-gray-800' : 'text-gray-500'}`}>{step.title}</h3>
+                                            <div className="pt-2 manrope-medium">
+                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
                                                 <p className={`text-lg ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'}`}>{step.description}</p>
                                             </div>
 
@@ -326,26 +326,30 @@ export default function Section5() {
                     </div>
                 </div>
 
-                <div className="desktop-1920">
-                    <div className="bg-[#F1F2F6] min-h-[740px] -mt-10 px-20">
+
+                {/* 1920 Version */}
+
+
+                <div className="desktop-1920 ">
+                    <div className="bg-[#F1F2F6] min-h-[740px] px-20 ">
                         <div className="max-w-8xl mx-auto">
                             <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
                             </h1>
 
-                            <div className="flex gap-16 items-center">
+                            <div className="flex gap-16 items-center manrope-medium">
                                 <div className="w-1/2 space-y-12">
                                     {steps.map((step, index) => (
                                         <div key={index} className="flex items-start gap-6 relative">
                                             <div
-                                                className={`w-16 h-16 rounded-full flex items-center justify-center ${index <= activeStep ? 'bg-[#32261c] text-white shadow-lg' : 'bg-gray-300 text-gray-600'
+                                                className={`w-16 h-16 rounded-full flex items-center justify-center ${index <= activeStep ? 'bg-amber-950 text-white shadow-lg' : 'bg-gray-300 text-gray-600'
                                                     }`}
                                             >
                                                 <Image src={step.icon} alt={step.title} width={25} height={25} />
                                             </div>
 
-                                            <div className="pt-2">
-                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-gray-800' : 'text-gray-500'}`}>{step.title}</h3>
+                                            <div className="pt-2 manrope-medium">
+                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
                                                 <p className={`text-lg ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'}`}>{step.description}</p>
                                             </div>
 
@@ -371,7 +375,7 @@ export default function Section5() {
                 {/* 1280 Version */}
 
                 <div className="desktop-1280">
-                    <div className="bg-[#F1F2F6] min-h-[740px] -mt-10 px-15">
+                    <div className="bg-[#F1F2F6] min-h-[740px] px-15">
                         <div className="max-w-6xl mx-auto">
                             <h1 className="text-5xl mb-10 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
@@ -380,16 +384,16 @@ export default function Section5() {
                             <div className="flex gap-16 items-center">
                                 <div className="w-1/2 space-y-12">
                                     {steps.map((step, index) => (
-                                        <div key={index} className="flex items-start gap-6 relative">
+                                        <div key={index} className="flex items-start gap-6 relative manrope-medium">
                                             <div
-                                                className={`w-16 h-16 rounded-full flex items-center justify-center ${index <= activeStep ? 'bg-[#32261c] text-white shadow-lg' : 'bg-gray-300 text-gray-600'
+                                                className={`w-16 h-16 rounded-full flex items-center justify-center ${index <= activeStep ? 'bg-amber-950 text-white shadow-lg' : 'bg-gray-300 text-gray-600'
                                                     }`}
                                             >
                                                 <Image src={step.icon} alt={step.title} width={25} height={25} />
                                             </div>
 
-                                            <div className="pt-2">
-                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-gray-800' : 'text-gray-500'}`}>{step.title}</h3>
+                                            <div className="pt-2 manrope-medium">
+                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
                                                 <p className={`text-lg ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'}`}>{step.description}</p>
                                             </div>
 

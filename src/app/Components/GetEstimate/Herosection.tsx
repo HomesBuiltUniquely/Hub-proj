@@ -1,5 +1,5 @@
 "use client"
-import React  from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
@@ -12,10 +12,7 @@ import OverlapNavBar from "../OverlapNavBar";
 const HeroSection: React.FC = () => {
   const router = useRouter();
 
-  const handleGetEstimate = () => {
-    router.push('/GetEstimate');
-  };
-
+ 
   const handleClick = () => {
     router.push('/');
   };
@@ -26,24 +23,32 @@ const HeroSection: React.FC = () => {
     <div className="">
       <style jsx>{`
         /* Hide all sections by default */
-        .desktop-1440,
-        .desktop-1280,
+         .desktop-1280,
+        .desktop-1920,
+        .desktop-2560, 
         .mobile-small,
         .mobile-large {
           display: none;
         }
 
-        /* Show 1280px section for screens between 768px and 1439px */
-        @media (min-width: 768px) and (max-width: 1439px) {
+       /* 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
           .desktop-1280 {
-            display: block;
+            display: block !important;
           }
         }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block;
+        /* 1920px layout for large desktops (1440px–1920px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+        /* 2560px layout for extra large desktops (>1920px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
           }
         }
 
@@ -64,18 +69,52 @@ const HeroSection: React.FC = () => {
 
 
 
-      <div className="desktop-1440 w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/gh1.png')" }}>
+      {/* 2560 Version */}
+      <div className="desktop-2560 w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/gh1.png')" }}>
         {/* Navbar */}
         <div className="flex items-center justify-between -mt-15">
           <div onClick={handleClick} className="cursor-pointer">
             <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
           </div>
-          <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+          <div className="hidden  bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest mr-75 mt-4">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+         
+        </div>
+        {/* Hero content */}
+        <div className="flex justify-between pt-24 pb-20 text-white text-center mt-25">
+          <div className=" w-[310px] mt-20">
+            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ml-17 text-nowrap">Get free estimate</h1>
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg -ml-92">Your ideas, our cost estimate</p>
+          </div>
+          <div className="-mt-30 mr-20">
+            <EstimateForm />
+          </div>
+        </div>
+      </div>
+
+
+      {/* 1920 Version */}
+      <div className="desktop-1920 hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('/gh1.png')" }}>
+        {/* Navbar */}
+        <div className="flex items-center justify-between -mt-15">
+          <div onClick={handleClick} className="cursor-pointer">
+            <Image
+              src="/redlogo.png"
+              alt="HUB Interior Logo"
+              width={250}
+              height={100}
+              className="w-[250px] h-full -mt-3 ml-2"
+            />
+          </div>
+
+          <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest mr-90 mt-4">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
         </div>
         {/* Hero content */}
         <div className="flex justify-between pt-24 pb-20 text-white text-center mt-25">
@@ -115,14 +154,12 @@ const HeroSection: React.FC = () => {
               </div>
 
               {/* Center Navigation */}
-              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  md:flex gap-10 text-[18px] manrope -mt-12 mr-80 text-white tracking-widest">
                 <OfferingsDropdown textColor="text-white" />
                 <ExploreRoomsDropdown textColor="text-white" />
                 <NavMore textColor="text-white" />
               </div>
 
-              {/* Right CTA */}
-              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
             </div>
 
             {/* Hero content */}
@@ -131,7 +168,7 @@ const HeroSection: React.FC = () => {
                 <h1 className="text-5xl lg:text-6xl  wulkan-display-bold mb-2 drop-shadow-lg ">Get free estimate</h1>
                 <p className="text-2xl manrope-medium mb-6 drop-shadow-lg ">Your ideas, our cost estimate</p>
               </div>
-              <div className=" -mt-40 mr-25">
+              <div className=" -mt-30 mr-25">
                 <EstimateForm />
               </div>
             </div>

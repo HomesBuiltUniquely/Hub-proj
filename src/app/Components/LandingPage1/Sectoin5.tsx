@@ -74,7 +74,7 @@ export default function Section5() {
                   onMouseEnter={() => setIsHovered3(true)}
                   onMouseLeave={() => setIsHovered3(false)}>
                   <img src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//boxes.png" className="w-[100px] h-[110px] pt-6 ml-24 " />
-                  <h1 className="manrope-medium text-white text-center text-2xl pt-4">Storage Inovations </h1>
+                  <h1 className="manrope-medium text-white text-center text-2xl pt-4">Storage Innovations </h1>
 
                   {isHovered3 && (
                     <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-[2rem] manrope-medium">
@@ -177,7 +177,7 @@ export default function Section5() {
                   onMouseEnter={() => setIsHovered3(true)}
                   onMouseLeave={() => setIsHovered3(false)}>
                   <img src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//boxes.png" className="w-[100px] h-[110px] pt-6 ml-24 " />
-                  <h1 className="manrope-medium text-white text-center text-2xl pt-4">Storage Inovations </h1>
+                  <h1 className="manrope-medium text-white text-center text-2xl pt-4">Storage Innovations </h1>
 
                   {isHovered3 && (
                     <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-[2rem] manrope-medium">
@@ -273,7 +273,7 @@ export default function Section5() {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 mt-20 ml-5 text-white ">
               <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
-            <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Storage <p> Inovation </p></div>
+            <div className='ml-3 pt-16 text-[20px] text-white manrope-semibold'>Storage <p> Innovation </p></div>
           </div>
           {activeMobile === 1 && (
             <div className="absolute inset-0 bg-[#ef0101] bg-opacity-50 flex items-center justify-center rounded-4xl z-10 manrope-medium">
