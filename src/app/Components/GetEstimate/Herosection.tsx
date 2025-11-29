@@ -12,10 +12,7 @@ import OverlapNavBar from "../OverlapNavBar";
 const HeroSection: React.FC = () => {
   const router = useRouter();
 
-  const handleGetEstimate = () => {
-    router.push('/GetEstimate');
-  };
-
+ 
   const handleClick = () => {
     router.push('/');
   };
