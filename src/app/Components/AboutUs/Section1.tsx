@@ -25,7 +25,7 @@ export default function Section1() {
             {/* 2XL Screen - Large displays */}
          
 
-            <div className="desktop-1440">
+            <div className="desktop-1920">
                 <div className="flex flex-row justify-between w-full h-[320px] px-12 my-auto mt-10 mb-10">
 
                     {/* Heading - XL optimized */}
@@ -62,6 +62,7 @@ export default function Section1() {
 
                 </div>
             </div>
+
 
             {/* LG Screen - Large displays */}
             {/* <div className="hidden lg:block xl:hidden">
@@ -102,9 +103,7 @@ export default function Section1() {
 
 
             {/* SM Screen - Small displays and mobile */}
-          
-
-
+         
             <div className="block md:hidden min-w-[320px] max-w-[425px] px-4 mt-8">
                 <div className="flex flex-col space-y-4">
                     <div className="flex items-start space-x-3">
@@ -118,12 +117,6 @@ export default function Section1() {
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
 
             {/* Pure CSS for 3XL - 2560*1440 resolution */}
             <style jsx>{`
@@ -174,7 +167,7 @@ export default function Section1() {
             
      <style jsx global>{`
     /* Default hidden for desktop variations */
-    .desktop-1440,
+    .desktop-1920,
     .desktop-1280,
     .aboutus-section1-3xl-container {
         display: none;
@@ -187,9 +180,9 @@ export default function Section1() {
         }
     }
 
-    /* 2XL (1440–1919) */
-    @media (min-width: 1440px) and (max-width: 1919px) {
-        .desktop-1440 {
+    /* 2XL (1440–1920) */
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
             display: block;
         }
     }
@@ -201,7 +194,7 @@ export default function Section1() {
         }
 
         /* Hide other layouts */
-        .desktop-1440,
+        .desktop-1920,
         .desktop-1280 {
             display: none !important;
         }

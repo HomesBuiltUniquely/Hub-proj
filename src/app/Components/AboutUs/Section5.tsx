@@ -149,10 +149,10 @@ const Section5 = () => {
         </div>
       </section>
 
-      {/* 2XL Screen - Large displays */}
-      <div className='desktop-1440'>
-        <section className=" py-20 px-16 bg-white">
-          <div className="max-w-7xl mx-auto">
+      {/* 2XL 1920 - Large displays */}
+      <div className='desktop-1920'>
+        <section className=" py-20 px-20 bg-white">
+          <div className="w-full mx-auto">
             {/* Header Section */}
             <div className="text-center mb-12">
               <h2 className="text-4xl wulkan-display-bold text-gray-900 mb-2 leading-tight">
@@ -203,10 +203,13 @@ const Section5 = () => {
         </section>
       </div>
 
+
+      {/* 1280 Version */}
+
       {/* XL Screen - Extra large displays */}
 
       <div className='desktop-1280'>
-        <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white">
+        <section className="hidden xl:block 2xl:hidden py-20 px-15 bg-white">
           <div className="max-w-6xl mx-auto">
             {/* Header Section */}
             <div className="text-center mb-12">
@@ -568,41 +571,40 @@ const Section5 = () => {
       `}</style>
 
       <style jsx global>{`
-  /* Default hidden for desktop variations */
-  .desktop-1440,
-  .desktop-1280,
-  .aboutus-section5-3xl-container {
-    display: none;
-  }
-
-  /* XL (1280–1439) */
-  @media (min-width: 768px) and (max-width: 1439px) {
-    .desktop-1280 {
-      display: block;
-    }
-  }
-
-  /* 2XL (1440–1919) */
-  @media (min-width: 1440px) and (max-width: 1919px) {
-    .desktop-1440 {
-      display: block;
-    }
-  }
-
-  /* 3XL (2560px and above) */
-  @media (min-width: 2560px) {
+    /* Default hidden for desktop variations */
+    .desktop-1920,
+    .desktop-1280,
     .aboutus-section5-3xl-container {
-      display: block !important;
+        display: none;
     }
 
-    /* Hide other layouts */
-    .desktop-1440,
-    .desktop-1280 {
-      display: none !important;
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
     }
-  }
+
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
+            display: block;
+        }
+    }
+
+    /* 3XL (2560px+) */
+    @media (min-width: 2560px) {
+        .aboutus-section5-3xl-container {
+            display: block !important;
+        }
+
+        .desktop-1920,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
 `}
-      </style>
+            </style>
 
     </div>
   );

@@ -9,9 +9,9 @@ const Section10 = () => {
 
 
     
-        <style jsx global>{`
+         <style jsx global>{`
     /* Default hidden for desktop variations */
-    .desktop-1440,
+    .desktop-1920,
     .desktop-1280,
     .aboutus-section10-3xl-container {
         display: none;
@@ -25,26 +25,25 @@ const Section10 = () => {
     }
 
     /* 2XL (1440–1919) */
-    @media (min-width: 1440px) and (max-width: 1919px) {
-        .desktop-1440 {
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
             display: block;
         }
     }
 
-    /* 3XL (2560+) */
+    /* 3XL (2560px+) */
     @media (min-width: 2560px) {
-        .aboutus-section4-3xl-container {
+        .aboutus-section10-3xl-container {
             display: block !important;
         }
 
-        /* Hide other layouts */
-        .desktop-1440,
+        .desktop-1920,
         .desktop-1280 {
             display: none !important;
         }
     }
 `}
-</style>
+            </style>
 
       {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
       <section className="aboutus-section10-3xl-container hidden mt-50">
@@ -84,16 +83,16 @@ const Section10 = () => {
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className=" desktop-1440 hidden 2xl:block 3xl:hidden mb-210">
-        <div className="mt-20  w-full h-[550px] px-16">
+      <section className=" desktop-1920 hidden 2xl:block 3xl:hidden mb-210">
+        <div className="mt-20  w-full h-[550px] px-20">
           <div className="max-w-8xl mx-auto">
 
 
             {/* Container for Title + Image */}
-            <div className="flex flex-col items-center justify-center w-full max-w-[1100px] mx-auto mt-16 xl:mt-20">
+            <div className="flex flex-col items-center justify-center w-full max-w-[1100px] mx-auto -mt-10">
 
               {/* Title */}
-              <div className="flex justify-center items-center space-x-2 mb-6">
+              <div className="flex justify-center items-center space-x-2 mb-10">
                 <span className="manrope text-2xl xl:text-6xl text-[#ebd457]">Team</span>
                 <span className="manrope text-2xl xl:text-6xl text-black">HUB</span>
               </div>
@@ -111,7 +110,7 @@ const Section10 = () => {
 
 
 
-            <div className="w-[1280px] h-auto min-h-[550px] bg-red-300 relative rounded-2xl overflow-hidden mt-10 mx-auto">
+            <div className="w-full h-auto min-h-[550px] bg-red-300 relative rounded-2xl overflow-hidden mt-10 mx-auto">
 
               {/* Background Image - 2XL optimized */}
               <img
@@ -121,7 +120,7 @@ const Section10 = () => {
               />
 
               {/* Overlay Content - 2XL optimized */}
-              <div className="w-[550px] h-auto min-h-[300px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-10 mt-40 rounded-2xl p-8">
+              <div className="w-[550px] h-auto min-h-[300px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-30 mt-30 rounded-2xl p-8">
 
                 {/* Heading - 2XL optimized */}
                 <h1 className="text-3xl w-[400px] h-[100px] text-white mt-2 pl-6 manrope-medium leading-tight">
@@ -150,14 +149,14 @@ const Section10 = () => {
 
       {/* XL Screen - Extra large displays */}
       <section className="desktop-1280 hidden xl:block 2xl:hidden">
-        <div className="mt-18 w-full h-auto px-12">
+        <div className="mt-18 w-full h-auto px-15">
           <div className="max-w-7xl mx-auto">
 
             {/* Container for Title + Image */}
-            <div className="flex flex-col items-center justify-center w-full max-w-[1100px] mx-auto mt-16 mb-20 xl:mt-20">
+            <div className="flex flex-col items-center justify-center w-full max-w-[1100px] mx-auto -mt-5 mb-20 ">
 
               {/* Title */}
-              <div className="flex justify-center items-center space-x-2 mb-6">
+              <div className="flex justify-center items-center space-x-2 mb-10">
                 <span className="manrope text-2xl xl:text-5xl text-[#ebd457]">Team</span>
                 <span className="manrope text-2xl xl:text-5xl text-black">HUB</span>
               </div>
@@ -186,7 +185,7 @@ const Section10 = () => {
               />
 
               {/* Overlay Content - XL optimized */}
-              <div className="w-[500px] h-auto min-h-[280px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-10 mt-20 rounded-2xl p-8">
+              <div className="w-[500px] h-auto min-h-[280px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-20 mt-15 rounded-2xl p-8">
 
                 {/* Heading - XL optimized */}
                 <h1 className="text-3xl w-[400px] h-[100px] text-white  manrope-medium leading-tight">

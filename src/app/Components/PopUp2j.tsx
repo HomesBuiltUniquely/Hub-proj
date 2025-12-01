@@ -81,15 +81,15 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             setError("Enter a valid 10-digit phone number");
             return;
         }
-       if (pin.length !== 6) {
-    setError("Enter a valid 6-digit pincode");
-    return;
-}
+        if (pin.length !== 6) {
+            setError("Enter a valid 6-digit pincode");
+            return;
+        }
 
-if (!Pincode.includes(pin)) {
-    setError("Service unavailable for this pincode");
-    return;
-}
+        if (!Pincode.includes(pin)) {
+            setError("Service unavailable for this pincode");
+            return;
+        }
 
 
         setError("");
