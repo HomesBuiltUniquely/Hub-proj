@@ -22,7 +22,7 @@ export default function Section2() {
             link: "/"
         },
         {
-            title: "BedRoom",
+            title: "Bed Room",
             image: "/bed3.jpg",
             link: "/Bedroom"
         },

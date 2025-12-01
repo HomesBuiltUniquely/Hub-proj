@@ -219,7 +219,6 @@ export default function Blog() {
 
   return (
     <div>
-
       <PopUpModal />
       <Herosection />
       <Section2 posts={posts} onReadMore={handleReadMore} />

@@ -331,12 +331,12 @@ export function HeroSection() {
     return (
 
         <div>
-            <div className="lg:block hidden relative w-[1440px] h-[1000px]">
+            <div className="lg:block hidden relative w-full h-[1000px] mx-auto">
                 <Image
-                    src="/BLACK FRIDAY-0L.png"
+                    src="/jit1.png"
                     alt="Hero background"
                     fill
-                    className="object-cover border-4  rounded-3xl border-black"
+                    className="object-cover border-4  rounded-3xl "
                     loading="lazy"
 
                 />
@@ -528,7 +528,7 @@ export function HeroSection() {
                 <div className="w-screen h-[1000px] bg-white">
                     <div className="relative">
                         <div className="relative ">
-                            <img src="jitmob1.png" className="absolute h-[700px] w-screen"></img>
+                            <img src="jitmob.png" className="absolute h-[700px] w-screen"></img>
                             <img src="LOGO.png" alt="Logo" className="absolute top-4 w-[100px] h-[40px] m-4"></img>
                         </div>
 

@@ -220,7 +220,7 @@ if (!Pincode.includes(pin)) {
 
                     <div className="w-[300px] h-[350px] flex justify-end">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/PopUp.png"
+                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/PopUp%20Image.png"
                             alt="Offer Image"
                             width={350}
                             height={300}
@@ -241,7 +241,7 @@ if (!Pincode.includes(pin)) {
 
                     <div className="w-full h-[190px] flex justify-end">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/PopUp%20M.png"
+                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/PopUp%20Image%20M.png"
                             alt="Offer Image"
                             width={350}
                             height={300}
