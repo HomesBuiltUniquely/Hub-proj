@@ -61,15 +61,8 @@ const ContactHeader: React.FC = () => {
           }
         }
 
-        /* Show 1440px layout only at exactly 1440px to avoid overlap */
-        @media (width: 1440px){
-          .desktop-1440 {
-            display: block !important;
-          }
-        }
-
-         /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
+         /* Show 1920px layout for large desktops (1440px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
@@ -89,6 +82,7 @@ const ContactHeader: React.FC = () => {
 
       {/* Desktop Version */}
 
+      {/* 2560 Version */}
 
       <div className="desktop-2560 hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/kh.png')" }}>
         {/* Navbar */}
@@ -147,7 +141,7 @@ const ContactHeader: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-20">
             <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
               Modular kitchen interior
             </h1>
@@ -159,7 +153,7 @@ const ContactHeader: React.FC = () => {
             <div className="flex gap-4">
               <button
                 onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
+                className="bg-yellow-300 text-black px-4 py-2 rounded-full manrope shadow"
               >
                 Get Free Quote
               </button>

@@ -12,7 +12,7 @@ import OverlapNavBar from "../OverlapNavBar";
 const HeroSection: React.FC = () => {
   const router = useRouter();
 
- 
+
   const handleClick = () => {
     router.push('/');
   };
@@ -81,7 +81,7 @@ const HeroSection: React.FC = () => {
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-         
+
         </div>
         {/* Hero content */}
         <div className="flex justify-between pt-24 pb-20 text-white text-center mt-25">

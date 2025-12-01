@@ -106,7 +106,7 @@ const ContactHeader: React.FC = () => {
           </div>
 
 
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-20">
             <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
               HUB customers&#39; stories
             </h1>

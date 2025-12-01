@@ -178,7 +178,7 @@ const ContactHeader: React.FC = () => {
           </div>
 
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start pb-20 text-white text-left mt-70 ml-15">
+          <div className="flex flex-col items-start justify-start pb-20 text-white text-left mt-70 ml-20">
             <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
               Dining spaces designed
             </h1>
@@ -190,7 +190,7 @@ const ContactHeader: React.FC = () => {
             <div className="flex gap-4">
               <button
                 onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+                className="bg-yellow-300 text-black px-4 py-2 rounded-full manrope shadow"
               >
                 Get Free Quote
               </button>
@@ -246,7 +246,7 @@ const ContactHeader: React.FC = () => {
 
             <button
               onClick={handleGetEstimate}
-              className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
+              className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope hover:bg-yellow-400 transition text-center"
             >
               Get Free Quote
             </button>

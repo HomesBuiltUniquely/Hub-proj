@@ -149,7 +149,7 @@ const BedroomHeroSimple: React.FC = () => {
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-20">
             <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
               Bedroom interior design
             </h1>
@@ -162,7 +162,7 @@ const BedroomHeroSimple: React.FC = () => {
             <div className="flex gap-4">
               <button
                 onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+                className="bg-yellow-300 text-black px-4 py-2 rounded-full manrope shadow"
               >
                 Get Free Quote
               </button>
@@ -222,7 +222,7 @@ const BedroomHeroSimple: React.FC = () => {
 
               <button
                 onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
+                className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope hover:bg-yellow-400 transition text-center"
               >
                 Get Free Quote
               </button>
