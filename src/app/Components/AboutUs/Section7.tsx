@@ -124,8 +124,8 @@ const Section7 = () => {
       
 
       {/* 2XL Screen - Extra large displays */}
-      <section className="desktop-1440 hidden xl:block 2xl:hidden py-10 px-6 bg-white ">
-        <div className="max-w-7xl mx-auto">
+      <section className="desktop-1920 hidden xl:block 2xl:hidden py-10  bg-white ">
+        <div className="w-full mx-auto px-20">
           <div className="flex flex-col lg:flex-row justify-between gap-16">
             {/* Left Side - Image Container */}
             <img src="/6.png" className="w-[500px] h-[500px] rounded-2xl  mt-25"></img>
@@ -237,7 +237,7 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 mb-10">
               {/* Values Header */}
-              <h1 className="text-6xl wulkan-display-bold pt-20 -ml-40 leading-tight">
+              <h1 className="text-5xl wulkan-display-bold pt-15 -ml-40 leading-tight">
                 Values
               </h1>
 
@@ -325,12 +325,6 @@ const Section7 = () => {
           </div>
         </div>
       </section>
-
-
-
-
-
-
 
 
 
@@ -507,9 +501,9 @@ const Section7 = () => {
       `}</style>
 
         
-        <style jsx global>{`
+       <style jsx global>{`
     /* Default hidden for desktop variations */
-    .desktop-1440,
+    .desktop-1920,
     .desktop-1280,
     .aboutus-section7-3xl-container {
         display: none;
@@ -523,26 +517,25 @@ const Section7 = () => {
     }
 
     /* 2XL (1440–1919) */
-    @media (min-width: 1440px) and (max-width: 1919px) {
-        .desktop-1440 {
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
             display: block;
         }
     }
 
-    /* 3XL (2560+) */
+    /* 3XL (2560px+) */
     @media (min-width: 2560px) {
-        .aboutus-section4-3xl-container {
+        .aboutus-section7-3xl-container {
             display: block !important;
         }
 
-        /* Hide other layouts */
-        .desktop-1440,
+        .desktop-1920,
         .desktop-1280 {
             display: none !important;
         }
     }
 `}
-</style>
+            </style>
     </div>
   );
 };

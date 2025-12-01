@@ -46,12 +46,12 @@ export default function Section3() {
 
 
             {/* 2XL Screen - Large displays */}
-            <div className="desktop-1440">
+            <div className="desktop-1920">
 
                 <div className="">
-                    <div className="h-[680px] mx-auto mt-4 px-16">
+                    <div className="h-[680px] mx-auto mt-4 px-20">
 
-                        <div className="w-full max-w-[1500px] h-[550px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
+                        <div className="w-full  h-[550px] bg-[#ddcdc1] mx-auto rounded-3xl flex flex-row overflow-hidden">
 
                             {/* Left Image - 2XL optimized */}
                             <img
@@ -90,9 +90,9 @@ export default function Section3() {
             {/* XL Screen - Extra large displays */}
             <div className="desktop-1280">
 
-                <div className="h-[500px] mx-auto px-12">
+                <div className="h-[500px] mx-auto px-15">
 
-                    <div className=" w-[1100px] h-[500px] bg-[#ddcdc1] mx-auto rounded-3xl flex  overflow-hidden">
+                    <div className=" w-full h-[500px] bg-[#ddcdc1] mx-auto rounded-3xl flex  overflow-hidden">
 
 
                         {/* Left Image - XL optimized */}
@@ -266,9 +266,9 @@ export default function Section3() {
             `}</style>
 
 
-            <style jsx global>{`
+               <style jsx global>{`
     /* Default hidden for desktop variations */
-    .desktop-1440,
+    .desktop-1920,
     .desktop-1280,
     .aboutus-section3-3xl-container {
         display: none;
@@ -282,27 +282,25 @@ export default function Section3() {
     }
 
     /* 2XL (1440–1919) */
-    @media (min-width: 1440px) and (max-width: 1919px) {
-        .desktop-1440 {
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
             display: block;
         }
     }
 
-    /* 3XL (2560+) */
+    /* 3XL (2560px+) */
     @media (min-width: 2560px) {
-        .aboutus-section4-3xl-container {
+        .aboutus-section3-3xl-container {
             display: block !important;
         }
 
-        /* Hide other layouts */
-        .desktop-1440,
+        .desktop-1920,
         .desktop-1280 {
             display: none !important;
         }
     }
 `}
             </style>
-
 
         </div>
     )

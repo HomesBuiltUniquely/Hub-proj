@@ -8,7 +8,7 @@ export default function Section4() {
 
 
             {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
-            <div className="aboutus-section4-3xl-container hidden">
+            <div className="aboutus-section4-3xl-container hidden mx-auto mb-10">
                 <div className="aboutus-section4-3xl-layout">
 
                     {/* Header Section - 3XL optimized */}
@@ -62,10 +62,10 @@ export default function Section4() {
 
 
             {/* 2XL Screen - Large displays */}
-            <div className="desktop-1440 lg:hidden">
-                <div className="h-auto min-h-[650px] px-16">
+            <div className="desktop-1920 lg:hidden">
+                <div className="h-auto min-h-[650px] mx-auto px-20">
                     <div className="flex flex-row justify-between w-full h-auto min-h-[300px] gap-2">
-                        <h1 className="text-5xl wulkan-display-bold mt-2 ml-7 leading-tight">
+                        <h1 className="text-5xl wulkan-display-bold mt-2  leading-tight">
                             Brand<div>eco system</div>
                         </h1>
                         <p className="w-[605px] mt-3 manrope-medium text-[26px] leading-relaxed">
@@ -103,17 +103,17 @@ export default function Section4() {
 
             {/* XL Screen */}
             <div className="desktop-1280">
-                <div className="h-auto min-h-[650px] px-16 ">
+                <div className="h-auto min-h-[650px] mx-auto px-15 mt-10 ">
                     <div className="flex flex-row justify-between h-[300px] gap-10 ">
-                        <h1 className="text-5xl wulkan-display-bold mt-20 ml-16 leading-tight">
+                        <h1 className="text-5xl wulkan-display-bold mt-20  leading-tight">
                             Brand eco system
                         </h1>
-                        <p className="w-[600px] mt-14 mr-12 manrope-medium text-2xl leading-relaxed">
+                        <p className="w-[600px] mt-14  manrope-medium text-2xl leading-relaxed">
                             The Brand Eco System is the strength behind HUB Interior. From Homes Under Budget to Hubsolute, Affices, and Home & Merry, every brand is crafted with focus and direction, shaping a legacy of design and innovation.
                         </p>
                     </div>
 
-                    <div className="flex flex-wrap justify-start gap-8 mx-auto ml-20">
+                    <div className="flex flex-wrap justify-center gap-8 mx-auto">
 
                         {/* Card 1 */}
                         <div className="w-[225px] h-[225px] rounded-4xl bg-white  hover:shadow-xl transition-shadow duration-300">
@@ -279,9 +279,9 @@ export default function Section4() {
             `}</style>
 
 
-           <style jsx global>{`
+            <style jsx global>{`
     /* Default hidden for desktop variations */
-    .desktop-1440,
+    .desktop-1920,
     .desktop-1280,
     .aboutus-section4-3xl-container {
         display: none;
@@ -295,26 +295,26 @@ export default function Section4() {
     }
 
     /* 2XL (1440–1919) */
-    @media (min-width: 1440px) and (max-width: 1919px) {
-        .desktop-1440 {
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
             display: block;
         }
     }
 
-    /* 3XL (2560+) */
+    /* 3XL (2560px+) */
     @media (min-width: 2560px) {
         .aboutus-section4-3xl-container {
             display: block !important;
         }
 
-        /* Hide other layouts */
-        .desktop-1440,
+        .desktop-1920,
         .desktop-1280 {
             display: none !important;
         }
     }
 `}
-</style>
+            </style>
+
 
         </div>
     );
