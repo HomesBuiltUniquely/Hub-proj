@@ -41,7 +41,7 @@ const Herosection: React.FC = () => {
   const mobileTexts = [
     "From floor plan to lifestyle home, uniquely built",
     "Get your home interior cost estimate today",
-    "From vision to reality — Interiors in 34 days"
+    "From vision to reality, Interiors in 34 days"
   ];
 
   // Auto-slide effect
@@ -96,14 +96,14 @@ const Herosection: React.FC = () => {
         }
 
         /* Show small mobile version for screens 320px to 479px */
-        @media (min-width: 320px) and (max-width: 479px) {
+        @media (min-width: 320px) and (max-width: 360px) {
           .mobile-small {
             display: block;
           }
         }
 
         /* Show large mobile version for screens 480px to 767px */
-        @media (min-width: 480px) and (max-width: 767px) {
+        @media (min-width: 361px) and (max-width: 767px) {
           .mobile-large {
             display: block;
           }
@@ -220,6 +220,8 @@ const Herosection: React.FC = () => {
 
 
 
+
+
       {/* 1280 version */}
       <div>
 
@@ -274,45 +276,52 @@ const Herosection: React.FC = () => {
 
       </div>
 
+
+
       {/* Mobile Version - Different Design for below */}
       <div className="block md:hidden">
 
-        {/* Mobile Version 1 - Small Mobile (320px to 479px) */}
-        <div className="mobile-small w-[350px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto -mt-7">
+        {/* Mobile Version 1 - Small Mobile (320px to 360px) */}
+        <div className="mobile-small w-full max-w-[360px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto px-3 -mt-7">
           {/* Mobile Header */}
-          <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+          <div className="w-full max-w-[360px] relative bg-gray-100 mt-1 rounded-[35px] overflow-hidden mx-auto">
 
-            <div className="relative z-20 flex items-center justify-between mt-4">
-              <img src="/redlogo.png" className="w-[135px] h-[140px] pb-8 -mt-5 mb-7 pr-6"></img>
+            <div className="relative z-20 flex items-center justify-between ">
+              <img src="/redlogo.png" className="w-[110px] h-[95px] -mb-2 "></img>
             </div>
           </div>
 
 
-          <img className="w-[350px] h-[630px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
-          <div className="-mt-75 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
+          <img className="w-full max-w-[360px] h-auto rounded-4xl relative -mt-14 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+          <div className="-mt-55 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide]}</div>
           {/* Horizontal line above button */}
-          <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-43 ml-7"></div>
-          <button onClick={handleGetEstimate} className="bg-[#FF0000] text-nowrap text-white px-7 py-2 rounded-4xl -mt-40 ml-7 manrope text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+          <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-23 ml-7"></div>
+          <button onClick={handleGetEstimate} className="bg-[#FF0000] text-nowrap text-white px-7 py-2 rounded-4xl -mt-20 ml-7 manrope text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
         </div>
 
 
 
-        {/* Mobile Version 2 - Large Mobile (480px to 767px) */}
-        <div className="mobile-large w-[350px] h-[550px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto">
+        {/* Mobile Version 2 - Large Mobile (361px to 767px) */}
+        <div className="mobile-large max-w-[425px] h-auto relative bg-gray-100 rounded-[35px] px-3 overflow-hidden mx-auto">
           {/* Mobile Header */}
           <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
 
-            <div className="relative z-20 flex items-center justify-between mt-4 ">
-              <img src="/redlogo.png" className="w-[110px] h-[120px] pb-6 -mt-5 mb-7 pr-8"></img>
+            <div className="relative z-20 flex items-center justify-start">  
+            <Image  src="/redlogo.png"
+            alt="HUB Interior Logo"
+            width={90}
+            height={25}
+            className="cursor-pointer w-[100px] h-[90px] -ml-1 -mt-5 mb-2"/>
             </div>
           </div>
+          
 
 
 
-          <img className="w-[340px] h-[500px] rounded-4xl relative -mt-32 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
-          <div className="-mt-62 w-[300px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
+          <img className="max-w-[425px]h-[500px] rounded-4xl relative -mt-18 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+          <div className="-mt-62 w-[250px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
           {/* Horizontal line above button */}
-          <div className="w-[300px]  h-[1px] bg-gray-300 absolute -mt-8 ml-8"></div>
+          <div className="w-[300px]  h-[1px] bg-gray-300 absolute -mt-32 ml-8"></div>
           <button className="bg-[#FF0000] text-white  text-nowrap px-7 py-2 rounded-4xl -mt-28 ml-8 manrope absolute shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
         </div>
         <OverlapNavBar />

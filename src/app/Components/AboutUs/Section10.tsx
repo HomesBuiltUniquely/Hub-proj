@@ -120,7 +120,7 @@ const Section10 = () => {
               />
 
               {/* Overlay Content - 2XL optimized */}
-              <div className="w-[550px] h-auto min-h-[300px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-30 mt-30 rounded-2xl p-8">
+              <div className="w-[550px] h-auto min-h-[300px] border backdrop-blur-sm bg-black/20 border-[#ddcdc1] absolute ml-33 mt-30 rounded-2xl p-8">
 
                 {/* Heading - 2XL optimized */}
                 <h1 className="text-3xl w-[400px] h-[100px] text-white mt-2 pl-6 manrope-medium leading-tight">

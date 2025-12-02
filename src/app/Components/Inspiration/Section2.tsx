@@ -588,8 +588,43 @@ export default function InspirationBoard(): JSX.Element {
 
   return (
     <>
+
+
+    <style jsx>{`
+        /* Hide all by default */
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none !important;
+        }
+
+        /* 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
+
+        /* 1920px layout for large desktops (1440px–1920px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+        /* 2560px layout for extra large desktops (>1920px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+      `}</style>
+
       {/* Desktop Section */}
-      <div className="hidden md:block bg-[#f1f2f6] py-12 px-4 sm:px-8 lg:px-16">
+
+      {/* 2560 Version */}
+
+      <div className="desktop-2560 hidden md:block bg-[#f1f2f6] py-12 px-4 sm:px-8 lg:px-16">
         <div className="max-w-4xl mx-auto text-center mb-8">
           <p className="text-amber-950 manrope-medium leading-relaxed text-2xl">
             Step into a world of creativity where every idea is a stepping stone to your dream space.
@@ -704,6 +739,245 @@ export default function InspirationBoard(): JSX.Element {
           )}
         </div>
       </div>
+
+      {/* 1920 Version */}
+      
+      <div className="desktop-1920 hidden md:block bg-[#f1f2f6] py-12 px-20">
+        <div className="max-w-4xl mx-auto text-center mb-8">
+          <p className="text-amber-950 manrope-medium leading-relaxed text-2xl">
+            Step into a world of creativity where every idea is a stepping stone to your dream space.
+            Our Inspiration Board is filled with fresh concepts, trending designs, and timeless styles
+            to spark your imagination and guide your next project.
+          </p>
+        </div>
+
+        {/* Category pills */}
+        <div className="max-w-5xl mx-auto space-y-5">
+          {/* Top */}
+          <div className="flex flex-wrap justify-center gap-6">
+            {topCategories.map((cat) => {
+              const isLocal = cat === "Kitchen" || cat === "Bedroom" || cat === "Living Room" || cat === "Wardrobe" || cat === "Kids Room"; // only these stay local
+              return (
+                <CategoryButton
+                  key={cat}
+                  label={cat}
+                  onClick={isLocal ? () => setActive(cat) : undefined}
+                  isActive={active === cat && isLocal}
+                  href={
+                    !isLocal ? `/` : undefined
+                  }
+                />
+              );
+            })}
+          </div>
+
+
+          {/* Middle Categories */}
+          <div className="flex flex-wrap justify-center gap-6">
+            {middleCategories.map((cat) => {
+              // only categories with images are clickable
+              const imageCategories = ["Dinning Room", "Pooja Unit", "Wall Decor"];
+              const hasImages = imageCategories.includes(cat);
+
+              return (
+                <CategoryButton
+                  key={cat}
+                  label={cat}
+                  onClick={hasImages ? () => setActive(cat) : undefined}
+                  isActive={active === cat && hasImages}
+                  href={hasImages ? undefined : `/`} // redirect if no images
+                />
+              );
+            })}
+          </div>
+
+
+
+          {/* Bottom (redirect) */}
+          <div className="flex flex-wrap justify-center gap-6">
+            {bottomCategories.map((cat) => {
+              // only categories with images are clickable
+              const imageCategories = ["Home Bar"];
+              const hasImages = imageCategories.includes(cat);
+
+              return (
+                <CategoryButton
+                  key={cat}
+                  label={cat}
+                  onClick={hasImages ? () => setActive(cat) : undefined}
+                  isActive={active === cat && hasImages}
+                  href={hasImages ? undefined : `/`} // redirect if no images
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Gallery */}
+        <div className="grid grid-cols-12 gap-6 mt-20">
+          {images[0] && (
+            <div className="col-span-12 lg:col-span-5 h-[545px] relative rounded-4xl overflow-hidden bg-gray-200">
+              <Image src={images[0].src} alt={images[0].alt} fill className="object-cover rounded-4xl" />
+            </div>
+          )}
+          {images[1] && (
+            <div className="col-span-12 lg:col-span-5 h-[545px] relative rounded-4xl overflow-hidden bg-gray-200">
+              <Image src={images[1].src} alt={images[1].alt} fill className="object-cover rounded-4xl" />
+            </div>
+          )}
+          {images[2] && (
+            <div className="col-span-12 lg:col-span-2 flex flex-col gap-4">
+              <div className="h-[180px] relative rounded-4xl overflow-hidden">
+                <Image src={images[2].src} alt={images[2].alt} fill className="object-cover rounded-4xl" />
+              </div>
+              <div className="h-[350px] relative rounded-4xl overflow-hidden">
+                <Image src={images[2].src} alt={images[2].alt} fill className="object-cover rounded-4xl" />
+                <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white pointer-events-none rounded-4xl">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M8 3h8l1 4H7l1-4z"
+                    />
+                  </svg>
+                  <div className="manrope-medium text-center">
+                    230+ Designs
+                    <div>See More</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+
+      
+      {/* 1280 Version */} 
+
+      <div className="desktop-1280 hidden md:block bg-[#f1f2f6] py-12 px-15">
+        <div className="max-w-4xl mx-auto text-center mb-8">
+          <p className="text-amber-950 manrope-medium leading-relaxed text-2xl">
+            Step into a world of creativity where every idea is a stepping stone to your dream space.
+            Our Inspiration Board is filled with fresh concepts, trending designs, and timeless styles
+            to spark your imagination and guide your next project.
+          </p>
+        </div>
+
+        {/* Category pills */}
+        <div className="max-w-5xl mx-auto space-y-5">
+          {/* Top */}
+          <div className="flex flex-wrap justify-center gap-6">
+            {topCategories.map((cat) => {
+              const isLocal = cat === "Kitchen" || cat === "Bedroom" || cat === "Living Room" || cat === "Wardrobe" || cat === "Kids Room"; // only these stay local
+              return (
+                <CategoryButton
+                  key={cat}
+                  label={cat}
+                  onClick={isLocal ? () => setActive(cat) : undefined}
+                  isActive={active === cat && isLocal}
+                  href={
+                    !isLocal ? `/` : undefined
+                  }
+                />
+              );
+            })}
+          </div>
+
+
+          {/* Middle Categories */}
+          <div className="flex flex-wrap justify-center gap-6">
+            {middleCategories.map((cat) => {
+              // only categories with images are clickable
+              const imageCategories = ["Dinning Room", "Pooja Unit", "Wall Decor"];
+              const hasImages = imageCategories.includes(cat);
+
+              return (
+                <CategoryButton
+                  key={cat}
+                  label={cat}
+                  onClick={hasImages ? () => setActive(cat) : undefined}
+                  isActive={active === cat && hasImages}
+                  href={hasImages ? undefined : `/`} // redirect if no images
+                />
+              );
+            })}
+          </div>
+
+
+
+          {/* Bottom (redirect) */}
+          <div className="flex flex-wrap justify-center gap-6">
+            {bottomCategories.map((cat) => {
+              // only categories with images are clickable
+              const imageCategories = ["Home Bar"];
+              const hasImages = imageCategories.includes(cat);
+
+              return (
+                <CategoryButton
+                  key={cat}
+                  label={cat}
+                  onClick={hasImages ? () => setActive(cat) : undefined}
+                  isActive={active === cat && hasImages}
+                  href={hasImages ? undefined : `/`} // redirect if no images
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Gallery */}
+        <div className="grid grid-cols-12 gap-6 mt-20">
+          {images[0] && (
+            <div className="col-span-12 lg:col-span-5 h-[545px] relative rounded-4xl overflow-hidden bg-gray-200">
+              <Image src={images[0].src} alt={images[0].alt} fill className="object-cover rounded-4xl" />
+            </div>
+          )}
+          {images[1] && (
+            <div className="col-span-12 lg:col-span-5 h-[545px] relative rounded-4xl overflow-hidden bg-gray-200">
+              <Image src={images[1].src} alt={images[1].alt} fill className="object-cover rounded-4xl" />
+            </div>
+          )}
+          {images[2] && (
+            <div className="col-span-12 lg:col-span-2 flex flex-col gap-4">
+              <div className="h-[180px] relative rounded-4xl overflow-hidden">
+                <Image src={images[2].src} alt={images[2].alt} fill className="object-cover rounded-4xl" />
+              </div>
+              <div className="h-[350px] relative rounded-4xl overflow-hidden">
+                <Image src={images[2].src} alt={images[2].alt} fill className="object-cover rounded-4xl" />
+                <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white pointer-events-none rounded-4xl">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 mb-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M8 3h8l1 4H7l1-4z"
+                    />
+                  </svg>
+                  <div className="manrope-medium text-center">
+                    230+ Designs
+                    <div>See More</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
 
       {/* Mobile Section */}
       <div className="block md:hidden w-full px-3 py-3 mb-10">

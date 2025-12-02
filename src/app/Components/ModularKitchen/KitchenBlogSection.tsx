@@ -206,7 +206,7 @@ const KitchenBlogSection: React.FC = () => {
           <div className="md:w-1/3  md:mb-0 py-[25px] ">
             <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
             <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
-            <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+            <button className="px-5 py-2 border transition hover:bg-gray-200 border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
             </button>
           </div>
@@ -303,9 +303,9 @@ const KitchenBlogSection: React.FC = () => {
           <div className="md:w-1/3  md:mb-0 py-[25px]  ">
             <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
             <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
-            <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+            <Link href="/ContactUs"><button className="px-5 py-2 border transition hover:bg-gray-200 border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
-            </button>
+            </button></Link>
           </div>
           {/* Accordion Right */}
           <div className="md:w-2/3">
@@ -399,9 +399,9 @@ const KitchenBlogSection: React.FC = () => {
           <div className="md:w-1/3   py-[25px]">
             <h2 className="text-3xl manrope mb-3  text-gray-900">FAQs</h2>
             <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
-            <button className="px-5 py-2 border  border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+            <Link href="/ContactUs"><button className="px-5 py-2 border  border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
-            </button>
+            </button></Link>
           </div>
           {/* Accordion Right */}
           <div className="md:w-2/3">

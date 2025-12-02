@@ -183,8 +183,8 @@ const ContactHeader: React.FC = () => {
           </div>
           {/* Hero content */}
           <div className="flex w-[600px] flex-col items-center justify-center pt-100 pb-20 text-white text-center pr-35">
-            <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-60">HUB Interior Portfolio </div>
-            <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] -ml-8">Elegant, Functional & Timeless Designs</p>
+            <div className="text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg text-nowrap ml-75">HUB Interior Portfolio </div>
+            <p className="text-lg manrope-medium mb-8 drop-shadow-lg w-[600px] ml-8">Elegant, Functional & Timeless Designs</p>
           </div>
 
         </div>

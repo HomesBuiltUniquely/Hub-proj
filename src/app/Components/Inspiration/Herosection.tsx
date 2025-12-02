@@ -118,7 +118,7 @@ const ContactHeader: React.FC = () => {
         </div>
         {/* Hero content */}
 
-        <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-85 ml-15">
+        <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-85 ml-20">
           <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
             Interior inspirations
           </h1>
@@ -131,12 +131,6 @@ const ContactHeader: React.FC = () => {
       </div>
 
     </div>
-
-
-    
-
-
-
 
     {/* 1280 Version */}
 
@@ -172,18 +166,16 @@ const ContactHeader: React.FC = () => {
           </div>
 
           {/* Hero content */}
-          <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+          <div className="flex flex-col text-white text-left mt-75 ml-10 space-y-6 max-w-[950px]">
+            <h1 className=" text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
               Interior inspirations
             </h1>
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+            <p className=" text-2xl manrope-medium mb-6 drop-shadow-lg">
               Every corner of your home holds a story - let’s design it beautifully.
             </p>
           </div>
 
         </div>
-
-
       </div>
 
     </div>
@@ -192,7 +184,7 @@ const ContactHeader: React.FC = () => {
     {/* Mobile Version */}
 
 
-    <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 mt-3 overflow-hidden">
+    <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-hidden">
       <div className="relative h-full w-full p-2">
         {/* Rounded image only */}
         <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" />

@@ -12,7 +12,7 @@ const Section5 = () => {
 
   const timeline = [
     { year: "2019 – New Experience Centre, Banaswadi", content: "The story began with the launch of our very first Experience Centre in Banaswadi." },
-    { year: "2020 – Instahome", content: "Introduced Instahome, making interiors quicker and more accessible for modern homeowners." },
+    { year: "2020 – Insta home", content: "Introduced Insta home, making interiors quicker and more accessible for modern homeowners." },
     { year: "2021 – HUB Store", content: "Expanded with the launch of the HUB Store, bringing curated products and solutions under one roof." },
     { year: "2022 – New Experience Centre, Sarjapur", content: "Opened our second Experience Centre in Sarjapur, strengthening our presence in Bengaluru." },
     { year: "2023 – Hubster ERP", content: "Launched Hubster, our in-house ERP system, streamlining processes and efficiency." },
@@ -33,7 +33,7 @@ const Section5 = () => {
     },
     {
       year: '2020',
-      title: ['Instahome'],
+      title: ['Insta home'],
       description: 'Introduced Instahome, making interiors quicker and more accessible for modern homeowners.',
     },
     {
