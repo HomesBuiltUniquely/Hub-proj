@@ -60,31 +60,38 @@ const CardSection = ({
 
 
       <style jsx>{`
-        /* Hide both sections by default on mobile */
-        .desktop-1440,
-        .desktop-1280 {
-          display: none;
-        }
+  /* Default: Hide all desktops */
+  .desktop-2560,
+  .desktop-1920,
+  .desktop-1280 {
+    display: none;
+  }
 
-        /* Show 1280px section for screens between 768px and 1439px */
-        @media (min-width: 768px) and (max-width: 1439px) {
-          .desktop-1280 {
-            display: block;
-          }
-        }
+  /* 1280 layout for screens 768px–1439px */
+  @media (min-width: 768px) and (max-width: 1439px) {
+    .desktop-1280 {
+      display: block;
+    }
+  }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block;
-          }
-        }
-      `}</style>
+  /* 1920 layout for 1440px–1919px */
+  @media (min-width: 1440px) and (max-width: 1919px) {
+    .desktop-1920 {
+      display: block !important;
+    }
+  }
+
+  /* 2560 layout for 1920px and above */
+  @media (min-width: 1920px) {
+    .desktop-2560 {
+      display: block;
+    }
+  }
+`}</style>
 
 
       {/* Desktop Version */}
-      <div className="desktop-1440 hidden md:block  w-[1440px] h-[710px] ">
-
+      <div className="desktop-2560 hidden md:block w-[1440px] h-[710px] ">
 
         {/* Featured Projects */}
         <div className="w-full max-w-5xl px-5 ml-5 ">
@@ -141,8 +148,85 @@ const CardSection = ({
 
                 <div className="-mt-10 ml-[160px] flex justify-center">
                   <button
-                  
-                    onClick={(e) => {e.stopPropagation(); handleEstimateClick();}}
+
+                    onClick={(e) => { e.stopPropagation(); handleEstimateClick(); }}
+                    className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
+                  >
+                    {card.button}
+                  </button>
+                </div>
+
+
+              </div>
+            )
+
+          })}
+        </div>
+      </div>
+
+
+      {/* 1920 Version */}
+
+      <div className="desktop-1920 hidden md:block h-[710px] mx-auto px-20">
+
+
+        {/* Featured Projects */}
+        <div className="w-full">
+          <h2 className="text-[50px]  mb-1  text-gray-900 wulkan-display-bold">
+            Featured Projects
+          </h2>
+          <p className="text-gray-600 text-[20px] mb-10 manrope-medium">A glimpse at our best work</p>
+        </div>
+
+        <div
+          ref={scrollRef}
+          className="flex gap-7 overflow-x-auto scrollbar-none px-2 md:px-0 pb-10  mx-auto "
+          style={{ paddingRight: "px" }}
+        >
+          {cards.map((card, idx) => {
+            function handleCardClick() {
+              if (card.path) router.push(card.path);
+            }
+
+            function handleEstimateClick() {
+              router.push(card.estpath);
+            }
+
+
+
+
+            return (
+              <div
+                key={idx}
+                onClick={handleCardClick}
+                className="min-w-[350px] max-w-[950] bg-white rounded-[32px] shadow-lg overflow-hidden group transition hover:shadow-2xl"
+                style={{ height: "475px" }}
+              >
+
+                <Image src={card.img} alt="images" width={870} height={250} className="w-800 h-55" />
+
+                <div className="manrope-medium ml-3 text-bold text-2xl gap-1 m-3 h-15">
+                  {card.title}
+                </div>
+
+                <div className="ml-3 text-sm w-80 h-10 m-5 manrope-medium">
+                  {card.description}
+                </div>
+
+                {/* line */}
+                <div className="w-auto h-0.5 bg-[#f1f2f6]">
+                </div>
+
+                <div className="ml-3 m-3 manrope-medium text-gray-500">
+                  {card.BHK} <div className="text-black manrope">{card.NO}</div>
+                </div>
+
+
+
+                <div className="-mt-10 ml-[160px] flex justify-center">
+                  <button
+
+                    onClick={(e) => { e.stopPropagation(); handleEstimateClick(); }}
                     className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                   >
                     {card.button}
@@ -163,21 +247,18 @@ const CardSection = ({
 
       <div className="desktop-1280 ">
 
-        <div className=" w-[1280px] h-[800px] mx-auto mb-5 relative">
+        <div className=" w-[1280px] h-[800px] mx-auto mb-5 relative px-15">
 
-          <div className="w-full max-w-5xl px-3 ml-5 ">
+          <div className="w-full max-w-5xl">
             <h2 className="text-[50px]  mb-1  text-gray-900 wulkan-display-bold">
               Featured Projects
             </h2>
             <p className="text-gray-600 text-[20px] mb-10 manrope-medium">A glimpse at our best work</p>
           </div>
 
-
-
-
           <div
             ref={scrollRef}
-            className="flex gap-7 overflow-x-scroll  always-show-scrollbar px-2 md:px-0 pb-12 w-full md:max-w-[1225px] mx-auto ml-7"
+            className="flex gap-7 overflow-x-scroll always-show-scrollbar px-2 md:px-0 pb-12 w-full mx-auto"
             style={{ paddingRight: "px" }}
           >
 
@@ -222,7 +303,7 @@ const CardSection = ({
 
                   <div className="-mt-10 ml-[160px] flex justify-center">
                     <button
-                     onClick={(e) => {e.stopPropagation(); handleEstimateClick();}}
+                      onClick={(e) => { e.stopPropagation(); handleEstimateClick(); }}
                       className="h-[35px] px-4 bg-red-500 rounded-full text-white manrope text-sm whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                     >
                       {card.button}
@@ -299,7 +380,7 @@ const CardSection = ({
 
                 <div className="-mt-10 ml-[66px] flex justify-center">
                   <button
-                    onClick={(e) => {e.stopPropagation(); handleEstimateClick();}}
+                    onClick={(e) => { e.stopPropagation(); handleEstimateClick(); }}
                     className=" px-4 py-2 text-xs mt-1 ml-4 bg-red-500 rounded-full text-white manrope-medium whitespace-nowrap hover:bg-red-600 transition-colors duration-200 drop-shadow-lg"
                   >
                     {card.button}
@@ -313,12 +394,7 @@ const CardSection = ({
           })}
         </div>
 
-
-
-
       </div>
-
-
     </section>
 
 

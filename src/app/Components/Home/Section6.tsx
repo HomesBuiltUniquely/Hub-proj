@@ -415,7 +415,7 @@ export default function Section6() {
 
                     {/* CTA */}
                     <div className="flex justify-center mt-8">
-                        <Link href="/">
+                        <Link href="/Project">
                             <button className="manrope bg-red-600 text-white px-4 py-2 rounded-4xl  shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                 Explore Projects
                             </button>

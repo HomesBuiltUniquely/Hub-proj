@@ -112,8 +112,8 @@ export default function Section7() {
 
         {/* mobile */}
         <div className="block md:hidden w-[340px] min-h-[500px] bg-[#F1F2F6] mt-8 -mb-4 mx-auto">
-          <div className="max-w-7xl h-[380px] bg-white mx-auto rounded-3xl mt-4 relative">
-            <img src="/HOME-CTA.png" alt="img" className="w-full h-full object-center rounded-3xl bg-transparent blur-[2px]" />
+          <div className=" h-[380px] bg-white mx-auto rounded-3xl mt-4 relative">
+            <img src="/HOME-CTA.png" alt="img" className=" h-full object-center rounded-3xl bg-transparent" />
             <div className="absolute top-0 left-0 w-full h-full  rounded-3xl pt-20 ">
               <h1 className="text-white text-4xl wulkan-display-bold text-center">Meet our interior designers</h1>
               <p className="text-white text-xl manrope-medium mt-4 text-center w-[260px] mx-auto">Experts creating spaces you&#39;ll love</p>
@@ -123,6 +123,7 @@ export default function Section7() {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   )

@@ -246,9 +246,11 @@ export function QAsection() {
 
       <div className="md:hidden min-h-auto bg-[#F1F2F6] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-48 pt-8 pb-16 md:pt-8 md:pb-20">
         <div className="max-w-screen-xl mx-auto">
-          <h1 className="text-4xl sm:text-4xl lg:text-5xl mb-15 sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
-            Frequently asked questions
+          <div className="w-[2px] h-[35px] bg-[#ebd457]">
+          <h1 className="text-4xl sm:text-4xl text-nowrap lg:text-5xl mb-15 ml-3 sm:mb-10 text-black wulkan-display-bold text-left tracking-wider">
+            Frequently asked <div>questions</div>
           </h1>
+          </div>
 
           <div className="space-y-4 sm:space-y-6 mt-16 sm:mt-25 manrope-medium">
             {faqData.map((item, index) => (
