@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 
 
@@ -100,7 +101,7 @@ const Section4: React.FC = () => {
 
       <style jsx>{`
 
-  .desktop-1440,
+ 
    .desktop-1920 
    .desktop-2560 
         .desktop-1280{
@@ -114,15 +115,8 @@ const Section4: React.FC = () => {
           }
         }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (width: 1440px) {
-          .desktop-1440 {
-            display: block;
-          }
-        }
-
-          /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
+          /* Show 1920px layout for large desktops (1440px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
@@ -227,19 +221,19 @@ const Section4: React.FC = () => {
         </div>
 
         {/* Download Guide Button */}
-        <div className="w-full flex justify-center mt-16">
+        <Link href="/Blog"> <div className="w-full flex justify-center mt-16">
           <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg manrope-medium shadow-xl hover:bg-[#2a1d10] transition">
             Download our bedroom design guide
           </button>
-        </div>
+        </div></Link>
       </div>
 
 
       {/* 1920 Version */}
 
-      <div className="desktop-1920 hidden md:block">
+      <div className="desktop-1920 hidden md:block mx-auto px-20">
         {/* Heading */}
-        <div className="max-w-8xl mx-auto  ml-5 mb-8">
+        <div className="max-w-8xl mx-auto mb-8">
           <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk about bedroom</h1>
           <p className="text-gray-500 manrope-medium mb-7">
             Read our blog to discover how design meets utility in every bedroom.
@@ -247,7 +241,7 @@ const Section4: React.FC = () => {
         </div>
 
         {/* Blog Cards */}
-        <div className="max-w-[full] mx-auto px-6 mb-8 flex flex-col md:flex-row gap-6">
+        <div className="max-w-[full] mx-auto mb-8 flex flex-col md:flex-row gap-6">
           {articles.map((article) => {
             function handleCardClick() {
               if (article.path) {
@@ -274,21 +268,21 @@ const Section4: React.FC = () => {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mb-10 mt-10">
+        <Link href="/Blog"> <div className="text-center mb-10 mt-10">
           <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition manrope hover:bg-gray-200 manrope">
             View All
           </button>
-        </div>
+        </div></Link>
 
         {/* FAQ and Guide */}
-        <div className="max-w-8xl mx-auto flex flex-col md:flex-row px-6 gap-70 mt-15">
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row gap-70 mt-15">
           {/* FAQ Left */}
           <div className="md:w-1/3  md:mb-0 py-[25px]  ">
             <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
             <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
-            <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+           <Link href="/ContactUs"> <button className="px-5 py-2 border transition hover:bg-gray-200 border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
               Connect
-            </button>
+            </button></Link>
           </div>
           {/* Accordion Right */}
           <div className="md:w-2/3">
@@ -331,104 +325,12 @@ const Section4: React.FC = () => {
       </div>
 
 
-
-      <div className="desktop-1440 hidden md:block">
-        {/* Heading */}
-        <div className="max-w-8xl mx-auto px-7 mb-10">
-          <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk about bedroom</h1>
-          <p className="text-gray-500 manrope-medium mb-7">
-            Read our blog to discover how design meets utility in every bedroom.
-          </p>
-        </div>
-
-        {/* Blog Cards */}
-        <div className="max-w-[full] mx-auto px-6 mb-8 flex flex-col md:flex-row gap-6">
-          {articles.map((article) => {
-            function handleCardClick() {
-              if (article.path) {
-                router.push(article.path);
-              }
-            }
-
-            return (
-              <div
-                key={article.title}
-                onClick={handleCardClick}
-                className="bg-white rounded-3xl  shadow-md overflow-hidden w-full md:w-1/3 flex flex-col"
-              >
-                <img src={article.image} alt={article.title} className="w-full h-70 object-cover" />
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-base manrope-medium text-gray-900 mt-2 mb-1">
-                    {article.title}
-                  </h3>
-                  <span className="text-xs manrope text-gray-400 mt-4">{article.date}</span>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center mb-10 mt-10">
-          <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition manrope hover:bg-gray-200 manrope">
-            View All
-          </button>
-        </div>
-
-        {/* FAQ and Guide */}
-        <div className="max-w-8xl mx-auto flex flex-col md:flex-row px-7 gap-70 mt-15">
-          {/* FAQ Left */}
-          <div className="md:w-1/3  md:mb-0 py-[25px] ">
-            <h2 className="text-3xl manrope mb-3 text-gray-900">FAQs</h2>
-            <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
-            <button className="px-5 py-2 border border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
-              Connect
-            </button>
-          </div>
-          {/* Accordion Right */}
-          <div className="md:w-2/3">
-            {faqs.map((faq, i) => (
-              <div key={faq.question} className="border-b">
-                <button
-                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-                  className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
-                >
-                  <span className="manrope text-gray-700">{faq.question}</span>
-                  <span className="ml-2">
-                    {openFAQ === i ? (
-                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-                      </svg>
-                    ) : (
-                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    )}
-                  </span>
-                </button>
-                {openFAQ === i && (
-                  <div className="py-2 pl-3 text-gray-500 manrope-medium text-sm">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Download Guide Button */}
-        <div className="w-full flex justify-center mt-16">
-          <button className="bg-[#342717] text-white rounded-full px-8 py-3 text-lg manrope-medium shadow-xl hover:bg-[#2a1d10] transition">
-            Download our bedroom design guide
-          </button>
-        </div>
-      </div>
 
 
 
 
       {/* Desktop Version 1280 */}
-      <div className="desktop-1280 hidden md:block px-4">
+      <div className="desktop-1280 hidden md:block mx-auto px-15">
         {/* Heading */}
         <div className="max-w-8xl mx-auto  mb-10">
           <h1 className="text-5xl wulkan-display-bold text-gray-800 mb-5 text-gray-800">Let’s talk about bedroom</h1>
@@ -465,10 +367,14 @@ const Section4: React.FC = () => {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-15">
-          <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800 transition manrope hover:bg-gray-200 manrope">
-            View All
-          </button>
+        <div>
+          <Link href="/Blog">
+            <div className="text-center mt-15">
+              <button className="px-6 py-2 border border-gray-500 rounded-full text-gray-800  transition hover:bg-gray-200 manrope  manrope">
+                View All
+              </button>
+            </div>
+          </Link>
         </div>
 
         {/* FAQ and Guide */}
@@ -477,9 +383,9 @@ const Section4: React.FC = () => {
           <div className="md:w-1/3   py-[25px]">
             <h2 className="text-3xl manrope mb-3  text-gray-900">FAQs</h2>
             <p className="text-gray-600 mb-4 manrope-medium">Here are answers to questions our clients ask.</p>
-            <button className="px-5 py-2 border  border-gray-500 rounded-xl text-gray-800 text-sm manrope-medium">
+            <Link href="/ContactUs"><button className="px-5 py-2 border  border-gray-500 rounded-xl transition hover:bg-gray-200 text-gray-800 text-sm manrope-medium">
               Connect
-            </button>
+            </button></Link>
           </div>
           {/* Accordion Right */}
           <div className="md:w-2/3">
@@ -528,7 +434,7 @@ const Section4: React.FC = () => {
         <div className="mx-auto -mt-8 mb-5">
           <div className="flex mr-1 items-start">
             <div className="w-[2px] h-[70px] bg-amber-300 mb-6 ml-2"></div>
-            <h1 className="text-3xl manrope mb-5 ml-3 text-gray-800 w-[250px]">Let’s talk about bedroom</h1>
+            <h1 className="text-3xl wulkan-display-bold mb-5 ml-3 text-gray-800 w-[250px]">Let’s talk about bedroom</h1>
           </div>
           <p className="text-gray-500 text-sm mb-4 ml-2 manrope-medium -mt-3">
             Read our blog to discover how design meets utility in every bedroom.
@@ -563,7 +469,7 @@ const Section4: React.FC = () => {
         <div className="mx-auto">
           <div className="flex mb-3 items-start">
             <div className="w-[2px] h-[60px] bg-amber-300  ml-2 mt-5"></div>
-            <h2 className="text-2xl manrope text-gray-900 w-[220px] ml-3 mt-5">Frequently asked questions</h2>
+            <h2 className="text-3xl wulkan-display-bold text-gray-900 w-[250px] ml-3 mt-4">Frequently asked questions</h2>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row ml-2 py-1.5  ">
             <div className="md:w-1/2 ">
@@ -606,7 +512,7 @@ const Section4: React.FC = () => {
         <div className="mx-auto -mt-8 mb-2">
           <div className="flex mr-1 items-start">
             <div className="w-[2px] h-[70px] bg-amber-300 mb-6 ml-2"></div>
-            <h1 className="text-3xl manrope mb-5 ml-3 text-gray-800 w-[250px]">Let’s talk about bedroom</h1>
+            <h1 className="text-3xl wulkan-display-bold mb-5 ml-3 text-gray-800 w-[250px]">Let’s talk about bedroom</h1>
           </div>
           <p className="text-gray-500 text-sm mb-4 ml-2 manrope-medium -mt-3">
             Read our blog to discover how design meets utility in every bedroom.
@@ -641,7 +547,7 @@ const Section4: React.FC = () => {
         <div className="mx-auto">
           <div className="flex mb-3 items-start">
             <div className="w-[2px] h-[60px] bg-amber-300  ml-2 mt-5"></div>
-            <h2 className="text-2xl manrope text-gray-900 w-[220px] ml-3 mt-5">Frequently asked questions</h2>
+            <h2 className="text-3xl wulkan-display-bold text-gray-900 w-[250px] ml-3 mt-4">Frequently asked questions</h2>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row ml-2 py-1.5  ">
             <div className="md:w-1/2 ">

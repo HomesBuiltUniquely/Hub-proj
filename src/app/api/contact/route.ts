@@ -15,6 +15,8 @@ export async function POST(req: Request) {
       whatsappConsent,
       pageUrl,
       verificationStatus,
+      date,
+      time,
       // New calculator fields (flattened)
       bhkType,
       rooms,
@@ -37,6 +39,8 @@ export async function POST(req: Request) {
       whatsappConsent,
       pageUrl,
       verificationStatus,
+      date,
+      time,
       bhkType,
       rooms,
       wardrobe,
@@ -108,6 +112,8 @@ export async function POST(req: Request) {
         <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
         <p><strong>Interior Setup:</strong> ${city || 'Not provided'}</p>
         <p><strong>Possession Timeline:</strong> ${possession || budget || 'Not provided'}</p>
+        <p><strong>Preferred Date:</strong> ${date ? `Dec-${date}` : 'Not provided'}</p>
+        <p><strong>Preferred Time:</strong> ${time || 'Not provided'}</p>
         <p><strong>WhatsApp Consent:</strong> ${typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'}</p>
         <p><strong>Verification Status:</strong> <span style="color: ${verificationStatus === 'Verified User' ? 'green' : 'red'}; font-weight: bold;">${verificationStatusText}</span></p>
         <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${pageUrl || 'Not provided'}</a></p>
@@ -139,6 +145,8 @@ export async function POST(req: Request) {
       whatsappConsent,
       pageUrl,
       verificationStatus,
+      date,
+      time,
       bhkType,
       rooms,
       wardrobe,

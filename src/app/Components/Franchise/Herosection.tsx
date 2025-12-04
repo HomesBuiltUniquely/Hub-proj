@@ -1,14 +1,14 @@
 "use client";
 
 // import React, { useState, useEffect } from "react";
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
-import Link from "next/link";
 import router from "next/router";
+import OverlapNavBar from "../OverlapNavBar";
 
 const FRANCHISE_OPTIONS = [
   {
@@ -135,7 +135,6 @@ const Home: React.FC = () => {
       setIsSubmitting(false);
     }
   };
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 
   const handleGetEstimate = () => {
@@ -160,43 +159,68 @@ const Home: React.FC = () => {
   return (
     <>
       <style jsx>{`
-        /* Hide both by default */
+     /* Hide all by default */
         .desktop-1280,
-        .desktop-1440 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
-        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        /* 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
         @media (min-width: 1024px) and (max-width: 1439px) {
           .desktop-1280 {
             display: block !important;
           }
         }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
+        /* 1920px layout for large desktops (1440px–1920px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+        /* 2560px layout for extra large desktops (>1920px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
             display: block !important;
           }
         }
       `}</style>
 
-      <div className="desktop-1440">
+
+      {/* 2560 Version */}
+
+      <div className="desktop-2560">
         <div
           className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
-          style={{ backgroundImage: "url('/kh.png')" }}
+          style={{
+            backgroundImage:
+              "url('/kh.png')",
+          }}
         >
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
-              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
+              <Image
+                src="/redlogo.png"
+                alt="HUB Interior Logo"
+                width={220}
+                height={100}
+                className="w-[250px] h-full -mt-2 -ml-2"
+              />
             </div>
-            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button
+              onClick={handleGetEstimate}
+              className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-4  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+            >
+              GET FREE ESTIMATE
+            </button>
           </div>
 
           {/* Main Content & Form */}
@@ -325,10 +349,168 @@ const Home: React.FC = () => {
       </div>
 
 
+      {/* 1920 Version */}
+
+      <div className="desktop-1920">
+        <div
+          className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
+          style={{
+            backgroundImage:
+              "url('/kh.png')",
+          }}
+        >
+          {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image
+                src="/redlogo.png"
+                alt="HUB Interior Logo"
+                width={250}
+                height={100}
+                className="w-[250px] h-full -mt-3 ml-2"
+              />
+            </div>
+
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button
+              onClick={handleGetEstimate}
+              className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-5  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+            >
+              GET FREE ESTIMATE
+            </button>
+          </div>
+
+          {/* Main Content & Form */}
+          <div className="relative z-10 flex flex-col gap-10 md:flex-row justify-between px-8 md:px-20 w-full flex-1 py-10 md:py-0">
+            {/* Left: Headline & intro */}
+            <div className="flex-1 flex flex-col justify-center md:max-w-xl pt-10 md:pt-0">
+              <h1 className="text-white  text-5xl lg:text-6xl wulkan-display-bold mt-70 mb-2 drop-shadow-lg text-nowrap -ml-5">
+                Become a franchisee!
+              </h1>
+              <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">Future of smart investing</p>
+            </div>
+          </div>
 
 
+          {/* Right: Form */}
+          <div id="franchise-form" className="md:w-[500px] h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-80 ml-225 self-center">
+            <div className="text-white text-2xl manrope-medium mb-5">Enter your details to get started</div>
+            <form onSubmit={handleFormSubmit} className="space-y-4">
+              <div className="flex gap-3">
+                <div className="">
+                  <label className="pl-1 text-white "> Name*</label>
+                  <input
+                    required
+                    name="name"
+                    placeholder=""
+                    disabled={isSubmitting}
+                    className="w-[440px] px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                    type="text"
+                  />
+                </div>
+                <div className="">
+                </div>
+              </div>
+              <label className="pl-1 text-white">Email Id*</label>
+              <input
+                required
+                name="email"
+                placeholder=""
+                disabled={isSubmitting}
+                className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                type="email"
+              />
+              <label className="pl-1 text-white">Phone*</label>
+              <input
+                required
+                name="phone"
+                placeholder=""
+                disabled={isSubmitting}
+                className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                type="tel"
+              />
+              <label className="pl-1 text-white">City*</label>
+              <input
+                required
+                name="city"
+                placeholder=""
+                disabled={isSubmitting}
+                className="w-full px-4 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                type="text"
+              />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full font-bold py-2 rounded mt-4 transition flex items-center justify-center ${isSubmitting
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-red-600 hover:bg-red-700'
+                  }`}
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Submitting...
+                  </>
+                ) : (
+                  'Submit'
+                )}
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <div className="w-[1200px] manrope-medium text-center mx-auto mt-20 text-[18px]">
+          HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.
+        </div>
+        <div className="w-[1200px] manrope-medium text-center mx-auto mt-4 text-[18px]">Our mission, &#34;Homes Uniquely Built&#34;, reflects our commitment to crafting personalized spaces that inspire. As a partner, you gain the power of a proven business model, an ecosystem of high-performing brands, and the confidence that comes with a fast-growing market.</div>
+
+        <div className="flex justify-center">
+          <section className="w-full max-w-[1440px] h-[500px] mt-20">
+            <h2 className="text-4xl manrope mb-4 text-center">Business Models</h2>
+
+            {/* Flexbox keeps boxes centered for any count */}
+            <div className="flex flex-wrap justify-center gap-[50px] mt-10">
+              {FRANCHISE_OPTIONS.map((option, idx) => (
+                <div
+                  key={idx}
+                  className="bg-[#ddcdc1] w-[400px] h-[350px] rounded-xl shadow-md p-6 flex flex-col justify-between border border-gray-100"
+                >
+                  <div>
+                    <strong className="manrope-medium">{option.title}</strong>
+                    <ul className="list-disc manrope-medium ml-6 mt-3 mb-4 text-gray-700 space-y-1">
+                      {option.details.map((d, i) => (
+                        <li key={i} className={d.includes('ROI') ? 'text-black' : ''}>
+                          {d}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="text-center text-lg manrope">
+                    {option.text}
+                  </div>
+                  <button
+                    onClick={scrollToForm}
+                    className="bg-white text-black manrope-medium px-4 py-2 rounded-md mt-2 hover:bg-[#ef0101] transition-colors"
+                  >
+                    Know More
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </div>
 
 
+      {/* 1280 Version */}
       <div className="desktop-1280 px-5">
         <div className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
           style={{ backgroundImage: "url('/kh.png')" }}>
@@ -347,14 +529,14 @@ const Home: React.FC = () => {
             </div>
 
             {/* Center Navigation */}
-            <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
 
             {/* Right CTA */}
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
 
           {/* Main Content & Form */}
@@ -537,130 +719,10 @@ const Home: React.FC = () => {
 
           </div>
 
-          {/* Hamburger Menu Button + Mobile Menu */}
-          <div className="absolute top-5 right-1 z-50">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-black pr-6"
-            >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-
-            {/* Mobile Navigation Menu */}
-            {isMobileMenuOpen && (
-              <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-                <div className="p-4  relative">
-                  {/* Close Button */}
-                  <button
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="absolute top-3 right-3 text-gray-600 p-2"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="white"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-
-                  {/* Navigation Items */}
-                  <div className="space-y-4 mt-5">
-                    <div>
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                          OFFERINGS
-                        </h3>
-                        <div className="space-y-2 pl-3"> {/* Increased spacing here */}
-                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Full Home Interior
-                          </Link>
-                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Modular Interior
-                          </Link>
-                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Home Renovation
-                          </Link>
-                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Space Management
-                          </Link>
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                        EXPLORE ROOMS
-                      </h3>
-                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                        <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Modular Kitchen
-                        </Link>
-                        <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Bedroom
-                        </Link>
-                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Living Room
-                        </Link>
-                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Kids Room
-                        </Link>
-                      </div>
-
-
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                        MORE
-                      </h3>
-                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                        <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          About Us
-                        </Link>
-                        <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Projects
-                        </Link>
-                        <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Blog
-                        </Link>
-                        <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Contact Us
-                        </Link>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-
-
           {/* text + cta */}
           <h2 className="manrope leading-tight">
             <div className="absolute top-40 text-white w-full px-3 mt-10">
-              <div className="text-4xl manrope drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
+              <div className="text-4xl wulkan-display-bold drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
                 Become a <div>Franchisee!</div>
               </div>
               <p className="manrope-medium w-[300px] shadow-lg  mt-2 ml-3">
@@ -745,6 +807,8 @@ const Home: React.FC = () => {
             HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.
           </p>
         </div>
+
+        <OverlapNavBar />
 
       </div>
 

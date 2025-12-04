@@ -41,6 +41,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const [possessionOpen, setPossessionOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
   
   // OTP related states
   const [otpSent, setOtpSent] = useState(false);
@@ -123,6 +125,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         phone: formData.phone,
         possession: selectedPossession,
         pincode: selectedPincode,
+        date: selectedDate,
+        time: selectedTime,
         pageUrl: currentUrl,
         verificationStatus: isVerified ? 'Verified User' : 'No OTP',
         // Include calculator data both nested and flattened for backend email processing
@@ -144,6 +148,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       if (res.ok && data.success) {
         setSelectedPincode('');
         setSelectedPossession('');
+        setSelectedDate('');
+        setSelectedTime('');
         setFormData({ name: '', email: '', phone: '' });
         // Set flag to trigger reload on thank you page for GTM tracking
         sessionStorage.setItem('formSubmitted', 'true');
@@ -160,7 +166,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     } finally {
       setIsSubmitting(false);
     } 
-  }, [formData, selectedPossession, selectedPincode, isVerified, calculatorData, router]);
+  }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, calculatorData, router]);
 
   const performSubmitFlow = useCallback(async () => {
     if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode) {
@@ -184,7 +190,42 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   return (
     <div>
       <div className="bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-6">
-        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Get Your Free Estimate</div>
+        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Book your free 3D design consultation</div>
+
+        <div className="flex gap-4 mb-4">
+          <div className="relative w-1/2">
+            <select
+              name="date"
+              value={selectedDate}
+              onChange={e => setSelectedDate(e.target.value)}
+              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
+            >
+              <option className="text-gray-400" value="" disabled>Date</option>
+              {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
+                <option key={day} value={day} className="text-gray-700">Dec-{day}</option>
+              ))}
+            </select>
+            <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute pointer-events-none">&#9662;</span>
+          </div>
+          <div className="relative w-1/2">
+            <select
+              name="time"
+              value={selectedTime}
+              onChange={e => setSelectedTime(e.target.value)}
+              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
+            >
+              <option className="text-gray-400" value="" disabled>Time</option>
+              <option value="11:30 to 1:30" className="text-gray-700">11:30 - 1:30</option>
+              <option value="12:30 to 2:30" className="text-gray-700">12:30 - 2:30</option>
+              <option value="1-3" className="text-gray-700">1:00 - 3:00</option>
+              <option value="2:30 to 4:30" className="text-gray-700">2:30 - 4:30</option>
+              <option value="3-5" className="text-gray-700">3:00 - 5:00</option>
+              <option value="5-7" className="text-gray-700">5:00 - 7:00</option>
+              <option value="6-8" className="text-gray-700">6:00 - 8:00</option>
+            </select>
+            <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute pointer-events-none">&#9662;</span>
+          </div>
+        </div>
 
         {/* Stacked inputs, one after another */}
         <div className="space-y-4">

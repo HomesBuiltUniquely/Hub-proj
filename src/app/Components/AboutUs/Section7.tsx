@@ -18,7 +18,7 @@ const Section7 = () => {
             <div className="aboutus-section7-3xl-values">
               {/* Values Header */}
               <div className="aboutus-section7-3xl-header">
-                <h1 className="aboutus-section7-3xl-title manrope">
+                <h1 className="aboutus-section7-3xl-title wulkan-display-bold">
                   Values
                 </h1>
               </div>
@@ -124,8 +124,8 @@ const Section7 = () => {
       
 
       {/* 2XL Screen - Extra large displays */}
-      <section className="desktop-1440 hidden xl:block 2xl:hidden py-10 px-6 bg-white ">
-        <div className="max-w-7xl mx-auto">
+      <section className="desktop-1920 hidden xl:block 2xl:hidden py-10  bg-white ">
+        <div className="w-full mx-auto px-20">
           <div className="flex flex-col lg:flex-row justify-between gap-16">
             {/* Left Side - Image Container */}
             <img src="/6.png" className="w-[500px] h-[500px] rounded-2xl  mt-25"></img>
@@ -133,7 +133,7 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 ml-56">
               {/* Values Header */}
-              <h1 className="text-5xl manrope  pl-10 leading-tight">
+              <h1 className="text-5xl wulkan-display-bold  pl-10 leading-tight">
                 Values
               </h1>
 
@@ -237,7 +237,7 @@ const Section7 = () => {
             {/* Right Side - Values Content */}
             <div className="w-full lg:w-auto lg:flex-1 mb-10">
               {/* Values Header */}
-              <h1 className="text-6xl manrope pt-20 -ml-40 leading-tight">
+              <h1 className="text-5xl wulkan-display-bold pt-15 -ml-40 leading-tight">
                 Values
               </h1>
 
@@ -328,12 +328,6 @@ const Section7 = () => {
 
 
 
-
-
-
-
-
-
      
       {/* SM Screen - Small displays */}
 
@@ -346,7 +340,7 @@ const Section7 = () => {
           {/* Content */}
           <div className="w-full max-w-full">
             <div className='bg-[#ebd657] w-[3px] h-10 mb-8'>
-              <h1 className="text-3xl  manrope mb-4 whitespace-nowrap ml-3">Values</h1>
+              <h1 className="text-3xl  wulkan-display-bold mb-4 whitespace-nowrap ml-3">Values</h1>
             </div>
             <div className="bg-white rounded-3xl p-4 space-y-4 mt-5 manrope-medium">
               {/* Value Item */}
@@ -383,7 +377,7 @@ const Section7 = () => {
       <style jsx>{`
         /* Ensure only one 3xl section exists */
         .aboutus-section7-3xl-container {
-          display: none !important;
+          display: none ;
         }
         
         /* Hide 2xl section when 3xl is active */
@@ -507,26 +501,41 @@ const Section7 = () => {
       `}</style>
 
         
-         {/* ✅ Global media query to conditionally show/hide sections */}
-            <style jsx global>{`
-                .desktop-1440,
-                .desktop-1280 {
-                    display: none;
-                }
+       <style jsx global>{`
+    /* Default hidden for desktop variations */
+    .desktop-1920,
+    .desktop-1280,
+    .aboutus-section7-3xl-container {
+        display: none;
+    }
 
-                @media (min-width: 768px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block;
-                    }
-                }
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
+    }
 
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block;
-                    }
-                }
-            `}</style>
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
+            display: block;
+        }
+    }
 
+    /* 3XL (2560px+) */
+    @media (min-width: 2560px) {
+        .aboutus-section7-3xl-container {
+            display: block !important;
+        }
+
+        .desktop-1920,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
+`}
+            </style>
     </div>
   );
 };

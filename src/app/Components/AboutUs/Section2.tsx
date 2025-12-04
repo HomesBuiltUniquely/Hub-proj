@@ -5,42 +5,26 @@ export default function Section2() {
         <div>
 
 
-             {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
-            <div className="aboutus-section2-3xl-container hidden">
-                <div className="aboutus-section2-3xl-layout">
+            {/* 3XL Screen - 2560px+ */}
+            <div className="aboutus-3xl">
+                <div className="aboutus-3xl-row">
 
-                    {/* Left Text Box - 3XL optimized */}
-                    <div className="aboutus-section2-3xl-textbox manrope-medium">
+                    <div className="aboutus-3xl-text">
                         At Hub Interior, beauty is backed by process.
                         Every space you see is a result of deep planning, skilled design, and flawless execution.
-                        We don’t just make interiors look good—we make them work better for real lives.                    </div>
-                    {/* Center Image Box - 3XL optimized */}
-                    <div className="aboutus-section2-3xl-center-image">
-                        <img
-                            src="/1.png"
-                            className="aboutus-section2-3xl-image"
-                            alt="Bedroom Interior"
-                        />
+                        We don’t just make interiors look good—we make them work better for real lives.
                     </div>
 
-                    {/* Right Side Images - 3XL optimized */}
-                    <div className="aboutus-section2-3xl-right-images">
-                        {/* Top Image */}
-                        <div className="aboutus-section2-3xl-top-image">
-                            <img
-                                src="/ab.jpg"
-                                className="aboutus-section2-3xl-image"
-                                alt="Interior Design"
-                            />
-                        </div>
+                    <div className="aboutus-3xl-center">
+                        <img src="/1.png" className="aboutus-3xl-img" />
+                    </div>
 
-                        {/* Bottom Image */}
-                        <div className="aboutus-section2-3xl-bottom-image">
-                            <img
-                                src="/3.png"
-                                className="aboutus-section2-3xl-image"
-                                alt="Interior Design"
-                            />
+                    <div className="aboutus-3xl-right">
+                        <div className="aboutus-3xl-top">
+                            <img src="/ab.jpg" className="aboutus-3xl-img" />
+                        </div>
+                        <div className="aboutus-3xl-bottom">
+                            <img src="/3.png" className="aboutus-3xl-img" />
                         </div>
                     </div>
 
@@ -50,11 +34,12 @@ export default function Section2() {
 
 
 
-            {/*1440 version*/}
-            
-            <div className="desktop-1440">
-                <div className="aboutus-section2-2xl-section mx-auto">
-                    <div className="h-[600px] flex flex-row px-16  gap-12 ">
+
+            {/*1920 version*/}
+
+            <div className="desktop-1920">
+                <div className="aboutus-section2-2xl-section mx-auto px-20">
+                    <div className="h-[600px] flex flex-row   gap-12 ">
                         <div className="w-[600px] h-[525px] bg-[#ebd457] rounded-2xl p-16 pt-30 text-xl manrope-medium tracking-wide leading-relaxed">
                             At Hub Interior, beauty is backed by process.
                             Every space you see is a result of deep planning, skilled design, and flawless execution.
@@ -89,9 +74,11 @@ export default function Section2() {
                 </div>
             </div>
 
-            {/* XL Screen - Extra large displays */}
-            <div className="desktop-1280 hidden xl:block 2xl:hidden">
-                <div className="h-[600px] flex flex-row px-12 gap-10 mt-6">
+
+
+            {/* 1280 Screen - Extra large displays */}
+            <div className="desktop-1280 hidden xl:block 2xl:hidden mx-auto px-15">
+                <div className="h-[600px] flex flex-row  gap-10 mt-6">
                     <div className="w-[450px] h-[470px] bg-[#ebd457] rounded-2xl p-12 pt-20 text-[20px] manrope-medium tracking-wide leading-relaxed">
                         At Hub Interior, beauty is backed by process.
                         Every space you see is a result of deep planning, skilled design, and flawless execution.
@@ -164,117 +151,123 @@ export default function Section2() {
             </div>
 
 
-             {/* Pure CSS for 3XL - 2560*1440 resolution */}
+            {/* Pure CSS for 3XL - 2560*1440 resolution */}
             <style jsx>{`
-                /* Ensure only one 3xl section exists */
-                .aboutus-section2-3xl-container {
-                    display: none !important;
-                }
-                
-                /* Hide 2xl section when 3xl is active */
-                @media (min-width: 2560px) {
-                    .aboutus-section2-2xl-section {
-                        display: none !important;
-                    }
-                }
-                
-                @media (min-width: 2560px) {
-                    .aboutus-section2-3xl-container {
-                        display: block !important;
-                        width: auto;
-                        height: auto;
-                        margin-left: -1rem;
-                    }
-                    
-                    .aboutus-section2-3xl-layout {
-                        height: auto;
-                        min-height: 1000px;
-                        display: flex;
-                        flex-direction: row;
-                        padding: 0 7rem;
-                        margin-top: 4rem;
-                        gap: 3rem;
-                        margin-top: 8rem;
-                    }
-                    
-                    .aboutus-section2-3xl-textbox {
-                        width: 800px;
-                        height: 400px;
-                        min-height: 800px;
-                        background-color: #ebd457;
-                        border-radius: 1rem;
-                        padding: 5rem;
-                        padding-top: 13rem;
-                        font-size: 27px;
-                        font-family: 'ManropeMedium', sans-serif;
-                        letter-spacing: 0.05em;
-                        line-height: 1.6;
-                        padding-top: 16rem;
-                        
-                    }
-                    
-                    .aboutus-section2-3xl-center-image {
-                        width: 850px;
-                        height: 400px;
-                        min-height: 800px;
-                        background-color: #ebd457;
-                        border-radius: 1rem;
-                        overflow: hidden;
-                    }
-                    
-                    .aboutus-section2-3xl-right-images {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 2rem;
-                    }
-                    
-                    .aboutus-section2-3xl-top-image {
-                        width: 620px;
-                        height: 100px;
-                        min-height: 250px;
-                        background-color: #fde047;
-                        border-radius: 1rem;
-                        overflow: hidden;
-                    }
-                    
-                    .aboutus-section2-3xl-bottom-image {
-                        width: 620px;
-                        height: 380px;
-                        min-height: 520px;
-                        background-color: #f87171;
-                        border-radius: 1rem;
-                        overflow: hidden;
-                    }
-                    
-                    .aboutus-section2-3xl-image {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        border-radius: inherit;
-                    }
-                }
-            `}</style>
+    /* Hide by default */
+    .aboutus-3xl {
+        display: none;
+    }
+
+    /* SHOW only on 2560px+ */
+    @media (min-width: 2560px) {
+
+        .aboutus-3xl {
+            display: block;
+            width: 100%;
+            padding: 4rem 6rem;
+        }
+
+        .aboutus-3xl-row {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .aboutus-3xl-text {
+            width: 800px;
+            min-height: 800px;
+            background: #ebd457;
+            padding: 6rem;
+            padding-top: 14rem;
+            border-radius: 16px;
+            font-size: 28px;
+            line-height: 1.6;
+            font-family: 'ManropeMedium', sans-serif;
+        }
+
+        .aboutus-3xl-center {
+            width: 850px;
+            min-height: 800px;
+            background: #ebd457;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .aboutus-3xl-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .aboutus-3xl-top {
+            width: 620px;
+            min-height: 250px;
+            background: #fde047;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .aboutus-3xl-bottom {
+            width: 620px;
+            min-height: 520px;
+            background: #f87171;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .aboutus-3xl-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Hide other layouts */
+        .desktop-1920,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
+`}</style>
 
 
-        
+
             <style jsx global>{`
-                .desktop-1440,
-                .desktop-1280 {
-                    display: none;
-                }
+    /* Default hidden for desktop variations */
+    .desktop-1920,
+    .desktop-1280,
+    .aboutus-section2-3xl-container {
+        display: none;
+    }
 
-                @media (min-width: 768px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block;
-                    }
-                }
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
+    }
 
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block;
-                    }
-                }
-            `}</style>
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
+            display: block;
+        }
+    }
+
+    /* 3XL (2560px+) */
+    @media (min-width: 2560px) {
+        .aboutus-section2-3xl-container {
+            display: block !important;
+        }
+
+        .desktop-1920,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
+`}
+            </style>
+
+
         </div>
     );
 }

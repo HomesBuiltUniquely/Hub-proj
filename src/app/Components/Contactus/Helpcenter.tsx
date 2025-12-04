@@ -58,9 +58,9 @@ const HelpCenter: React.FC = () => {
           <section className="max-w-[1440px] mx-auto px-8 -mt-5 relative">
             {/* Title + Buttons */}
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-4xl manrope text-gray-800">
+              <h1 className="text-5xl wulkan-display-bold text-gray-800">
                 Connect with the right team
-              </h2>
+              </h1>
 
               {/* Navigation Buttons */}
               <div className="flex gap-2">
@@ -140,9 +140,9 @@ const HelpCenter: React.FC = () => {
           <section className="max-w-screen-2xl mx-auto px-8 relative">
             {/* Title + Buttons in same line (structure retained) */}
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-4xl manrope text-gray-800">
+              <h1 className="text-5xl wulkan-display-bold text-gray-800">
                 Connect with the right team
-              </h2>
+              </h1>
 
               {/* Navigation Buttons */}
               <div className="flex gap-2">
@@ -219,9 +219,9 @@ const HelpCenter: React.FC = () => {
           {/* Header */}
           <div className="flex items-start mb-6">
             <div className="w-[2px] h-[75px] bg-[#ebd457] -ml-3"></div>
-            <h2 className="text-3xl manrope text-gray-800 ml-3 -mt-1 leading-snug">
+            <h1 className="text-3xl wulkan-display-bold text-gray-800 ml-3 -mt-1 leading-snug">
               Connect with the right team
-            </h2>
+            </h1>
           </div>
 
           {/* Grid layout for mobile (2 + 2) */}

@@ -18,22 +18,22 @@ const geistMono = Geist_Mono({
 // ✅ Separate viewport export (only here — NOT inside metadata)
 export const viewport: Viewport = {
   width: "device-width",
-  initialScale: 1,
+  initialScale: 1, 
   maximumScale: 1,
 };
 
 // ✅ Clean metadata without viewport
 export const metadata: Metadata = {
-  title: "HUB Interior_Home",
+  title: "HUB Interior | Interior Designers in Bangalore | 34 Days Interiors",
   description:
-    "HUB Interior offers uniquely built homes with elegant designs and functionality.",
-  keywords: ["Interior Design", "HUB Interior", "Home Design", "Architecture", "Custom Homes"],
+    "Explore complete home interiors, modular interior designs, and customized solutions in Bangalore. Expert designers, smooth execution, and trusted quality throughout.",
+  keywords: ["Bangalore Interior Designer", "Interior Design", "Home Interior Designer", "Villa Interior", "Best Interior Design", "modern interior design", "HUB Interior"],
   authors: [{ name: "HUB Interior", url: "https://hubinterior.com" }],
   creator: "HUB Interior Team",
   metadataBase: new URL("https://hubinterior.com"),
   openGraph: {
     title: "HUB Interior",
-    description: "Homes uniquely built with elegance and purpose.",
+    description: "Explore complete home interiors, modular interior designs, and customized solutions in Bangalore. Expert designers, smooth execution, and trusted quality throughout.",
     url: "https://hubinterior.com",
     siteName: "HUB Interior",
     images: [
@@ -120,6 +120,7 @@ export default function RootLayout({
               console.log('WhatsApp widget hidden for this page');
             }
           }
+
         `
       }}
     />

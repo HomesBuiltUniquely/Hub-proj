@@ -7,7 +7,6 @@ import JoinUsPage from "../Components/Career/Section3";
 export default function Career(){
     return(
         <div>
-           
             <Herosection/>
             <Section2/>
             <JoinUsPage/>

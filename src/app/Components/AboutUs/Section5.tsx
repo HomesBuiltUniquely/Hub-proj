@@ -12,7 +12,7 @@ const Section5 = () => {
 
   const timeline = [
     { year: "2019 – New Experience Centre, Banaswadi", content: "The story began with the launch of our very first Experience Centre in Banaswadi." },
-    { year: "2020 – Instahome", content: "Introduced Instahome, making interiors quicker and more accessible for modern homeowners." },
+    { year: "2020 – Insta home", content: "Introduced Insta home, making interiors quicker and more accessible for modern homeowners." },
     { year: "2021 – HUB Store", content: "Expanded with the launch of the HUB Store, bringing curated products and solutions under one roof." },
     { year: "2022 – New Experience Centre, Sarjapur", content: "Opened our second Experience Centre in Sarjapur, strengthening our presence in Bengaluru." },
     { year: "2023 – Hubster ERP", content: "Launched Hubster, our in-house ERP system, streamlining processes and efficiency." },
@@ -33,7 +33,7 @@ const Section5 = () => {
     },
     {
       year: '2020',
-      title: ['Instahome'],
+      title: ['Insta home'],
       description: 'Introduced Instahome, making interiors quicker and more accessible for modern homeowners.',
     },
     {
@@ -101,11 +101,11 @@ const Section5 = () => {
           <div className="aboutus-section5-3xl-layout">
             {/* Header Section */}
             <div className="aboutus-section5-3xl-header">
-              <h2 className="aboutus-section5-3xl-title manrope">
-                Journey So Far
+              <h2 className="aboutus-section5-3xl-title wulkan-display-bold">
+                Journey so far
               </h2>
               <p className="aboutus-section5-3xl-subtitle manrope-medium">
-                The Path We&#39;ve Paved!
+                The path we&#39;ve paved!
               </p>
             </div>
 
@@ -149,17 +149,17 @@ const Section5 = () => {
         </div>
       </section>
 
-      {/* 2XL Screen - Large displays */}
-      <div className='desktop-1440'>
-        <section className=" py-20 px-16 bg-white">
-          <div className="max-w-7xl mx-auto">
+      {/* 2XL 1920 - Large displays */}
+      <div className='desktop-1920'>
+        <section className=" py-20 px-20 bg-white">
+          <div className="w-full mx-auto">
             {/* Header Section */}
             <div className="text-center mb-12">
-              <h2 className="text-4xl manrope text-gray-900 mb-2 leading-tight">
-                Journey So Far
+              <h2 className="text-4xl wulkan-display-bold text-gray-900 mb-2 leading-tight">
+                Journey so far
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed manrope-medium">
-                The Path We&#39;ve Paved!
+                The path we&#39;ve paved!
               </p>
             </div>
 
@@ -203,18 +203,21 @@ const Section5 = () => {
         </section>
       </div>
 
+
+      {/* 1280 Version */}
+
       {/* XL Screen - Extra large displays */}
 
       <div className='desktop-1280'>
-        <section className="hidden xl:block 2xl:hidden py-20 px-12 bg-white">
+        <section className="hidden xl:block 2xl:hidden py-20 px-15 bg-white">
           <div className="max-w-6xl mx-auto">
             {/* Header Section */}
             <div className="text-center mb-12">
-              <h2 className="text-4xl manrope text-gray-900 mb-2 leading-tight">
-                Journey So Far
+              <h2 className="text-4xl wulkan-display-bold text-gray-900 mb-2 leading-tight">
+                Journey so far
               </h2>
               <p className="text-xl manrope-medium text-gray-600 leading-relaxed">
-                The Path We&#39;ve Paved!
+                The path we&#39;ve paved!
               </p>
             </div>
 
@@ -273,8 +276,8 @@ const Section5 = () => {
             <div className='flex items-center mt-30'>
               <div className='bg-[#ebd657] w-[3px] h-10'>
                 <div className='mb-2.5 w-80'>
-                  <h1 className='text-3xl manrope text-nowrap, ml-3'> Journey So far</h1>
-                  <p className='manrope-medium text-md w-full leading-relaxed mt-3 ml-3'> The Path We&#39;ve Paved!
+                  <h1 className='text-3xl wulkan-display-bold text-nowrap, ml-3'> Journey so far</h1>
+                  <p className='manrope-medium text-md w-full leading-relaxed mt-3 ml-3'> The path we&#39;ve paved!
                   </p>
 
                 </div>
@@ -326,9 +329,6 @@ const Section5 = () => {
 
             </div>
 
-
-
-
           </div>
 
 
@@ -339,7 +339,7 @@ const Section5 = () => {
       <style jsx>{`
         /* Ensure only one 3xl section exists */
         .aboutus-section5-3xl-container {
-          display: none !important;
+          display: none ;
         }
         
         /* Hide 2xl section when 3xl is active */
@@ -570,28 +570,41 @@ const Section5 = () => {
         }
       `}</style>
 
-
-      {/* ✅ Global media query to conditionally show/hide sections */}
       <style jsx global>{`
-                .desktop-1440,
-                .desktop-1280 {
-                    display: none;
-                }
+    /* Default hidden for desktop variations */
+    .desktop-1920,
+    .desktop-1280,
+    .aboutus-section5-3xl-container {
+        display: none;
+    }
 
-                @media (min-width: 768px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block;
-                    }
-                }
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
+    }
 
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block;
-                    }
-                }
-            `}</style>
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
+            display: block;
+        }
+    }
 
+    /* 3XL (2560px+) */
+    @media (min-width: 2560px) {
+        .aboutus-section5-3xl-container {
+            display: block !important;
+        }
 
+        .desktop-1920,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
+`}
+            </style>
 
     </div>
   );

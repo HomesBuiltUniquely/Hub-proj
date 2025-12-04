@@ -30,7 +30,7 @@ export default function HeroSections() {
   const [selectedPincode, setSelectedPincode] = useState("");
   const [whatsappConsent, setWhatsappConsent] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [isVerified, setIsVerified] = useState(false);
+
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otp, setOtp] = useState('');
   const [verificationStatus, setVerificationStatus] = useState('');
@@ -77,8 +77,14 @@ export default function HeroSections() {
     return () => clearInterval(interval);
   }, []);
 
-  const cityRef = useRef<HTMLDivElement>(null);
-  const budgetRef = useRef<HTMLDivElement>(null);
+  // Refs for 1440 version
+  const cityRef1440 = useRef<HTMLDivElement>(null);
+  const budgetRef1440 = useRef<HTMLDivElement>(null);
+
+  // Refs for 1280 version
+  const cityRef1280 = useRef<HTMLDivElement>(null);
+  const budgetRef1280 = useRef<HTMLDivElement>(null);
+
 
   const handleCitySelect = (value: string) => {
     console.log('City selected:', value);
@@ -92,22 +98,6 @@ export default function HeroSections() {
     setTimeout(() => setBudgetOpen(false), 100);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      setTimeout(() => {
-        if (cityRef.current && !cityRef.current.contains(event.target as Node)) {
-          setCityOpen(false);
-        }
-        if (budgetRef.current && !budgetRef.current.contains(event.target as Node)) {
-          setBudgetOpen(false);
-        }
-      }, 10);
-    };
-    if (typeof window !== 'undefined') {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -131,25 +121,27 @@ export default function HeroSections() {
     setShowOtpModal(false);
     setVerificationStatus('');
     setOtp('');
-    setIsVerified(false);
   };
-
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
 
-    if (verificationStatus === 'Unverified User' && !isVerified && !isOtpVerifying) {
-      timeoutId = setTimeout(async () => {
-        console.log('Auto-closing modal and submitting as unverified after timeout');
-        await handleModalClose();
-      }, 300000); // 5 minutes
-    }
+      const clickedInsideCity =
+        (cityRef1440.current && cityRef1440.current.contains(target)) ||
+        (cityRef1280.current && cityRef1280.current.contains(target));
 
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      const clickedInsideBudget =
+        (budgetRef1440.current && budgetRef1440.current.contains(target)) ||
+        (budgetRef1280.current && budgetRef1280.current.contains(target));
+
+      if (!clickedInsideCity) setCityOpen(false);
+      if (!clickedInsideBudget) setBudgetOpen(false);
     };
-  }, [verificationStatus, isVerified, isOtpVerifying]);
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
 
   const handleOtpSubmit = async () => {
     if (!otp || otp.length !== 6) {
@@ -176,7 +168,7 @@ export default function HeroSections() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setIsVerified(true);
+
         setOtp('');
         // Removed alert - no interruption during verification
         setVerificationStatus('Verified User');
@@ -347,7 +339,7 @@ export default function HeroSections() {
             phoneNumber: requestData.phone,
             propertyPin: requestData.pincode,
             interiorSetup: requestData.city,
-            possessionIn: requestData.budget,  
+            possessionIn: requestData.budget,
           };
 
           await fetch('https://hows.hubinterior.com/v1/Home1', {
@@ -447,7 +439,6 @@ export default function HeroSections() {
           setSelectedPincode("");
           setWhatsappConsent(true);
           setFormData({ name: '', email: '', phone: '' });
-          setIsVerified(false);
           setShowOtpModal(false);
 
           // Redirect to thank you page
@@ -474,6 +465,30 @@ export default function HeroSections() {
 
   return (
     <div>
+
+      <style jsx>{`
+        /* Hide both by default */
+        .desktop-1280,
+        .desktop-1440 {
+          display: none !important;
+        }
+
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
+
+        /* Show 1440px layout for large desktops (>=1440px) */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block !important;
+          }
+        }
+      `}</style>
+
+
       {shouldHideForm ? (
         // Display without form when gad_source=5
         <>
@@ -546,138 +561,138 @@ export default function HeroSections() {
 
           {/* ===== MOBILE VERSION ===== */}
           <div className=" w-[full] mx-auto   block lg:hidden">
-          {/* Mobile Navbar - Separate Row with White Background */}
-          <div className="bg-white w-full py-4 px-4 shadow-sm">
-            <div className="flex items-center justify-between">
-              <img src="/hub.png" alt="Logo" className="h-[38px]" />
-              <button type="button" onClick={scrollToCalculator} className="bg-[#DDCDC1] text-amber-950 rounded-xl px-5 py-2 text-sm manrope shadow-md hover:bg-[#c4b5a8] transition-colors">GET A FREE QUOTE</button>
-            </div>
-          </div>
-
-          {/* Mobile Hero Section - Carousel */}
-          <div className="relative w-full h-[420px] sm:h-[420px] mb-0 overflow-hidden">
-            {/* Carousel Images */}
-            <div className="relative w-full h-full">
-              {carouselImages1.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`Hero ${index + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover rounded-b-3xl transition-opacity duration-1000 ${index === carouselIndex ? 'opacity-100' : 'opacity-0'
-                    }`}
-                />
-              ))}
+            {/* Mobile Navbar - Separate Row with White Background */}
+            <div className="bg-white w-full py-4 px-4 shadow-sm">
+              <div className="flex items-center justify-between">
+                <img src="/hub.png" alt="Logo" className="h-[38px]" />
+                <button type="button" onClick={scrollToCalculator} className="bg-[#DDCDC1] text-amber-950 rounded-xl px-5 py-2 text-sm manrope shadow-md hover:bg-[#c4b5a8] transition-colors">GET A FREE QUOTE</button>
+              </div>
             </div>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-opacity-60 rounded-b-3xl"></div>
+            {/* Mobile Hero Section - Carousel */}
+            <div className="relative w-full h-[420px] sm:h-[420px] mb-0 overflow-hidden">
+              {/* Carousel Images */}
+              <div className="relative w-full h-full">
+                {carouselImages1.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Hero ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover rounded-b-3xl transition-opacity duration-1000 ${index === carouselIndex ? 'opacity-100' : 'opacity-0'
+                      }`}
+                  />
+                ))}
+              </div>
 
-            {/* Centered Heading and Subheading */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10 pb-64 pr-10">
-              <h1 className="text-white text-[24px] manrope text-left leading-tight drop-shadow-lg mt-6 w-full h-full">Best Interior Designers in <span className="text-red-500  manrope-semibold">Bangalore</span></h1>
-              <p className="text-white text-1 text-left manrope-medium drop-shadow top-3 pt-1 pr-3 w-full h-full">Transforming Bangalore homes with personalized interiors that reflect your lifestyle.</p>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-opacity-60 rounded-b-3xl"></div>
+
+              {/* Centered Heading and Subheading */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10 pb-64 pr-10">
+                <h1 className="text-white text-[24px] manrope text-left leading-tight drop-shadow-lg mt-6 w-full h-full">Best Interior Designers in <span className="text-red-500  manrope-semibold">Bangalore</span></h1>
+                <p className="text-white text-1 text-left manrope-medium drop-shadow top-3 pt-1 pr-3 w-full h-full">Transforming Bangalore homes with personalized interiors that reflect your lifestyle.</p>
+              </div>
             </div>
-          </div>
 
-          {/* Mobile Form Card */}
-          <div className="relative z-20 -mt-10 px-2">
-            <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
-              <div className="text-3xl manrope-semibold text-center mb-6 text-black-950">Interiors For Every Home</div>
+            {/* Mobile Form Card */}
+            <div className="relative z-20 -mt-10 px-2">
+              <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
+                <div className="text-3xl manrope-semibold text-center mb-6 text-black-950">Interiors For Every Home</div>
 
-              {/* Name and Email Row */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Name *"
-                  required
-                  className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email *"
-                  required
-                  className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-2 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                />
-              </div>
-
-              {/* Phone and Pincode Row */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="Phone Number *"
-                  required
-                  className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                />
-                {/* Pincode Dropdown */}
-                <div className="relative w-full sm:w-[250px] mt-2 sm:mt-10">
-                  <select
-                    name="pincode"
+                {/* Name and Email Row */}
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Name *"
                     required
-                    value={selectedPincode}
-                    onChange={e => setSelectedPincode(e.target.value)}
-                    className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
-                  >
-                    <option className="text-gray-400" value="" disabled>Property Pincode *</option>
-                    {Pincode.map((pin, idx) => (
-                      <option key={idx} value={pin}>{pin}</option>
-                    ))}
-                  </select>
-                  {/* Custom dropdown arrow icon */}
-                  <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
-                </div>
-              </div>
-
-              {/* City and Budget Dropdowns */}
-              <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 space-y-4 sm:space-y-6">
-                {/* City Dropdown */}
-                <div className="relative w-full sm:w-[520px] mx-auto">
-                  <select
-                    name="city"
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email *"
                     required
-                    value={selectedCity}
-                    onChange={e => setSelectedCity(e.target.value)}
-                    className="manrope-medium w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-3xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
-                  >
-                    <option className="text-gray-400 manrope-medium" value="" disabled>Choose Interior Setup *</option>
-                    {cityOptions.map((option: string) => (
-                      <option key={option} value={option}>{option}</option>
-                    ))}
-                  </select>
-                  {/* Custom dropdown arrow icon */}
-                  <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-2 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                  />
                 </div>
-                {/* Budget Dropdown */}
-                <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 manrope-medium">
-                  <select
-                    name="budget"
-                    required
-                    value={selectedBudget}
-                    onChange={e => setSelectedBudget(e.target.value)}
-                    className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
-                  >
-                    <option className="text-gray-400" value="" disabled>Project Type & Possession *</option>
-                    {budgetOptions.map((option: string) => (
-                      <option key={option} value={option}>{option}</option>
-                    ))}
-                  </select>
-                  {/* Custom dropdown arrow icon */}
-                  <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
-                </div>
-              </div>
 
-              {/* Checkbox and Button Container */}
-              <div className="flex flex-col items-start mt-6 sm:mt-8 gap-3">
-                {/* WhatsApp Checkbox */}
-                {/* <div className="flex items-center w-full sm:w-auto justify-start mb-3 lg:mb-0 lg:ml-2">
+                {/* Phone and Pincode Row */}
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="Phone Number *"
+                    required
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                  />
+                  {/* Pincode Dropdown */}
+                  <div className="relative w-full sm:w-[250px] mt-2 sm:mt-10">
+                    <select
+                      name="pincode"
+                      required
+                      value={selectedPincode}
+                      onChange={e => setSelectedPincode(e.target.value)}
+                      className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
+                    >
+                      <option className="text-gray-400" value="" disabled>Property Pincode *</option>
+                      {Pincode.map((pin, idx) => (
+                        <option key={idx} value={pin}>{pin}</option>
+                      ))}
+                    </select>
+                    {/* Custom dropdown arrow icon */}
+                    <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
+                  </div>
+                </div>
+
+                {/* City and Budget Dropdowns */}
+                <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 space-y-4 sm:space-y-6">
+                  {/* City Dropdown */}
+                  <div className="relative w-full sm:w-[520px] mx-auto">
+                    <select
+                      name="city"
+                      required
+                      value={selectedCity}
+                      onChange={e => setSelectedCity(e.target.value)}
+                      className="manrope-medium w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-3xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
+                    >
+                      <option className="text-gray-400 manrope-medium" value="" disabled>Choose Interior Setup *</option>
+                      {cityOptions.map((option: string) => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                    {/* Custom dropdown arrow icon */}
+                    <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
+                  </div>
+                  {/* Budget Dropdown */}
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 manrope-medium">
+                    <select
+                      name="budget"
+                      required
+                      value={selectedBudget}
+                      onChange={e => setSelectedBudget(e.target.value)}
+                      className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
+                    >
+                      <option className="text-gray-400" value="" disabled>Project Type & Possession *</option>
+                      {budgetOptions.map((option: string) => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                    {/* Custom dropdown arrow icon */}
+                    <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
+                  </div>
+                </div>
+
+                {/* Checkbox and Button Container */}
+                <div className="flex flex-col items-start mt-6 sm:mt-8 gap-3">
+                  {/* WhatsApp Checkbox */}
+                  {/* <div className="flex items-center w-full sm:w-auto justify-start mb-3 lg:mb-0 lg:ml-2">
                 <input
                   type="checkbox"
                   required
@@ -689,175 +704,11 @@ export default function HeroSections() {
                   Send Me Updates On WhatsApp
                 </label>
               </div> */}
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting || isSendingOtpAuto}
-                  className="manrope flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-2xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[27px] font-medium justify-center items-center lg:mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <p>{isSubmitting || isSendingOtpAuto ? 'Sending...' : 'Submit'}</p>
-                  {!isSubmitting && !isSendingOtpAuto && (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 sm:size-6 lg:size-7 ml-2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                  )}
-                </button>
-              </div>
-
-              {/* Legal Text */}
-              <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-black-0 text-center sm:text-left mr-0 sm:mr-26 lg:ml-2">
-                By submitting, you agree to our Privacy Policy, Terms and Conditions
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ===== DESKTOP VERSION ===== */}
-        <div className="hidden lg:block bg-[#f1f2f6] min-h-screen p-4 sm:p-6">
-          <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto lg:mr-30">
-            {/* Left side - Form */}
-            <div className="w-full lg:w-auto">
-              <div className="flex justify-center lg:justify-start">
-                <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2" />
-              </div>
-              <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
-                <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every Home</p>
-                
-                {/* Name and Email Row */}
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Name *"
-                    required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                  />
-                  <input
-                    id="e1"
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="Email *"
-                    required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                  />
-                </div>
-
-                {/* Phone and Pincode Row */}
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                  <input
-                    id="e2"
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="Phone Number *"
-                    required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                  />
-                  {/* Pincode Dropdown */}
-                  <div className="relative w-full sm:w-[250px] mt-4 sm:mt-10">
-                    <select
-                      name="pincode"
-                      required
-                      value={selectedPincode}
-                      onChange={e => setSelectedPincode(e.target.value)}
-                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
-                    >
-                      <option className="text-gray-400 manrope-medium" value="" disabled>Property Pincode *</option>
-                      {Pincode.map((pin, idx) => (
-                        <option key={idx} value={pin}>{pin}</option>
-                      ))}
-                    </select>
-                    {/* Custom dropdown arrow icon */}
-                    <span className="text-gray-500 absolute mt-4 -ml-8 text-[16px]">&#9662;</span>
-                  </div>
-                </div>
-
-                {/* Desktop Custom Dropdowns */}
-                <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 space-y-4 sm:space-y-6">
-                  {/* City Dropdown */}
-                  <div ref={cityRef}>
-                    <div
-                      onClick={() => {
-                        setCityOpen(!cityOpen);
-                        setBudgetOpen(false);
-                      }}
-                      className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && 'text-gray-400'}`}
-                    >
-                      <span className="truncate">
-                        {selectedCity || "Choose Interior Setup"}
-                      </span>
-                      <span className="text-gray-500">&#9662;</span>
-                    </div>
-                    {cityOpen && (
-                      <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto manrope-medium">
-                        {cityOptions.map((option: string) => (
-                          <li
-                            key={option}
-                            onClick={() => handleCitySelect(option)}
-                            className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
-                          >
-                            {option}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-
-                  {/* Budget Dropdown */}
-                  <div ref={budgetRef}>
-                    <div
-                      onClick={() => {
-                        setBudgetOpen(!budgetOpen);
-                        setCityOpen(false);
-                      }}
-                      className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] mt-6 sm:mt-10 flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedBudget && 'text-gray-400'}`}
-                    >
-                      <span>
-                        {selectedBudget || "Project Type & Possession"}
-                      </span>
-                      <span className="text-gray-500">&#9662;</span>
-                    </div>
-                    {budgetOpen && (
-                      <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
-                        {budgetOptions.map((option: string) => (
-                          <li
-                            key={option}
-                            onClick={() => handleBudgetSelect(option)}
-                            className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
-                          >
-                            {option}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </div>
-
-                {/* Checkbox and Button Container */}
-                <div className=" sm:flex-row items-center justify-between mt-6 sm:mt-8 gap-4">
-                  {/* WhatsApp Checkbox */}
-                  <div className="flex items-center w-full sm:w-auto justify-center sm:justify-start lg:ml-2">
-                    <input
-                      type="checkbox"
-                      required
-                      checked={whatsappConsent}
-                      onChange={() => setWhatsappConsent(!whatsappConsent)}
-                      className="size-4 sm:size-5 accent-[#DDCDC1] flex-shrink-0"
-                    />
-                    <label className="text-sm sm:text-[16px] font-light ml-2 sm:ml-3 whitespace-nowrap">
-                      Send Me Updates On WhatsApp
-                    </label>
-                  </div>
                   {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting || isSendingOtpAuto}
-                    className="manrope flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px]  justify-center items-center lg:mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="manrope flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-2xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[27px] font-medium justify-center items-center lg:mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <p>{isSubmitting || isSendingOtpAuto ? 'Sending...' : 'Submit'}</p>
                     {!isSubmitting && !isSendingOtpAuto && (
@@ -869,35 +720,420 @@ export default function HeroSections() {
                 </div>
 
                 {/* Legal Text */}
-                <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 manrope-medium text-center sm:text-left mr-0 sm:mr-26 lg:ml-2 whitespace-nowrap">
-                By submitting, you agree to Privacy Policy, Terms and Conditions{" "}
-                  <span className="text-[#000000] manrope-medium"></span> {"  "}
-                  <span className="text-[#000000] manrope-medium"></span>
+                <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-black-0 text-center sm:text-left mr-0 sm:mr-26 lg:ml-2">
+                  By submitting, you agree to our Privacy Policy, Terms and Conditions
                 </div>
-
-
               </div>
-            </div>
-
-            {/* Right side - Image/Placeholder */}
-            <div className="hidden lg:block min-w-[400px] lg:min-w-[750px] h-[500px] lg:h-[785px] rounded-r-3xl lg:rounded-r-4xl relative overflow-hidden">
-              {/* Carousel Image */}
-              <img
-                className="min-w-[400px] lg:min-w-[750px] h-[500px] lg:h-[785px] rounded-r-3xl lg:rounded-r-4xl object-cover transition-all duration-500"
-                src={carouselImages[carouselIndex]}
-                alt={`Carousel ${carouselIndex + 1}`}
-              />
-              {/* Overlayed Headings and Button */}
-              <div className="absolute left-10 bottom-10 text-left z-10">
-                <h1 className="text-white text-6xl manrope-medium leading-tight mb-0 drop-shadow-lg">Best Interior<p className="mb-1">Designers In <span className="text-red-500">Bangalore</span></p></h1>
-                <p className="text-white text-xl manrope-medium drop-shadow mb-1 pt-2">Transforming Bangalore homes with personalized<br />interiors that reflect your lifestyle.</p>
-              </div>
-              <button onClick={scrollToCalculator} className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 absolute -mt-190 ml-132 manrope tracking-wider text-[18px] z-20 hover:bg-[#c4b5a8] transition-colors cursor-pointer"> GET A FREE QUOTE</button>
             </div>
           </div>
-        </div>
+
+          {/* ===== DESKTOP VERSION ===== */}
+
+          {/* 1440 Version */}
+          <div className=" desktop-1440 hidden lg:block bg-[#f1f2f6] justify-center min-h-screen p-4 sm:p-6">
+            <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto lg:mr-30">
+              {/* Left side - Form */}
+              <div className="w-full lg:w-auto">
+                <div className="flex justify-center lg:justify-start">
+                  <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2" />
+                </div>
+                <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
+                  <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every Home</p>
+
+                  {/* Name and Email Row */}
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Name *"
+                      required
+                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    />
+                    <input
+                      id="e1"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Email *"
+                      required
+                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    />
+                  </div>
+
+                  {/* Phone and Pincode Row */}
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                    <input
+                      id="e2"
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="Phone Number *"
+                      required
+                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    />
+                    {/* Pincode Dropdown */}
+                    <div className="relative w-full sm:w-[250px] mt-4 sm:mt-10">
+                      <select
+                        name="pincode"
+                        required
+                        value={selectedPincode}
+                        onChange={e => setSelectedPincode(e.target.value)}
+                        className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
+                      >
+                        <option className="text-gray-400 manrope-medium" value="" disabled>Property Pincode *</option>
+                        {Pincode.map((pin, idx) => (
+                          <option key={idx} value={pin}>{pin}</option>
+                        ))}
+                      </select>
+                      {/* Custom dropdown arrow icon */}
+                      <span className="text-gray-500 absolute mt-4 -ml-8 text-[16px]">&#9662;</span>
+                    </div>
+                  </div>
+
+                  {/* Desktop Custom Dropdowns */}
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 space-y-4 sm:space-y-6">
+                    {/* City Dropdown */}
+                    <div ref={cityRef1440}>
+
+                      <div
+                        onClick={() => {
+                          setCityOpen(!cityOpen);
+                          setBudgetOpen(false);
+                        }}
+                        className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && 'text-gray-400'}`}
+                      >
+                        <span className="truncate">
+                          {selectedCity || "Choose Interior Setup"}
+                        </span>
+                        <span className="text-gray-500">&#9662;</span>
+                      </div>
+                      {cityOpen && (
+                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto manrope-medium">
+                          {cityOptions.map((option: string) => (
+                            <li
+                              key={option}
+                              onClick={() => handleCitySelect(option)}
+                              className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
+                            >
+                              {option}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+
+                    {/* Budget Dropdown */}
+                    <div ref={budgetRef1440}>
+
+                      <div
+                        onClick={() => {
+                          setBudgetOpen(!budgetOpen);
+                          setCityOpen(false);
+                        }}
+                        className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] mt-6 sm:mt-10 flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedBudget && 'text-gray-400'}`}
+                      >
+                        <span>
+                          {selectedBudget || "Project Type & Possession"}
+                        </span>
+                        <span className="text-gray-500">&#9662;</span>
+                      </div>
+                      {budgetOpen && (
+                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
+                          {budgetOptions.map((option: string) => (
+                            <li
+                              key={option}
+                              onClick={() => handleBudgetSelect(option)}
+                              className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
+                            >
+                              {option}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Checkbox and Button Container */}
+                  <div className=" sm:flex-row items-center justify-between mt-6 sm:mt-8 gap-4">
+                    {/* WhatsApp Checkbox */}
+                    <div className="flex items-center w-full sm:w-auto justify-center sm:justify-start lg:ml-2">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={whatsappConsent}
+                        onChange={() => setWhatsappConsent(!whatsappConsent)}
+                        className="size-4 sm:size-5 accent-[#DDCDC1] flex-shrink-0"
+                      />
+                      <label className="text-sm sm:text-[16px] font-light ml-2 sm:ml-3 whitespace-nowrap">
+                        Send Me Updates On WhatsApp
+                      </label>
+                    </div>
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting || isSendingOtpAuto}
+                      className="manrope flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px]  justify-center items-center lg:mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <p>{isSubmitting || isSendingOtpAuto ? 'Sending...' : 'Submit'}</p>
+                      {!isSubmitting && !isSendingOtpAuto && (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 sm:size-6 lg:size-7 ml-2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Legal Text */}
+                  <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 manrope-medium text-center sm:text-left mr-0 sm:mr-26 lg:ml-2 whitespace-nowrap">
+                    By submitting, you agree to Privacy Policy, Terms and Conditions{" "}
+                    <span className="text-[#000000] manrope-medium"></span> {"  "}
+                    <span className="text-[#000000] manrope-medium"></span>
+                  </div>
+
+
+                </div>
+              </div>
+
+              {/* Right side - Image/Placeholder */}
+              <div className="hidden lg:block min-w-[400px] lg:min-w-[750px] h-[500px] lg:h-[785px] rounded-r-3xl lg:rounded-r-4xl relative overflow-hidden">
+                {/* Carousel Image */}
+                <img
+                  className="min-w-[400px] lg:min-w-[750px] h-[500px] lg:h-[785px] rounded-r-3xl lg:rounded-r-4xl object-cover transition-all duration-500"
+                  src={carouselImages[carouselIndex]}
+                  alt={`Carousel ${carouselIndex + 1}`}
+                />
+                {/* Overlayed Headings and Button */}
+                <div className="absolute left-10 bottom-10 text-left z-10">
+                  <h1 className="text-white text-6xl manrope-medium leading-tight mb-0 drop-shadow-lg">Best Interior<p className="mb-1">Designers In <span className="text-red-500">Bangalore</span></p></h1>
+                  <p className="text-white text-xl manrope-medium drop-shadow mb-1 pt-2">Transforming Bangalore homes with personalized<br />interiors that reflect your lifestyle.</p>
+                </div>
+                <button onClick={scrollToCalculator} className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 absolute -mt-190 ml-132 manrope tracking-wider text-[18px] z-20 hover:bg-[#c4b5a8] transition-colors cursor-pointer"> GET A FREE QUOTE</button>
+              </div>
+            </div>
+          </div>
+
+
+          {/* 1280 Version */}
+          <div className=" desktop-1280 hidden lg:block bg-[#f1f2f6] min-h-screen p-4 sm:p-6">
+            <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
+
+              {/* Left side - Form */}
+              <div className="w-full lg:w-[520px]">
+                {/* Logo */}
+                <div className="flex justify-center lg:justify-start">
+                  <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2" />
+                </div>
+
+                {/* Form Card */}
+                <div className="bg-white w-[500px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
+
+                  {/* Heading */}
+                  <p className="mb-6 whitespace-nowrap manrope mt-5">Interiors For Every Home</p>
+
+                  {/* Name + Email */}
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Name *"
+                      required
+                      className="w-full sm:w-[200px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    />
+                    <input
+                      id="e1"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Email *"
+                      required
+                      className="w-full sm:w-[200px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    />
+                  </div>
+
+                  {/* Phone + Pincode */}
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                    <input
+                      id="e2"
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="Phone Number *"
+                      required
+                      className="w-full sm:w-[200px]  bg-[#f1f2f6] mt-6 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    />
+
+                    {/* Pincode */}
+                    <div className="relative w-full mt-6">
+                      <select
+                        name="pincode"
+                        required
+                        value={selectedPincode}
+                        onChange={e => setSelectedPincode(e.target.value)}
+                        className="w-full sm:w-[200px]  h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
+                      >
+                        <option className="text-gray-400" value="" disabled>
+                          Property Pincode *
+                        </option>
+                        {Pincode.map((pin, idx) => (
+                          <option key={idx} value={pin}>{pin}</option>
+                        ))}
+                      </select>
+
+                      <span className="text-gray-500 absolute top-[14px] right-6 text-[16px]">&#9662;</span>
+                    </div>
+                  </div>
+
+                  {/* Custom Dropdowns */}
+                  <div className="relative w-full mx-auto mt-6 space-y-6">
+
+                    {/* City Dropdown */}
+                    <div ref={cityRef1280} className="relative">
+                      <div
+                        onClick={() => {
+                          setCityOpen(!cityOpen);
+                          setBudgetOpen(false);
+                        }}
+                        className={`w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!selectedCity && 'text-gray-400'}`}
+                      >
+                        <span className="truncate">{selectedCity || "Choose Interior Setup"}</span>
+                        <span className="text-gray-500">&#9662;</span>
+                      </div>
+
+                      {cityOpen && (
+                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] max-h-60 overflow-y-auto manrope-medium">
+                          {cityOptions.map((option: string) => (
+                            <li
+                              key={option}
+                              onClick={() => handleCitySelect(option)}
+                              className="px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-sm"
+                            >
+                              {option}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+
+                    {/* Budget Dropdown */}
+                    <div ref={budgetRef1280} className="relative">
+                      <div
+                        onClick={() => {
+                          setBudgetOpen(!budgetOpen);
+                          setCityOpen(false);
+                        }}
+                        className={`w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!selectedBudget && 'text-gray-400'}`}
+                      >
+                        <span>{selectedBudget || "Project Type & Possession"}</span>
+                        <span className="text-gray-500">&#9662;</span>
+                      </div>
+
+                      {budgetOpen && (
+                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] max-h-60 overflow-y-auto manrope-medium">
+                          {budgetOptions.map((option: string) => (
+                            <li
+                              key={option}
+                              onClick={() => handleBudgetSelect(option)}
+                              className="px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-sm"
+                            >
+                              {option}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Checkbox + Submit */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between mt-8 gap-4">
+
+                    {/* Checkbox */}
+                    <div className="flex items-center justify-center sm:justify-start">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={whatsappConsent}
+                        onChange={() => setWhatsappConsent(!whatsappConsent)}
+                        className="size-5 accent-[#DDCDC1]"
+                      />
+                      <label className="text-sm sm:text-[16px] font-light ml-3 whitespace-nowrap">
+                        Send Me Updates On WhatsApp
+                      </label>
+                    </div>
+
+
+                  </div>
+
+                  {/* Submit */}
+                  <div className='mt-5'>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting || isSendingOtpAuto}
+                      className="manrope flex w-[200px] h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-2xl justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <p>{isSubmitting || isSendingOtpAuto ? 'Sending...' : 'Submit'}</p>
+                      {!isSubmitting && !isSendingOtpAuto && (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 ml-2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Legal */}
+                  <div className="text-xs sm:text-sm lg:text-[14px] mt-6 manrope-medium text-center sm:text-left whitespace-nowrap">
+                    By submitting, you agree to Privacy Policy, Terms and Conditions
+                  </div>
+                </div>
+              </div>
+
+
+              {/* Right side - Image */}
+              <div className="hidden lg:block w-[720px] h-[785px] rounded-r-3xl lg:rounded-r-4xl relative overflow-hidden">
+
+                <img
+                  className="w-[720px] h-[785px] object-cover transition-all duration-500"
+                  src={carouselImages[carouselIndex]}
+                  alt={`Carousel ${carouselIndex + 1}`}
+                />
+
+                {/* Overlays */}
+                <div className="absolute left-10 bottom-10 text-left z-10">
+                  <h1 className="text-white text-6xl manrope-medium leading-tight mb-0 drop-shadow-lg">
+                    Best Interior
+                    <p className="mb-1">
+                      Designers In <span className="text-red-500">Bangalore</span>
+                    </p>
+                  </h1>
+                  <p className="text-white text-xl manrope-medium drop-shadow mb-1 pt-2">
+                    Transforming Bangalore homes with personalized<br />interiors that reflect your lifestyle.
+                  </p>
+                </div>
+
+                <button
+                  onClick={scrollToCalculator}
+                  className="w-[200px] h-[50px] bg-[#DDCDC1] rounded-4xl text-center py-3 absolute -mt-190 ml-120 manrope tracking-wider text-[18px] z-20 hover:bg-[#c4b5a8] transition-colors cursor-pointer"
+                >
+                  GET A FREE QUOTE
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+
+
+
         </form>
       )}
+
 
       {/* OTP Modal */}
       {showOtpModal && (

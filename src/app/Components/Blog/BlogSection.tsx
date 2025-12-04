@@ -501,7 +501,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
 
 
         {/* Regular layout for screens below 2560px */}
-        <section className="blog-section-regular w-full py-8 px-4 sm:px-6 lg:px-12 bg-[#f1f2f6] -mt-50">
+        <section className="blog-section-regular w-full py-8 px-4 sm:px-6 lg:px-12 bg-[#f1f2f6] -mt-80">
           {/* Blog Posts - Remaining posts (starting from 6th) */}
           {allPosts.length > 5 ? (
             <>

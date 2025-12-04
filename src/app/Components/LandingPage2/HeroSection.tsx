@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
+import OverlapNavBar from "../OverlapNavBar";
 
 export function HeroSection() {
     const router = useRouter();
@@ -127,6 +128,13 @@ export function HeroSection() {
             return;
         }
 
+        // ❗ NEW: pincode must exist in imported Pincode list
+        if (!pincodes.includes(updatedForm.pincode)) {
+            setSubmitMessage("Service unavailable for this pincode");
+            return;
+        }
+
+
         setIsSubmitting(true);
         setSubmitMessage("");
 
@@ -230,6 +238,12 @@ export function HeroSection() {
             return;
         }
 
+        if (!pincodes.includes(updatedForm.pincode)) {
+            setSubmitMessage("Service unavailable for this pincode");
+            return;
+        }
+
+
         setIsSubmitting(true);
         setSubmitMessage("");
 
@@ -263,7 +277,7 @@ export function HeroSection() {
                         name: updatedForm.name,
                         email: updatedForm.email,
                         phoneNumber: updatedForm.phonennumber,
-                        pinCode : updatedForm.pincode,
+                        pinCode: updatedForm.pincode,
                         propertyType: updatedForm.property,
                         bookASlot: updatedForm.Scheduler,
                     };
@@ -317,13 +331,14 @@ export function HeroSection() {
     return (
 
         <div>
-            <div className="lg:block hidden relative w-screen h-[1000px]">
+            <div className="lg:block hidden relative w-full h-[1000px] mx-auto">
                 <Image
                     src="/jit1.png"
                     alt="Hero background"
                     fill
-                    className="object-cover border-4 rounded-4xl border-black"
+                    className="object-cover border-4  rounded-3xl "
                     loading="lazy"
+
                 />
                 <div className="absolute inset-0 flex items-center">
                     <div className="relative flex">
@@ -368,25 +383,29 @@ export function HeroSection() {
                                     </div>
 
                                     {/* Pincode input + dropdown - desktop */}
-                                    <div className="flex-1 relative pincode-wrapper">
-                                        <input
-                                            type="text"
-                                            value={pincodeSearch || selectedPincode}
-                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                                // allow only digits and limit to 6 characters
-                                                const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
-                                                setPincodeSearch(raw);
-                                                setSelectedPincode(raw);
-                                                setForm(prev => ({ ...prev, pincode: raw }));
-                                                setPincodeOpen(true);
-                                            }}
-                                            onFocus={() => setPincodeOpen(true)}
-                                            placeholder="Pincode"
-                                            inputMode="numeric"
-                                            pattern="[0-9]{6}"
-                                            maxLength={6}
-                                            className="w-full h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-8 pr-6 text-white bg-transparent placeholder-white"
-                                        />
+                                    <div className="relative ml-18 pincode-wrapper">
+                                        <div className="flex items-center">
+                                            <div className="relative">
+                                                <input
+                                                    type="text"
+                                                    value={pincodeSearch || selectedPincode}
+                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                        // allow only digits and limit to 6 characters
+                                                        const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
+                                                        setPincodeSearch(raw);
+                                                        setSelectedPincode(raw);
+                                                        setForm(prev => ({ ...prev, pincode: raw }));
+                                                        setPincodeOpen(true);
+                                                    }}
+                                                    onFocus={() => setPincodeOpen(true)}
+                                                    placeholder="Pincode"
+                                                    inputMode="numeric"
+                                                    pattern="[0-9]{6}"
+                                                    maxLength={6}
+                                                    className="w-[250px] h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-6 placeholder-white text-white bg-transparent"
+                                                />
+                                            </div>
+                                        </div>
 
                                         {pincodeOpen && (
                                             <div className="absolute z-10 mt-2 w-full max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
@@ -526,7 +545,7 @@ export function HeroSection() {
                             <div>
                             </div>
                         </div>
-                        <div className="text-5xl w-[620px] h-[100px] text-white wulkan-display pt-160 pl-6">Complete Home Interiors
+                        <div className="text-5xl w-[620px] h-[100px] text-white wulkan-display pt-180 pl-6">Complete Home Interiors
                             <div className="text-2xl w-[620px] h-[100px] text-white manrope-medium pt-4 pl-3">Tailored For Every Style & Lifestyle</div>
                         </div>
 
@@ -539,7 +558,7 @@ export function HeroSection() {
                 <div className="w-screen h-[1000px] bg-white">
                     <div className="relative">
                         <div className="relative ">
-                            <img src="jitmob1.png" className="absolute h-[700px] w-screen"></img>
+                            <img src="jitmob.png" className="absolute h-[700px] w-screen"></img>
                             <img src="LOGO.png" alt="Logo" className="absolute top-4 w-[100px] h-[40px] m-4"></img>
                         </div>
 
@@ -736,6 +755,7 @@ export function HeroSection() {
                         </div>
                     </div>
                 </div>
+                <OverlapNavBar />
             </div>
         </div>
     );

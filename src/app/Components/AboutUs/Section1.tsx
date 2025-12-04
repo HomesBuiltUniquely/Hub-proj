@@ -8,8 +8,8 @@ export default function Section1() {
                 <div className="aboutus-section1-3xl-flex">
 
                     {/* Heading - 3XL optimized */}
-                    <h1 className="aboutus-section1-3xl-heading manrope">
-                        About Us
+                    <h1 className="aboutus-section1-3xl-heading wulkan-display-bold">
+                        About us
                     </h1>
 
                     {/* Description - 3XL optimized */}
@@ -25,12 +25,12 @@ export default function Section1() {
             {/* 2XL Screen - Large displays */}
          
 
-            <div className="desktop-1440">
+            <div className="desktop-1920">
                 <div className="flex flex-row justify-between w-full h-[320px] px-12 my-auto mt-10 mb-10">
 
                     {/* Heading - XL optimized */}
-                    <h1 className="text-6xl manrope mt-20 ml-30 leading-tight">
-                        About Us
+                    <h1 className="text-6xl wulkan-display-bold mt-20 ml-30 leading-tight">
+                        About us
                     </h1>
 
                     {/* Description - XL optimized */}
@@ -45,13 +45,13 @@ export default function Section1() {
 
          
 
-            {/* XL Screen - Extra large displays */}
+            {/* 1280 XL Screen - Extra large displays */}
             <div className="desktop-1280">
                 <div className="flex flex-row justify-between w-full h-[320px] px-12 my-auto mt-10">
 
                     {/* Heading - XL optimized */}
-                    <h1 className="text-6xl manrope mt-20 ml-30 leading-tight">
-                        About Us
+                    <h1 className="text-6xl wulkan-display-bold mt-20 ml-30 leading-tight">
+                        About us
                     </h1>
 
                     {/* Description - XL optimized */}
@@ -62,6 +62,7 @@ export default function Section1() {
 
                 </div>
             </div>
+
 
             {/* LG Screen - Large displays */}
             {/* <div className="hidden lg:block xl:hidden">
@@ -102,15 +103,13 @@ export default function Section1() {
 
 
             {/* SM Screen - Small displays and mobile */}
-          
-
-
+         
             <div className="block md:hidden min-w-[320px] max-w-[425px] px-4 mt-8">
                 <div className="flex flex-col space-y-4">
                     <div className="flex items-start space-x-3">
                         <div className="bg-[#ebd657] w-[15px] h-10"></div>
                         <div>
-                            <h1 className="text-3xl manrope">About Us</h1>
+                            <h1 className="text-3xl wulkan-display-bold">About us</h1>
                             <p className="text-base font-medium manrope-medium mt-2">
                                 Hub Interior is India’s most innovative interior design company. We offer tailor-made solutions—from modular to luxury—crafted around your lifestyle and profession. No compromises. Just interiors that truly fit you.
                             </p>
@@ -119,17 +118,11 @@ export default function Section1() {
                 </div>
             </div>
 
-
-
-
-
-
-
             {/* Pure CSS for 3XL - 2560*1440 resolution */}
             <style jsx>{`
                 /* Ensure only one 3xl section exists */
                 .aboutus-section1-3xl-container {
-                    display: none !important;
+                    display: none;
                     margin-left: 7rem;
                 }
                 
@@ -172,28 +165,43 @@ export default function Section1() {
             `}</style>
 
             
-                <style global jsx>{`
-        /* Hide both sections by default on mobile */
-        .desktop-1440,
+     <style jsx global>{`
+    /* Default hidden for desktop variations */
+    .desktop-1920,
+    .desktop-1280,
+    .aboutus-section1-3xl-container {
+        display: none;
+    }
+
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
         .desktop-1280 {
-          display: none;
+            display: block;
+        }
+    }
+
+    /* 2XL (1440–1920) */
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
+            display: block;
+        }
+    }
+
+    /* 3XL (2560+) */
+    @media (min-width: 2560px) {
+        .aboutus-section4-3xl-container {
+            display: block !important;
         }
 
-        /* Show 1280px section for screens between 768px and 1439px */
-        @media (min-width: 768px) and (max-width: 1439px) {
-          .desktop-1280 {
-            display: block;
-          }
+        /* Hide other layouts */
+        .desktop-1920,
+        .desktop-1280 {
+            display: none !important;
         }
+    }
+`}
+</style>
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block;
-          }
-        }
-          
-      `}</style>
 
 
         </div>

@@ -45,13 +45,13 @@ export default function Section9() {
   return (
     <div>
       {/* 3XL Screen - 2560*1440 resolution (Ultra-wide displays) - Pure CSS */}
-      <section className="aboutus-section9-3xl-container hidden">
+      <section className="aboutus-section9-3xl-container justify-center hidden 3xl:block">
         <div className="aboutus-section9-3xl-content">
           <div className="aboutus-section9-3xl-layout">
-            <div className="aboutus-section9-3xl-title manrope">Core Members</div>
+            <div className="aboutus-section9-3xl-title wulkan-display-bold">Core Members</div>
 
             {/* Carousel Container - 3XL optimized */}
-            <div className="aboutus-section9-3xl-carousel">
+            <div className="aboutus-section9-3xl-carousel   -mt-50">
               {/* Slides Container */}
               <div className="aboutus-section9-3xl-slides">
                 {travers.slice(currentIndex, currentIndex + 3).map((traver, index) => (
@@ -106,12 +106,12 @@ export default function Section9() {
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className="desktop-1440 hidden 2xl:block 3xl:hidden">
-        <div className="w-screen h-[850px] relative overflow-hidden bg-white">
-          <div className="text-6xl manrope pt-20 pl-16">Core Members</div>
+      <section className="desktop-1920 hidden 2xl:block 3xl:hidden">
+        <div className="w-full h-[850px] mx-auto  relative overflow-hidden bg-white">
+          <div className="text-6xl wulkan-display-bold px-20 pt-20 ">Core Members</div>
 
           {/* Carousel Container - 2XL optimized */}
-          <div className="relative w-full h-[70vh] mt-10 px-16">
+          <div className="relative w-full h-[70vh] mt-10 px-20">
             {/* Slides Container */}
             <div className="flex gap-8 h-full">
               {travers.slice(currentIndex, currentIndex + 3).map((traver, index) => (
@@ -145,6 +145,7 @@ export default function Section9() {
             </div>
 
             {/* Navigation Buttons - 2XL optimized */}
+            
             <button
               onClick={prevSlide}
               className="absolute left-4 top-1/3 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-4 rounded-full shadow-lg transition-all duration-300"
@@ -157,17 +158,18 @@ export default function Section9() {
             >
               →
             </button>
+          
           </div>
         </div>
       </section>
 
       {/* XL Screen - Extra large displays */}
       <section className="desktop-1280 hidden 2xl:block 3xl:hidden">
-        <div className="w-screen h-[850px] relative overflow-hidden bg-white">
-          <div className="text-5xl manrope pt-20 pl-16">Core Members</div>
+        <div className="w-full h-[850px] mx-auto relative overflow-hidden bg-white">
+          <div className="text-5xl wulkan-display-bold pt-20 pl-16">Core Members</div>
 
           {/* Carousel Container - 2XL optimized */}
-          <div className="relative w-full h-[70vh] mt-10 px-16">
+          <div className="relative w-full h-[70vh] mt-10 px-15">
             {/* Slides Container */}
             <div className="flex gap-8 h-full">
               {travers.slice(currentIndex, currentIndex + 3).map((traver, index) => (
@@ -220,7 +222,7 @@ export default function Section9() {
       {/* LG Screen - Large displays */}
       <section className="hidden lg:block xl:hidden">
         <div className="w-screen h-screen relative overflow-hidden">
-          <div className="text-4xl manrope pt-16 pl-8">Core Members</div>
+          <div className="text-4xl wulkan-display-bold pt-16 pl-8">Core Members</div>
 
           {/* Carousel Container - LG optimized */}
           <div className="relative w-full h-[70vh] mt-16 px-8">
@@ -270,7 +272,7 @@ export default function Section9() {
       {/* MD Screen - Medium displays */}
       <section className="hidden md:block lg:hidden">
         <div className="w-screen h-screen relative overflow-hidden">
-          <div className="text-3xl manrope pt-12 pl-6">Core Members</div>
+          <div className="text-3xl wulkan-display-bold pt-12 pl-6">Core Members</div>
 
           {/* Carousel Container - MD optimized */}
           <div className="relative w-full h-[70vh] mt-12 px-6">
@@ -318,18 +320,18 @@ export default function Section9() {
       </section>
 
       {/* SM Screen - Small displays and mobile */}
-      
+
       <section className="block md:hidden w-full max-w-[425px] px-4 mx-auto mb-10">
         <div className="flex items-start">
           {/* Yellow Line */}
-          
+
 
           <div className="w-full">
-              <div className='bg-[#ebd657] w-[3px] h-10 mb-13'>
-            <h1 className="text-3xl manrope font-bold ml-3">
-              Core <div>Members</div>
-            </h1>
-</div>
+            <div className='bg-[#ebd657] w-[3px] h-10 mb-13'>
+              <h1 className="text-3xl text-nowrap wulkan-display-bold  ml-3">
+                Core members
+              </h1>
+            </div>
             {/* Member 1 */}
             <div>
               <img src="/r.png" alt="Ranjith" className="rounded-3xl mt-5 w-full object-cover" />
@@ -395,7 +397,7 @@ export default function Section9() {
           .aboutus-section9-3xl-container {
             display: block !important;
             width: 100vw;
-            height: 95vh;
+            height: 125vh;
             position: relative;
             overflow: hidden;
             background-color: white;
@@ -517,6 +519,46 @@ export default function Section9() {
           }
         }
       `}</style>
+
+
+      
+       <style jsx global>{`
+    /* Default hidden for desktop variations */
+    .desktop-1920,
+    .desktop-1280,
+    .aboutus-section9-3xl-container {
+        display: none;
+    }
+
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
+    }
+
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
+            display: block;
+        }
+    }
+
+    /* 3XL (2560px+) */
+    @media (min-width: 2560px) {
+        .aboutus-section9-3xl-container {
+            display: block !important;
+        }
+
+        .desktop-1920,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
+`}
+            </style>
+
+
     </div>
   );
 }

@@ -13,7 +13,7 @@ const Section6 = () => {
             <div className="aboutus-section6-3xl-text-content">
               {/* Mission Header */}
               <div className="aboutus-section6-3xl-header">
-                <h1 className="aboutus-section6-3xl-title manrope">
+                <h1 className="aboutus-section6-3xl-title wulkan-display-bold">
                   Vision
                 </h1>
                 <p className="aboutus-section6-3xl-subtitle manrope-medium">
@@ -36,11 +36,11 @@ const Section6 = () => {
       </section>
 
       {/* 2XL Screen - Large displays */}
-      <section className="desktop-1440 hidden 2xl:block 3xl:hidden px-20 bg-[#f1f2f6] py-10">
+      <section className="desktop-1920 hidden 2xl:block 3xl:hidden px-20 bg-[#f1f2f6] py-10">
         <div className='flex justify-between'>
-          <div className="max-w-7xl">
+          <div className="w-full ">
             {/* Mission Header */}
-            <h1 className="text-6xl manrope pt-20 leading-tight">
+            <h1 className="text-6xl wulkan-display-bold pt-10 leading-tight">
             Vision
             </h1>
 
@@ -54,7 +54,7 @@ const Section6 = () => {
               To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
             </div>
           </div>
-          <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Values.png" className="w-[600px] h-[600px] rounded-2xl  ml-16"></img>
+          <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Values.png" className="w-[500px] h-[500px] rounded-2xl  ml-16"></img>
         </div>
       </section>
 
@@ -63,7 +63,7 @@ const Section6 = () => {
         <div className="flex justify-evenly">
           <div className="max-w-6xl mt-12 mr-70">
             {/* Mission Header */}
-            <h1 className="text-5xl manrope leading-tight">
+            <h1 className="text-5xl wulkan-display-bold leading-tight">
               Vision
             </h1>
 
@@ -84,7 +84,7 @@ const Section6 = () => {
       <section className="hidden lg:block xl:hidden py-16 px-8 bg-white">
         <div className="max-w-5xl mx-auto">
           {/* Mission Header */}
-          <h1 className="text-4xl manrope pt-16 pl-8 leading-tight">
+          <h1 className="text-4xl wulkan-display-bold pt-16 pl-8 leading-tight">
             Mission
           </h1>
 
@@ -154,7 +154,7 @@ const Section6 = () => {
       <section className="hidden md:block lg:hidden py-12 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           {/* Mission Header */}
-          <h1 className="text-3xl manrope pt-12 pl-6 leading-tight">
+          <h1 className="text-3xl wulkan-display-bold pt-12 pl-6 leading-tight">
             Mission
           </h1>
 
@@ -228,8 +228,8 @@ const Section6 = () => {
 
             {/* Content */}
             <div className="w-full">
-              <div className='bg-[#ebd657] w-[3px] h-10 mb-3'>
-                <h1 className="text-3xl  manrope mb-3 whitespace-nowrap ml-3">Vision</h1>
+              <div className='bg-[#ebd657] w-[3px] h-10 mb-3 -ml-1'>
+                <h1 className="text-3xl  wulkan-display-bold mb-3 whitespace-nowrap ml-3">Vision</h1>
               </div>
               <p className="text-xs manrope-medium leading-relaxed">
                 At HUB Interiors — it’s about creating spaces
@@ -392,25 +392,42 @@ const Section6 = () => {
       `}</style>
 
 
-         <style jsx global>{`
-                .desktop-1440,
-                .desktop-1280 {
-                    display: none;
-                }
+         
+          <style jsx global>{`
+    /* Default hidden for desktop variations */
+    .desktop-1920,
+    .desktop-1280,
+    .aboutus-section8-3xl-container {
+        display: none;
+    }
 
-                @media (min-width: 768px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block;
-                    }
-                }
+    /* XL (1280–1439) */
+    @media (min-width: 768px) and (max-width: 1439px) {
+        .desktop-1280 {
+            display: block;
+        }
+    }
 
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block;
-                    }
-                }
-            `}</style>
+    /* 2XL (1440–1919) */
+    @media (min-width: 1440px) and (max-width: 1920px) {
+        .desktop-1920 {
+            display: block;
+        }
+    }
 
+    /* 3XL (2560px+) */
+    @media (min-width: 2560px) {
+        .aboutus-section8-3xl-container {
+            display: block !important;
+        }
+
+        .desktop-1920,
+        .desktop-1280 {
+            display: none !important;
+        }
+    }
+`}
+            </style>
 
     </div>
   );

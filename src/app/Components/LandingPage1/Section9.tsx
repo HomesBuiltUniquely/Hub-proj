@@ -5,7 +5,7 @@ export default function Section9() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const testimonialImages = [
-    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%201.png" ,
+    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%201.png",
     "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%202.png",
     "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%203.png",
     "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%204.png",
@@ -49,87 +49,195 @@ export default function Section9() {
   };
 
   return (
-    <div className="w-full bg-white pt-20 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h3 className=" text-4xl sm:text-4xl manrope-medium mb-4">
-            What Our Happy Customers Have to Say!
-          </h3>
-      <img className='w-[400px] h-[150px]  lg:w-[450px] lg:h-[175px] mx-auto mt-10' src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//REVIEW-01.png"></img>
-        </div>
 
-        {/* Desktop Carousel */}
-        <div className="hidden lg:block">
-          <div className="relative">
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
-            >
-              <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
+    <div>
 
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
-            >
-              <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+      <style global jsx>{`
 
-            {/* Carousel Container */}
-            <div className="relative overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
-              >
-                {loopedImages.map((image, index) => (
-                  <div 
-                    key={index} 
-                    className="w-1/3 flex-shrink-0 px-4"
+                /* Hide both by default */
+                .desktop-1280,
+                .desktop-1440 {
+                    display: none !important;
+                }
+
+                /* 1024px → 1439px = desktop-1280 */
+                @media (min-width: 1024px) and (max-width: 1439px) {
+                    .desktop-1280 {
+                        display: block !important;
+                    }
+                }
+
+                /* 1440px and above = desktop-1440 */
+                @media (min-width: 1440px) {
+                    .desktop-1440 {
+                        display: block !important;
+                    }
+                }
+
+            `}</style>
+
+
+      <div className="w-full bg-white pt-20 pb-8">
+
+        <div className="max-w-7xl mx-auto px-6">
+
+
+          {/* Desktop Carousel */}
+
+
+          <div className='desktop-1440'>
+            {/* Header */}
+            <div className=" text-center mb-16">
+              <h3 className=" text-4xl sm:text-4xl manrope-medium mb-4">
+                What Our Happy Customers Have to Say!
+              </h3>
+              <img className='w-[400px] h-[150px]  mx-auto mt-10' src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//REVIEW-01.png"></img>
+            </div>
+
+            <div className="hidden lg:block">
+              <div className="relative">
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+                >
+                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+                >
+                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Carousel Container */}
+                <div className="relative overflow-hidden">
+                  <div
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
                   >
-                    <div className="bg-white border-1 border-[#DDCDC1] rounded-2xl overflow-hidden">
-                      <img
-                        src={image}
-                        alt={`Testimonial ${(index % testimonialImages.length) + 1}`}
-                        className="w-full h-[400px] object-cover"
-                      />
-                    </div>
+                    {loopedImages.map((image, index) => (
+                      <div
+                        key={index}
+                        className="w-1/3 flex-shrink-0 px-4"
+                      >
+                        <div className="bg-white border-1 border-[#DDCDC1] rounded-2xl overflow-hidden">
+                          <img
+                            src={image}
+                            alt={`Testimonial ${(index % testimonialImages.length) + 1}`}
+                            className="w-full h-[400px] object-cover"
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Mobile Layout */}
-        <div className="lg:hidden">
-          <div className="w-full bg-white px-4">
-            {/* Mobile Carousel */}
-            <div className="relative">
-              <div className="relative overflow-hidden">
-                <div 
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+
+          {/* 1280 Version */}
+
+          <div className='desktop-1280'>
+            {/* Header */}
+            <div className=" text-center mb-16">
+              <h3 className=" text-4xl sm:text-4xl manrope-medium mb-4">
+                What Our Happy Customers Have to Say!
+              </h3>
+              <img className='w-[400px] h-[150px] mx-auto mt-10' src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//REVIEW-01.png"></img>
+            </div>
+
+            <div className="hidden lg:block">
+              <div className="relative">
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
                 >
-                  {loopedImages.map((image, index) => (
-                    <div 
-                      key={index} 
-                      className="w-full flex-shrink-0 px-2"
-                    >
-                                              <div className="bg-white rounded-2xl border-1 border-[#DDCDC1] overflow-hidden mx-auto max-w-sm h-74">
-                        <img
-                          src={image}
-                          alt={`Testimonial ${(index % testimonialImages.length) + 1}`}
-                          className="w-auto h-auto object-contain"
-                        />
+                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+                >
+                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Carousel Container */}
+                <div className="relative overflow-hidden">
+                  <div
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
+                  >
+                    {loopedImages.map((image, index) => (
+                      <div
+                        key={index}
+                        className="w-1/3 flex-shrink-0 px-4"
+                      >
+                        <div className="bg-white border-1 border-[#DDCDC1] rounded-2xl overflow-hidden">
+                          <img
+                            src={image}
+                            alt={`Testimonial ${(index % testimonialImages.length) + 1}`}
+                            className="w-full h-[400px] object-cover"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          {/* Mobile Layout */}
+
+          {/* Header */}
+          <div className="lg:hidden text-center mb-16">
+            <h3 className=" text-4xl sm:text-4xl manrope-medium mb-4">
+              What Our Happy Customers Have to Say!
+            </h3>
+            <img className='w-auto h-auto  mx-auto mt-10' src="https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//REVIEW-01.png"></img>
+          </div>
+
+
+          <div className="lg:hidden">
+            <div className="w-full bg-white px-4">
+              {/* Mobile Carousel */}
+              <div className="relative">
+                <div className="relative overflow-hidden">
+                  <div
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {loopedImages.map((image, index) => (
+                      <div
+                        key={index}
+                        className="w-full flex-shrink-0 px-2"
+                      >
+                        <div className="bg-white rounded-2xl border-1 border-[#DDCDC1] overflow-hidden mx-auto max-w-sm h-74">
+                          <img
+                            src={image}
+                            alt={`Testimonial ${(index % testimonialImages.length) + 1}`}
+                            className="w-auto h-auto object-contain"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -137,5 +245,6 @@ export default function Section9() {
         </div>
       </div>
     </div>
+
   );
 }

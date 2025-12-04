@@ -351,9 +351,9 @@ const CareersSection: React.FC = () => {
                     <div className="mx-auto">
                         <div className="flex mr-1 items-start">
                             <div className="w-[2px] h-[40px] bg-amber-300 mb-6 ml-2"></div>
-                            <h1 className="text-3xl text-nowrap manrope mb-5 ml-3 text-gray-800 w-[250px]">Current openings</h1>
+                            <h1 className="text-3xl text-nowrap wulkan-display-bold mb-5 ml-3 text-gray-800 w-[250px]">Current openings</h1>
                         </div>
-                        <p className="text-gray-500 w-[250px] text-sm mb-4 ml-2 manrope-medium -mt-3">
+                        <p className="text-gray-500 w-[250px] text-sm mb-10 ml-2 manrope-medium -mt-3">
                             Become a part of high performing & collaborative team
                         </p>
                     </div>

@@ -1,11 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
-import Link from "next/link";
+import OverlapNavBar from "../OverlapNavBar";
 
 const ContactHeader: React.FC = () => {
   const router = useRouter();
@@ -19,16 +19,13 @@ const ContactHeader: React.FC = () => {
   }
 
 
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-
   return (
     <div className="w-full">
-      <style jsx>{`
+       <style jsx>{`
         /* Hide both by default */
         .desktop-1280,
-        .desktop-1440 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
@@ -39,17 +36,26 @@ const ContactHeader: React.FC = () => {
           }
         }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
+
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
+          .desktop-1920 {
             display: block !important;
           }
         }
+
+         /* Show 2560px layout for large desktops (>1920px) */
+        @media (min-width: 1921px)  {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+
       `}</style>
 
-      {/* 1440px Desktop Layout */}
+      {/* 2560px Desktop Layout */}
 
-      <div className="desktop-1440">
+      <div className="desktop-2560">
 
         <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Blog%20H.png')" }}>
           {/* Navbar */}
@@ -57,12 +63,12 @@ const ContactHeader: React.FC = () => {
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
             </div>
-            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4 ">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
@@ -86,8 +92,44 @@ const ContactHeader: React.FC = () => {
       </div>
 
 
+        {/* 1920 Version */}
+
+        <div className="desktop-1920">
+
+        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Blog%20H.png')" }}>
+           {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
+            </div>
+
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          </div>
+          {/* Hero content */}
+          <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
+            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg">
+              Design journal by HUB
+            </h1>
+            <p className="text-lg  mb-4 drop-shadow-lg w-[600px] manrope-medium">
+              A collection of home interior blogs, trends, and guides to inspire your next project.
+            </p>
+            <div className="flex gap-4">
+              <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-6 py-3 rounded-2xl  manrope-medium shadow">
+                Get Free Consultation
+              </button>
+            </div>
+          </div>
+          
+
+        </div>
 
 
+      </div>
 
 
 
@@ -114,14 +156,14 @@ const ContactHeader: React.FC = () => {
               </div>
 
               {/* Center Navigation */}
-              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
                 <OfferingsDropdown textColor="text-white" />
                 <ExploreRoomsDropdown textColor="text-white" />
                 <NavMore textColor="text-white" />
               </div>
 
               {/* Right CTA */}
-              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
             </div>
 
             {/* Hero content */}
@@ -171,127 +213,6 @@ const ContactHeader: React.FC = () => {
             </div>
 
 
-            {/* Hamburger Menu Button + Mobile Menu */}
-            <div className="absolute top-8 right-1 z-50 ">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-white pr-6"
-              >
-                <svg
-                  className="w-8 h-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-
-              {/* Mobile Navigation Menu */}
-              {isMobileMenuOpen && (
-                <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-                  <div className="p-4  relative">
-                    {/* Close Button */}
-                    <button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="absolute top-3 right-3 text-gray-600 p-2"
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="white"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-
-                    {/* Navigation Items */}
-                    <div className="space-y-4 mt-5">
-                      <div>
-                        <div>
-                          <h3 className="text-base  text-gray-800 mb-2 manrope">
-                            OFFERINGS
-                          </h3>
-                          <div className="space-y-2 pl-3"> {/* Increased spacing here */}
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Full Home Interior
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Modular Interior
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Home Renovation
-                            </Link>
-                            <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                              Space Management
-                            </Link>
-                          </div>
-                        </div>
-
-                      </div>
-
-                      <div>
-                        <h3 className="text-base  text-gray-800 mb-3 manrope">
-                          EXPLORE ROOMS
-                        </h3>
-                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                          <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Modular Kitchen
-                          </Link>
-                          <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Bedroom
-                          </Link>
-                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Living Room
-                          </Link>
-                          <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Kids Room
-                          </Link>
-                        </div>
-
-
-                      </div>
-
-                      <div>
-                        <h3 className="text-base  text-gray-800 mb-3 manrope">
-                          MORE
-                        </h3>
-                        <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                          <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            About Us
-                          </Link>
-                          <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Projects
-                          </Link>
-                          <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Blog
-                          </Link>
-                          <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Contact Us
-                          </Link>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-
-            </div>
-
-
             {/* Overlay text + CTA */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
               <h2 className="manrope text-2xl sm:text-3xl text-white leading-tight">
@@ -308,9 +229,11 @@ const ContactHeader: React.FC = () => {
               </button>
             </div>
           </div>
+          <OverlapNavBar/>
         </div>
-
+  
       </div>
+     
     </div>
   );
 };

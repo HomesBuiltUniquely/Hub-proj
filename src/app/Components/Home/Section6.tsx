@@ -90,9 +90,8 @@ export default function Section6() {
     return (
         <div>
 
-        <style jsx>{`
+            <style jsx>{`
      /* Hide both by default */
-        .desktop-1440,
         .desktop-1280,
         .desktop-1920,
         .desktop-2560 {
@@ -106,15 +105,10 @@ export default function Section6() {
           }
         }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (width: 1440px) {
-          .desktop-1440 {
-            display: block !important;
-          }
-        }
+        
 
          /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
+        @media (min-width: 1440px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
@@ -140,31 +134,14 @@ export default function Section6() {
             {/* 2560 version  */}
 
 
-             <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-85">
+            <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-30 px-85">
                 <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
-                        <div className="flex gap-4">
-                            <button
-                                onClick={prevSlide}
-                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-                            >
-                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={nextSlide}
-                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-                            >
-                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
+                       
                     </div>
 
                     {/* Carousel */}
@@ -198,9 +175,29 @@ export default function Section6() {
                     </div>
 
                     {/* CTA */}
-                    <div className="flex justify-between items-center mt-8">
-                        <Link href="/">
-                            <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                    <div className="flex justify-end gap-3 items-center mt-8">
+
+                         <div className="flex gap-4">
+                            <button
+                                onClick={prevSlide}
+                                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button
+                                onClick={nextSlide}
+                                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <Link href="/Project">
+                            <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                 Explore all projects
                             </button>
                         </Link>
@@ -214,34 +211,16 @@ export default function Section6() {
 
             {/* 1920 Version */}
 
-            <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[600px] py-14 px-6">
+            <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-25 px-20">
                 <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
-                        <div className="flex gap-4">
-                            <button
-                                onClick={prevSlide}
-                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-                            >
-                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={nextSlide}
-                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-                            >
-                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
                     </div>
 
-                    
+
 
                     {/* Carousel */}
                     <div className="relative">
@@ -249,7 +228,7 @@ export default function Section6() {
                             <div
                                 className="flex gap-6 transition-transform duration-500 ease-in-out"
                                 style={{
-                                    transform: `translateX(-${currentSlide * (280 + 24)}px)`,
+                                    transform: `translateX(-${currentSlide * (120 + 24)}px)`,
                                     width: `${projects.length * (280 + 24)}px`
                                 }}
                             >
@@ -274,29 +253,12 @@ export default function Section6() {
                     </div>
 
                     {/* CTA */}
-                    <div className="flex justify-between items-center mt-8">
-                        <Link href="/">
-                            <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
-                                Explore all projects
-                            </button>
-                        </Link>
-                    </div>
-                </div>
-            </div>
+                    <div className="flex justify-end gap-3 items-center mt-10">
 
-            {/* 1440 Version */}
-            
-            <div className="desktop-1440 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-6">
-                <div className="max-w-8xl mx-auto">
-                    {/* Header & Navigation */}
-                    <div className="flex justify-between items-start mb-12">
-                        <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
-                            Recent interior design projects
-                        </h1>
-                        <div className="flex gap-4">
+                         <div className="flex gap-3">
                             <button
                                 onClick={prevSlide}
-                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
                             >
                                 <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -304,83 +266,35 @@ export default function Section6() {
                             </button>
                             <button
                                 onClick={nextSlide}
-                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
                             >
                                 <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                        </div>
-                    </div>
+                        </div>            
 
-                    {/* Carousel */}
-                    <div className="relative">
-                        <div className="overflow-hidden">
-                            <div
-                                className="flex gap-6 transition-transform duration-500 ease-in-out"
-                                style={{
-                                    transform: `translateX(-${currentSlide * (280 + 24)}px)`,
-                                    width: `${projects.length * (280 + 24)}px`
-                                }}
-                            >
-                                {projects.map((project, index) => (
-                                    <Link key={index} href={project.link} className="group flex-shrink-0">
-                                        <div className="w-80 h-95 relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                                            <Image
-                                                src={project.image}
-                                                alt={project.title}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                            />
-                                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                                                <h3 className="text-white text-xl manrope mb-1">{project.title}</h3>
-                                                <p className="text-white/80 text-sm manrope-medium">{project.subtitle}</p>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
 
-                    {/* CTA */}
-                    <div className="flex justify-between items-center mt-8">
-                        <Link href="/">
-                            <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                        <Link href="/Project">
+                            <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                 Explore all projects
                             </button>
                         </Link>
                     </div>
                 </div>
             </div>
+
 
             {/* 1280 Version */}
-        
-            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] py-16 px-6">
-                <div className="max-w-7xl mx-auto">
+
+            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-35 px-6">
+                <div className="max-w-6xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
                         <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
-                        <div className="flex gap-4">
-                            <button
-                                onClick={prevSlide}
-                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-                            >
-                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={nextSlide}
-                                className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-                            >
-                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
+                        
                     </div>
 
                     {/* Carousel */}
@@ -389,8 +303,8 @@ export default function Section6() {
                             <div
                                 className="flex gap-6 transition-transform duration-500 ease-in-out"
                                 style={{
-                                    transform: `translateX(-${currentSlide * (280 + 24)}px)`,
-                                    width: `${projects.length * (280 + 24)}px`
+                                    transform: `translateX(-${currentSlide * (450 + 4)}px)`,
+                                    width: `${projects.length * (450 + 4)}px`
                                 }}
                             >
                                 {projects.map((project, index) => (
@@ -413,10 +327,28 @@ export default function Section6() {
                         </div>
                     </div>
 
-                    {/* CTA */}
-                    <div className="flex justify-between items-center mt-8">
-                        <Link href="/">
-                            <button className="manrope-medium bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                     {/* CTA */}
+                    <div className="flex justify-end items-center mt-8 gap-3">
+                        <div className="flex gap-3">
+                            <button
+                                onClick={prevSlide}
+                                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button
+                                onClick={nextSlide}
+                                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                        <Link href="/Project">
+                            <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                 Explore all projects
                             </button>
                         </Link>
@@ -428,7 +360,7 @@ export default function Section6() {
             <div className="block md:hidden">
                 <div className="bg-[#F1F2F6] py-8 px-4 w-full">
                     <div className="mb-8">
-                         <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
+                        <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
                         <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-3 -mt-8">
                             Recent interior design projects
                         </h1>
@@ -472,11 +404,10 @@ export default function Section6() {
                                 <button
                                     key={index}
                                     onClick={() => setMobileSlide(index)}
-                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                        index === mobileSlide
+                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === mobileSlide
                                             ? 'bg-red-600 scale-125'
                                             : 'bg-gray-300 hover:bg-gray-400'
-                                    }`}
+                                        }`}
                                 />
                             ))}
                         </div>
@@ -484,8 +415,8 @@ export default function Section6() {
 
                     {/* CTA */}
                     <div className="flex justify-center mt-8">
-                        <Link href="/">
-                            <button className="manrope-medium bg-red-600 text-white px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                        <Link href="/Project">
+                            <button className="manrope bg-red-600 text-white px-4 py-2 rounded-4xl  shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
                                 Explore Projects
                             </button>
                         </Link>

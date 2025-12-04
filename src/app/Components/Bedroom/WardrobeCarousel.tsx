@@ -103,46 +103,39 @@ const WardrobeCarousel: React.FC = () => {
       `}</style>
 
 
-      
+
       <style jsx>{`
-        /* Hide both by default */
-        .desktop-1280,
-        .desktop-1440,
-        .desktop-1920,
-        .desktop-2560 {
-          display: none !important;
+
+ 
+        .desktop-1920 
+        .desktop-2560 
+        .desktop-1280{
+          display: none;
         }
 
-        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
-        @media (min-width: 1024px) and (max-width: 1439px) {
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
           .desktop-1280 {
-            display: block !important;
+            display: block;
           }
         }
 
-        /* Show 1440px layout only at exactly 1440px to avoid overlap */
-        @media (width: 1440px) {
-          .desktop-1440 {
-            display: block !important;
-          }
-        }
-
-        /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
+          /* Show 1920px layout for large desktops (1440px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
         }
 
-        /* Show 2560px layout for large desktops (>1920px) */
+
+         /* Show 2560px layout for large desktops (>1920px) */
         @media (min-width: 1921px)  {
           .desktop-2560 {
             display: block !important;
           }
         }
 
-
-      `}</style>
+`}</style>
 
 
       {/* desktop */}
@@ -156,7 +149,7 @@ const WardrobeCarousel: React.FC = () => {
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className=" text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium ">Find Your Perfect Fit</p>
+              <p className="text-gray-500 text-lg manrope-medium ">Find your perfect fit</p>
             </div>
           </div>
           {/* Carousel with arrows overlapping top left */}
@@ -219,17 +212,17 @@ const WardrobeCarousel: React.FC = () => {
       </div>
 
 
-      
+
       {/* 1920 Version */}
 
       <div className="desktop-1920">
 
-        <div className="hidden md:block w-full max-w-8xl mx-auto relative px-6">
+        <div className="hidden md:block w-full max-w-8xl mx-auto relative mx-auto px-20">
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium ">Find Your Perfect Fit</p>
+              <h2 className="text-5xl  wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
+              <p className="text-gray-500 text-lg manrope-medium ">Find your perfect fit</p>
             </div>
           </div>
           {/* Carousel with arrows overlapping top left */}
@@ -287,95 +280,24 @@ const WardrobeCarousel: React.FC = () => {
               ))}
             </div>
 
-            
+
 
 
           </div>
 
         </div>
 
-      </div>
-
-      
-      {/* 1440 Version */}
-
-      <div className="desktop-1440">
-        <div className="hidden md:block w-full max-w-8xl mx-auto px-8 relative">
-          {/* Heading */}
-          <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2 className=" text-5xl lg:text-6xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium ">Find Your Perfect Fit</p>
-            </div>
-          </div>
-          {/* Carousel with arrows overlapping top left */}
-          <div className="relative">
-            {/* Overlapping Navigation */}
-            <div className="absolute -top-20 right-1 mb-2 z-10 flex gap-2">
-              <button
-                onClick={() => scrollReq("left")}
-                className="bg-gray-200 hover:bg-[#ebd657] text-gray-700 rounded-full p-2 shadow transition"
-                aria-label="Scroll Left"
-                type="button"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
-                  <path d="M15 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              <button
-                onClick={() => scrollReq("right")}
-                className="bg-gray-200 hover:bg-[#ebd657] text-gray-700 rounded-full p-2 shadow transition"
-                aria-label="Scroll Right"
-                type="button"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none">
-                  <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Card Carousel */}
-            <div
-              ref={scrollRef1440}
-              className="flex gap-7 overflow-x-auto scroll-smooth -ml-1 no-scrollbar pt-5 pb-2"
-              style={{ scrollBehavior: "smooth" }}
-            >
-              {wardrobes.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="relative min-w-[400px] h-[500px] bg-white rounded-4xl shadow-lg overflow-hidden"
-                >
-                  {/* Full image */}
-                  <img
-                    src={item.img}
-                    alt={item.label}
-                    className="w-full h-full object-cover rounded-4xl"
-                  />
-
-                  {/* Blurred overlay content */}
-                  <div className="p-4 flex items-center -mt-50 h-[270px]">
-                    <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
-                      {item.label}<br />
-                      <button className="border-1 border-[#ebd457]  text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
       </div>
 
 
       <div className="desktop-1280">
 
-        <div className="hidden md:block className=max-w-6xl mx-auto px-4 relative ">
+        <div className="hidden md:block className=max-w-6xl mx-auto px-15 relative ">
           {/* Heading */}
           <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className=" text-5xl wulkan-display-bold text-gray-800 mb-5">Types of wardrobes</h2>
-              <p className="text-gray-500 text-lg manrope-medium">Find Your Perfect Fit</p>
+              <p className="text-gray-500 text-lg manrope-medium">Find your perfect fit</p>
             </div>
           </div>
           {/* Carousel with arrows overlapping top left */}
@@ -450,8 +372,8 @@ const WardrobeCarousel: React.FC = () => {
         <div className='flex items-center mt-15'>
           <div className='bg-[#ebd657] w-[3px] h-10 mb-10'></div>
           <div className='ml-3'>
-            <h1 className='text-3xl manrope'>Types of wardrobes</h1>
-            <p className='manrope-medium text-[18px] pt-3'>Find Your Perfect Fit</p>
+            <h1 className='text-3xl wulkan-display-bold'>Types of wardrobes</h1>
+            <p className='manrope-medium text-[18px] pt-3'>Find your perfect fit</p>
           </div>
         </div>
 
@@ -507,8 +429,8 @@ const WardrobeCarousel: React.FC = () => {
         <div className='flex items-center mt-15'>
           <div className='bg-[#ebd657] w-[3px] h-10 mb-10'></div>
           <div className='ml-3'>
-            <h1 className='text-3xl manrope'>Types of wardrobes</h1>
-            <p className='manrope-medium text-[18px] pt-3'>Find Your Perfect Fit</p>
+            <h1 className='text-3xl wulkan-display-bold'>Types of wardrobes</h1>
+            <p className='manrope-medium text-[18px] pt-3'>Find your perfect fit</p>
           </div>
         </div>
 

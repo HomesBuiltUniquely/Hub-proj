@@ -24,288 +24,249 @@ export default function BrandCarousel() {
     'Asian Paints': 'bg-transparent p-4 sm:p-6 rounded-full',
   };
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  // -----------------------------------------
+  // MULTIPLE REFS
+  // -----------------------------------------
+  const ref2560 = useRef<HTMLDivElement | null>(null);
+  const ref1920 = useRef<HTMLDivElement | null>(null);
+  const ref1280 = useRef<HTMLDivElement | null>(null);
+  const refMobile = useRef<HTMLDivElement | null>(null);
+
+
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    // Set initial width
+    const handleResize = () => setWindowWidth(window.innerWidth);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+  // -----------------------------------------
+  // WAIT FOR IMAGES BEFORE SCROLLING
+  // ----------------------------------------- 
 
-    let scrollAmount = 0;
-    let scrollSpeed = 1;
-    let animationFrameId: number;
 
-    // Adjust speed based on window size
-    if (windowWidth < 640) {
-      scrollSpeed = 0.5; // Slower on mobile
-    } else if (windowWidth < 1024) {
-      scrollSpeed = 0.8; // Medium on tablet
-    } else {
-      scrollSpeed = 1.2; // Faster on desktop
-    }
+  const waitForImages = (container: HTMLDivElement) => {
+    return new Promise<void>((resolve) => {
+      const imgs = Array.from(container.querySelectorAll("img"));
+      let loaded = 0;
+      if (imgs.length === 0) return resolve();
 
-    const scroll = () => {
-      if (container) {
-        scrollAmount += scrollSpeed;
-        container.scrollLeft += scrollSpeed;
-
-        if (scrollAmount >= container.scrollWidth / 2) {
-          container.scrollLeft = 0;
-          scrollAmount = 0;
+      imgs.forEach((img) => {
+        if (img.complete) {
+          loaded++;
+          if (loaded === imgs.length) resolve();
+        } else {
+          img.onload = () => {
+            loaded++;
+            if (loaded === imgs.length) resolve();
+          };
         }
-      }
-      animationFrameId = requestAnimationFrame(scroll);
-    };
+      });
+    });
+  };
 
-    animationFrameId = requestAnimationFrame(scroll);
+  // -----------------------------------------
+  // AUTO SCROLL HOOK (UPDATED)
+  // -----------------------------------------
+  const useAutoScroll = (ref: React.RefObject<HTMLDivElement | null>) => {
 
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [windowWidth]);
+    useEffect(() => {
+      const container = ref.current;
+      if (!container) return;
+
+      let frame: number;
+      let scrollAmount = 0;
+      let scrollSpeed = 1;
+
+      if (windowWidth < 640) scrollSpeed = 0.5;
+      else if (windowWidth < 1024) scrollSpeed = 0.8;
+      else scrollSpeed = 1.2;
+
+      let started = false;
+
+      const startScrolling = () => {
+        if (!container) return;
+        started = true;
+
+        const animate = () => {
+          if (!container) return;
+
+          scrollAmount += scrollSpeed;
+          container.scrollLeft += scrollSpeed;
+
+          if (scrollAmount >= container.scrollWidth / 2) {
+            container.scrollLeft = 0;
+            scrollAmount = 0;
+          }
+
+          frame = requestAnimationFrame(animate);
+        };
+
+        frame = requestAnimationFrame(animate);
+      };
+
+      waitForImages(container).then(() => {
+        if (!started) startScrolling();
+      });
+
+      return () => cancelAnimationFrame(frame);
+    }, [ref, windowWidth]);
+  };
+
+  // APPLY AUTOSCROLL TO EACH REF
+  useAutoScroll(ref2560);
+  useAutoScroll(ref1920);
+  useAutoScroll(ref1280);
+  useAutoScroll(refMobile);
 
   const allLogos = [...logos, ...logos];
 
   return (
     <div>
       <style jsx>{`
-        /* Hide both sections by default on mobile */
-        .desktop-1440,
         .desktop-1280,
         .desktop-1920,
         .desktop-2560 {
           display: none;
         }
-
-        /* Show 1280px section for screens between 768px and 1439px */
         @media (min-width: 768px) and (max-width: 1439px) {
-          .desktop-1280 {
-            display: block;
-          }
+          .desktop-1280 { display: block; }
         }
-
-        /* Show 1440px section for screens 1440px and above */
-        @media (width: 1440px) {
-          .desktop-1440 {
-            display: block;
-          }
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 { display: block; }
         }
-
-        /* Show 1920px section for screens 1440px and above */
-        @media (min-width: 1441px) and (max-width: 1920px) {
-          .desktop-1920 {
-            display: block;
-          }
-        }
-
-         
-         /* Show  layout for large desktops (>1921px) */
         @media (min-width: 1921px) {
-          .desktop-2560 {
-            display: block !important;
-          }
+          .desktop-2560 { display: block !important; }
         }
-
-
       `}</style>
 
-      
-      {/* 2560 Version  */}
+      {/* 2560 Version */}
+      <div className="desktop-2560 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-85">
+        <div className="flex items-center justify-between w-full gap-5">
 
+          {/* LEFT TEXT */}
+          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+            Trusted partners
+          </h2>
 
-      <div className="desktop-2560 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-80">
-        <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
-          Trusted partners
-        </h2>
+          {/* RIGHT LOGO SLIDER */}
+          <span
+            ref={ref2560}
+            className="flex overflow-x-auto whitespace-nowrap ml-10 w-[full] scroll-smooth no-scrollbar"
+          >
+            {allLogos.map((logo, idx) => (
+              <div
+                key={idx}
+                className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </span>
 
-        <div
-          ref={containerRef}
-          className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
-          style={{ scrollbarWidth: 'none' }}
-        >
+        </div>
+      </div>
+
+      {/* 1920 Version */}
+      {/* <div className="desktop-1920 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-5 px-20">
+        <h2 className="mb-5 text-5xl text-center font-light wulkan-display-bold">Trusted partners</h2>
+        <div ref={ref1920} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
           {allLogos.map((logo, idx) => (
-            <div
-              key={`${logo.src}-${idx}`}
-              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
-                }`}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={0}
-                height={0}
-                sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
-                className="object-contain h-[40px] sm:h-[50px] md:h-[60px] w-auto"
-                loading="lazy"
-                style={{
-                  width: 'auto',
-                  height: '100%',
-                }}
-              />
+            <div key={idx} className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}>
+              <Image src={logo.src} alt={logo.alt} width={120} height={60} className="object-contain" />
             </div>
           ))}
+        </div>
+      </div> */}
+
+      <div className="desktop-1920 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-5 px-20">
+        <div className="flex items-center justify-between w-full gap-5">
+
+          {/* LEFT TEXT */}
+          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+            Trusted partners
+          </h2>
+
+          {/* RIGHT LOGO SLIDER */}
+          <span
+            ref={ref1920}
+            className="flex overflow-x-auto whitespace-nowrap ml-10 w-[full] scroll-smooth no-scrollbar"
+          >
+            {allLogos.map((logo, idx) => (
+              <div
+                key={idx}
+                className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </span>
+
         </div>
       </div>
 
 
+      {/* 1280 Version */}
+      <div className="desktop-1280 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-5 px-15">
+        <div className="flex items-center justify-between w-full gap-5">
 
-      {/* 1920 version  */}
+          {/* LEFT TEXT */}
+          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+            Trusted partners
+          </h2>
 
-      <div className="desktop-1920  hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-10">
-        <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
-          Trusted partners
-        </h2>
+          {/* RIGHT LOGO SLIDER */}
+          <span
+            ref={ref1280}
+            className="flex overflow-x-auto whitespace-nowrap ml-10 w-[full] scroll-smooth no-scrollbar"
+          >
+            {allLogos.map((logo, idx) => (
+              <div
+                key={idx}
+                className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </span>
 
-        <div
-          ref={containerRef}
-          className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
-          style={{ scrollbarWidth: 'none' }}
-        >
-          {allLogos.map((logo, idx) => (
-            <div
-              key={`${logo.src}-${idx}`}
-              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
-                }`}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={0}
-                height={0}
-                sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
-                className="object-contain h-[40px] sm:h-[50px] md:h-[60px] w-auto"
-                loading="lazy"
-                style={{
-                  width: 'auto',
-                  height: '100%',
-                }}
-              />
-            </div>
-          ))}
         </div>
       </div>
 
-      {/* 1440 version  */}
-
-      <div className="desktop-1440 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
-        <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
-          Trusted partners
-        </h2>
-
-        <div
-          ref={containerRef}
-          className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
-          style={{ scrollbarWidth: 'none' }}
-        >
-          {allLogos.map((logo, idx) => (
-            <div
-              key={`${logo.src}-${idx}`}
-              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
-                }`}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={0}
-                height={0}
-                sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
-                className="object-contain h-[40px] sm:h-[50px] md:h-[60px] w-auto"
-                loading="lazy"
-                style={{
-                  width: 'auto',
-                  height: '100%',
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 1280 version  */}
-
-      <div className="desktop-1280 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
-        <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
-          Trusted partners
-        </h2>
-
-        <div
-          ref={containerRef}
-          className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
-          style={{ scrollbarWidth: 'none' }}
-        >
-          {allLogos.map((logo, idx) => (
-            <div
-              key={`${logo.src}-${idx}`}
-              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
-                }`}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={0}
-                height={0}
-                sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
-                className="object-contain h-[40px] sm:h-[50px] md:h-[60px] w-auto"
-                loading="lazy"
-                style={{
-                  width: 'auto',
-                  height: '100%',
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      
       {/* Mobile Version */}
+      <div className="md:hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
 
-      <div className=" md:hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
-        <h2 className="text-center mb-8 sm:mb-12 md:mb-16 text-2xl sm:text-3xl md:text-5xl font-light wulkan-display-bold text-blacktracking-wider">
-          Trusted partners
-        </h2>
-
-        <div
-          ref={containerRef}
-          className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar"
-          style={{ scrollbarWidth: 'none' }}
-        >
+        <div className="w-[2px] h-[33px] bg-[#ebd457] ml-4">
+          <h2 className="text-left mb-5 text-4xl text-nowrap font-light wulkan-display-bold ml-3">Trusted partners</h2>
+        </div>
+        <div ref={refMobile} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
           {allLogos.map((logo, idx) => (
-            <div
-              key={`${logo.src}-${idx}`}
-              className={`inline-flex flex-shrink-0 items-center justify-center mx-3 sm:mx-4 md:mx-6 ${brandStyles[logo.alt] || ''
-                }`}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={0}
-                height={0}
-                sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
-                className="object-contain h-[40px] sm:h-[50px] md:h-[60px] w-auto"
-                loading="lazy"
-                style={{
-                  width: 'auto',
-                  height: '100%',
-                }}
-              />
+            <div key={idx} className={`inline-flex flex-shrink-0 items-center justify-center mx-6 ${brandStyles[logo.alt]}`}>
+              <Image src={logo.src} alt={logo.alt} width={120} height={60} className="object-contain" />
             </div>
           ))}
         </div>
       </div>
-
-
     </div>
   );
 }

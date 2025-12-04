@@ -1,12 +1,12 @@
 "use client"
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import OfferingsDropdown from '../OfferingsDropdown';
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
-import Link from "next/link";
+import OverlapNavBar from "../OverlapNavBar";
 
 
 const BedroomHeroSimple: React.FC = () => {
@@ -21,7 +21,6 @@ const BedroomHeroSimple: React.FC = () => {
     router.push('/GetEstimate');
   };
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div>
@@ -50,7 +49,6 @@ const BedroomHeroSimple: React.FC = () => {
       <style jsx>{`
         /* Hide both by default */
         .desktop-1280,
-        .desktop-1440,
         .desktop-1920,
         .desktop-2560 {
           display: none !important;
@@ -63,15 +61,9 @@ const BedroomHeroSimple: React.FC = () => {
           }
         }
 
-        /* Show 1440px layout only at exactly 1440px to avoid overlap */
-        @media (width: 1440px){
-          .desktop-1440 {
-            display: block !important;
-          }
-        }
 
          /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
+        @media (min-width: 1440px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
@@ -101,12 +93,12 @@ const BedroomHeroSimple: React.FC = () => {
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
             </div>
-            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4 ">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
@@ -136,7 +128,7 @@ const BedroomHeroSimple: React.FC = () => {
 
       </div>
 
-      
+
 
       {/* 1920 Version */}
 
@@ -149,15 +141,15 @@ const BedroomHeroSimple: React.FC = () => {
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
             </div>
 
-            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-20">
             <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
               Bedroom interior design
             </h1>
@@ -170,7 +162,7 @@ const BedroomHeroSimple: React.FC = () => {
             <div className="flex gap-4">
               <button
                 onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+                className="bg-yellow-300 text-black px-4 py-2 rounded-full manrope shadow"
               >
                 Get Free Quote
               </button>
@@ -183,54 +175,6 @@ const BedroomHeroSimple: React.FC = () => {
         </div>
 
       </div>
-
-      <div className="desktop-1440">
-
-        <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/bh.png')" }}>
-          {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
-            <div onClick={handleClick} className="cursor-pointer">
-              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
-            </div>
-            <div className="hidden text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
-              <OfferingsDropdown textColor="text-white" />
-              <ExploreRoomsDropdown textColor="text-white" />
-              <NavMore textColor="text-white" />
-            </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
-          </div>
-          {/* Hero content */}
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-              Bedroom interior design
-            </h1>
-
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-              Any questions you have can be resolved here.
-
-            </p>
-
-            <div className="flex gap-4">
-              <button
-                onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
-              >
-                Get Free Quote
-              </button>
-            </div>
-          </div>
-
-        </div>
-        <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
-          Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
-        </div>
-
-      </div>
-
-
-
-
-
 
 
       {/* 1280 version */}
@@ -256,14 +200,14 @@ const BedroomHeroSimple: React.FC = () => {
               </div>
 
               {/* Center Navigation */}
-              <div className="hidden md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
                 <OfferingsDropdown textColor="text-white" />
                 <ExploreRoomsDropdown textColor="text-white" />
                 <NavMore textColor="text-white" />
               </div>
 
               {/* Right CTA */}
-              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope-medium  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
             </div>
 
             {/* Hero content */}
@@ -278,7 +222,7 @@ const BedroomHeroSimple: React.FC = () => {
 
               <button
                 onClick={handleGetEstimate}
-                className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
+                className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope hover:bg-yellow-400 transition text-center"
               >
                 Get Free Quote
               </button>
@@ -319,131 +263,10 @@ const BedroomHeroSimple: React.FC = () => {
           </div>
 
 
-          {/* Hamburger Menu Button + Mobile Menu */}
-          <div className="absolute top-8 right-1 z-50 ">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-black pr-6"
-            >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-
-            {/* Mobile Navigation Menu */}
-            {isMobileMenuOpen && (
-              <div className="fixed top-0 right-0 w-64 h-140 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-                <div className="p-4  relative">
-                  {/* Close Button */}
-                  <button
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="absolute top-3 right-3 text-gray-600 p-2"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="white"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-
-                  {/* Navigation Items */}
-                  <div className="space-y-4 mt-5">
-                    <div>
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                          OFFERINGS
-                        </h3>
-                        <div className="space-y-2 pl-3"> {/* Increased spacing here */}
-                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Full Home Interior
-                          </Link>
-                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Modular Interior
-                          </Link>
-                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Home Renovation
-                          </Link>
-                          <Link href="/" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                            Space Management
-                          </Link>
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                        EXPLORE ROOMS
-                      </h3>
-                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                        <Link href="/ModularKitchen" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Modular Kitchen
-                        </Link>
-                        <Link href="/Bedroom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Bedroom
-                        </Link>
-                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Living Room
-                        </Link>
-                        <Link href="/LivingRoom" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Kids Room
-                        </Link>
-                      </div>
-
-
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-800 mb-3 manrope">
-                        MORE
-                      </h3>
-                      <div className="space-y-2 pl-3"> {/* increased vertical spacing */}
-                        <Link href="/AboutUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          About Us
-                        </Link>
-                        <Link href="/Project" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Projects
-                        </Link>
-                        <Link href="/Blog" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Blog
-                        </Link>
-                        <Link href="/ContactUs" className="text-gray-600 manrope-medium hover:text-gray-800 block">
-                          Contact Us
-                        </Link>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-
-          </div>
-
-
 
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
-            <h2 className="manrope text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <h2 className="wulkan-display-bold  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               Bedroom
               <br />
               Interior
@@ -463,6 +286,7 @@ const BedroomHeroSimple: React.FC = () => {
         <div className="manrope-medium  h-[300px] w-full max-w-[480px] mt-12 mb-12  desc">
           Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
         </div>
+        <OverlapNavBar />
       </div>
 
 
@@ -488,124 +312,9 @@ const BedroomHeroSimple: React.FC = () => {
           </div>
 
 
-          {/* Hamburger Menu Button + Mobile Menu */}
-          <div className="absolute top-8 right-1 z-50 ">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-black pr-6"
-            >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-
-            {/* Mobile Navigation Menu */}
-            {isMobileMenuOpen && (
-              <div className="fixed top-0 right-0 w-64 h-125 bg-white/95 backdrop-blur-sm z-50 rounded-l-[25px] overflow-hidden shadow-lg">
-                <div className="p-4  relative">
-                  {/* Close Button */}
-                  <button
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="absolute top-3 right-3 text-gray-600 p-2"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="white"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-
-                  {/* Navigation Items */}
-                  <div className="space-y-4 mt-5">
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                        OFFERINGS
-                      </h3>
-                      <div className="space-y-1 pl-3">
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Full Home Interior
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Modular Interior
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Home Renovation
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Space Management
-                        </p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                        EXPLORE ROOMS
-                      </h3>
-                      <div className="space-y-1 pl-3">
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Modular Kitchen
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Bedroom
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Living Room
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Kids Room
-                        </p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-800 mb-2 manrope">
-                        MORE
-                      </h3>
-                      <div className="space-y-1 pl-3">
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          About Us
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Projects
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Blog
-                        </p>
-                        <p className="text-gray-600 manrope-medium cursor-pointer hover:text-gray-800">
-                          Contact
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-
-          </div>
-
-
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
-            <h2 className="manrope  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <h2 className="wulkan-display-bold   text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               Bedroom
               <br />
               Interior
@@ -625,14 +334,12 @@ const BedroomHeroSimple: React.FC = () => {
         <div className="manrope-medium  h-[300px] w-full max-w-[480px] mt-10  desc">
           Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
         </div>
+        <OverlapNavBar />
       </div>
 
 
 
     </div>
-
-
-
 
   );
 };

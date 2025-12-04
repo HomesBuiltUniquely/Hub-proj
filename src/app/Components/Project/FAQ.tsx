@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import React, { useState } from "react";
 
 
@@ -41,10 +42,6 @@ const faqs = [
 const Faq: React.FC = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
-
-
-
-
   return (
 
 
@@ -52,127 +49,181 @@ const Faq: React.FC = () => {
 
 
 
-      
-  <style jsx>{`
-        /* Hide both sections by default on mobile */
-        .desktop-1440,
-        .desktop-1280 {
-          display: none;
-        }
 
-        /* Show 1280px section for screens between 768px and 1439px */
-        @media (min-width: 768px) and (max-width: 1439px) {
-          .desktop-1280 {
-            display: block;
-          }
-        }
+      <style jsx>{`
+  /* Default: Hide all desktops */
+  .desktop-2560,
+  .desktop-1920,
+  .desktop-1280 {
+    display: none;
+  }
 
-        /* Show 1440px section for screens 1440px and above */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block;
-          }
-        }
-      `}</style>
-    
-        <div className="desktop-1440 w-screen  ">
-          {/* FAQ and Guide */}
-          <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 -mt-15 ml-20">
-            {/* FAQ Left */}
-            <div className="md:w-1/3 mb-8 md:mt-4">
-              <h2 className="manrope mb-3  text-gray-900 text-4xl">FAQs</h2>
-              <p className="text-gray-600 text-xl manrope-medium">Here are answers to questions </p>
-              <p className="text-gray-600 mb-2 text-xl manrope-medium">our clients ask.</p>
-              <button className="px-5 py-1 -ml-1 border border-gray-500 rounded-3xl text-gray-800 text-md manrope hover:bg-gray-200 transition-colors duration-200">
-                Connect
-              </button>
-            </div>
-            {/* Accordion Right */}
-            <div className="md:w-1/1.5 ">
-              {faqs.map((faq, i) => (
-                <div key={i} className="border-b">
-                  <button
-                    onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-                    className="w-full flex justify-between items-center py-4 text-left text-md focus:outline-none"
-                  >
-                    <span className="manrope text-gray-700">{faq.question}</span>
-                    <span className="ml-2">
-                      {openFAQ === i ? (
-                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-                        </svg>
-                      ) : (
-                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
-                    </span>
-                  </button>
-                  {openFAQ === i && (
-                    <div className="py-2 pl-3 text-gray-500 text-sm manrope-medium">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+  /* 1280 layout for screens 768px–1439px */
+  @media (min-width: 768px) and (max-width: 1439px) {
+    .desktop-1280 {
+      display: block;
+    }
+  }
+
+  /* 1920 layout for 1440px–1919px */
+  @media (min-width: 1440px) and (max-width: 1919px) {
+    .desktop-1920 {
+      display: block !important;
+    }
+  }
+
+  /* 2560 layout for 1920px and above */
+  @media (min-width: 1920px) {
+    .desktop-2560 {
+      display: block;
+    }
+  }
+`}</style>
+
+      <div className="desktop-2560 w-full  ">
+        {/* FAQ and Guide */}
+        <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 -mt-15 ml-20">
+          {/* FAQ Left */}
+          <div className="md:w-1/3 mb-8 md:mt-4">
+            <h2 className="manrope mb-3  text-gray-900 text-4xl">FAQs</h2>
+            <p className="text-gray-600 text-xl manrope-medium">Here are answers to questions </p>
+            <p className="text-gray-600 mb-2 text-xl manrope-medium">our clients ask.</p>
+            <Link href="/ContactUs"><button className="px-5 py-1 -ml-1 border border-gray-500 rounded-3xl text-gray-800 text-md manrope hover:bg-gray-200 transition-colors duration-200">
+              Connect
+            </button></Link>
           </div>
-
+          {/* Accordion Right */}
+          <div className="md:w-1/1.5 ">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b">
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                  className="w-full flex justify-between items-center py-4 text-left text-md focus:outline-none"
+                >
+                  <span className="manrope text-gray-700">{faq.question}</span>
+                  <span className="ml-2">
+                    {openFAQ === i ? (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </span>
+                </button>
+                {openFAQ === i && (
+                  <div className="py-2 pl-3 text-gray-500 text-sm manrope-medium">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
+
+      </div>
+
+
+      {/* 1920 Version */}
+
+
+      <div className="desktop-1920 w-full  px-20">
+        {/* FAQ and Guide */}
+        <div className=" mx-auto flex flex-col justify-between md:flex-row  gap-6">
+          {/* FAQ Left */}
+          <div className="md:w-1/3 mb-8 md:mt-4">
+            <h2 className="manrope mb-3  text-gray-900 text-4xl">FAQs</h2>
+            <p className="text-gray-600 text-xl manrope-medium">Here are answers to questions </p>
+            <p className="text-gray-600 mb-2 text-xl manrope-medium">our clients ask.</p>
+            <Link href="/ContactUs"><button className="px-5 py-1 -ml-1 border border-gray-500 rounded-3xl text-gray-800 text-md manrope hover:bg-gray-200 transition-colors duration-200">
+              Connect
+            </button></Link>
+          </div>
+          {/* Accordion Right */}
+          <div className="md:w-1/1.5 ">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b">
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                  className="w-full flex justify-between items-center py-4 text-left text-md focus:outline-none"
+                >
+                  <span className="manrope text-gray-700">{faq.question}</span>
+                  <span className="ml-2">
+                    {openFAQ === i ? (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </span>
+                </button>
+                {openFAQ === i && (
+                  <div className="py-2 pl-3 text-gray-500 text-sm manrope-medium">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
 
 
 
       {/* 1280  version */}
 
+      <div className="desktop-1280 w-full">
 
-     
-
-          <div className="desktop-1280 w-screen">
-         
-          {/* FAQ and Guide */}
-          <div className="max-w-7xl mx-auto flex flex-col justify-between md:flex-row px-4 gap-6 -mt-45">
-            {/* FAQ Left */}
-            <div className="md:w-1/3 mb-8 md:mt-4 ml-8">
-              <h2 className="manrope mb-3  text-gray-900 text-4xl">FAQs</h2>
-              <p className="text-gray-600 text-xl manrope-medium">Here are answers to questions </p>
-              <p className="text-gray-600 mb-2 text-xl manrope-medium">our clients ask.</p>
-              <button className="px-5 py-1 border border-gray-500 rounded-3xl text-gray-800 text-md manrope hover:bg-gray-200 transition-colors duration-200">
-                Connect
-              </button>
-            </div>
-            {/* Accordion Right */}
-            <div className="md:w-1/2 mr-10">
-              {faqs.map((faq, i) => (
-                <div key={i} className="border-b">
-                  <button
-                    onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-                    className="w-full flex justify-between items-center py-4 text-left text-md focus:outline-none"
-                  >
-                    <span className="manrope text-gray-700">{faq.question}</span>
-                    <span className="ml-2">
-                      {openFAQ === i ? (
-                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
-                        </svg>
-                      ) : (
-                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
-                    </span>
-                  </button>
-                  {openFAQ === i && (
-                    <div className="py-2 pl-3 text-gray-500 text-sm manrope-medium">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+        {/* FAQ and Guide */}
+        <div className=" mx-auto px-15 flex flex-col justify-between md:flex-row gap-6 -mt-30">
+          {/* FAQ Left */}
+          <div className="md:w-1/3 mb-8 md:mt-4 ">
+            <h2 className="manrope mb-3  text-gray-900 text-4xl">FAQs</h2>
+            <p className="text-gray-600 text-xl manrope-medium">Here are answers to questions </p>
+            <p className="text-gray-600 mb-2 text-xl manrope-medium">our clients ask.</p>
+            <Link href="/ContactUs"><button className="px-5 py-1 border border-gray-500 rounded-3xl text-gray-800 text-md manrope hover:bg-gray-200 transition-colors duration-200">
+              Connect
+            </button></Link>
           </div>
-         
-
+          {/* Accordion Right */}
+          <div className="">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b">
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                  className="w-full flex justify-between items-center py-4 text-left text-md focus:outline-none"
+                >
+                  <span className="manrope text-gray-700">{faq.question}</span>
+                  <span className="ml-2">
+                    {openFAQ === i ? (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </span>
+                </button>
+                {openFAQ === i && (
+                  <div className="py-2 pl-3 text-gray-500 text-sm manrope-medium">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
+
+
+      </div>
 
 
 
@@ -188,7 +239,7 @@ const Faq: React.FC = () => {
         <div className='flex items-center ml-5 mt-10'>
           <div className='bg-[#ebd657] w-[3px] h-9 mb-11'></div>
           <div className='ml-3 mb-2'>
-            <h1 className='text-3xl manrope'>Frequently <div>asked question</div></h1>
+            <h1 className='text-3xl wulkan-display-bold'>Frequently<div>asked question</div></h1>
           </div>
         </div>
         {/* Accordion Right */}
