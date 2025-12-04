@@ -329,41 +329,67 @@ export function HeroSection() {
                     <div className="relative flex">
                         <div className="w-[650px] h-[1000px] ml-1 bg-black/50 shadow-lg backdrop-blur-md overflow-hidden rounded-l-3xl">
                             <img src="hub.png" className="w-[150px] h-[60px] ml-10 mt-6"></img>
-                            <form onSubmit={handleSubmit}>
-                                <div className="flex mt-4">
-                                    <input type="text" name="name" placeholder="Name" value={form.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} className="w-[250px] h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl m-10 placeholder-white manrope  "></input>
-                                    <input type="text" name="email" placeholder="Email" value={form.email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} className="w-[250px] h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl m-10 placeholder-white manrope"></input>
+                            <form onSubmit={handleSubmit} className="px-10">
+                                {/* Name and Email Row */}
+                                <div className="flex gap-4 mt-6">
+                                    <div className="flex-1">
+                                        <input 
+                                            type="text" 
+                                            name="name" 
+                                            placeholder="Name" 
+                                            value={form.name} 
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} 
+                                            className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
+                                        />
+                                    </div>
+                                    <div className="flex-1">
+                                        <input 
+                                            type="text" 
+                                            name="email" 
+                                            placeholder="Email" 
+                                            value={form.email} 
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} 
+                                            className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
+                                        />
+                                    </div>
                                 </div>
-                                <div className="flex mt-4">
-                                    <input type="text" name="phonennumber" placeholder="PhoneNumber" value={form.phonennumber} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} className="w-[250px] h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl ml-10 placeholder-white manrope"></input>
+                                
+                                {/* Phone and Pincode Row */}
+                                <div className="flex gap-4 mt-4">
+                                    <div className="flex-1">
+                                        <input 
+                                            type="text" 
+                                            name="phonennumber" 
+                                            placeholder="PhoneNumber" 
+                                            value={form.phonennumber} 
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} 
+                                            className="w-full h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
+                                        />
+                                    </div>
 
                                     {/* Pincode input + dropdown - desktop */}
-                                    <div className="relative ml-18 pincode-wrapper">
-                                        <div className="flex items-center">
-                                            <div className="relative">
-                                                <input
-                                                    type="text"
-                                                    value={pincodeSearch || selectedPincode}
-                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                                        // allow only digits and limit to 6 characters
-                                                        const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
-                                                        setPincodeSearch(raw);
-                                                        setSelectedPincode(raw);
-                                                        setForm(prev => ({ ...prev, pincode: raw }));
-                                                        setPincodeOpen(true);
-                                                    }}
-                                                    onFocus={() => setPincodeOpen(true)}
-                                                    placeholder="Pincode"
-                                                    inputMode="numeric"
-                                                    pattern="[0-9]{6}"
-                                                    maxLength={6}
-                                                    className="w-[250px] h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-6 text-white bg-transparent"
-                                                />
-                                            </div>
-                                        </div>
+                                    <div className="flex-1 relative pincode-wrapper">
+                                        <input
+                                            type="text"
+                                            value={pincodeSearch || selectedPincode}
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                // allow only digits and limit to 6 characters
+                                                const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
+                                                setPincodeSearch(raw);
+                                                setSelectedPincode(raw);
+                                                setForm(prev => ({ ...prev, pincode: raw }));
+                                                setPincodeOpen(true);
+                                            }}
+                                            onFocus={() => setPincodeOpen(true)}
+                                            placeholder="Pincode"
+                                            inputMode="numeric"
+                                            pattern="[0-9]{6}"
+                                            maxLength={6}
+                                            className="w-full h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-8 pr-6 text-white bg-transparent placeholder-white"
+                                        />
 
                                         {pincodeOpen && (
-                                            <div className="absolute z-10 mt-2 w-[250px] max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
+                                            <div className="absolute z-10 mt-2 w-full max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
                                                 <ul className="py-1 text-gray-700">
                                                     {pincodes
                                                         .filter(pin => pin.toString().includes(pincodeSearch))
