@@ -39,10 +39,8 @@ const PolicyHeroSimple: React.FC = () => {
           }
         }
 
-        
-
          /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
+        @media (min-width: 1440px)  and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
