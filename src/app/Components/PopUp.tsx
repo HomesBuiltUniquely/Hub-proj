@@ -142,7 +142,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             <div className="desktop-wrapper">
 
                 {/** YOUR ENTIRE DESKTOP UI EXACTLY AS YOU PROVIDED */}
-                <div className="w-[700px] h-[380px] bg-gray-100 rounded-3xl flex justify-between items-center mx-auto px-3 mt-20 shadow-lg">
+                <div className="w-[700px] h-auto py-5 bg-gray-100 rounded-3xl flex justify-between items-center mx-auto px-3 mt-20 shadow-lg">
 
                     <div className="flex flex-col gap-4 w-1/2 mt-2">
                         <h2 className="text-4xl manrope w-[300px] px-3">Grab your offer now!</h2>
@@ -206,6 +206,13 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium">{error}</p>
                             )}
+
+
+                            {/* check box */}
+                            <div className="flex mx-auto">
+                                <input type="checkbox" required />
+                                <label className="ml-4 text-black ">Yes, all provided details are correct</label>
+                            </div>
 
                             <button
                                 type="submit"
@@ -314,6 +321,14 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium text-center">{error}</p>
                             )}
+
+                            {/* check box */}
+
+                            <div className="flex mx-auto">
+                                <input type="checkbox" required />
+                                <label className="ml-4 text-black ">Yes, all provided details are correct</label>
+                            </div>
+
 
                             {/* CENTERED BUTTON */}
                             <div className="flex justify-center">

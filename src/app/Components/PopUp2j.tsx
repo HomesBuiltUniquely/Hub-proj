@@ -207,6 +207,13 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 <p className="text-red-600 text-sm manrope-medium">{error}</p>
                             )}
 
+
+                            {/* check box */}
+                            <div className="flex mx-auto">
+                                <input type="checkbox" required />
+                                <label className="ml-4 text-black ">Yes, all provided details are correct</label>
+                            </div>
+
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
@@ -314,6 +321,14 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium text-center">{error}</p>
                             )}
+
+                            {/* check box */}
+
+                            <div className="flex mx-auto">
+                                <input type="checkbox" required />
+                                <label className="ml-4 text-black ">Yes, all provided details are correct</label>
+                            </div>
+
 
                             {/* CENTERED BUTTON */}
                             <div className="flex justify-center">
