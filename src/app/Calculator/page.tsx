@@ -1,4 +1,4 @@
-import Calculate from "../Calculator";
+import Calculate from "../Components/Home/Calculator";
 
 export default function Calculatev1() {
     return (
