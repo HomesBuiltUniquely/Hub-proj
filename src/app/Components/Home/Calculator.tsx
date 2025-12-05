@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import FinalLeadForm from './FinalLeadForm';
+import FinalLeadForm from '../../FinalLeadForm';
 
 
 

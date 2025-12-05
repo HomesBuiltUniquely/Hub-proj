@@ -199,9 +199,9 @@ const ContactHeader: React.FC = () => {
         </div>
       </div>
 
+
+
       {/* ========== 1280 VERSION ========== */}
-
-
 
       <div className="desktop-1280">
 
@@ -220,7 +220,7 @@ const ContactHeader: React.FC = () => {
                   className="w-[full] h-[full] -mt-12 -ml-8"
                 />
               </div>
-
+ 
               {/* Center Navigation */}
               <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
                 <OfferingsDropdown textColor="text-white" />
@@ -253,7 +253,7 @@ const ContactHeader: React.FC = () => {
           </div>
         </div>
 
-      </div>
+      </div> 
 
 
       {/* ========== MOBILE VERSION (360–480) ========== */}
