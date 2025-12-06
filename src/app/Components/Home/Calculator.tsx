@@ -19,7 +19,7 @@ const ProgressBar: React.FC<{ steps: string[]; currentStep: number }> = ({ steps
         <React.Fragment key={index}>
           <div className="flex flex-col items-center text-center w-20">
             <div
-              className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
+              className={`w-6 h-6 rounded-full flex items-center justify-center text-sm manrope transition-all duration-300 ${
                 currentStep >= index ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-500'
               }`}
             >
@@ -111,13 +111,13 @@ const Step1BhkType: React.FC<StepProps> = ({ formData, setFormData }) => {
     <div className="text-center">
       {/* Laptop/Desktop Version */}
       <div className="hidden lg:block">
-      <h2 className="text-2xl font-bold text-gray-800 mb-10">Select your BHK type</h2>
+      <h2 className="text-2xl manrope text-gray-800 mb-10">Select your BHK type</h2>
       <div className="space-y-4 max-w-md mx-auto">
         {bhkOptions.map((option) => (
           <div
             key={option}
             onClick={() => setFormData({ ...formData, bhkType: option })}
-              className={`p-6 border rounded-lg flex items-center cursor-pointer transition-all duration-200 hover:border-red-400 ${
+              className={`p-6 border rounded-lg manrope-medium flex items-center cursor-pointer transition-all duration-200 hover:border-red-400 ${
               formData.bhkType === option
                 ? 'border-red-500 ring-2 ring-red-200 bg-red-50'
                   : 'border-gray-300'
@@ -130,7 +130,7 @@ const Step1BhkType: React.FC<StepProps> = ({ formData, setFormData }) => {
               >
                 {formData.bhkType === option && <div className="w-3 h-3 bg-white rounded-full"></div>}
               </div>
-              <span className="font-semibold text-gray-700 text-lg">{option}</span>
+              <span className="manrope-medium text-gray-700 text-lg">{option}</span>
             </div>
           ))}
         </div>
@@ -138,13 +138,13 @@ const Step1BhkType: React.FC<StepProps> = ({ formData, setFormData }) => {
 
       {/* Mobile Version */}
       <div className="lg:hidden">
-        <h2 className="text-xl font-bold text-gray-800 mb-6 px-4">Select your BHK type</h2>
+        <h2 className="text-xl manrope text-gray-800 mb-6 px-4">Select your BHK type</h2>
         <div className="space-y-3 max-w-md mx-auto px-4">
           {bhkOptions.map((option) => (
             <div
               key={option}
               onClick={() => setFormData({ ...formData, bhkType: option })}
-              className={`p-4 border rounded-lg flex items-center cursor-pointer transition-all duration-200 touch-manipulation active:bg-gray-50 ${
+              className={`p-4 border rounded-lg flex manrope-medium items-center cursor-pointer transition-all duration-200 touch-manipulation active:bg-gray-50 ${
                 formData.bhkType === option
                   ? 'border-red-500 ring-2 ring-red-200 bg-red-50'
                   : 'border-gray-300'
@@ -157,7 +157,7 @@ const Step1BhkType: React.FC<StepProps> = ({ formData, setFormData }) => {
             >
               {formData.bhkType === option && <div className="w-2 h-2 bg-white rounded-full"></div>}
             </div>
-              <span className="font-semibold text-gray-700 text-base">{option}</span>
+              <span className="manrope-medium text-gray-700 text-base">{option}</span>
           </div>
         ))}
         </div>
@@ -203,7 +203,7 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
         <div className="text-center">
             {/* Laptop/Desktop Version */}
             <div className="hidden lg:block">
-                <h2 className="text-2xl font-bold text-gray-800 mb-10">Which rooms would you like to design?</h2>
+                <h2 className="text-2xl manrope text-gray-800 mb-10">Which rooms would you like to design?</h2>
             <div className="space-y-4 max-w-md mx-auto">
                 {roomOptions.map(room => {
                     const count = formData.rooms?.[room] || 0;
@@ -213,7 +213,7 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
                             key={room}
                                 className="p-6 border rounded-lg flex items-center justify-between transition-all duration-200 border-gray-300 hover:border-gray-400"
                             >
-                                <span className="font-semibold text-lg text-gray-700">{room}</span>
+                                <span className="manrope-medium text-lg text-gray-700">{room}</span>
                                 <div className="flex items-center gap-4">
                                     <button
                                         onClick={() => handleCountChange(room, -1)}
@@ -238,7 +238,7 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
 
             {/* Mobile Version */}
             <div className="lg:hidden">
-                <h2 className="text-lg font-bold text-gray-800 mb-6 px-4">Which rooms would you like to design?</h2>
+                <h2 className="text-lg manrope text-gray-800 mb-6 px-4">Which rooms would you like to design?</h2>
                 <div className="space-y-3 max-w-md mx-auto px-4">
                     {roomOptions.map(room => {
                         const count = formData.rooms?.[room] || 0;
@@ -246,9 +246,9 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
                         return (
                             <div
                                 key={room}
-                                className="p-4 border rounded-lg flex items-center justify-between transition-all duration-200 touch-manipulation border-gray-300"
+                                className="p-4 border rounded-lg  flex items-center justify-between transition-all duration-200 touch-manipulation border-gray-300"
                         >
-                                <span className="font-semibold text-sm text-gray-700">{room}</span>
+                                <span className="manrope-mediumtext-sm text-gray-700">{room}</span>
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => handleCountChange(room, -1)}
@@ -305,23 +305,23 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
                     <div>
                         {/* Laptop/Desktop Version */}
                         <div className="hidden lg:block">
-                        <h3 className="text-center text-2xl font-bold text-gray-800 mb-6">Select Wardrobe Type</h3>
+                        <h3 className="text-center text-2xl manrope text-gray-800 mb-6">Select Wardrobe Type</h3>
                             <div className="flex gap-6 max-w-4xl mx-auto">
                             {wardrobeTypes.map(type => (
                                     <div key={type.name} className="flex-1 border rounded-lg shadow-md overflow-hidden">
                                     <img src={type.image} alt={type.name} className="w-full h-[250px] object-cover" />
                                         <div className="p-6 text-center">
-                                            <h4 className="text-xl font-bold text-gray-800 mb-4">{type.name}</h4>
+                                            <h4 className="text-xl manrope text-gray-800 mb-4">{type.name}</h4>
                                             <ul className='list-disc text-left mb-6 space-y-2'>
-                                                <li className="text-gray-600 text-base">{type.description}</li>
-                                                <li className="text-gray-600 text-base">{type.desc}</li>
+                                                <li className="text-gray-600 manrope-medium">{type.description}</li>
+                                                <li className="text-gray-600 manrope-medium">{type.desc}</li>
                                         </ul>
                                         <button 
                                             onClick={() => {
                                                 handleOptionClick('type', type.name);
                                                 setSlide(1); // Auto-advance to next slide
                                             }} 
-                                                className="w-[200px] bg-red-500 text-white font-bold h-[50px] rounded-4xl hover:bg-red-600 transition-colors"
+                                                className="w-[200px] bg-red-500 text-white manrope h-[50px] rounded-4xl hover:bg-red-600 transition-colors"
                                         >
                                             Select
                                         </button>
@@ -333,23 +333,23 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
 
                         {/* Mobile Version */}
                         <div className="lg:hidden">
-                            <h3 className="text-center text-lg font-bold text-gray-800 mb-4 px-4">Select Wardrobe Type</h3>
+                            <h3 className="text-center text-lg manrope text-gray-800 mb-4 px-4">Select Wardrobe Type</h3>
                             <div className="space-y-4 max-w-md mx-auto px-4">
                                 {wardrobeTypes.map(type => (
                                     <div key={type.name} className="w-full border rounded-lg shadow-md overflow-hidden">
                                         <img src={type.image} alt={type.name} className="w-full h-[150px] object-cover" />
                                         <div className="p-4 text-center">
-                                            <h4 className="text-lg font-bold text-gray-800 mb-3">{type.name}</h4>
+                                            <h4 className="text-lg manrope text-gray-800 mb-3">{type.name}</h4>
                                             <ul className='list-disc text-left mb-4 space-y-1'>
-                                                <li className="text-gray-600 text-sm">{type.description}</li>
-                                                <li className="text-gray-600 text-sm">{type.desc}</li>
+                                                <li className="text-gray-600 manrope-medium">{type.description}</li>
+                                                <li className="text-gray-600 manrope-medium">{type.desc}</li>
                                             </ul>
                                             <button 
                                                 onClick={() => {
                                                     handleOptionClick('type', type.name);
                                                     setSlide(1); // Auto-advance to next slide
                                                 }} 
-                                                className="w-full bg-red-500 text-white font-bold h-[40px] rounded-lg hover:bg-red-600 active:bg-red-700 transition-colors touch-manipulation"
+                                                className="w-full bg-red-500 text-white manrope h-[40px] rounded-lg hover:bg-red-600 active:bg-red-700 transition-colors touch-manipulation"
                                             >
                                                 Select 
                                             </button>
@@ -366,13 +366,13 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
                         <div className="hidden lg:block">
-                        <h3 className="text-xl font-bold text-gray-800 mb-6">Select Dimensions for {formData.wardrobe?.type} Wardrobe</h3>
+                        <h3 className="text-xl manrope text-gray-800 mb-6">Select Dimensions for {formData.wardrobe?.type} Wardrobe</h3>
                         <div className="max-w-lg mx-auto space-y-6">
                                 <div>
-                                    <h4 className="text-md font-semibold text-gray-700 mb-4">Height</h4>
+                                    <h4 className="text-md manrope text-gray-700 mb-4">Height</h4>
                                     <div className="flex justify-center gap-3 flex-wrap">
                                         {sizeOptions.map(opt => (
-                                            <button key={opt} onClick={() => { handleOptionClick('height', opt); }} className={`py-3 px-6 border rounded-lg font-semibold transition-colors w-[90px] ${formData.wardrobe?.height === opt ? 'bg-red-500 text-white border-red-500' : 'bg-white text-gray-700 hover:border-red-400'}`}>
+                                            <button key={opt} onClick={() => { handleOptionClick('height', opt); }} className={`py-3 px-6 border rounded-lg manrope-medium transition-colors w-[90px] ${formData.wardrobe?.height === opt ? 'bg-red-500 text-white border-red-500' : 'bg-white text-gray-700 hover:border-red-400'}`}>
                                                 {opt}
                                             </button>
                                         ))}
@@ -383,13 +383,13 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
 
                         {/* Mobile Version */}
                         <div className="lg:hidden">
-                            <h3 className="text-lg font-bold text-gray-800 mb-4 px-4">Select Dimensions for {formData.wardrobe?.type} Wardrobe</h3>
+                            <h3 className="text-lg manrope text-gray-800 mb-4 px-4">Select Dimensions for {formData.wardrobe?.type} Wardrobe</h3>
                             <div className="max-w-lg mx-auto space-y-4 px-4">
                             <div>
-                                    <h4 className="text-sm font-semibold text-gray-700 mb-3">Height</h4>
+                                    <h4 className="text-sm manrope text-gray-700 mb-3">Height</h4>
                                 <div className="flex justify-center gap-2 flex-wrap">
                                     {sizeOptions.map(opt => (
-                                            <button key={opt} onClick={() => { handleOptionClick('height', opt); }} className={`py-2 px-3 border rounded-lg font-semibold transition-colors w-[70px] touch-manipulation ${formData.wardrobe?.height === opt ? 'bg-red-500 text-white border-red-500' : 'bg-white text-gray-700 hover:border-red-400 active:bg-gray-50'}`}>
+                                            <button key={opt} onClick={() => { handleOptionClick('height', opt); }} className={`py-2 px-3 border rounded-lg manrope-medium transition-colors w-[70px] touch-manipulation ${formData.wardrobe?.height === opt ? 'bg-red-500 text-white border-red-500' : 'bg-white text-gray-700 hover:border-red-400 active:bg-gray-50'}`}>
                                             {opt}
                                         </button>
                                     ))}
@@ -409,13 +409,13 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
             {renderSlide()}
             {slide > 0 && (
                 <div className="flex justify-center items-center mt-8 md:mt-12 pt-6 md:pt-8 border-t px-4">
-                    <button onClick={() => setSlide(s => s - 1)} disabled={slide === 0} className="font-bold text-gray-500 hover:text-red-500 disabled:text-gray-300 mr-4 md:mr-8 text-sm md:text-base">
+                    <button onClick={() => setSlide(s => s - 1)} disabled={slide === 0} className="manrope text-gray-500 hover:text-red-500 disabled:text-gray-300 mr-4 md:mr-8 text-sm md:text-base">
                         Back
                     </button>
                     <div className="flex space-x-2">
                         {[0, 1].map(s => <div key={s} className={`w-2 h-2 rounded-full ${slide === s ? 'bg-red-500' : 'bg-gray-300'}`}></div>)}
                     </div>
-                    <button onClick={() => setSlide(s => Math.min(1, s + 1))} disabled={slide === 1} className="font-bold text-gray-500 hover:text-red-500 disabled:text-gray-300 ml-4 md:ml-8 text-sm md:text-base">
+                    <button onClick={() => setSlide(s => Math.min(1, s + 1))} disabled={slide === 1} className="manrope text-gray-500 hover:text-red-500 disabled:text-gray-300 ml-4 md:ml-8 text-sm md:text-base">
                         Next
                     </button>
                 </div>
@@ -480,11 +480,11 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
                         <div className="hidden lg:block">
-                        <h2 className="text-2xl font-bold text-gray-800">Select the layout of your kitchen</h2>
-                        <p className="text-sm text-gray-500 my-2">
-                            Want to know more. <a href="#" className="text-red-500 font-semibold">Check here</a>
+                        <h2 className="text-2xl manrope text-gray-800">Select the layout of your kitchen</h2>
+                        <p className="text-sm text-gray-500 my-2 manrope-medium">
+                            Want to know more. <a href="#" className="text-red-500 manrope-medium">Check here</a>
                         </p>
-                        <div className="grid grid-cols-2 gap-6 max-w-lg mx-auto mt-8">
+                        <div className="grid grid-cols-2 gap-6 manrope max-w-lg mx-auto mt-8">
                             {kitchenLayouts.map(layout => {
                                 const isSelected = formData.kitchen?.layout === layout.name;
                                 return (
@@ -504,7 +504,7 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                                                 {isSelected && <div className="w-3 h-3 bg-red-500 rounded-full"></div>}
                                             </div>
                                             <img src={layout.image} alt={layout.name} className="w-full h-28 object-contain mb-3" />
-                                            <h4 className="font-semibold text-gray-700 text-lg">{layout.name}</h4>
+                                            <h4 className=" text-gray-700 text-lg">{layout.name}</h4>
                                         </div>
                                     );
                                 })}
@@ -513,11 +513,11 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
 
                         {/* Mobile Version */}
                         <div className="lg:hidden">
-                            <h2 className="text-lg font-bold text-gray-800 px-4">Select the layout of your kitchen</h2>
-                            <p className="text-xs text-gray-500 my-2 px-4">
-                                Want to know more. <a href="#" className="text-red-500 font-semibold">Check here</a>
+                            <h2 className="text-lg manrope text-gray-800 px-4">Select the layout of your kitchen</h2>
+                            <p className="text-xs text-gray-500 my-2 px-4 manrope-medium">
+                                Want to know more. <a href="#" className="text-red-500 manrope-medium">Check here</a>
                             </p>
-                            <div className="grid grid-cols-1 gap-3 max-w-sm mx-auto mt-6 px-4 w-[250px]">
+                            <div className="grid grid-cols-1 manrope gap-3 max-w-sm mx-auto mt-6 px-4 w-[250px]">
                                 {kitchenLayouts.map(layout => {
                                     const isSelected = formData.kitchen?.layout === layout.name;
                                     return (
@@ -550,8 +550,8 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
                         <div className="hidden lg:block">
-                        <h3 className="text-xl font-bold text-gray-800 mb-6">Select Kitchen Size</h3>
-                        <div className="flex justify-center gap-4 flex-wrap">
+                        <h3 className="text-xl manrope text-gray-800 mb-6">Select Kitchen Size</h3>
+                        <div className="flex justify-center manrope-medium gap-4 flex-wrap">
                             {kitchenSizes.map(opt => (
                                     <button key={opt} onClick={() => { handleOptionClick('size', opt); setSlide(2); }} className={`py-3 px-6 border rounded-lg font-semibold transition-colors text-sm ${formData.kitchen?.size === opt ? 'bg-red-500 text-white border-red-500' : 'bg-white text-gray-700 hover:border-red-400'}`}>
                                         {opt}
@@ -562,8 +562,8 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
 
                         {/* Mobile Version */}
                         <div className="lg:hidden">
-                            <h3 className="text-lg font-bold text-gray-800 mb-4 px-4">Select Kitchen Size</h3>
-                            <div className="flex justify-center gap-2 flex-wrap px-4">
+                            <h3 className="text-lg manrope text-gray-800 mb-4 px-4">Select Kitchen Size</h3>
+                            <div className="flex justify-center manrope-medium gap-2 flex-wrap px-4">
                                 {kitchenSizes.map(opt => (
                                     <button key={opt} onClick={() => { handleOptionClick('size', opt); setSlide(2); }} className={`py-2 px-3 border rounded-lg font-semibold transition-colors text-xs touch-manipulation ${formData.kitchen?.size === opt ? 'bg-red-500 text-white border-red-500' : 'bg-white text-gray-700 hover:border-red-400 active:bg-gray-50'}`}>
                                     {opt}
@@ -578,8 +578,8 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
                         <div className="hidden lg:block">
-                        <h3 className="text-xl font-bold text-gray-800 mb-6">Select Kitchen Units Required</h3>
-                        <p className="text-sm text-gray-500 mb-6">You can select multiple options.</p>
+                        <h3 className="text-xl manrope text-gray-800 mb-6">Select Kitchen Units Required</h3>
+                        <p className="text-sm manrope-medium text-gray-500 mb-6">You can select multiple options.</p>
                         <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
                             {kitchenUnits.map(unit => {
                                 const isSelected = formData.kitchen?.units?.includes(unit.name);
@@ -593,7 +593,7 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                                             {isSelected && <div className="w-3 h-3 bg-red-500 rounded"></div>}
                                         </div>
                                         <img src={unit.image} alt={unit.name} className="w-full h-28 object-contain mb-3" />
-                                        <h4 className="font-semibold text-gray-700 text-lg">{unit.name}</h4>
+                                        <h4 className="manrope-medium text-gray-700 text-lg">{unit.name}</h4>
                                     </div>
                                 );
                             })}
@@ -602,8 +602,8 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
 
                         {/* Mobile Version */}
                         <div className="lg:hidden">
-                            <h3 className="text-lg font-bold text-gray-800 mb-4 px-4">Select Kitchen Units Required</h3>
-                            <p className="text-xs text-gray-500 mb-4 px-4">You can select multiple options.</p>
+                            <h3 className="text-lg manrope text-gray-800 mb-4 px-4">Select Kitchen Units Required</h3>
+                            <p className="text-xs manrope-medium text-gray-500 mb-4 px-4">You can select multiple options.</p>
                             <div className="grid grid-cols-1 gap-3 max-w-sm mx-auto px-4 w-[250px]">
                                 {kitchenUnits.map(unit => {
                                     const isSelected = formData.kitchen?.units?.includes(unit.name);
@@ -617,7 +617,7 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                                                 {isSelected && <div className="w-2 h-2 bg-red-500 rounded"></div>}
                                             </div>
                                             <img src={unit.image} alt={unit.name} className="w-full h-40  mb-2" />
-                                            <h4 className="font-semibold text-gray-700 text-sm">{unit.name}</h4>
+                                            <h4 className="manrope-medium text-gray-700 text-sm">{unit.name}</h4>
                                         </div>
                                     );
                                 })}
@@ -636,13 +636,13 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
             {renderSlide()}
              {slide > 0 && (
                 <div className="flex justify-center items-center mt-8 md:mt-12 pt-6 md:pt-8 border-t px-4">
-                    <button onClick={() => setSlide(s => s - 1)} disabled={slide === 0} className="font-bold text-gray-500 hover:text-red-500 disabled:text-gray-300 mr-4 md:mr-8 text-sm md:text-base">
+                    <button onClick={() => setSlide(s => s - 1)} disabled={slide === 0} className="manrope text-gray-500 hover:text-red-500 disabled:text-gray-300 mr-4 md:mr-8 text-sm md:text-base">
                         Back
                     </button>
                     <div className="flex space-x-2">
                         {[0, 1, 2].map(s => <div key={s} className={`w-2 h-2 rounded-full ${slide === s ? 'bg-red-500' : 'bg-gray-300'}`}></div>)}
                     </div>
-                    <button onClick={() => setSlide(s => Math.min(2, s + 1))} disabled={slide === 2} className="font-bold text-gray-500 hover:text-red-500 disabled:text-gray-300 ml-4 md:ml-8 text-sm md:text-base">
+                    <button onClick={() => setSlide(s => Math.min(2, s + 1))} disabled={slide === 2} className="manrope text-gray-500 hover:text-red-500 disabled:text-gray-300 ml-4 md:ml-8 text-sm md:text-base">
                         Next
                     </button>
                 </div>
@@ -722,7 +722,7 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
                         <div className="hidden lg:block">
-                            <h2 className="text-2xl font-bold text-gray-800 mb-6">Select Material Type</h2>
+                            <h2 className="text-2xl manrope text-gray-800 mb-6">Select Material Type</h2>
                             <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
                                 {materialTypes.map(material => {
                                     const isSelected = formData.material?.type === material.name;
@@ -733,17 +733,17 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
                                                 handleOptionClick('type', material.name);
                                                 setSlide(1); // Auto-advance
                                             }}
-                                            className={`relative p-6 border-2 rounded-lg cursor-pointer transition-all ${ 
+                                            className={`relative p-6 border-2 manrope rounded-lg cursor-pointer transition-all ${ 
                                                 isSelected ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-gray-50 hover:border-red-300' 
                                             }`}
                                         >
-                                            <div className={`absolute top-4 right-4 w-6 h-6 border-2 rounded-full flex items-center justify-center ${
+                                            <div className={`absolute top-4 manrope-medium right-4 w-6 h-6 border-2 rounded-full flex items-center justify-center ${
                                                 isSelected ? 'border-red-500' : 'border-gray-400'
                                             }`}>
                                                 {isSelected && <div className="w-3 h-3 bg-red-500 rounded-full"></div>}
                                             </div>
                                             <img src={material.image} alt={material.name} className="w-full h-28 object-contain mb-3" />
-                                            <h4 className="font-semibold text-gray-700 text-lg mb-2">{material.name}</h4>
+                                            <h4 className="manrope text-gray-700 text-lg mb-2">{material.name}</h4>
                                             <ul className="list-disc pl-5 text-gray-600 text-sm text-left space-y-1">
                                                 {getDescriptionBullets(material.description).map((item, idx) => (
                                                     <li key={idx}>{formatMaterialDescription(item)}</li>
@@ -757,8 +757,8 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
 
                         {/* Mobile Version */}
                         <div className="lg:hidden">
-                            <h2 className="text-lg font-bold text-gray-800 mb-4 px-4">Select Material Type</h2>
-                            <div className="grid grid-cols-1 gap-3 max-w-sm mx-auto px-4 w-[250px]">
+                            <h2 className="text-lg manrope text-gray-800 mb-4 px-4">Select Material Type</h2>
+                            <div className="grid grid-cols-1 gap-3 manrope max-w-sm mx-auto px-4 w-[250px]">
                                 {materialTypes.map(material => {
                                     const isSelected = formData.material?.type === material.name;
                                     return (
@@ -778,7 +778,7 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
                                                 {isSelected && <div className="w-2 h-2 bg-red-500 rounded-full"></div>}
                                             </div>
                                             <img src={material.image} alt={material.name} className="w-full h-40 object-contain mb-2" />
-                                            <h4 className="font-semibold text-gray-700 text-sm mb-1">{material.name}</h4>
+                                            <h4 className="manrope text-gray-700 text-sm mb-1">{material.name}</h4>
                                             <ul className="list-disc pl-5 text-gray-600 text-xs text-left space-y-1">
                                                 {getDescriptionBullets(material.description).map((item, idx) => (
                                                     <li key={idx}>{formatMaterialDescription(item)}</li>
@@ -796,8 +796,8 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
     <div className="text-center">
                         {/* Laptop/Desktop Version */}
                         <div className="hidden lg:block">
-                            <h3 className="text-xl font-bold text-gray-800 mb-6">Select Finish Type</h3>
-                            <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
+                            <h3 className="text-xl manrope text-gray-800 mb-6">Select Finish Type</h3>
+                            <div className="grid grid-cols-3 manrope-medium gap-6 max-w-4xl mx-auto">
                                 {finishOptions.map(opt => {
                                     const isSelected = formData.material?.finish === opt.name;
                                     return (
@@ -823,8 +823,8 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
 
                         {/* Mobile Version */}
                         <div className="lg:hidden">
-                            <h3 className="text-lg font-bold text-gray-800 mb-4 px-4">Select Finish Type</h3>
-                            <div className="grid grid-cols-1 gap-4 max-w-sm mx-auto px-4 w-[250px]">
+                            <h3 className="text-lg manrope text-gray-800 mb-4 px-4">Select Finish Type</h3>
+                            <div className="grid grid-cols-1 gap-4 manrope max-w-sm mx-auto px-4 w-[250px]">
                                 {finishOptions.map(opt => {
                                     const isSelected = formData.material?.finish === opt.name;
                                     return (
@@ -859,13 +859,13 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
             {renderSlide()}
             {slide > 0 && (
                 <div className="flex justify-center items-center mt-8 md:mt-12 pt-6 md:pt-8 border-t px-4">
-                    <button onClick={() => setSlide(s => s - 1)} disabled={slide === 0} className="font-bold text-gray-500 hover:text-red-500 disabled:text-gray-300 mr-4 md:mr-8 text-sm md:text-base">
+                    <button onClick={() => setSlide(s => s - 1)} disabled={slide === 0} className="manrope text-gray-500 hover:text-red-500 disabled:text-gray-300 mr-4 md:mr-8 text-sm md:text-base">
                         Back
                     </button>
                     <div className="flex space-x-2">
                         {[0, 1].map(s => <div key={s} className={`w-2 h-2 rounded-full ${slide === s ? 'bg-red-500' : 'bg-gray-300'}`}></div>)}
                     </div>
-                    <button onClick={() => setSlide(s => Math.min(1, s + 1))} disabled={slide === 1} className="font-bold text-gray-500 hover:text-red-500 disabled:text-gray-300 ml-4 md:ml-8 text-sm md:text-base">
+                    <button onClick={() => setSlide(s => Math.min(1, s + 1))} disabled={slide === 1} className="manrope text-gray-500 hover:text-red-500 disabled:text-gray-300 ml-4 md:ml-8 text-sm md:text-base">
                         Next
                     </button>
                 </div>
@@ -904,8 +904,8 @@ const Step5Collections: React.FC<StepProps> = ({ formData, setFormData }) => {
     <div className="text-center">
             {/* Laptop/Desktop Version */}
             <div className="hidden lg:block">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Choose Other Units</h2>
-                <p className="text-sm text-gray-500 mb-6">You can select multiple options.</p>
+                <h2 className="text-2xl manrope text-gray-800 mb-6">Choose Other Units</h2>
+                <p className="text-sm manrope-medium text-gray-500 mb-6">You can select multiple options.</p>
                 <div className="grid grid-cols-2 gap-6 max-w-3xl mx-auto">
                     {collections.map(c => {
                         const isSelected = selected.includes(c.name);
@@ -919,7 +919,7 @@ const Step5Collections: React.FC<StepProps> = ({ formData, setFormData }) => {
                                     {isSelected && <div className="w-2.5 h-2.5 bg-red-500 rounded"></div>}
                                 </div>
                                 <img src={c.image} alt={c.name} className="w-full h-50 object-cover rounded-md mb-3" />
-                                <h4 className="font-semibold text-gray-700 text-base">{c.name}</h4>
+                                <h4 className="manrope-medium text-gray-700 text-base">{c.name}</h4>
                             </div>
                         );
                     })}
@@ -928,8 +928,8 @@ const Step5Collections: React.FC<StepProps> = ({ formData, setFormData }) => {
 
             {/* Mobile Version */}
             <div className="lg:hidden">
-                <h2 className="text-lg font-bold text-gray-800 mb-4 px-4">Choose Other Units</h2>
-                <p className="text-xs text-gray-500 mb-4 px-4">You can select multiple options.</p>
+                <h2 className="text-lg manrope text-gray-800 mb-4 px-4">Choose Other Units</h2>
+                <p className="text-xs manrope-medium text-gray-500 mb-4 px-4">You can select multiple options.</p>
                 <div className="grid grid-cols-1 gap-4 max-w-sm mx-auto px-4 w-[250px]">
                     {collections.map(c => {
                         const isSelected = selected.includes(c.name);
@@ -943,7 +943,7 @@ const Step5Collections: React.FC<StepProps> = ({ formData, setFormData }) => {
                                     {isSelected && <div className="w-2 h-2 bg-red-500 rounded"></div>}
                                 </div>
                                 <img src={c.image} alt={c.name} className="w-full h-40 object-cover rounded-md mb-2" />
-                                <h4 className="font-semibold text-gray-700 text-sm">{c.name}</h4>
+                                <h4 className="manrope-medium text-gray-700 text-sm">{c.name}</h4>
                             </div>
                         );
                     })}
@@ -956,13 +956,13 @@ const Step5Collections: React.FC<StepProps> = ({ formData, setFormData }) => {
         <div>
             {renderSlide()}
             <div className="flex justify-center items-center mt-8 md:mt-12 pt-6 md:pt-8 border-t px-4">
-                <button onClick={() => setSlide(s => Math.max(0, s - 1))} disabled={slide === 0} className="font-bold text-gray-500 hover:text-red-500 disabled:text-gray-300 mr-4 md:mr-8 text-sm md:text-base">
+                <button onClick={() => setSlide(s => Math.max(0, s - 1))} disabled={slide === 0} className="manrope text-gray-500 hover:text-red-500 disabled:text-gray-300 mr-4 md:mr-8 text-sm md:text-base">
                     Back
                 </button>
                 <div className="flex space-x-2">
                     {[0].map(s => <div key={s} className={`w-2 h-2 rounded-full ${slide === s ? 'bg-red-500' : 'bg-gray-300'}`}></div>)}
                 </div>
-                <button onClick={() => setSlide(s => s)} disabled className="font-bold text-gray-300 ml-4 md:ml-8 text-sm md:text-base">
+                <button onClick={() => setSlide(s => s)} disabled className="manrope text-gray-300 ml-4 md:ml-8 text-sm md:text-base">
                     Next
                 </button>
             </div>
@@ -1088,7 +1088,7 @@ export default function CalculatorSetup() {
             {/* Laptop/Desktop Header */}
             <div className="hidden lg:flex justify-between items-center w-full p-6">
             <Link href="/"><img src="/hub.png" alt='logo' className='w-[150px] h-[60px]'></img></Link>
-            <div className="text-lg font-semibold text-gray-600">
+            <div className="text-lg manrope-medium text-gray-600">
                 {currentStep + 1}/{steps.length}
                 </div>
             </div>
@@ -1096,7 +1096,7 @@ export default function CalculatorSetup() {
             {/* Mobile Header */}
             <div className="lg:hidden flex justify-between items-center w-full p-4">
                 <img src="/hub.png" alt='logo' className='w-[120px] h-[48px]'></img>
-                <div className="text-sm font-semibold text-gray-600">
+                <div className="text-sm manrope-medium text-gray-600">
                     {currentStep + 1}/{steps.length}
                 </div>
             </div>
@@ -1120,14 +1120,14 @@ export default function CalculatorSetup() {
                 <button
                   onClick={handleBack}
                   disabled={currentStep === 0}
-                      className="font-bold text-gray-500 hover:text-red-500 transition-colors disabled:text-gray-300 disabled:cursor-not-allowed text-base"
+                      className="manrope text-gray-500 hover:text-red-500 transition-colors disabled:text-gray-300 disabled:cursor-not-allowed text-base"
                     >
                       BACK
                     </button>
                     <button
                       onClick={currentStep === steps.length - 1 ? handleFinish : handleNext}
                       disabled={isNextDisabled()}
-                      className="bg-red-500 text-white font-bold py-3 px-10 rounded-lg shadow-md hover:bg-red-600 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed text-base"
+                      className="bg-red-500 text-white manrope py-3 px-10 rounded-lg shadow-md hover:bg-red-600 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed text-base"
                       data-calc-finish-btn={currentStep === steps.length - 1 ? true : undefined}
                     >
                       {currentStep === steps.length - 1 ? 'Submit' : 'NEXT'}
@@ -1152,14 +1152,14 @@ export default function CalculatorSetup() {
                     <button
                       onClick={handleBack}
                       disabled={currentStep === 0}
-                      className="font-bold text-gray-500 hover:text-red-500 transition-colors disabled:text-gray-300 disabled:cursor-not-allowed text-sm touch-manipulation"
+                      className="manrope text-gray-500 hover:text-red-500 transition-colors disabled:text-gray-300 disabled:cursor-not-allowed text-sm touch-manipulation"
                 >
                   BACK
                 </button>
                 <button
                   onClick={currentStep === steps.length - 1 ? handleFinish : handleNext}
                   disabled={isNextDisabled()}
-                      className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-red-600 active:bg-red-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed text-sm touch-manipulation"
+                      className="bg-red-500 text-white manrope py-2 px-6 rounded-lg shadow-md hover:bg-red-600 active:bg-red-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed text-sm touch-manipulation"
                       data-calc-finish-btn={currentStep === steps.length - 1 ? true : undefined}
                 >
                   {currentStep === steps.length - 1 ? 'Submit' : 'NEXT'}
