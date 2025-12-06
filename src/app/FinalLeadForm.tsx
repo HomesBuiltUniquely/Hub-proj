@@ -195,7 +195,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             onChange={handleInputChange}
             placeholder="Name *"
             required
-            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 manrope-medium"
           />
           <input
             type="email"
@@ -204,7 +204,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             onChange={handleInputChange}
             placeholder="Email *"
             required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 manrope-medium"
           />
           <input
             type="tel"
@@ -213,7 +213,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             onChange={handleInputChange}
             placeholder="Phone Number *"
             required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 manrope-medium"
           />
           
           {/* OTP Section */}
@@ -223,7 +223,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
                 <button
                   type="button"
                   onClick={sendOTP}
-                  className="w-full h-[50px] bg-blue-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-blue-600 transition-colors"
+                  className="w-full h-[50px] bg-blue-500 text-white rounded-3xl text-base sm:text-lg manrope-medium hover:bg-blue-600 transition-colors"
                 >
                   Send OTP
                 </button>
@@ -234,25 +234,25 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                     placeholder="Enter OTP *"
-                    className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+                    className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 manrope-medium"
                   />
                   <button
                     type="button"
                     onClick={verifyOTP}
                     disabled={isVerifying}
-                    className="w-full h-[50px] bg-green-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
+                    className="w-full h-[50px] bg-green-500 text-white rounded-3xl text-base sm:text-lg manrope-medium hover:bg-green-600 transition-colors disabled:opacity-50"
                   >
                     {isVerifying ? 'Verifying...' : 'Verify OTP'}
                   </button>
                 </div>
               ) : (
-                <div className="w-full h-[50px] bg-green-100 text-green-700 rounded-3xl text-base sm:text-lg pl-6 flex items-center font-medium">
+                <div className="w-full h-[50px] bg-green-100 text-green-700 rounded-3xl text-base sm:text-lg pl-6 flex items-center manrope-medium">
                   ✅ Phone Number Verified
                 </div>
               )}
               
               {otpError && (
-                <div className="text-red-500 text-sm text-center">{otpError}</div>
+                <div className="text-red-500 text-sm manrope-medium text-center">{otpError}</div>
               )}
             </div>
           )}
@@ -262,7 +262,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               onClick={() => {
                 setPossessionOpen(!possessionOpen);
               }}
-              className={`w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-lg flex items-center justify-between px-6 cursor-pointer ${!selectedPossession && 'text-gray-400'}`}
+              className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-lg flex items-center justify-between px-6 cursor-pointer ${!selectedPossession && 'text-gray-400'}`}
             >
               <span>
                 {selectedPossession || "Project Type & Possession *"}
@@ -270,7 +270,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               <span className="text-gray-500">&#9662;</span>
             </div>
             {possessionOpen && (
-              <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
+              <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto manrope-medium">
                 {budgetOptions.map((option: string) => (
                   <li
                     key={option}
@@ -289,7 +289,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               required
               value={selectedPincode}
               onChange={e => setSelectedPincode(e.target.value)}
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
+              className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
             >
               <option className="text-gray-400" value="" disabled>Property Pincode *</option>
               {Pincode.map((pin, idx) => (<option key={idx} value={pin}>{pin}</option>))}
@@ -303,7 +303,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
           <div className="text-sm text-gray-500">{isSubmitting ? 'Submitting...' : ''}</div>
         </div>
 
-        <div className="text-xs mt-4 font-medium text-center">
+        <div className="text-xs mt-4 manrope-medium text-center">
         By submitting, you agree to our Privacy Policy & Terms & Conditions
 
         </div>
