@@ -227,7 +227,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                     <div className="w-[300px] h-[350px] flex justify-end">
                         <Image
-                            src="/LaunchOfferD.png"
+                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/LaunchofferpopD.png"
                             alt="Offer Image"
                             width={350}
                             height={300}
@@ -248,7 +248,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                     <div className="w-full h-[190px] flex justify-end">
                         <Image
-                            src="/LaunchOfferM.png"
+                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/LaunchofferpopM.png"
                             alt="Offer Image"
                             width={350}
                             height={300}
