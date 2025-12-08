@@ -43,14 +43,14 @@ const Home: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const router = useRouter();
 
-  const scrollToForm = () => {
-    if (typeof window !== 'undefined') {
-      const formElement = document.getElementById('franchise-form');
-      if (formElement) {
-        formElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
+  // const scrollToForm = () => {
+  //   if (typeof window !== 'undefined') {
+  //     const formElement = document.getElementById('franchise-form');
+  //     if (formElement) {
+  //       formElement.scrollIntoView({ behavior: 'smooth' });
+  //     }
+  //   }
+  // };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
