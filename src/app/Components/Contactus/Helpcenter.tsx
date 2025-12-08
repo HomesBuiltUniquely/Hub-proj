@@ -13,12 +13,13 @@ const enquiries = [
 const HelpCenter: React.FC = () => {
   // ✅ DESKTOP SCROLL (1280px / 1440px)
   const scrollRef1280 = useRef<HTMLDivElement>(null);
-  const scrollRef1440 = useRef<HTMLDivElement>(null);
+  const scrollRef1920 = useRef<HTMLDivElement>(null);
+  const scrollRef2560 = useRef<HTMLDivElement>(null);
 
   const scrollReq = (dir: "left" | "right") => {
     // pick which ref to use based on current screen width
     const activeRef =
-      window.innerWidth >= 1440 ? scrollRef1440 : scrollRef1280;
+      window.innerWidth >= 1920 ? scrollRef2560 : window.innerWidth >= 1440 ? scrollRef1920 : scrollRef1280;
 
     if (activeRef.current) {
       const scrollAmount = activeRef.current.clientWidth * 0.7; // Adjust scroll amount as needed
@@ -32,28 +33,37 @@ const HelpCenter: React.FC = () => {
   return (
     <div>
       <style jsx>{`
-        /* Hide both by default */
-        .desktop-1280,
-        .desktop-1440 {
-          display: none !important;
-        }
+  /* Hide all desktop layouts by default */
+  .desktop-1280,
+  .desktop-1920,
+  .desktop-2560 {
+    display: none !important;
+  }
 
-        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
-        @media (min-width: 1024px) and (max-width: 1439px) {
-          .desktop-1280 {
-            display: block !important;
-          }
-        }
+  /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    .desktop-1280 {
+      display: block !important;
+    }
+  }
 
-        /* Show 1440px layout for large desktops (>=1440px) */
-        @media (min-width: 1440px) {
-          .desktop-1440 {
-            display: block !important;
-          }
-        }
-      `}</style>
+  /* Show 1920px layout for large desktops (1440px–1920px) */
+  @media (min-width: 1440px) and (max-width: 1920px) {
+    .desktop-1920 {
+      display: block !important;
+    }
+  }
 
-      <div className="desktop-1440">
+  /* Show 2560px layout for ultra-wide (>1920px) */
+  @media (min-width: 1921px) {
+    .desktop-2560 {
+      display: block !important;
+    }
+  }
+`}</style>
+
+
+      <div className="desktop-2560">
         <div className="min-h-screen py-5 mt-10">
           <section className="max-w-[1440px] mx-auto px-8 -mt-5 relative">
             {/* Title + Buttons */}
@@ -104,30 +114,113 @@ const HelpCenter: React.FC = () => {
               </div>
             </div>
 
+           
             {/* Scrollable Cards */}
             <div
-              ref={scrollRef1440}
-              className="flex gap-6 overflow-x-auto pb-4"
+              ref={scrollRef2560}
+              className="scroll-box flex gap-6 overflow-x-auto pb-4"
               style={{ scrollBehavior: "smooth" }}
             >
               {enquiries.map((item) => (
                 <a
                   href={item.link}
                   key={item.title}
-                  className="flex-shrink-0 min-w-[280px] max-w-[300px] min-h-[150px] bg-[#ddcdc1] rounded-xl p-6 hover:bg-[#e8d5c8] transition-all duration-300 shadow-md hover:shadow-lg flex flex-col justify-between"
+                  className="flex-shrink-0 min-w-[360px] max-w-[400px] min-h-[150px] bg-[#ddcdc1] rounded-xl p-6 hover:bg-[#e8d5c8] transition-all duration-300 shadow-md hover:shadow-lg flex flex-col justify-between"
                 >
-                  {/* Title */}
                   <div className="manrope text-lg text-gray-800 mb-6">
                     {item.title}
                   </div>
 
-                  {/* Arrow button left-aligned */}
                   <button className="w-10 h-10 border-2 border-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
                     <span className="text-2xl -mt-1 text-black">&#8594;</span>
                   </button>
                 </a>
               ))}
             </div>
+
+          </section>
+        </div>
+
+      </div>
+
+
+      {/* 1920 Version */}
+
+      <div className="desktop-1920">
+        <div className="min-h-screen py-5 mt-10">
+          <section className="w-full mx-auto px-20 -mt-5 relative">
+            {/* Title + Buttons */}
+            <div className="flex items-center justify-between mb-10">
+              <h1 className="text-5xl wulkan-display-bold text-gray-800">
+                Connect with the right team
+              </h1>
+
+              {/* Navigation Buttons */}
+              <div className="flex gap-2">
+                <button
+                  onClick={() => scrollReq("left")}
+                  className="w-12 h-12 border-2 border-gray-400 rounded-full  flex items-center justify-center hover:bg-gray-200 transition-colors"
+                >
+                  <svg
+                    className="w-5 h-5 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={() => scrollReq("right")}
+                  className="w-12 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+                >
+                  <svg
+                    className="w-5 h-5 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Scrollable Cards */}
+
+            <div
+              ref={scrollRef1920} // ✅ linked correctly
+              className="flex gap-6 scroll-none  pb-15"
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {enquiries.map((item) => (
+                <a
+                  href={item.link}
+                  key={item.title}
+                  className="flex-shrink-0 min-w-[275px]  min-h-[100px] max-h-[250px] bg-[#ddcdc1] rounded-xl p-6 hover:bg-[#e8d5c8] transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  <div className="manrope text-md mb-5 text-gray-800">
+                    {item.title}
+                  </div>
+
+                  <button className="w-10 h-10 border-2 border-black rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                    <span className="text-3xl -mt-1 text-black">&#8594;</span>
+                  </button>
+                </a>
+              ))}
+            </div>
+          
           </section>
         </div>
 
@@ -137,7 +230,7 @@ const HelpCenter: React.FC = () => {
       <div className="desktop-1280">
 
         <div className=" min-h-screen py-20">
-          <section className="max-w-screen-2xl mx-auto px-8 relative">
+          <section className="max-w-screen-2xl mx-auto px-15 relative">
             {/* Title + Buttons in same line (structure retained) */}
             <div className="flex items-center justify-between mb-10">
               <h1 className="text-5xl wulkan-display-bold text-gray-800">
@@ -212,6 +305,7 @@ const HelpCenter: React.FC = () => {
         </div>
 
       </div>
+
 
       {/* MOBILE VERSION */}
       <div className="md:hidden mobile min-h-screen px-6 -mt-35 flex justify-center">

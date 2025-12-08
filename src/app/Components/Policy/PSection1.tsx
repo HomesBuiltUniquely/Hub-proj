@@ -321,63 +321,193 @@ const LegalSection = () => {
   const [activeTab, setActiveTab] = useState("privacy");
 
   return (
-    <section className="w-full mx-auto my-4 md:my-8 bg-[#f1f2f6] p-4 md:p-6 lg:p-10 rounded-xl md:rounded-2xl">
-      {/* Tabs */}
-      <div className="w-full max-w-7xl mx-auto mb-6 md:mb-8">
-        {/* Desktop Tabs - Horizontal Scroll */}
-        <div className="hidden md:block">
-          <div className="flex border border-blue-300 rounded-xl overflow-x-auto overflow-y-hidden">
-            {TABS.map((tab) => (
-              <button
-                key={tab.value}
-                className={`flex-shrink-0 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors min-w-fit
-                  ${activeTab === tab.value
-                    ? "bg-white text-black font-semibold border-blue-400 border-b-2"
-                    : "bg-blue-50 text-gray-500 hover:bg-blue-100"}
-                `}
-                onClick={() => setActiveTab(tab.value)}
-                style={{
-                  border: "none",
-                  outline: "none"
-                }}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
 
-        {/* Mobile Tabs - Enhanced Dropdown */}
-        <div className="md:hidden">
-          <div className="relative">
-            <select
-              value={activeTab}
-              onChange={(e) => setActiveTab(e.target.value)}
-              className="w-full p-4 border-2 border-blue-300 rounded-xl bg-white text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none text-base"
-            >
+    <div>
+
+      <style jsx>{`
+        /* Hide both by default */
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none !important;
+        }
+
+        /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
+
+        
+
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+           /* Show 1920px layout for large desktops (>1920px) */
+        @media (min-width: 1921px)  {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+
+      `}</style>
+
+
+      <section className="desktop-2560 w-full mx-auto my-4 md:my-8 bg-[#f1f2f6] p-4 md:p-6 lg:p-10 rounded-xl md:rounded-2xl">
+        {/* Tabs */}
+        <div className="w-full max-w-7xl mx-auto mb-6 md:mb-8">
+          {/* Desktop Tabs - Horizontal Scroll */}
+          <div className="hidden md:block">
+          <div className="flex border border-blue-300 rounded-xl overflow-x-auto whitespace-nowrap overflow-y-hidden">
+
               {TABS.map((tab) => (
-                <option key={tab.value} value={tab.value}>
+                <button
+                  key={tab.value}
+                  className={`flex-shrink-0 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors min-w-fit
+                  ${activeTab === tab.value
+                      ? "bg-white text-black font-semibold border-blue-400 border-b-2"
+                      : "bg-blue-50 text-gray-500 hover:bg-blue-100"}
+                `}
+                  onClick={() => setActiveTab(tab.value)}
+                  style={{
+                    border: "none",
+                    outline: "none"
+                  }}
+                >
                   {tab.label}
-                </option>
+                </button>
               ))}
-            </select>
-            {/* Custom dropdown arrow */}
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
             </div>
           </div>
+
+          {/* Content */}
+          <div className="mx-auto max-w-4xl">
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
+              {getContent(activeTab)}
+            </div>
+          </div>
+
         </div>
+
+      </section>
+
+      <section className="desktop-1920 w-full mx-auto my-4 md:my-8 bg-[#f1f2f6] px-20 rounded-xl ">
+        {/* Tabs */}
+        <div className="w-full mx-auto mb-6 md:mb-8">
+          {/* Desktop Tabs - Horizontal Scroll */}
+          <div className="hidden md:block">
+         <div className="flex border border-blue-300 rounded-xl overflow-x-auto whitespace-nowrap overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
+
+
+              {TABS.map((tab) => (
+                <button
+                  key={tab.value}
+                  className={`flex-shrink-0 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors min-w-fit
+                  ${activeTab === tab.value
+                      ? "bg-white text-black font-semibold border-blue-400 border-b-2"
+                      : "bg-blue-50 text-gray-500 hover:bg-blue-100"}
+                `}
+                  onClick={() => setActiveTab(tab.value)}
+                  style={{
+                    border: "none",
+                    outline: "none"
+                  }}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="mx-auto w-full mt-15">
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
+              {getContent(activeTab)}
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section className="desktop-1280 w-full mx-auto my-4 md:my-8 bg-[#f1f2f6] p-4 md:p-6 lg:p-10 rounded-xl md:rounded-2xl">
+        {/* Tabs */}
+        <div className="w-full max-w-7xl mx-auto mb-6 md:mb-8">
+          {/* Desktop Tabs - Horizontal Scroll */}
+          <div className="hidden md:block">
+            <div className="flex border border-blue-300 rounded-xl overflow-x-auto overflow-y-hidden">
+              {TABS.map((tab) => (
+                <button
+                  key={tab.value}
+                  className={`flex-shrink-0 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors min-w-fit
+                  ${activeTab === tab.value
+                      ? "bg-white text-black font-semibold border-blue-400 border-b-2"
+                      : "bg-blue-50 text-gray-500 hover:bg-blue-100"}
+                `}
+                  onClick={() => setActiveTab(tab.value)}
+                  style={{
+                    border: "none",
+                    outline: "none"
+                  }}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="mx-auto w-full mt-5 px-3 mb-15">
+            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
+              {getContent(activeTab)}
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* Mobile Tabs - Enhanced Dropdown */}
+      <div className="md:hidden">
+        <div className="relative px-1">
+          <select
+            value={activeTab}
+            onChange={(e) => setActiveTab(e.target.value)}
+            className="w-full p-4 border-2 border-blue-300 rounded-xl bg-white text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none text-base"
+          >
+            {TABS.map((tab) => (
+              <option key={tab.value} value={tab.value}>
+                {tab.label}
+              </option>
+            ))}
+          </select>
+          {/* Custom dropdown arrow */}
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="mx-auto max-w-4xl mt-5 px-3 mb-15">
+          <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
+            {getContent(activeTab)}
+          </div>
+        </div>
+
       </div>
 
-      {/* Content */}
-      <div className="mx-auto max-w-4xl">
-        <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 shadow-sm">
-          {getContent(activeTab)}
-        </div>
-      </div>
-    </section>
+
+
+    </div>
   );
 };
 
