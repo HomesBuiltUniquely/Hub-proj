@@ -10,29 +10,29 @@ import NavMore from "../NavMore";
 import router from "next/router";
 import OverlapNavBar from "../OverlapNavBar";
 
-const FRANCHISE_OPTIONS = [
-  {
-    title: "FICO (Franchise Invested Company Operated)",
-    details: [
-      "Exclusively Tier 1/Metro cities",
-      "Projected ROI - 3x in 3 years",
-      "Investment  50-80 Lakhs",
-      "Minimum area - 2000 sq. ft."
-    ],
-    text: "Minimum effort, Maximum return"
-  },
-  {
-    title: "FOFO (Franchise Owned Franchise Operated)",
-    details: [
-      "Tier 2 cities",
-      "Projected ROI - 200% in 1 year",
-      "Investment from 18 Lakh",
-      "Minimum area - 800 sq. ft.",
-    ],
-    text: "Grow Your Empire!"
-  },
+// const FRANCHISE_OPTIONS = [
+//   {
+//     title: "FICO (Franchise Invested Company Operated)",
+//     details: [
+//       "Exclusively Tier 1/Metro cities",
+//       "Projected ROI - 3x in 3 years",
+//       "Investment  50-80 Lakhs",
+//       "Minimum area - 2000 sq. ft."
+//     ],
+//     text: "Minimum effort, Maximum return"
+//   },
+//   {
+//     title: "FOFO (Franchise Owned Franchise Operated)",
+//     details: [
+//       "Tier 2 cities",
+//       "Projected ROI - 200% in 1 year",
+//       "Investment from 18 Lakh",
+//       "Minimum area - 800 sq. ft.",
+//     ],
+//     text: "Grow Your Empire!"
+//   },
   // Add more objects if you want more franchise cards
-];
+// ];
 
 
 function handleClick() {
@@ -43,14 +43,14 @@ const Home: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const router = useRouter();
 
-  const scrollToForm = () => {
-    if (typeof window !== 'undefined') {
-      const formElement = document.getElementById('franchise-form');
-      if (formElement) {
-        formElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
+  // const scrollToForm = () => {
+  //   if (typeof window !== 'undefined') {
+  //     const formElement = document.getElementById('franchise-form');
+  //     if (formElement) {
+  //       formElement.scrollIntoView({ behavior: 'smooth' });
+  //     }
+  //   }
+  // };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -186,6 +186,14 @@ const Home: React.FC = () => {
             display: block !important;
           }
         }
+
+         /* mobile layout for extra large desktops (>1920px) */
+        @media (max-width: 1023px) {
+          .mobile-1 {
+            display: block !important;
+          }
+        }
+
       `}</style>
 
 
@@ -284,7 +292,7 @@ const Home: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full font-bold py-2 rounded mt-4 transition flex items-center justify-center ${isSubmitting
+                className={`w-full manrope py-2 rounded mt-4 transition flex items-center justify-center ${isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
                   : 'bg-red-600 hover:bg-red-700'
                   }`}
@@ -304,47 +312,6 @@ const Home: React.FC = () => {
             </form>
           </div>
 
-        </div>
-
-        <div className="w-[1200px] manrope-medium text-center mx-auto mt-20 text-[18px]">
-          HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.
-        </div>
-        <div className="w-[1200px] manrope-medium text-center mx-auto mt-4 text-[18px]">Our mission, &#34;Homes Uniquely Built&#34;, reflects our commitment to crafting personalized spaces that inspire. As a partner, you gain the power of a proven business model, an ecosystem of high-performing brands, and the confidence that comes with a fast-growing market.</div>
-
-        <div className="flex justify-center">
-          <section className="w-full max-w-[1440px] h-[500px] mt-20">
-            <h2 className="text-4xl manrope mb-4 text-center">Business Models</h2>
-
-            {/* Flexbox keeps boxes centered for any count */}
-            <div className="flex flex-wrap justify-center gap-[50px] mt-10">
-              {FRANCHISE_OPTIONS.map((option, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#ddcdc1] w-[400px] h-[350px] rounded-xl shadow-md p-6 flex flex-col justify-between border border-gray-100"
-                >
-                  <div>
-                    <strong className="manrope-medium">{option.title}</strong>
-                    <ul className="list-disc manrope-medium ml-6 mt-3 mb-4 text-gray-700 space-y-1">
-                      {option.details.map((d, i) => (
-                        <li key={i} className={d.includes('ROI') ? 'text-black' : ''}>
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="text-center text-lg manrope">
-                    {option.text}
-                  </div>
-                  <button
-                    onClick={scrollToForm}
-                    className="bg-white text-black manrope-medium px-4 py-2 rounded-md mt-2 hover:bg-[#ef0101] transition-colors"
-                  >
-                    Know More
-                  </button>
-                </div>
-              ))}
-            </div>
-          </section>
         </div>
       </div>
 
@@ -445,7 +412,7 @@ const Home: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full font-bold py-2 rounded mt-4 transition flex items-center justify-center ${isSubmitting
+                className={`w-full font-bold py-2 rounded mt-4 manrope transition flex items-center justify-center ${isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
                   : 'bg-red-600 hover:bg-red-700'
                   }`}
@@ -467,46 +434,7 @@ const Home: React.FC = () => {
 
         </div>
 
-        <div className="w-[1200px] manrope-medium text-center mx-auto mt-20 text-[18px]">
-          HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.
-        </div>
-        <div className="w-[1200px] manrope-medium text-center mx-auto mt-4 text-[18px]">Our mission, &#34;Homes Uniquely Built&#34;, reflects our commitment to crafting personalized spaces that inspire. As a partner, you gain the power of a proven business model, an ecosystem of high-performing brands, and the confidence that comes with a fast-growing market.</div>
-
-        <div className="flex justify-center">
-          <section className="w-full max-w-[1440px] h-[500px] mt-20">
-            <h2 className="text-4xl manrope mb-4 text-center">Business Models</h2>
-
-            {/* Flexbox keeps boxes centered for any count */}
-            <div className="flex flex-wrap justify-center gap-[50px] mt-10">
-              {FRANCHISE_OPTIONS.map((option, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#ddcdc1] w-[400px] h-[350px] rounded-xl shadow-md p-6 flex flex-col justify-between border border-gray-100"
-                >
-                  <div>
-                    <strong className="manrope-medium">{option.title}</strong>
-                    <ul className="list-disc manrope-medium ml-6 mt-3 mb-4 text-gray-700 space-y-1">
-                      {option.details.map((d, i) => (
-                        <li key={i} className={d.includes('ROI') ? 'text-black' : ''}>
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="text-center text-lg manrope">
-                    {option.text}
-                  </div>
-                  <button
-                    onClick={scrollToForm}
-                    className="bg-white text-black manrope-medium px-4 py-2 rounded-md mt-2 hover:bg-[#ef0101] transition-colors"
-                  >
-                    Know More
-                  </button>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
+        
       </div>
 
 
@@ -608,7 +536,7 @@ const Home: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full font-bold py-2 rounded mt-4 transition flex items-center justify-center ${isSubmitting
+                className={`w-full font-bold py-2 rounded mt-4 manrope transition flex items-center justify-center ${isSubmitting
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-red-600 hover:bg-red-700"
                   }`}
@@ -647,62 +575,11 @@ const Home: React.FC = () => {
             </form>
           </div>
         </div>
-
-
-        <div className="w-[1100px] manrope-medium text-center mx-auto mt-16 text-[17px]">
-          HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.
-        </div>
-
-        <div className="w-[1100px] manrope-medium text-center mx-auto mt-4 text-[17px]">
-          Our mission, &#34;Homes Uniquely Built&#34;, reflects our commitment to crafting personalized spaces that inspire. As a partner, you gain the power of a proven business model, an ecosystem of high-performing brands, and the confidence that comes with a fast-growing market.
-        </div>
-
-        {/* Franchise Options Section */}
-        <div className="flex justify-center">
-          <section className="w-full max-w-[1280px] h-[480px] mt-16">
-            <h2 className="text-3xl manrope mb-2 text-center">Business Models</h2>
-
-            {/* grid centered dynamically */}
-            <div className="flex flex-wrap manrope-medium justify-center gap-[40px] mt-8">
-              {FRANCHISE_OPTIONS.map((option, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#ddcdc1] w-[380px] h-[330px] rounded-xl manrope-medium text-nowrap shadow-md p-6 flex flex-col justify-between border border-gray-100"
-                >
-                  <div>
-                    <strong className="manrope-medium">{option.title}</strong>
-                    <ul className="list-disc ml-6 mt-3 mb-4 text-gray-700 space-y-1">
-                      {option.details.map((d, i) => (
-                        <li key={i} className={d.includes('ROI') ? 'text-black' : ''}>
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="text-center text-lg manrope">
-                    {option.text}
-                  </div>
-                  <button
-                    onClick={scrollToForm}
-                    className="bg-white text-black manrope-medium px-4 py-2 rounded-md mt-2 hover:bg-[#ef0101] transition-colors"
-                  >
-                    Know More
-                  </button>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
       </div>
-
-
-
-
-
 
       {/* Mobile version */}
 
-      <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-hidden">
+      <div className="mobile-1 md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-hidden">
         <div className="relative h-full w-full p-2">
           {/* Rounded image only */}
           <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" />
@@ -780,7 +657,7 @@ const Home: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-[180px] sm:w-[180px] h-[40px] rounded-full mt-6 transition flex items-center justify-center ${isSubmitting
+                className={`w-[180px] sm:w-[180px] h-[40px] rounded-full mt-6 manrope transition flex items-center justify-center ${isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed text-white'
                   : 'bg-[#ef0101] text-white hover:bg-red-700'
                   }`}
@@ -811,8 +688,6 @@ const Home: React.FC = () => {
         <OverlapNavBar />
 
       </div>
-
-
 
 
       {/* Section2 */}

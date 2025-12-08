@@ -18,10 +18,9 @@ const ContactHeader: React.FC = () => {
     router.push("/");
   }
 
-
   return (
     <div className="w-full">
-       <style jsx>{`
+      <style jsx>{`
         /* Hide both by default */
         .desktop-1280,
         .desktop-1920,
@@ -29,13 +28,13 @@ const ContactHeader: React.FC = () => {
           display: none !important;
         }
 
+
         /* Show 1280px layout for laptops and smaller desktops (>=1024px and <1440px) */
         @media (min-width: 1024px) and (max-width: 1439px) {
           .desktop-1280 {
             display: block !important;
           }
         }
-
 
          /* Show 1920px layout for large desktops (1441px) */
         @media (min-width: 1440px)  and (max-width: 1920px) {
@@ -56,7 +55,6 @@ const ContactHeader: React.FC = () => {
       {/* 2560px Desktop Layout */}
 
       <div className="desktop-2560">
-
         <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Blog%20H.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
@@ -84,20 +82,16 @@ const ContactHeader: React.FC = () => {
               </button>
             </div>
           </div>
-          
-
         </div>
-
-
       </div>
 
 
-        {/* 1920 Version */}
+      {/* 1920 Version */}
 
-        <div className="desktop-1920">
+      <div className="desktop-1920">
 
         <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Blog%20H.png')" }}>
-           {/* Navbar */}
+          {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
@@ -124,7 +118,7 @@ const ContactHeader: React.FC = () => {
               </button>
             </div>
           </div>
-          
+
 
         </div>
 
@@ -229,11 +223,11 @@ const ContactHeader: React.FC = () => {
               </button>
             </div>
           </div>
-          <OverlapNavBar/>
+          <OverlapNavBar />
         </div>
-  
+
       </div>
-     
+
     </div>
   );
 };

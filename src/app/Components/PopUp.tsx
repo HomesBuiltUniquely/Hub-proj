@@ -227,11 +227,12 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                     <div className="w-[300px] h-[350px] flex justify-end">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/PopUp%20Image.png"
+                            src="/LaunchOfferD.png"
                             alt="Offer Image"
                             width={350}
                             height={300}
                             className="rounded-3xl"
+                            
                         />
                     </div>
 
@@ -240,15 +241,15 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             </div>
 
             {/* ================= MOBILE VERSION  ================= */}
-            <div className="mobile-wrapper -mt-25">
+            <div className="mobile-wrapper -mt-25 px-1">
 
-                <div className="w-[340px] bg-gray-100 rounded-2xl p-1 mx-auto shadow-lg flex flex-col gap-4">
+                <div className="w-full bg-gray-100 rounded-2xl p-1 mx-auto shadow-lg flex flex-col gap-4">
 
                     {/* IMAGE - TOP */}
 
                     <div className="w-full h-[190px] flex justify-end">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/PopUp%20Image%20M.png"
+                            src="/LaunchofferM.png"
                             alt="Offer Image"
                             width={350}
                             height={300}
