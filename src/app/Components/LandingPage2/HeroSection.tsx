@@ -567,8 +567,8 @@ export function HeroSection() {
                                     {submitMessage && (
                                         <div
                                             className={`mt-4 text-sm ${submitMessage.includes("successfully")
-                                                    ? "text-green-400"
-                                                    : "text-red-400"
+                                                ? "text-green-400"
+                                                : "text-red-400"
                                                 }`}
                                         >
                                             {submitMessage}
