@@ -217,11 +217,6 @@ const Herosection: React.FC = () => {
         </div>
       </div>
 
-
-
-
-
-
       {/* 1280 version */}
       <div>
 
