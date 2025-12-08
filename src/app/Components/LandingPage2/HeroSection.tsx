@@ -345,203 +345,250 @@ export function HeroSection() {
                         <div className="w-[650px] h-[1000px] ml-1 bg-black/50 shadow-lg backdrop-blur-md overflow-hidden rounded-l-3xl">
                             <img src="hub.png" className="w-[150px] h-[60px] ml-10 mt-6"></img>
                             <form onSubmit={handleSubmit} className="px-10">
-                                {/* Name and Email Row */}
-                                <div className="flex gap-4 mt-6">
-                                    <div className="flex-1">
-                                        <input 
-                                            type="text" 
-                                            name="name" 
-                                            placeholder="Name" 
-                                            value={form.name} 
-                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} 
-                                            className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
-                                        />
-                                    </div>
-                                    <div className="flex-1">
-                                        <input 
-                                            type="text" 
-                                            name="email" 
-                                            placeholder="Email" 
-                                            value={form.email} 
-                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} 
-                                            className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
-                                        />
-                                    </div>
-                                </div>
-                                
-                                {/* Phone and Pincode Row */}
-                                <div className="flex gap-4 mt-4">
-                                    <div className="flex-1">
-                                        <input 
-                                            type="text" 
-                                            name="phonennumber" 
-                                            placeholder="PhoneNumber" 
-                                            value={form.phonennumber} 
-                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setForm({ ...form, [e.target.name]: e.target.value }) }} 
-                                            className="w-full h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
-                                        />
+                                <div className="max-w-[600px] mx-auto">
+
+                                    {/* Name and Email Row */}
+                                    <div className="flex gap-4 mt-6">
+                                        <div className="flex-1">
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                placeholder="Name"
+                                                value={form.name}
+                                                onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+                                                className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
+                                            />
+                                        </div>
+                                        <div className="flex-1">
+                                            <input
+                                                type="text"
+                                                name="email"
+                                                placeholder="Email"
+                                                value={form.email}
+                                                onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+                                                className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
+                                            />
+                                        </div>
                                     </div>
 
-                                    {/* Pincode input + dropdown - desktop */}
-                                    <div className="relative ml-18 pincode-wrapper">
-                                        <div className="flex items-center">
-                                            <div className="relative">
-                                                <input
-                                                    type="text"
-                                                    value={pincodeSearch || selectedPincode}
-                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                                        // allow only digits and limit to 6 characters
-                                                        const raw = e.target.value.replace(/\D/g, '').slice(0, 6);
-                                                        setPincodeSearch(raw);
-                                                        setSelectedPincode(raw);
-                                                        setForm(prev => ({ ...prev, pincode: raw }));
-                                                        setPincodeOpen(true);
-                                                    }}
-                                                    onFocus={() => setPincodeOpen(true)}
-                                                    placeholder="Pincode"
-                                                    inputMode="numeric"
-                                                    pattern="[0-9]{6}"
-                                                    maxLength={6}
-                                                    className="w-[250px] h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-6 placeholder-white text-white bg-transparent"
-                                                />
-                                            </div>
+                                    {/* Phone and Pincode Row */}
+                                    <div className="flex gap-4 mt-4">
+                                        <div className="flex-1">
+                                            <input
+                                                type="text"
+                                                name="phonennumber"
+                                                placeholder="PhoneNumber"
+                                                value={form.phonennumber}
+                                                onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
+                                                className="w-full h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
+                                            />
                                         </div>
 
-                                        {pincodeOpen && (
-                                            <div className="absolute z-10 mt-2 w-full max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
+                                        {/* Pincode input + dropdown */}
+                                        <div className="relative flex-1">
+                                            <input
+                                                type="text"
+                                                value={pincodeSearch || selectedPincode}
+                                                onChange={(e) => {
+                                                    const raw = e.target.value.replace(/\D/g, "").slice(0, 6);
+                                                    setPincodeSearch(raw);
+                                                    setSelectedPincode(raw);
+                                                    setForm((prev) => ({ ...prev, pincode: raw }));
+                                                    setPincodeOpen(true);
+                                                }}
+                                                onFocus={() => setPincodeOpen(true)}
+                                                placeholder="Pincode"
+                                                inputMode="numeric"
+                                                pattern="[0-9]{6}"
+                                                maxLength={6}
+                                                className="w-full h-[60px] border-2 border-[#ddcdc1] rounded-4xl pl-6 pr-6 placeholder-white text-white bg-transparent"
+                                            />
+
+                                            {pincodeOpen && (
+                                                <div className="absolute z-10 mt-2 w-full max-h-40 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
+                                                    <ul className="py-1 text-gray-700">
+                                                        {pincodes
+                                                            .filter((pin) => pin.toString().includes(pincodeSearch))
+                                                            .map((pin) => (
+                                                                <li
+                                                                    key={pin}
+                                                                    onClick={() => {
+                                                                        handlePincodeChange(pin);
+                                                                        setPincodeSearch(pin);
+                                                                    }}
+                                                                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm"
+                                                                >
+                                                                    {pin}
+                                                                </li>
+                                                            ))}
+
+                                                        {pincodes.filter((pin) =>
+                                                            pin.toString().includes(pincodeSearch)
+                                                        ).length === 0 && (
+                                                                <li className="px-4 py-2 text-sm text-gray-500">No results</li>
+                                                            )}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Property Type */}
+                                    <div className="text-white mt-10 text-left text-3xl manrope-medium">
+                                        Property Type
+                                    </div>
+
+                                    <div className="mt-6 flex justify-between w-full">
+                                        {options.map((option) => (
+                                            <div
+                                                key={option}
+                                                onClick={() => setpropSelect(option)}
+                                                className={`cursor-pointer mt-4 border-2 border-[#DDCDC1] w-[180px] h-[50px] flex items-center justify-center rounded-4xl text-white manrope-medium 
+                        ${propSelect === option ? "bg-[#ef0101]" : ""}`}
+                                            >
+                                                {option}
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Time Slot Dropdown */}
+                                    <div className="relative text-left w-full">
+                                        <button
+                                            type="button"
+                                            onClick={() => setOpen(!open)}
+                                            className="w-full h-[60px] mt-14 rounded-4xl text-white text-xl border-2 border-[#DDCDC1] flex justify-between p-4 pl-6 manrope"
+                                        >
+                                            {Selected}
+                                            {!open ? (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    strokeWidth="1.5"
+                                                    stroke="currentColor"
+                                                    className="size-6"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                                                    />
+                                                </svg>
+                                            ) : (
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    strokeWidth="1.5"
+                                                    stroke="currentColor"
+                                                    className="size-6"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                                                    />
+                                                </svg>
+                                            )}
+                                        </button>
+
+                                        {open && (
+                                            <div className="absolute z-10 mt-2 w-full max-h-50 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg overflow-y-auto">
                                                 <ul className="py-1 text-gray-700">
-                                                    {pincodes
-                                                        .filter(pin => pin.toString().includes(pincodeSearch))
-                                                        .map((pin) => (
-                                                            <li
-                                                                key={pin}
-                                                                onClick={() => {
-                                                                    handlePincodeChange(pin);
-                                                                    setPincodeSearch(pin);
-                                                                }}
-                                                                className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-sm"
-                                                            >
-                                                                {pin}
-                                                            </li>
-                                                        ))}
-                                                    {pincodes.filter(pin => pin.toString().includes(pincodeSearch)).length === 0 && (
-                                                        <li className="px-4 py-2 text-sm text-gray-500">No results</li>
-                                                    )}
+                                                    {timeSlots.map((slot) => (
+                                                        <li
+                                                            key={slot}
+                                                            onClick={() => {
+                                                                setSelected(slot);
+                                                                setOpen(false);
+                                                            }}
+                                                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${Selected === slot ? "bg-gray-200 font-medium" : ""
+                                                                }`}
+                                                        >
+                                                            {slot}
+                                                        </li>
+                                                    ))}
                                                 </ul>
                                             </div>
                                         )}
                                     </div>
-                                </div>
-                                {/* Selectables */}
-                                <div className="text-white mt-10 text-left pl-12 text-3xl manrope-medium">Property Type</div>
-                                <div className="mt-6 flex justify-evenly w-[600px] ml-5">
-                                    {options.map((option) => (
-                                        <div key={option} onClick={() => setpropSelect(option)} className={`cursor-pointer mt-4 border-2 border-[#DDCDC1] w-[180px] h-[50px] text-center pt-3 pr-3 rounded-4xl text-white manrope-medium 
-                            
-                            ${propSelect === option ? "bg-[#ef0101] border-[#DDCDC1]" : ""
 
-                                            }`}>
+                                    {/* File Upload */}
+                                    <div className="mt-8">
+                                        <div className="text-white text-lg mb-3">Upload Files (Optional)</div>
+                                        <div className="flex items-start space-x-4">
+                                            <div className="flex flex-col space-y-2">
+                                                <input
+                                                    type="file"
+                                                    onChange={handleFileChange}
+                                                    accept="image/*,.pdf,.doc,.docx"
+                                                    className="hidden"
+                                                    id="file-upload"
+                                                />
+                                                <label
+                                                    htmlFor="file-upload"
+                                                    className="cursor-pointer bg-[#ef0101] text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
+                                                >
+                                                    Choose File
+                                                </label>
+                                                {selectedFile && (
+                                                    <div className="text-white text-sm">{selectedFile.name}</div>
+                                                )}
+                                            </div>
 
-                                            {option}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="relative inline-block  text-left timeslot-wrapper">
-                                    <button type="button" onClick={() => setOpen(!open)} className="w-[580px] h-[60px] mt-14 ml-8 rounded-4xl text-white text-xl border-2 border-[#DDCDC1] flex justify-between p-4 pl-6 manrope">{Selected} {!open ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                                    </svg>
-                                    }
-                                    </button>
-                                    {open && (
-                                        <div className="absolute z-10 mt-2 w-[570px] max-h-50 bg-white border-2 border-[#ddcdc1] rounded-md shadow-lg ml-10 overflow-y-auto">
-                                            <ul className="py-1 text-gray-700">
-                                                {timeSlots.map((slot) => (
-                                                    <li
-                                                        key={slot}
-                                                        onClick={() => {
-                                                            setSelected(slot);
-                                                            setOpen(false);
-                                                        }}
-                                                        className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${Selected === slot ? "bg-gray-200 font-medium" : ""
-                                                            }`}
+                                            {filePreview && (
+                                                <div className="flex flex-col items-center">
+                                                    <img
+                                                        src={filePreview}
+                                                        alt="Preview"
+                                                        className="w-40 h-32 object-cover rounded border border-[#DDCDC1]"
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={removeFile}
+                                                        className="mt-2 text-red-400 hover:text-red-300 text-sm underline"
                                                     >
-                                                        {slot}
-                                                    </li>
-                                                ))}
-
-                                            </ul>
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* File Upload Section */}
-                                <div className="mt-8 ml-10">
-                                    <div className="text-white text-lg mb-3">Upload Files (Optional)</div>
-                                    <div className="flex items-start space-x-4">
-                                        <div className="flex flex-col space-y-2">
-                                            <input
-                                                type="file"
-                                                onChange={handleFileChange}
-                                                accept="image/*,.pdf,.doc,.docx"
-                                                className="hidden"
-                                                id="file-upload"
-                                            />
-                                            <label
-                                                htmlFor="file-upload"
-                                                className="cursor-pointer bg-[#ef0101] text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
-                                            >
-                                                Choose File
-                                            </label>
-                                            {selectedFile && (
-                                                <div className="text-white text-sm">
-                                                    {selectedFile.name}
+                                                        Remove File
+                                                    </button>
                                                 </div>
                                             )}
                                         </div>
-                                        {filePreview && (
-                                            <div className="flex flex-col items-center">
-                                                <img
-                                                    src={filePreview}
-                                                    alt="Floor plan preview"
-                                                    className="w-40 h-32 object-cover rounded border border-[#DDCDC1]"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={removeFile}
-                                                    className="mt-2 text-red-400 hover:text-red-300 text-sm underline"
-                                                >
-                                                    Remove File
-                                                </button>
-                                            </div>
-                                        )}
                                     </div>
-                                </div>
 
-                                <div className="  flex mt-10 pl-14">
-                                    <input type="checkbox" required />
-                                    <label className="ml-4 text-white ">Yes, all provided details are correct</label>
-                                </div>
-
-                                {/* Submit message display */}
-                                {submitMessage && (
-                                    <div className={`mt-4 ml-10 text-sm ${submitMessage.includes('successfully') ? 'text-green-400' : 'text-red-400'}`}>
-                                        {submitMessage}
+                                    {/* Checkbox */}
+                                    <div className="flex mt-10">
+                                        <input type="checkbox" required />
+                                        <label className="ml-4 text-white">
+                                            Yes, all provided details are correct
+                                        </label>
                                     </div>
-                                )}
 
-                                <div className="mt-10 relative">
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className={`w-[200px] h-[60px] border-2 border-[#ddcdc1] manrope-medium text-white ml-10 text-2xl rounded-4xl hover:bg-[#ef0101] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                    >
-                                        {isSubmitting ? 'Submitting...' : 'Submit'}
-                                    </button>
+                                    {/* Submit message */}
+                                    {submitMessage && (
+                                        <div
+                                            className={`mt-4 text-sm ${submitMessage.includes("successfully")
+                                                    ? "text-green-400"
+                                                    : "text-red-400"
+                                                }`}
+                                        >
+                                            {submitMessage}
+                                        </div>
+                                    )}
+
+                                    {/* Submit button */}
+                                    <div className="mt-10">
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className={`w-[200px] h-[60px] border-2 border-[#ddcdc1] manrope-medium text-white text-2xl rounded-4xl hover:bg-[#ef0101] ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                                                }`}
+                                        >
+                                            {isSubmitting ? "Submitting..." : "Submit"}
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
+
                             <div>
                             </div>
                         </div>
