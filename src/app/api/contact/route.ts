@@ -75,17 +75,26 @@ export async function POST(req: Request) {
     // ✅ Email content including all form data
     const verificationStatusText = verificationStatus === 'Verified User' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
     
-    // Determine subject based on page URL
+    // Check if this is a calculator submission (has calculator data)
+    const isCalculatorSubmission = !!(calculator || bhkType || rooms || wardrobe || kitchen || collections || material);
+    
+    // Determine subject based on page URL and submission type
     let subject = 'Google Ads Lead (Unverified)';
     if (verificationStatus === 'Verified User') {
       if (pageUrl && pageUrl.includes('/Contact')) {
         subject = 'Lead from Website(Verified)';
+      } else if (isCalculatorSubmission) {
+        // Calculator form from home page
+        subject = 'Website Lead (Verified)';
       } else {
         subject = 'Google Ads Lead (Verified)';
       }
     } else {
       if (pageUrl && pageUrl.includes('/Contact')) {
         subject = 'Lead from Website (Unverified)';
+      } else if (isCalculatorSubmission) {
+        // Calculator form from home page
+        subject = 'Website Lead (Unverified)';
       } else {
         subject = 'Google Ads Lead (Unverified)';
       }
