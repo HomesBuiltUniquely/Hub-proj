@@ -19,13 +19,13 @@ const Herosection: React.FC = () => {
 
   const heroSlides = [
     {
-      image: "/hh1.png",
+      image: "/img1HH.jpg",
       title: "From floor plan to lifestyle home, uniquely built",
       subtitle: "Innovative interior design",
       buttonText: "Book Free Consultation"
     },
     {
-      image: "/hh2.png",
+      image: "/img2HH.jpg",
       title: "Get your home interior cost estimate today",
       subtitle: "a Kitchen that inspires",
       buttonText: "Calculate Now"
@@ -34,7 +34,7 @@ const Herosection: React.FC = () => {
     // hh3.png,img3HH.jpg
 
     {
-      image: "/hh3.png",
+      image: "/img3HH.jpg",
       title: "From vision to reality, Interiors in 34 days",
       subtitle: "Living space today",
       buttonText: "Book Free Consultation"
@@ -186,7 +186,7 @@ const Herosection: React.FC = () => {
 
         {/* Navbar */}
         <div className="relative z-10 flex items-center justify-between -mt-15">
-          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
+          <div onClick={handleClick}> <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
           {/* whitelogo.png */}
 
           <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] md:flex hidden text-[18px] items-center justify-center gap-12   manrope text-white tracking-widest ml-80 mt-4">
