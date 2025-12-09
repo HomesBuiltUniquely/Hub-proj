@@ -65,7 +65,7 @@ export default function Section1() {
       {/* 2560 Version */}
       <div className="desktop-2560 w-full min-h-[410px] bg-[#F1F2F6] rounded-b-4xl mt-10 overflow-x-hidden">
         <h1 className="pt-10 m-10 ml-16 text-6xl text-center mt-12 manrope-medium pr-10">
-          Why We're Different
+          Why We&#39;re Different
         </h1>
 
         <div className="flex justify-between m-20 mt-20">
@@ -85,7 +85,7 @@ export default function Section1() {
       {/* 1920 Version */}
       <div className="desktop-1920 w-full min-h-[410px] bg-[#F1F2F6] rounded-b-4xl mt-10 overflow-x-hidden">
         <h1 className="pt-10 m-10 ml-16 text-6xl text-center mt-12 manrope-medium pr-10">
-          Why We're Different
+          Why We&#39;re Different
         </h1>
 
         <div className="flex justify-between m-20 mt-20">
@@ -105,7 +105,7 @@ export default function Section1() {
       {/* 1280 Version */}
       <div className="desktop-1280 w-full min-h-[410px] bg-[#F1F2F6] rounded-b-4xl overflow-x-hidden">
         <h1 className=" text-6xl text-center manrope-medium ">
-          Why We're Different
+          Why We&#39;re Different
         </h1>
 
         <div className="flex justify-between m-20 mt-10">
@@ -127,7 +127,7 @@ export default function Section1() {
       {/* MOBILE VERSION */}
       <div className="lg:hidden w-full min-h-[410px] bg-[#F1F2F6] mt-10 overflow-x-hidden">
         <h1 className="pt-10 m-10 ml-8 text-4xl mt-12 manrope-medium text-center pr-10">
-          Why We're Different
+          Why We&#39;re Different
         </h1>
 
         {/* MOBILE MARQUEE */}
