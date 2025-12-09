@@ -116,7 +116,7 @@ const Herosection: React.FC = () => {
 
       {/* 2560 Version */}
 
-      <div className="hidden md:block  desktop-2560 w-full max-w-[1440px] h-[900px] mx-auto rounded-4xl overflow-hidden relative ">
+      <div className="hidden md:block  desktop-2560 w-full max-w-[1440px] h-[900px] mx-auto overflow-hidden relative ">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-full max-w-8xl h-[full]">
           {heroSlides.map((slide, index) => (
@@ -139,7 +139,7 @@ const Herosection: React.FC = () => {
             <NavMore textColor="text-white"/>
           </div>
 
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-4 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-4 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
 
         {/* Hero content */}
@@ -226,7 +226,7 @@ const Herosection: React.FC = () => {
       {/* 1280 version */}
       <div>
 
-        <div className="desktop-1280 max-w-[1280px] h-[800px] mx-auto rounded-3xl overflow-hidden relative">
+        <div className="desktop-1280 max-w-[1280px] h-[800px] mx-auto overflow-hidden relative">
           {/* Background Image Carousel */}
           <div className="absolute inset-0">
             {heroSlides.map((slide, index) => (
@@ -247,7 +247,7 @@ const Herosection: React.FC = () => {
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl   mr-15 mt-4 shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 text-[18px] tracking-wide active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl text-[18px] tracking-wide  mr-15 mt-4 shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
 
           {/* Hero content */}
