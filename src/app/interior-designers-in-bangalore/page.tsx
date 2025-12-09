@@ -34,7 +34,6 @@ export default function InteriorDesignersInBangalore() {
       <Section9 />
       <BrandCarousel />
       <QAsection />
-
     </div>
   )
 }

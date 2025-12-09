@@ -92,7 +92,7 @@ export default function Section4() {
       {/* 2560 version  */}
 
 
-      <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[650px] py-10 px-80">
+      <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[650px] -mt-10 px-80">
         <div className="max-w-8xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
@@ -100,7 +100,7 @@ export default function Section4() {
               Trusted by homeowners like you
             </h1>
 
-           
+
           </div>
 
           {/* Testimonial Carousel */}
@@ -139,36 +139,36 @@ export default function Section4() {
                   </div>
                 </div>
               </div>
-              
-              
-              
+
+
+
             </div>
           </div>
 
 
         </div>
 
-        
-                            {/* Controls */}
-                            <div className="flex gap-3 justify-end mt-10">
-                                <button onClick={prevSlide} className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                </button>
 
-                                <button onClick={nextSlide} className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
+        {/* Controls */}
+        <div className="flex gap-3 justify-end mt-10">
+          <button onClick={prevSlide} className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
-                                <Link href="/CustomerReviews">
-                                    <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
-                                        Explore Gallery
-                                    </button>
-                                </Link>
-                            </div>
+          <button onClick={nextSlide} className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <Link href="/CustomerReviews">
+            <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
+              Explore Gallery
+            </button>
+          </Link>
+        </div>
       </div>
 
 
@@ -178,15 +178,13 @@ export default function Section4() {
 
       <div className="desktop-1920 hidden">
 
-        <div className="md:block bg-[#F1F2F6] min-h-[650px] mx-20">
+        <div className="md:block bg-[#F1F2F6] min-h-[650px] mx-20 -mt-20">
           <div className="w-full mx-auto">
             {/* Header Section */}
             <div className="flex justify-between items-start mb-12">
               <h1 className="text-5xl  wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
                 Trusted by homeowners like you
               </h1>
-
-
             </div>
 
             {/* Testimonial Carousel */}
@@ -264,7 +262,7 @@ export default function Section4() {
 
       {/* 1280 Version */}
 
-      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] mt-10 py-10 px-5">
+      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] -mt-20  px-5">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
@@ -312,32 +310,32 @@ export default function Section4() {
             </div>
           </div>
 
-           {/* CTA */}
-           <div className="flex justify-end items-center mt-8 gap-3">
-                        <div className="flex gap-3">
-                            <button
-                                onClick={prevSlide}
-                                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-                            >
-                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={nextSlide}
-                                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-                            >
-                                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                        <Link href="/CustomerReviews">
-                            <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
-                                View more
-                            </button>
-                        </Link>
-                    </div>
+          {/* CTA */}
+          <div className="flex justify-end items-center mt-8 gap-3">
+            <div className="flex gap-3">
+              <button
+                onClick={prevSlide}
+                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+              >
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={nextSlide}
+                className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+              >
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            <Link href="/CustomerReviews">
+              <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                View more
+              </button>
+            </Link>
+          </div>
 
 
         </div>
