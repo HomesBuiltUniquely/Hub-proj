@@ -35,8 +35,10 @@ export default function Section1() {
 
       {/* DESKTOP BREAKPOINT CSS */}
       <style jsx>{`
+        /* Hide all by default */
         .desktop-1280,
-        .desktop-1440 {
+        .desktop-1920,
+        .desktop-2560 {
           display: none !important;
         }
 
@@ -46,20 +48,27 @@ export default function Section1() {
           }
         }
 
-        @media (min-width: 1440px) {
-          .desktop-1440 {
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
+
+        @media (min-width: 1921px) {
+          .desktop-2560 {
             display: block !important;
           }
         }
       `}</style>
 
-      {/* 1440 Version */}
-      <div className="desktop-1440 w-full min-h-[410px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 overflow-x-hidden">
-        <h1 className="lg:pt-10 lg:m-10 lg:ml-16 lg:text-6xl text-4xl mt-12 ml-8 manrope-medium text-center sm:text-center pr-10">
+
+      {/* 2560 Version */}
+      <div className="desktop-2560 w-full min-h-[410px] bg-[#F1F2F6] rounded-b-4xl mt-10 overflow-x-hidden">
+        <h1 className="pt-10 m-10 ml-16 text-6xl text-center mt-12 manrope-medium pr-10">
           Why We&#39;re Different
         </h1>
 
-        <div className="hidden lg:flex justify-between lg:m-20 lg:mt-20 mt-15">
+        <div className="flex justify-between m-20 mt-20">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -71,14 +80,35 @@ export default function Section1() {
           ))}
         </div>
       </div>
+
+
+      {/* 1920 Version */}
+      <div className="desktop-1920 w-full min-h-[410px] bg-[#F1F2F6] rounded-b-4xl mt-10 overflow-x-hidden">
+        <h1 className="pt-10 m-10 ml-16 text-6xl text-center mt-12 manrope-medium pr-10">
+          Why We&#39;re Different
+        </h1>
+
+        <div className="flex justify-between m-20 mt-20">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="w-[200px] h-[200px] border-2 border-[#DDCDC1] rounded-2xl flex flex-col items-center justify-center p-4 hover:shadow-lg transition-all"
+            >
+              <img className="w-16 h-16 mb-4" src={feature.icon} alt={feature.title} />
+              <div className="text-center text-[16px] manrope-medium">{feature.title}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
 
       {/* 1280 Version */}
-      <div className="desktop-1280 w-full min-h-[410px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 overflow-x-hidden">
-        <h1 className="lg:pt-10 lg:m-10 lg:ml-16 lg:text-6xl text-4xl mt-12 ml-8 manrope-medium text-center sm:text-center pr-10">
+      <div className="desktop-1280 w-full min-h-[410px] bg-[#F1F2F6] rounded-b-4xl overflow-x-hidden">
+        <h1 className=" text-6xl text-center manrope-medium ">
           Why We&#39;re Different
         </h1>
 
-        <div className="hidden lg:flex justify-between lg:m-20 lg:mt-20 mt-15">
+        <div className="flex justify-between m-20 mt-10">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -90,10 +120,13 @@ export default function Section1() {
           ))}
         </div>
       </div>
+
+
+
 
       {/* MOBILE VERSION */}
       <div className="lg:hidden w-full min-h-[410px] bg-[#F1F2F6] mt-10 overflow-x-hidden">
-        <h1 className="lg:pt-10 lg:m-10 lg:ml-16 lg:text-6xl text-4xl mt-12 ml-8 manrope-medium text-center sm:text-center pr-10">
+        <h1 className="pt-10 m-10 ml-8 text-4xl mt-12 manrope-medium text-center pr-10">
           Why We&#39;re Different
         </h1>
 
@@ -115,7 +148,7 @@ export default function Section1() {
         </div>
       </div>
 
-      {/* MOBILE MARQUEE ANIMATION CSS (MOVED HERE – VALID) */}
+      {/* MOBILE MARQUEE ANIMATION CSS */}
       <style jsx>{`
         @keyframes mobile-marquee {
           0% { transform: translateX(0); }
