@@ -103,14 +103,14 @@ const ContactHeader: React.FC = () => {
                   className="w-[250px] h-full -mt-2 -ml-2"
                 />
               </div>
-              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm text-white tracking-widest ml-80 mt-4">
+              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12  text-white tracking-widest ml-80 mt-4">
                 <OfferingsDropdown textColor="text-white" />
                 <ExploreRoomsDropdown textColor="text-white" />
                 <NavMore textColor="text-white" />
               </div>
               <button
                 onClick={handleGetEstimate}
-                className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-4 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 text-[18px] tracking-wide active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 GET FREE ESTIMATE
               </button>
@@ -164,14 +164,14 @@ const ContactHeader: React.FC = () => {
                 />
               </div>
 
-              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 text-sm manrope text-white tracking-widest ml-80 mt-4">
+              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 manrope text-white tracking-widest ml-80 mt-4">
                 <OfferingsDropdown textColor="text-white" />
                 <ExploreRoomsDropdown textColor="text-white" />
                 <NavMore textColor="text-white" />
               </div>
               <button
                 onClick={handleGetEstimate}
-                className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 GET FREE ESTIMATE
               </button>
