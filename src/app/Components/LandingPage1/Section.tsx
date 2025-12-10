@@ -2,33 +2,33 @@
 
 export default function Section1() {
 
-  const features = [
-    {
-      icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/fast-delivery.png",
-      title: "34 Days Delivery",
-      description: "Fast and reliable project completion"
-    },
-    {
-      icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/CALENDER.png",
-      title: "10 Years Warranty",
-      description: "Long-term protection for your investment"
-    },
-    {
-      icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/quality.png",
-      title: "150+ Quality Analysis",
-      description: "Rigorous quality control processes"
-    },
-    {
-      icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/EMI.png",
-      title: "0% EMI Options",
-      description: "Flexible payment plans available"
-    },
-    {
-      icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/FACTORY.png",
-      title: "Factory Finish",
-      description: "Premium materials and craftsmanship"
-    }
-  ];
+  // const features = [
+  //   {
+  //     icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/fast-delivery.png",
+  //     title: "34 Days Delivery",
+  //     description: "Fast and reliable project completion"
+  //   },
+  //   {
+  //     icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/CALENDER.png",
+  //     title: "10 Years Warranty",
+  //     description: "Long-term protection for your investment"
+  //   },
+  //   {
+  //     icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/quality.png",
+  //     title: "150+ Quality Analysis",
+  //     description: "Rigorous quality control processes"
+  //   },
+  //   {
+  //     icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/EMI.png",
+  //     title: "0% EMI Options",
+  //     description: "Flexible payment plans available"
+  //   },
+  //   {
+  //     icon: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors/FACTORY.png",
+  //     title: "Factory Finish",
+  //     description: "Premium materials and craftsmanship"
+  //   }
+  // ];
 
   return (
     <div>
