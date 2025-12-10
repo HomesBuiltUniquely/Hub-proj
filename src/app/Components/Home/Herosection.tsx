@@ -9,6 +9,7 @@ import NavMore from "../NavMore";
 import OverlapNavBar from "../OverlapNavBar";
 
 
+
 const Herosection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const router = useRouter();
@@ -42,7 +43,7 @@ const Herosection: React.FC = () => {
     }
   ];
 
-  
+
   const mobileTexts = [
     "From floor plan to lifestyle home, uniquely built",
     "Get your home interior cost estimate today",
