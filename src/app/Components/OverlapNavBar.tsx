@@ -211,7 +211,7 @@ const OverlapNavBar: React.FC = () => {
             </button>
 
             {/* Title */}
-            <h3 className="text-lg font-semibold mb-4">Explore Rooms</h3>
+            <h3 className="text-lg manrope mb-4">Explore Rooms</h3>
 
             {/* Options */}
             <div className="space-y-3">
@@ -222,7 +222,7 @@ const OverlapNavBar: React.FC = () => {
                     setIsExploreOpen(false);
                     router.push(item.path);
                   }}
-                  className="block text-left w-full text-sm text-gray-700 hover:text-black"
+                  className="block text-left w-full manrope-medium  text-gray-700 hover:text-black"
                 >
                   {item.label}
                 </button>
@@ -270,8 +270,8 @@ bg-white/95 backdrop-blur-xl
 
               {/* OFFERINGS */}
               <div>
-                <h3 className="text-base font-semibold mb-2">OFFERINGS</h3>
-                <div className="space-y-2 pl-3">
+                <h3 className="text-base manrope mb-2">OFFERINGS</h3>
+                <div className="space-y-2 pl-3 manrope-medium">
                   <Link href="/" className="block text-gray-700">Full Home Interior</Link>
                   <Link href="/" className="block text-gray-700">Modular Interior</Link>
                   <Link href="/" className="block text-gray-700">Home Renovation</Link>
@@ -281,8 +281,8 @@ bg-white/95 backdrop-blur-xl
 
               {/* EXPLORE */}
               <div>
-                <h3 className="text-base font-semibold mb-3">EXPLORE ROOMS</h3>
-                <div className="space-y-2 pl-3">
+                <h3 className="text-base manrope mb-3">EXPLORE ROOMS</h3>
+                <div className="space-y-2 pl-3 manrope-medium">
                   <Link href="/ModularKitchen" className="block text-gray-700">Modular Kitchen</Link>
                   <Link href="/Bedroom" className="block text-gray-700">Bedroom</Link>
                   <Link href="/LivingRoom" className="block text-gray-700">Living Room</Link>
@@ -292,8 +292,8 @@ bg-white/95 backdrop-blur-xl
 
               {/* MORE */}
               <div>
-                <h3 className="text-base font-semibold mb-3">MORE</h3>
-                <div className="space-y-2 pl-3">
+                <h3 className="text-base manrope mb-3">MORE</h3>
+                <div className="space-y-2 pl-3 manrope-medium">
                   <Link href="/AboutUs" className="block text-gray-700">About Us</Link>
                   <Link href="/Project" className="block text-gray-700">Projects</Link>
                   <Link href="/Blog" className="block text-gray-700">Blog</Link>
