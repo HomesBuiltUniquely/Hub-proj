@@ -6,6 +6,8 @@ import Link from "next/link";
 
 const OverlapNavBar: React.FC = () => {
   const [activeTab, setActiveTab] = useState('home');
+  const [isExploreOpen, setIsExploreOpen] = useState(false);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
 
@@ -52,17 +54,54 @@ const OverlapNavBar: React.FC = () => {
     }
   ];
 
-  const handleTabClick = (tabId: string) => {
-    setActiveTab(tabId);
 
-    if (tabId === 'home') router.push('/');
-    if (tabId === 'gallery') router.push('/ModularKitchen');
-    if (tabId === 'calculator') router.push('/Calculator');
+  //Explore options
+
+  const exploreItems = [
+    { label: "Modular Kitchen", path: "/ModularKitchen" },
+    { label: "Bedroom", path: "/Bedroom" },
+    { label: "Living Room", path: "/LivingRoom" },
+    { label: "Kids Room", path: "/KidsRoom" },
+    { label: "Pooja Unit", path: "/PoojaUnit" },
+    { label: "TV Unit", path: "/TvUnit" },
+    { label: "Wardrobe Design", path: "/Wardrobe" },
+    { label: "Dining Room Design", path: "/DiningSpace" },
+    { label: "False Ceiling Design", path: "/FalseCeiling" },
+    { label: "Wall Decor Design", path: "/WallInterior" },
+    { label: "Study Room Design", path: "/StudyRoom" },
+    { label: "Bar Unit Design", path: "/" },
+    { label: "Flooring Design", path: "/" },
+    { label: "Bathroom Design", path: "/" },
+  ];
+
+
+
+  const handleTabClick = (tabId: string) => {
+    // close both sheets first
+    setIsExploreOpen(false);
+    setIsMobileMenuOpen(false);
+
+    if (tabId === 'home') {
+      setActiveTab('home');
+      router.push('/');
+    }
+
+    if (tabId === 'gallery') {
+      setActiveTab('gallery');
+      setIsExploreOpen(true);
+    }
+
+    if (tabId === 'calculator') {
+      setActiveTab('calculator');
+      router.push('/Calculator');
+    }
 
     if (tabId === 'menu') {
-      setIsMobileMenuOpen(true); // open menu sheet
+      setActiveTab('menu');
+      setIsMobileMenuOpen(true);
     }
   };
+
 
   const handleLetsBeginClick = () => router.push('/GetEstimate');
 
@@ -94,6 +133,7 @@ const OverlapNavBar: React.FC = () => {
             <span>begin</span>
           </button>
 
+
           {/* Icons */}
           <div className="absolute inset-0 flex justify-between items-center px-8">
             <div className="flex gap-6">
@@ -102,7 +142,14 @@ const OverlapNavBar: React.FC = () => {
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
                   className={`flex flex-col items-center text-xs
-                    ${activeTab === item.id ? 'text-red-600' : 'text-gray-700'}`}
+          ${item.id === 'gallery'
+                      ? isExploreOpen
+                        ? 'text-red-600'
+                        : 'text-gray-700'
+                      : activeTab === item.id
+                        ? 'text-red-600'
+                        : 'text-gray-700'
+                    }`}
                 >
                   {item.icon}
                   <span className="mt-1 manrope-medium">{item.label}</span>
@@ -116,7 +163,14 @@ const OverlapNavBar: React.FC = () => {
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
                   className={`flex flex-col items-center text-xs
-                    ${activeTab === item.id ? 'text-red-600' : 'text-gray-700'}`}
+          ${item.id === 'gallery'
+                      ? isExploreOpen
+                        ? 'text-red-600'
+                        : 'text-gray-700'
+                      : activeTab === item.id
+                        ? 'text-red-600'
+                        : 'text-gray-700'
+                    }`}
                 >
                   {item.icon}
                   <span className="mt-1 manrope-medium">{item.label}</span>
@@ -125,8 +179,61 @@ const OverlapNavBar: React.FC = () => {
             </div>
           </div>
 
+
         </div>
       </div>
+
+      {/* Explore rooms bottom sheet */}
+
+      {isExploreOpen && (
+        <div
+          className="
+      fixed bottom-0 left-1/2
+      w-[340px] min-w-[340px] max-w-[340px]
+      bg-white/95 backdrop-blur-xl
+      rounded-t-[25px] shadow-xl z-[999]
+      animate-riseUp
+      max-h-[75vh] overflow-y-auto
+    "
+          style={{ transform: "translateX(-50%)" }}
+        >
+          <div className="p-5 relative text-black">
+
+            {/* Close */}
+            <button
+              onClick={() => setIsExploreOpen(false)}
+              className="absolute top-3 right-3 p-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="black" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Title */}
+            <h3 className="text-lg font-semibold mb-4">Explore Rooms</h3>
+
+            {/* Options */}
+            <div className="space-y-3">
+              {exploreItems.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={() => {
+                    setIsExploreOpen(false);
+                    router.push(item.path);
+                  }}
+                  className="block text-left w-full text-sm text-gray-700 hover:text-black"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      )}
+
+
 
       {/* ==================== BOTTOM MENU SHEET ==================== */}
       {isMobileMenuOpen && (
