@@ -50,6 +50,7 @@ export default function CalculatorPage() {
             `}</style>
 
 
+
             <div id="calculator-section" className="w-full h-auto mb-20">
                 {/* Mobile Version */}
                 <div className="lg:hidden relative w-full rounded-3xl overflow-hidden px-3">
@@ -91,20 +92,18 @@ export default function CalculatorPage() {
                                         </svg>
                                     </div>
                                 </button>
-
                             </div>
                         </div>
-
                     </div>
-
                 </div>
+
 
 
                 {/* Desktop Version */}
 
                 {/* 2560 Version */}
 
-               <div className="desktop-2560 hidden md:block max-w-[1440px]  min-h-[500px]  mt-20 bg-[#F1F2F6] mx-20">
+                <div className="desktop-2560 hidden md:block max-w-[1440px]  min-h-[500px]  mt-20 bg-[#F1F2F6] mx-20">
 
                     <div className="w-full h-[410px] rounded-3xl  mx-auto relative  overflow-hidden">
                         <img
@@ -125,8 +124,8 @@ export default function CalculatorPage() {
                                 className="px-3 py-2 bg-[#ef0101] hover:bg-[#d80000] rounded-4xl"
                                 onClick={handelSubmit}
                             >
-                                <div className="flex justify-evenly items-center">
-                                    <p className="text-white text-[18px] manrope">Calculate</p>
+                                <div className="flex justify-center items-center">
+                                    <p className="text-white ml-3 text-[18px] manrope">Calculate</p>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -141,7 +140,6 @@ export default function CalculatorPage() {
                             </button>
                         </div>
                     </div>
-
                 </div>
 
 
@@ -151,8 +149,8 @@ export default function CalculatorPage() {
                 {/* <div className="desktop-1920 hidden lg:block  mx-auto px-20 mb-25 mt-5 flex">
                     <div className="bg-[#ddcdc1] w-full h-[450px] rounded-3xl flex flex-row items-center justify-between px-20"> */}
 
-                        {/* LEFT TEXT SECTION */}
-                        {/* <div className="text-left space-y-5">
+                {/* LEFT TEXT SECTION */}
+                {/* <div className="text-left space-y-5">
                             <h1 className="text-5xl w-[550px] manrope">
                                 Get a free estimate for your interiors
                             </h1>
@@ -181,8 +179,8 @@ export default function CalculatorPage() {
                             </button>
                         </div> */}
 
-                        {/* RIGHT IMAGE */}
-                        {/* <img
+                {/* RIGHT IMAGE */}
+                {/* <img
                             src="calref.png"
                             alt="calculator"
                             className="h-[420px] w-[450px] rounded-3xl"
@@ -190,7 +188,8 @@ export default function CalculatorPage() {
                     </div>
                 </div> */}
 
-                
+
+
                 {/* 1920 Version */}
 
                 <div className="desktop-1920 hidden md:block  min-h-[500px]  bg-[#F1F2F6] mx-20">
@@ -214,8 +213,8 @@ export default function CalculatorPage() {
                                 className="px-3 py-2 bg-[#ef0101] hover:bg-[#d80000] rounded-4xl"
                                 onClick={handelSubmit}
                             >
-                                <div className="flex justify-evenly items-center">
-                                    <p className="text-white text-[18px] manrope">Calculate</p>
+                                <div className="flex justify-center items-center">
+                                    <p className="text-white ml-3 text-[18px] manrope">Calculate</p>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -230,7 +229,6 @@ export default function CalculatorPage() {
                             </button>
                         </div>
                     </div>
-
                 </div>
 
 
@@ -238,7 +236,7 @@ export default function CalculatorPage() {
 
                 {/* 1280 Version */}
 
-               <div className="desktop-1280 hidden md:block  min-h-[500px]  bg-[#F1F2F6] mx-15 mt-15">
+                <div className="desktop-1280 hidden md:block  min-h-[500px]  bg-[#F1F2F6] mx-15 mt-15">
 
                     <div className="w-full h-[410px] rounded-3xl  mx-auto relative  overflow-hidden">
                         <img
@@ -259,8 +257,8 @@ export default function CalculatorPage() {
                                 className="px-3 py-2 bg-[#ef0101] hover:bg-[#d80000] rounded-4xl"
                                 onClick={handelSubmit}
                             >
-                                <div className="flex justify-evenly items-center">
-                                    <p className="text-white text-[18px] manrope">Calculate</p>
+                                <div className="flex justify-center items-center">
+                                    <p className="text-white ml-3 text-[18px] manrope">Calculate</p>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
@@ -275,9 +273,7 @@ export default function CalculatorPage() {
                             </button>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     )
