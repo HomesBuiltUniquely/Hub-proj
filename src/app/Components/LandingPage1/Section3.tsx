@@ -52,7 +52,7 @@ export default function Section3() {
             {/* DESKTOP 1440 */}
 
             <div className="desktop-1440 hidden lg:block">
-                <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
+                <div className="flex w-screen h-[680px] bg-[#f1f2f6] -mt-15">
                     <div className='w-[850px]'>
                         <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">
                             Homes For Every Lifestyle
@@ -182,7 +182,7 @@ export default function Section3() {
             {/* MOBILE VERSION */}
 
             <div className="lg:hidden w-full mx-auto max-h-[900px] bg-[#f1f2f6]">
-                <div className='ml-5 mt-5 manrope-medium '>
+                <div className='ml-5  manrope-medium '>
                     <div className="flex">
                         <h1 className="text-4xl pt-10 tracking-wide manrope-medium">
                             Homes For Every Lifestyle

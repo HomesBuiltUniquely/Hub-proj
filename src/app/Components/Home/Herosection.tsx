@@ -17,6 +17,7 @@ const Herosection: React.FC = () => {
     router.push('/GetEstimate');
   };
 
+
   const heroSlides = [
     {
       image: "/img1HH.jpg",
@@ -41,6 +42,7 @@ const Herosection: React.FC = () => {
     }
   ];
 
+  
   const mobileTexts = [
     "From floor plan to lifestyle home, uniquely built",
     "Get your home interior cost estimate today",
@@ -59,7 +61,6 @@ const Herosection: React.FC = () => {
   function handleClick() {
     router.push("/");
   }
-
 
 
 
@@ -97,6 +98,7 @@ const Herosection: React.FC = () => {
             display: block !important;
           }
         }
+          
 
         /* Show small mobile version for screens 320px to 479px */
         @media (min-width: 320px) and (max-width: 360px) {
@@ -114,6 +116,7 @@ const Herosection: React.FC = () => {
       `}</style>
 
 
+
       {/* 2560 Version */}
 
       <div className="hidden md:block  desktop-2560 w-full max-w-[1440px] h-[900px] mx-auto overflow-hidden relative ">
@@ -129,14 +132,17 @@ const Herosection: React.FC = () => {
           ))}
         </div>
 
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-[5]"></div>
+
         {/* Navbar */}
         <div className="relative z-10 flex items-center justify-between -mt-15">
-          <div onClick={handleClick}> <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
+          <div onClick={handleClick}> <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
 
           <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[48px] md:flex hidden items-center justify-center gap-12 text-[18px] text-sm manrope text-white tracking-widest ml-80 mt-4">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white"/>
+            <NavMore textColor="text-white" />
           </div>
 
           <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-4 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
@@ -170,7 +176,6 @@ const Herosection: React.FC = () => {
 
 
       {/* 1920 version  */}
-
       <div className="hidden md:block  desktop-1920 w-full max-w-[1920px] h-[900px]  rounded-3xl overflow-hidden">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-full h-[900px]">
@@ -184,10 +189,13 @@ const Herosection: React.FC = () => {
           ))}
         </div>
 
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-[5]"></div>
+
         {/* Navbar */}
         <div className="relative z-10 flex items-center justify-between -mt-15">
           <div onClick={handleClick}> <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
-          {/* whitelogo.png */}
+          {/* whitelogo.png / redlogo.png */}
 
           <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] md:flex hidden text-[18px] items-center justify-center gap-12   manrope text-white tracking-widest ml-80 mt-4">
             <OfferingsDropdown textColor="text-white" />
@@ -207,6 +215,7 @@ const Herosection: React.FC = () => {
           </button>
         </div>
 
+
         {/* Carousel Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
           {heroSlides.map((_, index) => (
@@ -223,9 +232,9 @@ const Herosection: React.FC = () => {
       </div>
 
 
+
       {/* 1280 version */}
       <div>
-
         <div className="desktop-1280 max-w-[1280px] h-[800px] mx-auto overflow-hidden relative">
           {/* Background Image Carousel */}
           <div className="absolute inset-0">
@@ -239,9 +248,12 @@ const Herosection: React.FC = () => {
             ))}
           </div>
 
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-[5]"></div>
+
           {/* Navbar */}
           <div className="relative z-10 flex items-center justify-between  -mt-15">
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" />
+            <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" />
             <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] md:flex hidden items-center justify-center gap-12 text-[18px] hidden md:flex gap-12 manrope text-white tracking-widest ml-30 mt-5">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
@@ -274,7 +286,6 @@ const Herosection: React.FC = () => {
             ))}
           </div>
         </div>
-
       </div>
 
 
@@ -315,10 +326,6 @@ const Herosection: React.FC = () => {
                 className="cursor-pointer w-[100px] h-[90px] -ml-1 -mt-5 mb-2" />
             </div>
           </div>
-
-
-
-
           <img className="max-w-[425px]h-[500px] rounded-4xl relative -mt-18 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
           <div className="-mt-62 w-[250px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
           {/* Horizontal line above button */}
@@ -327,8 +334,6 @@ const Herosection: React.FC = () => {
         </div>
         <OverlapNavBar />
       </div>
-
-
     </div>
   );
 };
