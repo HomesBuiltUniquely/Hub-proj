@@ -202,12 +202,13 @@ export default function Section6() {
         }
 
         
-          /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1440px)  and (max-width: 1920px) {
+        /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
         }
+
 
           /* Show  layout for large desktops (>1921px) */
         @media (min-width: 1921px) {
@@ -223,9 +224,9 @@ export default function Section6() {
       <div className=" w-full min-h-[800px] bg-white py-16">
 
 
-        {/* Desktop Carousel (1280, 1920, 2560 versions omitted for brevity, assumed to be working) */}
 
-        {/* ... Desktop rendering blocks ... */}
+
+        {/* 2560 Version */}
 
         <div className="desktop-2560 hidden lg:block px-20">
           <div className="w-full mx-auto relative">
@@ -287,10 +288,12 @@ export default function Section6() {
           </div>
         </div>
 
+        {/* 1920 Version */}
 
-        <div className="desktop-1920 hidden lg:block px-20">
+
+        <div className="desktop-1920  px-20">
           <div className="w-full mx-auto relative">
-            <div className="relative h-[700px] rounded-3xl overflow-hidden">
+            <div className="relative h-[700px] rounded-4xl overflow-hidden">
               {/* Main Image */}
               <div className="relative w-full h-full">
                 <img
@@ -349,6 +352,8 @@ export default function Section6() {
         </div>
 
 
+
+        {/* 1280 Version */}
 
         <div className="desktop-1280  lg:block px-15">
           <div className="w-full mx-auto relative">
