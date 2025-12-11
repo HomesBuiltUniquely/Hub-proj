@@ -79,25 +79,35 @@ export async function POST(req: Request) {
     const isCalculatorSubmission = !!(calculator || bhkType || rooms || wardrobe || kitchen || collections || material);
     
     // Determine subject based on page URL and submission type
+    const path = pageUrl || '';
+    const isContactPage = path.includes('/Contact');
+    const isInteriorCalculator = path.includes('/interior-designers-in-bangalore/Calculator');
+    // Handle common misspelling as well
+    const isHubCalculator = path.includes('/hubinterior/Callculator') || path.includes('/hubinterior/Calculator');
+
     let subject = 'Google Ads Lead (Unverified)';
-    if (verificationStatus === 'Verified User') {
-      if (pageUrl && pageUrl.includes('/Contact')) {
-        subject = 'Lead from Website(Verified)';
-      } else if (isCalculatorSubmission) {
-        // Calculator form from home page
-        subject = 'Google Ads Lead (Verified)';
-      } else {
-        subject = 'Google Ads Lead (Verified)';
-      }
+
+    if (isInteriorCalculator) {
+      subject = verificationStatus === 'Verified User'
+        ? 'Google Ads Lead (Verified)'
+        : 'Google Ads Lead (Unverified)';
+    } else if (isHubCalculator) {
+      subject = verificationStatus === 'Verified User'
+        ? 'Website Lead (Verified)'
+        : 'Website Lead (Unverified)';
+    } else if (isContactPage) {
+      subject = verificationStatus === 'Verified User'
+        ? 'Lead from Website(Verified)'
+        : 'Lead from Website (Unverified)';
+    } else if (isCalculatorSubmission) {
+      // Default calculator submissions (other pages) stay Google Ads
+      subject = verificationStatus === 'Verified User'
+        ? 'Google Ads Lead (Verified)'
+        : 'Google Ads Lead (Unverified)';
     } else {
-      if (pageUrl && pageUrl.includes('/Contact')) {
-        subject = 'Lead from Website (Unverified)';
-      } else if (isCalculatorSubmission) {
-        // Calculator form from home page
-        subject = 'Website Lead (Unverified)';
-      } else {
-        subject = 'Google Ads Lead (Unverified)';
-      }
+      subject = verificationStatus === 'Verified User'
+        ? 'Google Ads Lead (Verified)'
+        : 'Google Ads Lead (Unverified)';
     }
 
     const renderJSON = (value: unknown) => {
