@@ -151,7 +151,7 @@ export default function ThankUPage() {
           )}
           
           {/* Contact Info Bar */}
-          <div className="absolute bottom-60 left-1/2 transform -translate-x-1/2 bg-[#ef0101] rounded-3xl shadow-lg mt-20">
+          <div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 bg-[#ef0101] rounded-3xl shadow-lg mt-20">
             <div className="flex flex-col md:flex-row justify-between items-center p-4 md:p-6 gap-4 md:gap-8 text-white manrope-medium">
               <div className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6">
