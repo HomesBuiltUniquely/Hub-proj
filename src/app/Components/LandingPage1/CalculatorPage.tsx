@@ -25,29 +25,39 @@ export default function CalculatorPage() {
     return (
 
         <div>
-            <style global jsx>{`
+              <style jsx>{`
+        /* Hide all sections by default */
+    
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none;
+        }
 
-                /* Hide both by default */
-                .desktop-1280,
-                .desktop-1440 {
-                    display: none !important;
-                }
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
 
-                /* 1024px → 1439px = desktop-1280 */
-                @media (min-width: 1024px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block !important;
-                    }
-                }
+        
+        /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
 
-                /* 1440px and above = desktop-1440 */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block !important;
-                    }
-                }
 
-            `}</style>
+          /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+          
+      `}</style>
 
 
             <div id="calculator-section" className="w-full h-auto bg-white -mt-10">
@@ -77,9 +87,37 @@ export default function CalculatorPage() {
 
                 {/* Desktop Version */}
 
-                {/* 1440 Version */}
+                {/* 2560 Version */}
 
-                <div className="desktop-1440 hidden lg:block">
+                <div className="desktop-2560 hidden lg:block">
+                    <h1 className="text-5xl text-center pt-10 manrope">Get A Free Estimate for Your Interiors</h1>
+                    <div>
+                        <div className="w-[500px] h-[500px] border-2 rounded-4xl border-[#ef0101] mt-20 mx-auto">
+                            <div className="flex justify-between m-10">
+                                <img src="/calimages.png" alt="calimages" className="w-[120px] h-[120px] mx-auto"></img>
+
+                            </div>
+                            <div className="pt-2">
+                                <div className="text-center text-3xl manrope">Full Home</div>
+                                <div className="text-center text-[20px] manrope-medium w-full pt-6">Get an estimated cost for your complete home interiors.</div>
+                            </div>
+                            <button className="w-[200px] h-[60px] bg-[#ef0101] rounded-4xl mt-10 ml-36" onClick={handelSubmit}>
+                                <div className="flex justify-evenly items-center ">
+                                    <p className="text-white text-[18px] manrope ">Calculate</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 text-white">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                {/* 1920 Version */}
+
+
+                <div className="desktop-1920 hidden lg:block">
                     <h1 className="text-5xl text-center pt-10 manrope">Get A Free Estimate for Your Interiors</h1>
                     <div>
                         <div className="w-[500px] h-[500px] border-2 rounded-4xl border-[#ef0101] mt-20 mx-auto">
