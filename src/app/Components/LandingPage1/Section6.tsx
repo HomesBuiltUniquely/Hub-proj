@@ -124,7 +124,7 @@ export default function Section6() {
     }
   ];
 
-  // Auto-rotate slides within current category
+  // Auto-rotate slides within current category (Desktop)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === 3 ? 0 : prev + 1));
@@ -150,54 +150,104 @@ export default function Section6() {
     setCurrentSlide(0);
   }, [currentCategory]);
 
-  // const nextSlide = () => {
-  //   setCurrentSlide((prev) => (prev === 3 ? 0 : prev + 1));
-  // };
-
-  // const prevSlide = () => {
-  //   setCurrentSlide((prev) => (prev === 0 ? 3 : prev - 1));
-  // };
-
   const currentSlides = categories[currentCategory].slides;
+
+
+  // Swipe handlers (shared for all mobile carousels)
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  // Type for mobileSlides keys
+  type CategoryKey = keyof typeof mobileSlides;
+
+  // The function signature that was causing TypeScript/Lint errors has been fixed
+  // by ensuring it is ONLY called from an event handler wrapper in the JSX.
+  // We keep the original simple signature here as the logic is fine.
+  const handleTouchEnd = (key: CategoryKey, total: number = 4) => {
+    if (touchStartX == null || touchEndX == null) return;
+
+    const distance = touchStartX - touchEndX;
+    const minSwipeDistance = 50;
+
+    setMobileSlides(prev => {
+      // The use of 'key' here is correctly referring to the parameter 'key',
+      // resolving the visual error in the image.
+      const current = prev[key] ?? 0;
+      let next = current;
+
+      if (distance > minSwipeDistance) {
+        // swipe LEFT → next slide
+        next = (current + 1) % total;
+      } else if (distance < -minSwipeDistance) {
+        // swipe RIGHT → previous slide
+        next = (current - 1 + total) % total;
+      }
+
+      return { ...prev, [key]: next };
+    });
+
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
+
 
   return (
 
-    <div>    <style global jsx>{`
+    <div>
 
-                /* Hide both by default */
-                .desktop-1280,
-                .desktop-1440 {
-                    display: none !important;
-                }
+      <style jsx>{`
+        /* Hide all sections by default */
+    
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none;
+        }
 
-                /* 1024px → 1439px = desktop-1280 */
-                @media (min-width: 1024px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block !important;
-                    }
-                }
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
 
-                /* 1440px and above = desktop-1440 */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block !important;
-                    }
-                }
+        
+          /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
 
-            `}</style>
+          /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+          
+      `}</style>
 
-    {/* Desktop Version */}
+      {/* Desktop Version */}
 
       <div className=" w-full min-h-[800px] bg-white py-16">
 
 
-       {/* Desktop Carousel */}
+        {/* Desktop Carousel (1280, 1920, 2560 versions omitted for brevity, assumed to be working) */}
+        
+        {/* ... Desktop rendering blocks ... */}
 
-
-        {/* 1440 Version */}
-       
-        <div className="desktop-1440 hidden lg:block">
-          <div className="max-w-7xl mx-auto relative">
+        <div className="desktop-2560 hidden lg:block px-20">
+          <div className="w-full mx-auto relative">
             <div className="relative h-[700px] rounded-4xl overflow-hidden">
               {/* Main Image */}
               <div className="relative w-full h-full">
@@ -229,8 +279,8 @@ export default function Section6() {
                     key={index}
                     onClick={() => setCurrentCategory(index)}
                     className={`px-4 py-2 rounded-full text-sm manrope-medium transition-all ${currentCategory === index
-                        ? 'bg-white text-black'
-                        : 'bg-red-500 bg-opacity-50 text-white hover:bg-opacity-70'
+                      ? 'bg-white text-black'
+                      : 'bg-red-500 bg-opacity-50 text-white hover:bg-opacity-70'
                       }`}
                   >
                     {category.name}
@@ -245,8 +295,8 @@ export default function Section6() {
                     <div
                       key={index}
                       className={`h-1 rounded-full transition-all duration-300 ${index <= currentSlide
-                          ? 'bg-white w-12'
-                          : 'bg-gray-300 bg-opacity-30 w-12'
+                        ? 'bg-white w-12'
+                        : 'bg-gray-300 bg-opacity-30 w-12'
                         }`}
                     />
                   ))}
@@ -257,10 +307,70 @@ export default function Section6() {
         </div>
 
 
-        {/* 1280 Version */}
-       
-        <div className="desktop-1280  lg:block px-3">
-          <div className="max-w-7xl mx-auto relative">
+        <div className="desktop-1920 hidden lg:block px-20">
+          <div className="w-full mx-auto relative">
+            <div className="relative h-[700px] rounded-3xl overflow-hidden">
+              {/* Main Image */}
+              <div className="relative w-full h-full">
+                <img
+                  src={currentSlides[currentSlide].image}
+                  alt={currentSlides[currentSlide].title}
+                  className="w-full h-full object-cover transition-all duration-500"
+                />
+
+                {/* Text Overlay */}
+                <div className="absolute bottom-8 left-8 text-white max-w-md">
+                  <h2 className="text-4xl manrope mb-2">{currentSlides[currentSlide].title}</h2>
+                  <p className="text-xl manrope-medium mb-6">{currentSlides[currentSlide].subtitle}</p>
+                </div>
+
+                {/* Meet Our Designers Button */}
+                <button
+                  onClick={scrollToForm}
+                  className="absolute top-8 right-8 bg-red-500 text-white px-6 py-3 rounded-full manrope-medium hover:bg-red-600 transition-colors"
+                >
+                  Meet Our Designers
+                </button>
+              </div>
+
+              {/* Category Navigation */}
+              <div className="absolute bottom-8 right-8 flex gap-3 manrope-medium">
+                {categories.map((category, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentCategory(index)}
+                    className={`px-4 py-2 rounded-full text-sm manrope-medium transition-all ${currentCategory === index
+                      ? 'bg-white text-black'
+                      : 'bg-red-500 bg-opacity-50 text-white hover:bg-opacity-70'
+                      }`}
+                  >
+                    {category.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* Progress Bar Indicator */}
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
+                <div className="flex gap-1">
+                  {currentSlides.map((_, index) => (
+                    <div
+                      key={index}
+                      className={`h-1 rounded-full transition-all duration-300 ${index <= currentSlide
+                        ? 'bg-white w-12'
+                        : 'bg-gray-300 bg-opacity-30 w-12'
+                        }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div className="desktop-1280  lg:block px-15">
+          <div className="w-full mx-auto relative">
             <div className="relative h-[700px] rounded-4xl overflow-hidden">
               {/* Main Image */}
               <div className="relative w-full h-full">
@@ -292,8 +402,8 @@ export default function Section6() {
                     key={index}
                     onClick={() => setCurrentCategory(index)}
                     className={`px-4 py-2 rounded-full text-sm manrope-medium transition-all ${currentCategory === index
-                        ? 'bg-white text-black'
-                        : 'bg-red-500 bg-opacity-50 text-white hover:bg-opacity-70'
+                      ? 'bg-white text-black'
+                      : 'bg-red-500 bg-opacity-50 text-white hover:bg-opacity-70'
                       }`}
                   >
                     {category.name}
@@ -308,8 +418,8 @@ export default function Section6() {
                     <div
                       key={index}
                       className={`h-1 rounded-full transition-all duration-300 ${index <= currentSlide
-                          ? 'bg-white w-12'
-                          : 'bg-gray-300 bg-opacity-30 w-12'
+                        ? 'bg-white w-12'
+                        : 'bg-gray-300 bg-opacity-30 w-12'
                         }`}
                     />
                   ))}
@@ -320,144 +430,182 @@ export default function Section6() {
         </div>
 
 
-
-
-        {/* Mobile Carousel */}
+        {/* Mobile Carousel - ONLY MANUAL SWIPE NOW */}
         <div className="lg:hidden mx-auto bg-[#f1f2f6] px-5 rounded-3xl mb-15 w-full h-[2435px]">
           {/* Smart Storage Section */}
           <div className="mb-8">
             <div className='flex'>
-              <div className='bg-[#ebd657]  w-0.75 h-24 ml-4 mt-10'></div>
-              <div className='ml-3'>
+              <div className=''>
                 <h1 className='text-4xl mr-12 mt-10 manrope-medium'>Smart Storage</h1>
-                <p className='manrope-medium text-[15px] pt-2'>Tailored Storage Designs for Maximum Space -
-                  Unlock 25% Extra Space</p>
+                <p className='manrope-medium text-[15px] pt-2'>
+                  Tailored Storage Designs for Maximum Space - Unlock 25% Extra Space
+                </p>
               </div>
             </div>
-            <div className='w-[340px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+
+            <div className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${mobileSlides.smartStorage * 100}%)` }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                // FIX: Use an anonymous function wrapper for TypeScript/React compatibility
+                onTouchEnd={(e) => handleTouchEnd("smartStorage", categories[0].slides.length)}
               >
                 {categories[0].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <img
-                      className='w-[320px] h-[450px] rounded-4xl object-cover'
+                      className='w-full h-[450px] rounded-4xl object-cover'
                       src={slide.image}
                       alt={slide.title}
                     />
                   </div>
                 ))}
               </div>
-              <button
-                onClick={scrollToForm}
-                className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'
-              >
-                Meet Our Designer
-              </button>
+            </div>
+
+            {/* Dot indicators */}
+            <div className="flex justify-center mt-4 gap-2">
+              {categories[0].slides.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-2 w-2 rounded-full transition-all duration-300 
+        ${mobileSlides.smartStorage === index ? 'bg-black scale-125' : 'bg-gray-400'}`}
+                />
+              ))}
             </div>
           </div>
+
+
 
           {/* Modular Kitchen Section */}
           <div className="mb-8">
             <div className='flex mt-10'>
-              <div className='bg-[#ebd657] w-0.75 h-20 ml-4'></div>
-              <div className='ml-3'>
+              <div className=''>
                 <h1 className='text-3xl mr-12 mt-2 manrope-medium'>Modular Kitchen</h1>
                 <p className='manrope-medium'>Modular Kitchen With Smarter Storage</p>
               </div>
             </div>
-            <div className='w-[320px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+
+            <div className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${mobileSlides.modularKitchen * 100}%)` }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                // FIX: Use an anonymous function wrapper for TypeScript/React compatibility
+                onTouchEnd={(e) => handleTouchEnd("modularKitchen", categories[1].slides.length)}
               >
+
                 {categories[1].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <img
-                      className='w-[340px] h-[450px] rounded-4xl object-cover'
+                      className='w-full h-[450px] rounded-4xl object-cover'
                       src={slide.image}
                       alt={slide.title}
                     />
                   </div>
                 ))}
               </div>
-              <button
-                onClick={scrollToForm}
-                className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'
-              >
-                Meet Our Designer
-              </button>
+            </div>
+
+            {/* Dot indicators */}
+
+            <div className="flex justify-center mt-4 gap-2">
+              {categories[1].slides.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-2 w-2 rounded-full transition-all duration-300 
+      ${mobileSlides.modularKitchen === index ? 'bg-black scale-125' : 'bg-gray-400'}`}
+                />
+              ))}
             </div>
           </div>
 
           {/* Bedrooms Section */}
           <div className="mb-8">
             <div className='flex mt-10'>
-              <div className='bg-[#ebd657] w-0.75 h-24 ml-4 mt-2'></div>
-              <div className='ml-3'>
+              <div className=''>
                 <h1 className='text-4xl mr-12 mt-5 manrope-medium'>Bedrooms</h1>
                 <p className='manrope-medium'>Bedrooms That Blend Comfort With Elegance</p>
               </div>
             </div>
-            <div className='w-[320px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+            <div className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${mobileSlides.bedrooms * 100}%)` }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                // FIX: Use an anonymous function wrapper for TypeScript/React compatibility
+                onTouchEnd={(e) => handleTouchEnd("bedrooms", categories[2].slides.length)}
               >
                 {categories[2].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <img
-                      className='w-[340px] h-[450px] rounded-4xl object-cover'
+                      className='w-full h-[450px] rounded-4xl object-cover'
                       src={slide.image}
                       alt={slide.title}
                     />
                   </div>
                 ))}
               </div>
-              <button
-                onClick={scrollToForm}
-                className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'
-              >
-                Meet Our Designer
-              </button>
+            </div>
+
+            {/* Dot indicators */}
+            <div className="flex justify-center mt-4 gap-2">
+              {categories[2].slides.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-2 w-2 rounded-full transition-all duration-300 
+      ${mobileSlides.bedrooms === index ? 'bg-black scale-125' : 'bg-gray-400'}`}
+                />
+              ))}
             </div>
           </div>
 
           {/* Living Spaces Section */}
           <div className="mb-8">
             <div className='flex mt-10'>
-              <div className='bg-[#ebd657] w-0.75 h-24 ml-4'></div>
-              <div className='ml-3'>
+              <div className=''>
                 <h1 className='text-4xl mr-12 mt-2 manrope-medium'>Living Spaces</h1>
                 <p className='manrope-medium'>Living Spaces Made For Style & Comfort</p>
               </div>
             </div>
-            <div className='w-[320px] h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+            <div className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${mobileSlides.livingSpaces * 100}%)` }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                // FIX: Use an anonymous function wrapper for TypeScript/React compatibility
+                onTouchEnd={(e) => handleTouchEnd("livingSpaces", categories[3].slides.length)}
               >
                 {categories[3].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <img
-                      className='w-[340px] h-[450px] rounded-4xl object-cover'
+                      className='w-full h-[450px] rounded-4xl object-cover'
                       src={slide.image}
                       alt={slide.title}
                     />
                   </div>
                 ))}
               </div>
-              <button
-                onClick={scrollToForm}
-                className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#f1f2f6] w-[180px] h-[60px] rounded-2xl manrope-medium hover:bg-red-500 shadow-xl z-10'
-              >
-                Meet Our Designer
-              </button>
             </div>
+
+            {/* Dot indicators */}
+            <div className="flex justify-center mt-4 gap-2">
+              {categories[3].slides.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-2 w-2 rounded-full transition-all duration-300 
+      ${mobileSlides.livingSpaces === index ? 'bg-black scale-125' : 'bg-gray-400'}`}
+                />
+              ))}
+            </div>
+
           </div>
         </div>
       </div>
-     </div>
+    </div>
   );
 }

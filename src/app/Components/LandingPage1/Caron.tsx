@@ -47,46 +47,53 @@ export default function Section3() {
 
     // Card and container widths
     const cardWidth = 380;
-    const gap = 96;
+    const gap = 1;
 
     return (
         <>
+          <style jsx>{`
+        /* Hide all sections by default */
+    
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none;
+        }
 
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
 
-         <style global jsx>{`
+       
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
 
-                /* Hide both by default */
-                .desktop-1280,
-                .desktop-1440 {
-                    display: none !important;
-                }
-
-                /* 1024px → 1439px = desktop-1280 */
-                @media (min-width: 1024px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block !important;
-                    }
-                }
-
-                /* 1440px and above = desktop-1440 */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block !important;
-                    }
-                }
-
-            `}</style>
+         /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+          
+      `}</style>
 
 
             {/* desktop */}
 
-            {/* 1440 Version */}
+            {/* 2560 Version */}
 
-            <div className="desktop-1440 hidden lg:block">
-                <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
-                    <div className='w-[850px]'>
-                        <div className="text-[56px] mt-10 ml-10 manrope-medium w-[490px]">Designs for Every Preference</div>
-                        <div className="ml-10 mt-10">
+            <div className="desktop-2560 hidden lg:block">
+                <div className="flex w-full h-[680px] bg-[#f1f2f6] px-20">
+                    <div className='w-full'>
+                        <div className="text-[56px] mt-10 manrope leading-tight w-[490px]">Designs for Every <span className='text-red-600'>Preference</span></div>
+                        <div className="mt-10">
                             <p className="text-[28px] tracking-wide manrope-medium">From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless balance of modern charm, timeless tradition and artistic sophistication tailored to </p>
                             <p className="text-[28px] tracking-wide manrope-medium">every lifestyle.</p>
                             {/* <p className="text-[28px] tracking-wide">designed for comfort and elegance we</p>
@@ -100,10 +107,10 @@ export default function Section3() {
                             </button>
                         </div>
                     </div>
-                    <div className="w-[1200px] h-[720px] mt-18 ml-40 relative overflow-hidden flex items-center">
+                    <div className="w-full h-[720px] mt-18 ml-20 relative overflow-hidden flex items-center">
                         {/* Slider container: 1.5 cards visible */}
                         <div
-                            className="flex gap-x-24 transition-transform duration-500 ease-in-out h-full"
+                            className="flex gap-x-15 transition-transform duration-500 ease-in-out h-full"
                             style={{
                                 width: `${slides.length * cardWidth + (slides.length - 1) * gap}px`,
                                 transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`
@@ -126,10 +133,63 @@ export default function Section3() {
                             ))}
                         </div>
                         {/* Overlay to create the half-card effect */}
+                        
+                         <div className="absolute top-0 right-0 h-full w-[20px] bg-gradient-to-l from-[#f1f2f6] to-transparent pointer-events-none"></div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            {/* 1920 Version */}
+
+             <div className="desktop-1920 hidden lg:block">
+                <div className="flex w-full h-[680px] bg-[#f1f2f6] px-20">
+                    <div className='w-full'>
+                        <div className="text-[56px] mt-10 manrope leading-tight w-[490px]">Designs for Every <span className='text-red-600'>Preference</span></div>
+                        <div className="mt-10">
+                            <p className="text-[28px] tracking-wide manrope-medium">From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless balance of modern charm, timeless tradition and artistic sophistication tailored to </p>
+                            <p className="text-[28px] tracking-wide manrope-medium">every lifestyle.</p>
+                            {/* <p className="text-[28px] tracking-wide">designed for comfort and elegance we</p>
+                            <p className="text-[28px] tracking-wide">create spaces you&#39;ll love within your</p>
+                            <p className="text-[28px] tracking-wide">budget</p> */}
+                            <button
+                                onClick={scrollToForm}
+                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] manrope rounded-full text-[20px] hover:bg-red-600 transition-colors"
+                            >
+                                Book A Free Design Session
+                            </button>
+                        </div>
+                    </div>
+                    <div className="w-full h-[720px] mt-18 ml-20 relative overflow-hidden flex items-center">
+                        {/* Slider container: 1.5 cards visible */}
                         <div
-                            className="pointer-events-none absolute top-0 right-0 h-full"
-                            style={{ width: cardWidth / 4, background: '#f1f2f6' }}
-                        />
+                            className="flex gap-x-15 transition-transform duration-500 ease-in-out h-full"
+                            style={{
+                                width: `${slides.length * cardWidth + (slides.length - 1) * gap}px`,
+                                transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`
+                            }}
+                        >
+                            {slides.map((slide, index) => (
+                                <div
+                                    key={index}
+                                    className="w-[380px] h-[520px] bg-white rounded-4xl grid grid-rows-5 flex-shrink-0"
+                                >
+                                    <img
+                                        src={slide.img}
+                                        alt=""
+                                        className="rounded-t-4xl row-span-3 w-full h-[350px] object-cover"
+                                    />
+                                    <div className="row-span-2 mt-18 ml-5">
+                                        <div className="text-[30px] manrope">{slide.type}</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        {/* Overlay to create the half-card effect */}
+                        
+                         <div className="absolute top-0 right-0 h-full w-[20px] bg-gradient-to-l from-[#f1f2f6] to-transparent pointer-events-none"></div>
+
                     </div>
                 </div>
             </div>
@@ -137,11 +197,11 @@ export default function Section3() {
 
             {/* 1280 Version */}
 
-            <div className="desktop-1280 hidden lg:block">
-                <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
-                    <div className='w-[850px]'>
-                        <div className="text-[56px] mt-10 ml-10 manrope-medium w-[490px]">Designs for Every Preference</div>
-                        <div className="ml-10 mt-10">
+             <div className="desktop-1280 hidden lg:block">
+                <div className="flex w-full h-[680px] bg-[#f1f2f6] px-15">
+                    <div className='w-full'>
+                        <div className="text-[56px] mt-10 manrope leading-tight w-[490px]">Designs for Every <span className='text-red-600'>Preference</span></div>
+                        <div className="mt-10">
                             <p className="text-[28px] tracking-wide manrope-medium">From sleek lines and minimal elegance to bold patterns, warm wooden finishes and luxurious detailing, our interiors achieve a seamless balance of modern charm, timeless tradition and artistic sophistication tailored to </p>
                             <p className="text-[28px] tracking-wide manrope-medium">every lifestyle.</p>
                             {/* <p className="text-[28px] tracking-wide">designed for comfort and elegance we</p>
@@ -155,10 +215,10 @@ export default function Section3() {
                             </button>
                         </div>
                     </div>
-                    <div className="w-[1200px] h-[720px] mt-18 ml-40 relative overflow-hidden flex items-center">
+                    <div className="w-full h-[720px] mt-18 ml-20 relative overflow-hidden flex items-center">
                         {/* Slider container: 1.5 cards visible */}
                         <div
-                            className="flex gap-x-24 transition-transform duration-500 ease-in-out h-full"
+                            className="flex gap-x-15 transition-transform duration-500 ease-in-out h-full"
                             style={{
                                 width: `${slides.length * cardWidth + (slides.length - 1) * gap}px`,
                                 transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`
@@ -181,10 +241,9 @@ export default function Section3() {
                             ))}
                         </div>
                         {/* Overlay to create the half-card effect */}
-                        <div
-                            className="pointer-events-none absolute top-0 right-0 h-full"
-                            style={{ width: cardWidth / 4, background: '#f1f2f6' }}
-                        />
+                        
+                         <div className="absolute top-0 right-0 h-full w-[20px] bg-gradient-to-l from-[#f1f2f6] to-transparent pointer-events-none"></div>
+
                     </div>
                 </div>
             </div>
@@ -196,7 +255,7 @@ export default function Section3() {
                 <div className=''>
                     <div className="flex">
                        
-                        <h1 className="text-4xl pl-5 pt-12 tracking-wide manrope-medium">Designs for Every Preference
+                        <h1 className="text-4xl pl-5 pt-12 tracking-wide manrope-medium">Designs for Every <span className="text-red-600">Preference</span>
                         </h1>
 
                     </div>
