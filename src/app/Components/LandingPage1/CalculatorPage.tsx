@@ -85,6 +85,10 @@ export default function CalculatorPage() {
                     </div>
                 </div>
 
+
+
+
+
                 {/* Desktop Version */}
 
                 {/* 2560 Version */}
@@ -114,6 +118,10 @@ export default function CalculatorPage() {
                 </div>
 
 
+
+
+
+
                 {/* 1920 Version */}
 
 
@@ -140,6 +148,7 @@ export default function CalculatorPage() {
                         </div>
                     </div>
                 </div>
+
 
 
                 {/* 1280 Version */}
