@@ -276,7 +276,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 onFocus={() => setIsOpen(false)}
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400"
                             />
-
+                            
                             <input
                                 type="text"
                                 placeholder="Phone Number"
