@@ -611,7 +611,7 @@ export default function HeroSections() {
             {/* Mobile Form Card */}
             <div className="relative z-20 -mt-10 px-2">
               <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
-                <div className="text-3xl manrope-semibold text-center mb-6 text-black-950">Interiors For Every Home</div>
+                <div className="text-3xl manrope-semibold text-center mb-6 text-black-950 text-nowrap">Interiors For Every <span className='text-red-600'>Home</span></div>
 
                 {/* Name and Email Row */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
@@ -752,7 +752,7 @@ export default function HeroSections() {
                   <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2" />
                 </div>
                 <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
-                  <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every Home</p>
+                  <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every <span className='text-red-600'>Home</span></p>
 
                   {/* Name and Email Row */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
@@ -942,7 +942,7 @@ export default function HeroSections() {
                   <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] " />
                 </div>
                 <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
-                  <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every Home</p>
+                  <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every <span className='text-red-600'>Home</span></p>
 
                   {/* Name and Email Row */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
@@ -1137,7 +1137,7 @@ export default function HeroSections() {
                 <div className="bg-white w-[500px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
 
                   {/* Heading */}
-                  <p className="mb-6 whitespace-nowrap manrope mt-5">Interiors For Every Home</p>
+                  <p className="mb-6 whitespace-nowrap manrope mt-5">Interiors For Every <span className='text-red-600'>Home</span></p>
 
                   {/* Name + Email */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
