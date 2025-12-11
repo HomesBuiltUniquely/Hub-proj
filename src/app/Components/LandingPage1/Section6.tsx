@@ -5,12 +5,15 @@ import { useState, useEffect } from 'react';
 export default function Section6() {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [mobileSlides, setMobileSlides] = useState({
+  type MobileSlideKeys = 'smartStorage' | 'modularKitchen' | 'bedrooms' | 'livingSpaces';
+
+  const [mobileSlides, setMobileSlides] = useState<Record<MobileSlideKeys, number>>({
     smartStorage: 0,
     modularKitchen: 0,
     bedrooms: 0,
-    livingSpaces: 0
+    livingSpaces: 0,
   });
+
 
   const scrollToForm = () => {
     const formElement = document.getElementById('hero-form');
@@ -153,51 +156,29 @@ export default function Section6() {
   const currentSlides = categories[currentCategory].slides;
 
 
-  // Swipe handlers (shared for all mobile carousels)
-  const [touchStartX, setTouchStartX] = useState(null);
-  const [touchEndX, setTouchEndX] = useState(null);
+  // Swipe tracking
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+  const minSwipeDistance = 50;
 
-  const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEndX(e.touches[0].clientX);
-  };
-
-  // Type for mobileSlides keys
-  type CategoryKey = keyof typeof mobileSlides;
-
-  // The function signature that was causing TypeScript/Lint errors has been fixed
-  // by ensuring it is ONLY called from an event handler wrapper in the JSX.
-  // We keep the original simple signature here as the logic is fine.
-  const handleTouchEnd = (key: CategoryKey, total: number = 4) => {
-    if (touchStartX == null || touchEndX == null) return;
+  // Dynamic swipe handler for all mobile carousels
+  const handleSwipe = (key: MobileSlideKeys, total: number) => {
 
     const distance = touchStartX - touchEndX;
-    const minSwipeDistance = 50;
 
     setMobileSlides(prev => {
-      // The use of 'key' here is correctly referring to the parameter 'key',
-      // resolving the visual error in the image.
       const current = prev[key] ?? 0;
       let next = current;
 
       if (distance > minSwipeDistance) {
-        // swipe LEFT → next slide
-        next = (current + 1) % total;
+        next = (current + 1) % total; // left swipe → next slide
       } else if (distance < -minSwipeDistance) {
-        // swipe RIGHT → previous slide
-        next = (current - 1 + total) % total;
+        next = (current - 1 + total) % total; // right swipe → previous
       }
 
       return { ...prev, [key]: next };
     });
-
-    setTouchStartX(null);
-    setTouchEndX(null);
   };
-
 
 
   return (
@@ -243,7 +224,7 @@ export default function Section6() {
 
 
         {/* Desktop Carousel (1280, 1920, 2560 versions omitted for brevity, assumed to be working) */}
-        
+
         {/* ... Desktop rendering blocks ... */}
 
         <div className="desktop-2560 hidden lg:block px-20">
@@ -443,14 +424,19 @@ export default function Section6() {
               </div>
             </div>
 
-            <div className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+            <div
+              className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'
+              onTouchStart={(e) => setTouchStartX(e.changedTouches[0].clientX)}
+              onTouchEnd={(e) => {
+                setTouchEndX(e.changedTouches[0].clientX);
+                handleSwipe("smartStorage", categories[0].slides.length);
+              }}
+            >
+
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${mobileSlides.smartStorage * 100}%)` }}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                // FIX: Use an anonymous function wrapper for TypeScript/React compatibility
-                onTouchEnd={(e) => handleTouchEnd("smartStorage", categories[0].slides.length)}
+
               >
                 {categories[0].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
@@ -487,14 +473,19 @@ export default function Section6() {
               </div>
             </div>
 
-            <div className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+            <div
+              className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'
+              onTouchStart={(e) => setTouchStartX(e.changedTouches[0].clientX)}
+              onTouchEnd={(e) => {
+                setTouchEndX(e.changedTouches[0].clientX);
+                handleSwipe("modularKitchen", categories[1].slides.length);
+              }}
+            >
+
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${mobileSlides.modularKitchen * 100}%)` }}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                // FIX: Use an anonymous function wrapper for TypeScript/React compatibility
-                onTouchEnd={(e) => handleTouchEnd("modularKitchen", categories[1].slides.length)}
+
               >
 
                 {categories[1].slides.map((slide, index) => (
@@ -530,14 +521,19 @@ export default function Section6() {
                 <p className='manrope-medium'>Bedrooms That Blend Comfort With Elegance</p>
               </div>
             </div>
-            <div className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+            <div
+              className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'
+              onTouchStart={(e) => setTouchStartX(e.changedTouches[0].clientX)}
+              onTouchEnd={(e) => {
+                setTouchEndX(e.changedTouches[0].clientX);
+                handleSwipe("bedrooms", categories[2].slides.length);
+              }}
+            >
+
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${mobileSlides.bedrooms * 100}%)` }}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                // FIX: Use an anonymous function wrapper for TypeScript/React compatibility
-                onTouchEnd={(e) => handleTouchEnd("bedrooms", categories[2].slides.length)}
+
               >
                 {categories[2].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
@@ -571,14 +567,19 @@ export default function Section6() {
                 <p className='manrope-medium'>Living Spaces Made For Style & Comfort</p>
               </div>
             </div>
-            <div className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'>
+            <div
+              className='w-full h-[450px] mt-6 mx-auto rounded-4xl overflow-hidden relative'
+              onTouchStart={(e) => setTouchStartX(e.changedTouches[0].clientX)}
+              onTouchEnd={(e) => {
+                setTouchEndX(e.changedTouches[0].clientX);
+                handleSwipe("livingSpaces", categories[3].slides.length);
+              }}
+            >
+
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${mobileSlides.livingSpaces * 100}%)` }}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                // FIX: Use an anonymous function wrapper for TypeScript/React compatibility
-                onTouchEnd={(e) => handleTouchEnd("livingSpaces", categories[3].slides.length)}
+
               >
                 {categories[3].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
