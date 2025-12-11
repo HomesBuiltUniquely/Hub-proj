@@ -44,7 +44,9 @@ export default function Section3() {
     }, [slides.length]);
 
     const cardWidth = 380;
-    const gap = 96;
+    const gap =1;
+
+
 
     return (
         <>
@@ -113,18 +115,18 @@ export default function Section3() {
             </div>
 
 
-           
+
 
             {/* 1920 Version */}
 
-             <div className="desktop-1920 hidden lg:block">
-                <div className="flex w-screen h-[680px] bg-[#f1f2f6] -mt-15">
-                    <div className='w-[850px]'>
-                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">
-                            Homes For Every Lifestyle
+            <div className="desktop-1920 hidden mx-auto px-20 lg:block">
+                <div className="flex w-full h-[680px] bg-[#f1f2f6] -mt-15">
+                    <div className='w-full'>
+                        <div className="text-[56px] mt-10  tracking-wide manrope-medium w-[500px]">
+                            Homes For Every <span className='text-red-600'>Lifestyle</span>
                         </div>
 
-                        <div className="ml-10 mt-10">
+                        <div className="mt-10">
                             <p className="text-[30px] manrope-medium tracking-wide">
                                 From cozy living rooms to elegant bedrooms and stylish modular kitchens,
                                 we craft dream home interiors that blend comfort,
@@ -143,13 +145,13 @@ export default function Section3() {
                         </div>
                     </div>
 
-                    <div className="w-[1200px] h-[720px] mt-18 ml-40 relative overflow-hidden flex items-center">
+                    <div className="w-full h-[720px] mt-18 relative overflow-hidden flex items-end">
 
                         <div
-                            className="flex gap-x-24 transition-transform duration-500 ease-in-out h-full"
+                            className="flex gap-x-15 transition-transform duration-500 ease-in-out h-full"
                             style={{
-                                width: `${slides.length * cardWidth + (slides.length - 1) * gap}px`,
-                                transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`
+                                width: `${slides.length * cardWidth + (slides.length - 1)}px`,
+                                transform: `translateX(-${currentSlide * (cardWidth)}px)`
                             }}
                         >
                             {slides.map((slide, index) => (
@@ -170,10 +172,8 @@ export default function Section3() {
                             ))}
                         </div>
 
-                        <div
-                            className="pointer-events-none absolute top-0 right-0 h-full"
-                            style={{ width: cardWidth / 4, background: '#f1f2f6' }}
-                        />
+                        <div className="absolute top-0 right-0 h-full w-[20px] bg-gradient-to-l from-[#f1f2f6] to-transparent pointer-events-none"></div>
+
                     </div>
                 </div>
             </div>
