@@ -80,10 +80,13 @@ export async function POST(req: Request) {
     
     // Determine subject based on page URL and submission type
     const path = pageUrl || '';
-    const isContactPage = path.includes('/Contact');
-    const isInteriorCalculator = path.includes('/interior-designers-in-bangalore/Calculator');
+    const pathLower = path.toLowerCase();
+    const isContactPage = pathLower.includes('/contact');
+    const isInteriorCalculator = pathLower.includes('/interior-designers-in-bangalore/calculator');
     // Handle common misspelling as well
-    const isHubCalculator = path.includes('/hubinterior/Callculator') || path.includes('/hubinterior/Calculator');
+    const isHubCalculator = pathLower.includes('/hubinterior/callculator') || pathLower.includes('/hubinterior/calculator') || pathLower.includes('hubinterior.com/calculator');
+    // Home calculator should also catch the root /calculator path when not on the interior page
+    const isHomeCalculator = (!isInteriorCalculator) && (pathLower.includes('/calculator') || pathLower.endsWith('/calculator'));
 
     let subject = 'Google Ads Lead (Unverified)';
 
@@ -95,15 +98,19 @@ export async function POST(req: Request) {
       subject = verificationStatus === 'Verified User'
         ? 'Website Lead (Verified)'
         : 'Website Lead (Unverified)';
+    } else if (isHomeCalculator) {
+      subject = verificationStatus === 'Verified User'
+        ? 'Website Lead (Verified)'
+        : 'Website Lead (Unverified)';
     } else if (isContactPage) {
       subject = verificationStatus === 'Verified User'
         ? 'Lead from Website(Verified)'
         : 'Lead from Website (Unverified)';
     } else if (isCalculatorSubmission) {
-      // Default calculator submissions (other pages) stay Google Ads
+      // If calculator data is present but URL didn’t match known routes, default to Website Lead
       subject = verificationStatus === 'Verified User'
-        ? 'Google Ads Lead (Verified)'
-        : 'Google Ads Lead (Unverified)';
+        ? 'Website Lead (Verified)'
+        : 'Website Lead (Unverified)';
     } else {
       subject = verificationStatus === 'Verified User'
         ? 'Google Ads Lead (Verified)'
