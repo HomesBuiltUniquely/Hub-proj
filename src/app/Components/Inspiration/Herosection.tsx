@@ -68,7 +68,7 @@ const ContactHeader: React.FC = () => {
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
         </div>
         {/* Hero content */}
 
@@ -111,7 +111,7 @@ const ContactHeader: React.FC = () => {
           </div>
           <button
             onClick={handleGetEstimate}
-            className="bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl manrope mr-15 mt-5  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+            className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope mr-15 mt-5  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
           >
             GET FREE ESTIMATE
           </button>
@@ -162,7 +162,7 @@ const ContactHeader: React.FC = () => {
             </div>
 
             {/* Right CTA */}
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12  hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
           </div>
 
           {/* Hero content */}

@@ -49,10 +49,10 @@ export default function Section3() {
     return (
         <>
 
-            {/* DESKTOP 1440 */}
+            {/* DESKTOP 2560 */}
 
-            <div className="desktop-1440 hidden lg:block">
-                <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
+            <div className="desktop-2560 hidden lg:block">
+                <div className="flex w-screen h-[680px] bg-[#f1f2f6] -mt-15">
                     <div className='w-[850px]'>
                         <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">
                             Homes For Every Lifestyle
@@ -113,8 +113,73 @@ export default function Section3() {
             </div>
 
 
+           
 
-            {/* (you will add content later)   */}
+            {/* 1920 Version */}
+
+             <div className="desktop-1920 hidden lg:block">
+                <div className="flex w-screen h-[680px] bg-[#f1f2f6] -mt-15">
+                    <div className='w-[850px]'>
+                        <div className="text-[56px] mt-10 ml-10 tracking-wide manrope-medium w-[500px]">
+                            Homes For Every Lifestyle
+                        </div>
+
+                        <div className="ml-10 mt-10">
+                            <p className="text-[30px] manrope-medium tracking-wide">
+                                From cozy living rooms to elegant bedrooms and stylish modular kitchens,
+                                we craft dream home interiors that blend comfort,
+                            </p>
+
+                            <p className="text-[30px] manrope-medium tracking-wide">
+                                beauty, and functionality, creating spaces you&#39;ll love.
+                            </p>
+
+                            <button
+                                onClick={scrollToForm}
+                                className="text-white bg-red-500 mt-12 w-[300px] h-[50px] manrope rounded-full text-[20px] hover:bg-red-600 transition-colors"
+                            >
+                                Book A Free Design Session
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="w-[1200px] h-[720px] mt-18 ml-40 relative overflow-hidden flex items-center">
+
+                        <div
+                            className="flex gap-x-24 transition-transform duration-500 ease-in-out h-full"
+                            style={{
+                                width: `${slides.length * cardWidth + (slides.length - 1) * gap}px`,
+                                transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`
+                            }}
+                        >
+                            {slides.map((slide, index) => (
+                                <div
+                                    key={index}
+                                    className="w-[380px] h-[520px] bg-white rounded-4xl grid grid-rows-5 flex-shrink-0"
+                                >
+                                    <img
+                                        src={slide.img}
+                                        alt=""
+                                        className="rounded-t-4xl row-span-3 w-full h-[350px] object-cover"
+                                    />
+                                    <div className="row-span-2 mt-18 ml-5">
+                                        <div className="text-[30px] manrope">{slide.type}</div>
+                                        <div className="mt-1 text-2xl manrope-medium">{slide.price}</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div
+                            className="pointer-events-none absolute top-0 right-0 h-full"
+                            style={{ width: cardWidth / 4, background: '#f1f2f6' }}
+                        />
+                    </div>
+                </div>
+            </div>
+
+
+            {/* 1280 Version */}
 
             <div className="desktop-1280 hidden lg:block">
                 <div className="flex w-screen h-[680px] bg-[#f1f2f6]">
@@ -182,7 +247,7 @@ export default function Section3() {
             {/* MOBILE VERSION */}
 
             <div className="lg:hidden w-full mx-auto max-h-[900px] bg-[#f1f2f6]">
-                <div className='ml-5 mt-5 manrope-medium '>
+                <div className='ml-5  manrope-medium '>
                     <div className="flex">
                         <h1 className="text-4xl pt-10 tracking-wide manrope-medium">
                             Homes For Every Lifestyle
@@ -253,29 +318,38 @@ export default function Section3() {
                 </button>
             </div>
 
-            <style jsx global>{`
+            <style jsx>{`
+        /* Hide all sections by default */
+    
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none;
+        }
 
-                /* Hide both by default */
-                .desktop-1280,
-                .desktop-1440 {
-                    display: none !important;
-                }
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
 
-                /* 1024px → 1439px = desktop-1280 */
-                @media (min-width: 1024px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block !important;
-                    }
-                }
+       
+         /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px)  and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
 
-                /* 1440px and above = desktop-1440 */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block !important;
-                    }
-                }
-
-            `}</style>
+         /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+          
+      `}</style>
 
         </>
     )

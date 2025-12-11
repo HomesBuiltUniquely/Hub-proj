@@ -452,7 +452,8 @@ export function HeroSection() {
                                     </div>
 
                                     {/* Time Slot Dropdown */}
-                                    <div className="relative text-left w-full">
+                                    <div className="relative text-left w-full timeslot-wrapper">
+
                                         <button
                                             type="button"
                                             onClick={() => setOpen(!open)}

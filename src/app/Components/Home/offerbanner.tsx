@@ -66,7 +66,7 @@ const OfferBanner: React.FC = () => {
 
           <button
             onClick={handleGetEstimate}
-            className="absolute bottom-6 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-50"
+            className="absolute bottom-6 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
           >
             GET FREE ESTIMATE
           </button>
@@ -85,7 +85,7 @@ const OfferBanner: React.FC = () => {
 
           <button
             onClick={handleGetEstimate}
-            className="absolute bottom-6 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-50"
+            className="absolute bottom-9 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
           >
             GET FREE ESTIMATE
           </button>
@@ -104,7 +104,7 @@ const OfferBanner: React.FC = () => {
 
           <button
             onClick={handleGetEstimate}
-            className="absolute bottom-6 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-50"
+            className="absolute bottom-8 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
           >
             GET FREE ESTIMATE
           </button>
