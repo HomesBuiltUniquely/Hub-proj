@@ -85,7 +85,7 @@ export async function POST(req: Request) {
         subject = 'Lead from Website(Verified)';
       } else if (isCalculatorSubmission) {
         // Calculator form from home page
-        subject = 'Website Lead (Verified)';
+        subject = 'Google Ads Lead (Verified)';
       } else {
         subject = 'Google Ads Lead (Verified)';
       }
