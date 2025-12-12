@@ -259,8 +259,8 @@ export default function Section3() {
                 </div>
 
                 {/* Stacked Card Carousel */}
-                <div className='flex justify-center ml-5'>
-                    <div className="mt-10 relative h-[400px] w-full max-w-[280px]">
+                <div className='flex justify-center'>
+                    <div className=" relative h-[400px] w-full max-w-[280px] manrope-medium ml-5 mt-8">
                         {slides.map((slide, idx) => {
                             const isTop = idx === currentSlide;
                             const isSecond = idx === (currentSlide + 1) % slides.length;
@@ -282,7 +282,7 @@ export default function Section3() {
                             return (
                                 <div
                                     key={idx}
-                                    className="absolute left-1/2 top-0 w-full max-w-[260px] h-[410px] bg-white rounded-3xl shadow-lg flex-shrink-0 transform -translate-x-1/2 ml-20"
+                                    className="absolute left-1/2 top-0 w-full max-w-[270px] h-[410px] bg-white rounded-3xl shadow-lg flex-shrink-0 transform -translate-x-1/2 ml-20"
                                     style={{
                                         transform: `translateX(-${offset}px) scale(${scale})`,
                                         zIndex: z,
