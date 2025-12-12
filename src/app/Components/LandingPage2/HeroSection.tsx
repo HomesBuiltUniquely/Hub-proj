@@ -333,7 +333,7 @@ export function HeroSection() {
         <div>
             <div className="lg:block hidden relative w-full h-[1000px] mx-auto">
                 <Image
-                    src="/LandingP2Launch.png"
+                    src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/JpnLaunchDesk.png"
                     alt="Hero background"
                     fill
                     className="object-cover border-4  rounded-3xl "
@@ -593,8 +593,8 @@ export function HeroSection() {
                             <div>
                             </div>
                         </div>
-                        <div className="text-5xl w-[620px] h-[100px] text-white wulkan-display pt-180 pl-6">Complete Home Interiors
-                            <div className="text-2xl w-[620px] h-[100px] text-white manrope-medium pt-4 pl-3">Tailored For Every Style & Lifestyle</div>
+                        <div className="text-5xl w-[620px] h-[100px] text-black wulkan-display pt-200 pl-6">Complete Home Interiors
+                            <div className="text-2xl w-[620px] h-[100px] text-black manrope-medium pt-4 pl-3">Tailored For Every Style & Lifestyle</div>
                         </div>
 
                     </div>
@@ -606,7 +606,7 @@ export function HeroSection() {
                 <div className="w-screen h-[1000px] bg-white">
                     <div className="relative">
                         <div className="relative ">
-                            <img src="Launchlandingpage2M.png" className="absolute h-[700px] w-screen"></img>
+                            <img src="Launchlandingpage2M.png" className="absolute h-[700px] w-full"></img>
                             <img src="LOGO.png" alt="Logo" className="absolute top-4 w-[100px] h-[40px] m-4"></img>
                         </div>
 

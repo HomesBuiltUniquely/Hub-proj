@@ -221,10 +221,7 @@ export default function Section6() {
 
       {/* Desktop Version */}
 
-      <div className=" w-full min-h-[800px] bg-white py-16">
-
-
-
+      <div className=" w-full min-h-[800px] py-16">
 
         {/* 2560 Version */}
 
@@ -422,7 +419,7 @@ export default function Section6() {
           <div className="mb-8">
             <div className='flex'>
               <div className=''>
-                <h1 className='text-4xl mr-12 mt-10 manrope-medium'>Smart Storage</h1>
+                <h1 className='text-4xl mr-12 mt-5 manrope-medium'>Smart Storage</h1>
                 <p className='manrope-medium text-[15px] pt-2'>
                   Tailored Storage Designs for Maximum Space - Unlock 25% Extra Space
                 </p>
