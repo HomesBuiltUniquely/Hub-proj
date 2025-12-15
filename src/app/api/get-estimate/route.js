@@ -28,7 +28,7 @@ export async function POST(req) {
 
       console.log('Sending get-estimate data to WebsiteLead API:', websiteLeadPayload);
       
-      const websiteLeadResponse = await fetch('http://localhost:8081/v1/WebsiteLead', {
+      const websiteLeadResponse = await fetch('https://Hows.hubinterior.com/v1/WebsiteLead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
