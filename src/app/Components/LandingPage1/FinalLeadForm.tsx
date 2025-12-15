@@ -225,9 +225,16 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
             >
               <option className="text-gray-400" value="" disabled>Date</option>
-              {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
-                <option key={day} value={day} className="text-gray-700">Dec-{day}</option>
-              ))}
+              {(() => {
+                const today = new Date();
+                const currentDay = today.getDate();
+                const currentMonth = today.getMonth(); // 0-11, where 11 = December
+                // Only show dates if we're in December, otherwise show all dates
+                const startDay = (currentMonth === 11) ? currentDay : 1;
+                return Array.from({ length: 31 - startDay + 1 }, (_, i) => startDay + i).map((day) => (
+                  <option key={day} value={day} className="text-gray-700">Dec-{day}</option>
+                ));
+              })()}
             </select>
             <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute pointer-events-none">&#9662;</span>
           </div>
