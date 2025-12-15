@@ -69,36 +69,46 @@ export default function Section8() {
 
     <div className="w-full">
 
-    <style global jsx>{`
+    <style jsx>{`
+        /* Hide all sections by default */
+    
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none;
+        }
 
-                /* Hide both by default */
-                .desktop-1280,
-                .desktop-1440 {
-                    display: none !important;
-                }
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
 
-                /* 1024px → 1439px = desktop-1280 */
-                @media (min-width: 1024px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block !important;
-                    }
-                }
+        
+        /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
 
-                /* 1440px and above = desktop-1440 */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block !important;
-                    }
-                }
 
-            `}</style>
+          /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+          
+      `}</style>
 
 
       {/* Desktop Layout */}
 
       {/* 1440 Version */}
       <div className=" desktop-1440 hidden lg:block">
-        <div className="w-[1200px] ml-30 mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
+        <div className="w-[1200px] ml-30 -mt-4 relative h-full  overflow-hidden rounded-2xl">
           {/* Background Video */}
           <div className="absolute inset-0 z-0">
             <video
@@ -165,7 +175,7 @@ export default function Section8() {
       {/* 1280 Version */}
 
        <div className=" desktop-1280 hidden lg:block">
-        <div className="w-[1200px] mx-auto mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
+        <div className="w-[1200px] mx-auto mt-4 relative  overflow-hidden rounded-2xl">
           {/* Background Video */}
           <div className="absolute inset-0 z-0">
             <video
