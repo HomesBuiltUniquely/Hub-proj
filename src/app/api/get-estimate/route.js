@@ -15,6 +15,7 @@ export async function POST(req) {
       phoneNumberFinal,
       pincode,
       tellUsMore,
+      pageUrl,
     });
 
     // Send data to unified API endpoint
@@ -24,6 +25,7 @@ export async function POST(req) {
         email: email || '',
         phoneNumber: phoneNumberFinal || '',
         propertyPin: pincode || '',
+        pageUrl: pageUrl || '',
       };
 
       console.log('Sending get-estimate data to WebsiteLead API:', websiteLeadPayload);
@@ -78,6 +80,7 @@ export async function POST(req) {
         <p><strong>Phone Number:</strong> ${phoneNumberFinal || 'Not provided'}</p>
         <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
         <p><strong>Tell Us More:</strong> ${tellUsMore || 'Not provided'}</p>
+        <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank" rel="noopener noreferrer">${pageUrl || 'Not provided'}</a></p>
         <hr/>
         <p><em>This form was submitted from the Get Estimate page.</em></p>
       `,
