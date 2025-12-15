@@ -52,7 +52,7 @@ export default function Section7() {
 
             `}</style>
 
-      <div className="w-full bg-white py-16 relative overflow-hidden">
+      <div className="w-full  py-16 relative overflow-hidden">
         {/* Subtle diagonal lines in corners */}
         <div className="absolute top-0 left-0 w-32 h-32 opacity-10">
           <div className="w-full h-full bg-gray-300 transform rotate-45"></div>

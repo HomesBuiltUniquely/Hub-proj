@@ -28,8 +28,8 @@ export default function Home() {
       <Section4 />
       <Section5 />
       <Section6 />
-      <Section7 />
       <BrandCarousel />
+      <Section7 />
       <QAsection />
       <Footer />
     </div>

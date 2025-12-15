@@ -3,293 +3,414 @@
 import { useState } from 'react';
 
 export function Section10() {
-    const [expandedCards, setExpandedCards] = useState<{ [key: string]: boolean }>({
-        'technology-mobile': true // Last card always open by default
-    });
+    const [open, setOpen] = useState<string | null>(null);
 
-    const toggleCard = (cardId: string) => {
-        setExpandedCards(prev => {
-            // If the clicked card is already expanded, close it
-            if (prev[cardId]) {
-                return { [cardId]: false };
-            }
-            // If the clicked card is closed, expand it and close all others
-            return { [cardId]: true };
-        });
+    const toggle = (key: string) => {
+        setOpen(prev => (prev === key ? null : key));
     };
 
     return (
         <div>
 
-            <style global jsx>{`
+            {/* CUSTOM BREAKPOINTS */}
+           <style jsx>{`
+        /* Hide all sections by default */
+    
+        .desktop-1280,
+        .desktop-1920,
+        .desktop-2560 {
+          display: none;
+        }
 
-                /* Hide both by default */
-                .desktop-1280,
-                .desktop-1440 {
-                    display: none !important;
-                }
+        /* Show 1280px section for screens between 768px and 1439px */
+        @media (min-width: 768px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block;
+          }
+        }
 
-                /* 1024px → 1439px = desktop-1280 */
-                @media (min-width: 1024px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block !important;
-                    }
-                }
-
-                /* 1440px and above = desktop-1440 */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block !important;
-                    }
-                }
-
-            `}</style>
-
-
-            {/* 1440 Version */}
-
-            <div className="desktop-1440 hidden lg:block overflow-hidden mt-15">
-                <div className="w-screen h-[950px] bg-[#f1f2f6] ml-10 ">
-                    <div className="text-[56px] manrope-medium tracking-wide text-center mt-4">Our Interior Solution</div>
-                    <div className="mt-16 mr-20 flex justify-center manrope-bold">
-                        <div className="">
-                            <div className="w-[580px] h-[330px] bg-white rounded-4xl text-5xl p-4 font-light pl-6 tracking-wide manrope-medium">
-                                <div>Essential - Core</div>
-                                <ul className="list-decimal list-inside text-[18px] mt-5 space-y-3">
-                                    <li className="manrope-medium ">Kitchen ( Base + Wall ) Unit</li>
-                                    <li className="manrope-medium ">Wardrobe ( Base + Loft ) Unit</li>
-                                    <li className="manrope-medium ">TV Unit</li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div className="">
-                            <div className="w-[580px] h-[330px] bg-white rounded-4xl ml-8 text-5xl p-4 font-light pl-6 tracking-wide manrope-medium">
-                                <div>Standard - Signature</div>
-                                <ul className="list-decimal list-inside text-[18px] mt-5 space-y-3">
-                                    <li className="manrope-medium ">Kitchen ( Base + Wall + Loft ) Unit</li>
-                                    <li className="manrope-medium ">Wardrobe ( Base + Loft ) Unit</li>
-                                    <li className="manrope-medium ">TV Unit</li>
-                                    <li className="manrope-medium ">Crockary Unit</li>
-                                    <li className="manrope-medium ">Pooja Unit</li>
-                                    <li className="manrope-medium ">Vanity for Washroom</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div >
-                    <div className="mt-15 flex mr-20 justify-center">
-                        <div className="">
-                            <div className="w-[580px] h-[390px] bg-white rounded-4xl text-5xl p-4 font-light pl-6 tracking-wide manrope-medium">
-                                <div>Luxury - Elite</div>
-                                <ul className="list-decimal list-inside text-[18px] mt-5 space-y-3">
-                                    <li className="manrope-medium ">Kitchen ( Base + Wall + Loft ) with Tall Unit</li>
-                                    <li className="manrope-medium ">Utility ( Base + Wall ) Unit</li>
-                                      <li className="manrope-medium ">Living Room ( TV Unit + Partition + Art Work + False <div className="mt-1 pl-6">Ceiling with Electrical + Painting + Wallpaper )</div></li>
-                                    <li className="manrope-medium  text-left">Bedroom ( Wardrobes ( Base + Loft ), Study Unit, <div className="pl-6 mt-1 mb-1">False Ceiling with Electrical, TV Unit, Bed, Bedside</div> <div className="pl-6"> Table, Headboard with Electrical )</div></li>
-                                    <li className="manrope-medium ">Crockary Unit</li>
-                                    <li className="manrope-medium ">Pooja Unit</li>
-                                    <li className="manrope-medium ">Vanity for Washroom</li>
-                                    <li className="manrope-medium ">Smart Home Automation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
+        /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1440px) and (max-width: 1920px) {
+          .desktop-1920 {
+            display: block !important;
+          }
+        }
 
 
-            {/* 1280 Version */}
+          /* Show  layout for large desktops (>1921px) */
+        @media (min-width: 1921px) {
+          .desktop-2560 {
+            display: block !important;
+          }
+        }
+          
+      `}</style>
+
+    
+            {/* ==================== DESKTOP – 2560 ===================== */}
 
 
-             <div className="desktop-1280 hidden lg:block overflow-hidden mt-15">
-                <div className="w-screen h-[950px] bg-[#f1f2f6] ml-10 ">
-                    <div className="text-[56px] manrope-medium tracking-wide text-center mt-4">Our Interior Solution</div>
-                     <div className="mt-16 mr-20 flex justify-center manrope-bold">
-                        <div className="">
-                            <div className="w-[580px] h-[330px] bg-white rounded-4xl text-5xl p-4 font-light pl-6 tracking-wide manrope-medium">
-                                <div>Essential - Core</div>
-                                <ul className="list-decimal list-inside text-[18px] mt-5 space-y-3">
-                                    <li className="manrope-medium ">Kitchen ( Base + Wall ) Unit</li>
-                                    <li className="manrope-medium ">Wardrobe ( Base + Loft ) Unit</li>
-                                    <li className="manrope-medium ">TV Unit</li>
-                                </ul>
-                            </div>
+            {/* DESKTOP 2560 – Same reveal as mobile */}
+            <div className="desktop-2560 hidden lg:block bg-[#f1f2f6] px-20">
 
-                        </div>
-                        <div className="">
-                            <div className="w-[580px] h-[330px] bg-white rounded-4xl ml-8 text-5xl p-4 font-light pl-6 tracking-wide manrope-medium">
-                                <div>Standard - Signature</div>
-                                <ul className="list-decimal list-inside text-[18px] mt-5 space-y-3">
-                                    <li className="manrope-medium ">Kitchen ( Base + Wall + Loft ) Unit</li>
-                                    <li className="manrope-medium ">Wardrobe ( Base + Loft ) Unit</li>
-                                    <li className="manrope-medium ">TV Unit</li>
-                                    <li className="manrope-medium ">Crockary Unit</li>
-                                    <li className="manrope-medium ">Pooja Unit</li>
-                                    <li className="manrope-medium ">Vanity for Washroom</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div >
-                    <div className="mt-15 flex mr-20 justify-center">
-                        <div className="">
-                            <div className="w-[580px] h-[390px] bg-white rounded-4xl text-5xl p-4 font-light pl-6 tracking-wide manrope-medium">
-                                <div>Luxury - Elite</div>
-                                <ul className="list-decimal list-inside text-[18px] mt-5 space-y-3">
-                                    <li className="manrope-medium ">Kitchen ( Base + Wall + Loft ) with Tall Unit</li>
-                                    <li className="manrope-medium ">Utility ( Base + Wall ) Unit</li>
-                                    <li className="manrope-medium ">Living Room ( TV Unit + Partition + Art Work + False <div className="mt-1 pl-6">Ceiling with Electrical + Painting + Wallpaper )</div></li>
-                                     <li className="manrope-medium  text-left">Bedroom ( Wardrobes ( Base + Loft ), Study Unit, <div className="pl-6 mt-1 mb-1">False Ceiling with Electrical, TV Unit, Bed, Bedside</div> <div className="pl-6"> Table, Headboard with Electrical )</div></li>
-                                    <li className="manrope-medium ">Crockary Unit</li>
-                                    <li className="manrope-medium ">Pooja Unit</li>
-                                    <li className="manrope-medium ">Vanity for Washroom</li>
-                                    <li className="manrope-medium ">Smart Home Automation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {/* TITLE */}
+                <h2 className="text-5xl manrope tracking-wide">
+                    Our Interior <span className="text-red-600">Solution</span>
+                </h2>
 
+                <div className="flex justify-between mt-30">
 
+                    {/* LEFT – ACCORDION */}
+                    <div className="flex flex-col space-y-10 w-[550px]">
 
-
-            {/* Mobile version - Fixed padding/margin */}
-            <div className="lg:hidden w-full bg-[#f1f2f6] pt-14 pb-6 overflow-hidden">
-                <div className='flex'>
-
-                    <h1 className="w-full text-4xl manrope-medium tracking-wide text-left mb-8 my-auto pl-4">
-                        Our Interior <div> Solution</div>
-                    </h1>
-                </div>
-
-                <div className="space-y-3 px-4" >
-                    {/* FAQ Item 1 */}
-                    <div className="bg-white rounded-xl p-4">
-                        <button
-                            className="w-full flex justify-between items-center text-left group"
-                            onClick={() => toggleCard('faq-1')}
-                        >
-                            <span className="text-[18px] manrope text-gray-900 pr-4">
+                        {/* Essential */}
+                        <div>
+                            <button
+                                onClick={() => toggle("ess")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
                                 Essential - Core
-                            </span>
-                            <span className="text-gray-500 ml-2 flex-shrink-0 text-2xl">
-                                {expandedCards['faq-1'] ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                                </svg>
-                                    : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                }
-                            </span>
-                        </button>
+                                <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
 
-                        {expandedCards['faq-1'] && (
-                            <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                                <ul className="list-decimal pl-5 space-y-2 text-gray-800">
-                                    <li className="manrope-medium">
-                                        Kitchen ( Base + Wall ) Unit
-                                    </li>
-                                    <li className="manrope-medium">
-                                        Wardrobe ( Base + Loft ) Unit
-                                    </li>
-                                    <li className="manrope-medium">
-                                        TV Unit
-                                    </li>
+                            {open === "ess" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall ) Unit</li>
+                                    <li>Wardrobe ( Base + Loft ) Unit</li>
+                                    <li>TV Unit</li>
                                 </ul>
-                            </div>
-                        )}
-                    </div>
+                            )}
+                        </div>
 
-                    {/* FAQ Item 2 */}
-                    <div className="bg-white rounded-xl p-4">
-                        <button
-                            className="w-full flex justify-between items-center text-left group"
-                            onClick={() => toggleCard('faq-2')}
-                        >
-                            <span className="text-[18px] manrope text-gray-900 pr-4">
+                        {/* Standard */}
+                        <div>
+                            <button
+                                onClick={() => toggle("std")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
                                 Standard - Signature
-                            </span>
-                            <span className="text-gray-500 ml-2 flex-shrink-0 text-2xl">
-                                {expandedCards['faq-2'] ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                                </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                </svg>}
-                            </span>
-                        </button>
+                              <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
 
-                        {expandedCards['faq-2'] && (
-                            <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                                <ul className="list-decimal pl-5 space-y-2 text-gray-800">
-                                    <li className='manrope-medium'>
-                                        Kitchen ( Base + Wall + Loft ) Unit
-                                    </li>
-                                    <li className='manrope-medium'>
-                                        Wardrobe ( Base + Loft ) Unit
-                                    </li>
-                                    <li className='manrope-medium'>
-                                        TV Unit
-                                    </li>
-                                    <li className='manrope-medium'>
-                                        Crockery Unit
-                                    </li>
-                                    <li className='manrope-medium'>
-                                        Pooja Unit
-                                    </li>
-                                    <li className='manrope-medium'>
-                                        Vanity for Washroom
-                                    </li>
+                            {open === "std" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall + Loft ) Unit</li>
+                                    <li>Wardrobe ( Base + Loft ) Unit</li>
+                                    <li>TV Unit</li>
+                                    <li>Crockary Unit</li>
+                                    <li>Pooja Unit</li>
+                                    <li>Vanity for Washroom</li>
                                 </ul>
+                            )}
+                        </div>
 
-                            </div>
-                        )}
-                    </div>
-
-                    {/* FAQ Item 3 */}
-                    <div className="bg-white rounded-xl p-4">
-                        <button
-                            className="w-full flex justify-between items-center text-left group"
-                            onClick={() => toggleCard('faq-3')}
-                        >
-                            <span className="text-[18px] manrope text-gray-900 pr-4">
+                        {/* Luxury */}
+                        <div>
+                            <button
+                                onClick={() => toggle("lux")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
                                 Luxury - Elite
-                            </span>
-                            <span className="text-gray-500 ml-2 flex-shrink-0 text-2xl">
-                                {expandedCards['faq-3'] ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                                </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                </svg>}
-                            </span>
-                        </button>
+                                <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
 
-                        {expandedCards['faq-3'] && (
-                            <div className="mt-4 text-gray-700 text-[16px] leading-relaxed">
-                                <ul className="list-decimal pl-5 space-y-2 text-gray-800">
-                                    <li className="manrope-medium">
-                                        Kitchen ( Base + Wall + Loft ) with Tall Unit
-                                    </li>
-                                    <li className="manrope-medium">
-                                        Utility ( Base + Wall ) Unit
-                                    </li>
-                                    <li className="manrope-medium">
-                                        Living Room ( TV Unit + Partition + Art Work + False Ceiling with Electrical + Painting + Wallpaper )
-                                    </li>
-                                    <li className="manrope-medium">
-                                        Bedroom ( Wardrobes ( Base + Loft ), Study Unit, False Ceiling with Electrical, TV Unit, Bed, Bedside Table, Headboard with Electrical)
-                                    </li>
-                                    <li className="manrope-medium ">Crockery Unit</li>
-                                    <li className="manrope-medium  ">Pooja Unit</li>
-                                    <li className="manrope-medium pb-2">Vanity for Washroom</li>
-                                    <li className="manrope-medium ">Smart Home Automation</li>
+                            {open === "lux" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall + Loft ) with Tall Unit</li>
+                                    <li>Utility ( Base + Wall ) Unit</li>
+                                    <li>Living Room ( TV Unit + Partition + Art Work + False Ceiling )</li>
+                                    <li>Bedroom ( Wardrobes, Study Unit, False Ceiling, Electrical )</li>
+                                    <li>Crockary Unit</li>
+                                    <li>Pooja Unit</li>
+                                    <li>Vanity for Washroom</li>
+                                    <li>Smart Home Automation</li>
                                 </ul>
+                            )}
+                        </div>
 
-
-                            </div>
-                        )}
                     </div>
+
+                    {/* RIGHT IMAGE */}
+                    <div className="w-[650px] h-[380px] rounded-3xl overflow-hidden -mt-30">
+                        <img src="/img3.jpg" className="w-full h-full object-cover" />
+                    </div>
+
                 </div>
             </div>
+
+            
+            {/* 1920 Version */}
+
+           <div className="desktop-1920 hidden lg:block bg-[#f1f2f6] px-20 ">
+
+                {/* TITLE */}
+                <h2 className="text-5xl manrope tracking-wide">
+                    Our Interior <span className="text-red-600">Solution</span>
+                </h2>
+
+                <div className="flex justify-between mt-30">
+
+                    {/* LEFT – ACCORDION */}
+                    <div className="flex flex-col space-y-10 w-[550px]">
+
+                        {/* Essential */}
+                        <div>
+                            <button
+                                onClick={() => toggle("ess")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
+                                Essential - Core
+                                <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
+
+                            {open === "ess" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall ) Unit</li>
+                                    <li>Wardrobe ( Base + Loft ) Unit</li>
+                                    <li>TV Unit</li>
+                                </ul>
+                            )}
+                        </div>
+
+                        {/* Standard */}
+                        <div>
+                            <button
+                                onClick={() => toggle("std")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
+                                Standard - Signature
+                              <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
+
+                            {open === "std" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall + Loft ) Unit</li>
+                                    <li>Wardrobe ( Base + Loft ) Unit</li>
+                                    <li>TV Unit</li>
+                                    <li>Crockary Unit</li>
+                                    <li>Pooja Unit</li>
+                                    <li>Vanity for Washroom</li>
+                                </ul>
+                            )}
+                        </div>
+
+                        {/* Luxury */}
+                        <div>
+                            <button
+                                onClick={() => toggle("lux")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
+                                Luxury - Elite
+                                <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
+
+                            {open === "lux" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall + Loft ) with Tall Unit</li>
+                                    <li>Utility ( Base + Wall ) Unit</li>
+                                    <li>Living Room ( TV Unit + Partition + Art Work + False Ceiling )</li>
+                                    <li>Bedroom ( Wardrobes, Study Unit, False Ceiling, Electrical )</li>
+                                    <li>Crockary Unit</li>
+                                    <li>Pooja Unit</li>
+                                    <li>Vanity for Washroom</li>
+                                    <li>Smart Home Automation</li>
+                                </ul>
+                            )}
+                        </div>
+
+                    </div>
+
+                    {/* RIGHT IMAGE */}
+                    <div className="w-[650px] h-[350px] rounded-3xl overflow-hidden -mt-35">
+                        <img src="/img3.jpg" className="w-full h-full object-cover" />
+                    </div>
+
+                </div>
+            </div> 
+
+
+          {/* 1280 Version */}
+
+           <div className="desktop-1280 hidden lg:block bg-[#f1f2f6] px-15 mt-15">
+
+                {/* TITLE */}
+                <h2 className="text-5xl manrope tracking-wide">
+                    Our Interior <span className="text-red-600">Solution</span>
+                </h2>
+
+                <div className="flex justify-between mt-30">
+
+                    {/* LEFT – ACCORDION */}
+                    <div className="flex flex-col space-y-10 w-[550px]">
+
+                        {/* Essential */}
+                        <div>
+                            <button
+                                onClick={() => toggle("ess")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
+                                Essential - Core
+                                <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
+
+                            {open === "ess" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall ) Unit</li>
+                                    <li>Wardrobe ( Base + Loft ) Unit</li>
+                                    <li>TV Unit</li>
+                                </ul>
+                            )}
+                        </div>
+
+                        {/* Standard */}
+                        <div>
+                            <button
+                                onClick={() => toggle("std")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
+                                Standard - Signature
+                              <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
+
+                            {open === "std" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall + Loft ) Unit</li>
+                                    <li>Wardrobe ( Base + Loft ) Unit</li>
+                                    <li>TV Unit</li>
+                                    <li>Crockary Unit</li>
+                                    <li>Pooja Unit</li>
+                                    <li>Vanity for Washroom</li>
+                                </ul>
+                            )}
+                        </div>
+
+                        {/* Luxury */}
+                        <div>
+                            <button
+                                onClick={() => toggle("lux")}
+                                className="w-full flex justify-between items-center text-2xl manrope border-b-2 border-red-400 pb-2"
+                            >
+                                Luxury - Elite
+                                <span className={`transition-transform ${open === "lux" ? "rotate-180" : ""}`}></span>
+                                <span className="text-2xl manrope">{open === "lux" ? "-" : "+"}</span>
+                            </button>
+
+                            {open === "lux" && (
+                                <ul className="list-decimal mt-4 pl-6 space-y-2 text-lg manrope-medium">
+                                    <li>Kitchen ( Base + Wall + Loft ) with Tall Unit</li>
+                                    <li>Utility ( Base + Wall ) Unit</li>
+                                    <li>Living Room ( TV Unit + Partition + Art Work + False Ceiling )</li>
+                                    <li>Bedroom ( Wardrobes, Study Unit, False Ceiling, Electrical )</li>
+                                    <li>Crockary Unit</li>
+                                    <li>Pooja Unit</li>
+                                    <li>Vanity for Washroom</li>
+                                    <li>Smart Home Automation</li>
+                                </ul>
+                            )}
+                        </div>
+
+                    </div>
+
+                    {/* RIGHT IMAGE */}
+                    <div className="w-[550px] h-[330px] rounded-3xl overflow-hidden -mt-30">
+                        <img src="/img3.jpg" className="w-full h-full object-cover" />
+                    </div>
+
+                </div>
+            </div>
+
+        
+        {/* Mobile version  */}
+
+            <div className="lg:hidden bg-[#f1f2f6] px-4 py-10 mt-5">
+
+                <h2 className="text-4xl w-[300px] manrope-medium tracking-wide mb-10">
+                    Our Interior <span className="text-red-600">Solution</span>
+                </h2>
+
+                {/* MOBILE ACCORDION */}
+                <div className="space-y-8">
+
+                    {/* MOBILE ITEMS */}
+                    {[
+                        { key: "m-ess", label: "Essential - Core", component: <MobileEssential /> },
+                        { key: "m-std", label: "Standard - Signature", component: <MobileStandard /> },
+                        { key: "m-lux", label: "Luxury - Elite", component: <MobileLuxury /> }
+                    ].map(i => (
+                        <div key={i.key}>
+                            <button
+                                onClick={() => toggle(i.key)}
+                                className="w-full flex justify-between items-center text-[18px] manrope"
+                            >
+                                {i.label}
+                                <span className="text-xl">{open === i.key ? "-" : "+"}</span>
+                            </button>
+
+                            {/* Red underline */}
+                            <div className="border-b-2 border-red-500 mt-2"></div>
+
+                            {open === i.key && (
+                                <div className="mt-4">{i.component}</div>
+                            )}
+                        </div>
+                    ))}
+
+                </div>
+
+            </div>
+
         </div>
-    )
+    );
+}
+
+
+
+/* ========================= MOBILE CONTENT ============================== */
+
+
+function MobileEssential() {
+    return (
+        <ul className="list-decimal pl-5 space-y-2 text-lg manrope-medium">
+            <li>Kitchen ( Base + Wall ) Unit</li>
+            <li>Wardrobe ( Base + Loft ) Unit</li>
+            <li>TV Unit</li>
+        </ul>
+    );
+}
+
+function MobileStandard() {
+    return (
+        <ul className="list-decimal pl-5 space-y-2 text-md manrope-medium">
+            <li>Kitchen ( Base + Wall + Loft ) Unit</li>
+            <li>Wardrobe ( Base + Loft ) Unit</li>
+            <li>TV Unit</li>
+            <li>Crockery Unit</li>
+            <li>Pooja Unit</li>
+            <li>Vanity for Washroom</li>
+        </ul>
+    );
+}
+
+function MobileLuxury() {
+    return (
+        <ul className="list-decimal pl-5 space-y-2 text-[16px] manrope-medium">
+            <li>Kitchen ( Base + Wall + Loft ) with Tall Unit</li>
+            <li>Utility ( Base + Wall ) Unit</li>
+            <li>Living Room ( TV Unit + Partition + Art Work + False Ceiling )</li>
+            <li>Bedroom ( Wardrobe + Study + False Ceiling + Electrical )</li>
+            <li>Crockery Unit</li>
+            <li>Pooja Unit</li>
+            <li>Vanity for Washroom</li>
+            <li>Smart Home Automation</li>
+        </ul>
+    );
 }

@@ -49,6 +49,37 @@ export async function POST(req: Request) {
       material,
       calculator,
     });
+
+    // Send data to unified API endpoint
+    try {
+      const websiteLeadPayload = {
+        name: name || '',
+        email: email || '',
+        phoneNumber: phone || '',
+        propertyPin: pincode || '',
+      };
+
+      console.log('Sending calculator data to WebsiteLead API:', websiteLeadPayload);
+      
+      const websiteLeadResponse = await fetch('http://localhost:8081/v1/WebsiteLead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(websiteLeadPayload),
+      });
+
+      if (websiteLeadResponse.ok) {
+        const websiteLeadData = await websiteLeadResponse.json();
+        console.log('WebsiteLead API response:', websiteLeadData);
+      } else {
+        console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
+      }
+    } catch (websiteLeadError) {
+      console.error('Error sending to WebsiteLead API:', websiteLeadError);
+      // Continue with email flow even if WebsiteLead API fails
+    }
+
     console.log('Environment variables check:');
     console.log('GMAIL_USER exists:', !!process.env.GMAIL_USER);
     console.log('GMAIL_PASS exists:', !!process.env.GMAIL_PASS);

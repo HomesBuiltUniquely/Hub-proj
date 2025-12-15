@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, phoneNumber, phone, pincode, tellUsMore } = body;
+    const { name, email, phoneNumber, phone, pincode, tellUsMore, pageUrl } = body;
 
     // Handle both desktop form (phoneNumber) and mobile form (phone) field names
     const phoneNumberFinal = phoneNumber || phone;
@@ -16,6 +16,36 @@ export async function POST(req) {
       pincode,
       tellUsMore,
     });
+
+    // Send data to unified API endpoint
+    try {
+      const websiteLeadPayload = {
+        name: name || '',
+        email: email || '',
+        phoneNumber: phoneNumberFinal || '',
+        propertyPin: pincode || '',
+      };
+
+      console.log('Sending get-estimate data to WebsiteLead API:', websiteLeadPayload);
+      
+      const websiteLeadResponse = await fetch('http://localhost:8081/v1/WebsiteLead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(websiteLeadPayload),
+      });
+
+      if (websiteLeadResponse.ok) {
+        const websiteLeadData = await websiteLeadResponse.json();
+        console.log('WebsiteLead API response:', websiteLeadData);
+      } else {
+        console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
+      }
+    } catch (websiteLeadError) {
+      console.error('Error sending to WebsiteLead API:', websiteLeadError);
+      // Continue with email flow even if WebsiteLead API fails
+    }
 
     // Check if required environment variables are set
     if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {

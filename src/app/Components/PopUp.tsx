@@ -227,7 +227,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                     <div className="w-[300px] h-[350px] flex justify-end">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/LaunchofferpopD.png"
+                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/JpnlaunofferDP.png"
                             alt="Offer Image"
                             width={350}
                             height={300}
