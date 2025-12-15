@@ -28,7 +28,7 @@ export default function Section7() {
   const MAX_SCROLL_2560 = 350;
   const MAX_SCROLL_1920 = 350;
   const MAX_SCROLL_1280 = 400;
-  const MAX_SCROLL_MOB = 505;
+
 
 
 
