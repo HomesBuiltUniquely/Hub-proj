@@ -7,6 +7,37 @@ export async function POST(req: Request) {
     const { name, phone, pincode, pageUrl } = body;
 
     console.log('Popup form API route called with data:', { name, phone, pincode, pageUrl });
+    
+    // Send data to unified API endpoint
+    try {
+      const websiteLeadPayload = {
+        name: name || '',
+        email: '', // Popup doesn't collect email
+        phoneNumber: phone || '',
+        propertyPin: pincode || '',
+      };
+
+      console.log('Sending popup data to WebsiteLead API:', websiteLeadPayload);
+      
+      const websiteLeadResponse = await fetch('https://Hows.hubinterior.com/v1/WebsiteLead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(websiteLeadPayload),
+      });
+
+      if (websiteLeadResponse.ok) {
+        const websiteLeadData = await websiteLeadResponse.json();
+        console.log('WebsiteLead API response:', websiteLeadData);
+      } else {
+        console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
+      }
+    } catch (websiteLeadError) {
+      console.error('Error sending to WebsiteLead API:', websiteLeadError);
+      // Continue with email flow even if WebsiteLead API fails
+    }
+
     console.log('Environment variables check:');
     console.log('GMAIL_USER exists:', !!process.env.GMAIL_USER);
     console.log('GMAIL_PASS exists:', !!process.env.GMAIL_PASS);

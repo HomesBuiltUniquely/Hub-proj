@@ -148,6 +148,28 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       const data = await res.json();
       console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
       if (res.ok && data.success) {
+        // Fire-and-forget to external endpoint (same pattern as LandingPage1)
+        (async () => {
+          try {
+            const home1Payload = {
+              name: requestData.name,
+              email: requestData.email,
+              phoneNumber: requestData.phone,
+              propertyPin: requestData.pincode,
+            };
+
+            await fetch('https://Hows.hubinterior.com/v1/WebsiteLead', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(home1Payload),
+            });
+          } catch (err) {
+            console.warn('Failed to POST to https://Hows.hubinterior.com/v1/WebsiteLead', err);
+          }
+        })();
+
         setSelectedPincode('');
         setSelectedPossession('');
         setSelectedDate('');

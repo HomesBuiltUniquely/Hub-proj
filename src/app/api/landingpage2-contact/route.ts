@@ -92,6 +92,12 @@ export async function POST(req: Request) {
                   <strong style="color: #555;">Preferred Time Slot:</strong><br>
                   <span style="color: #333; font-size: 16px; font-weight: bold;">${timeSlot || 'Not selected'}</span>
                 </div>
+                <div>
+                  <strong style="color: #555;">Page URL:</strong><br>
+                  <a href="${pageUrl || '#'}" style="color: #007bff; font-size: 14px; word-break: break-all;" target="_blank" rel="noopener noreferrer">
+                    ${pageUrl || 'Not provided'}
+                  </a>
+                </div>
               </div>
             </div>
 
