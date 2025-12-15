@@ -28,12 +28,16 @@ const EstimateForm: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
+      const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
       const response = await fetch('/api/get-estimate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          pageUrl: pageUrl
+        }),
       });
 
       const result = await response.json();
