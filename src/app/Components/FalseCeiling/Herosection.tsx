@@ -23,6 +23,9 @@ const ContactHeader: React.FC = () => {
     router.push('/GetEstimate');
   };
 
+  const calculate = () => {
+    router.push('/Calculator');
+  };
 
 
   return (

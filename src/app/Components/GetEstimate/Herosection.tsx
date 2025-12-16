@@ -86,7 +86,7 @@ const HeroSection: React.FC = () => {
         {/* Hero content */}
         <div className="flex justify-between pt-24 pb-20 text-white text-center mt-25">
           <div className=" w-[310px] mt-20">
-            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ml-17 text-nowrap">Get free estimate</h1>
+            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ml-17 text-nowrap">Book free consulatation</h1>
             <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg -ml-92">Your ideas, our cost estimate</p>
           </div>
           <div className="-mt-30 mr-20">
@@ -119,7 +119,7 @@ const HeroSection: React.FC = () => {
         {/* Hero content */}
         <div className="flex justify-between pt-24 pb-20 text-white text-center mt-25">
           <div className=" w-[310px] mt-20">
-            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ml-17 text-nowrap">Get free estimate</h1>
+            <h1 className="text-5xl lg:text-6xl wulkan-display-bold mb-2 drop-shadow-lg ml-17 text-nowrap">Book free consulatation</h1>
             <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg -ml-92">Your ideas, our cost estimate</p>
           </div>
           <div className="-mt-30 mr-20">
@@ -165,7 +165,7 @@ const HeroSection: React.FC = () => {
             {/* Hero content */}
             <div className="flex justify-between pt-24 pb-20 text-white text-center mt-70 absolute top-0 left-0 right-0">
               <div className="w-[310px] mt-20 ml-15 text-nowrap">
-                <h1 className="text-5xl lg:text-6xl  wulkan-display-bold mb-2 drop-shadow-lg ">Get free estimate</h1>
+                <h1 className="text-5xl wulkan-display-bold mb-2 drop-shadow-lg ">Book free consulatation</h1>
                 <p className="text-2xl manrope-medium mb-6 drop-shadow-lg ">Your ideas, our cost estimate</p>
               </div>
               <div className=" -mt-30 mr-25">
@@ -208,8 +208,8 @@ const HeroSection: React.FC = () => {
 
               {/* text + cta */}
               <div className="absolute bottom-25 left-4 right-4 ml-3 text-white">
-                <h2 className="manrope text-5xl ">
-                  Get your estimate
+                <h2 className="wulkan-display-bold text-5xl ">
+                  Book your consultation
                 </h2>
                 <p className="mt-2 text-[15px] manrope-medium opacity-90">
                   Your ideas, our cost estimate

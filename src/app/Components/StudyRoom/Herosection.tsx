@@ -22,6 +22,10 @@ const ContactHeader: React.FC = () => {
     router.push('/GetEstimate');
   };
 
+   const calculate = () => {
+    router.push('/Calculator');
+  };
+
 
 
   return (
@@ -89,12 +93,12 @@ const ContactHeader: React.FC = () => {
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
             </div>
-            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 manrope text-white tracking-widest ml-80 mt-4">
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 manrope text-white tracking-widest ml-70 mt-4">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform text-[18px] tracking-wide hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
@@ -108,10 +112,10 @@ const ContactHeader: React.FC = () => {
 
             <div className="flex gap-4">
               <button
-                onClick={handleGetEstimate}
+                onClick={calculate}
                 className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
               >
-                Get Free Quote
+                Get free quote
               </button>
             </div>
           </div>
@@ -138,7 +142,7 @@ const ContactHeader: React.FC = () => {
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+           <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
@@ -152,10 +156,10 @@ const ContactHeader: React.FC = () => {
 
             <div className="flex gap-4">
               <button
-                onClick={handleGetEstimate}
+                onClick={calculate}
                 className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
               >
-                Get Free Quote
+                Get free quote
               </button>
             </div>
           </div>
@@ -198,7 +202,7 @@ const ContactHeader: React.FC = () => {
               </div>
 
               {/* Right CTA */}
-              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
             </div>
 
             {/* Hero content */}
@@ -212,10 +216,10 @@ const ContactHeader: React.FC = () => {
               </p>
 
               <button
-                onClick={handleGetEstimate}
+                onClick={calculate}
                 className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope hover:bg-yellow-400 transition text-center"
               >
-                Get Free Quote
+                Get free quote
               </button>
             </div>
 
@@ -239,7 +243,7 @@ const ContactHeader: React.FC = () => {
               alt="Modular Kitchen Background"
               fill
               priority
-              className="object-cover"
+              className="object-center"
             />
             {/* gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -261,8 +265,8 @@ const ContactHeader: React.FC = () => {
           </div>
           {/* CTA overlapping, positioned above image */}
           <div className="absolute left-6 -bottom-5 z-20">
-            <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
-              Get Free Quote
+            <button onClick={calculate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
+              Get free quote
             </button>
           </div>
           <OverlapNavBar />
@@ -281,7 +285,7 @@ const ContactHeader: React.FC = () => {
               alt="Modular Kitchen Background"
               fill
               priority
-              className="object-cover"
+              className="object-center"
             />
             {/* gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -304,8 +308,8 @@ const ContactHeader: React.FC = () => {
           </div>
           {/* CTA overlapping, positioned above image */}
           <div className="absolute left-6 -bottom-5 z-20">
-            <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
-              Get Free Quote
+            <button onClick={calculate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
+              Get free quote
             </button>
           </div>
         </div>
