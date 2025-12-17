@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-interface OfferingsDropdownProps {
+interface OfferingsDropdownProps { 
   textColor?: string;
   className?: string;
   showForm?: boolean;

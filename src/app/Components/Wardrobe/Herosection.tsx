@@ -49,8 +49,6 @@ const ContactHeader: React.FC = () => {
         }
       `}</style>
 
-
-
             <style jsx>{`
         /* Hide both by default */
         .desktop-1280,

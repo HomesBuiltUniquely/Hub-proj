@@ -9,9 +9,9 @@ interface OfferingsDropdownProps {
   className?: string;
 }
 
-const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({ 
-  textColor = "text-amber-950", 
-  className = "" 
+const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
+  textColor = "text-amber-950",
+  className = ""
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLockedOpen, setIsLockedOpen] = useState(false);
@@ -45,13 +45,35 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
   }, []);
 
   const offerings = [
-    'Pooja Unit',
-    'TV Unit',
-    'Wardrobe Design',
-    'Dining Room Design',
-    'False Ceiling Design',
-    'Wall Decor Design',
-    'Study Room Design'
+
+    {
+      title: 'Pooja Unit',
+      link: '/PoojaUnit'
+    },
+    {
+      title: 'TV Unit',
+      link: '/TvUnit'
+    },
+    {
+      title: 'Wardrobe Design',
+      link: '/Wardrobe'
+    },
+    {
+      title: 'Dining Room Design',
+      link: '/DiningSpace'
+    },
+    {
+      title: 'False Ceiling Design',
+      link: '/FalseCeiling'
+    },
+    {
+      title: 'Wall Decor Design',
+      link: '/WallInterior'
+    },
+    {
+      title: 'Study Room Design',
+      link: '/StudyRoom'
+    }
   ];
 
   const cards = [
@@ -68,22 +90,22 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
     {
       title: 'Living Room',
       image: '/img5.jpg',
-      link: '/'
+      link: '/LivingRoom'
     },
     {
-      title:'Kids Room',
+      title: 'Kids Room',
       image: 'https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img3.png',
       link: '/KidsRoom'
     }
   ];
 
   return (
-    <div 
-    className="relative" 
-    ref={dropdownRef}
-    onMouseEnter={() => setIsOpen(true)}
-    onMouseLeave={() => { if (!isLockedOpen) setIsOpen(false); }}
-  >
+    <div
+      className="relative"
+      ref={dropdownRef}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => { if (!isLockedOpen) setIsOpen(false); }}
+    >
       <button
         onClick={() => {
           if (isLockedOpen) {
@@ -100,16 +122,16 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
       </button>
 
       {isOpen && (
-              <div 
-              className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[80vw] max-w-[800px] bg-white rounded-4xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
-              onMouseEnter={() => setIsOpen(true)}
-              onMouseLeave={() => { if (!isLockedOpen) setIsOpen(false); }}
-            >
+        <div
+          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[80vw] max-w-[800px] bg-white rounded-4xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
+          onMouseEnter={() => setIsOpen(true)}
+          onMouseLeave={() => { if (!isLockedOpen) setIsOpen(false); }}
+        >
           <div className="flex flex-col lg:flex-row">
             {/* Left Section - Offerings List */}
-            
+
             {/* Right Section - Image Cards */}
-              <div className="w-full lg:w-1/2 p-4 lg:p-6">
+            <div className="w-full lg:w-1/2 p-4 lg:p-6">
               <div className="grid grid-cols-2 gap-3 lg:gap-4 ">
                 {cards.map((card, index) => (
                   <Link key={index} href={card.link} className="group">
@@ -118,7 +140,7 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
                         <Image
                           src={card.image}
                           alt={card.title}
-                            fill
+                          fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300 "
                         />
                       </div>
@@ -137,19 +159,21 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
             </div>
 
 
-
-
-
             <div className="w-full lg:w-1/2 p-4 lg:p-4s bg-gray-50">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Explore rooms</h3>
               <ul className="space-y-3">
                 {offerings.map((offering, index) => (
                   <li key={index}>
-                    <button className="text-left text-gray-700 hover:text-[#DDCCC1] transition-colors w-full text-sm manrope">
-                      {offering}
-                    </button>
+                    <Link href={offering.link}>
+                      <button
+                        className="text-left cursor-pointer text-gray-700 hover:text-[#DDCCC1] transition-colors w-full text-sm manrope"
+                      >
+                        {offering.title}
+                      </button>
+                    </Link>
                   </li>
                 ))}
+
               </ul>
             </div>
 
