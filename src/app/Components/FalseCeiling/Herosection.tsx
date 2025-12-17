@@ -9,8 +9,6 @@ import { useRouter } from "next/navigation";
 import OverlapNavBar from "../OverlapNavBar";
 
 
-
-
 const ContactHeader: React.FC = () => {
 
   const router = useRouter();
@@ -282,9 +280,6 @@ const ContactHeader: React.FC = () => {
             <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
             </div>
-
-
-
 
             {/* text + cta */}
 
