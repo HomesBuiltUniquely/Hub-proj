@@ -13,6 +13,7 @@ import BrandCarousel from "../Components/LandingPage1/Brand";
 import { QAsection } from "../Components/LandingPage1/QASEC";
 import CalculatorPage from "../Components/LandingPage1/CalculatorPage";
 import Section33 from "../Components/LandingPage1/Caron";
+// import OverlapNavBarLP1 from "../Components/LandingPage1/OverlapNavBarLP1";
 
 
 
@@ -34,6 +35,7 @@ export default function InteriorDesignersInBangalore() {
       <Section9 />
       <BrandCarousel />
       <QAsection />
+      {/* <OverlapNavBarLP1 /> */}
     </div>
   )
 }

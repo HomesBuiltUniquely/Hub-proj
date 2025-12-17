@@ -146,7 +146,7 @@ const Herosection: React.FC = () => {
             <NavMore textColor="text-white" />
           </div>
 
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 mt-4 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULATATION</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 mt-4 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
         </div>
 
         {/* Hero content */}
@@ -203,7 +203,7 @@ const Herosection: React.FC = () => {
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-10 mt-4 shadow-lg text-[18px] hover:shadow-2xl transform hover:-translate-y-0.5 tracking-wide active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-red-500/60">BOOK FREE CONSULATATION</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-10 mt-4 shadow-lg text-[18px] hover:shadow-2xl transform hover:-translate-y-0.5 tracking-wide active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
         </div>
 
         {/* Hero content */}
@@ -260,7 +260,7 @@ const Herosection: React.FC = () => {
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl text-[18px] tracking-wide  mr-5 mt-4 shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULATATION</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl text-[18px] tracking-wide  mr-5 mt-4 shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
           </div>
 
           {/* Hero content */}
