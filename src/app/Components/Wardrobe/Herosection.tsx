@@ -229,8 +229,6 @@ const ContactHeader: React.FC = () => {
             </div>
 
 
-
-
             {/* ===== MOBILE VERSION ===== */}
 
             {/* Mobile Version (360px to 480px) */}
@@ -320,3 +318,4 @@ const ContactHeader: React.FC = () => {
 };
 
 export default ContactHeader;
+ 

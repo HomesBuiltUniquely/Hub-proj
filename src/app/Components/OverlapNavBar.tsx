@@ -1,16 +1,55 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
 
 const OverlapNavBar: React.FC = () => {
   const [activeTab, setActiveTab] = useState('home');
   const [isExploreOpen, setIsExploreOpen] = useState(false);
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
+
+
+  
+  /* ==================== YOUTUBE STYLE SCROLL (ADDED) ==================== */
+  const [showNav, setShowNav] = useState(true);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const diff = currentY - lastScrollY.current;
+
+      // Always show near top
+      if (currentY < 60) {
+        setShowNav(true);
+        lastScrollY.current = currentY;
+        ticking.current = false;
+        return;
+      }
+
+      // Scroll down → hide
+      if (diff > 8) setShowNav(false);
+
+      // Scroll up → show
+      if (diff < -4) setShowNav(true);
+
+      lastScrollY.current = currentY;
+      ticking.current = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking.current) {
+        requestAnimationFrame(handleScroll);
+        ticking.current = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const navItems = [
     {
@@ -55,9 +94,6 @@ const OverlapNavBar: React.FC = () => {
     }
   ];
 
-
-  //Explore options
-
   const exploreItems = [
     { label: "Modular Kitchen", path: "/ModularKitchen" },
     { label: "Bedroom", path: "/Bedroom" },
@@ -75,10 +111,7 @@ const OverlapNavBar: React.FC = () => {
     { label: "Bathroom Design", path: "/" },
   ];
 
-
-
   const handleTabClick = (tabId: string) => {
-    // close both sheets first
     setIsExploreOpen(false);
     setIsMobileMenuOpen(false);
 
@@ -86,30 +119,30 @@ const OverlapNavBar: React.FC = () => {
       setActiveTab('home');
       router.push('/');
     }
-
     if (tabId === 'gallery') {
       setActiveTab('gallery');
       setIsExploreOpen(true);
     }
-
     if (tabId === 'calculator') {
       setActiveTab('calculator');
       router.push('/Calculator');
     }
-
     if (tabId === 'menu') {
       setActiveTab('menu');
       setIsMobileMenuOpen(true);
     }
   };
 
-
   const handleLetsBeginClick = () => router.push('/GetEstimate');
 
   return (
     <>
       {/* ==================== NAVBAR ==================== */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+      <div
+        className={`fixed bottom-0 left-1/2 -translate-x-1/2 z-50
+        transition-transform duration-300 ease-out
+        ${showNav ? "translate-y-0" : "translate-y-[180px]"}`}
+      >
         <div className="relative w-[340px] h-[80px]">
 
           {/* Background pill */}
@@ -123,10 +156,11 @@ const OverlapNavBar: React.FC = () => {
             <rect width="340" height="68" rx="40" fill="white" mask="url(#cutoutMask)" />
           </svg>
 
+
           {/* Floating red button */}
           <button
             onClick={handleLetsBeginClick}
-            className="absolute -top-12 left-1/2 -translate-x-1/2 bg-[#ef0101] hover:bg-[#d32f2f]
+            className="absolute -top-12 left-1/2 -translate-x-1/2 bg-[#ef0101]
             text-white w-[70px] h-[70px] rounded-full flex flex-col justify-center items-center
             shadow-xl text-sm leading-tight manrope-medium"
           >
@@ -134,22 +168,17 @@ const OverlapNavBar: React.FC = () => {
             <span>begin</span>
           </button>
 
-
           {/* Icons */}
           <div className="absolute inset-0 flex justify-between items-center px-8">
             <div className="flex gap-6">
-              {navItems.slice(0, 2).map((item) => (
+              {navItems.slice(0, 2).map(item => (
                 <button
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
                   className={`flex flex-col items-center text-xs
-          ${item.id === 'gallery'
-                      ? isExploreOpen
-                        ? 'text-red-600'
-                        : 'text-gray-700'
-                      : activeTab === item.id
-                        ? 'text-red-600'
-                        : 'text-gray-700'
+                    ${item.id === 'gallery'
+                      ? isExploreOpen ? 'text-red-600' : 'text-gray-700'
+                      : activeTab === item.id ? 'text-red-600' : 'text-gray-700'
                     }`}
                 >
                   {item.icon}
@@ -159,19 +188,12 @@ const OverlapNavBar: React.FC = () => {
             </div>
 
             <div className="flex gap-6">
-              {navItems.slice(2).map((item) => (
+              {navItems.slice(2).map(item => (
                 <button
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
                   className={`flex flex-col items-center text-xs
-          ${item.id === 'gallery'
-                      ? isExploreOpen
-                        ? 'text-red-600'
-                        : 'text-gray-700'
-                      : activeTab === item.id
-                        ? 'text-red-600'
-                        : 'text-gray-700'
-                    }`}
+                    ${activeTab === item.id ? 'text-red-600' : 'text-gray-700'}`}
                 >
                   {item.icon}
                   <span className="mt-1 manrope-medium">{item.label}</span>
@@ -179,7 +201,6 @@ const OverlapNavBar: React.FC = () => {
               ))}
             </div>
           </div>
-
 
         </div>
       </div>
@@ -252,7 +273,6 @@ bg-white/95 backdrop-blur-xl
           style={{ transform: "translateX(-50%)" }} // Lock X transform
         >
 
-
           <div className="p-4 relative">
 
             {/* Close */}
@@ -322,7 +342,6 @@ bg-white/95 backdrop-blur-xl
     animation: riseUp 0.35s ease-out;
   }
 `}</style>
-
 
     </>
   );

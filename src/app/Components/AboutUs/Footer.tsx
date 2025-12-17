@@ -6,11 +6,7 @@ import Image from 'next/image';
 export default function Footer(){
     return(
 
-
-
         <div>
-
-
             <div className='hidden md:block'>
 
             {/* 3xl Footer - Tailwind Classes */}

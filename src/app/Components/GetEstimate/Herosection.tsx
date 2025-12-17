@@ -130,6 +130,8 @@ const HeroSection: React.FC = () => {
 
 
 
+
+
       {/* 1280px version */}
 
 

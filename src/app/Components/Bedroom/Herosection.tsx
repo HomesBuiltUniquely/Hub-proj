@@ -341,9 +341,6 @@ const BedroomHeroSimple: React.FC = () => {
         </div>
         <OverlapNavBar />
       </div>
-
-
-
     </div>
 
   );

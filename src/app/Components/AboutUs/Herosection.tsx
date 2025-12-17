@@ -171,8 +171,8 @@ const ContactHeader: React.FC = () => {
 
     {/* Mobile Version */}
 
-    <div className="md:hidden w-full max-w-[425px] mx-auto mb-5  overflow-hidden">
-      <div className="relative h-full w-full p-2">
+   <div className="md:hidden w-full max-w-[425px] mx-auto mb-5  overflow-hidden">
+          <div className="relative h-full w-full p-2">
         {/* Rounded image only */}
         <img src="/ABH.png" className="rounded-4xl" alt="" />
 
@@ -309,16 +309,17 @@ const ContactHeader: React.FC = () => {
       </div>
 
 
-      {/* Overlay text + CTA */}
-      <h2 className="manrope leading-tight">
-        <div className="absolute top-40 text-white w-full px-3 ml-3 mt-10">
-          <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">homes,</div>
-          <div className="text-[65px] sm:text-6xl wulkan-display my- leading-tight">uniquely</div>
-          <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">built</div>
-        </div>
-      </h2>
-      <OverlapNavBar />
+       {/* Overlay text */}
+  <div className="absolute top-40 text-white w-full px-6 mt-10">
+    <div className="text-[47px] manrope-medium leading-tight">homes,</div>
+    <div className="text-[65px] wulkan-display leading-tight break-words">
+      uniquely
     </div>
+    <div className="text-[47px] manrope-medium leading-tight">built</div>
+  </div>
+
+  <OverlapNavBar />
+</div>
 
   </div>
 
