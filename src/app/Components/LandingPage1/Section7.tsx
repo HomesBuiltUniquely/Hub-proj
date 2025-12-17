@@ -75,6 +75,13 @@ export default function Section7() {
   };
 
 
+  // mobile 
+
+  const mobileScrollRef = useRef<HTMLDivElement | null>(null);
+  const [mobileScrollX, setMobileScrollX] = useState(0);
+  const [mobileScrolly, setMobileScrolly] = useState(0);
+  const [mobileScrollz, setMobileScrollz] = useState(0);
+
 
 
   return (
@@ -329,7 +336,7 @@ export default function Section7() {
             {/* 2 → 3 */}
             <div className="absolute top-[40px] left-[820px] w-5 h-5 bg-red-600 rounded-full" />
             {/* 3 → 4 */}
-            <div className="absolute top-[415px] left-[1230px] w-5 h-5 bg-red-600 rounded-full" />
+            <div className="absolute top-[470px] left-[1230px] w-5 h-5 bg-red-600 rounded-full" />
 
 
 
@@ -528,16 +535,119 @@ export default function Section7() {
 
           {/* CARDS */}
           <div
-            className="flex overflow-x-auto no-scrollbar gap-[20px]"
+            ref={mobileScrollRef}
+            onScroll={(e) => {
+              setMobileScrollX(e.currentTarget.scrollLeft);
+              setMobileScrolly(e.currentTarget.scrollLeft);
+              setMobileScrollz(e.currentTarget.scrollLeft);
+            }}
+            className="flex overflow-x-auto no-scrollbar mt-20 mb-20 gap-[20px]"
             style={{ scrollSnapType: 'x mandatory' }}
           >
 
+            {/* 1 → 2 */}
+            <svg
+              className="absolute left-[45px] top-[120px] pointer-events-none -rotate-"
+              style={{ transform: `translateX(${-mobileScrollX}px)` }}
+              width="300"
+              height="300"
+              viewBox="0 010 600 360"
+            >
+              <path
+                d="M0 40 C220 360 380 360 600 120"
+                stroke="#2B2B2B"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+
+            </svg>
+
+
+            {/* DOTS */}
+            {/* 1 → 2 */}
+            <div className="absolute w-5 h-5 left-[200px] top-[310px] z-10  bg-red-600 rounded-full"
+              style={{ transform: `translateX(${-mobileScrollX}px)` }} />
+
+
+            {/* 1 → 2 */}
+            <svg
+              className="absolute left-[45px] top-[120px] pointer-events-none -rotate-"
+              style={{ transform: `translateX(${-mobileScrollX}px)` }}
+              width="300"
+              height="300"
+              viewBox="0 010 600 360"
+            >
+              <path
+                d="M0 40 C220 360 380 360 600 120"
+                stroke="#2B2B2B"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+
+            </svg>
+
+
+            {/* DOTS */}
+            {/* 2 → 3 */}
+            <div className="absolute w-5 h-5 left-[420px] top-[35px] z-10  bg-red-600 rounded-full"
+              style={{ transform: `translateX(${-mobileScrolly}px)` }} />
+
+
+            <svg
+              className="absolute left-[270px] -top-[50px] pointer-events-none"
+              style={{
+                transform: `translateX(${-mobileScrolly}px) scaleY(-1)`
+              }}
+              width="300"
+              height="300"
+              viewBox="0 0 600 360"
+            >
+              <path
+                d="M0 40 C220 360 380 360 600 120"
+                stroke="#2B2B2B"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg>
+
+
+
+            {/* DOTS */}
+            {/* 3 → 4*/}
+            <div className="absolute w-5 h-5 left-[640px] top-[310px] z-10  bg-red-600 rounded-full"
+              style={{ transform: `translateX(${-mobileScrollz}px)` }} />
+
+
+            {/* 3 → 4 */}
+            <svg
+              className="absolute left-[490px] top-[120px] pointer-events-none -rotate-"
+              style={{ transform: `translateX(${-mobileScrollz}px)` }}
+              width="300"
+              height="300"
+              viewBox="0 010 600 360"
+            >
+              <path
+                d="M0 40 C220 360 380 360 600 120"
+                stroke="#2B2B2B"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+
+            </svg>
 
 
             {steps.map((step, i) => (
               <div
                 key={step.number}
-                className={`w-[200px] h-[200px] bg-white rounded-2xl
+                className={`w-[200px] h-[200px] bg-white rounded-2xl z-10
         flex flex-col justify-center items-start text-start flex-shrink-0 px-3
         ${i !== steps.length - 1 ? 'mr-[0px]' : ''}`}
               >

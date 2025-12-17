@@ -6,7 +6,7 @@ import Link from 'next/link';
 interface OfferingsDropdownProps {
   textColor?: string;
   className?: string;
-}
+} 
 
 const NavMore: React.FC<OfferingsDropdownProps> = ({ 
   textColor = "text-amber-950", 
