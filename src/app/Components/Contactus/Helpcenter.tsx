@@ -201,7 +201,7 @@ const HelpCenter: React.FC = () => {
 
             <div
               ref={scrollRef1920} // ✅ linked correctly
-              className="flex gap-6 scroll-none  pb-15"
+              className="scroll-box flex gap-6 overflow-x-auto pb-4"
               style={{ scrollBehavior: "smooth" }}
             >
               {enquiries.map((item) => (

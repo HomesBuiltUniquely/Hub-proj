@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 // Demo data for wardrobes
 const wardrobes = [
@@ -29,6 +30,11 @@ const wardrobes = [
 const WardrobeCarousel: React.FC = () => {
 
   const [selected, setSelected] = useState(0);
+
+  const router = useRouter();
+  const handleGetEstimate = () => {
+    router.push('/GetEstimate');
+  };
 
 
 
@@ -200,7 +206,7 @@ const WardrobeCarousel: React.FC = () => {
                   <div className="p-4 flex items-center -mt-50 h-[270px]">
                     <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
                       {item.label}<br />
-                      <button className="border-1 border-[#ebd457]  text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
+                      <button onClick={handleGetEstimate} className="border-1 border-[#ebd457]  text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
                     </span>
                   </div>
                 </div>
@@ -273,7 +279,7 @@ const WardrobeCarousel: React.FC = () => {
                   <div className="p-4 flex items-center -mt-50 h-[270px]">
                     <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
                       {item.label}<br />
-                      <button className="border-1 border-[#ebd457]  text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
+                      <button onClick={handleGetEstimate} className="border-1 border-[#ebd457]  text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
                     </span>
                   </div>
                 </div>
@@ -348,7 +354,7 @@ const WardrobeCarousel: React.FC = () => {
                   <div className="p-4 flex items-center -mt-50 h-[270px]">
                     <span className="backdrop-blur-md bg-black/5 text-white manrope px-4 py-1 pt-4 rounded-2xl shadow text-sm">
                       {item.label}<br />
-                      <button className="border-1 border-[#ebd457]  text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
+                      <button onClick={handleGetEstimate} className="border-1 border-[#ebd457]  text-white px-2 mt-3 mb-4 rounded-full hover:bg-[#ebd457] ">Book Free Consultation</button>
                     </span>
                   </div>
                 </div>
@@ -410,7 +416,7 @@ const WardrobeCarousel: React.FC = () => {
                 </div>
                 <div className="manrope-medium">{wardrobes[selected].subtilte}</div>
                 <br />
-                <button className="border border-[#ebd457] manrope text-white px-3 -mt-3 mb-1 rounded-full hover:bg-[#ebd457] text-xs py-1">
+                <button onClick={handleGetEstimate} className="border border-[#ebd457] manrope text-white px-3 -mt-3 mb-1 rounded-full hover:bg-[#ebd457] text-xs py-1">
                   Book Free Consultation
                 </button>
               </span>
@@ -466,7 +472,7 @@ const WardrobeCarousel: React.FC = () => {
                 </div>
                 <div className="manrope-medium">{wardrobes[selected].subtilte}</div>
                 <br />
-                <button className="border border-[#ebd457] manrope text-white px-3 -mt-3 mb-1 rounded-full hover:bg-[#ebd457] text-xs py-1">
+                <button onClick={handleGetEstimate} className="border border-[#ebd457] manrope text-white px-3 -mt-3 mb-1 rounded-full hover:bg-[#ebd457] text-xs py-1">
                   Book Free Consultation
                 </button>
               </span>

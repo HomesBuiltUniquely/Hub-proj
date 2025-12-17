@@ -14,6 +14,10 @@ const ContactHeader: React.FC = () => {
     router.push('/GetEstimate');
   };
 
+    const calculate = () => {
+    router.push('/Calculator');
+  };
+
   function handleClick() {
     router.push("/");
   }
@@ -61,12 +65,12 @@ const ContactHeader: React.FC = () => {
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
             </div>
-            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12  manrope text-white tracking-widest ml-80 mt-4 ">
+            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12  manrope text-white tracking-widest ml-70 mt-4 ">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
@@ -77,8 +81,8 @@ const ContactHeader: React.FC = () => {
               A collection of home interior blogs, trends, and guides to inspire your next project.
             </p>
             <div className="flex gap-4">
-              <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-6 py-3 rounded-2xl  manrope-medium shadow">
-                Get Free Consultation
+              <button onClick={calculate} className="bg-yellow-300 text-black px-6 py-3 rounded-2xl  manrope-medium shadow">
+                Get free quote
               </button>
             </div>
           </div>
@@ -102,7 +106,7 @@ const ContactHeader: React.FC = () => {
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-30">
@@ -113,8 +117,8 @@ const ContactHeader: React.FC = () => {
               A collection of home interior blogs, trends, and guides to inspire your next project.
             </p>
             <div className="flex gap-4">
-              <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-6 py-3 rounded-2xl  manrope-medium shadow">
-                Get Free Consultation
+              <button onClick={calculate} className="bg-yellow-300 text-black px-6 py-3 rounded-2xl  manrope-medium shadow">
+                Get free quote
               </button>
             </div>
           </div>
@@ -157,7 +161,7 @@ const ContactHeader: React.FC = () => {
               </div>
 
               {/* Right CTA */}
-              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white text-[18px] tracking-wide px-4 py-2 rounded-4xl manrope  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
             </div>
 
             {/* Hero content */}
@@ -170,10 +174,10 @@ const ContactHeader: React.FC = () => {
               </p>
               <div className="flex gap-3">
                 <button
-                  onClick={handleGetEstimate}
+                  onClick={calculate}
                   className="bg-yellow-300 text-black px-6 py-3 rounded-2xl  manrope-medium shadow"
                 >
-                  Get Free Consultation
+                  Get free quote
                 </button>
               </div>
             </div>
@@ -216,10 +220,10 @@ const ContactHeader: React.FC = () => {
                 A collection of home interior blogs, trends, and guides to inspire your next project.
               </p>
               <button
-                onClick={handleGetEstimate}
+                onClick={calculate}
                 className="bg-yellow-300 hover:bg-yellow-400 text-black text-xs sm:text-sm px-4 py-2 rounded-2xl manrope-medium shadow transition-colors"
               >
-                Get Free Consultation
+                Get free quote
               </button>
             </div>
           </div>

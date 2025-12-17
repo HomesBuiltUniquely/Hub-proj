@@ -6,7 +6,6 @@ import Section4 from "../Components/Bedroom/Section4";
 import BedroomSection from "../Components/Bedroom/Ssection2";
 import WardrobeCarousel from "../Components/Bedroom/WardrobeCarousel";
 import PopUpModal from "../Components/PopupModal";
-
  
 
 export default function Bedroom() {

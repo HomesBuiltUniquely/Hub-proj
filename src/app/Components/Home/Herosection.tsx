@@ -140,13 +140,13 @@ const Herosection: React.FC = () => {
         <div className="relative z-10 flex items-center justify-between -mt-15">
           <div onClick={handleClick}> <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
 
-          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[48px] md:flex hidden items-center justify-center gap-12 text-[18px] text-sm manrope text-white tracking-widest ml-80 mt-4">
+          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[48px] md:flex hidden items-center justify-center gap-12 text-[18px] text-sm manrope text-white tracking-widest ml-70 mt-4">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
 
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-4 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 mt-4 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULATATION</button>
         </div>
 
         {/* Hero content */}
@@ -198,12 +198,12 @@ const Herosection: React.FC = () => {
           <div onClick={handleClick}> <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
           {/* whitelogo.png / redlogo.png */}
 
-          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] md:flex hidden text-[18px] items-center justify-center gap-12   manrope text-white tracking-widest ml-80 mt-4">
+          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] md:flex hidden text-[18px] items-center justify-center gap-12   manrope text-white tracking-widest ml-70 mt-4">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-4 shadow-lg text-[18px] hover:shadow-2xl transform hover:-translate-y-0.5 tracking-wide active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-10 mt-4 shadow-lg text-[18px] hover:shadow-2xl transform hover:-translate-y-0.5 tracking-wide active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-red-500/60">BOOK FREE CONSULATATION</button>
         </div>
 
         {/* Hero content */}
@@ -260,7 +260,7 @@ const Herosection: React.FC = () => {
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl text-[18px] tracking-wide  mr-15 mt-4 shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl text-[18px] tracking-wide  mr-5 mt-4 shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULATATION</button>
           </div>
 
           {/* Hero content */}

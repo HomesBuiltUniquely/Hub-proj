@@ -2,15 +2,17 @@
 
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import NavMore from "../NavMore";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import OfferingsDropdown from "../OfferingsDropdown";
-import router from "next/router";
+
 
 import OverlapNavBar from "../OverlapNavBar";
 
 
 const ContactHeader: React.FC = () => {
+  const router = useRouter();
   const handleClick = () => {
     router.push("/");
   };
@@ -57,6 +59,8 @@ const ContactHeader: React.FC = () => {
       `}</style>
 
 
+
+
     {/* 2560 Version   */}
 
     <div className="desktop-2560">
@@ -67,12 +71,12 @@ const ContactHeader: React.FC = () => {
           <div onClick={handleClick} className="cursor-pointer">
             <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
           </div>
-          <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 manrope text-white tracking-widest ml-80 mt-4 ">
+          <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 manrope text-white tracking-widest ml-70 mt-4 ">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
         </div>
         {/* Hero content */}
         <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-35">
@@ -104,7 +108,7 @@ const ContactHeader: React.FC = () => {
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
         </div>
         {/* Hero content */}
         <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-35">
@@ -147,7 +151,7 @@ const ContactHeader: React.FC = () => {
             </div>
 
             {/* Right CTA */}
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">GET FREE ESTIMATE</button>
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK FREE CONSULTATION</button>
           </div>
 
           {/* Hero content */}
@@ -167,8 +171,8 @@ const ContactHeader: React.FC = () => {
 
     {/* Mobile Version */}
 
-    <div className="md:hidden w-full max-w-[425px] mx-auto mb-5  overflow-hidden">
-      <div className="relative h-full w-full p-2">
+   <div className="md:hidden w-full max-w-[425px] mx-auto mb-5  overflow-hidden">
+          <div className="relative h-full w-full p-2">
         {/* Rounded image only */}
         <img src="/ABH.png" className="rounded-4xl" alt="" />
 
@@ -305,16 +309,17 @@ const ContactHeader: React.FC = () => {
       </div>
 
 
-      {/* Overlay text + CTA */}
-      <h2 className="manrope leading-tight">
-        <div className="absolute top-40 text-white w-full px-3 ml-3 mt-10">
-          <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">homes,</div>
-          <div className="text-[65px] sm:text-6xl wulkan-display my- leading-tight">uniquely</div>
-          <div className="text-[47px] sm:text-5xl manrope-medium leading-tight">built</div>
-        </div>
-      </h2>
-      <OverlapNavBar />
+       {/* Overlay text */}
+  <div className="absolute top-40 text-white w-full px-6 mt-10">
+    <div className="text-[47px] manrope-medium leading-tight">homes,</div>
+    <div className="text-[65px] wulkan-display leading-tight break-words">
+      uniquely
     </div>
+    <div className="text-[47px] manrope-medium leading-tight">built</div>
+  </div>
+
+  <OverlapNavBar />
+</div>
 
   </div>
 
