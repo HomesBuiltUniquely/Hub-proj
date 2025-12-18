@@ -214,17 +214,16 @@ const Herosection: React.FC = () => {
               />
 
               {/* FREE text on image */}
-              <p className="absolute top-0 right-0 w-[60px] h-[60px] flex items-center justify-center z-20 manrope text-white text-[12px]">
+              <p className="absolute top-0 right-0 w-[60px] h-[60px] flex items-center justify-center z-20 manrope text-white text-[14px]">
                 FREE
               </p>
             </div>
 
-
             {/* Button Text */}
             <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
           </div>
-
         </div>
+
 
         {/* Hero content */}
         <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
@@ -251,7 +250,6 @@ const Herosection: React.FC = () => {
           ))}
         </div>
       </div>
-
 
 
       {/* 1280 version */}

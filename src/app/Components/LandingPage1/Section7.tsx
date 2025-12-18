@@ -521,7 +521,7 @@ export default function Section7() {
       {/* ===================== */}
       {/* MOBILE VERSION */}
       {/* ===================== */}
-      <div className="lg:hidden px-3 w-full relative overflow-x-hidden overflow-y-hidden">
+      <div className="lg:hidden px-3 w-full relative mt-5 overflow-x-hidden overflow-y-hidden">
 
         {/* Heading */}
         <div>

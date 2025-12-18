@@ -356,7 +356,7 @@ export function Section10() {
                             </button>
 
                             {/* Red underline */}
-                            <div className="border-b-2 border-red-500 mt-2"></div>
+                            <div className="border-b-1 border-red-500 mt-2"></div>
 
                             {open === i.key && (
                                 <div className="mt-4">{i.component}</div>

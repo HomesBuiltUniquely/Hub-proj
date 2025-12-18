@@ -128,25 +128,25 @@ export default function Section6() {
   ];
 
   // Auto-rotate slides within current category (Desktop)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === 3 ? 0 : prev + 1));
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [currentCategory]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentSlide((prev) => (prev === 3 ? 0 : prev + 1));
+  //   }, 4000);
+  //   return () => clearInterval(interval);
+  // }, [currentCategory]);
 
   // Auto-advance mobile carousels
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMobileSlides(prev => ({
-        smartStorage: (prev.smartStorage + 1) % 4,
-        modularKitchen: (prev.modularKitchen + 1) % 4,
-        bedrooms: (prev.bedrooms + 1) % 4,
-        livingSpaces: (prev.livingSpaces + 1) % 4
-      }));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setMobileSlides(prev => ({
+  //       smartStorage: (prev.smartStorage + 1) % 4,
+  //       modularKitchen: (prev.modularKitchen + 1) % 4,
+  //       bedrooms: (prev.bedrooms + 1) % 4,
+  //       livingSpaces: (prev.livingSpaces + 1) % 4
+  //     }));
+  //   }, 3000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   // Reset slide when category changes
   useEffect(() => {
@@ -457,7 +457,7 @@ export default function Section6() {
               {categories[0].slides.map((_, index) => (
                 <div
                   key={index}
-                  className={`h-2 w-2 rounded-full transition-all duration-300 
+                  className={`h-1.5 w-1.5 rounded-full transition-all duration-300 
         ${mobileSlides.smartStorage === index ? 'bg-black scale-125' : 'bg-gray-400'}`}
                 />
               ))}
@@ -508,7 +508,7 @@ export default function Section6() {
               {categories[1].slides.map((_, index) => (
                 <div
                   key={index}
-                  className={`h-2 w-2 rounded-full transition-all duration-300 
+                  className={`h-1.5 w-1.5 rounded-full transition-all duration-300 
       ${mobileSlides.modularKitchen === index ? 'bg-black scale-125' : 'bg-gray-400'}`}
                 />
               ))}
@@ -554,7 +554,7 @@ export default function Section6() {
               {categories[2].slides.map((_, index) => (
                 <div
                   key={index}
-                  className={`h-2 w-2 rounded-full transition-all duration-300 
+                  className={`h-1.5 w-1.5 rounded-full transition-all duration-300 
       ${mobileSlides.bedrooms === index ? 'bg-black scale-125' : 'bg-gray-400'}`}
                 />
               ))}
@@ -600,7 +600,7 @@ export default function Section6() {
               {categories[3].slides.map((_, index) => (
                 <div
                   key={index}
-                  className={`h-2 w-2 rounded-full transition-all duration-300 
+                  className={`h-1.5 w-1.5 rounded-full transition-all duration-300 
       ${mobileSlides.livingSpaces === index ? 'bg-black scale-125' : 'bg-gray-400'}`}
                 />
               ))}
