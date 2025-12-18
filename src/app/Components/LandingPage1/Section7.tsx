@@ -40,6 +40,7 @@ export default function Section7() {
   const yOffsets1920 = [0, 130, 0, 130];
   const yOffsets1280 = [0, 90, 0, 90];
 
+
   /* ===================== */
   /* HELPERS */
   /* ===================== */
@@ -78,9 +79,7 @@ export default function Section7() {
   // mobile 
 
   const mobileScrollRef = useRef<HTMLDivElement | null>(null);
-  const [mobileScrollX, setMobileScrollX] = useState(0);
-  const [mobileScrolly, setMobileScrolly] = useState(0);
-  const [mobileScrollz, setMobileScrollz] = useState(0);
+
 
 
 
@@ -336,7 +335,7 @@ export default function Section7() {
             {/* 2 → 3 */}
             <div className="absolute top-[40px] left-[820px] w-5 h-5 bg-red-600 rounded-full" />
             {/* 3 → 4 */}
-            <div className="absolute top-[470px] left-[1230px] w-5 h-5 bg-red-600 rounded-full" />
+            <div className="absolute top-[435px] left-[1280px] w-5 h-5 bg-red-600 rounded-full" />
 
 
 
@@ -522,86 +521,37 @@ export default function Section7() {
       {/* ===================== */}
       {/* MOBILE VERSION */}
       {/* ===================== */}
-      <div className="lg:hidden px-3 w-full relative overflow-hidden">
-        <div className="mt-5 mb-8">
-          <h1 className="text-4xl manrope-medium w-full">
+      <div className="lg:hidden px-3 w-full relative overflow-x-hidden overflow-y-hidden">
+
+        {/* Heading */}
+        <div>
+          <h1 className="text-4xl manrope-medium w-full leading-tight">
             Home Interiors in 4
-            <p className="mt-1 text-4xl text-red-600">Simple Steps</p>
+            <span className="block mt-1 text-4xl text-red-600">
+              Simple Steps
+            </span>
           </h1>
         </div>
 
+        {/* Scroll Container */}
         <div className="relative w-full mx-auto overflow-hidden">
-
-
-          {/* CARDS */}
           <div
             ref={mobileScrollRef}
-            onScroll={(e) => {
-              setMobileScrollX(e.currentTarget.scrollLeft);
-              setMobileScrolly(e.currentTarget.scrollLeft);
-              setMobileScrollz(e.currentTarget.scrollLeft);
+            className="relative flex overflow-x-auto overflow-y-hidden no-scrollbar mt-10 mb-10 gap-[20px] h-full"
+            style={{
+              scrollSnapType: 'proximity',
+              scrollBehavior: 'smooth',
             }}
-            className="flex overflow-x-auto no-scrollbar mt-20 mb-20 gap-[20px]"
-            style={{ scrollSnapType: 'x mandatory' }}
           >
+            {/* Red Dot */}
+            {/* <div className="absolute top-[245px] left-[200px] w-5 h-5 bg-red-600 rounded-full z-5" /> */}
 
-            {/* 1 → 2 */}
-            <svg
-              className="absolute left-[45px] top-[120px] pointer-events-none -rotate-"
-              style={{ transform: `translateX(${-mobileScrollX}px)` }}
-              width="300"
-              height="300"
-              viewBox="0 010 600 360"
-            >
-              <path
-                d="M0 40 C220 360 380 360 600 120"
-                stroke="#2B2B2B"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
+            {/* Connector SVG */}
 
-            </svg>
+            {/* 1-2 */}
 
-
-            {/* DOTS */}
-            {/* 1 → 2 */}
-            <div className="absolute w-5 h-5 left-[200px] top-[310px] z-10  bg-red-600 rounded-full"
-              style={{ transform: `translateX(${-mobileScrollX}px)` }} />
-
-
-            {/* 1 → 2 */}
-            <svg
-              className="absolute left-[45px] top-[120px] pointer-events-none -rotate-"
-              style={{ transform: `translateX(${-mobileScrollX}px)` }}
-              width="300"
-              height="300"
-              viewBox="0 010 600 360"
-            >
-              <path
-                d="M0 40 C220 360 380 360 600 120"
-                stroke="#2B2B2B"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-
-            </svg>
-
-
-            {/* DOTS */}
-            {/* 2 → 3 */}
-            <div className="absolute w-5 h-5 left-[420px] top-[35px] z-10  bg-red-600 rounded-full"
-              style={{ transform: `translateX(${-mobileScrolly}px)` }} />
-
-
-            <svg
-              className="absolute left-[270px] -top-[50px] pointer-events-none"
-              style={{
-                transform: `translateX(${-mobileScrolly}px) scaleY(-1)`
-              }}
+            {/* <svg
+              className="absolute left-[40px] top-[50px] pointer-events-none overflow-hidden"
               width="300"
               height="300"
               viewBox="0 0 600 360"
@@ -614,20 +564,70 @@ export default function Section7() {
                 strokeLinejoin="round"
                 fill="none"
               />
-            </svg>
+            </svg> */}
 
 
+            {/* 2-3 */}
 
-            {/* DOTS */}
-            {/* 3 → 4*/}
-            <div className="absolute w-5 h-5 left-[640px] top-[310px] z-10  bg-red-600 rounded-full"
-              style={{ transform: `translateX(${-mobileScrollz}px)` }} />
+            {/* <div className="absolute top-[245px] left-[200px] w-5 h-5 bg-red-600 rounded-full z-5" />
 
-
-            {/* 3 → 4 */}
             <svg
-              className="absolute left-[490px] top-[120px] pointer-events-none -rotate-"
-              style={{ transform: `translateX(${-mobileScrollz}px)` }}
+              className="absolute left-[240px] top-[5px] pointer-events-none overflow-hidden"
+              width="300"
+              height="300"
+              viewBox="0 0 600 360"
+            >
+              <path
+                d="M0 320 C220 0 380 0 600 240"
+                stroke="#2B2B2B"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg> */}
+
+
+            {/* Cards */}
+            {steps.map((step, i) => (
+              <div
+                key={step.number}
+                className={`w-[200px] h-[200px] bg-white rounded-2xl z-20
+            flex flex-col justify-center items-start text-start flex-shrink-0 px-3
+            ${i !== steps.length - 1 ? 'mr-[0px]' : ''}`}
+              >
+                <div className="text-3xl text-[#DDCDC1] mb-2 manrope-semibold">
+                  {step.number}
+                </div>
+
+                <h3 className="text-xl w-[140px] manrope-medium mb-2">
+                  {step.title}
+                </h3>
+
+                <p className="text-sm w-[180px] mb-1 manrope-medium">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
+
+
+{/* DOTS */ }
+
+{/* 1 → 2 */ }
+{/* <div className="absolute top-[325px] left-[200px] w-5 h-5 bg-red-600 rounded-full" /> */ }
+
+{/* THIN THREAD */ }
+{/* 1 → 2 */ }
+{/* <svg
+              className="absolute left-[35px] top-[80px] pointer-events-none "
               width="300"
               height="300"
               viewBox="0 010 600 360"
@@ -641,32 +641,4 @@ export default function Section7() {
                 fill="none"
               />
 
-            </svg>
-
-
-            {steps.map((step, i) => (
-              <div
-                key={step.number}
-                className={`w-[200px] h-[200px] bg-white rounded-2xl z-10
-        flex flex-col justify-center items-start text-start flex-shrink-0 px-3
-        ${i !== steps.length - 1 ? 'mr-[0px]' : ''}`}
-              >
-                <div className="text-3xl text-[#DDCDC1] mb-2 manrope-semibold">
-                  {step.number}
-                </div>
-
-                <h3 className="text-xl w-[140px] manrope-medium mb-2">
-                  {step.title}
-                </h3>
-
-                <p className="text-sm w-[180px] mb-1manrope-medium">
-                  {step.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+            </svg> */}

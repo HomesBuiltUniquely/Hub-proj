@@ -64,7 +64,6 @@ const Herosection: React.FC = () => {
   }
 
 
-
   return (
     <div>
       <style jsx>{`
@@ -203,7 +202,28 @@ const Herosection: React.FC = () => {
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-10 mt-4 shadow-lg text-[18px] hover:shadow-2xl transform hover:-translate-y-0.5 tracking-wide active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
+
+          <div className="relative flex items-center justify-center  transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200">
+
+            <div className="absolute inline-block ml-40 mb-8">
+              {/* Light Image */}
+              <img
+                src="/light.png"
+                alt="Light"
+                className=" top-0 right-0 w-[60px] h-[60px] pointer-events-none"
+              />
+
+              {/* FREE text on image */}
+              <p className="absolute top-0 right-0 w-[60px] h-[60px] flex items-center justify-center z-20 manrope text-white text-[12px]">
+                FREE
+              </p>
+            </div>
+
+
+            {/* Button Text */}
+            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
+          </div>
+
         </div>
 
         {/* Hero content */}
