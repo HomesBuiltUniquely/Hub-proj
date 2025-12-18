@@ -53,12 +53,13 @@ const OfferBanner: React.FC = () => {
           }
         }
       `}</style>
+      
 
       {/* 2560 Version */}
       <div className="desktop-2560 mx-auto px-20">
         <div className="relative w-[1400px] h-[340px] mb-10 mt-20 overflow-hidden rounded-3xl">
           <Image
-            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/OfferbannerD2.png"
+            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/offer%20banner%20d.png"
             alt="offer banner"
             fill
             className="object-center"
@@ -66,7 +67,7 @@ const OfferBanner: React.FC = () => {
 
           <button
             onClick={handleGetEstimate}
-            className="absolute bottom-6 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
+            className="absolute bottom-6 left-16 bg-[#ef0101] manrope hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
           >
             GET FREE ESTIMATE
           </button>
@@ -74,10 +75,10 @@ const OfferBanner: React.FC = () => {
       </div>
 
       {/* 1920 Version */}
-      <div className="desktop-1920 mx-auto px-20">
+      <div className="desktop-1920 mx-auto px-18">
         <div className="relative w-full h-[340px] mb-20 mt-10 overflow-hidden rounded-3xl">
           <Image
-            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/OfferbannerD2.png"
+            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/offer%20banner%20d.png"
             alt="offer banner"
             fill
             className="object-center"
@@ -85,7 +86,7 @@ const OfferBanner: React.FC = () => {
 
           <button
             onClick={handleGetEstimate}
-            className="absolute bottom-9 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
+            className="absolute bottom-9 left-14 bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
           >
             GET FREE ESTIMATE
           </button>
@@ -93,10 +94,10 @@ const OfferBanner: React.FC = () => {
       </div>
 
       {/* 1280 Version */}
-      <div className="desktop-1280 mx-auto px-15">
+      <div className="desktop-1280 mx-auto px-13">
         <div className="relative w-full h-[280px] mb-15 overflow-hidden rounded-3xl">
           <Image
-            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/OfferbannerD2.png"
+            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/offer%20banner%20d.png"
             alt="offer banner"
             fill
             className="object-center"
@@ -104,7 +105,7 @@ const OfferBanner: React.FC = () => {
 
           <button
             onClick={handleGetEstimate}
-            className="absolute bottom-8 left-6 bg-[#ef0101] manrope hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
+            className="absolute bottom-8 left-13 bg-[#ef0101] manrope hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 z-10"
           >
             GET FREE ESTIMATE
           </button>
@@ -115,7 +116,7 @@ const OfferBanner: React.FC = () => {
       <div className="mobile-small mx-auto px-3">
         <div className="relative w-full h-[280px] mb-5 mt-5 overflow-hidden rounded-3xl">
           <Image
-            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Offer%20bannerm.png"
+            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/OFFER%20BANNER%20MOB.png"
             alt="offer banner"
             fill
             className="object-center"
@@ -127,7 +128,7 @@ const OfferBanner: React.FC = () => {
       <div className="mobile-large mx-auto px-3">
         <div className="relative w-full h-[280px] mb-5 mt-5 overflow-hidden rounded-3xl">
           <Image
-            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Offer%20bannerm.png"
+            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/OFFER%20BANNER%20MOB.png"
             alt="offer banner"
             fill
             className="object-center"

@@ -333,7 +333,7 @@ export function HeroSection() {
         <div>
             <div className="lg:block hidden relative w-full h-[1000px] mx-auto">
                 <Image
-                    src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/JpnLaunchDesk.png"
+                    src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/LAND%20JITHESH.png"
                     alt="Hero background"
                     fill
                     className="object-cover border-4  rounded-3xl "
@@ -606,8 +606,8 @@ export function HeroSection() {
                 <div className="w-screen h-[1000px] bg-white">
                     <div className="relative">
                         <div className="relative ">
-                            <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/LAND%20MOB%20(1).png" className="absolute h-[700px] w-full object-cover"></img>
-                            <img src="LOGO.png" alt="Logo" className="absolute top-4 w-[100px] h-[40px] m-4"></img>
+                            <img src="/w2.jpg" className="absolute h-[700px] w-full object-center"></img>
+                            <img src="/LOGO.png" alt="Logo" className="absolute top-4 w-[100px] h-[40px] m-4"></img>
                         </div>
 
                         {/* Mobile Form */}
