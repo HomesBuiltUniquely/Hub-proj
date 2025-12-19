@@ -227,12 +227,22 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               <option className="text-gray-400" value="" disabled>Date</option>
               {(() => {
                 const today = new Date();
-                const currentDay = today.getDate();
-                const currentMonth = today.getMonth(); // 0-11, where 11 = December
-                // Only show dates if we're in December, otherwise show all dates
-                const startDay = (currentMonth === 11) ? currentDay : 1;
-                return Array.from({ length: 31 - startDay + 1 }, (_, i) => startDay + i).map((day) => (
-                  <option key={day} value={day} className="text-gray-700">Dec-{day}</option>
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const dates = [];
+                
+                // Generate next 14 days (2 weeks)
+                for (let i = 0; i < 14; i++) {
+                  const date = new Date(today);
+                  date.setDate(today.getDate() + i);
+                  const day = date.getDate();
+                  const month = date.getMonth();
+                  const monthName = monthNames[month];
+                  const dateValue = `${monthName}-${day}`;
+                  dates.push({ value: dateValue, label: `${monthName}-${day}` });
+                }
+                
+                return dates.map((date, index) => (
+                  <option key={index} value={date.value} className="text-gray-700">{date.label}</option>
                 ));
               })()}
             </select>
