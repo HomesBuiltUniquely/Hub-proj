@@ -385,7 +385,7 @@ export function HeroSection() {
                                         </div>
 
                                         {/* Pincode input + dropdown */}
-                                        <div className="relative flex-1">
+                                        <div className="relative flex-1 pincode-wrapper">
                                             <input
                                                 type="text"
                                                 value={pincodeSearch || selectedPincode}
