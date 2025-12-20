@@ -61,7 +61,7 @@ export async function POST(req: Request) {
 
       console.log('Sending calculator data to WebsiteLead API:', websiteLeadPayload);
       
-      const websiteLeadResponse = await fetch('http://localhost:8081/v1/WebsiteLead', {
+      const websiteLeadResponse = await fetch('https://Hows.hubinterior.com/v1/WebsiteLead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ export async function POST(req: Request) {
         <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
         <p><strong>Interior Setup:</strong> ${city || 'Not provided'}</p>
         <p><strong>Possession Timeline:</strong> ${possession || budget || 'Not provided'}</p>
-        <p><strong>Preferred Date:</strong> ${date ? `Dec-${date}` : 'Not provided'}</p>
+        <p><strong>Preferred Date:</strong> ${date ? (date.includes('-') ? date : `Dec-${date}`) : 'Not provided'}</p>
         <p><strong>Preferred Time:</strong> ${time || 'Not provided'}</p>
         <p><strong>WhatsApp Consent:</strong> ${typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'}</p>
         <p><strong>Verification Status:</strong> <span style="color: ${verificationStatus === 'Verified User' ? 'green' : 'red'}; font-weight: bold;">${verificationStatusText}</span></p>
