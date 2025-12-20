@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
 
 export default function Section7() {
   const steps = [
@@ -28,7 +29,6 @@ export default function Section7() {
   const MAX_SCROLL_2560 = 350;
   const MAX_SCROLL_1920 = 350;
   const MAX_SCROLL_1280 = 400;
-
 
 
 
@@ -88,12 +88,31 @@ export default function Section7() {
     const maxScroll = el.scrollWidth - el.clientWidth;
 
     if (maxScroll <= 0) {
-      setMobileProgress(0);
+      setMobileProgress(1);
       return;
     }
 
-    setMobileProgress(el.scrollLeft / maxScroll);
+
+    const CARD_WIDTH = 200; // your card width
+
+
+    const visibleOffset = el.clientWidth - CARD_WIDTH;
+
+    const effectiveScroll = Math.min(
+      el.scrollLeft + visibleOffset,
+      maxScroll
+    );
+
+    setMobileProgress(effectiveScroll / maxScroll);
   };
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      handleMobileScroll();
+    });
+
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
 
   return (
@@ -320,7 +339,7 @@ export default function Section7() {
               />
 
             </svg>
-            
+
 
             {/* 3 → 4 */}
 
@@ -600,7 +619,6 @@ export default function Section7() {
     </div>
   );
 }
-
 
 
 

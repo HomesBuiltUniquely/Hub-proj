@@ -1010,7 +1010,7 @@ export default function HeroSections() {
                         }}
                         className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && 'text-gray-400'}`}
                       >
-                        <span className="truncate">
+                        <span className="truncate whitespace-nowrap overflow-hidden max-w-[430px]">
                           {selectedCity || "Choose Interior Setup"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>

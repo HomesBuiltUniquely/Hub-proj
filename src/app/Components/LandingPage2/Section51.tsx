@@ -78,6 +78,11 @@ export default function Section51() {
 
       </div>
     </div>
+
+
+
+
+
     {/* 1280 veersion */}
 
     <div className="desktop-1280 w-full h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block">
@@ -129,6 +134,10 @@ export default function Section51() {
         </div>
       </div>
     </div>
+
+
+
+
 
     {/* Mobile version - Adaptive */}
     <div className="block md:hidden" >
