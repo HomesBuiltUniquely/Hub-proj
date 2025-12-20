@@ -187,8 +187,6 @@ const PolicyHeroSimple: React.FC = () => {
             <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Policy%20MH.png" className="rounded-4xl" alt="" />
 
 
-
-
             {/* top logo */}
             <div className="absolute top-2 -mt-5 -ml-1">
               <Image
