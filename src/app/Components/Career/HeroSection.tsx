@@ -24,7 +24,7 @@ const ContactHeader: React.FC = () => {
   return (
 
     <div>
-       <style jsx>{`
+      <style jsx>{`
         /* Hide both by default */
         .desktop-1280,
         .desktop-1920,
@@ -67,12 +67,29 @@ const ContactHeader: React.FC = () => {
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
             </div>
-            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12  manrope text-white tracking-widest ml-70 mt-4 ">
-              <OfferingsDropdown textColor="text-white" />
-              <ExploreRoomsDropdown textColor="text-white" />
-              <NavMore textColor="text-white" />
+            <div className="hidden md:flex items-center gap-12">
+              {/* NAV BAR — unchanged */}
+              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
+
+              {/* CTA — unchanged */}
+              <button
+                onClick={handleGetEstimate}
+                className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+              >
+                BOOK CONSULTATION
+
+                <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                  <img src="/free.png" alt="Free" className="w-full h-full" />
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                    FREE
+                  </span>
+                </span>
+              </button>
             </div>
-           <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center  pb-20 text-white text-center mt-33">
@@ -99,18 +116,35 @@ const ContactHeader: React.FC = () => {
       <div className="desktop-1920">
 
         <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/career%20H.png')" }}>
-           {/* Navbar */}
+          {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
               <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
             </div>
 
-            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  text-[18px] md:flex gap-12 manrope text-white tracking-widest ml-80 mt-4">
-              <OfferingsDropdown textColor="text-white" />
-              <ExploreRoomsDropdown textColor="text-white" />
-              <NavMore textColor="text-white" />
+            <div className="hidden md:flex items-center gap-12">
+              {/* NAV BAR — unchanged */}
+              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
+
+              {/* CTA — unchanged */}
+              <button
+                onClick={handleGetEstimate}
+                className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+              >
+                BOOK CONSULTATION
+
+                <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                  <img src="/free.png" alt="Free" className="w-full h-full" />
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                    FREE
+                  </span>
+                </span>
+              </button>
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform text-[18px] tracking-wide hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
           </div>
           {/* Hero content */}
           <div className="flex flex-col items-center justify-center  pb-20 text-white text-center mt-33">
@@ -155,14 +189,32 @@ const ContactHeader: React.FC = () => {
               </div>
 
               {/* Center Navigation */}
-              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center   md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
-                <OfferingsDropdown textColor="text-white" />
-                <ExploreRoomsDropdown textColor="text-white" />
-                <NavMore textColor="text-white" />
-              </div>
+              <div className="hidden md:flex -mt-12 items-center gap-12">
 
-              {/* Right CTA */}
-           <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
+
+                {/* NAV BAR — unchanged */}
+                <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
+                  <OfferingsDropdown textColor="text-white" />
+                  <ExploreRoomsDropdown textColor="text-white" />
+                  <NavMore textColor="text-white" />
+                </div>
+
+                {/* CTA — unchanged */}
+                <button
+                  onClick={handleGetEstimate}
+                  className="relative bg-[#ef0101] mr-1 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                >
+                  BOOK CONSULTATION
+
+                  <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                    <img src="/free.png" alt="Free" className="w-full h-full" />
+                    <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                      FREE
+                    </span>
+                  </span>
+                </button>
+
+              </div>
             </div>
 
             {/* Hero content */}

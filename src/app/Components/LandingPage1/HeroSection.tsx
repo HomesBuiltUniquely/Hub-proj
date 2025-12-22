@@ -472,7 +472,7 @@ export default function HeroSections() {
   return (
     <div>
 
-       <style jsx>{`
+      <style jsx>{`
         /* Hide all by default */
         .desktop-1280,
         .desktop-1920,
@@ -934,7 +934,7 @@ export default function HeroSections() {
 
           {/* 1920 Version */}
 
-           <div className=" desktop-1920 hidden lg:block bg-[#f1f2f6] justify-center mx-auto px-5 mt-3">
+          <div className=" desktop-1920 hidden lg:block bg-[#f1f2f6] justify-center mx-auto px-5 mt-3">
             <div className="flex flex-col lg:flex-row gap-6  mx-auto ">
               {/* Left side - Form */}
               <div className="w-full lg:w-auto">
