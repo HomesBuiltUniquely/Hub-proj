@@ -136,16 +136,45 @@ const Herosection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-[5]"></div>
 
         {/* Navbar */}
-        <div className="relative z-10 flex items-center justify-between -mt-15">
-          <div onClick={handleClick}> <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
+         <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
 
-          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[48px] md:flex hidden items-center justify-center gap-12 text-[18px] text-sm manrope text-white tracking-widest ml-70 mt-4">
+          {/* Logo */}
+          <div onClick={handleClick}>
+            <Image
+              src="/whitelogo.png"
+              alt="HUB Interior Logo"
+              width={250}
+              height={250}
+              className="w-[230px] h-[250px] ml-9"
+            />
+          </div>
+
+          {/* Nav Links */}
+        
+          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
 
-          <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 mt-4 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
+          {/* CTA */}
+          <div className="relative mr-15">
+            <button
+              onClick={handleGetEstimate}
+              className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+            >
+              BOOK CONSULTATION
+
+              {/* FREE Badge */}
+              <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                <img src="/free.png" alt="Free" className="w-full h-full" />
+                <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                  FREE
+                </span>
+              </span>
+            </button>
+          </div>
+
         </div>
 
         {/* Hero content */}
@@ -176,7 +205,7 @@ const Herosection: React.FC = () => {
 
 
       {/* 1920 version  */}
-      <div className="hidden md:block  desktop-1920 w-full max-w-[1920px] h-[900px]  rounded-3xl overflow-hidden">
+      <div className="relative hidden md:block  desktop-1920 w-full max-w-[1920px] h-[900px]  overflow-hidden">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-full h-[900px]">
           {heroSlides.map((slide, index) => (
@@ -193,36 +222,47 @@ const Herosection: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-[5]"></div>
 
         {/* Navbar */}
-        <div className="relative z-10 flex items-center justify-between -mt-15">
-          <div onClick={handleClick}> <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[230px] h-[250px] -mt-3 ml-9" /></div>
-          {/* whitelogo.png / redlogo.png */}
+        <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
 
-          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] md:flex hidden text-[18px] items-center justify-center gap-12   manrope text-white tracking-widest ml-70 mt-4">
+          {/* Logo */}
+          <div onClick={handleClick}>
+            <Image
+              src="/whitelogo.png"
+              alt="HUB Interior Logo"
+              width={250}
+              height={250}
+              className="w-[230px] h-[250px] ml-9"
+            />
+          </div>
+
+          {/* Nav Links */}
+        
+          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
             <OfferingsDropdown textColor="text-white" />
             <ExploreRoomsDropdown textColor="text-white" />
             <NavMore textColor="text-white" />
           </div>
 
-          <div className="relative flex items-center justify-center  transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200">
+          {/* CTA */}
+          <div className="relative mr-15">
+            <button
+              onClick={handleGetEstimate}
+              className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+            >
+              BOOK CONSULTATION
 
-            <div className="absolute inline-block ml-40 mb-8">
-              {/* Light Image */}
-              <img
-                src="/light.png"
-                alt="Light"
-                className=" top-0 right-0 w-[60px] h-[60px] pointer-events-none"
-              />
-
-              {/* FREE text on image */}
-              <p className="absolute top-0 right-0 w-[60px] h-[60px] flex items-center justify-center z-20 manrope text-white text-[14px]">
-                FREE
-              </p>
-            </div>
-
-            {/* Button Text */}
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
+              {/* FREE Badge */}
+              <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                <img src="/free.png" alt="Free" className="w-full h-full" />
+                <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                  FREE
+                </span>
+              </span>
+            </button>
           </div>
+
         </div>
+
 
 
         {/* Hero content */}
@@ -271,15 +311,46 @@ const Herosection: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-[5]"></div>
 
           {/* Navbar */}
-          <div className="relative z-10 flex items-center justify-between  -mt-15">
-            <Image src="/whitelogo.png" alt="HUB Interior Logo" width={250} height={250} className="w-[250px] h-full -mt-5 mr-3" />
-            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] md:flex hidden items-center justify-center gap-12 text-[18px] hidden md:flex gap-12 manrope text-white tracking-widest ml-30 mt-5">
-              <OfferingsDropdown textColor="text-white" />
-              <ExploreRoomsDropdown textColor="text-white" />
-              <NavMore textColor="text-white" />
-            </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] manrope hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl text-[18px] tracking-wide  mr-5 mt-4 shadow-lg hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
+           <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
+
+          {/* Logo */}
+          <div onClick={handleClick}>
+            <Image
+              src="/whitelogo.png"
+              alt="HUB Interior Logo"
+              width={250}
+              height={250}
+              className="w-[230px] h-[250px] ml-9"
+            />
           </div>
+
+          {/* Nav Links */}
+        
+          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-15">
+            <OfferingsDropdown textColor="text-white" />
+            <ExploreRoomsDropdown textColor="text-white" />
+            <NavMore textColor="text-white" />
+          </div>
+
+          {/* CTA */}
+          <div className="relative mr-5">
+            <button
+              onClick={handleGetEstimate}
+              className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[250px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[16px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+            >
+              BOOK CONSULTATION
+
+              {/* FREE Badge */}
+              <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                <img src="/free.png" alt="Free" className="w-full h-full" />
+                <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                  FREE
+                </span>
+              </span>
+            </button>
+          </div>
+
+        </div>
 
           {/* Hero content */}
           <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
