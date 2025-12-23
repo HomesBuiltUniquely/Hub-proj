@@ -193,7 +193,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, calculatorData, router]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode) {
+    if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode || !selectedDate || !selectedTime) {
       return;
     }
     
@@ -203,7 +203,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     }
     
     await handleFinalSubmit();
-  }, [formData, selectedPossession, selectedPincode, isVerified, handleFinalSubmit]);
+  }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, handleFinalSubmit]);
 
   useEffect(() => {
     const handler = () => { performSubmitFlow(); };
@@ -222,6 +222,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               name="date"
               value={selectedDate}
               onChange={e => setSelectedDate(e.target.value)}
+              required
               className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
             >
               <option className="text-gray-400" value="" disabled>Date</option>
@@ -253,6 +254,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               name="time"
               value={selectedTime}
               onChange={e => setSelectedTime(e.target.value)}
+              required
               className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
             >
               <option className="text-gray-400" value="" disabled>Time</option>
