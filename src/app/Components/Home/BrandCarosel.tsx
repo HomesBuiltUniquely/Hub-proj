@@ -187,7 +187,7 @@ export default function BrandCarousel() {
         </div>
       </div> */}
 
-      <div className="desktop-1920 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-5 px-20">
+      <div className="desktop-1920 -mt-10 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-10 px-20">
         <div className="flex items-center justify-between w-full gap-5">
 
           {/* LEFT TEXT */}

@@ -472,7 +472,7 @@ export default function HeroSections() {
   return (
     <div>
 
-       <style jsx>{`
+      <style jsx>{`
         /* Hide all by default */
         .desktop-1280,
         .desktop-1920,
@@ -934,7 +934,7 @@ export default function HeroSections() {
 
           {/* 1920 Version */}
 
-           <div className=" desktop-1920 hidden lg:block bg-[#f1f2f6] justify-center mx-auto px-5 mt-3">
+          <div className=" desktop-1920 hidden lg:block bg-[#f1f2f6] justify-center mx-auto px-5 mt-3">
             <div className="flex flex-col lg:flex-row gap-6  mx-auto ">
               {/* Left side - Form */}
               <div className="w-full lg:w-auto">
@@ -1010,7 +1010,7 @@ export default function HeroSections() {
                         }}
                         className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && 'text-gray-400'}`}
                       >
-                        <span className="truncate">
+                        <span className="truncate whitespace-nowrap overflow-hidden max-w-[430px]">
                           {selectedCity || "Choose Interior Setup"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>

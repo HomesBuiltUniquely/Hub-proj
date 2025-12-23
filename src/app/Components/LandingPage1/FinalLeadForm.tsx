@@ -193,7 +193,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, calculatorData, router]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode) {
+    if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode || !selectedDate || !selectedTime) {
       return;
     }
     
@@ -203,7 +203,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     }
     
     await handleFinalSubmit();
-  }, [formData, selectedPossession, selectedPincode, isVerified, handleFinalSubmit]);
+  }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, handleFinalSubmit]);
 
   useEffect(() => {
     const handler = () => { performSubmitFlow(); };
@@ -222,17 +222,28 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               name="date"
               value={selectedDate}
               onChange={e => setSelectedDate(e.target.value)}
+              required
               className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
             >
               <option className="text-gray-400" value="" disabled>Date</option>
               {(() => {
                 const today = new Date();
-                const currentDay = today.getDate();
-                const currentMonth = today.getMonth(); // 0-11, where 11 = December
-                // Only show dates if we're in December, otherwise show all dates
-                const startDay = (currentMonth === 11) ? currentDay : 1;
-                return Array.from({ length: 31 - startDay + 1 }, (_, i) => startDay + i).map((day) => (
-                  <option key={day} value={day} className="text-gray-700">Dec-{day}</option>
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const dates = [];
+                
+                // Generate next 14 days (2 weeks)
+                for (let i = 0; i < 14; i++) {
+                  const date = new Date(today);
+                  date.setDate(today.getDate() + i);
+                  const day = date.getDate();
+                  const month = date.getMonth();
+                  const monthName = monthNames[month];
+                  const dateValue = `${monthName}-${day}`;
+                  dates.push({ value: dateValue, label: `${monthName}-${day}` });
+                }
+                
+                return dates.map((date, index) => (
+                  <option key={index} value={date.value} className="text-gray-700">{date.label}</option>
                 ));
               })()}
             </select>
@@ -243,6 +254,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               name="time"
               value={selectedTime}
               onChange={e => setSelectedTime(e.target.value)}
+              required
               className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
             >
               <option className="text-gray-400" value="" disabled>Time</option>
