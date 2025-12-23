@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
 
 export default function Section7() {
   const steps = [
@@ -28,7 +29,6 @@ export default function Section7() {
   const MAX_SCROLL_2560 = 350;
   const MAX_SCROLL_1920 = 350;
   const MAX_SCROLL_1280 = 400;
-
 
 
 
@@ -79,8 +79,40 @@ export default function Section7() {
   // mobile 
 
   const mobileScrollRef = useRef<HTMLDivElement | null>(null);
+  const [mobileProgress, setMobileProgress] = useState(0);
+
+  const handleMobileScroll = () => {
+    if (!mobileScrollRef.current) return;
+
+    const el = mobileScrollRef.current;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+
+    if (maxScroll <= 0) {
+      setMobileProgress(1);
+      return;
+    }
 
 
+    const CARD_WIDTH = 200; // your card width
+
+
+    const visibleOffset = el.clientWidth - CARD_WIDTH;
+
+    const effectiveScroll = Math.min(
+      el.scrollLeft + visibleOffset,
+      maxScroll
+    );
+
+    setMobileProgress(effectiveScroll / maxScroll);
+  };
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      handleMobileScroll();
+    });
+
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
 
   return (
@@ -253,6 +285,7 @@ export default function Section7() {
       </div>
 
 
+
       {/* 1920 Version */}
 
       <div className="desktop-1920 w-full py-20 px-20 relative overflow-hidden mt-5">
@@ -328,7 +361,6 @@ export default function Section7() {
             </svg>
 
 
-
             {/* DOTS */}
             {/* 1 → 2 */}
             <div className="absolute top-[420px] left-[360px] w-5 h-5 bg-red-600 rounded-full" />
@@ -336,7 +368,6 @@ export default function Section7() {
             <div className="absolute top-[40px] left-[820px] w-5 h-5 bg-red-600 rounded-full" />
             {/* 3 → 4 */}
             <div className="absolute top-[435px] left-[1280px] w-5 h-5 bg-red-600 rounded-full" />
-
 
 
             {steps.map((step, i) => (
@@ -537,55 +568,13 @@ export default function Section7() {
         <div className="relative w-full mx-auto overflow-hidden">
           <div
             ref={mobileScrollRef}
-            className="relative flex overflow-x-auto overflow-y-hidden no-scrollbar mt-10 mb-10 gap-[20px] h-full"
+            onScroll={handleMobileScroll}
+            className="relative flex overflow-x-auto overflow-y-hidden no-scrollbar mt-10 mb-6 gap-[20px] h-full"
             style={{
               scrollSnapType: 'proximity',
               scrollBehavior: 'smooth',
             }}
           >
-            {/* Red Dot */}
-            {/* <div className="absolute top-[245px] left-[200px] w-5 h-5 bg-red-600 rounded-full z-5" /> */}
-
-            {/* Connector SVG */}
-
-            {/* 1-2 */}
-
-            {/* <svg
-              className="absolute left-[40px] top-[50px] pointer-events-none overflow-hidden"
-              width="300"
-              height="300"
-              viewBox="0 0 600 360"
-            >
-              <path
-                d="M0 40 C220 360 380 360 600 120"
-                stroke="#2B2B2B"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-            </svg> */}
-
-
-            {/* 2-3 */}
-
-            {/* <div className="absolute top-[245px] left-[200px] w-5 h-5 bg-red-600 rounded-full z-5" />
-
-            <svg
-              className="absolute left-[240px] top-[5px] pointer-events-none overflow-hidden"
-              width="300"
-              height="300"
-              viewBox="0 0 600 360"
-            >
-              <path
-                d="M0 320 C220 0 380 0 600 240"
-                stroke="#2B2B2B"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-            </svg> */}
 
 
             {/* Cards */}
@@ -609,7 +598,21 @@ export default function Section7() {
                 </p>
               </div>
             ))}
+
+
+
           </div>
+          {/* MOBILE PROGRESS BAR */}
+          <div className="mt-4 mb-4 px-2">
+            <div className="relative w-full h-[2px] bg-black/30">
+              <div
+                className="absolute top-0 left-0 h-[2px] bg-red-600 transition-all duration-150"
+                style={{ width: `${mobileProgress * 100}%` }}
+              />
+
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -617,6 +620,51 @@ export default function Section7() {
   );
 }
 
+
+
+{/* Red Dot */ }
+{/* <div className="absolute top-[245px] left-[200px] w-5 h-5 bg-red-600 rounded-full z-5" /> */ }
+
+{/* Connector SVG */ }
+
+{/* 1-2 */ }
+
+{/* <svg
+              className="absolute left-[40px] top-[50px] pointer-events-none overflow-hidden"
+              width="300"
+              height="300"
+              viewBox="0 0 600 360"
+            >
+              <path
+                d="M0 40 C220 360 380 360 600 120"
+                stroke="#2B2B2B"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg> */}
+
+
+{/* 2-3 */ }
+
+{/* <div className="absolute top-[245px] left-[200px] w-5 h-5 bg-red-600 rounded-full z-5" />
+
+            <svg
+              className="absolute left-[240px] top-[5px] pointer-events-none overflow-hidden"
+              width="300"
+              height="300"
+              viewBox="0 0 600 360"
+            >
+              <path
+                d="M0 320 C220 0 380 0 600 240"
+                stroke="#2B2B2B"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg> */}
 
 
 {/* DOTS */ }

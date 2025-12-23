@@ -130,12 +130,12 @@ export default function Section2() {
                                     Every space has a story, start yours here
                                 </h1>
                             </div>
-                            
+
                         </div>
 
                         {/* Carousel */}
                         <div className="relative ">
-                           
+
 
                             {/* Cards */}
                             <div className="overflow-hidden w-[1400px] mx-auto ">
@@ -343,7 +343,7 @@ export default function Section2() {
                                         Every space has a story, start yours here
                                     </h1>
                                 </div>
-                               
+
                             </div>
 
                             {/* Carousel */}
@@ -395,48 +395,48 @@ export default function Section2() {
                             </div>
 
                             {/* Progress bar and gallery button */}
-                        <div className="flex justify-between items-center mt-10 gap-4">
+                            <div className="flex justify-between items-center mt-10 gap-4">
 
-                            <div className="flex items-center gap-4 flex-1 max-w-lg">
-                                <div className="w-full h-1 bg-gray-300 rounded-full relative overflow-hidden">
-                                    <div
-                                        className="h-1 bg-gray-600 rounded-full transition-all duration-300 absolute top-0 left-0"
-                                        style={{
-                                            width: `${Math.min(100, ((currentSlide + 1) / (desktopMaxSlide + 1)) * 100)}%`
-                                        }}
-                                    />
-                                    <input
-                                        type="range"
-                                        min="0"
-                                        max={desktopMaxSlide}
-                                        value={currentSlide}
-                                        onChange={(e) => setCurrentSlide(parseInt(e.target.value))}
-                                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                    />
+                                <div className="flex items-center gap-4 flex-1 max-w-lg">
+                                    <div className="w-full h-1 bg-gray-300 rounded-full relative overflow-hidden">
+                                        <div
+                                            className="h-1 bg-gray-600 rounded-full transition-all duration-300 absolute top-0 left-0"
+                                            style={{
+                                                width: `${Math.min(100, ((currentSlide + 1) / (desktopMaxSlide + 1)) * 100)}%`
+                                            }}
+                                        />
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max={desktopMaxSlide}
+                                            value={currentSlide}
+                                            onChange={(e) => setCurrentSlide(parseInt(e.target.value))}
+                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Controls */}
+                                <div className="flex gap-3">
+                                    <button onClick={prevSlide} className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                    </button>
+
+                                    <button onClick={nextSlide} className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+
+                                    <Link href="/Inspiration">
+                                        <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
+                                            Explore Gallery
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
-
-                            {/* Controls */}
-                            <div className="flex gap-3">
-                                <button onClick={prevSlide} className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                </button>
-
-                                <button onClick={nextSlide} className="w-10 h-10 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
-
-                                <Link href="/Inspiration">
-                                    <button className="manrope bg-[#ddcdc1] hover:bg-[#ebd457] transition-colors text-black px-4 py-2 rounded-4xl shadow hover:shadow-2xl hover:shadow-black/20 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 flex-shrink-0">
-                                        Explore Gallery
-                                    </button>
-                                </Link>
-                            </div>
-                        </div>
                         </div>
                     </div>
 
