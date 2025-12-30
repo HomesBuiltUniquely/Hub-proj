@@ -50,34 +50,53 @@ export async function POST(req: Request) {
       calculator,
     });
 
-    // Send data to unified API endpoint
-    try {
-      const websiteLeadPayload = {
-        name: name || '',
-        email: email || '',
-        phoneNumber: phone || '',
-        propertyPin: pincode || '',
-      };
+    const path = (pageUrl || '').toString();
+    const pathLower = path.toLowerCase();
 
-      console.log('Sending calculator data to WebsiteLead API:', websiteLeadPayload);
-      
-      const websiteLeadResponse = await fetch('https://Hows.hubinterior.com/v1/WebsiteLead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(websiteLeadPayload),
-      });
+    // Identify which submissions are pure Google Ads (should NOT hit WebsiteLead API)
+    const isInteriorBangalorePage =
+      pathLower.includes('/interior-designers-in-bangalore') ||
+      pathLower.includes('interior-designers-in-bangalore');
+    const isInteriorBangaloreCalculator =
+      pathLower.includes('/interior-designers-in-bangalore/calculator');
 
-      if (websiteLeadResponse.ok) {
-        const websiteLeadData = await websiteLeadResponse.json();
-        console.log('WebsiteLead API response:', websiteLeadData);
-      } else {
-        console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
+    const isGoogleAdsLead = isInteriorBangalorePage || isInteriorBangaloreCalculator;
+
+    // Send data to unified WebsiteLead API only for WEBSITE leads (not Google Ads landers)
+    if (!isGoogleAdsLead) {
+      try {
+        const websiteLeadPayload = {
+          name: name || '',
+          email: email || '',
+          phoneNumber: phone || '',
+          propertyPin: pincode || '',
+        };
+
+        console.log('Sending data to WebsiteLead API:', websiteLeadPayload);
+
+        const websiteLeadResponse = await fetch('https://Hows.hubinterior.com/v1/WebsiteLead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(websiteLeadPayload),
+        });
+
+        if (websiteLeadResponse.ok) {
+          const websiteLeadData = await websiteLeadResponse.json();
+          console.log('WebsiteLead API response:', websiteLeadData);
+        } else {
+          console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
+        }
+      } catch (websiteLeadError) {
+        console.error('Error sending to WebsiteLead API:', websiteLeadError);
+        // Continue with email flow even if WebsiteLead API fails
       }
-    } catch (websiteLeadError) {
-      console.error('Error sending to WebsiteLead API:', websiteLeadError);
-      // Continue with email flow even if WebsiteLead API fails
+    } else {
+      console.log(
+        'Skipping WebsiteLead API for Google Ads lead from path:',
+        path
+      );
     }
 
     console.log('Environment variables check:');
@@ -88,8 +107,8 @@ export async function POST(req: Request) {
     if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
       console.error('Gmail credentials not configured');
       console.log('For testing purposes, returning success without sending email');
-      return NextResponse.json({ 
-        success: true, 
+      return NextResponse.json({
+        success: true,
         message: 'Form data received successfully (email not sent - credentials not configured)',
       });
     }
@@ -104,54 +123,61 @@ export async function POST(req: Request) {
     });
 
     // ✅ Email content including all form data
-    const verificationStatusText = verificationStatus === 'Verified User' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
-    
+    const verificationStatusText =
+      verificationStatus === 'Verified User' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
+
     // Check if this is a calculator submission (has calculator data)
-    const isCalculatorSubmission = !!(calculator || bhkType || rooms || wardrobe || kitchen || collections || material);
-    
+    const isCalculatorSubmission = !!(
+      calculator ||
+      bhkType ||
+      rooms ||
+      wardrobe ||
+      kitchen ||
+      collections ||
+      material
+    );
+
     // Determine subject based on page URL and submission type
-    const path = pageUrl || '';
-    const pathLower = path.toLowerCase();
     const isContactPage = pathLower.includes('/contact');
     const isInteriorCalculator = pathLower.includes('/interior-designers-in-bangalore/calculator');
     const isBestInteriorCalculator = pathLower.includes('/best-interior-designers-in-bangalore/calculator');
     const isBestInteriorPage = pathLower.includes('/best-interior-designers-in-bangalore');
     // Handle common misspelling as well
-    const isHubCalculator = pathLower.includes('/hubinterior/callculator') || pathLower.includes('/hubinterior/calculator') || pathLower.includes('hubinterior.com/calculator');
+    const isHubCalculator =
+      pathLower.includes('/hubinterior/callculator') ||
+      pathLower.includes('/hubinterior/calculator') ||
+      pathLower.includes('hubinterior.com/calculator');
     // Home calculator should also catch the root /calculator path when not on the interior page
-    const isHomeCalculator = (!isInteriorCalculator && !isBestInteriorCalculator) && (pathLower.includes('/calculator') || pathLower.endsWith('/calculator'));
+    const isHomeCalculator =
+      !isInteriorCalculator && (pathLower.includes('/calculator') || pathLower.endsWith('/calculator'));
 
     let subject = 'Google Ads Lead (Unverified)';
 
-    if (isBestInteriorCalculator || isBestInteriorPage) {
-      subject = verificationStatus === 'Verified User'
-        ? 'Meta Ads Lead (Verified)'
-        : 'Meta Ads Lead (Unverified)';
-    } else if (isInteriorCalculator) {
-      subject = verificationStatus === 'Verified User'
-        ? 'Google Ads Lead (Verified)'
-        : 'Google Ads Lead (Unverified)';
+    if (isInteriorCalculator || isInteriorBangalorePage) {
+      subject =
+        verificationStatus === 'Verified User'
+          ? 'Google Ads Lead (Verified)'
+          : 'Google Ads Lead (Unverified)';
     } else if (isHubCalculator) {
-      subject = verificationStatus === 'Verified User'
-        ? 'Website Lead (Verified)'
-        : 'Website Lead (Unverified)';
+      subject =
+        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
     } else if (isHomeCalculator) {
-      subject = verificationStatus === 'Verified User'
-        ? 'Website Lead (Verified)'
-        : 'Website Lead (Unverified)';
+      subject =
+        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
     } else if (isContactPage) {
-      subject = verificationStatus === 'Verified User'
-        ? 'Lead from Website(Verified)'
-        : 'Lead from Website (Unverified)';
+      subject =
+        verificationStatus === 'Verified User'
+          ? 'Lead from Website(Verified)'
+          : 'Lead from Website (Unverified)';
     } else if (isCalculatorSubmission) {
       // If calculator data is present but URL didn't match known routes, default to Website Lead
-      subject = verificationStatus === 'Verified User'
-        ? 'Website Lead (Verified)'
-        : 'Website Lead (Unverified)';
+      subject =
+        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
     } else {
-      subject = verificationStatus === 'Verified User'
-        ? 'Google Ads Lead (Verified)'
-        : 'Google Ads Lead (Unverified)';
+      subject =
+        verificationStatus === 'Verified User'
+          ? 'Google Ads Lead (Verified)'
+          : 'Google Ads Lead (Unverified)';
     }
 
     const renderJSON = (value: unknown) => {
@@ -162,9 +188,9 @@ export async function POST(req: Request) {
         return String(value ?? 'Not provided');
       }
     };
-    
+
     const mailOptions = {
-      from:  process.env.GMAIL_USER ,
+      from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER, // You can change this to a team email
       subject: subject,
       html: `
@@ -177,23 +203,43 @@ export async function POST(req: Request) {
         <p><strong>Possession Timeline:</strong> ${possession || budget || 'Not provided'}</p>
         <p><strong>Preferred Date:</strong> ${date ? (date.includes('-') ? date : `Dec-${date}`) : 'Not provided'}</p>
         <p><strong>Preferred Time:</strong> ${time || 'Not provided'}</p>
-        <p><strong>WhatsApp Consent:</strong> ${typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'}</p>
-        <p><strong>Verification Status:</strong> <span style="color: ${verificationStatus === 'Verified User' ? 'green' : 'red'}; font-weight: bold;">${verificationStatusText}</span></p>
-        <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${pageUrl || 'Not provided'}</a></p>
-        ${verificationStatus !== 'Verified User' ? '<p style="color: red; font-weight: bold;">⚠️ IMPORTANT: This user did not verify their phone number. Please follow up to verify their details.</p>' : ''}
+        <p><strong>WhatsApp Consent:</strong> ${
+          typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'
+        }</p>
+        <p><strong>Verification Status:</strong> <span style="color: ${
+          verificationStatus === 'Verified User' ? 'green' : 'red'
+        }; font-weight: bold;">${verificationStatusText}</span></p>
+        <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${
+          pageUrl || 'Not provided'
+        }</a></p>
+        ${
+          verificationStatus !== 'Verified User'
+            ? '<p style="color: red; font-weight: bold;">⚠️ IMPORTANT: This user did not verify their phone number. Please follow up to verify their details.</p>'
+            : ''
+        }
         <hr/>
         <h3>Selections (Calculator)</h3>
         <p><strong>BHK Type:</strong> ${bhkType || (calculator?.bhkType ?? 'Not provided')}</p>
         <p><strong>Rooms:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(rooms || calculator?.rooms)}</pre>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          rooms || calculator?.rooms
+        )}</pre>
         <p><strong>Wardrobe:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(wardrobe || calculator?.wardrobe)}</pre>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          wardrobe || calculator?.wardrobe
+        )}</pre>
         <p><strong>Kitchen:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(kitchen || calculator?.kitchen)}</pre>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          kitchen || calculator?.kitchen
+        )}</pre>
         <p><strong>Collections:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(collections || calculator?.collections)}</pre>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          collections || calculator?.collections
+        )}</pre>
         <p><strong>Material Finish:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(material || calculator?.material)}</pre>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          material || calculator?.material
+        )}</pre>
       `,
     };
 
@@ -221,13 +267,16 @@ export async function POST(req: Request) {
 
     await transporter.sendMail(mailOptions);
     console.log('Email sent successfully');
-    
+
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Email send error:', error);
-    return NextResponse.json({ 
-      success: false, 
-      message: 'Failed to send email. Please try again.' 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'Failed to send email. Please try again.',
+      },
+      { status: 500 },
+    );
   }
 }
