@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Video {
   id: number;
