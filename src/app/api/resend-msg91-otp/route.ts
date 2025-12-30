@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     let data;
     try {
       data = JSON.parse(responseText);
-    } catch (parseError) {
+    } catch {
       console.error('Failed to parse MSG91 resend response as JSON:', responseText);
       if (responseText.toLowerCase().includes('success') || response.ok) {
         return NextResponse.json({

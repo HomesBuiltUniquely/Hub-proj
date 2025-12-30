@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     let data;
     try {
       data = JSON.parse(responseText);
-    } catch (parseError) {
+    } catch {
       console.error('Failed to parse MSG91 verify response as JSON:', responseText);
       return NextResponse.json(
         { success: false, message: 'Invalid response from OTP service' },

@@ -140,8 +140,6 @@ export async function POST(req: Request) {
     // Determine subject based on page URL and submission type
     const isContactPage = pathLower.includes('/contact');
     const isInteriorCalculator = pathLower.includes('/interior-designers-in-bangalore/calculator');
-    const isBestInteriorCalculator = pathLower.includes('/best-interior-designers-in-bangalore/calculator');
-    const isBestInteriorPage = pathLower.includes('/best-interior-designers-in-bangalore');
     // Handle common misspelling as well
     const isHubCalculator =
       pathLower.includes('/hubinterior/callculator') ||
