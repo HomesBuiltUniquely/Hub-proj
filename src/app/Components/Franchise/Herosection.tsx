@@ -1,7 +1,7 @@
 "use client";
 
 // import React, { useState, useEffect } from "react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import OfferingsDropdown from "../OfferingsDropdown";
@@ -42,6 +42,15 @@ function handleClick() {
 const Home: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const router = useRouter();
+  
+  // OTP related states
+  const [phoneNumber, setPhoneNumber] = React.useState('');
+  const [otpSent, setOtpSent] = React.useState(false);
+  const [otp, setOtp] = React.useState('');
+  const [isVerifying, setIsVerifying] = React.useState(false);
+  const [isSendingOTP, setIsSendingOTP] = React.useState(false);
+  const [isVerified, setIsVerified] = React.useState(false);
+  const [otpError, setOtpError] = React.useState('');
 
   // const scrollToForm = () => {
   //   if (typeof window !== 'undefined') {
@@ -52,8 +61,88 @@ const Home: React.FC = () => {
   //   }
   // };
 
+  const sendOTP = async () => {
+    if (!phoneNumber) {
+      setOtpError('Please enter a phone number first');
+      return;
+    }
+
+    if (phoneNumber.length !== 10) {
+      setOtpError('Please enter a valid 10-digit phone number');
+      return;
+    }
+
+    setIsSendingOTP(true);
+    setOtpError('');
+
+    try {
+      console.log('Sending OTP request for phone:', phoneNumber);
+      const response = await fetch('/api/send-msg91-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: phoneNumber }),
+      });
+
+      console.log('OTP API response status:', response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('OTP API response data:', data);
+      
+      if (data.success) {
+        setOtpSent(true);
+        setOtpError('');
+      } else {
+        const errorMsg = data.message || 'Failed to send OTP';
+        console.error('OTP send failed:', errorMsg, data);
+        setOtpError(errorMsg);
+      }
+    } catch (error) {
+      console.error('OTP send error:', error);
+      setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+    } finally {
+      setIsSendingOTP(false);
+    }
+  };
+
+  const verifyOTP = async () => {
+    if (!otp) {
+      setOtpError('Please enter the OTP');
+      return;
+    }
+
+    setIsVerifying(true);
+    try {
+      const response = await fetch('/api/verify-msg91-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: phoneNumber, otp }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setIsVerified(true);
+        setOtpError('');
+      } else {
+        setOtpError(data.message || 'Invalid OTP');
+      }
+    } catch {
+      setOtpError('Failed to verify OTP. Please try again.');
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!isVerified) {
+      setOtpError('Please verify your phone number with OTP first');
+      return;
+    }
 
     // Prevent multiple submissions
     if (isSubmitting) return;
@@ -80,6 +169,12 @@ const Home: React.FC = () => {
       const result = await response.json();
 
       if (result.success) {
+        // Reset OTP states
+        setOtpSent(false);
+        setOtp('');
+        setIsVerified(false);
+        setOtpError('');
+        setPhoneNumber('');
         // Redirect to thank you page
         router.push('/thank-you-franchisee');
       } else {
@@ -95,6 +190,11 @@ const Home: React.FC = () => {
 
   const handleMobileFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!isVerified) {
+      setOtpError('Please verify your phone number with OTP first');
+      return;
+    }
 
     // Prevent multiple submissions
     if (isSubmitting) return;
@@ -123,6 +223,12 @@ const Home: React.FC = () => {
       const result = await response.json();
 
       if (result.success) {
+        // Reset OTP states
+        setOtpSent(false);
+        setOtp('');
+        setIsVerified(false);
+        setOtpError('');
+        setPhoneNumber('');
         // Redirect to thank you page
         router.push('/thank-you-franchisee');
       } else {
@@ -256,7 +362,7 @@ const Home: React.FC = () => {
 
 
           {/* Right: Form */}
-          <div id="franchise-form" className="md:w-[500px] h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-100 ml-210 self-center">
+          <div id="franchise-form" className="md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-100 ml-210 self-center">
             <div className="text-white text-2xl manrope-medium mb-5">Enter your details to get started</div>
             <form onSubmit={handleFormSubmit} className="space-y-4">
               <div className="flex gap-3">
@@ -288,10 +394,59 @@ const Home: React.FC = () => {
                 required
                 name="phone"
                 placeholder=""
+                value={phoneNumber}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  setPhoneNumber(value);
+                  setOtpError('');
+                }}
                 disabled={isSubmitting}
                 className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="tel"
               />
+              
+              {/* OTP Section */}
+              {phoneNumber && phoneNumber.length > 0 && (
+                <div className="space-y-2 mt-2">
+                  {!otpSent ? (
+                    <button
+                      type="button"
+                      onClick={sendOTP}
+                      disabled={phoneNumber.length !== 10 || isSendingOTP}
+                      className="w-full py-2 px-4 rounded text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                    </button>
+                  ) : !isVerified ? (
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                        placeholder="Enter OTP *"
+                        className="w-full px-4 py-2 rounded border bg-[#f2f2f6]/70"
+                      />
+                      <button
+                        type="button"
+                        onClick={verifyOTP}
+                        disabled={isVerifying}
+                        className="w-full py-2 px-4 rounded text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
+                      >
+                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-full py-2 px-4 rounded bg-green-100 text-green-700 flex items-center justify-center manrope-medium">
+                      ✅ Phone Number Verified
+                    </div>
+                  )}
+                  
+                  {otpError && (
+                    <p className="text-red-500 text-sm manrope-medium">{otpError}</p>
+                  )}
+                </div>
+              )}
+              
               <label className="pl-1 text-white">City*</label>
               <input
                 required
@@ -388,7 +543,7 @@ const Home: React.FC = () => {
 
 
           {/* Right: Form */}
-          <div id="franchise-form" className="md:w-[500px] h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-80 ml-225 self-center">
+          <div id="franchise-form" className="md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-80 ml-225 self-center">
             <div className="text-white text-2xl manrope-medium mb-5">Enter your details to get started</div>
             <form onSubmit={handleFormSubmit} className="space-y-4">
               <div className="flex gap-3">
@@ -420,10 +575,59 @@ const Home: React.FC = () => {
                 required
                 name="phone"
                 placeholder=""
+                value={phoneNumber}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  setPhoneNumber(value);
+                  setOtpError('');
+                }}
                 disabled={isSubmitting}
                 className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="tel"
               />
+              
+              {/* OTP Section */}
+              {phoneNumber && phoneNumber.length > 0 && (
+                <div className="space-y-2 mt-2">
+                  {!otpSent ? (
+                    <button
+                      type="button"
+                      onClick={sendOTP}
+                      disabled={phoneNumber.length !== 10 || isSendingOTP}
+                      className="w-full py-2 px-4 rounded text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                    </button>
+                  ) : !isVerified ? (
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                        placeholder="Enter OTP *"
+                        className="w-full px-4 py-2 rounded border bg-[#f2f2f6]/70"
+                      />
+                      <button
+                        type="button"
+                        onClick={verifyOTP}
+                        disabled={isVerifying}
+                        className="w-full py-2 px-4 rounded text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
+                      >
+                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-full py-2 px-4 rounded bg-green-100 text-green-700 flex items-center justify-center manrope-medium">
+                      ✅ Phone Number Verified
+                    </div>
+                  )}
+                  
+                  {otpError && (
+                    <p className="text-red-500 text-sm manrope-medium">{otpError}</p>
+                  )}
+                </div>
+              )}
+              
               <label className="pl-1 text-white">City*</label>
               <input
                 required
@@ -524,7 +728,7 @@ const Home: React.FC = () => {
           {/* ✅ Right: Form (same structure, just visually smaller) */}
           <div
             id="franchise-form"
-            className="md:w-[420px] h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-100 ml-190 self-center"
+            className="md:w-[420px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-100 ml-190 self-center"
           >
             <div className="text-white text-2xl manrope-medium mb-5">
               Enter your details to get started
@@ -684,10 +888,59 @@ const Home: React.FC = () => {
                 type="tel"
                 name="phone"
                 placeholder="Phone"
+                value={phoneNumber}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  setPhoneNumber(value);
+                  setOtpError('');
+                }}
                 required
                 disabled={isSubmitting}
-                className="w-full sm:w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-4 pl-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-4 pl-4 pr-4 disabled:opacity-50 disabled:cursor-not-allowed"
               />
+              
+              {/* OTP Section */}
+              {phoneNumber && phoneNumber.length > 0 && (
+                <div className="space-y-2 w-full sm:w-[280px]">
+                  {!otpSent ? (
+                    <button
+                      type="button"
+                      onClick={sendOTP}
+                      disabled={phoneNumber.length !== 10 || isSendingOTP}
+                      className="w-full h-[40px] rounded-full text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                    </button>
+                  ) : !isVerified ? (
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                        placeholder="Enter OTP *"
+                        className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4"
+                      />
+                      <button
+                        type="button"
+                        onClick={verifyOTP}
+                        disabled={isVerifying}
+                        className="w-full h-[40px] rounded-full text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
+                      >
+                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-full h-[40px] rounded-full bg-green-100 text-green-700 flex items-center justify-center manrope-medium">
+                      ✅ Phone Number Verified
+                    </div>
+                  )}
+                  
+                  {otpError && (
+                    <p className="text-red-500 text-sm manrope-medium text-center">{otpError}</p>
+                  )}
+                </div>
+              )}
+              
               <input
                 type="text"
                 name="city"

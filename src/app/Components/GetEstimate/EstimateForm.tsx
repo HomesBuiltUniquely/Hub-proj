@@ -13,6 +13,14 @@ const EstimateForm: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  
+  // OTP related states
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [isSendingOTP, setIsSendingOTP] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [otpError, setOtpError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -22,8 +30,89 @@ const EstimateForm: React.FC = () => {
     }));
   };
 
+  const sendOTP = async () => {
+    if (!formData.phoneNumber) {
+      setOtpError('Please enter a phone number first');
+      return;
+    }
+
+    if (formData.phoneNumber.length !== 10) {
+      setOtpError('Please enter a valid 10-digit phone number');
+      return;
+    }
+
+    setIsSendingOTP(true);
+    setOtpError('');
+
+    try {
+      console.log('Sending OTP request for phone:', formData.phoneNumber);
+      const response = await fetch('/api/send-msg91-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: formData.phoneNumber }),
+      });
+
+      console.log('OTP API response status:', response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('OTP API response data:', data);
+      
+      if (data.success) {
+        setOtpSent(true);
+        setOtpError('');
+      } else {
+        const errorMsg = data.message || 'Failed to send OTP';
+        console.error('OTP send failed:', errorMsg, data);
+        setOtpError(errorMsg);
+      }
+    } catch (error) {
+      console.error('OTP send error:', error);
+      setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+    } finally {
+      setIsSendingOTP(false);
+    }
+  };
+
+  const verifyOTP = async () => {
+    if (!otp) {
+      setOtpError('Please enter the OTP');
+      return;
+    }
+
+    setIsVerifying(true);
+    try {
+      const response = await fetch('/api/verify-msg91-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: formData.phoneNumber, otp }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setIsVerified(true);
+        setOtpError('');
+      } else {
+        setOtpError(data.message || 'Invalid OTP');
+      }
+    } catch {
+      setOtpError('Failed to verify OTP. Please try again.');
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!isVerified) {
+      setOtpError('Please verify your phone number with OTP first');
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -45,6 +134,11 @@ const EstimateForm: React.FC = () => {
       if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', phoneNumber: '', pincode: '', tellUsMore: '' });
+        // Reset OTP states
+        setOtpSent(false);
+        setOtp('');
+        setIsVerified(false);
+        setOtpError('');
         // Redirect to thank you page after successful submission
         router.push('/Form-Submit-Thank-You');
       } else {
@@ -80,12 +174,57 @@ const EstimateForm: React.FC = () => {
             id="phoneNumber"
             name="phoneNumber"
             value={formData.phoneNumber}
-            onChange={handleInputChange}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+              setFormData(prev => ({ ...prev, phoneNumber: value }));
+            }}
             required
             className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
             placeholder="Phone Number*"
           />
         </div>
+        
+        {/* OTP Section */}
+        {formData.phoneNumber && formData.phoneNumber.length > 0 && (
+          <div className="space-y-3">
+            {!otpSent ? (
+            <button
+              type="button"
+              onClick={sendOTP}
+              disabled={formData.phoneNumber.length !== 10 || isSendingOTP}
+              className="w-full bg-blue-500 text-white rounded-xl py-3 px-4 font-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+            </button>
+          ) : !isVerified ? (
+            <div className="space-y-3">
+              <input
+                type="text"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                placeholder="Enter OTP *"
+                className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
+              />
+              <button
+                type="button"
+                onClick={verifyOTP}
+                disabled={isVerifying}
+                className="w-full bg-green-500 text-white rounded-xl py-3 px-4 font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
+              >
+                {isVerifying ? 'Verifying...' : 'Verify OTP'}
+              </button>
+            </div>
+          ) : (
+            <div className="w-full bg-green-100 text-green-700 rounded-xl py-3 px-4 flex items-center font-medium">
+              ✅ Phone Number Verified
+            </div>
+          )}
+          
+          {otpError && (
+            <div className="text-red-500 text-sm text-center">{otpError}</div>
+          )}
+          </div>
+        )}
 
         <div>
           <input

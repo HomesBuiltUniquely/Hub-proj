@@ -33,7 +33,7 @@ interface CalculatorData {
 
 type FinalLeadFormProps = { calculatorData?: CalculatorData };
 
-const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
+const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const router = useRouter();
 
   const [selectedPincode, setSelectedPincode] = useState('');
@@ -48,6 +48,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
+  const [isSendingOTP, setIsSendingOTP] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [otpError, setOtpError] = useState('');
 
@@ -78,25 +79,67 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       return;
     }
 
+    if (formData.phone.length !== 10) {
+      setOtpError('Please enter a valid 10-digit phone number');
+      return;
+    }
+
+    setIsSendingOTP(true);
+    setOtpError('');
+
     try {
-      const cleanedPhone = formData.phone.replace(/\D/g, "");
-      const formattedPhone = cleanedPhone.startsWith('+') ? cleanedPhone : `+91${cleanedPhone}`;
-      
-      const response = await fetch('/api/send-twilio-otp', {
+      console.log('Sending OTP request for phone:', formData.phone);
+      const response = await fetch('/api/send-msg91-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: formattedPhone }),
+        body: JSON.stringify({ phone: formData.phone }),
       });
 
+      console.log('OTP API response status:', response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
+      console.log('OTP API response data:', data);
+      
       if (data.success) {
         setOtpSent(true);
         setOtpError('');
       } else {
-        setOtpError(data.message || 'Failed to send OTP');
+        const errorMsg = data.message || 'Failed to send OTP';
+        console.error('OTP send failed:', errorMsg, data);
+        setOtpError(errorMsg);
+      }
+    } catch (error) {
+      console.error('OTP send error:', error);
+      setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+    } finally {
+      setIsSendingOTP(false);
+    }
+  };
+
+  const resendOTP = async () => {
+    setIsSendingOTP(true);
+    setOtpError('');
+    try {
+      const response = await fetch('/api/resend-msg91-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: formData.phone }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setOtpError('');
+      } else {
+        setOtpError(data.message || 'Failed to resend OTP');
       }
     } catch {
-      setOtpError('Failed to send OTP. Please try again.');
+      setOtpError('Failed to resend OTP. Please try again.');
+    } finally {
+      setIsSendingOTP(false);
     }
   };
 
@@ -108,13 +151,10 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
     setIsVerifying(true);
     try {
-      const cleanedPhone = formData.phone.replace(/\D/g, "");
-      const formattedPhone = cleanedPhone.startsWith('+') ? cleanedPhone : `+91${cleanedPhone}`;
-      
-      const response = await fetch('/api/verify-twilio-otp', {
+      const response = await fetch('/api/verify-msg91-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: formattedPhone, otp }),
+        body: JSON.stringify({ phone: formData.phone, otp }),
       });
 
       const data = await response.json();
@@ -324,15 +364,16 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
           />
           
           {/* OTP Section */}
-          {formData.phone && (
+          {formData.phone && formData.phone.length > 0 && (
             <div className="space-y-3">
               {!otpSent ? (
                 <button
                   type="button"
                   onClick={sendOTP}
-                  className="w-full h-[50px] bg-blue-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-blue-600 transition-colors"
+                  disabled={formData.phone.length !== 10 || isSendingOTP}
+                  className="w-full h-[50px] bg-blue-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send OTP
+                  {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
                 </button>
               ) : !isVerified ? (
                 <div className="space-y-3">
@@ -343,14 +384,24 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
                     placeholder="Enter OTP *"
                     className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
                   />
-                  <button
-                    type="button"
-                    onClick={verifyOTP}
-                    disabled={isVerifying}
-                    className="w-full h-[50px] bg-green-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
-                  >
-                    {isVerifying ? 'Verifying...' : 'Verify OTP'}
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={verifyOTP}
+                      disabled={isVerifying}
+                      className="flex-1 h-[50px] bg-green-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
+                    >
+                      {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={resendOTP}
+                      disabled={isSendingOTP}
+                      className="px-4 h-[50px] bg-blue-500 text-white rounded-3xl text-sm font-medium hover:bg-blue-600 transition-colors disabled:opacity-50"
+                    >
+                      Resend
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <div className="w-full h-[50px] bg-green-100 text-green-700 rounded-3xl text-base sm:text-lg pl-6 flex items-center font-medium">
@@ -419,4 +470,4 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   );
 };
 
-export default FinalLeadForm;
+export default FinalLeadFormBest;
