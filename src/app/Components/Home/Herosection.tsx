@@ -7,6 +7,7 @@ import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import OverlapNavBar from "../OverlapNavBar";
+import MagneticButton from "./MagneticButton";
 
 
 
@@ -115,8 +116,6 @@ const Herosection: React.FC = () => {
         }
       `}</style>
 
-
-
       {/* 2560 Version */}
 
       <div className="hidden md:block  desktop-2560 w-full max-w-[1440px] h-[900px] mx-auto overflow-hidden relative ">
@@ -178,13 +177,14 @@ const Herosection: React.FC = () => {
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
-          <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
+        <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+          <h1 className="text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
             {heroSlides[currentSlide].title}
           </h1>
-          <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope  mr-145 mt-2  duration-1000 shadow-lg  hover:shadow-xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
-            {heroSlides[currentSlide].buttonText}
-          </button>
+          <MagneticButton 
+            text={heroSlides[currentSlide].buttonText}
+            onClick={handleGetEstimate}
+          />
         </div>
 
         {/* Carousel Indicators */}
@@ -266,15 +266,15 @@ const Herosection: React.FC = () => {
 
 
         {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
-          <h1 className="text-5xl lg:text-6xl  mb-6 drop-shadow-lg transition-all duration-1000">
+        <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+          <h1 className="text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
             {heroSlides[currentSlide].title}
           </h1>
-          <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl manrope  mr-145 mt-2  duration-1000 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
-            {heroSlides[currentSlide].buttonText}
-          </button>
+          <MagneticButton 
+            text={heroSlides[currentSlide].buttonText}
+            onClick={handleGetEstimate}
+          />
         </div>
-
 
         {/* Carousel Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
@@ -353,13 +353,14 @@ const Herosection: React.FC = () => {
         </div>
 
           {/* Hero content */}
-          <div className="relative z-10 flex flex-col items-center justify-center pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-20 wulkan-display-bold">
-            <h1 className=" w-[1000px] text-5xl lg:text-6xl mb-drop-shadow-lg transition-all ml-45 duration-1000">
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="w-[1000px] text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
               {heroSlides[currentSlide].title}
             </h1>
-            <button onClick={handleGetEstimate} className="bg-[#ddcdc1] w-56 text-black px-4 py-2 rounded-4xl  mr-150 mt-4  duration-1000 manrope shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 hover:bg-[#ebd657] active:translate-y-0 active:shadow-lg transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
-              {heroSlides[currentSlide].buttonText}
-            </button>
+            <MagneticButton 
+              text={heroSlides[currentSlide].buttonText}
+              onClick={handleGetEstimate}
+            />
           </div>
 
           {/* Carousel Indicators */}
