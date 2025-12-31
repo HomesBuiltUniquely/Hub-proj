@@ -44,7 +44,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
     const [phone, setPhone] = useState("");
     const [pin, setPin] = useState("");
     const [error, setError] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     
     // OTP related states
@@ -73,7 +72,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
     useEffect(() => {
         const handleOutside = (e: MouseEvent) => {
             if (pinRef.current && !pinRef.current.contains(e.target as Node)) {
-                setIsOpen(false);
             }
         };
         document.addEventListener("mousedown", handleOutside);
@@ -85,12 +83,10 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         if (!/^\d*$/.test(value)) return;
         if (value.length > 6) return;
         setPin(value);
-        setIsOpen(true);
     };
 
     const handleSelect = (value: string) => {
         setPin(value);
-        setIsOpen(false);
     };
 
     const sendOTP = async () => {
@@ -298,7 +294,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                     setName(e.target.value);
                                     setError("");
                                 }}
-                                onFocus={() => setIsOpen(false)}
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:ring-0 focus:outline-none"
                             />
 
@@ -314,7 +309,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                         setPhone(value);
                                         setError("");
                                     }}
-                                    onFocus={() => setIsOpen(false)}
                                     className="w-full py-2 pl-12 pr-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:ring-0 focus:outline-none"
                                 />
                             </div>
@@ -446,7 +440,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                     setName(e.target.value);
                                     setError("");
                                 }}
-                                onFocus={() => setIsOpen(false)}
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400"
                             />
 
@@ -462,7 +455,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                         setPhone(value);
                                         setError("");
                                     }}
-                                    onFocus={() => setIsOpen(false)}
                                     className="w-full py-2 pl-12 pr-4 manrope-medium rounded-full border border-gray-400"
                                 />
                             </div>
