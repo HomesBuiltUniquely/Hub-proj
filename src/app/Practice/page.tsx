@@ -135,8 +135,8 @@ export default function Practice() {
                                 type="text"
                                 value={otp}
                                 onChange={(e) => setOtp(e.target.value)}
-                                placeholder="Enter 6-digit code"
-                                maxLength={6}
+                                placeholder="Enter 4-digit code"
+                                maxLength={4}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 disabled={loading}
                             />
@@ -176,7 +176,7 @@ export default function Practice() {
                         • Phone: Use any valid phone number format
                     </p>
                     <p className="text-sm text-gray-600 mb-1">
-                        • OTP: 6-digit code generated locally and sent via SMS
+                        • OTP: 4-digit code generated locally and sent via SMS
                     </p>
                     <p className="text-sm text-gray-600">
                         • Uses Twilio SMS API for HUB INTERIOR message delivery

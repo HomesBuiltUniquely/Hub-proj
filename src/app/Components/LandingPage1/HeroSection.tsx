@@ -1364,7 +1364,7 @@ export default function HeroSections() {
               <div className="flex gap-3">
                 <button
                   onClick={handleOtpSubmit}
-                  disabled={isOtpVerifying || otp.length !== 6}
+                  disabled={isOtpVerifying || otp.length !== 4}
                   className="flex-1 bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-manrope hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
                 >
                   {isOtpVerifying ? 'Verifying...' : 'Verify OTP'}
