@@ -150,8 +150,8 @@ export default function HeroSections() {
 
 
   const handleOtpSubmit = async () => {
-    if (!otp || otp.length !== 6) {
-      alert('Please enter a valid 6-digit OTP');
+    if (!otp || otp.length !== 4) {
+      alert('Please enter a valid 4-digit OTP');
       return;
     }
 
@@ -1351,14 +1351,14 @@ export default function HeroSections() {
 
             <div>
               <p className="text-gray-600 mb-4">
-                Enter the 6-digit OTP sent to {formData.phone}
+                Enter the 4-digit OTP sent to {formData.phone}
               </p>
               <input
                 type="text"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                placeholder="Enter 6-digit OTP"
-                maxLength={6}
+                placeholder="Enter 4-digit OTP"
+                maxLength={4}
                 className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium"
               />
               <div className="flex gap-3">
