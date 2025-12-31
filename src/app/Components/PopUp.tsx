@@ -78,13 +78,6 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         return () => document.removeEventListener("mousedown", handleOutside);
     }, []);
 
-    const handlePinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        if (!/^\d*$/.test(value)) return;
-        if (value.length > 6) return;
-        setPin(value);
-    };
-
     const sendOTP = async () => {
         if (!phone) {
             setOtpError('Please enter a phone number first');
