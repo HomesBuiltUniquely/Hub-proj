@@ -1,35 +1,37 @@
-
-import { HeroSection } from "../Components/LandingPage2/HeroSection";
-import Section4 from "../Components/LandingPage2/Section4";
-import Section2 from "../Components/LandingPage1/Section2";
-import Section6 from "../Components/LandingPage1/Section6";
+import  HeroSectionsBest  from "../Components/LandingPage1/HeroSectionBest";
+import Section1  from "../Components/LandingPage1/Section";
+import Section3 from "../Components/LandingPage1/Section3";
+import { Section4 } from "../Components/LandingPage1/Section4";
+import Section6 from "../Components/LandingPage1/Section6"
 import Section7 from "../Components/LandingPage1/Section7";
+import Section8 from "../Components/LandingPage1/Section8";
 import Section9 from "../Components/LandingPage1/Section9";
 import BrandCarousel from "../Components/LandingPage1/Brand";
 import { QAsection } from "../Components/LandingPage1/QASEC";
-import Section51 from "../Components/LandingPage2/Section51";
-import Section52 from "../Components/LandingPage2/Section52";
-import Bsc from "../Components/LandingPage2/Bsc";
-import PopUpModal2j from "../Components/PopupModal2j";
+import CalculatorPageBest from "../Components/LandingPage1/CalculatorPageBest";
+import Section33 from "../Components/LandingPage1/Caron";
+import { Section10 } from "../Components/LandingPage1/Section10";
 
 
 export default function BestInteriorDesignersInBangalore(){
     return(
-        <div>
-            <PopUpModal2j />
-            <HeroSection />
-            {/* <Section1/> */}
-            <Section51/>
-            {/* <Section33/> */}
-            <Section52/>
-            <Bsc/>
-            <Section4/>
-            <Section2/>
-            <Section6/>
-            <Section7/>
-            <Section9/>
-            <BrandCarousel/>
-            <QAsection/>
+    <div>
+      <HeroSectionsBest />
+      <Section1 />
+      {/* <Section2 /> */}
+      <Section3 />
+      <Section33 />
+      <Section10 />
+      <Section4 />
+      {/* <Section5 /> */}
+      <Section6 />
+      <CalculatorPageBest />
+      <Section7 />
+      <Section8 />
+      <Section9 />
+      <BrandCarousel />
+      <QAsection />
+            
         </div>
     )
 }

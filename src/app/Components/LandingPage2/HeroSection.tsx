@@ -25,6 +25,14 @@ export function HeroSection() {
         Scheduler: "",
         property: ""
     })
+    
+    // OTP related states
+    const [otpSent, setOtpSent] = useState(false);
+    const [otp, setOtp] = useState('');
+    const [isVerifying, setIsVerifying] = useState(false);
+    const [isSendingOTP, setIsSendingOTP] = useState(false);
+    const [isVerified, setIsVerified] = useState(false);
+    const [otpError, setOtpError] = useState('');
 
     const timeSlots = [
         "10:00 to 11:00",
@@ -106,8 +114,88 @@ export function HeroSection() {
         setFilePreview("");
     };
 
+    const sendOTP = async () => {
+        if (!form.phonennumber) {
+            setOtpError('Please enter a phone number first');
+            return;
+        }
+
+        if (form.phonennumber.length !== 10) {
+            setOtpError('Please enter a valid 10-digit phone number');
+            return;
+        }
+
+        setIsSendingOTP(true);
+        setOtpError('');
+
+        try {
+            console.log('Sending OTP request for phone:', form.phonennumber);
+            const response = await fetch('/api/send-msg91-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone: form.phonennumber }),
+            });
+
+            console.log('OTP API response status:', response.status);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('OTP API response data:', data);
+            
+            if (data.success) {
+                setOtpSent(true);
+                setOtpError('');
+            } else {
+                const errorMsg = data.message || 'Failed to send OTP';
+                console.error('OTP send failed:', errorMsg, data);
+                setOtpError(errorMsg);
+            }
+        } catch (error) {
+            console.error('OTP send error:', error);
+            setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+        } finally {
+            setIsSendingOTP(false);
+        }
+    };
+
+    const verifyOTP = async () => {
+        if (!otp) {
+            setOtpError('Please enter the OTP');
+            return;
+        }
+
+        setIsVerifying(true);
+        try {
+            const response = await fetch('/api/verify-msg91-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone: form.phonennumber, otp }),
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                setIsVerified(true);
+                setOtpError('');
+            } else {
+                setOtpError(data.message || 'Invalid OTP');
+            }
+        } catch {
+            setOtpError('Failed to verify OTP. Please try again.');
+        } finally {
+            setIsVerifying(false);
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!isVerified) {
+            setOtpError('Please verify your phone number with OTP first');
+            return;
+        }
 
         // Update form with selected property and time slot
         const updatedForm = {
@@ -198,6 +286,11 @@ export function HeroSection() {
                 setSelectedPincode("");
                 setSelectedFile(null);
                 setFilePreview("");
+                // Reset OTP states
+                setOtpSent(false);
+                setOtp('');
+                setIsVerified(false);
+                setOtpError('');
 
                 // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
@@ -218,6 +311,11 @@ export function HeroSection() {
 
     const handleMobileSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!isVerified) {
+            setOtpError('Please verify your phone number with OTP first');
+            return;
+        }
 
         // Update form with selected property and time slot
         const updatedForm = {
@@ -310,6 +408,11 @@ export function HeroSection() {
                 setSelectedPincode("");
                 setSelectedFile(null);
                 setFilePreview("");
+                // Reset OTP states
+                setOtpSent(false);
+                setOtp('');
+                setIsVerified(false);
+                setOtpError('');
 
                 // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
@@ -379,8 +482,11 @@ export function HeroSection() {
                                                 name="phonennumber"
                                                 placeholder="PhoneNumber"
                                                 value={form.phonennumber}
-                                                onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
-                                                className="w-full h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
+                                                onChange={(e) => {
+                                                    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                                                    setForm({ ...form, phonennumber: value });
+                                                }}
+                                                className="w-full h-[60px] border-2 border-[#ddcdc1] pl-8 pr-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
                                             />
                                         </div>
 
@@ -432,6 +538,48 @@ export function HeroSection() {
                                             )}
                                         </div>
                                     </div>
+                                    
+                                    {/* OTP Section */}
+                                    {form.phonennumber && form.phonennumber.length > 0 && (
+                                        <div className="mt-4 space-y-3">
+                                            {!otpSent ? (
+                                                <button
+                                                    type="button"
+                                                    onClick={sendOTP}
+                                                    disabled={form.phonennumber.length !== 10 || isSendingOTP}
+                                                    className="w-full bg-blue-500 text-white rounded-4xl py-3 px-4 font-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                >
+                                                    {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                                                </button>
+                                            ) : !isVerified ? (
+                                                <div className="space-y-3">
+                                                    <input
+                                                        type="text"
+                                                        value={otp}
+                                                        onChange={(e) => setOtp(e.target.value)}
+                                                        placeholder="Enter OTP *"
+                                                        className="w-full h-[60px] border-2 border-[#ddcdc1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={verifyOTP}
+                                                        disabled={isVerifying}
+                                                        className="w-full bg-green-500 text-white rounded-4xl py-3 px-4 font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
+                                                    >
+                                                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                                                    </button>
+                                                </div>
+                                            ) : (
+                                                <div className="w-full bg-green-100 text-green-700 rounded-4xl py-3 px-4 flex items-center font-medium">
+                                                    ✅ Phone Number Verified
+                                                </div>
+                                            )}
+                                            
+                                            {otpError && (
+                                                <div className="text-red-500 text-sm text-center">{otpError}</div>
+                                            )}
+                                        </div>
+                                    )}
 
                                     {/* Property Type */}
                                     <div className="text-white mt-10 text-left text-3xl manrope-medium">
@@ -649,10 +797,55 @@ export function HeroSection() {
                                     type="tel"
                                     name="phonennumber"
                                     value={form.phonennumber}
-                                    onChange={(e) => setForm({ ...form, [e.target.name]: e.target.value })}
-                                    className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 text-white"
+                                    onChange={(e) => {
+                                        const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                                        setForm({ ...form, phonennumber: value });
+                                    }}
+                                    className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 pr-4 text-white"
                                     placeholder="Phone Number"
                                 />
+                                
+                                {/* OTP Section */}
+                                {form.phonennumber && form.phonennumber.length > 0 && (
+                                    <div className="space-y-3">
+                                        {!otpSent ? (
+                                            <button
+                                                type="button"
+                                                onClick={sendOTP}
+                                                disabled={form.phonennumber.length !== 10 || isSendingOTP}
+                                                className="w-full bg-blue-500 text-white rounded-3xl py-3 px-4 font-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                            >
+                                                {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                                            </button>
+                                        ) : !isVerified ? (
+                                            <div className="space-y-3">
+                                                <input
+                                                    type="text"
+                                                    value={otp}
+                                                    onChange={(e) => setOtp(e.target.value)}
+                                                    placeholder="Enter OTP *"
+                                                    className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 text-white"
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={verifyOTP}
+                                                    disabled={isVerifying}
+                                                    className="w-full bg-green-500 text-white rounded-3xl py-3 px-4 font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
+                                                >
+                                                    {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <div className="w-full bg-green-100 text-green-700 rounded-3xl py-3 px-4 flex items-center font-medium">
+                                                ✅ Phone Number Verified
+                                            </div>
+                                        )}
+                                        
+                                        {otpError && (
+                                            <div className="text-red-500 text-sm text-center">{otpError}</div>
+                                        )}
+                                    </div>
+                                )}
 
                                 {/* PINCODE */}
                                 <div className="relative pincode-wrapper">

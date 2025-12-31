@@ -168,7 +168,7 @@ export async function POST(req: Request) {
           ? 'Lead from Website(Verified)'
           : 'Lead from Website (Unverified)';
     } else if (isCalculatorSubmission) {
-      // If calculator data is present but URL didn’t match known routes, default to Website Lead
+      // If calculator data is present but URL didn't match known routes, default to Website Lead
       subject =
         verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
     } else {

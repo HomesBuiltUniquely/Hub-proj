@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Video {
   id: number;
@@ -12,7 +12,6 @@ export default function Section8() {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const videoThumbnails: Video[] = [
     {
@@ -54,33 +53,17 @@ export default function Section8() {
     return () => clearInterval(timer);
   }, [videoThumbnails.length]);
 
-  // Background video autoplay with mute
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.log("Autoplay prevented:", error);
-      });
-    }
-  }, []);
+  // Removed video autoplay - using static background instead
 
   return (
     <div className="w-full">
       {/* Desktop Layout */}
       <div className="hidden lg:block">
         <div className="w-[1200px] ml-30 mt-4 relative h-[1000px] min-h-[700px] overflow-hidden rounded-2xl">
-          {/* Background Video */}
+          {/* Background - Using gradient instead of video to avoid connection timeout */}
           <div className="absolute inset-0 z-0">
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            {/* Fallback background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200"></div>
             {/* Dark overlay for better text contrast */}
             <div className="absolute inset-0 bg-[#F1F2F6] bg-opacity-40"></div>
           </div>
