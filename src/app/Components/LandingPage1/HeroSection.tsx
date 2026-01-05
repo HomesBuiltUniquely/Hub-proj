@@ -150,23 +150,22 @@ export default function HeroSections() {
 
 
   const handleOtpSubmit = async () => {
-    if (!otp || otp.length !== 6) {
-      alert('Please enter a valid 6-digit OTP');
+    if (!otp || otp.length === 0) {
+      alert('Please enter the OTP');
       return;
     }
 
     setIsOtpVerifying(true);
     try {
-      const cleanedPhone = formData.phone.replace(/\D/g, "");
-      const formattedPhone = cleanedPhone.startsWith('+') ? cleanedPhone : `+91${cleanedPhone}`;
+      const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
 
-      const response = await fetch('/api/verify-twilio-otp', {
+      const response = await fetch('/api/verify-msg91-otp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          phone: formattedPhone,
+          phone: cleanedPhone,
           otp: otp
         }),
       });
@@ -254,21 +253,20 @@ export default function HeroSections() {
       }
 
       // Clean and format phone number
-      const cleanedPhone = formData.phone.replace(/\D/g, "");
+      const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
       if (cleanedPhone.length !== 10) {
         alert('Please enter a valid 10-digit phone number');
         return;
       }
 
-      const formattedPhoneNumber = `+91${cleanedPhone}`;
-      console.log('Automatically sending OTP to:', formattedPhoneNumber);
+      console.log('Automatically sending OTP to:', cleanedPhone);
 
-      const response = await fetch('/api/send-twilio-otp', {
+      const response = await fetch('/api/send-msg91-otp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ phone: formattedPhoneNumber }),
+        body: JSON.stringify({ phone: cleanedPhone }),
       });
 
       const data = await response.json();

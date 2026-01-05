@@ -13,6 +13,14 @@ const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
+  
+  // OTP related states
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [isSendingOTP, setIsSendingOTP] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [otpError, setOtpError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -20,10 +28,99 @@ const ContactSection: React.FC = () => {
       ...prev,
       [name]: value
     }));
+    
+    // Reset OTP states when phone number changes
+    if (name === 'phone') {
+      setOtpSent(false);
+      setOtp('');
+      setIsVerified(false);
+      setOtpError('');
+    }
+  };
+
+  const sendOTP = async () => {
+    if (!formData.phone) {
+      setOtpError('Please enter a phone number first');
+      return;
+    }
+
+    if (formData.phone.length !== 10) {
+      setOtpError('Please enter a valid 10-digit phone number');
+      return;
+    }
+
+    setIsSendingOTP(true);
+    setOtpError('');
+
+    try {
+      console.log('Sending OTP request for phone:', formData.phone);
+      const response = await fetch('/api/send-msg91-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: formData.phone }),
+      });
+
+      console.log('OTP API response status:', response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('OTP API response data:', data);
+      
+      if (data.success) {
+        setOtpSent(true);
+        setOtpError('');
+      } else {
+        const errorMsg = data.message || 'Failed to send OTP';
+        console.error('OTP send failed:', errorMsg, data);
+        setOtpError(errorMsg);
+      }
+    } catch (error) {
+      console.error('OTP send error:', error);
+      setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+    } finally {
+      setIsSendingOTP(false);
+    }
+  };
+
+  const verifyOTP = async () => {
+    if (!otp) {
+      setOtpError('Please enter the OTP');
+      return;
+    }
+
+    setIsVerifying(true);
+    try {
+      const response = await fetch('/api/verify-msg91-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: formData.phone, otp }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setIsVerified(true);
+        setOtpError('');
+      } else {
+        setOtpError(data.message || 'Invalid OTP');
+      }
+    } catch {
+      setOtpError('Failed to verify OTP. Please try again.');
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!isVerified) {
+      setOtpError('Please verify your phone number with OTP first');
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setStatusMessage('');
@@ -50,6 +147,11 @@ const ContactSection: React.FC = () => {
           phone: '',
           message: ''
         });
+        // Reset OTP states
+        setOtpSent(false);
+        setOtp('');
+        setIsVerified(false);
+        setOtpError('');
       } else {
         setSubmitStatus('error');
         setStatusMessage(result.message);
@@ -774,12 +876,57 @@ const ContactSection: React.FC = () => {
                 name="phone"
                 type="tel"
                 value={formData.phone}
-                onChange={handleInputChange}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  handleInputChange({ ...e, target: { ...e.target, value } });
+                }}
                 placeholder="Phone Number*"
                 disabled={isSubmitting}
                 required
                 className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               />
+              
+              {/* OTP Section */}
+              {formData.phone && formData.phone.length > 0 && (
+                <div className="space-y-2">
+                  {!otpSent ? (
+                    <button
+                      type="button"
+                      onClick={sendOTP}
+                      disabled={formData.phone.length !== 10 || isSendingOTP}
+                      className="w-full h-[40px] rounded-full text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                    </button>
+                  ) : !isVerified ? (
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                        placeholder="Enter OTP *"
+                        className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none"
+                      />
+                      <button
+                        type="button"
+                        onClick={verifyOTP}
+                        disabled={isVerifying}
+                        className="w-full h-[40px] rounded-full text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
+                      >
+                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-full h-[40px] rounded-full bg-green-100 text-green-700 flex items-center justify-center manrope-medium">
+                      ✅ Phone Number Verified
+                    </div>
+                  )}
+                  
+                  {otpError && (
+                    <p className="text-red-500 text-sm manrope-medium text-center">{otpError}</p>
+                  )}
+                </div>
+              )}
 
               {/* Message */}
               <textarea

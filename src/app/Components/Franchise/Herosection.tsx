@@ -362,9 +362,9 @@ const Home: React.FC = () => {
 
 
           {/* Right: Form */}
-          <div id="franchise-form" className="md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-100 ml-210 self-center">
+          <div id="franchise-form" className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-100 ml-210 self-center pointer-events-auto">
             <div className="text-white text-2xl manrope-medium mb-5">Enter your details to get started</div>
-            <form onSubmit={handleFormSubmit} className="space-y-4">
+            <form onSubmit={handleFormSubmit} className="space-y-4 pointer-events-auto">
               <div className="flex gap-3">
                 <div className="">
                   <label className="pl-1 text-white "> Name*</label>
@@ -373,7 +373,7 @@ const Home: React.FC = () => {
                     name="name"
                     placeholder=""
                     disabled={isSubmitting}
-                    className="w-[440px] px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-[440px] px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 cursor-text focus:outline-none focus:ring-2 focus:ring-red-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                     type="text"
                   />
                 </div>
@@ -386,7 +386,7 @@ const Home: React.FC = () => {
                 name="email"
                 placeholder=""
                 disabled={isSubmitting}
-                className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 cursor-text focus:outline-none focus:ring-2 focus:ring-red-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="email"
               />
               <label className="pl-1 text-white">Phone*</label>
@@ -543,9 +543,9 @@ const Home: React.FC = () => {
 
 
           {/* Right: Form */}
-          <div id="franchise-form" className="md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-80 ml-225 self-center">
+          <div id="franchise-form" className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-80 ml-225 self-center pointer-events-auto">
             <div className="text-white text-2xl manrope-medium mb-5">Enter your details to get started</div>
-            <form onSubmit={handleFormSubmit} className="space-y-4">
+            <form onSubmit={handleFormSubmit} className="space-y-4 pointer-events-auto">
               <div className="flex gap-3">
                 <div className="">
                   <label className="pl-1 text-white "> Name*</label>
@@ -554,7 +554,7 @@ const Home: React.FC = () => {
                     name="name"
                     placeholder=""
                     disabled={isSubmitting}
-                    className="w-[440px] px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-[440px] px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 cursor-text focus:outline-none focus:ring-2 focus:ring-red-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                     type="text"
                   />
                 </div>
@@ -567,7 +567,7 @@ const Home: React.FC = () => {
                 name="email"
                 placeholder=""
                 disabled={isSubmitting}
-                className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 cursor-text focus:outline-none focus:ring-2 focus:ring-red-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="email"
               />
               <label className="pl-1 text-white">Phone*</label>
@@ -728,12 +728,12 @@ const Home: React.FC = () => {
           {/* ✅ Right: Form (same structure, just visually smaller) */}
           <div
             id="franchise-form"
-            className="md:w-[420px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-100 ml-190 self-center"
+            className="relative z-20 md:w-[420px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-100 ml-190 self-center pointer-events-auto"
           >
             <div className="text-white text-2xl manrope-medium mb-5">
               Enter your details to get started
             </div>
-            <form onSubmit={handleFormSubmit} className="space-y-4">
+            <form onSubmit={handleFormSubmit} className="space-y-4 pointer-events-auto">
               <div className="flex gap-3">
                 <div className="">
                   <label className="pl-1 text-white "> Name*</label>
@@ -742,7 +742,7 @@ const Home: React.FC = () => {
                     name="name"
                     placeholder=""
                     disabled={isSubmitting}
-                    className="w-[380px] px-3 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-[380px] px-3 py-2 rounded border mt-4 bg-[#f2f2f6]/70 cursor-text focus:outline-none focus:ring-2 focus:ring-red-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                     type="text"
                   />
                 </div>
@@ -755,7 +755,7 @@ const Home: React.FC = () => {
                 name="email"
                 placeholder=""
                 disabled={isSubmitting}
-                className="w-full px-3 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-3 py-2 rounded border mt-4 bg-[#f2f2f6]/70 cursor-text focus:outline-none focus:ring-2 focus:ring-red-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="email"
               />
 
@@ -764,10 +764,58 @@ const Home: React.FC = () => {
                 required
                 name="phone"
                 placeholder=""
+                value={phoneNumber}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  setPhoneNumber(value);
+                  setOtpError('');
+                }}
                 disabled={isSubmitting}
                 className="w-full px-3 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="tel"
               />
+              
+              {/* OTP Section */}
+              {phoneNumber && phoneNumber.length > 0 && (
+                <div className="space-y-2 mt-2">
+                  {!otpSent ? (
+                    <button
+                      type="button"
+                      onClick={sendOTP}
+                      disabled={phoneNumber.length !== 10 || isSendingOTP}
+                      className="w-full py-2 px-4 rounded text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                    </button>
+                  ) : !isVerified ? (
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                        placeholder="Enter OTP *"
+                        className="w-full px-4 py-2 rounded border bg-[#f2f2f6]/70"
+                      />
+                      <button
+                        type="button"
+                        onClick={verifyOTP}
+                        disabled={isVerifying}
+                        className="w-full py-2 px-4 rounded text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
+                      >
+                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-full py-2 px-4 rounded bg-green-100 text-green-700 flex items-center justify-center manrope-medium">
+                      ✅ Phone Number Verified
+                    </div>
+                  )}
+                  
+                  {otpError && (
+                    <p className="text-red-500 text-sm manrope-medium">{otpError}</p>
+                  )}
+                </div>
+              )}
 
               <label className="pl-1 text-white">City*</label>
               <input
