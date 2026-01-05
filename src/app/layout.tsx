@@ -92,6 +92,8 @@ export default function RootLayout({
             const hideWhatsAppPaths = [
               '/interior-designers-in-bangalore',
               '/interior-designers-in-bangalore/Calculator',
+              '/best-interior-designers-in-bangalore',
+              '/best-interior-designers-in-bangalore/Calculator',
               
             ];
             

@@ -29,8 +29,8 @@ export async function POST(req: Request) {
     // Initialize Twilio client
     const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
-    // Generate 6-digit OTP
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    // Generate 4-digit OTP
+    const otp = Math.floor(1000 + Math.random() * 9000).toString();
     
     // Store OTP in memory (in production, use Redis or database)
     // For now, we'll use a simple in-memory store

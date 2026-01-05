@@ -33,15 +33,17 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         "560091", "560092", "560093", "560094", "560095",
         "560096", "560097", "560098", "560099", "560100",
         "560101", "560102", "560103", "560104", "560105",
-        "560106", "561203", "562106", "562107", "562109",
-        "562110", "562114", "562117", "562123", "562125",
-        "562129", "562149", "562157", "562162", "563160", "563163", "635103"];
+        "560106", "560107", "560108", "560109", "560110",
+        "560111", "560112", "560113", "560114", "560115",
+        "560116", "560117", "560118", "560119", "560120",
+        "561203", "562106", "562107", "562109", "562110",
+        "562112", "562114", "562123", "562125", "562129",
+        "562130", "562149", "562157", "562162", "563163", "635103"];
 
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [pin, setPin] = useState("");
     const [error, setError] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     
     // OTP related states
@@ -70,25 +72,11 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
     useEffect(() => {
         const handleOutside = (e: MouseEvent) => {
             if (pinRef.current && !pinRef.current.contains(e.target as Node)) {
-                setIsOpen(false);
             }
         };
         document.addEventListener("mousedown", handleOutside);
         return () => document.removeEventListener("mousedown", handleOutside);
     }, []);
-
-    const handlePinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        if (!/^\d*$/.test(value)) return;
-        if (value.length > 6) return;
-        setPin(value);
-        setIsOpen(true);
-    };
-
-    const handleSelect = (value: string) => {
-        setPin(value);
-        setIsOpen(false);
-    };
 
     const sendOTP = async () => {
         if (!phone) {
@@ -295,7 +283,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                     setName(e.target.value);
                                     setError("");
                                 }}
-                                onFocus={() => setIsOpen(false)}
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:ring-0 focus:outline-none"
                             />
 
@@ -311,7 +298,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                         setPhone(value);
                                         setError("");
                                     }}
-                                    onFocus={() => setIsOpen(false)}
                                     className="w-full py-2 pl-12 pr-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:ring-0 focus:outline-none"
                                 />
                             </div>
@@ -367,44 +353,23 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 </div>
                             )}
 
-                            <div className="relative w-full" ref={pinRef}>
-                                <input
-                                    type="text"
-                                    placeholder="Pincode"
-                                    value={pin}
-                                    onChange={handlePinChange}
-                                    onFocus={() => {
-                                        setIsOpen(true);
-                                        setError("");
-                                    }}
-                                    className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:outline-none focus:ring-0"
-                                />
-
-                                {isOpen && (
-                                    <div className="absolute z-10 left-0 right-0 bg-white border rounded-xl shadow-lg max-h-40 overflow-y-auto mt-2">
-                                        {Pincode.filter((p) => p.startsWith(pin)).map((p) => (
-                                            <div
-                                                key={p}
-                                                onClick={() => handleSelect(p)}
-                                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                            >
-                                                {p}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
+                            <input
+                                type="text"
+                                placeholder="Pincode"
+                                value={pin}
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    if (!/^\d*$/.test(value)) return;
+                                    if (value.length > 6) return;
+                                    setPin(value);
+                                    setError("");
+                                }}
+                                className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:outline-none focus:ring-0"
+                            />
 
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium">{error}</p>
                             )}
-
-
-                            {/* check box */}
-                            <div className="flex mx-auto">
-                                <input type="checkbox" required />
-                                <label className="ml-4 text-black ">Yes, all provided details are correct</label>
-                            </div>
 
                             <button
                                 type="submit"
@@ -464,7 +429,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                     setName(e.target.value);
                                     setError("");
                                 }}
-                                onFocus={() => setIsOpen(false)}
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400"
                             />
 
@@ -480,7 +444,6 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                         setPhone(value);
                                         setError("");
                                     }}
-                                    onFocus={() => setIsOpen(false)}
                                     className="w-full py-2 pl-12 pr-4 manrope-medium rounded-full border border-gray-400"
                                 />
                             </div>
@@ -538,45 +501,23 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 )}
                             </div>
 
-                            <div className="relative w-full" ref={pinRef}>
-                                <input
-                                    type="text"
-                                    placeholder="Pincode"
-                                    value={pin}
-                                    onChange={handlePinChange}
-                                    onFocus={() => {
-                                        setIsOpen(true);
-                                        setError("");
-                                    }}
-                                    className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400"
-                                />
-
-                                {isOpen && (
-                                    <div className="absolute z-10 left-0 right-0 bg-white border rounded-xl shadow-lg max-h-40 overflow-y-auto mt-2">
-                                        {Pincode.filter((p) => p.startsWith(pin)).map((p) => (
-                                            <div
-                                                key={p}
-                                                onClick={() => handleSelect(p)}
-                                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                            >
-                                                {p}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
+                            <input
+                                type="text"
+                                placeholder="Pincode"
+                                value={pin}
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    if (!/^\d*$/.test(value)) return;
+                                    if (value.length > 6) return;
+                                    setPin(value);
+                                    setError("");
+                                }}
+                                className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400"
+                            />
 
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium text-center">{error}</p>
                             )}
-
-                            {/* check box */}
-
-                            <div className="flex mx-auto">
-                                <input type="checkbox" required />
-                                <label className="ml-4 text-black ">Yes, all provided details are correct</label>
-                            </div>
-
 
                             {/* CENTERED BUTTON */}
                             <div className="flex justify-center">

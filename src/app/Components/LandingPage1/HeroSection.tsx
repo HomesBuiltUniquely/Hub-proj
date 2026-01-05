@@ -1349,20 +1349,20 @@ export default function HeroSections() {
 
             <div>
               <p className="text-gray-600 mb-4">
-                Enter the 6-digit OTP sent to {formData.phone}
+                Enter the 4-digit OTP sent to {formData.phone}
               </p>
               <input
                 type="text"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                placeholder="Enter 6-digit OTP"
-                maxLength={6}
+                placeholder="Enter 4-digit OTP"
+                maxLength={4}
                 className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium"
               />
               <div className="flex gap-3">
                 <button
                   onClick={handleOtpSubmit}
-                  disabled={isOtpVerifying || otp.length !== 6}
+                  disabled={isOtpVerifying || otp.length !== 4}
                   className="flex-1 bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-manrope hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
                 >
                   {isOtpVerifying ? 'Verifying...' : 'Verify OTP'}

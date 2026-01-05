@@ -1349,14 +1349,14 @@ export default function HeroSectionsBest() {
 
             <div>
               <p className="text-gray-600 mb-4">
-                Enter the 6-digit OTP sent to {formData.phone}
+                Enter the 4-digit OTP sent to {formData.phone}
               </p>
               <input
                 type="text"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
-                placeholder="Enter OTP"
-                maxLength={6}
+                placeholder="Enter 4-digit OTP"
+                maxLength={4}
                 className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium"
               />
               <div className="flex gap-3">
