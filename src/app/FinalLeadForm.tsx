@@ -46,6 +46,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
+  const [isSendingOTP, setIsSendingOTP] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [otpError, setOtpError] = useState('');
 
@@ -64,11 +65,21 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       return;
     }
 
+    if (formData.phone.length !== 10) {
+      setOtpError('Please enter a valid 10-digit phone number');
+      return;
+    }
+
+    setIsSendingOTP(true);
+    setOtpError('');
+
     try {
-      const response = await fetch('/api/send-twilio-otp', {
+      const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
+      
+      const response = await fetch('/api/send-msg91-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: formData.phone }),
+        body: JSON.stringify({ phone: cleanedPhone }),
       });
 
       const data = await response.json();
@@ -78,8 +89,11 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       } else {
         setOtpError(data.message || 'Failed to send OTP');
       }
-    } catch {
-      setOtpError('Failed to send OTP. Please try again.');
+    } catch (error) {
+      console.error('OTP send error:', error);
+      setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+    } finally {
+      setIsSendingOTP(false);
     }
   };
 
@@ -91,10 +105,12 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
     setIsVerifying(true);
     try {
-      const response = await fetch('/api/verify-twilio-otp', {
+      const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
+      
+      const response = await fetch('/api/verify-msg91-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: formData.phone, otp }),
+        body: JSON.stringify({ phone: cleanedPhone, otp }),
       });
 
       const data = await response.json();
@@ -223,9 +239,10 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
                 <button
                   type="button"
                   onClick={sendOTP}
-                  className="w-full h-[50px] bg-blue-500 text-white rounded-3xl text-base sm:text-lg manrope-medium hover:bg-blue-600 transition-colors"
+                  disabled={formData.phone.length !== 10 || isSendingOTP}
+                  className="w-full h-[50px] bg-blue-500 text-white rounded-3xl text-base sm:text-lg manrope-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send OTP
+                  {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
                 </button>
               ) : !isVerified ? (
                 <div className="space-y-3">
