@@ -308,7 +308,9 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error('Email send error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    const errorCode = error instanceof Error && 'code' in error ? (error as any).code : 'UNKNOWN';
+    const errorCode = (error && typeof error === 'object' && 'code' in error) 
+      ? String(error.code) 
+      : 'UNKNOWN';
     
     // Log full error details for debugging
     console.error('Error details:', {
@@ -335,7 +337,9 @@ export async function POST(req: Request) {
     }
     
     // Log full error for debugging
-    console.error('Full email error object:', JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    if (error && typeof error === 'object') {
+      console.error('Full email error object:', JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    }
     
     return NextResponse.json(
       {

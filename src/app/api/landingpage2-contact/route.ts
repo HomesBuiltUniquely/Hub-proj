@@ -173,7 +173,9 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("LandingPage2 email send error:", error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    const errorCode = error instanceof Error && 'code' in error ? (error as any).code : 'UNKNOWN';
+    const errorCode = (error && typeof error === 'object' && 'code' in error) 
+      ? String(error.code) 
+      : 'UNKNOWN';
     console.error('Error details:', {
       message: errorMessage,
       code: errorCode,
