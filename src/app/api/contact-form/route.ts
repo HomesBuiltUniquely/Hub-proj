@@ -37,6 +37,10 @@ export async function POST(req: Request) {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
       },
+      // Add connection timeout and retry options
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
 
     // Email content
@@ -73,6 +77,13 @@ export async function POST(req: Request) {
     };
 
     console.log('Sending contact form email...');
+    console.log('Email configuration:', {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER,
+      hasUser: !!process.env.GMAIL_USER,
+      hasPass: !!process.env.GMAIL_PASS
+    });
+    
     await transporter.sendMail(mailOptions);
     console.log('Contact form email sent successfully');
     
@@ -82,9 +93,26 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error('Contact form email send error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorCode = error instanceof Error && 'code' in error ? (error as any).code : 'UNKNOWN';
+    console.error('Error details:', {
+      message: errorMessage,
+      code: errorCode,
+      stack: error instanceof Error ? error.stack : undefined
+    });
+    
+    // Provide more specific error messages
+    let userMessage = 'Failed to send message. Please try again or contact us directly.';
+    if (errorMessage.includes('Invalid login') || errorMessage.includes('authentication')) {
+      userMessage = 'Email service authentication failed. Please contact support.';
+    } else if (errorMessage.includes('ECONNECTION') || errorMessage.includes('timeout')) {
+      userMessage = 'Connection timeout. Please try again.';
+    }
+    
     return NextResponse.json({ 
       success: false, 
-      message: 'Failed to send message. Please try again or contact us directly.' 
+      message: userMessage,
+      error: process.env.NODE_ENV === 'development' ? errorMessage : undefined
     }, { status: 500 });
   }
 }

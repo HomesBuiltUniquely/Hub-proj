@@ -53,10 +53,17 @@ export async function POST(req: Request) {
     const path = (pageUrl || '').toString();
     const pathLower = path.toLowerCase();
 
+    // Identify Meta lead page (best-interior-designers-in-bangalore)
+    const isBestInteriorBangalorePage =
+      pathLower.includes('/best-interior-designers-in-bangalore') ||
+      pathLower.includes('best-interior-designers-in-bangalore');
+
     // Identify which submissions are pure Google Ads (should NOT hit WebsiteLead API)
+    // Exclude best-interior-designers-in-bangalore as it's a Meta lead, not Google Ads
     const isInteriorBangalorePage =
-      pathLower.includes('/interior-designers-in-bangalore') ||
-      pathLower.includes('interior-designers-in-bangalore');
+      (pathLower.includes('/interior-designers-in-bangalore') ||
+      pathLower.includes('interior-designers-in-bangalore')) &&
+      !isBestInteriorBangalorePage; // Exclude Meta lead page
     const isInteriorBangaloreCalculator =
       pathLower.includes('/interior-designers-in-bangalore/calculator');
 
@@ -101,11 +108,15 @@ export async function POST(req: Request) {
 
     console.log('Environment variables check:');
     console.log('GMAIL_USER exists:', !!process.env.GMAIL_USER);
+    console.log('GMAIL_USER value (first 3 chars):', process.env.GMAIL_USER ? process.env.GMAIL_USER.substring(0, 3) + '...' : 'NOT SET');
     console.log('GMAIL_PASS exists:', !!process.env.GMAIL_PASS);
+    console.log('GMAIL_PASS length:', process.env.GMAIL_PASS ? process.env.GMAIL_PASS.length : 0);
 
     // Check if required environment variables are set
     if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
       console.error('Gmail credentials not configured');
+      console.error('GMAIL_USER:', process.env.GMAIL_USER ? 'SET' : 'NOT SET');
+      console.error('GMAIL_PASS:', process.env.GMAIL_PASS ? 'SET' : 'NOT SET');
       console.log('For testing purposes, returning success without sending email');
       return NextResponse.json({
         success: true,
@@ -120,6 +131,10 @@ export async function POST(req: Request) {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
       },
+      // Add connection timeout and retry options
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
 
     // ✅ Email content including all form data
@@ -151,7 +166,13 @@ export async function POST(req: Request) {
 
     let subject = 'Google Ads Lead (Unverified)';
 
-    if (isInteriorCalculator || isInteriorBangalorePage) {
+    // Check for Meta lead page first (best-interior-designers-in-bangalore)
+    if (isBestInteriorBangalorePage) {
+      subject =
+        verificationStatus === 'Verified User'
+          ? 'Meta Lead (Verified)'
+          : 'Meta Lead (Unverified)';
+    } else if (isInteriorCalculator || isInteriorBangalorePage) {
       subject =
         verificationStatus === 'Verified User'
           ? 'Google Ads Lead (Verified)'
@@ -263,16 +284,65 @@ export async function POST(req: Request) {
       calculator,
     });
 
+    console.log('Sending email with configuration:', {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER,
+      hasUser: !!process.env.GMAIL_USER,
+      hasPass: !!process.env.GMAIL_PASS
+    });
+    
+    // Verify transporter connection before sending
+    try {
+      await transporter.verify();
+      console.log('Gmail transporter verified successfully');
+    } catch (verifyError) {
+      console.error('Gmail transporter verification failed:', verifyError);
+      const verifyMsg = verifyError instanceof Error ? verifyError.message : 'Unknown verification error';
+      throw new Error(`Gmail connection failed: ${verifyMsg}`);
+    }
+    
     await transporter.sendMail(mailOptions);
     console.log('Email sent successfully');
 
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Email send error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorCode = error instanceof Error && 'code' in error ? (error as any).code : 'UNKNOWN';
+    
+    // Log full error details for debugging
+    console.error('Error details:', {
+      message: errorMessage,
+      code: errorCode,
+      name: error instanceof Error ? error.name : undefined,
+      stack: error instanceof Error ? error.stack : undefined,
+      fullError: JSON.stringify(error, Object.getOwnPropertyNames(error))
+    });
+    
+    // Provide more specific error messages based on common Gmail errors
+    let userMessage = 'Failed to send email. Please try again.';
+    
+    // Check for specific Gmail error codes and messages
+    if (errorCode === 'EAUTH' || errorMessage.includes('Invalid login') || errorMessage.includes('authentication') || errorMessage.includes('Username and Password not accepted')) {
+      userMessage = 'Email authentication failed. Please check Gmail credentials in server configuration.';
+      console.error('Gmail authentication error - check GMAIL_USER and GMAIL_PASS in .env.local');
+    } else if (errorCode === 'ECONNECTION' || errorMessage.includes('ECONNECTION') || errorMessage.includes('Connection closed') || errorMessage.includes('timeout')) {
+      userMessage = 'Connection timeout. Please check your internet connection and try again.';
+    } else if (errorMessage.includes('self signed certificate') || errorMessage.includes('certificate')) {
+      userMessage = 'Email service certificate error. Please contact support.';
+    } else if (errorMessage.includes('rate limit') || errorMessage.includes('quota')) {
+      userMessage = 'Email service rate limit exceeded. Please try again later.';
+    }
+    
+    // Log full error for debugging
+    console.error('Full email error object:', JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    
     return NextResponse.json(
       {
         success: false,
-        message: 'Failed to send email. Please try again.',
+        message: userMessage,
+        error: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
+        errorCode: process.env.NODE_ENV === 'development' ? errorCode : undefined
       },
       { status: 500 },
     );

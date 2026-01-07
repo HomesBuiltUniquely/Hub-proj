@@ -18,9 +18,15 @@ export async function POST(req: Request) {
       city,
     });
 
+    // Use franchise-specific credentials if available, otherwise fall back to main Gmail credentials
+    const franchiseEmail = process.env.GMAIL_FRANCHISE_USER || process.env.FRANCHISE_EMAIL || process.env.GMAIL_USER;
+    const franchisePass = process.env.GMAIL_FRANCHISE_PASS || process.env.GMAIL_PASS;
+    const fromEmail = process.env.GMAIL_USER;
+
     // Check if required environment variables are set
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+    if (!fromEmail || !franchisePass) {
       console.error('Gmail credentials not configured');
+      console.error('GMAIL_USER:', !!fromEmail, 'GMAIL_PASS/GMAIL_FRANCHISE_PASS:', !!franchisePass);
       console.log('For testing purposes, returning success without sending email');
       return NextResponse.json({ 
         success: true, 
@@ -32,15 +38,19 @@ export async function POST(req: Request) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.GMAIL_FRANCHISE_USER,
-        pass: process.env.GMAIL_FRANCHISE_PASS,
+        user: franchiseEmail,
+        pass: franchisePass,
       },
+      // Add connection timeout and retry options
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
 
     // Email content for franchise inquiries
     const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to:  process.env.GMAIL_FRANCHISE_USER || process.env.GMAIL_FRANCHISE_USER, 
+      from: fromEmail,
+      to: franchiseEmail, 
       subject: 'New Franchise Inquiry - HUB Interior',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -82,7 +92,8 @@ export async function POST(req: Request) {
       `,
     };
 
-    console.log('Sending franchise email to:', process.env.FRANCHISE_EMAIL || process.env.GMAIL_USER);
+    console.log('Sending franchise email to:', franchiseEmail);
+    console.log('From email:', fromEmail);
 
     await transporter.sendMail(mailOptions);
     console.log('Franchise email sent successfully');
@@ -93,9 +104,14 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error('Franchise email send error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error details:', {
+      message: errorMessage,
+      stack: error instanceof Error ? error.stack : undefined
+    });
     return NextResponse.json({ 
       success: false, 
-      message: 'Failed to submit franchise inquiry. Please try again.' 
+      message: `Failed to submit franchise inquiry: ${errorMessage}. Please try again.` 
     }, { status: 500 });
   }
 }
