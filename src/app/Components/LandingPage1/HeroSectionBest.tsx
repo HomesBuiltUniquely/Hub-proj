@@ -317,22 +317,13 @@ export default function HeroSectionsBest() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-      // 1) Convert to FormData format (same as LandingPage2)
-      const formDataToSend = new FormData();
-      formDataToSend.append('name', requestData.name);
-      formDataToSend.append('phone', requestData.phone);
-      formDataToSend.append('email', requestData.email);
-      formDataToSend.append('pincode', requestData.pincode);
-      formDataToSend.append('propertyType', requestData.city || '');
-      formDataToSend.append('timeSlot', requestData.budget || '');
-      formDataToSend.append('pageUrl', requestData.pageUrl);
-      formDataToSend.append('whatsappConsent', requestData.whatsappConsent ? 'true' : 'false');
-      formDataToSend.append('verificationStatus', requestData.verificationStatus);
-
-      // 1) Existing internal API submission (using landingpage2-contact API)
-      const response = await fetch('/api/landingpage2-contact', {
+      // 1) Existing internal API submission (preserved)
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formDataToSend, // Send as FormData instead of JSON
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
         signal: controller.signal,
       });
 
@@ -342,28 +333,28 @@ export default function HeroSectionsBest() {
       const responseData = await response.json();
       console.log('API response data:', responseData);
 
-      // 2) ALSO send to external MetaLead endpoint (same as LandingPage2)
+      // 2) ALSO send to external Home1 endpoint with a minimal, renamed payload
       // Run fire-and-forget; errors are caught and logged.
       (async () => {
         try {
-          const metaLeadPayload = {
+          const home1Payload = {
             name: requestData.name,
             email: requestData.email,
             phoneNumber: requestData.phone,
-            pinCode: requestData.pincode,
-            propertyType: requestData.city || '',
-            bookASlot: requestData.budget || '',
+            propertyPin: requestData.pincode,
+            interiorSetup: requestData.city,
+            possessionIn: requestData.budget,
           };
 
-          await fetch('https://hows.hubinterior.com/v1/MetaLead', {
+          await fetch('https://hows.hubinterior.com/v1/Home1', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(metaLeadPayload),
+            body: JSON.stringify(home1Payload),
           });
         } catch (err) {
-          console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
+          console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
         }
       })();
 
@@ -416,22 +407,13 @@ export default function HeroSectionsBest() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
-      // 1) Convert to FormData format (same as LandingPage2)
-      const formDataToSend = new FormData();
-      formDataToSend.append('name', requestData.name);
-      formDataToSend.append('phone', requestData.phone);
-      formDataToSend.append('email', requestData.email);
-      formDataToSend.append('pincode', requestData.pincode);
-      formDataToSend.append('propertyType', requestData.city || '');
-      formDataToSend.append('timeSlot', requestData.budget || '');
-      formDataToSend.append('pageUrl', requestData.pageUrl);
-      formDataToSend.append('whatsappConsent', requestData.whatsappConsent ? 'true' : 'false');
-      formDataToSend.append('verificationStatus', requestData.verificationStatus);
-
-      // 1) Existing internal API submission (using landingpage2-contact API)
-      const response = await fetch('/api/landingpage2-contact', {
+      // 1) Existing internal API submission (preserved)
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formDataToSend, // Send as FormData instead of JSON
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
         signal: controller.signal,
       });
 
@@ -441,30 +423,7 @@ export default function HeroSectionsBest() {
       const responseData = await response.json();
       console.log('API response data:', responseData);
 
-      // 2) ALSO send to external MetaLead endpoint (same as LandingPage2)
-      // Run fire-and-forget; errors are caught and logged.
-      (async () => {
-        try {
-          const metaLeadPayload = {
-            name: requestData.name,
-            email: requestData.email,
-            phoneNumber: requestData.phone,
-            pinCode: requestData.pincode,
-            propertyType: requestData.city || '',
-            bookASlot: requestData.budget || '',
-          };
-
-          await fetch('https://hows.hubinterior.com/v1/MetaLead', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(metaLeadPayload),
-          });
-        } catch (err) {
-          console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
-        }
-      })();
+      // Note: Do NOT send to localhost here; only on initial submit
 
       if (response.ok && responseData.success) {
         if (verificationStatus === 'Verified User') {

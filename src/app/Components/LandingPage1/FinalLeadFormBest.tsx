@@ -196,53 +196,35 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
         collections: c.collections ? JSON.stringify(c.collections) : '',
         material: c.material ? JSON.stringify(c.material) : '',
       };
-      // Convert to FormData format (same as LandingPage2)
-      const formDataToSend = new FormData();
-      formDataToSend.append('name', requestData.name);
-      formDataToSend.append('phone', requestData.phone);
-      formDataToSend.append('email', requestData.email);
-      formDataToSend.append('pincode', requestData.pincode);
-      formDataToSend.append('propertyType', requestData.possession || '');
-      formDataToSend.append('timeSlot', requestData.time || '');
-      formDataToSend.append('pageUrl', requestData.pageUrl);
-      formDataToSend.append('verificationStatus', requestData.verificationStatus);
-      // Add calculator data as JSON strings
-      if (requestData.bhkType) formDataToSend.append('bhkType', requestData.bhkType);
-      if (requestData.rooms) formDataToSend.append('rooms', requestData.rooms);
-      if (requestData.wardrobe) formDataToSend.append('wardrobe', requestData.wardrobe);
-      if (requestData.kitchen) formDataToSend.append('kitchen', requestData.kitchen);
-      if (requestData.collections) formDataToSend.append('collections', requestData.collections);
-      if (requestData.material) formDataToSend.append('material', requestData.material);
-
-      console.log('[FinalLeadForm] Submitting payload to /api/landingpage2-contact:', requestData);
+      console.log('[FinalLeadForm] Submitting payload to /api/contact:', requestData);
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);
-      const res = await fetch('/api/landingpage2-contact', { method: 'POST', body: formDataToSend, signal: controller.signal });
+      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(requestData), signal: controller.signal });
       clearTimeout(timeoutId);
       const data = await res.json();
       console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
       if (res.ok && data.success) {
-        // Fire-and-forget to external endpoint (same as LandingPage2)
+        // Fire-and-forget to external endpoint (same pattern as HeroSection)
         (async () => {
           try {
-            const metaLeadPayload = {
+            const home1Payload = {
               name: requestData.name,
               email: requestData.email,
               phoneNumber: requestData.phone,
-              pinCode: requestData.pincode,
-              propertyType: requestData.possession || '',
-              bookASlot: requestData.time || '',
+              propertyPin: requestData.pincode,
+              interiorSetup: requestData.possession || '',
+              possessionIn: requestData.possession || '',
             };
 
-            await fetch('https://hows.hubinterior.com/v1/MetaLead', {
+            await fetch('https://hows.hubinterior.com/v1/Home1', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify(metaLeadPayload),
+              body: JSON.stringify(home1Payload),
             });
           } catch (err) {
-            console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
+            console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
           }
         })();
 
