@@ -4,6 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { budgetOptions } from './DropDown2';
+import { normalizePhoneNumber } from '@/lib/utils';
 
 interface CalculatorData {
   bhkType?: string;
@@ -53,7 +54,12 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const [otpError, setOtpError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    if (e.target.name === 'phone') {
+      const normalized = normalizePhoneNumber(e.target.value);
+      setFormData(prev => ({ ...prev, [e.target.name]: normalized }));
+    } else {
+      setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    }
   };
 
   const handlePossessionSelect = (option: string) => {
@@ -78,7 +84,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     setOtpError('');
 
     try {
-      const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
+      const cleanedPhone = normalizePhoneNumber(formData.phone);
       
       const response = await fetch('/api/send-msg91-otp', {
         method: 'POST',
@@ -109,7 +115,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
     setIsVerifying(true);
     try {
-      const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
+      const cleanedPhone = normalizePhoneNumber(formData.phone);
       
       const response = await fetch('/api/verify-msg91-otp', {
         method: 'POST',

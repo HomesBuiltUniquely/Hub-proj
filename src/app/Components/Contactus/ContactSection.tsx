@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from "react";
+import { normalizePhoneNumber } from "@/lib/utils";
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ const ContactSection: React.FC = () => {
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    const value = normalizePhoneNumber(e.target.value);
     setFormData(prev => ({
       ...prev,
       phone: value

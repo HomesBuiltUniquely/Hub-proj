@@ -4,6 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { budgetOptions } from './DropDown2';
+import { normalizePhoneNumber } from '@/lib/utils';
 
 interface CalculatorData {
   bhkType?: string;
@@ -54,7 +55,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'phone') {
-      const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      const value = normalizePhoneNumber(e.target.value);
       setFormData(prev => ({ ...prev, [e.target.name]: value }));
       // Reset OTP states when phone changes
       if (value !== formData.phone) {

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 import cityOptions from "./DropDown1"
 import { budgetOptions } from "./DropDown2"
+import { normalizePhoneNumber } from "@/lib/utils"
 
 const carouselImages = [
   "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//3.png",
@@ -104,10 +105,18 @@ export default function HeroSectionsBest() {
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    if (e.target.name === 'phone') {
+      const normalized = normalizePhoneNumber(e.target.value);
+      setFormData({
+        ...formData,
+        [e.target.name]: normalized
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+      });
+    }
   };
 
   // Auto-close modal and submit as unverified after 3 minutes if OTP was sent but not verified
@@ -157,7 +166,7 @@ export default function HeroSectionsBest() {
 
     setIsOtpVerifying(true);
     try {
-      const cleanedPhone = formData.phone.replace(/\D/g, "");
+      const cleanedPhone = normalizePhoneNumber(formData.phone);
 
       const response = await fetch('/api/verify-msg91-otp', {
         method: 'POST',
@@ -253,7 +262,7 @@ export default function HeroSectionsBest() {
       }
 
       // Clean and format phone number
-      const cleanedPhone = formData.phone.replace(/\D/g, "");
+      const cleanedPhone = normalizePhoneNumber(formData.phone);
       if (cleanedPhone.length !== 10) {
         alert('Please enter a valid 10-digit phone number');
         return;
@@ -1371,7 +1380,7 @@ export default function HeroSectionsBest() {
                   onClick={async () => {
                     setIsSendingOtpAuto(true);
                     try {
-                      const cleanedPhone = formData.phone.replace(/\D/g, "");
+                      const cleanedPhone = normalizePhoneNumber(formData.phone);
                       const response = await fetch('/api/resend-msg91-otp', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },

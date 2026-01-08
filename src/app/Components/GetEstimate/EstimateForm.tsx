@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { normalizePhoneNumber } from "@/lib/utils";
 
 const EstimateForm: React.FC = () => {
   const router = useRouter();
@@ -24,10 +25,18 @@ const EstimateForm: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    if (name === 'phoneNumber') {
+      const normalized = normalizePhoneNumber(value);
+      setFormData(prev => ({
+        ...prev,
+        [name]: normalized
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const sendOTP = async () => {

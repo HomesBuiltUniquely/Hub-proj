@@ -54,7 +54,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'phone') {
-      const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      const value = normalizePhoneNumber(e.target.value);
       setFormData(prev => ({ ...prev, [e.target.name]: value }));
       // Reset OTP states when phone changes
       if (value !== formData.phone) {
@@ -88,7 +88,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     setOtpError('');
 
     try {
-      const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
+      const cleanedPhone = normalizePhoneNumber(formData.phone);
       
       const response = await fetch('/api/send-msg91-otp', {
         method: 'POST',
@@ -119,7 +119,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
     setIsVerifying(true);
     try {
-      const cleanedPhone = formData.phone.replace(/\D/g, "").slice(0, 10);
+      const cleanedPhone = normalizePhoneNumber(formData.phone);
       
       const response = await fetch('/api/verify-msg91-otp', {
         method: 'POST',
