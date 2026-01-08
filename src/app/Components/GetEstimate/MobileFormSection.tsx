@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { normalizePhoneNumber } from "@/lib/utils";
 
 const MobileFormSection: React.FC = () => {
   const router = useRouter();
@@ -24,10 +25,18 @@ const MobileFormSection: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    if (name === 'phone') {
+      const normalized = normalizePhoneNumber(value);
+      setFormData(prev => ({
+        ...prev,
+        [name]: normalized
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const sendOTP = async () => {

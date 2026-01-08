@@ -66,6 +66,10 @@ export async function POST(req) {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
       },
+      // Add connection timeout and retry options
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
 
     // Email content
@@ -93,6 +97,12 @@ export async function POST(req) {
       pincode,
       tellUsMore,
     });
+    console.log('Email configuration:', {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER,
+      hasUser: !!process.env.GMAIL_USER,
+      hasPass: !!process.env.GMAIL_PASS
+    });
 
     await transporter.sendMail(mailOptions);
     console.log('Get Estimate email sent successfully');
@@ -100,9 +110,26 @@ export async function POST(req) {
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Get Estimate email send error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorCode = error?.code || 'UNKNOWN';
+    console.error('Error details:', {
+      message: errorMessage,
+      code: errorCode,
+      stack: error instanceof Error ? error.stack : undefined
+    });
+    
+    // Provide more specific error messages
+    let userMessage = 'Failed to send email. Please try again.';
+    if (errorMessage.includes('Invalid login') || errorMessage.includes('authentication')) {
+      userMessage = 'Email service authentication failed. Please contact support.';
+    } else if (errorMessage.includes('ECONNECTION') || errorMessage.includes('timeout')) {
+      userMessage = 'Connection timeout. Please try again.';
+    }
+    
     return NextResponse.json({ 
       success: false, 
-      message: 'Failed to send email. Please try again.' 
+      message: userMessage,
+      error: process.env.NODE_ENV === 'development' ? errorMessage : undefined
     }, { status: 500 });
   }
 }

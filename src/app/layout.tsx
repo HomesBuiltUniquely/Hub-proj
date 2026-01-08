@@ -148,7 +148,7 @@ export default function RootLayout({
         </Script>
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} anqtialiased`}>
         {/* GTM NoScript */}
         <noscript>
           <iframe
@@ -156,7 +156,7 @@ export default function RootLayout({
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
-          />
+          />v
         </noscript>
 
         {children}

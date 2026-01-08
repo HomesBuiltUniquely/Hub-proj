@@ -9,6 +9,7 @@ import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import router from "next/router";
 import OverlapNavBar from "../OverlapNavBar";
+import { normalizePhoneNumber } from "@/lib/utils";
 
 // const FRANCHISE_OPTIONS = [
 //   {
@@ -396,7 +397,7 @@ const Home: React.FC = () => {
                 placeholder=""
                 value={phoneNumber}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  const value = normalizePhoneNumber(e.target.value);
                   setPhoneNumber(value);
                   setOtpError('');
                 }}
@@ -577,7 +578,7 @@ const Home: React.FC = () => {
                 placeholder=""
                 value={phoneNumber}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  const value = normalizePhoneNumber(e.target.value);
                   setPhoneNumber(value);
                   setOtpError('');
                 }}
@@ -766,7 +767,7 @@ const Home: React.FC = () => {
                 placeholder=""
                 value={phoneNumber}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  const value = normalizePhoneNumber(e.target.value);
                   setPhoneNumber(value);
                   setOtpError('');
                 }}
@@ -938,7 +939,7 @@ const Home: React.FC = () => {
                 placeholder="Phone"
                 value={phoneNumber}
                 onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  const value = normalizePhoneNumber(e.target.value);
                   setPhoneNumber(value);
                   setOtpError('');
                 }}
