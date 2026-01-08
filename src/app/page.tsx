@@ -21,7 +21,7 @@ export default function Home() {
       <PopUpModal />
       <Herosection />
       <Section1 />
-      <OfferBanner />
+      {/* <OfferBanner /> */}
       <Section2 />
       <Section3 />
       <CalculatorPage />

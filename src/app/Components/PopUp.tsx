@@ -268,10 +268,10 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             <div className="desktop-wrapper">
 
                 {/** YOUR ENTIRE DESKTOP UI EXACTLY AS YOU PROVIDED */}
-                <div className="w-[700px] h-auto py-5 bg-gray-100 rounded-3xl flex justify-between items-center mx-auto px-3 mt-20 shadow-lg">
+                <div className="w-[700px] h-auto bg-gray-100 rounded-3xl flex justify-between items-stretch mx-auto mt-20 shadow-lg overflow-hidden">
 
-                    <div className="flex flex-col gap-4 w-1/2 mt-2">
-                        <h2 className="text-4xl manrope w-[300px] px-3">Grab your offer now!</h2>
+                    <div className="flex flex-col gap-4 w-1/2 py-5 px-3">
+                        <h2 className="text-4xl manrope w-[300px] px-3 mt-2">Get your free quote</h2>
 
                         <form className="flex flex-col gap-3 py-3 px-3" onSubmit={handleSubmit}>
 
@@ -382,13 +382,13 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                         </form>
                     </div>
 
-                    <div className="w-[300px] h-[350px] flex justify-end">
+                    <div className="w-[550px] flex-shrink-2 self-stretch">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/POP%20UP%20LOD.png"
+                            src="/camping.png"
                             alt="Offer Image"
-                            width={350}
-                            height={300}
-                            className="rounded-3xl"
+                            width={550}
+                            height={500}
+                            className="w-full h-full object-cover rounded-r-3xl"
                             
                         />
                     </div>
@@ -400,25 +400,25 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             {/* ================= MOBILE VERSION  ================= */}
             <div className="mobile-wrapper -mt-25 px-1">
 
-                <div className="w-full bg-gray-100 rounded-2xl p-1 mx-auto shadow-lg flex flex-col gap-4">
+                <div className="w-full bg-gray-100 rounded-2xl mx-auto shadow-lg flex flex-col overflow-hidden">
 
                     {/* IMAGE - TOP */}
 
-                    <div className="w-full h-[190px] flex justify-end">
+                    <div className="w-full">
                         <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/POP%20UP%20mobilelo.png"
+                            src="/camping.png"
                             alt="Offer Image"
-                            width={350}
-                            height={300}
-                            className="rounded-2xl "
+                            width={450}
+                            height={400}
+                            className="w-full h-auto rounded-t-2xl"
                         />
                     </div>
 
 
                     {/* TEXT + FORM */}
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-3 p-4">
 
-                        <h2 className="text-2xl manrope text-center -mt-1">Grab your offer now!</h2>
+                        <h2 className="text-2xl manrope text-center">Get your free quote</h2>
 
                         <form className="flex flex-col gap-3 px-3" onSubmit={handleSubmit}>
 
@@ -452,8 +452,8 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                             {/* OTP Section */}
                             <div className="space-y-2">
                                 {!phone || phone.length === 0 ? (
-                                    <div className="text-sm text-gray-500 text-center py-2">
-                                        Enter phone number to verify
+                                    <div className="text-sm text-gray-500 text-center">
+                                        
                                     </div>
                                 ) : !otpSent ? (
                                     <button
