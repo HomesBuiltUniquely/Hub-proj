@@ -4,6 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { budgetOptions } from './DropDown2';
+import { normalizePhoneNumber } from '../../../lib/utils';
 
 interface CalculatorData {
   bhkType?: string;
