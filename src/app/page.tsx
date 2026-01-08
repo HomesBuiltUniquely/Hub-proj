@@ -2,7 +2,6 @@ import BrandCarousel from "./Components/Home/BrandCarosel";
 import CalculatorPage from "./Components/Home/CalculatorPage";
 import Footer from "./Components/Home/Footer";
 import Herosection from "./Components/Home/Herosection";
-import OfferBanner from "./Components/Home/offerbanner";
 import { QAsection } from "./Components/Home/QAsection";
 import Section1 from "./Components/Home/Section1";
 import Section2 from "./Components/Home/Section2";
