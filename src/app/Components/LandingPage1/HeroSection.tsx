@@ -141,10 +141,10 @@ export default function HeroSections() {
         (cityRef1920.current && cityRef1920.current.contains(target)) ||
         (cityRef1280.current && cityRef1280.current.contains(target));
 
-      const clickedInsideBudget =
-        (budgetRef2560.current && budgetRef2560.current.contains(target)) ||
-        (budgetRef1920.current && budgetRef1920.current.contains(target)) ||
-        (budgetRef1280.current && budgetRef1280.current.contains(target));
+      // const clickedInsideBudget =
+      //   (budgetRef2560.current && budgetRef2560.current.contains(target)) ||
+      //   (budgetRef1920.current && budgetRef1920.current.contains(target)) ||
+      //   (budgetRef1280.current && budgetRef1280.current.contains(target));
 
       if (!clickedInsideCity) setCityOpen(false);
       // if (!clickedInsideBudget) setBudgetOpen(false);
