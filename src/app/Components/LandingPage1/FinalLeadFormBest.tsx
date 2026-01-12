@@ -358,7 +358,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
           <div className="text-sm text-gray-500">{isSubmitting ? 'Submitting...' : ''}</div>
         </div>
 
-        <div className="text-xs mt-4 font-medium text-center">
+        <div className="text-xs  font-medium text-center">
         By submitting, you agree to our Privacy Policy , Terms & Conditions
 
         </div>

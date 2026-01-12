@@ -232,8 +232,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
   return (
     <div className=''>
-      <div className="bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-6 w-[300px] sm:w-[400px] lg:w-[500px] h-[400px] mx-auto mt-2">
-        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Get Your Free Estimate</div>
+      <div className="bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-6 w-[300px] sm:w-[400px] lg:w-[500px] h-[440px] mx-auto mt-2">
+        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950 ">Get Your Free Estimate</div>
 
         {/* Stacked inputs, one after another */}
         <div className="space-y-6">
@@ -318,7 +318,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
           <div className="text-sm text-gray-500">{isSubmitting ? 'Submitting...' : ''}</div>
         </div>
 
-        <div className="text-xs mt-4 font-medium text-center">
+        <div className="text-xs  font-medium text-center">
         By submitting, you agree to our Privacy Policy , Terms & Conditions
 
         </div>
