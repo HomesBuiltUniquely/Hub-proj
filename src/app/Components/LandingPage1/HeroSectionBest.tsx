@@ -204,10 +204,8 @@ export default function HeroSectionsBest() {
     e.preventDefault();
     console.log('Form submitted with data:', {
       name: formData.name,
-      email: formData.email,
       phone: formData.phone,
       city: selectedCity,
-      budget: selectedBudget,
       pincode: selectedPincode,
       whatsappConsent: whatsappConsent
     });
@@ -215,10 +213,6 @@ export default function HeroSectionsBest() {
     // Check each required field individually for better user feedback
     if (!formData.name) {
       alert("Please enter your name.");
-      return;
-    }
-    if (!formData.email) {
-      alert("Please enter your email address.");
       return;
     }
     if (!formData.phone) {
@@ -231,10 +225,6 @@ export default function HeroSectionsBest() {
     }
     if (!selectedCity) {
       alert("Please choose your interior setup.");
-      return;
-    }
-    if (!selectedBudget) {
-      alert("Please select when you need possession.");
       return;
     }
     if (!whatsappConsent) {
@@ -301,7 +291,6 @@ export default function HeroSectionsBest() {
     console.log('handleFinalSubmitWithoutReset called with status:', verificationStatus);
     console.log('formData:', formData);
     console.log('selectedCity:', selectedCity);
-    console.log('selectedBudget:', selectedBudget);
     console.log('selectedPincode:', selectedPincode);
 
     setIsSubmitting(true);
@@ -310,10 +299,10 @@ export default function HeroSectionsBest() {
       const currentUrl = window.location.href;
       const requestData = {
         name: formData.name,
-        email: formData.email,
+        email: '', // Email removed from form
         phone: formData.phone,
         city: selectedCity,
-        budget: selectedBudget,
+        budget: '', // Budget removed from form
         pincode: selectedPincode,
         whatsappConsent: whatsappConsent,
         pageUrl: currentUrl,
@@ -391,7 +380,6 @@ export default function HeroSectionsBest() {
     console.log('handleFinalSubmit called with status:', verificationStatus);
     console.log('formData:', formData);
     console.log('selectedCity:', selectedCity);
-    console.log('selectedBudget:', selectedBudget);
     console.log('selectedPincode:', selectedPincode);
 
     setIsSubmitting(true);
@@ -400,10 +388,10 @@ export default function HeroSectionsBest() {
       const currentUrl = window.location.href;
       const requestData = {
         name: formData.name,
-        email: formData.email,
+        email: '', // Email removed from form
         phone: formData.phone,
         city: selectedCity,
-        budget: selectedBudget,
+        budget: '', // Budget removed from form
         pincode: selectedPincode,
         whatsappConsent: whatsappConsent,
         pageUrl: currentUrl,
@@ -620,7 +608,7 @@ export default function HeroSectionsBest() {
               <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
                 <div className="text-3xl manrope-semibold text-center mb-6 text-black-950 text-nowrap">Interiors For Every <span className='text-red-600'>Home</span></div>
 
-                {/* Name and Email Row */}
+                {/* Name Input */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                   <input
                     type="text"
@@ -630,15 +618,6 @@ export default function HeroSectionsBest() {
                     placeholder="Name *"
                     required
                     className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="Email *"
-                    required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-2 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                   />
                 </div>
 
@@ -672,9 +651,8 @@ export default function HeroSectionsBest() {
                   </div>
                 </div>
 
-                {/* City and Budget Dropdowns */}
-                <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 space-y-4 sm:space-y-6">
-                  {/* City Dropdown */}
+                {/* City Dropdown */}
+                <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10">
                   <div className="relative w-full sm:w-[520px] mx-auto">
                     <select
                       name="city"
@@ -685,23 +663,6 @@ export default function HeroSectionsBest() {
                     >
                       <option className="text-gray-400 manrope-medium" value="" disabled>Choose Interior Setup *</option>
                       {cityOptions.map((option: string) => (
-                        <option key={option} value={option}>{option}</option>
-                      ))}
-                    </select>
-                    {/* Custom dropdown arrow icon */}
-                    <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
-                  </div>
-                  {/* Budget Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 manrope-medium">
-                    <select
-                      name="budget"
-                      required
-                      value={selectedBudget}
-                      onChange={e => setSelectedBudget(e.target.value)}
-                      className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
-                    >
-                      <option className="text-gray-400" value="" disabled>Project Type & Possession *</option>
-                      {budgetOptions.map((option: string) => (
                         <option key={option} value={option}>{option}</option>
                       ))}
                     </select>
@@ -772,16 +733,6 @@ export default function HeroSectionsBest() {
                       required
                       className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
-                    <input
-                      id="e1"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="Email *"
-                      required
-                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                    />
                   </div>
 
                   {/* Phone and Pincode Row */}
@@ -847,35 +798,6 @@ export default function HeroSectionsBest() {
                       )}
                     </div>
 
-                    {/* Budget Dropdown */}
-                    <div ref={budgetRef2560}>
-
-                      <div
-                        onClick={() => {
-                          setBudgetOpen(!budgetOpen);
-                          setCityOpen(false);
-                        }}
-                        className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] mt-6 sm:mt-10 flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedBudget && 'text-gray-400'}`}
-                      >
-                        <span>
-                          {selectedBudget || "Project Type & Possession"}
-                        </span>
-                        <span className="text-gray-500">&#9662;</span>
-                      </div>
-                      {budgetOpen && (
-                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
-                          {budgetOptions.map((option: string) => (
-                            <li
-                              key={option}
-                              onClick={() => handleBudgetSelect(option)}
-                              className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
-                            >
-                              {option}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
                   </div>
 
                   {/* Checkbox and Button Container */}
@@ -942,17 +864,17 @@ export default function HeroSectionsBest() {
           {/* 1920 Version */}
 
           <div className=" desktop-1920 hidden lg:block bg-[#f1f2f6] justify-center mx-auto px-5 mt-3">
-            <div className="flex flex-col lg:flex-row gap-6  mx-auto ">
+            <div className="flex flex-col lg:flex-row gap-6  mx-auto">
               {/* Left side - Form */}
               <div className="w-full lg:w-auto">
                 <div className="flex justify-center lg:justify-start">
                   <img src="/hub.png" alt="Logo" className="h-[40px] sm:h-[50px] lg:h-[60px] " />
                 </div>
-                <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
-                  <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every <span className='text-red-600'>Home</span></p>
+                <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[650px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
+                  <p className="lg:mr-20 mb-6 manrope lg:mb-0 pt-2 mt-6">Interiors For Every <span className='text-red-600'>Home</span></p>
 
                   {/* Name and Email Row */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-2">
                     <input
                       type="text"
                       name="name"
@@ -960,17 +882,7 @@ export default function HeroSectionsBest() {
                       onChange={handleInputChange}
                       placeholder="Name *"
                       required
-                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                    />
-                    <input
-                      id="e1"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="Email *"
-                      required
-                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
 
@@ -984,10 +896,10 @@ export default function HeroSectionsBest() {
                       onChange={handleInputChange}
                       placeholder="Phone Number *"
                       required
-                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-8 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                     {/* Pincode Dropdown */}
-                    <div className="relative w-full sm:w-[250px] mt-4 sm:mt-10">
+                    <div className="relative w-full sm:w-[250px] mt-4 sm:mt-8">
                       <select
                         name="pincode"
                         required
@@ -1006,7 +918,7 @@ export default function HeroSectionsBest() {
                   </div>
 
                   {/* Desktop Custom Dropdowns */}
-                  <div className="relative w-full  mx-auto mt-6 sm:mt-10 space-y-4 sm:space-y-6">
+                  <div className="relative w-full  mx-auto mt-8 sm:mt-8 space-y-4 sm:space-y-6">
                     {/* City Dropdown */}
                     <div ref={cityRef1920}>
 
@@ -1037,35 +949,6 @@ export default function HeroSectionsBest() {
                       )}
                     </div>
 
-                    {/* Budget Dropdown */}
-                    <div ref={budgetRef1920}>
-
-                      <div
-                        onClick={() => {
-                          setBudgetOpen(!budgetOpen);
-                          setCityOpen(false);
-                        }}
-                        className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] mt-6 sm:mt-10 flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedBudget && 'text-gray-400'}`}
-                      >
-                        <span>
-                          {selectedBudget || "Project Type & Possession"}
-                        </span>
-                        <span className="text-gray-500">&#9662;</span>
-                      </div>
-                      {budgetOpen && (
-                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
-                          {budgetOptions.map((option: string) => (
-                            <li
-                              key={option}
-                              onClick={() => handleBudgetSelect(option)}
-                              className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
-                            >
-                              {option}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
                   </div>
 
                   {/* Checkbox and Button Container */}
@@ -1141,7 +1024,7 @@ export default function HeroSectionsBest() {
                 </div>
 
                 {/* Form Card */}
-                <div className="bg-white w-[500px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
+                <div className="bg-white w-[500px] h-auto lg:h-[570px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
 
                   {/* Heading */}
                   <p className="mb-6 whitespace-nowrap manrope mt-5">Interiors For Every <span className='text-red-600'>Home</span></p>
@@ -1155,9 +1038,9 @@ export default function HeroSectionsBest() {
                       onChange={handleInputChange}
                       placeholder="Name *"
                       required
-                      className="w-full sm:w-[200px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
-                    <input
+                    {/* <input
                       id="e1"
                       type="email"
                       name="email"
@@ -1166,7 +1049,7 @@ export default function HeroSectionsBest() {
                       placeholder="Email *"
                       required
                       className="w-full sm:w-[200px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                    />
+                    /> */}
                   </div>
 
                   {/* Phone + Pincode */}
@@ -1234,33 +1117,6 @@ export default function HeroSectionsBest() {
                       )}
                     </div>
 
-                    {/* Budget Dropdown */}
-                    <div ref={budgetRef1280} className="relative">
-                      <div
-                        onClick={() => {
-                          setBudgetOpen(!budgetOpen);
-                          setCityOpen(false);
-                        }}
-                        className={`w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!selectedBudget && 'text-gray-400'}`}
-                      >
-                        <span>{selectedBudget || "Project Type & Possession"}</span>
-                        <span className="text-gray-500">&#9662;</span>
-                      </div>
-
-                      {budgetOpen && (
-                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] max-h-60 overflow-y-auto manrope-medium">
-                          {budgetOptions.map((option: string) => (
-                            <li
-                              key={option}
-                              onClick={() => handleBudgetSelect(option)}
-                              className="px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-sm"
-                            >
-                              {option}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
                   </div>
 
                   {/* Checkbox + Submit */}

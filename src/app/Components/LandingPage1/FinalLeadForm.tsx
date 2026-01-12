@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
-import { budgetOptions } from './DropDown2';
 import { normalizePhoneNumber } from '../../../lib/utils';
 
 interface CalculatorData {
@@ -38,12 +37,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const router = useRouter();
 
   const [selectedPincode, setSelectedPincode] = useState('');
-  const [selectedPossession, setSelectedPossession] = useState('');
-  const [possessionOpen, setPossessionOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
   
   // OTP related states
   const [otpSent, setOtpSent] = useState(false);
@@ -67,11 +62,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     } else {
       setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     }
-  };
-
-  const handlePossessionSelect = (option: string) => {
-    setSelectedPossession(option);
-    setPossessionOpen(false);
   };
 
   const sendOTP = async () => {
@@ -150,12 +140,10 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       console.log('[FinalLeadForm] Received calculatorData:', c);
       const requestData = {
         name: formData.name,
-        email: formData.email,
+        email: '', // Email removed from form
         phone: formData.phone,
-        possession: selectedPossession,
+        possession: '', // Project Type & Possession removed from form
         pincode: selectedPincode,
-        date: selectedDate,
-        time: selectedTime,
         pageUrl: currentUrl,
         verificationStatus: isVerified ? 'Verified User' : 'No OTP',
         // Include calculator data both nested and flattened for backend email processing
@@ -200,9 +188,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         })();
 
         setSelectedPincode('');
-        setSelectedPossession('');
-        setSelectedDate('');
-        setSelectedTime('');
         setFormData({ name: '', email: '', phone: '' });
         // Reset OTP states
         setOtpSent(false);
@@ -224,10 +209,10 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     } finally {
       setIsSubmitting(false);
     } 
-  }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, calculatorData, router]);
+  }, [formData, selectedPincode, isVerified, calculatorData, router]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode || !selectedDate || !selectedTime) {
+    if (!formData.name || !formData.phone || !selectedPincode) {
       return;
     }
     
@@ -237,7 +222,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     }
     
     await handleFinalSubmit();
-  }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, handleFinalSubmit]);
+  }, [formData, selectedPincode, isVerified, handleFinalSubmit]);
 
   useEffect(() => {
     const handler = () => { performSubmitFlow(); };
@@ -246,66 +231,12 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   }, [performSubmitFlow]);
 
   return (
-    <div>
-      <div className="bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-6">
-        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Book your free 3D design consultation</div>
-
-        <div className="flex gap-4 mb-4">
-          <div className="relative w-1/2">
-            <select
-              name="date"
-              value={selectedDate}
-              onChange={e => setSelectedDate(e.target.value)}
-              required
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
-            >
-              <option className="text-gray-400" value="" disabled>Date</option>
-              {(() => {
-                const today = new Date();
-                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                const dates = [];
-                
-                // Generate next 14 days (2 weeks)
-                for (let i = 0; i < 14; i++) {
-                  const date = new Date(today);
-                  date.setDate(today.getDate() + i);
-                  const day = date.getDate();
-                  const month = date.getMonth();
-                  const monthName = monthNames[month];
-                  const dateValue = `${monthName}-${day}`;
-                  dates.push({ value: dateValue, label: `${monthName}-${day}` });
-                }
-                
-                return dates.map((date, index) => (
-                  <option key={index} value={date.value} className="text-gray-700">{date.label}</option>
-                ));
-              })()}
-            </select>
-            <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute pointer-events-none">&#9662;</span>
-          </div>
-          <div className="relative w-1/2">
-            <select
-              name="time"
-              value={selectedTime}
-              onChange={e => setSelectedTime(e.target.value)}
-              required
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
-            >
-              <option className="text-gray-400" value="" disabled>Time</option>
-              <option value="11:30 to 1:30" className="text-gray-700">11:30 - 1:30</option>
-              <option value="12:30 to 2:30" className="text-gray-700">12:30 - 2:30</option>
-              <option value="1-3" className="text-gray-700">1:00 - 3:00</option>
-              <option value="2:30 to 4:30" className="text-gray-700">2:30 - 4:30</option>
-              <option value="3-5" className="text-gray-700">3:00 - 5:00</option>
-              <option value="5-7" className="text-gray-700">5:00 - 7:00</option>
-              <option value="6-8" className="text-gray-700">6:00 - 8:00</option>
-            </select>
-            <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute pointer-events-none">&#9662;</span>
-          </div>
-        </div>
+    <div className=''>
+      <div className="bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-6 w-[300px] sm:w-[400px] lg:w-[500px] h-[400px] mx-auto mt-2">
+        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Get Your Free Estimate</div>
 
         {/* Stacked inputs, one after another */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           <input
             type="text"
             name="name"
@@ -314,15 +245,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             placeholder="Name *"
             required
             className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
-          />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            placeholder="Email *"
-            required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
           />
           <input
             type="tel"
@@ -377,32 +299,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
           )}
           
           <div className="relative w-full">
-            <div
-              onClick={() => {
-                setPossessionOpen(!possessionOpen);
-              }}
-              className={`w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-lg flex items-center justify-between px-6 cursor-pointer ${!selectedPossession && 'text-gray-400'}`}
-            >
-              <span>
-                {selectedPossession || "Project Type & Possession *"}
-              </span>
-              <span className="text-gray-500">&#9662;</span>
-            </div>
-            {possessionOpen && (
-              <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
-                {budgetOptions.map((option: string) => (
-                  <li
-                    key={option}
-                    onClick={() => handlePossessionSelect(option)}
-                    className="px-6 py-3 hover:bg-gray-100 cursor-pointer text-gray-700"
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <div className="relative w-full">
             <select
               name="pincode"
               required
@@ -423,7 +319,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         </div>
 
         <div className="text-xs mt-4 font-medium text-center">
-        By submitting, you agree to our Privacy Policy & Terms & Conditions
+        By submitting, you agree to our Privacy Policy , Terms & Conditions
 
         </div>
       </div>
