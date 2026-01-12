@@ -78,15 +78,15 @@ export default function HeroSectionsBest() {
 
   // Refs for 2560 version
   const cityRef2560 = useRef<HTMLDivElement>(null);
-  const budgetRef2560 = useRef<HTMLDivElement>(null);
+  // const budgetRef2560 = useRef<HTMLDivElement>(null);
 
   // Refs for 1920 version
   const cityRef1920 = useRef<HTMLDivElement>(null);
-  const budgetRef1920 = useRef<HTMLDivElement>(null);
+  // const budgetRef1920 = useRef<HTMLDivElement>(null);
 
   // Refs for 1280 version
   const cityRef1280 = useRef<HTMLDivElement>(null);
-  const budgetRef1280 = useRef<HTMLDivElement>(null);
+  // const budgetRef1280 = useRef<HTMLDivElement>(null);
 
 
   const handleCitySelect = (value: string) => {
