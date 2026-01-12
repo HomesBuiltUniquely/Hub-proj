@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 import cityOptions from "./DropDown1"
-import { budgetOptions } from "./DropDown2"
 import { normalizePhoneNumber } from "@/lib/utils"
 
 const carouselImages = [
@@ -25,9 +24,7 @@ const carouselImages1 = [
 export default function HeroSections() {
   const router = useRouter();
   const [cityOpen, setCityOpen] = useState(false);
-  const [budgetOpen, setBudgetOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
-  const [selectedBudget, setSelectedBudget] = useState("");
   const [selectedPincode, setSelectedPincode] = useState("");
   const [whatsappConsent, setWhatsappConsent] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -97,11 +94,11 @@ export default function HeroSections() {
     setTimeout(() => setCityOpen(false), 100);
   };
 
-  const handleBudgetSelect = (value: string) => {
-    console.log('Budget selected:', value);
-    setSelectedBudget(value);
-    setTimeout(() => setBudgetOpen(false), 100);
-  };
+  // const handleBudgetSelect = (value: string) => {
+  //   console.log('Budget selected:', value);
+  //   setSelectedBudget(value);
+  //   setTimeout(() => setBudgetOpen(false), 100);
+  // };
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -150,7 +147,7 @@ export default function HeroSections() {
         (budgetRef1280.current && budgetRef1280.current.contains(target));
 
       if (!clickedInsideCity) setCityOpen(false);
-      if (!clickedInsideBudget) setBudgetOpen(false);
+      // if (!clickedInsideBudget) setBudgetOpen(false);
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -436,7 +433,7 @@ export default function HeroSections() {
 
           // Reset form
           setSelectedCity("");
-          setSelectedBudget("");
+          // setSelectedBudget("");
           setSelectedPincode("");
           setWhatsappConsent(true);
           setFormData({ name: '', email: '', phone: '' });
@@ -772,7 +769,7 @@ export default function HeroSections() {
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
-                          setBudgetOpen(false);
+                          // setBudgetOpen(false);
                         }}
                         className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && 'text-gray-400'}`}
                       >
@@ -920,7 +917,7 @@ export default function HeroSections() {
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
-                          setBudgetOpen(false);
+                          // setBudgetOpen(false);
                         }}
                         className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && 'text-gray-400'}`}
                       >
@@ -1076,7 +1073,7 @@ export default function HeroSections() {
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
-                          setBudgetOpen(false);
+                          // setBudgetOpen(false);
                         }}
                         className={`w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!selectedCity && 'text-gray-400'}`}
                       >
