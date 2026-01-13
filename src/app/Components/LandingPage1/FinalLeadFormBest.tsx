@@ -262,11 +262,11 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
 
   return (
     <div>
-      <div className="bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-6 w-[300px] sm:w-[400px] lg:w-[500px] h-[400px] mx-auto mt-2">
-        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Get Your Free Estimate</div>
+      <div className={`bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-5 lg:p-6 w-[300px] sm:w-[400px] lg:w-[500px] mx-auto mt-10 transition-all duration-300 overflow-hidden ${otpSent && !isVerified ? 'min-h-[480px]' : 'min-h-[360px]'}`}>
+        <div className="text-[24px] sm:text-2xl lg:text-3xl manrope-semibold text-center mb-4 sm:mb-5 text-amber-950">Get Your Free Estimate</div>
 
         {/* Stacked inputs, one after another */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-3 lg:space-y-4">
           <input
             type="text"
             name="name"
@@ -274,7 +274,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
             onChange={handleInputChange}
             placeholder="Name *"
             required
-            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
           <input
             type="tel"
@@ -283,7 +283,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
             onChange={handleInputChange}
             placeholder="Phone Number *"
             required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
           
           {/* OTP Section */}
@@ -305,7 +305,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                     placeholder="Enter OTP *"
-                    className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+                    className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
                   />
                   <div className="flex gap-2">
                     <button
@@ -344,24 +344,20 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
               required
               value={selectedPincode}
               onChange={e => setSelectedPincode(e.target.value)}
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
+              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none"
             >
               <option className="text-gray-400" value="" disabled>Property Pincode *</option>
               {Pincode.map((pin, idx) => (<option key={idx} value={pin}>{pin}</option>))}
             </select>
-            <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
+            <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[18px] pointer-events-none">&#9662;</span>
           </div>
         </div>
 
         {/* Status row (no submit or WhatsApp checkbox) */}
-        <div className="flex items-center justify-end mt-6">
+        <div className="flex items-center justify-end mt-4">
           <div className="text-sm text-gray-500">{isSubmitting ? 'Submitting...' : ''}</div>
         </div>
-
-        <div className="text-xs  font-medium text-center">
-        By submitting, you agree to our Privacy Policy , Terms & Conditions
-
-        </div>
+        <div className='text-xs text-left mt-4 font-medium pl-4'>By submitting, you agree to our Privacy Policy , <p className='text-left '>Terms & Conditions</p></div>
       </div>
     </div>
   );
