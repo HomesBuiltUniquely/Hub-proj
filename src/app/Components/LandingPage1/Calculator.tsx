@@ -687,19 +687,19 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
 
     const materialTypes = [
         { 
+            name: "MDF", 
+            image: "/MDF.png", 
+            description: "Medium Density Fibreboard - Budget Friendly " 
+        },
+        { 
             name: "MR", 
             image: "/MR.png", 
-            description: "Moisture Resistant Plywood - Budget Friendly"
+            description: "Moisture Resistant Plywood - Standard"
         },
         { 
             name: "HDHMR", 
             image: "/HDHMR.png", 
-            description: "High Density High Moisture Resistant - Mid Range" 
-        },
-        { 
-            name: "BWR", 
-            image: "/BWR.png", 
-            description: "Boiling Water Resistant Plywood - Premium" 
+            description: "High Density High Moisture Resistant - Premium" 
         },
         { 
             name: "BWP", 
