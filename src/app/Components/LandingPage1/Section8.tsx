@@ -246,7 +246,7 @@ export default function Section8() {
             {/* Header */}
             <div className="mb-12">
               <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
-                <span className="block mr-31 "> HUB's Happy</span>
+                <span className="block mr-31 "> HUB&#39;s Happy</span>
                 <span className="block text-red-600 mr-30 ">Customers</span>
               </h2>
             </div>
