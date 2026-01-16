@@ -241,15 +241,14 @@ export default function Section8() {
 
       {/* Mobile Layout */}
       <div className="lg:hidden">
-        <div className="w-full bg-[#F1F2F6] py-16 px-4">
+        <div className="w-full bg-[#F1F2F6] py-12 px-4">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
-            <div className="mb-12 text-center">
+            <div className="mb-12">
               <h2 className="text-4xl manrope-medium leading-tight tracking-tight text-gray-800 mb-4">
-                <span className="block ">Happy</span>
-                <span className="block">Customers</span>
+                <span className="block mr-31 "> HUB&#39;s Happy</span>
+                <span className="block text-red-600 mr-30 ">Customers</span>
               </h2>
-              <div className="w-16 h-1 bg-red-500 mx-auto"></div>
             </div>
 
             {/* Video Carousel */}
