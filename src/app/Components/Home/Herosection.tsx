@@ -417,7 +417,7 @@ const Herosection: React.FC = () => {
                 className="cursor-pointer w-[100px] h-[90px] -ml-1 -mt-5 mb-2" />
             </div>
           </div>
-          <img className="max-w-[425px]h-[500px] rounded-4xl relative -mt-18 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
+          <img className="max-w-[425px] h-[500px] rounded-4xl relative -mt-18 mx-auto" src={`/hh1${currentSlide + 1}.png`} />
           <div className="-mt-62 w-[250px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide]}</div>
           {/* Horizontal line above button */}
           <div className="w-[300px]  h-[1px] bg-gray-300 absolute -mt-32 ml-8"></div>
@@ -425,6 +425,7 @@ const Herosection: React.FC = () => {
         </div>
         <OverlapNavBar />
       </div>
+
     </div>
   );
 };
