@@ -602,7 +602,7 @@ export default function HeroSectionsBest() {
             </div>
 
             {/* Mobile Form Card */}
-            <div className="relative z-20 -mt-10 px-2">
+            <div className="relative z-20 -mt-10">
               <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
                 <div className="text-3xl manrope-semibold text-center mb-6 text-black-950 text-nowrap">Interiors For Every <span className='text-red-600'>Home</span></div>
 
