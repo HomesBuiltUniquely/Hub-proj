@@ -69,8 +69,18 @@ export async function POST(req: Request) {
     const mailPass = process.env.CAREER_GMAIL_PASS || process.env.GMAIL_PASS;
     const toEmail = process.env.CAREER_EMAIL || 'career@hubinterior.com';
 
+    // Log credential status (without showing actual values)
+    console.log('Career email configuration check:');
+    console.log('CAREER_GMAIL_USER exists:', !!process.env.CAREER_GMAIL_USER);
+    console.log('CAREER_GMAIL_PASS exists:', !!process.env.CAREER_GMAIL_PASS);
+    console.log('CAREER_EMAIL exists:', !!process.env.CAREER_EMAIL);
+    console.log('Using mailUser:', mailUser ? `${mailUser.substring(0, 3)}***` : 'NOT SET');
+    console.log('Using mailPass:', mailPass ? 'SET' : 'NOT SET');
+    console.log('Sending to email:', toEmail);
+
     if (!mailUser || !mailPass) {
       console.error('Career Gmail credentials not configured');
+      console.error('mailUser:', !!mailUser, 'mailPass:', !!mailPass);
       return NextResponse.json(
         {
           success: false,
@@ -80,12 +90,18 @@ export async function POST(req: Request) {
       );
     }
 
+    // Remove any spaces from the password (Gmail app passwords should not have spaces)
+    const cleanedPass = mailPass.replace(/\s/g, '');
+
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: mailUser,
-        pass: mailPass,
+        pass: cleanedPass,
       },
+      connectionTimeout: 10000, // 10 seconds
+      socketTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
     });
 
     const attachments =
@@ -121,13 +137,59 @@ export async function POST(req: Request) {
     };
 
     await transporter.sendMail(mailOptions);
+    console.log('Career email sent successfully to:', toEmail);
 
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Career email send error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorCode =
+      error && typeof error === 'object' && 'code' in error
+        ? String(error.code)
+        : 'UNKNOWN';
+
+    // Log detailed error information
+    console.error('=== Career Email Error Details ===');
+    console.error('Error Code:', errorCode);
+    console.error('Error Message:', errorMessage);
+    if (error && typeof error === 'object' && 'response' in error) {
+      console.error('Error Response:', (error as { response?: string }).response);
+    }
+    if (error && typeof error === 'object' && 'responseCode' in error) {
+      console.error('Error Response Code:', (error as { responseCode?: number }).responseCode);
+    }
+    console.error('Stack:', error instanceof Error ? error.stack : 'No stack trace');
+    console.error('================================');
+
+    // Provide specific error messages
+    let userMessage = 'Failed to send email. Please try again.';
+    if (errorCode === 'EAUTH') {
+      userMessage = 'Email authentication failed. Please verify your Gmail app password is correct and that 2-Step Verification is enabled on your Google account.';
+      console.error('AUTHENTICATION FAILED - Check:');
+      console.error('1. Gmail app password is correct (no spaces, 16 characters)');
+      console.error('2. 2-Step Verification is enabled on Google account');
+      console.error('3. App password was generated for "Mail" application');
+      console.error('4. CAREER_GMAIL_USER matches the Google account email');
+    } else if (errorCode === 'ECONNECTION') {
+      userMessage = 'Email connection failed. Please check your internet connection.';
+    } else if (errorMessage.includes('certificate') || errorMessage.includes('SSL')) {
+      userMessage = 'Email security certificate error. Please contact support.';
+    } else if (errorMessage.includes('timeout')) {
+      userMessage = 'Email request timed out. Please try again.';
+    }
+
+    const fullError = {
+      errorMessage,
+      errorCode,
+      response: error && typeof error === 'object' && 'response' in error ? String((error as { response?: unknown }).response) : undefined,
+      responseCode: error && typeof error === 'object' && 'responseCode' in error ? (error as { responseCode?: number }).responseCode : undefined,
+      stack: error instanceof Error ? error.stack : undefined,
+    };
+
+    console.error('Full career email error details:', JSON.stringify(fullError, null, 2));
+
     return NextResponse.json(
-      { success: false, message: 'Failed to send email.', error: errorMessage },
+      { success: false, message: userMessage, error: errorMessage },
       { status: 500 },
     );
   }
