@@ -5,14 +5,94 @@ import React, { useRef, useState } from "react";
 const JoinUsPage: React.FC = () => {
   const fileRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState<string>("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const MAX_RESUME_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
+      const file = e.target.files[0];
+      if (file.size > MAX_RESUME_SIZE_BYTES) {
+        alert("Resume must be 5MB or smaller.");
+        e.target.value = "";
+        setFileName("");
+        setSelectedFile(null);
+        return;
+      }
+      setFileName(file.name);
+      setSelectedFile(file);
     } else {
       setFileName("");
+      setSelectedFile(null);
     }
   }
+
+  const fileToBase64 = (file: File) =>
+    new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve((reader.result as string).split(",")[1] || "");
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(file);
+    });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      const resumeFile = formData.get("resume");
+      const resolvedResumeFile =
+        resumeFile instanceof File && resumeFile.size > 0 ? resumeFile : selectedFile;
+      if (!resolvedResumeFile) {
+        throw new Error("Resume is required.");
+      }
+      if (resolvedResumeFile.size > MAX_RESUME_SIZE_BYTES) {
+        throw new Error("Resume must be 5MB or smaller.");
+      }
+
+      const payload = {
+        jobTitle: "General Application",
+        firstName: (formData.get("firstName") || "").toString(),
+        lastName: (formData.get("lastName") || "").toString(),
+        email: (formData.get("email") || "").toString(),
+        phone: (formData.get("phone") || "").toString(),
+        position: (formData.get("position") || "").toString(),
+        about: (formData.get("about") || "").toString(),
+        pageUrl: window.location.href,
+        resume: {
+          name: resolvedResumeFile.name,
+          type: resolvedResumeFile.type,
+          data: await fileToBase64(resolvedResumeFile),
+        },
+      };
+
+      const response = await fetch("/api/careers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const responseData = await response.json();
+      if (!response.ok || !responseData.success) {
+        throw new Error(responseData.message || "Failed to submit application.");
+      }
+
+      alert("Application submitted!");
+      form.reset();
+      setFileName("");
+      setSelectedFile(null);
+    } catch (error) {
+      console.error("Career form submit error:", error);
+      const message =
+        error instanceof Error ? error.message : "Failed to submit application. Please try again.";
+      alert(message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
 
@@ -63,10 +143,7 @@ const JoinUsPage: React.FC = () => {
         <div className="flex-1 flex justify-center items-start ml-170 -mt-60">
           <form
             className="bg-transparent p-4 w-full max-w-lg space-y-6"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert('Application submitted!');
-            }}
+            onSubmit={handleSubmit}
           >
             {/* First Row */}
             <div className="flex flex-col md:flex-row gap-4">
@@ -75,6 +152,7 @@ const JoinUsPage: React.FC = () => {
                 <input
                   type="text"
                   required
+                  name="firstName"
                   className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                   placeholder="Your First Name"
                 />
@@ -83,6 +161,7 @@ const JoinUsPage: React.FC = () => {
                 <label className="block text-gray-700 text-sm manrope mb-1">Last Name</label>
                 <input
                   type="text"
+                  name="lastName"
                   className="w-full border rounded-md py-2 manrope-medium px-3 focus:outline-none focus:ring-2 focus:ring-red-400"
                   placeholder="Your Last Name"
                 />
@@ -96,6 +175,7 @@ const JoinUsPage: React.FC = () => {
                 <input
                   type="email"
                   required
+                  name="email"
                   className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                   placeholder="Your Email"
                 />
@@ -105,6 +185,7 @@ const JoinUsPage: React.FC = () => {
                 <input
                   type="tel"
                   required
+                  name="phone"
                   pattern="[0-9]{10,}"
                   className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                   placeholder="Your Phone"
@@ -117,6 +198,7 @@ const JoinUsPage: React.FC = () => {
               <label className="block text-gray-700 text-sm manrope mb-1">Position Applying For*</label>
               <select
                 required
+                name="position"
                 className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                 defaultValue=""
               >
@@ -133,7 +215,9 @@ const JoinUsPage: React.FC = () => {
 
             {/* Upload Resume */}
             <div>
-              <label className="block text-gray-700 text-sm manrope mb-2">Upload Resume</label>
+              <label className="block text-gray-700 text-sm manrope mb-2">
+                Upload Resume<span className="text-red-600">*</span>
+              </label>
               <div className="flex items-center gap-3">
                 <button
                   type="button"
@@ -147,6 +231,7 @@ const JoinUsPage: React.FC = () => {
               <input
                 ref={fileRef}
                 type="file"
+                name="resume"
                 accept=".pdf,.doc,.docx"
                 className="hidden"
                 onChange={handleFileChange}
@@ -161,6 +246,7 @@ const JoinUsPage: React.FC = () => {
               <label className="block text-gray-700 text-sm manrope mb-1">Tell Us About You</label>
               <textarea
                 rows={4}
+                name="about"
                 className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                 placeholder="Share your story, skills, or portfolio link"
               />
@@ -207,10 +293,7 @@ const JoinUsPage: React.FC = () => {
         <div className="flex-1 flex justify-center items-start ml-150 -mt-60">
           <form
             className="bg-transparent p-4 w-full max-w-lg space-y-6"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert('Application submitted!');
-            }}
+            onSubmit={handleSubmit}
           >
             {/* First Row */}
             <div className="flex flex-col md:flex-row gap-4">
@@ -219,6 +302,7 @@ const JoinUsPage: React.FC = () => {
                 <input
                   type="text"
                   required
+                  name="firstName"
                   className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                   placeholder="Your First Name"
                 />
@@ -227,6 +311,7 @@ const JoinUsPage: React.FC = () => {
                 <label className="block text-gray-700 text-sm manrope mb-1">Last Name</label>
                 <input
                   type="text"
+                  name="lastName"
                   className="w-full border rounded-md py-2 manrope-medium px-3 focus:outline-none focus:ring-2 focus:ring-red-400"
                   placeholder="Your Last Name"
                 />
@@ -240,6 +325,7 @@ const JoinUsPage: React.FC = () => {
                 <input
                   type="email"
                   required
+                  name="email"
                   className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                   placeholder="Your Email"
                 />
@@ -249,6 +335,7 @@ const JoinUsPage: React.FC = () => {
                 <input
                   type="tel"
                   required
+                  name="phone"
                   pattern="[0-9]{10,}"
                   className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                   placeholder="Your Phone"
@@ -261,6 +348,7 @@ const JoinUsPage: React.FC = () => {
               <label className="block text-gray-700 text-sm manrope mb-1">Position Applying For*</label>
               <select
                 required
+                name="position"
                 className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                 defaultValue=""
               >
@@ -277,7 +365,9 @@ const JoinUsPage: React.FC = () => {
 
             {/* Upload Resume */}
             <div>
-              <label className="block text-gray-700 text-sm manrope mb-2">Upload Resume</label>
+              <label className="block text-gray-700 text-sm manrope mb-2">
+                Upload Resume<span className="text-red-600">*</span>
+              </label>
               <div className="flex items-center gap-3">
                 <button
                   type="button"
@@ -291,6 +381,7 @@ const JoinUsPage: React.FC = () => {
               <input
                 ref={fileRef}
                 type="file"
+                name="resume"
                 accept=".pdf,.doc,.docx"
                 className="hidden"
                 onChange={handleFileChange}
@@ -305,6 +396,7 @@ const JoinUsPage: React.FC = () => {
               <label className="block text-gray-700 text-sm manrope mb-1">Tell Us About You</label>
               <textarea
                 rows={4}
+                name="about"
                 className="w-full border rounded-md py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                 placeholder="Share your story, skills, or portfolio link"
               />
@@ -342,10 +434,7 @@ const JoinUsPage: React.FC = () => {
           <div className="flex justify-center manrope-medium items-start  rounded-3xl  border border-[#DDCDC1] mx-3 mb-5">
             <form
               className="bg-transparent p-4 w-full max-w-2xl space-y-6"
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("Application submitted!");
-              }}
+              onSubmit={handleSubmit}
             >
               {/* First Row */}
               <div className="flex flex-col md:flex-row md:gap-6 gap-4 mb-10">
@@ -356,6 +445,7 @@ const JoinUsPage: React.FC = () => {
                   <input
                     type="text"
                     required
+                    name="firstName"
                     className="w-full border  border-[#DDCDC1]  rounded-3xl py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-400"
                     placeholder="Your First Name"
                   />
@@ -366,6 +456,7 @@ const JoinUsPage: React.FC = () => {
                   </label>
                   <input
                     type="text"
+                    name="lastName"
                     className="w-full border  border-[#DDCDC1]  rounded-3xl py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-400"
                     placeholder="Your Last Name"
                   />
@@ -381,6 +472,7 @@ const JoinUsPage: React.FC = () => {
                   <input
                     type="email"
                     required
+                    name="email"
                     className="w-full border  border-[#DDCDC1]  rounded-3xl py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-400"
                     placeholder="Your Email"
                   />
@@ -392,6 +484,7 @@ const JoinUsPage: React.FC = () => {
                   <input
                     type="tel"
                     required
+                    name="phone"
                     pattern="[0-9]{10,}"
                     className="w-full border  border-[#DDCDC1]  rounded-3xl py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-400"
                     placeholder="Your Phone"
@@ -407,6 +500,7 @@ const JoinUsPage: React.FC = () => {
                   </label>
                   <select
                     required
+                    name="position"
                     className="w-full border  border-[#DDCDC1]  rounded-3xl text-gray py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-400"
                     defaultValue=""
                   >
@@ -422,7 +516,7 @@ const JoinUsPage: React.FC = () => {
 
                 <div className="flex flex-col flex-1">
                   <label className="block text-gray-700 text-sm manrope mb-2">
-                    Upload Resume
+                    Upload Resume<span className="text-red-600">*</span>
                   </label>
                   <div className="flex items-center gap-3 flex-wrap">
                     <button
@@ -439,6 +533,7 @@ const JoinUsPage: React.FC = () => {
                   <input
                     ref={fileRef}
                     type="file"
+                    name="resume"
                     accept=".pdf,.doc,.docx"
                     className="hidden"
                     onChange={handleFileChange}
@@ -450,6 +545,7 @@ const JoinUsPage: React.FC = () => {
                   <label className="block text-gray-700 text-sm manrope mb-1">Tell Us About You</label>
                   <textarea
                     rows={4}
+                    name="about"
                     className="w-full border  border-[#DDCDC1]  rounded-2xl py-2 px-3 manrope-medium focus:outline-none focus:ring-2 focus:ring-red-400"
                     placeholder="Share your story, skills, or portfolio link"
                   />

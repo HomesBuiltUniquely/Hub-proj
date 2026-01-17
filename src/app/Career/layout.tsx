@@ -1,19 +1,8 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../../app/globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"], 
-});
 
 // ✅ Separate viewport export (only here — NOT inside metadata)
 export const viewport: Viewport = {
@@ -63,14 +52,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        {/* Favicon */}
-        <link rel="icon" type="image/svg+xml" href="/hubicon.svg" />
-
-        {/* Meta Pixel Code */}
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`!function(f,b,e,v,n,t,s)
+    <>
+      {/* Meta Pixel Code */}
+      <Script id="meta-pixel" strategy="afterInteractive">
+        {`!function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
             if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -80,13 +65,13 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1486878599401922');
             fbq('track', 'PageView');`}
-        </Script>
+      </Script>
 
-        <Script
-          id="whatsapp-conditional"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
+      <Script
+        id="whatsapp-conditional"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
           if (typeof window !== 'undefined') {
             const currentPath = window.location.pathname;
             const hideWhatsAppPaths = [
@@ -122,47 +107,42 @@ export default function RootLayout({
           }
 
         `
-          }}
+        }}
+      />
+
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          src="https://www.facebook.com/tr?id=1486878599401922&ev=PageView&noscript=1"
+          alt=""
         />
+      </noscript>
 
-
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1486878599401922&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-
-        {/* Google Tag Manager Head */}
-        <Script id="gtm-head" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      {/* Google Tag Manager Head */}
+      <Script id="gtm-head" strategy="afterInteractive">
+        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?"&l="+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-W8M2PLFJ');`}
-        </Script>
-      </head>
+      </Script>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* GTM NoScript */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-W8M2PLFJ"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
+      {/* GTM NoScript */}
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-W8M2PLFJ"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        />
+      </noscript>
 
-        {children}
+      {children}
 
-        {/* Vercel Analytics */}
-        <Analytics />
-      </body>
-
-    </html>
+      {/* Vercel Analytics */}
+      <Analytics />
+    </>
   );
 }
