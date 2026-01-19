@@ -315,7 +315,7 @@ const Home: React.FC = () => {
           }}
         >
           {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
+          <div className="relative z-30 flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
               <Image
                 src="/redlogo.png"
@@ -495,7 +495,7 @@ const Home: React.FC = () => {
           }}
         >
           {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
+          <div className="relative z-30 flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
               <Image
                 src="/redlogo.png"
@@ -673,7 +673,7 @@ const Home: React.FC = () => {
           style={{ backgroundImage: "url('/kh.png')" }}>
 
           {/* Navbar */}
-          <div className="flex items-center justify-between px-8">
+          <div className="relative z-30 flex items-center justify-between px-8">
             {/* Logo */}
             <div onClick={handleClick} className="cursor-pointer">
               <Image
@@ -690,7 +690,7 @@ const Home: React.FC = () => {
 
 
               {/* NAV BAR — unchanged */}
-              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
+              <div className=" bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
                 <OfferingsDropdown textColor="text-white" />
                 <ExploreRoomsDropdown textColor="text-white" />
                 <NavMore textColor="text-white" />
@@ -729,7 +729,7 @@ const Home: React.FC = () => {
           {/* ✅ Right: Form (same structure, just visually smaller) */}
           <div
             id="franchise-form"
-            className="relative z-20 md:w-[420px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-100 ml-190 self-center pointer-events-auto"
+            className="relative  md:w-[420px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-100 ml-190 self-center pointer-events-auto"
           >
             <div className="text-white text-2xl manrope-medium mb-5">
               Enter your details to get started
