@@ -6,6 +6,7 @@ import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
 import { useRouter } from "next/navigation";
 import OverlapNavBar from "../OverlapNavBar";
+import MagneticButton from "../Home/MagneticButton";
 
 
 
@@ -87,39 +88,66 @@ const ContactHeader: React.FC = () => {
 
         {/* 2560 Version */}
 
-        <div className="desktop-2560  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Living%20Room%20RH.png')" }}>
-          {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
-            <div onClick={handleClick} className="cursor-pointer">
-              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
-            </div>
-            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center  text-[18px] md:flex gap-12 manrope text-white tracking-widest ml-70 mt-4">
-              <OfferingsDropdown textColor="text-white" />
-              <ExploreRoomsDropdown textColor="text-white" />
-              <NavMore textColor="text-white" />
-            </div>
-        <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
-          </div>
-          {/* Hero content */}
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-              Living room interiors
-            </h1>
+        <div className="desktop-2560">
+          <div className="hidden md:block w-full h-[900px] overflow-hidden relative">
+            {/* Background Image */}
+            <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/career%20page/iStock-1230799437.png')" }}></div>
 
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-              Stylish and functional living room interiors designed to reflect your lifestyle.
-            </p>
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-transparent z-[5]"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
 
-            <div className="flex gap-4">
-              <button
+            {/* Navbar */}
+            <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
+              <div onClick={handleClick} className="cursor-pointer">
+                <Image
+                  src="/whitelogo.png"
+                  alt="HUB Interior Logo"
+                  width={250}
+                  height={250}
+                  className="w-[230px] h-[250px] ml-9"
+                />
+              </div>
+              {/* Nav Links */}
+              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
+
+              {/* CTA */}
+              <div className="relative mr-15">
+                <button
+                  onClick={handleGetEstimate}
+                  className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                >
+                  BOOK CONSULTATION
+
+                  {/* FREE Badge */}
+                  <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                    <img src="/free.png" alt="Free" className="w-full h-full" />
+                    <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                      FREE
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Hero content */}
+            <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+              <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
+                Living room interiors
+              </h1>
+              <p className="text-lg mb-6 drop-shadow-lg">
+                Stylish and functional living room interiors designed to reflect your lifestyle.
+              </p>
+              <MagneticButton 
+                text="Get free quote"
                 onClick={calculate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
-              >
-                Get free quote
-              </button>
+              />
             </div>
           </div>
-
         </div>
 
       </div>
@@ -128,50 +156,66 @@ const ContactHeader: React.FC = () => {
       {/* 1920 version */}
 
       <div className="desktop-1920">
+        <div className="hidden md:block w-full h-[900px] overflow-hidden relative">
+          {/* Background Image */}
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/career%20page/iStock-1230799437.png')" }}></div>
 
-        <div className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Living%20Room%20RH.png')" }}>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/50 to-transparent z-[5]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
+
           {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
             <div onClick={handleClick} className="cursor-pointer">
               <Image
-                src="/redlogo.png"
+                src="/whitelogo.png"
                 alt="HUB Interior Logo"
                 width={250}
-                height={100}
-                className="w-[250px] h-full -mt-3 ml-2"
+                height={250}
+                className="w-[230px] h-[250px] ml-9"
               />
             </div>
 
-            <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] md:flex gap-12 manrope text-white tracking-widest ml-80 mt-4">
+            {/* Nav Links */}
+            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
               <OfferingsDropdown textColor="text-white" />
               <ExploreRoomsDropdown textColor="text-white" />
               <NavMore textColor="text-white" />
             </div>
-            <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl manrope  mr-15 mt-5 shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
-          </div>
-          {/* Hero content */}
 
-          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-              Living room interiors
-            </h1>
-
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-              Stylish and functional living room interiors designed to reflect your lifestyle.
-            </p>
-
-            <div className="flex gap-4">
+            {/* CTA */}
+            <div className="relative mr-15">
               <button
-                onClick={calculate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
+                onClick={handleGetEstimate}
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
-                Get free quote
+                BOOK CONSULTATION
+
+                {/* FREE Badge */}
+                <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                  <img src="/free.png" alt="Free" className="w-full h-full" />
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                    FREE
+                  </span>
+                </span>
               </button>
             </div>
           </div>
 
+          {/* Hero content */}
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
+              Living room interiors
+            </h1>
+            <p className="text-lg mb-6 drop-shadow-lg">
+              Stylish and functional living room interiors designed to reflect your lifestyle.
+            </p>
+            <MagneticButton 
+              text="Get free quote"
+              onClick={calculate}
+            />
+          </div>
         </div>
-
       </div>
 
 
@@ -180,55 +224,65 @@ const ContactHeader: React.FC = () => {
       {/* 1280 version */}
 
       <div className="desktop-1280">
-        <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
-          {/* Inner container with background */}
-          <div
-            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-            style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Living%20Room%20RH.png')" }}
-          >
-            {/* Navbar */}
-            <div className="flex items-center justify-between px-8">
-              {/* Logo */}
-              <div onClick={handleClick} className="cursor-pointer">
-                <Image
-                  src="/redlogo.png"
-                  alt="HUB Interior Logo"
-                  width={230}
-                  height={250}
-                  className="w-[full] h-[full] -mt-12 -ml-8"
-                />
-              </div>
+        <div className="hidden md:block w-full h-[800px] overflow-hidden relative">
+          {/* Background Image */}
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/career%20page/iStock-1230799437.png')" }}></div>
 
-              {/* Center Navigation */}
-              <div className="hidden bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center md:flex gap-10 text-[18px] manrope -mt-12 ml-25 text-white tracking-widest">
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/50 to-transparent z-[5]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
+
+          {/* Navbar */}
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px] px-8">
+            {/* Logo */}
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image
+                src="/whitelogo.png"
+                alt="HUB Interior Logo"
+                width={230}
+                height={250}
+                className="w-[230px] h-[250px]"
+              />
+            </div>
+
+            {/* Center Navigation */}
+            <div className="hidden md:flex items-center gap-12">
+              {/* NAV BAR */}
+              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest">
                 <OfferingsDropdown textColor="text-white" />
                 <ExploreRoomsDropdown textColor="text-white" />
                 <NavMore textColor="text-white" />
               </div>
 
-              {/* Right CTA */}
-              <button onClick={handleGetEstimate} className="bg-[#ef0101] hover:bg-[#ebd457] text-[18px] tracking-wide text-white px-4 py-2 rounded-4xl manrope  mr-5 -mt-12 shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">BOOK CONSULTATION</button>
-            </div>
-
-            {/* Hero content */}
-            <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
-              <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-                Living room interiors
-              </h1>
-
-              <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-                Stylish and functional living room interiors designed to reflect your lifestyle.
-              </p>
-
+              {/* CTA */}
               <button
-                onClick={calculate}
-                className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope-medium hover:bg-yellow-400 transition text-center"
+                onClick={handleGetEstimate}
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[250px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[16px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
-                Get free quote
+                BOOK CONSULTATION
+
+                <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                  <img src="/free.png" alt="Free" className="w-full h-full" />
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                    FREE
+                  </span>
+                </span>
               </button>
             </div>
+          </div>
 
-
+          {/* Hero content */}
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
+              Living room interiors
+            </h1>
+            <p className="text-lg mb-6 drop-shadow-lg">
+              Stylish and functional living room interiors designed to reflect your lifestyle.
+            </p>
+            <MagneticButton 
+              text="Get free quote"
+              onClick={calculate}
+            />
           </div>
         </div>
       </div>
@@ -261,7 +315,7 @@ const ContactHeader: React.FC = () => {
 
           {/* top logo */}
           <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
+            <Image src="/whitelogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer w-[110px] h-[95px]" />
           </div>
 
 
@@ -277,9 +331,10 @@ const ContactHeader: React.FC = () => {
           </div>
           {/* CTA overlapping, positioned above image */}
           <div className="absolute left-6 -bottom-5 z-20">
-            <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
-              Get Free Quote
-            </button>
+            <MagneticButton 
+              text="Get free quote"
+              onClick={calculate}
+            />
           </div>
           <OverlapNavBar />
         </div>
@@ -304,7 +359,7 @@ const ContactHeader: React.FC = () => {
 
           {/* top logo */}
           <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
-            <Image src="/redlogo.png" alt="HUB Interior Logo" width={82} height={50} className="cursor-pointer" />
+            <Image src="/whitelogo.png" alt="HUB Interior Logo" width={82} height={50} className="cursor-pointer w-[110px] h-[95px]" />
           </div>
 
           {/* text + cta */}
@@ -318,9 +373,10 @@ const ContactHeader: React.FC = () => {
           </div>
           {/* CTA overlapping, positioned above image */}
           <div className="absolute left-6 -bottom-5 z-20">
-            <button onClick={handleGetEstimate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
-              Get Free Quote
-            </button>
+            <MagneticButton 
+              text="Get free quote"
+              onClick={calculate}
+            />
           </div>
         </div>
         <OverlapNavBar />

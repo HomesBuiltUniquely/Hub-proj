@@ -61,27 +61,43 @@ const ContactHeader: React.FC = () => {
 
       <div className="desktop-2560">
 
-        <div className="hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/career%20H.png')" }}>
-          {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
-            <div onClick={handleClick} className="cursor-pointer">
-              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
-            </div>
-            <div className="hidden md:flex items-center gap-12">
-              {/* NAV BAR — unchanged */}
-              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
-                <OfferingsDropdown textColor="text-white" />
-                <ExploreRoomsDropdown textColor="text-white" />
-                <NavMore textColor="text-white" />
-              </div>
+        <div className="hidden md:block w-full h-[900px] overflow-hidden relative">
+          {/* Background Image */}
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/career%20page/carrerhome.png')" }}></div>
 
-              {/* CTA — unchanged */}
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-[5]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
+
+          {/* Navbar */}
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
+            {/* Logo */}
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image
+                src="/whitelogo.png"
+                alt="HUB Interior Logo"
+                width={250}
+                height={250}
+                className="w-[230px] h-[250px] ml-9"
+              />
+            </div>
+
+            {/* Nav Links */}
+            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
+
+            {/* CTA */}
+            <div className="relative mr-15">
               <button
                 onClick={handleGetEstimate}
-                className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 BOOK CONSULTATION
 
+                {/* FREE Badge */}
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
@@ -91,52 +107,60 @@ const ContactHeader: React.FC = () => {
               </button>
             </div>
           </div>
+
           {/* Hero content */}
-          <div className="flex flex-col items-center justify-center  pb-20 text-white text-center mt-33">
-            <h1 className="text-5xl lg:text-6xl wulkan-display tracking-wide">Together,</h1>
-            <p className="text-6xl manrope-medium mb-2 mt-2">We Build Better</p>
-            <div className="w-[400px] manrope-medium mb-2">Be part of a culture that values innovation, growth, and the power of good design.</div>
-            <div className="flex gap-4">
-              <button className="text-md bg-transparent border-1 border-white text-white px-6 py-4 rounded-2xl manrope shadow ">Current Openings</button>
-            </div>
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
+              Together<br />
+              We Build Better
+            </h1>
+            <p className="text-lg mb-6 drop-shadow-lg">Be part of a culture that values innovation, growth, and the power of good design.</p>
           </div>
-
-
-
         </div>
-
-
       </div>
 
 
 
       {/* 1920 Version */}
 
-
       <div className="desktop-1920">
+        <div className="hidden md:block w-full h-[900px] overflow-hidden relative">
+          {/* Background Image */}
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/career%20page/carrerhome.png')" }}></div>
 
-        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/career%20H.png')" }}>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/50 to-transparent z-[5]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
+
           {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
+            {/* Logo */}
             <div onClick={handleClick} className="cursor-pointer">
-              <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
+              <Image
+                src="/whitelogo.png"
+                alt="HUB Interior Logo"
+                width={250}
+                height={250}
+                className="w-[230px] h-[250px] ml-9"
+              />
             </div>
 
-            <div className="hidden md:flex items-center gap-12">
-              {/* NAV BAR — unchanged */}
-              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
-                <OfferingsDropdown textColor="text-white" />
-                <ExploreRoomsDropdown textColor="text-white" />
-                <NavMore textColor="text-white" />
-              </div>
+            {/* Nav Links */}
+            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
 
-              {/* CTA — unchanged */}
+            {/* CTA */}
+            <div className="relative mr-15">
               <button
                 onClick={handleGetEstimate}
-                className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 BOOK CONSULTATION
 
+                {/* FREE Badge */}
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
@@ -146,21 +170,16 @@ const ContactHeader: React.FC = () => {
               </button>
             </div>
           </div>
+
           {/* Hero content */}
-          <div className="flex flex-col items-center justify-center  pb-20 text-white text-center mt-33">
-            <h1 className="text-5xl lg:text-6xl wulkan-display tracking-wide">Together,</h1>
-            <p className="text-6xl manrope-medium mb-2 mt-2">We Build Better</p>
-            <div className="w-[400px] manrope-medium mb-2">Be part of a culture that values innovation, growth, and the power of good design.</div>
-            <div className="flex gap-4">
-              <button className="text-md bg-transparent border-1 border-white text-white px-6 py-4 rounded-2xl manrope shadow ">Current Openings</button>
-            </div>
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
+              Together<br />
+              We Build Better
+            </h1>
+            <p className="text-lg mb-6 drop-shadow-lg">Be part of a culture that values innovation, growth, and the power of good design.</p>
           </div>
-
-
-
         </div>
-
-
       </div>
 
 
@@ -169,105 +188,98 @@ const ContactHeader: React.FC = () => {
       {/* 1280 Version */}
 
       <div className="desktop-1280">
-        <div className="hidden md:flex justify-center  bg-[#f9f9f9]">
-          {/* Inner container with background */}
-          <div
-            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-            style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/career%20H.png')" }}
-          >
-            {/* Navbar */}
-            <div className="flex items-center justify-between px-8">
-              {/* Logo */}
-              <div onClick={handleClick} className="cursor-pointer">
-                <Image
-                  src="/redlogo.png"
-                  alt="HUB Interior Logo"
-                  width={230}
-                  height={250}
-                  className="w-[full] h-[full] -mt-12 -ml-8"
-                />
+        <div className="hidden md:block w-full h-[800px] overflow-hidden relative">
+          {/* Background Image */}
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/career%20H.png')" }}></div>
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-[5]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
+
+          {/* Navbar */}
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px] px-8">
+            {/* Logo */}
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image
+                src="/whitelogo.png"
+                alt="HUB Interior Logo"
+                width={230}
+                height={250}
+                className="w-[230px] h-[250px]"
+              />
+            </div>
+
+            {/* Center Navigation */}
+            <div className="hidden md:flex items-center gap-12">
+              {/* NAV BAR */}
+              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
               </div>
 
-              {/* Center Navigation */}
-              <div className="hidden md:flex -mt-12 items-center gap-12">
+              {/* CTA */}
+              <button
+                onClick={handleGetEstimate}
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[250px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[16px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+              >
+                BOOK CONSULTATION
 
-
-                {/* NAV BAR — unchanged */}
-                <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
-                  <OfferingsDropdown textColor="text-white" />
-                  <ExploreRoomsDropdown textColor="text-white" />
-                  <NavMore textColor="text-white" />
-                </div>
-
-                {/* CTA — unchanged */}
-                <button
-                  onClick={handleGetEstimate}
-                  className="relative bg-[#ef0101] mr-1 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
-                >
-                  BOOK CONSULTATION
-
-                  <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
-                    <img src="/free.png" alt="Free" className="w-full h-full" />
-                    <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
-                      FREE
-                    </span>
+                <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                  <img src="/free.png" alt="Free" className="w-full h-full" />
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                    FREE
                   </span>
-                </button>
-
-              </div>
+                </span>
+              </button>
             </div>
-
-            {/* Hero content */}
-            <div className="flex flex-col items-center justify-center pt-24 pb-20 text-white text-center mt-15">
-              <h1 className="text-5xl lg:text-6xl wulkan-display tracking-wide">Together,</h1>
-              <p className="text-6xl manrope-medium mb-2 ">We Build Better.</p>
-              <div className="w-[400px] manrope-medium">Be part of a culture that values innovation, growth, and the power of good design.</div>
-              <div className="flex gap-4 mt-2">
-                <button className="text-md bg-transparent border-1 border-white text-white px-6 py-4 rounded-2xl manrope shadow ">Current Openings</button>
-              </div>
-            </div>
-
           </div>
 
-
+          {/* Hero content */}
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
+              Together<br />
+              We Build Better
+            </h1>
+            <p className="text-lg mb-6 drop-shadow-lg">Be part of a culture that values innovation, growth, and the power of good design.</p>
+          </div>
         </div>
-
       </div>
 
 
       {/* Mobile Version */}
 
       <div>
-
-        <div className="md:hidden w-full max-w-[425px] mx-auto  mb-5 overflow-hidden">
+        <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-hidden">
           <div className="relative h-full w-full p-2">
             {/* Rounded image only */}
-            <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/CareeR%20MH.png" alt="" />
+            <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/CareeR%20MH.png" alt="Career Hero" />
 
             {/* top logo */}
-            <div className="absolute top-2 -mt-5 -ml-1">
+            <div className="absolute top-2 -mt-5 -ml-1 z-10">
               <Image
-                src="/redlogo.png"
+                src="/whitelogo.png"
                 alt="HUB Interior Logo"
                 width={90}
                 height={25}
-                className="cursor-pointer"
+                className="cursor-pointer w-[110px] h-[95px]"
+                onClick={handleClick}
               />
             </div>
 
-
-            {/* Overlay text + CTA */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3">
-              <div className="flex flex-col text-left items-center  mt-54 pb-20 text-white text-center mt-15">
-                <h1 className="text-3xl wulkan-display mb-1 tracking-wide mr-48">Together,</h1>
-                <p className="text-3xl text-nowrap manrope-medium mb-3 mr-23">We Build Better.</p>
-                <div className="w-[330px] ml-5 manrope-medium">Be part of a culture that values innovation, growth, and the power of good design.</div>
+            {/* Overlay text */}
+            <div className="absolute inset-0 flex flex-col items-start justify-start px-3">
+              <div className="flex flex-col text-left mt-54 pb-20 text-white mt-15 ml-5 wulkan-display-bold">
+                <h1 className="text-3xl mb-1 drop-shadow-lg leading-tight">
+                  Together<br />
+                  We Build Better
+                </h1>
+                <p className="text-sm mb-3 drop-shadow-lg w-[330px]">Be part of a culture that values innovation, growth, and the power of good design.</p>
               </div>
             </div>
           </div>
           <OverlapNavBar />
         </div>
-
       </div>
 
     </div>
