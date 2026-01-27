@@ -575,16 +575,23 @@ const Herosection: React.FC = () => {
           <div className="w-full max-w-[360px] relative bg-gray-100 mt-1 rounded-[35px] overflow-hidden mx-auto">
 
             <div className="relative z-20 flex items-center justify-between ">
-              <img src="/redlogo.png" className="w-[110px] h-[95px] -mb-2 "></img>
+              <img src="/redlogo.png" className="w-[110px] h-[95px] -mb-1 -ml-3"></img>
             </div>
           </div>
 
-
-          <img className="w-full max-w-[360px] h-auto rounded-4xl relative -mt-14 mx-auto" src={`/hh1${(currentSlide % mobileTexts.length) + 1}.png`} />
-          <div className="-mt-55 w-[300px] text-left text-4xl manrope text-white mx-auto wulkan-display-bold absolute ml-7">{mobileTexts[currentSlide % mobileTexts.length]}</div>
-          {/* Horizontal line above button */}
-          <div className="w-[295px] h-[1px] bg-gray-300 absolute -mt-23 ml-7"></div>
-          <button onClick={handleGetEstimate} className="bg-[#FF0000] text-nowrap text-white px-7 py-2 rounded-4xl -mt-20 ml-7 manrope text-sm absolute h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+          {/* Image Container with Overlay Content */}
+          <div className="relative w-full max-w-[360px] mx-auto -mt-14">
+            <img className="w-full max-w-[360px] h-auto rounded-4xl" src={`/hh1${currentSlide + 1}.png`} />
+            
+            {/* Text Overlay */}
+            <div className="absolute bottom-[140px] left-0 w-[300px] text-left text-4xl manrope text-white wulkan-display-bold ml-4">{mobileTexts[currentSlide]}</div>
+            
+            {/* Horizontal line above button */}
+           
+            
+            {/* Button */}
+            <button onClick={handleGetEstimate} className="absolute bottom-[50px] left-0 bg-[#FF0000] text-nowrap text-white px-7 py-2 rounded-4xl ml-4 manrope text-sm h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+          </div>
         </div>
 
 
@@ -599,14 +606,22 @@ const Herosection: React.FC = () => {
                 alt="HUB Interior Logo"
                 width={90}
                 height={25}
-                className="cursor-pointer w-[100px] h-[90px] -ml-1 -mt-5 mb-2" />
+                className="cursor-pointer w-[100px] h-[90px] ml-4 -mt-5 mb-4" />
             </div>
           </div>
-          <img className="max-w-[425px] h-[500px] rounded-4xl relative -mt-18 mx-auto" src={`/hh1${(currentSlide % mobileTexts.length) + 1}.png`} />
-          <div className="-mt-62 w-[250px] text-left text-3xl manrope text-white mx-auto wulkan-display-bold absolute ml-8">{mobileTexts[currentSlide % mobileTexts.length]}</div>
-          {/* Horizontal line above button */}
-          <div className="w-[300px]  h-[1px] bg-gray-300 absolute -mt-32 ml-8"></div>
-          <button className="bg-[#FF0000] text-white  text-nowrap px-7 py-2 rounded-4xl -mt-28 ml-8 manrope absolute shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+          
+          {/* Image Container with Overlay Content */}
+          <div className="relative max-w-[425px] mx-auto -mt-18">
+            <img className="max-w-[425px] h-[500px] mx-auto rounded-4xl" src={`/hh1${currentSlide + 1}.png`} />
+            
+            {/* Text Overlay */}
+            <div className="absolute bottom-[140px] left-0 w-[250px] text-left text-3xl manrope text-white wulkan-display-bold ml-20">{mobileTexts[currentSlide]}</div>
+            
+            {/* Horizontal line above button */}
+            
+            {/* Button */}
+            <button onClick={handleGetEstimate} className="absolute bottom-[50px] left-0 bg-[#FF0000] text-white text-nowrap px-7 py-2 rounded-4xl ml-20 manrope shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+          </div>
         </div>
         <OverlapNavBar />
       </div>

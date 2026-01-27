@@ -7,11 +7,11 @@ import cityOptions from "./DropDown1"
 import { normalizePhoneNumber } from "@/lib/utils"
 
 const carouselImages = [
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/living_room_1.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/modular_kitchen_2.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/Modular_kitchen_3.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/living_room_4.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/Modular_kitchen_3.png",
+  "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//3.png",
+  "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1.png",
+  "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//2.png",
+  "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//3.png",
+  "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.png"
 ];
 const carouselImages1 = [
   "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/living_room_1.png",

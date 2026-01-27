@@ -22,14 +22,117 @@ export default function Section6() {
     }
   };
 
+  // Desktop categories - used for 1280px, 1920px, and 2560px versions
+  const desktopCategories = [
+    {
+      name: "Smart Storage",
+      slides: [
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart1.png",
+          title: "Tailored Storage Designs For Maximum Space",
+          subtitle: "Unlock 25% Extra Space"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart2.png",
+          title: "Built-in Wardrobe Solutions",
+          subtitle: "Custom Storage for Every Room"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart3.png",
+          title: "Multi-functional Furniture",
+          subtitle: "Space-Saving Design Innovation"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart4.png",
+          title: "Hidden Storage Solutions",
+          subtitle: "Seamless Integration"
+        }
+      ]
+    },
+    {
+      name: "Modular Kitchens",
+      slides: [
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen1.jpg",
+          title: "Modern Kitchen Design",
+          subtitle: "Functional Beauty"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%202.png",
+          title: "Smart Kitchen Storage",
+          subtitle: "Organized Cooking Space"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064686.jpeg",
+          title: "Premium Kitchen Materials",
+          subtitle: "Quality Craftsmanship"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064701.jpeg",
+          title: "Kitchen Workflow Design",
+          subtitle: "Efficient Layout Planning"
+        }
+      ]
+    },
+    {
+      name: "Bedrooms",
+      slides: [
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//bedroom_interior_design.jpg",
+          title: "Master Bedroom Design",
+          subtitle: "Luxury Meets Comfort"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//BEDROOM%202.png",
+          title: "Kids Room Solutions",
+          subtitle: "Fun and Functional"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//BEDROOM%203.png",
+          title: "Guest Room Design",
+          subtitle: "Welcoming Spaces"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//BEDROOM%204.png",
+          title: "Bedroom Storage Systems",
+          subtitle: "Clutter-Free Living"
+        }
+      ]
+    },
+    {
+      name: "Living Spaces",
+      slides: [
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//LIVING%201.png",
+          title: "Living Room Design",
+          subtitle: "Entertainment Hub"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//LIVING%202.png",
+          title: "Dining Area Solutions",
+          subtitle: "Gathering Spaces"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//LIVING%203.png",
+          title: "Home Office Design",
+          subtitle: "Productive Environments"
+        },
+        {
+          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064700.jpeg",
+          title: "Entertainment Centers",
+          subtitle: "Modern Living"
+        }
+      ]
+    }
+  ];
 
-  const categories = [
+  // Mobile categories - used for mobile carousel
+  const mobileCategories = [
     {
       name: "Smart Storage",
       slides: [
         {
           image: "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/smart%20storage/smart_saving_1.png",
-
           title: "Tailored Storage Designs For Maximum Space",
           subtitle: "Unlock 25% Extra Space"
         },
@@ -128,12 +231,15 @@ export default function Section6() {
   ];
 
   // Auto-rotate slides within current category (Desktop)
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentSlide((prev) => (prev === 3 ? 0 : prev + 1));
-  //   }, 4000);
-  //   return () => clearInterval(interval);
-  // }, [currentCategory]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => {
+        const maxSlides = desktopCategories[currentCategory].slides.length;
+        return (prev + 1) % maxSlides;
+      });
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [currentCategory]);
 
   // Auto-advance mobile carousels
   // useEffect(() => {
@@ -153,8 +259,20 @@ export default function Section6() {
     setCurrentSlide(0);
   }, [currentCategory]);
 
-  const currentSlides = categories[currentCategory].slides;
+  const currentSlides = desktopCategories[currentCategory].slides;
 
+  // Desktop carousel navigation handlers
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % currentSlides.length);
+  };
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + currentSlides.length) % currentSlides.length);
+  };
+
+  const handleSlideClick = (index: number) => {
+    setCurrentSlide(index);
+  };
 
   // Swipe tracking
   const [touchStartX, setTouchStartX] = useState(0);
@@ -251,9 +369,29 @@ export default function Section6() {
                 </button>
               </div>
 
+              {/* Navigation Arrows */}
+              <button
+                onClick={handlePrevSlide}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full p-3 transition-all z-10"
+                aria-label="Previous slide"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={handleNextSlide}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full p-3 transition-all z-10"
+                aria-label="Next slide"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
               {/* Category Navigation */}
               <div className="absolute bottom-8 right-8 flex gap-3 manrope-medium">
-                {categories.map((category, index) => (
+                {desktopCategories.map((category, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentCategory(index)}
@@ -267,16 +405,18 @@ export default function Section6() {
                 ))}
               </div>
 
-              {/* Progress Bar Indicator */}
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
+              {/* Progress Bar Indicator - Clickable */}
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
                 <div className="flex gap-1">
                   {currentSlides.map((_, index) => (
-                    <div
+                    <button
                       key={index}
-                      className={`h-1 rounded-full transition-all duration-300 ${index <= currentSlide
+                      onClick={() => handleSlideClick(index)}
+                      className={`h-1 rounded-full transition-all duration-300 ${index === currentSlide
                         ? 'bg-white w-12'
-                        : 'bg-gray-300 bg-opacity-30 w-12'
+                        : 'bg-gray-300 bg-opacity-30 w-12 hover:bg-opacity-50'
                         }`}
+                      aria-label={`Go to slide ${index + 1}`}
                     />
                   ))}
                 </div>
@@ -314,9 +454,29 @@ export default function Section6() {
                 </button>
               </div>
 
+              {/* Navigation Arrows */}
+              <button
+                onClick={handlePrevSlide}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full p-3 transition-all z-10"
+                aria-label="Previous slide"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={handleNextSlide}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full p-3 transition-all z-10"
+                aria-label="Next slide"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
               {/* Category Navigation */}
               <div className="absolute bottom-8 right-8 flex gap-3 manrope-medium">
-                {categories.map((category, index) => (
+                {desktopCategories.map((category, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentCategory(index)}
@@ -330,16 +490,18 @@ export default function Section6() {
                 ))}
               </div>
 
-              {/* Progress Bar Indicator */}
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
+              {/* Progress Bar Indicator - Clickable */}
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
                 <div className="flex gap-1">
                   {currentSlides.map((_, index) => (
-                    <div
+                    <button
                       key={index}
-                      className={`h-1 rounded-full transition-all duration-300 ${index <= currentSlide
+                      onClick={() => handleSlideClick(index)}
+                      className={`h-1 rounded-full transition-all duration-300 ${index === currentSlide
                         ? 'bg-white w-12'
-                        : 'bg-gray-300 bg-opacity-30 w-12'
+                        : 'bg-gray-300 bg-opacity-30 w-12 hover:bg-opacity-50'
                         }`}
+                      aria-label={`Go to slide ${index + 1}`}
                     />
                   ))}
                 </div>
@@ -378,9 +540,29 @@ export default function Section6() {
                 </button>
               </div>
 
+              {/* Navigation Arrows */}
+              <button
+                onClick={handlePrevSlide}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full p-3 transition-all z-10"
+                aria-label="Previous slide"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={handleNextSlide}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full p-3 transition-all z-10"
+                aria-label="Next slide"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
               {/* Category Navigation */}
               <div className="absolute bottom-8 right-8 flex gap-3 manrope-medium">
-                {categories.map((category, index) => (
+                {desktopCategories.map((category, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentCategory(index)}
@@ -394,16 +576,18 @@ export default function Section6() {
                 ))}
               </div>
 
-              {/* Progress Bar Indicator */}
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
+              {/* Progress Bar Indicator - Clickable */}
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10">
                 <div className="flex gap-1">
                   {currentSlides.map((_, index) => (
-                    <div
+                    <button
                       key={index}
-                      className={`h-1 rounded-full transition-all duration-300 ${index <= currentSlide
+                      onClick={() => handleSlideClick(index)}
+                      className={`h-1 rounded-full transition-all duration-300 ${index === currentSlide
                         ? 'bg-white w-12'
-                        : 'bg-gray-300 bg-opacity-30 w-12'
+                        : 'bg-gray-300 bg-opacity-30 w-12 hover:bg-opacity-50'
                         }`}
+                      aria-label={`Go to slide ${index + 1}`}
                     />
                   ))}
                 </div>
@@ -431,7 +615,7 @@ export default function Section6() {
               onTouchStart={(e) => setTouchStartX(e.changedTouches[0].clientX)}
               onTouchEnd={(e) => {
                 setTouchEndX(e.changedTouches[0].clientX);
-                handleSwipe("smartStorage", categories[0].slides.length);
+                handleSwipe("smartStorage", mobileCategories[0].slides.length);
               }}
             >
 
@@ -440,7 +624,7 @@ export default function Section6() {
                 style={{ transform: `translateX(-${mobileSlides.smartStorage * 100}%)` }}
 
               >
-                {categories[0].slides.map((slide, index) => (
+                {mobileCategories[0].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <img
                       className='w-full h-[450px] rounded-4xl object-cover'
@@ -454,7 +638,7 @@ export default function Section6() {
 
             {/* Dot indicators */}
             <div className="flex justify-center mt-4 gap-2">
-              {categories[0].slides.map((_, index) => (
+              {mobileCategories[0].slides.map((_, index) => (
                 <div
                   key={index}
                   className={`h-1.5 w-1.5 rounded-full transition-all duration-300 
@@ -480,7 +664,7 @@ export default function Section6() {
               onTouchStart={(e) => setTouchStartX(e.changedTouches[0].clientX)}
               onTouchEnd={(e) => {
                 setTouchEndX(e.changedTouches[0].clientX);
-                handleSwipe("modularKitchen", categories[1].slides.length);
+                handleSwipe("modularKitchen", mobileCategories[1].slides.length);
               }}
             >
 
@@ -490,7 +674,7 @@ export default function Section6() {
 
               >
 
-                {categories[1].slides.map((slide, index) => (
+                {mobileCategories[1].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <img
                       className='w-full h-[450px] rounded-4xl object-cover'
@@ -505,7 +689,7 @@ export default function Section6() {
             {/* Dot indicators */}
 
             <div className="flex justify-center mt-4 gap-2">
-              {categories[1].slides.map((_, index) => (
+              {mobileCategories[1].slides.map((_, index) => (
                 <div
                   key={index}
                   className={`h-1.5 w-1.5 rounded-full transition-all duration-300 
@@ -528,7 +712,7 @@ export default function Section6() {
               onTouchStart={(e) => setTouchStartX(e.changedTouches[0].clientX)}
               onTouchEnd={(e) => {
                 setTouchEndX(e.changedTouches[0].clientX);
-                handleSwipe("bedrooms", categories[2].slides.length);
+                handleSwipe("bedrooms", mobileCategories[2].slides.length);
               }}
             >
 
@@ -537,7 +721,7 @@ export default function Section6() {
                 style={{ transform: `translateX(-${mobileSlides.bedrooms * 100}%)` }}
 
               >
-                {categories[2].slides.map((slide, index) => (
+                {mobileCategories[2].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <img
                       className='w-full h-[450px] rounded-4xl object-cover'
@@ -551,7 +735,7 @@ export default function Section6() {
 
             {/* Dot indicators */}
             <div className="flex justify-center mt-4 gap-2">
-              {categories[2].slides.map((_, index) => (
+              {mobileCategories[2].slides.map((_, index) => (
                 <div
                   key={index}
                   className={`h-1.5 w-1.5 rounded-full transition-all duration-300 
@@ -574,7 +758,7 @@ export default function Section6() {
               onTouchStart={(e) => setTouchStartX(e.changedTouches[0].clientX)}
               onTouchEnd={(e) => {
                 setTouchEndX(e.changedTouches[0].clientX);
-                handleSwipe("livingSpaces", categories[3].slides.length);
+                handleSwipe("livingSpaces", mobileCategories[3].slides.length);
               }}
             >
 
@@ -583,7 +767,7 @@ export default function Section6() {
                 style={{ transform: `translateX(-${mobileSlides.livingSpaces * 100}%)` }}
 
               >
-                {categories[3].slides.map((slide, index) => (
+                {mobileCategories[3].slides.map((slide, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <img
                       className='w-full h-[450px] rounded-4xl object-cover'
@@ -597,7 +781,7 @@ export default function Section6() {
 
             {/* Dot indicators */}
             <div className="flex justify-center mt-4 gap-2">
-              {categories[3].slides.map((_, index) => (
+              {mobileCategories[3].slides.map((_, index) => (
                 <div
                   key={index}
                   className={`h-1.5 w-1.5 rounded-full transition-all duration-300 
