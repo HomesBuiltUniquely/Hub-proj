@@ -67,49 +67,6 @@ export default function RootLayout({
             fbq('track', 'PageView');`}
       </Script>
 
-      <Script
-        id="whatsapp-conditional"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-          if (typeof window !== 'undefined') {
-            const currentPath = window.location.pathname;
-            const hideWhatsAppPaths = [
-              '/interior-designers-in-bangalore',
-              '/interior-designers-in-bangalore/Calculator',
-              
-            ];
-            
-            const shouldHideWhatsApp = hideWhatsAppPaths.some(path => 
-              currentPath === path || currentPath.startsWith(path + '/')
-            );
-            
-            console.log('Current path:', currentPath);
-            console.log('Should hide WhatsApp:', shouldHideWhatsApp);
-            
-            if (!shouldHideWhatsApp) {
-              console.log('Loading WhatsApp widget...');
-              const script = document.createElement('script');
-              script.type = 'text/javascript';
-              script.src = 'https://d3mkw6s8thqya7.cloudfront.net/integration-plugin.js';
-              script.id = 'aisensy-wa-widget';
-              script.setAttribute('widget-id', 'aaaqjb');
-              script.onload = function() {
-                console.log('WhatsApp widget loaded successfully');
-              };
-              script.onerror = function() {
-                console.error('Failed to load WhatsApp widget');
-              };
-              document.head.appendChild(script);
-            } else {
-              console.log('WhatsApp widget hidden for this page');
-            }
-          }
-
-        `
-        }}
-      />
-
       <noscript>
         <img
           height="1"

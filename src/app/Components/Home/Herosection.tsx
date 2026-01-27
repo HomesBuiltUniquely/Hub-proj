@@ -9,10 +9,64 @@ import NavMore from "../NavMore";
 import OverlapNavBar from "../OverlapNavBar";
 import MagneticButton from "./MagneticButton";
 
-
+const MuteIcon: React.FC<{ muted: boolean }> = ({ muted }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    className="w-4 h-4"
+  >
+    {/* Mic body */}
+    <rect
+      x="9"
+      y="3"
+      width="6"
+      height="10"
+      rx="3"
+      className={muted ? "fill-white/60" : "fill-white"}
+    />
+    {/* Stand */}
+    <path
+      d="M8 11a4 4 0 0 0 8 0"
+      className={muted ? "stroke-white/60" : "stroke-white"}
+      strokeWidth="1.5"
+      fill="none"
+    />
+    <line
+      x1="12"
+      y1="15"
+      x2="12"
+      y2="19"
+      className={muted ? "stroke-white/60" : "stroke-white"}
+      strokeWidth="1.5"
+    />
+    <line
+      x1="9"
+      y1="19"
+      x2="15"
+      y2="19"
+      className={muted ? "stroke-white/60" : "stroke-white"}
+      strokeWidth="1.5"
+    />
+    {/* Mute slash */}
+    {muted && (
+      <line
+        x1="6"
+        y1="4"
+        x2="18"
+        y2="16"
+        className="stroke-red-400"
+        strokeWidth="1.5"
+      />
+    )}
+  </svg>
+);
 
 const Herosection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVideoEnded, setIsVideoEnded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [videoKey, setVideoKey] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
   const router = useRouter();
 
   const handleGetEstimate = () => {
@@ -22,21 +76,28 @@ const Herosection: React.FC = () => {
 
   const heroSlides = [
     {
+      type: "video" as const,
+      videoUrl: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/FINAL+VIDEO.mp4",
+      title: "From floor plan to lifestyle home, uniquely built",
+      subtitle: "Innovative interior design",
+      buttonText: "Book Free Consultation"
+    },
+    {
+      type: "image" as const,
       image: "/img1HH.jpg",
       title: "From floor plan to lifestyle home, uniquely built",
       subtitle: "Innovative interior design",
       buttonText: "Book Free Consultation"
     },
     {
+      type: "image" as const,
       image: "/img2HH.jpg",
       title: "Get your home interior cost estimate today",
       subtitle: "a Kitchen that inspires",
       buttonText: "Calculate Now"
     },
-
-    // hh3.png,img3HH.jpg
-
     {
+      type: "image" as const,
       image: "/img3HH.jpg",
       title: "From vision to reality, Interiors in 34 days",
       subtitle: "Living space today",
@@ -51,14 +112,51 @@ const Herosection: React.FC = () => {
     "From vision to reality, Interiors in 34 days"
   ];
 
+  // Detect desktop once on mount (used to control video-based autoplay behaviour)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const checkIsDesktop = () => {
+        setIsDesktop(window.innerWidth >= 768);
+      };
+      checkIsDesktop();
+      window.addEventListener("resize", checkIsDesktop);
+      return () => window.removeEventListener("resize", checkIsDesktop);
+    }
+  }, []);
+
   // Auto-slide effect
   useEffect(() => {
+    // If current slide is the video on desktop and it has not finished yet,
+    // do NOT auto-advance to the next slide.
+    const current = heroSlides[currentSlide];
+    if (isDesktop && current.type === "video" && !isVideoEnded) {
+      return;
+    }
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 4000); // Change slide every 4 seconds
+    }, 4000); // Change slide every 4 seconds once allowed
 
     return () => clearInterval(interval);
-  }, [heroSlides.length]);
+  }, [currentSlide, heroSlides.length, isDesktop, isVideoEnded]);
+
+  const handleVideoEnded = () => {
+    setIsVideoEnded(true);
+  };
+
+  // Whenever we arrive on the video slide again, start "waiting" from scratch
+  useEffect(() => {
+    const current = heroSlides[currentSlide];
+    if (current.type === "video") {
+      setIsVideoEnded(false);
+      // bump key so video element remounts and restarts
+      setVideoKey((prev) => prev + 1);
+    }
+  }, [currentSlide]);
+
+  const toggleMute = () => {
+    setIsMuted((prev) => !prev);
+  };
 
   function handleClick() {
     router.push("/");
@@ -124,10 +222,26 @@ const Herosection: React.FC = () => {
           {heroSlides.map((slide, index) => (
             <div
               key={index}
-              className={`absolute inset-0 bg-cover transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+              className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
                 }`}
-              style={{ backgroundImage: `url('${slide.image}')` }}
-            />
+            >
+              {slide.type === "image" ? (
+                <div
+                  className="absolute inset-0 bg-cover"
+                  style={{ backgroundImage: `url('${slide.image}')` }}
+                />
+              ) : (
+                <video
+                  key={videoKey}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src={slide.videoUrl}
+                  autoPlay
+                  muted={isMuted}
+                  playsInline
+                  onEnded={handleVideoEnded}
+                />
+              )}
+            </div>
           ))}
         </div>
 
@@ -176,16 +290,29 @@ const Herosection: React.FC = () => {
 
         </div>
 
-        {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-          <h1 className="text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
-            {heroSlides[currentSlide].title}
-          </h1>
-          <MagneticButton 
-            text={heroSlides[currentSlide].buttonText}
-            onClick={handleGetEstimate}
-          />
-        </div>
+        {/* Hero content (hidden on video slide) */}
+        {heroSlides[currentSlide].type !== "video" && (
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+              {heroSlides[currentSlide].title}
+            </h1>
+            <MagneticButton 
+              text={heroSlides[currentSlide].buttonText}
+              onClick={handleGetEstimate}
+            />
+          </div>
+        )}
+
+        {/* Mute / Unmute button on video slide */}
+        {heroSlides[currentSlide].type === "video" && (
+          <button
+            onClick={toggleMute}
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+            className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+          >
+            <MuteIcon muted={isMuted} />
+          </button>
+        )}
 
         {/* Carousel Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
@@ -211,10 +338,26 @@ const Herosection: React.FC = () => {
           {heroSlides.map((slide, index) => (
             <div
               key={index}
-              className={`absolute inset-0 bg-cover transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+              className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
                 }`}
-              style={{ backgroundImage: `url('${slide.image}')` }}
-            />
+            >
+              {slide.type === "image" ? (
+                <div
+                  className="absolute inset-0 bg-cover"
+                  style={{ backgroundImage: `url('${slide.image}')` }}
+                />
+              ) : (
+                <video
+                  key={videoKey}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  src={slide.videoUrl}
+                  autoPlay
+                  muted={isMuted}
+                  playsInline
+                  onEnded={handleVideoEnded}
+                />
+              )}
+            </div>
           ))}
         </div>
 
@@ -265,16 +408,29 @@ const Herosection: React.FC = () => {
 
 
 
-        {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-          <h1 className="text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
-            {heroSlides[currentSlide].title}
-          </h1>
-          <MagneticButton 
-            text={heroSlides[currentSlide].buttonText}
-            onClick={handleGetEstimate}
-          />
-        </div>
+        {/* Hero content (hidden on video slide) */}
+        {heroSlides[currentSlide].type !== "video" && (
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+              {heroSlides[currentSlide].title}
+            </h1>
+            <MagneticButton 
+              text={heroSlides[currentSlide].buttonText}
+              onClick={handleGetEstimate}
+            />
+          </div>
+        )}
+
+        {/* Mute / Unmute button on video slide */}
+        {heroSlides[currentSlide].type === "video" && (
+          <button
+            onClick={toggleMute}
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+            className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+          >
+            <MuteIcon muted={isMuted} />
+          </button>
+        )}
 
         {/* Carousel Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
@@ -300,10 +456,26 @@ const Herosection: React.FC = () => {
             {heroSlides.map((slide, index) => (
               <div
                 key={index}
-                className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000  ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                className={`absolute inset-0 transition-opacity duration-1000  ${index === currentSlide ? 'opacity-100' : 'opacity-0'
                   }`}
-                style={{ backgroundImage: `url('${slide.image}')` }}
-              />
+              >
+                {slide.type === "image" ? (
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url('${slide.image}')` }}
+                  />
+                ) : (
+                  <video
+                    key={videoKey}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src={slide.videoUrl}
+                    autoPlay
+                    muted={isMuted}
+                    playsInline
+                    onEnded={handleVideoEnded}
+                  />
+                )}
+              </div>
             ))}
           </div>
 
@@ -352,16 +524,29 @@ const Herosection: React.FC = () => {
 
         </div>
 
-          {/* Hero content */}
-          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-            <h1 className="w-[1000px] text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
-              {heroSlides[currentSlide].title}
-            </h1>
-            <MagneticButton 
-              text={heroSlides[currentSlide].buttonText}
-              onClick={handleGetEstimate}
-            />
-          </div>
+          {/* Hero content (hidden on video slide) */}
+          {heroSlides[currentSlide].type !== "video" && (
+            <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+              <h1 className="w-[1000px] text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+                {heroSlides[currentSlide].title}
+              </h1>
+              <MagneticButton 
+                text={heroSlides[currentSlide].buttonText}
+                onClick={handleGetEstimate}
+              />
+            </div>
+          )}
+
+          {/* Mute / Unmute button on video slide */}
+          {heroSlides[currentSlide].type === "video" && (
+            <button
+              onClick={toggleMute}
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+              className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+            >
+              <MuteIcon muted={isMuted} />
+            </button>
+          )}
 
           {/* Carousel Indicators */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
