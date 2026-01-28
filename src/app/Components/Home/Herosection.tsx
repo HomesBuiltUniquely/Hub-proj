@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
@@ -68,6 +68,7 @@ const Herosection: React.FC = () => {
   const [videoKey, setVideoKey] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
   const router = useRouter();
+  const mountedRef = useRef(false);
 
   const handleGetEstimate = () => {
     router.push('/GetEstimate');
@@ -114,6 +115,7 @@ const Herosection: React.FC = () => {
 
   // Detect desktop once on mount (used to control video-based autoplay behaviour)
   useEffect(() => {
+    mountedRef.current = true;
     if (typeof window !== "undefined") {
       const checkIsDesktop = () => {
         setIsDesktop(window.innerWidth >= 768);
@@ -126,6 +128,9 @@ const Herosection: React.FC = () => {
 
   // Auto-slide effect
   useEffect(() => {
+    // Only run after component has mounted to prevent hydration mismatches
+    if (!mountedRef.current) return;
+
     // If current slide is the video on desktop and it has not finished yet,
     // do NOT auto-advance to the next slide.
     const current = heroSlides[currentSlide];

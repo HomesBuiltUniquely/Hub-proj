@@ -103,7 +103,7 @@ export default function RootLayout({
         </Script>
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} anqtialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* GTM NoScript */}
         <noscript>
           <iframe
