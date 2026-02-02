@@ -2,11 +2,14 @@
 
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import OfferingsDropdown from "../OfferingsDropdown";
 import ExploreRoomsDropdown from "../ExploreRooms";
 import NavMore from "../NavMore";
-import { useRouter } from "next/navigation";
 import OverlapNavBar from "../OverlapNavBar";
+import MagneticButton from "../Home/MagneticButton";
+
+const DINING_HERO_IMAGE = "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/Hero_Dining.png";
 
 const ContactHeader: React.FC = () => {
   const router = useRouter();
@@ -95,39 +98,41 @@ const ContactHeader: React.FC = () => {
 
       {/* ========== 2560 VERSION ========== */}
       <div className="desktop-2560">
-        <div
-          className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
-          style={{
-            backgroundImage:
-              "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20H.png')",
-          }}
-        >
+        <div className="hidden md:block w-full h-[900px] overflow-hidden relative">
+          {/* Background Image */}
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${DINING_HERO_IMAGE}')` }}></div>
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-transparent z-[5]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
+
           {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
             <div onClick={handleClick} className="cursor-pointer">
               <Image
-                src="/redlogo.png"
+                src="/whitelogo.png"
                 alt="HUB Interior Logo"
-                width={220}
-                height={100}
-                className="w-[250px] h-full -mt-2 -ml-2"
+                width={250}
+                height={250}
+                className="w-[230px] h-[250px] ml-9"
               />
             </div>
-            <div className="hidden md:flex items-center gap-12">
-              {/* NAV BAR — unchanged */}
-              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
-                <OfferingsDropdown textColor="text-white" />
-                <ExploreRoomsDropdown textColor="text-white" />
-                <NavMore textColor="text-white" />
-              </div>
+            {/* Nav Links */}
+            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
 
-              {/* CTA — unchanged */}
+            {/* CTA */}
+            <div className="relative mr-15">
               <button
                 onClick={handleGetEstimate}
-                className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 BOOK CONSULTATION
 
+                {/* FREE Badge */}
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
@@ -139,63 +144,62 @@ const ContactHeader: React.FC = () => {
           </div>
 
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start pb-20 text-white text-left mt-70 ml-15">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
               Dining spaces designed
             </h1>
-
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+            <p className="text-lg mb-6 drop-shadow-lg">
               Interiors that turn every meal into a memorable experience.
             </p>
-
-            <div className="flex gap-4">
-              <button
-                onClick={calculate}
-                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope-medium shadow"
-              >
-                Get free quote
-              </button>
-            </div>
+            <MagneticButton
+              text="Get free quote"
+              onClick={calculate}
+            />
           </div>
+        </div>
+        <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
+          The dining space is where family and friends come together. At HUB Interior, we design dining areas in Bengaluru that blend style with functionality. From elegant tables to cozy breakfast nooks, we create spaces that make every meal special.
         </div>
       </div>
 
       {/* ========== 1920 VERSION ========== */}
       <div className="desktop-1920">
-        <div
-          className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
-          style={{
-            backgroundImage:
-              "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20H.png')",
-          }}
-        >
+        <div className="hidden md:block w-full h-[900px] overflow-hidden relative">
+          {/* Background Image */}
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${DINING_HERO_IMAGE}')` }}></div>
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/50 to-transparent z-[5]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
+
           {/* Navbar */}
-          <div className="flex items-center justify-between -mt-15">
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
             <div onClick={handleClick} className="cursor-pointer">
               <Image
-                src="/redlogo.png"
+                src="/whitelogo.png"
                 alt="HUB Interior Logo"
                 width={250}
-                height={100}
-                className="w-[250px] h-full -mt-3 ml-2"
+                height={250}
+                className="w-[230px] h-[250px] ml-9"
               />
             </div>
 
-            <div className="hidden md:flex items-center gap-12">
-              {/* NAV BAR — unchanged */}
-              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
-                <OfferingsDropdown textColor="text-white" />
-                <ExploreRoomsDropdown textColor="text-white" />
-                <NavMore textColor="text-white" />
-              </div>
+            {/* Nav Links */}
+            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
 
-              {/* CTA — unchanged */}
+            {/* CTA */}
+            <div className="relative mr-15">
               <button
                 onClick={handleGetEstimate}
-                className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 BOOK CONSULTATION
 
+                {/* FREE Badge */}
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
@@ -207,99 +211,91 @@ const ContactHeader: React.FC = () => {
           </div>
 
           {/* Hero content */}
-          <div className="flex flex-col items-start justify-start pb-20 text-white text-left mt-70 ml-20">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
               Dining spaces designed
             </h1>
-
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+            <p className="text-lg mb-6 drop-shadow-lg">
               Interiors that turn every meal into a memorable experience.
             </p>
-
-            <div className="flex gap-4">
-              <button
-                onClick={calculate}
-                className="bg-yellow-300 text-black px-4 py-2 rounded-full manrope shadow"
-              >
-                Get Free Quote
-              </button>
-            </div>
+            <MagneticButton
+              text="Get free quote"
+              onClick={calculate}
+            />
           </div>
+        </div>
+        <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
+          The dining space is where family and friends come together. At HUB Interior, we design dining areas in Bengaluru that blend style with functionality. From elegant tables to cozy breakfast nooks, we create spaces that make every meal special.
         </div>
       </div>
 
 
 
       {/* ========== 1280 VERSION ========== */}
-
       <div className="desktop-1280">
+        <div className="hidden md:block w-full h-[800px] overflow-hidden relative">
+          {/* Background Image */}
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${DINING_HERO_IMAGE}')` }}></div>
 
-        <div className="w-[1240px] h-[800px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20H.png')" }}>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/50 to-transparent z-[5]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-[5]"></div>
 
           {/* Navbar */}
-          <div >
-            <div className="flex items-center justify-between px-8">
-              {/* Logo */}
-              <div onClick={handleClick} className="cursor-pointer">
-                <Image
-                  src="/redlogo.png"
-                  alt="HUB Interior Logo"
-                  width={230}
-                  height={250}
-                  className="w-[full] h-[full] -mt-12 -ml-8"
-                />
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px] px-8">
+            {/* Logo */}
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image
+                src="/whitelogo.png"
+                alt="HUB Interior Logo"
+                width={230}
+                height={250}
+                className="w-[230px] h-[250px]"
+              />
+            </div>
+
+            {/* Center Navigation */}
+            <div className="hidden md:flex items-center gap-12">
+              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
               </div>
 
-              {/* Center Navigation */}
-              <div className="hidden md:flex -mt-12 items-center gap-12">
+              {/* CTA */}
+              <button
+                onClick={handleGetEstimate}
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[250px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[16px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+              >
+                BOOK CONSULTATION
 
-
-                {/* NAV BAR — unchanged */}
-                <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
-                  <OfferingsDropdown textColor="text-white" />
-                  <ExploreRoomsDropdown textColor="text-white" />
-                  <NavMore textColor="text-white" />
-                </div>
-
-                {/* CTA — unchanged */}
-                <button
-                  onClick={handleGetEstimate}
-                  className="relative bg-[#ef0101] mr-1 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
-                >
-                  BOOK CONSULTATION
-
-                  <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
-                    <img src="/free.png" alt="Free" className="w-full h-full" />
-                    <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
-                      FREE
-                    </span>
+                <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                  <img src="/free.png" alt="Free" className="w-full h-full" />
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                    FREE
                   </span>
-                </button>
-
-              </div>
+                </span>
+              </button>
             </div>
           </div>
 
           {/* Hero content */}
-
-          <div className="flex flex-col text-white text-left mt-75 pl-12 space-y-6 max-w-[950px]">
-            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+            <h1 className="text-5xl lg:text-6xl mb-2 drop-shadow-lg text-left leading-tight">
               Dining spaces designed
             </h1>
-
-            <p className="w-[575px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+            <p className="text-lg mb-6 drop-shadow-lg">
               Interiors that turn every meal into a memorable experience.
             </p>
-
-            <button
+            <MagneticButton
+              text="Get free quote"
               onClick={calculate}
-              className="bg-yellow-300 text-black w-48 py-2 rounded-3xl manrope hover:bg-yellow-400 transition text-center"
-            >
-              Get free quote
-            </button>
+            />
           </div>
         </div>
-
+        <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
+          The dining space is where family and friends come together. At HUB Interior, we design dining areas in Bengaluru that blend style with functionality. From elegant tables to cozy breakfast nooks, we create spaces that make every meal special.
+        </div>
       </div>
 
 
@@ -309,11 +305,11 @@ const ContactHeader: React.FC = () => {
           {/* Rounded image only */}
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
-              src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20MH.png"
+              src={DINING_HERO_IMAGE}
               alt="Dining Space"
               fill
               priority
-              className="object-center"
+              className="object-cover object-center"
             />
             {/* gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -322,18 +318,20 @@ const ContactHeader: React.FC = () => {
           {/* top logo */}
           <div className="absolute top-2 -mt-7 -mx-3" onClick={handleClick}>
             <Image
-              src="/redlogo.png"
+              src="/whitelogo.png"
               alt="HUB Interior Logo"
               width={90}
               height={50}
-              className="cursor-pointer"
+              className="cursor-pointer w-[110px] h-[95px]"
             />
           </div>
 
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="wulkan-display-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-              Dining spaces designed
+              Dining spaces
+              <br />
+              designed
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Interiors that turn every meal into a memorable experience.
@@ -342,13 +340,14 @@ const ContactHeader: React.FC = () => {
 
           {/* CTA overlapping, positioned above image */}
           <div className="absolute left-6 -bottom-5 z-20">
-            <button
+            <MagneticButton
+              text="Get free quote"
               onClick={calculate}
-              className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20"
-            >
-              Get Free Quote
-            </button>
+            />
           </div>
+        </div>
+        <div className="manrope-medium h-[300px] w-full max-w-[480px] mt-12 mb-12 desc">
+          The dining space is where family and friends come together. At HUB Interior, we design dining areas in Bengaluru that blend style with functionality. From elegant tables to cozy breakfast nooks, we create spaces that make every meal special.
         </div>
         <OverlapNavBar />
       </div>
@@ -359,11 +358,11 @@ const ContactHeader: React.FC = () => {
           {/* Rounded image only */}
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
-              src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/DinningSpace%20MH.png"
-              alt="Modular Kitchen Background"
+              src={DINING_HERO_IMAGE}
+              alt="Dining Space"
               fill
               priority
-              className="object-center"
+              className="object-cover object-center"
             />
             {/* gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -372,18 +371,20 @@ const ContactHeader: React.FC = () => {
           {/* top logo */}
           <div className="absolute top-2 -mt-7 -mx-3" onClick={handleClick}>
             <Image
-              src="/redlogo.png"
+              src="/whitelogo.png"
               alt="HUB Interior Logo"
               width={82}
               height={50}
-              className="cursor-pointer"
+              className="cursor-pointer w-[110px] h-[95px]"
             />
           </div>
 
           {/* text + cta */}
           <div className="absolute bottom-10 left-4 right-4 text-white">
             <h2 className="wulkan-display-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-              Dining spaces designed
+              Dining spaces
+              <br />
+              designed
             </h2>
             <p className="mt-2 text-[13px] manrope-medium opacity-90">
               Interiors that turn every meal into a memorable experience.
@@ -392,13 +393,14 @@ const ContactHeader: React.FC = () => {
 
           {/* CTA overlapping, positioned above image */}
           <div className="absolute left-6 -bottom-5 z-20">
-            <button
+            <MagneticButton
+              text="Get free quote"
               onClick={calculate}
-              className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20"
-            >
-              Get free quote
-            </button>
+            />
           </div>
+        </div>
+        <div className="manrope-medium h-[300px] w-full max-w-[480px] mt-10 desc">
+          The dining space is where family and friends come together. At HUB Interior, we design dining areas in Bengaluru that blend style with functionality. From elegant tables to cozy breakfast nooks, we create spaces that make every meal special.
         </div>
         <OverlapNavBar />
       </div>

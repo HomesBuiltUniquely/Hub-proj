@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'ik.imagekit.io',
         pathname: '/k2xcrgitcr/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'hubinterior-quote-2026.s3.ap-south-2.amazonaws.com',
+        pathname: '/**',
       }
     ],
   },
