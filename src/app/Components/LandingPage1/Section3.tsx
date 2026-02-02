@@ -15,22 +15,22 @@ export default function Section3() {
 
     const slides = [
         {
-            img: "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/lifestyle/4bhk_price.jpg",
+            img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/4bhk_price.jpg",
             type: "4 BHK",
             price: "6.0 Lakhs Onwards*"
         },
         {
-            img: "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/lifestyle/3bhk_price.jpg",
+            img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/3bhk_price.jpg",
             type: "3 BHK",
             price: "4.5 Lakhs Onwards*"
         },
         {
-            img: "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/lifestyle/2bhk_price.jpg",
+            img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/2bhk_price.jpg",
             type: "2 BHK",
             price: "3.5 Lakhs Onwards*"
         },
         {
-            img: "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/lifestyle/Modular_kitchen_price.jpeg",
+            img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/Modular_kitchen_price.jpeg",
             type: "Modular Kitchen",
             price: "1.25 Lakhs Onwards*"
         },

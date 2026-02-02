@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 import cityOptions from "./DropDown1"
-
 import { normalizePhoneNumber } from "@/lib/utils"
 
 const carouselImages = [
@@ -12,17 +11,17 @@ const carouselImages = [
   "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1.png",
   "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//2.png",
   "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//3.png",
-  "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.png",
+  "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.png"
 ];
 const carouselImages1 = [
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/living_room_1.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/modular_kitchen_2.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/Modular_kitchen_3.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/living_room_4.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/Modular_kitchen_3.png"
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/living_room_1.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/Modular_kitchen_3.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/living_room_4.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png"
 ];
 
-export default function HeroSectionsBest() {
+export default function HeroSections() {
   const router = useRouter();
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
@@ -157,8 +156,8 @@ export default function HeroSectionsBest() {
 
 
   const handleOtpSubmit = async () => {
-    if (!otp || otp.length < 4) {
-      alert('Please enter a valid OTP');
+    if (!otp || otp.length === 0) {
+      alert('Please enter the OTP');
       return;
     }
 
@@ -256,7 +255,7 @@ export default function HeroSectionsBest() {
         return;
       }
 
-      console.log('Automatically sending MSG91 OTP to:', cleanedPhone);
+      console.log('Automatically sending OTP to:', cleanedPhone);
 
       const response = await fetch('/api/send-msg91-otp', {
         method: 'POST',
@@ -342,7 +341,7 @@ export default function HeroSectionsBest() {
             possessionIn: requestData.budget,
           };
 
-          await fetch('https://hows.hubinterior.com/v1/MetaLead', {
+          await fetch('https://hows.hubinterior.com/v1/Home1', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -350,7 +349,7 @@ export default function HeroSectionsBest() {
             body: JSON.stringify(home1Payload),
           });
         } catch (err) {
-          console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
+          console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
         }
       })();
 
@@ -602,7 +601,7 @@ export default function HeroSectionsBest() {
             </div>
 
             {/* Mobile Form Card */}
-            <div className="relative z-20 -mt-10">
+            <div className="relative z-20 -mt-10 ">
               <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
                 <div className="text-3xl manrope-semibold text-center mb-6 text-black-950 text-nowrap">Interiors For Every <span className='text-red-600'>Home</span></div>
 
@@ -720,7 +719,7 @@ export default function HeroSectionsBest() {
                 <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[670px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
                   <p className="lg:mr-20 mb-6 manrope lg:mb-0">Interiors For Every <span className='text-red-600'>Home</span></p>
 
-                  {/* Name and Email Row */}
+                  {/* Name Input */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                     <input
                       type="text"
@@ -764,11 +763,9 @@ export default function HeroSectionsBest() {
                     </div>
                   </div>
 
-                  {/* Desktop Custom Dropdowns */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10 space-y-4 sm:space-y-6">
-                    {/* City Dropdown */}
+                  {/* City Dropdown */}
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10">
                     <div ref={cityRef2560}>
-
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
@@ -795,7 +792,6 @@ export default function HeroSectionsBest() {
                         </ul>
                       )}
                     </div>
-
                   </div>
 
                   {/* Checkbox and Button Container */}
@@ -862,7 +858,7 @@ export default function HeroSectionsBest() {
           {/* 1920 Version */}
 
           <div className=" desktop-1920 hidden lg:block bg-[#f1f2f6] justify-center mx-auto px-5 mt-3">
-            <div className="flex flex-col lg:flex-row gap-6  mx-auto">
+            <div className="flex flex-col lg:flex-row gap-6  mx-auto ">
               {/* Left side - Form */}
               <div className="w-full lg:w-auto">
                 <div className="flex justify-center lg:justify-start">
@@ -871,7 +867,7 @@ export default function HeroSectionsBest() {
                 <div className="bg-white w-full lg:min-w-[570px] h-auto lg:h-[650px] mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
                   <p className="lg:mr-20 mb-6 manrope lg:mb-0 pt-2 mt-6">Interiors For Every <span className='text-red-600'>Home</span></p>
 
-                  {/* Name and Email Row */}
+                  {/* Name Input */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-2">
                     <input
                       type="text"
@@ -915,11 +911,9 @@ export default function HeroSectionsBest() {
                     </div>
                   </div>
 
-                  {/* Desktop Custom Dropdowns */}
-                  <div className="relative w-full  mx-auto mt-8 sm:mt-8 space-y-4 sm:space-y-6">
-                    {/* City Dropdown */}
+                  {/* City Dropdown */}
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-8">
                     <div ref={cityRef1920}>
-
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
@@ -946,7 +940,6 @@ export default function HeroSectionsBest() {
                         </ul>
                       )}
                     </div>
-
                   </div>
 
                   {/* Checkbox and Button Container */}
@@ -1027,8 +1020,8 @@ export default function HeroSectionsBest() {
                   {/* Heading */}
                   <p className="mb-6 whitespace-nowrap manrope mt-5">Interiors For Every <span className='text-red-600'>Home</span></p>
 
-                  {/* Name + Email */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                  {/* Name Input */}
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center ">
                     <input
                       type="text"
                       name="name"
@@ -1036,18 +1029,8 @@ export default function HeroSectionsBest() {
                       onChange={handleInputChange}
                       placeholder="Name *"
                       required
-                      className="w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[500px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
-                    {/* <input
-                      id="e1"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="Email *"
-                      required
-                      className="w-full sm:w-[200px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                    /> */}
                   </div>
 
                   {/* Phone + Pincode */}
@@ -1084,10 +1067,8 @@ export default function HeroSectionsBest() {
                     </div>
                   </div>
 
-                  {/* Custom Dropdowns */}
-                  <div className="relative w-full mx-auto mt-6 space-y-6">
-
-                    {/* City Dropdown */}
+                  {/* City Dropdown */}
+                  <div className="relative w-full mx-auto mt-6">
                     <div ref={cityRef1280} className="relative">
                       <div
                         onClick={() => {
@@ -1114,7 +1095,6 @@ export default function HeroSectionsBest() {
                         </ul>
                       )}
                     </div>
-
                   </div>
 
                   {/* Checkbox + Submit */}
@@ -1217,7 +1197,7 @@ export default function HeroSectionsBest() {
               <input
                 type="text"
                 value={otp}
-                onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
+                onChange={(e) => setOtp(e.target.value)}
                 placeholder="Enter 4-digit OTP"
                 maxLength={4}
                 className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium"
@@ -1225,31 +1205,13 @@ export default function HeroSectionsBest() {
               <div className="flex gap-3">
                 <button
                   onClick={handleOtpSubmit}
-                  disabled={isOtpVerifying || otp.length < 4}
+                  disabled={isOtpVerifying || otp.length !== 4}
                   className="flex-1 bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-manrope hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
                 >
                   {isOtpVerifying ? 'Verifying...' : 'Verify OTP'}
                 </button>
                 <button
-                  onClick={async () => {
-                    setIsSendingOtpAuto(true);
-                    try {
-                      const cleanedPhone = normalizePhoneNumber(formData.phone);
-                      const response = await fetch('/api/resend-msg91-otp', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ phone: cleanedPhone }),
-                      });
-                      const data = await response.json();
-                      if (data.success) {
-                        setOtp('');
-                      }
-                    } catch (error) {
-                      console.error('Error resending OTP:', error);
-                    } finally {
-                      setIsSendingOtpAuto(false);
-                    }
-                  }}
+                  onClick={handleAutoSendOtp}
                   disabled={isSendingOtpAuto}
                   className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
                 >
