@@ -14,11 +14,11 @@ const carouselImages = [
   "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//4.png"
 ];
 const carouselImages1 = [
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/living_room_1.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/modular_kitchen_2.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/Modular_kitchen_3.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/living_room_4.png",
-  "https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/header/Modular_kitchen_3.png"
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/living_room_1.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/Modular_kitchen_3.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/living_room_4.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png"
 ];
 
 export default function HeroSections() {
