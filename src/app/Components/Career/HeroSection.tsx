@@ -63,7 +63,7 @@ const ContactHeader: React.FC = () => {
 
         <div className="hidden md:block w-full h-[900px] overflow-hidden relative">
           {/* Background Image */}
-          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/career%20page/carrerhome.png')" }}></div>
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/po.png')" }}></div>
 
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-[5]"></div>
@@ -126,7 +126,7 @@ const ContactHeader: React.FC = () => {
       <div className="desktop-1920">
         <div className="hidden md:block w-full h-[900px] overflow-hidden relative">
           {/* Background Image */}
-          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://luylvbilvdxntquphldh.supabase.co/storage/v1/object/public/ggg/career%20page/carrerhome.png')" }}></div>
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/po.png')" }}></div>
 
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/50 to-transparent z-[5]"></div>
@@ -190,7 +190,7 @@ const ContactHeader: React.FC = () => {
       <div className="desktop-1280">
         <div className="hidden md:block w-full h-[800px] overflow-hidden relative">
           {/* Background Image */}
-          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/career%20H.png')" }}></div>
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/po.png')" }}></div>
 
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-[5]"></div>
