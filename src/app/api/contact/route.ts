@@ -53,24 +53,59 @@ export async function POST(req: Request) {
     const path = (pageUrl || '').toString();
     const pathLower = path.toLowerCase();
 
-    // Identify Meta lead page (best-interior-designers-in-bangalore)
+    // Identify Meta lead pages (best-interior-designers-in-bangalore and its calculator)
     const isBestInteriorBangalorePage =
       pathLower.includes('/best-interior-designers-in-bangalore') ||
       pathLower.includes('best-interior-designers-in-bangalore');
+    const isBestInteriorBangaloreCalculator =
+      pathLower.includes('/best-interior-designers-in-bangalore/calculator');
+    const isMetaLeadPage = isBestInteriorBangalorePage || isBestInteriorBangaloreCalculator;
 
     // Identify which submissions are pure Google Ads (should NOT hit WebsiteLead API)
-    // Exclude best-interior-designers-in-bangalore as it's a Meta lead, not Google Ads
     const isInteriorBangalorePage =
       (pathLower.includes('/interior-designers-in-bangalore') ||
       pathLower.includes('interior-designers-in-bangalore')) &&
-      !isBestInteriorBangalorePage; // Exclude Meta lead page
+      !isBestInteriorBangalorePage;
     const isInteriorBangaloreCalculator =
       pathLower.includes('/interior-designers-in-bangalore/calculator');
 
     const isGoogleAdsLead = isInteriorBangalorePage || isInteriorBangaloreCalculator;
 
-    // Send data to unified WebsiteLead API only for WEBSITE leads (not Google Ads landers)
-    if (!isGoogleAdsLead) {
+    // Send to MetaLead API for best-interior-designers-in-bangalore (main + calculator)
+    if (isMetaLeadPage) {
+      try {
+        const metaLeadPayload = {
+          name: name || '',
+          email: email || '',
+          phoneNumber: phone || '',
+          pinCode: pincode || null,
+          propertyType: bhkType || city || null,
+          bookASlot: date || time || null,
+          leadSource: 'Website',
+        };
+
+        console.log('Sending data to MetaLead API:', metaLeadPayload);
+
+        const metaLeadResponse = await fetch('https://hows.hubinterior.com/v1/MetaLead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(metaLeadPayload),
+        });
+
+        if (metaLeadResponse.ok) {
+          const metaLeadData = await metaLeadResponse.json();
+          console.log('MetaLead API response:', metaLeadData);
+        } else {
+          console.error('MetaLead API error:', metaLeadResponse.status, metaLeadResponse.statusText);
+        }
+      } catch (metaLeadError) {
+        console.error('Error sending to MetaLead API:', metaLeadError);
+      }
+    }
+    // Send data to WebsiteLead API only for WEBSITE leads (not Google Ads, not Meta lead pages)
+    else if (!isGoogleAdsLead) {
       try {
         const websiteLeadPayload = {
           name: name || '',
@@ -97,7 +132,6 @@ export async function POST(req: Request) {
         }
       } catch (websiteLeadError) {
         console.error('Error sending to WebsiteLead API:', websiteLeadError);
-        // Continue with email flow even if WebsiteLead API fails
       }
     } else {
       console.log(
