@@ -193,27 +193,28 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
       const data = await res.json();
       console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
       if (res.ok && data.success) {
-        // Fire-and-forget to external endpoint (same pattern as HeroSection)
+        // Fire-and-forget to MetaLead endpoint
         (async () => {
           try {
-            const home1Payload = {
+            const metaLeadPayload = {
               name: requestData.name,
               email: requestData.email,
               phoneNumber: requestData.phone,
-              propertyPin: requestData.pincode,
-              interiorSetup: requestData.possession || '',
-              possessionIn: requestData.possession || '',
+              pinCode: requestData.pincode || null,
+              propertyType: requestData.bhkType || requestData.possession || null,
+              bookASlot: null,
+              leadSource: 'Website',
             };
 
-            await fetch('https://hows.hubinterior.com/v1/Home1', {
+            await fetch('https://hows.hubinterior.com/v1/MetaLead', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify(home1Payload),
+              body: JSON.stringify(metaLeadPayload),
             });
           } catch (err) {
-            console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
+            console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
           }
         })();
 

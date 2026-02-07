@@ -139,7 +139,9 @@ const Herosection: React.FC = () => {
     }
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+      // On mobile: 3 slides (0, 1, 2). On desktop: 4 slides (0, 1, 2, 3)
+      const slideCount = isDesktop ? heroSlides.length : 3;
+      setCurrentSlide((prev) => (prev + 1) % slideCount);
     }, 4000); // Change slide every 4 seconds once allowed
 
     return () => clearInterval(interval);
@@ -586,16 +588,15 @@ const Herosection: React.FC = () => {
 
           {/* Image Container with Overlay Content */}
           <div className="relative w-full max-w-[360px] mx-auto -mt-14">
-            <img className="w-full max-w-[360px] h-auto rounded-4xl" src={`/hh1${currentSlide + 1}.png`} />
+            <img className="w-full max-w-[360px] h-auto rounded-4xl" src={`/hh1${Math.min(currentSlide, 2) + 1}.png`} />
             
             {/* Text Overlay */}
-            <div className="absolute bottom-[140px] left-0 w-[300px] text-left text-4xl manrope text-white wulkan-display-bold ml-4">{mobileTexts[currentSlide]}</div>
+            <div className="absolute bottom-[140px] left-0 w-[300px] text-left text-4xl manrope text-white wulkan-display-bold ml-4">{mobileTexts[Math.min(currentSlide, 2)]}</div>
             
             {/* Horizontal line above button */}
            
-            
             {/* Button */}
-            <button onClick={handleGetEstimate} className="absolute bottom-[50px] left-0 bg-[#FF0000] text-nowrap text-white px-7 py-2 rounded-4xl ml-4 manrope text-sm h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+            <button onClick={handleGetEstimate} className="absolute bottom-[50px] left-0 bg-[#FF0000] text-nowrap text-white px-7 py-2 rounded-4xl ml-4 manrope text-sm h-[38px] w-[210px] shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[Math.min(currentSlide, 2)].buttonText}</button>
           </div>
         </div>
 
@@ -617,15 +618,14 @@ const Herosection: React.FC = () => {
           
           {/* Image Container with Overlay Content */}
           <div className="relative max-w-[425px] mx-auto -mt-18">
-            <img className="max-w-[425px] h-[500px] mx-auto rounded-4xl" src={`/hh1${currentSlide + 1}.png`} />
+            <img className="max-w-[425px] h-[500px] mx-auto rounded-4xl" src={`/hh1${Math.min(currentSlide, 2) + 1}.png`} />
             
             {/* Text Overlay */}
-            <div className="absolute bottom-[140px] left-0 w-[250px] text-left text-3xl manrope text-white wulkan-display-bold ml-20">{mobileTexts[currentSlide]}</div>
+            <div className="absolute bottom-[140px] left-0 w-[250px] text-left text-3xl manrope text-white wulkan-display-bold ml-20">{mobileTexts[Math.min(currentSlide, 2)]}</div>
             
             {/* Horizontal line above button */}
-            
             {/* Button */}
-            <button onClick={handleGetEstimate} className="absolute bottom-[50px] left-0 bg-[#FF0000] text-white text-nowrap px-7 py-2 rounded-4xl ml-20 manrope shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[currentSlide].buttonText}</button>
+            <button onClick={handleGetEstimate} className="absolute bottom-[50px] left-0 bg-[#FF0000] text-white text-nowrap px-7 py-2 rounded-4xl ml-20 manrope shadow-lg shadow-black/50 hover:shadow-2xl transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">{heroSlides[Math.min(currentSlide, 2)].buttonText}</button>
           </div>
         </div>
         <OverlapNavBar />

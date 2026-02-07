@@ -328,28 +328,28 @@ export default function HeroSections() {
       const responseData = await response.json();
       console.log('API response data:', responseData);
 
-      // 2) ALSO send to external Home1 endpoint with a minimal, renamed payload
-      // Run fire-and-forget; errors are caught and logged.
+      // 2) ALSO send to MetaLead endpoint (fire-and-forget)
       (async () => {
         try {
-          const home1Payload = {
+          const metaLeadPayload = {
             name: requestData.name,
             email: requestData.email,
             phoneNumber: requestData.phone,
-            propertyPin: requestData.pincode,
-            interiorSetup: requestData.city,
-            possessionIn: requestData.budget,
+            pinCode: requestData.pincode || null,
+            propertyType: requestData.city || null,
+            bookASlot: null,
+            leadSource: 'Website',
           };
 
-          await fetch('https://hows.hubinterior.com/v1/Home1', {
+          await fetch('https://hows.hubinterior.com/v1/MetaLead', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(home1Payload),
+            body: JSON.stringify(metaLeadPayload),
           });
         } catch (err) {
-          console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
+          console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
         }
       })();
 
