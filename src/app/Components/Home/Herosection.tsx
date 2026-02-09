@@ -612,7 +612,7 @@ const Herosection: React.FC = () => {
                 alt="HUB Interior Logo"
                 width={90}
                 height={25}
-                className="cursor-pointer w-[100px] h-[90px] ml-4 -mt-5 mb-4" />
+                className="cursor-pointer w-[100px] h-[90px] ml-4 -mt-5 mb-4"/>
             </div>
           </div>
           
