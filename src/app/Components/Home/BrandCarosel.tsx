@@ -147,7 +147,7 @@ export default function BrandCarousel() {
         <div className="flex items-center justify-between w-full gap-5">
 
           {/* LEFT TEXT */}
-          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+          <h2 className="typography-h1 font-light wulkan-display-bold whitespace-nowrap">
             Trusted partners
           </h2>
 
@@ -191,7 +191,7 @@ export default function BrandCarousel() {
         <div className="flex items-center justify-between w-full gap-5">
 
           {/* LEFT TEXT */}
-          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+          <h2 className="typography-h1 font-light wulkan-display-bold whitespace-nowrap">
             Trusted partners
           </h2>
 
@@ -225,7 +225,7 @@ export default function BrandCarousel() {
         <div className="flex items-center justify-between w-full gap-5">
 
           {/* LEFT TEXT */}
-          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+          <h2 className="typography-h1 font-light wulkan-display-bold whitespace-nowrap">
             Trusted partners
           </h2>
 
@@ -257,7 +257,7 @@ export default function BrandCarousel() {
       <div className="md:hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
 
         <div className="w-[2px] h-[33px] bg-[#ebd457] ml-4">
-          <h2 className="text-left mb-5 text-4xl text-nowrap font-light wulkan-display-bold ml-3">Trusted partners</h2>
+          <h2 className="typography-h2 text-left mb-5 text-nowrap font-light wulkan-display-bold ml-3">Trusted partners</h2>
         </div>
         <div ref={refMobile} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
           {allLogos.map((logo, idx) => (

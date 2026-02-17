@@ -300,7 +300,7 @@ const Herosection: React.FC = () => {
         {/* Hero content (hidden on video slide) */}
         {heroSlides[currentSlide].type !== "video" && (
           <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-            <h1 className="text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+            <h1 className="typography-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
               {heroSlides[currentSlide].title}
             </h1>
             <MagneticButton 
@@ -418,7 +418,7 @@ const Herosection: React.FC = () => {
         {/* Hero content (hidden on video slide) */}
         {heroSlides[currentSlide].type !== "video" && (
           <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-            <h1 className="text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+            <h1 className="typography-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
               {heroSlides[currentSlide].title}
             </h1>
             <MagneticButton 
@@ -534,7 +534,7 @@ const Herosection: React.FC = () => {
           {/* Hero content (hidden on video slide) */}
           {heroSlides[currentSlide].type !== "video" && (
             <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-              <h1 className="w-[1000px] text-5xl lg:text-6xl mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+              <h1 className="w-[1000px] typography-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
                 {heroSlides[currentSlide].title}
               </h1>
               <MagneticButton 

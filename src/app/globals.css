@@ -331,3 +331,29 @@ body {
 }
 
 
+.typography-h1 {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.typography-h2 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.typography-h3 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.typography-body {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.typography-caption {
+  font-size: 13px;
+  font-weight: 400;
+}
+

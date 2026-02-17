@@ -183,7 +183,7 @@ const Locations: React.FC = () => (
     {/* 1280 Version */}
 
     <div>
-      <section className="desktop-1280 px-15 -mt-120">
+      <section className="desktop-1280 px-15 -mt-45">
         <div className="max-w-1280px  mx-auto rounded-3xl overflow-hidden shadow-lg bg-[url('/bn.jpg')]  bg-cover bg-center relative">
           <div className="bg-black/50 py-15 px-8">
             <h2 className="text-white text-4xl -mt-5 manrope mb-1">Our Locations</h2>

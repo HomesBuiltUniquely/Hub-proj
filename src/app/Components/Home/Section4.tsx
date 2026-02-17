@@ -96,7 +96,7 @@ export default function Section4() {
         <div className="max-w-8xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
-            <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
+            <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
               Trusted by homeowners like you
             </h1>
 
@@ -182,7 +182,7 @@ export default function Section4() {
           <div className="w-full mx-auto">
             {/* Header Section */}
             <div className="flex justify-between items-start mb-12">
-              <h1 className="text-5xl  wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
+              <h1 className="typography-h1  wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
                 Trusted by homeowners like you
               </h1>
             </div>
@@ -266,7 +266,7 @@ export default function Section4() {
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
-            <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
+            <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
               Trusted by homeowners like you
             </h1>
           </div>
@@ -347,7 +347,7 @@ export default function Section4() {
         {/* Mobile Title */}
         <div className="mb-8">
           <div className="w-[2px] h-[37px] bg-[#ebd457] ml-"></div>
-          <h1 className="text-3xl w-auto wulkan-display-bold text-gray-800 text-left pl-3 -mt-9">
+          <h1 className="typography-h2 w-auto wulkan-display-bold text-gray-800 text-left pl-3 -mt-9">
             Trusted by homeowners like you
           </h1>
         </div>

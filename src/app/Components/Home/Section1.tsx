@@ -46,8 +46,8 @@ export default function npSection1() {
 
       {/* 2560 version */}
 
-      <div className="desktop-2560 w-full max-w-8xl h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block ">
-        <h1 className=" text-center w-[1010px] mx-auto text-2xl mt-5 lg:mx-auto manrope-medium">
+        <div className="desktop-2560 w-full max-w-8xl h-[900px] bg-[#F1F2F6] lg:rounded-b-4xl mt-10 hidden md:block ">
+        <h1 className="typography-body text-center w-[1010px] mx-auto mt-5 lg:mx-auto manrope-medium">
           HUB Interior is India&#39;s leading and most innovative interior design company. We specialize in tailor-made solutions  from modular kitchen interiors to luxury villa interiors  designed to suit your lifestyle and professional needs. No compromises. Just personalized interiors that fit you perfectly.
         </h1>
         <div className="bg-[#F1F2F6] w-[1250px] h-auto  grid grid-cols-4 mt-10 gap-30 mx-85">
@@ -273,8 +273,8 @@ export default function npSection1() {
           </h1>
 
           <div className="mt-15">
-            <div className="w-[2px] h-[35px] bg-[#ebd457] ml-"></div>
-            <div className="-mt-10 text-4xl sm:text-3xl md:text-4xl wulkan-display-bold pl-4 sm:pl-6"> why choose us</div>
+          <div className="w-[2px] h-[35px] bg-[#ebd457] ml-"></div>
+            <div className="-mt-10 typography-h2 wulkan-display-bold pl-4 sm:pl-6"> why choose us</div>
             <p className="text-left text-sm sm:text-base mt-4 manrope-medium pl-4 sm:pl-6 max-w-sm">We dont just deliver projects, we deliver experiences that last.</p>
           </div>
 
