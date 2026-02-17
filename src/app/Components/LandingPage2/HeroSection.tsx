@@ -1000,4 +1000,4 @@ export function HeroSection() {
             </div>
         </div>
     );
-}v
+};
