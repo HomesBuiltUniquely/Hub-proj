@@ -897,7 +897,7 @@ export function HeroSection() {
                                                 key={option}
                                                 onClick={() => setpropSelect(option)}
                                                 className={`cursor-pointer border-2 border-[#DDCDC1] px-4 py-2 rounded-3xl text-white text-sm
-                     ${propSelect === option ? "bg-[#ef0101]" : ""}`}
+                    ${propSelect === option ? "bg-[#ef0101]" : ""}`}
                                             >
                                                 {option}
                                             </div>
@@ -1000,4 +1000,4 @@ export function HeroSection() {
             </div>
         </div>
     );
-}
+}v

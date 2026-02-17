@@ -874,7 +874,7 @@ const ContactSection: React.FC = () => {
               <h2 className="text-4xl manrope text-black mb-6">Corporate Office</h2>
 
               <div className="text-xl flex items-start gap-4 text-black manrope-medium">
-                <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg className="w-13 h-13 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 21V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m8-14v2a2 2 0 1 1-4 0V5" />
                 </svg>
                 <span className="max-w-[350px]">

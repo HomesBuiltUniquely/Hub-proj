@@ -133,7 +133,7 @@ export default function Section3() {
                 <div className="max-w-8xl mx-auto">
                     {/* Header Section */}
                     <div className="flex flex-row justify-between items-center mb-12">
-                        <h1 className="text-5xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
+                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
                     </div>
 
                     {/* Carousel Section */}
@@ -224,7 +224,7 @@ export default function Section3() {
 
                     {/* Header Section */}
                     <div className="flex flex-row justify-between items-center mb-8">
-                        <h1 className="text-5xl wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
+                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
                         {/* <a href="/GetEstimate">
                             <button className=" bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2">
                                 Book consultation
@@ -345,7 +345,7 @@ export default function Section3() {
                     <div className="max-w-[1280px] mx-auto">
                         {/* Header Section */}
                         <div className="flex flex-row justify-between items-center mb-5">
-                            <h1 className="text-5xl leading-tight wulkan-display-bold text-gray-800 ml-2">
+                            <h1 className="typography-h1 leading-tight wulkan-display-bold text-gray-800 ml-2">
                                 All interior service, one destination
                             </h1>
                             {/* <a href="/GetEstimate">
@@ -467,7 +467,7 @@ export default function Section3() {
             {/* Mobile Overlapping Carousel */}
             <div className="block md:hidden bg-[#F1F2F6] py-10">
                 <div className="w-[2px] h-[38px] bg-[#ebd457] ml-5"></div>
-                <h1 className="text-3xl sm:text-3xl wulkan-display-bold text-left px-5 -mt-9 pl-8">All interior service, One destination</h1>
+                <h1 className="typography-h2 wulkan-display-bold text-left px-5 -mt-9 pl-8">All interior service, One destination</h1>
 
                 <div
                     ref={carouselRef}

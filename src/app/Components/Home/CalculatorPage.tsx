@@ -71,8 +71,8 @@ export default function CalculatorPage() {
                         {/* Centered Text Content */}
                         <div className="absolute inset-0 flex items-center justify-center px-4">
                             <div className="w-full max-w-[360px] text-center text-white flex flex-col items-center rounded-2xl">
-
-                                <h1 className="mt-3 text-2xl manrope leading-snug">
+                            
+                                <h1 className="mt-3 typography-h2 manrope leading-snug">
                                     Get a free estimate for your interiors
                                 </h1>
 
@@ -112,11 +112,11 @@ export default function CalculatorPage() {
                             className="mx-auto w-full h-[410px]  object-cover "
                         />
                         <div className="absolute inset-1  rounded-3xl flex flex-col justify-center items-center text-center space-y-3">
-                            <h1 className="text-5xl text-white w-[950px] wulkan-display-bold">
+                            <h1 className="typography-h1 text-white w-[950px] wulkan-display-bold">
                                 Get a free estimate for your interiors
                             </h1>
 
-                            <div className="text-[20px] text-white manrope-medium w-[550px]">
+                            <div className="typography-body text-white manrope-medium w-[550px]">
                                 Get an estimated cost for your complete home interiors.
                             </div>
 
@@ -201,11 +201,11 @@ export default function CalculatorPage() {
                             className="mx-auto w-full h-[410px]  object-cover "
                         />
                         <div className="absolute inset-1  rounded-3xl flex flex-col justify-center items-center text-center space-y-3">
-                            <h1 className="text-5xl text-white w-[950px] wulkan-display-bold">
+                            <h1 className="typography-h1 text-white w-[950px] wulkan-display-bold">
                                 Get a free estimate for your interiors
                             </h1>
 
-                            <div className="text-[20px] text-white manrope-medium w-[550px]">
+                            <div className="typography-body text-white manrope-medium w-[550px]">
                                 Get an estimated cost for your complete home interiors.
                             </div>
 
@@ -245,11 +245,11 @@ export default function CalculatorPage() {
                             className="mx-auto w-full h-[410px]  object-cover "
                         />
                         <div className="absolute inset-1  rounded-3xl flex flex-col justify-center items-center text-center space-y-3">
-                            <h1 className="text-5xl text-white w-[950px] wulkan-display-bold">
+                            <h1 className="typography-h1 text-white w-[950px] wulkan-display-bold">
                                 Get a free estimate for your interiors
                             </h1>
 
-                            <div className="text-[20px] text-white manrope-medium w-[550px]">
+                            <div className="typography-body text-white manrope-medium w-[550px]">
                                 Get an estimated cost for your complete home interiors.
                             </div>
 

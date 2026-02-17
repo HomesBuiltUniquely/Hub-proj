@@ -138,7 +138,7 @@ export default function Section6() {
                 <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
-                        <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
+                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
                        
@@ -215,7 +215,7 @@ export default function Section6() {
                 <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
-                        <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
+                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
                     </div>
@@ -291,7 +291,7 @@ export default function Section6() {
                 <div className="max-w-6xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
-                        <h1 className="text-5xl wulkan-display-bold text-gray-800 text-nowrap max-w-md">
+                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
                         
@@ -361,7 +361,7 @@ export default function Section6() {
                 <div className="bg-[#F1F2F6] py-8 px-4 w-full">
                     <div className="mb-8">
                         <div className="w-[2px] h-[33px] bg-[#ebd457] "></div>
-                        <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-3 -mt-8">
+                        <h1 className="typography-h2 wulkan-display-bold text-gray-800 text-left pl-3 -mt-8">
                             Recent interior design projects
                         </h1>
                     </div>

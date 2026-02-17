@@ -287,7 +287,7 @@ export default function Section5() {
                 <div className="desktop-2560">
                     <div className="bg-[#F1F2F6] min-h-[740px] px-85">
                         <div className="max-w-8xl mx-auto">
-                            <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
+                            <h1 className="typography-h1 mb-16 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
                             </h1>
 
@@ -333,7 +333,7 @@ export default function Section5() {
                 <div className="desktop-1920 ">
                     <div className="bg-[#F1F2F6] min-h-[740px] px-20 ">
                         <div className="max-w-8xl mx-auto">
-                            <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
+                            <h1 className="typography-h1 mb-16 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
                             </h1>
 
@@ -377,7 +377,7 @@ export default function Section5() {
                 <div className="desktop-1280">
                     <div className="bg-[#F1F2F6] min-h-[740px] px-15">
                         <div className="max-w-6xl mx-auto">
-                            <h1 className="text-5xl mb-10 wulkan-display-bold text-gray-800">
+                            <h1 className="typography-h1 mb-10 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
                             </h1>
 
@@ -437,9 +437,9 @@ function MobileLayout({ steps, activeStep, onTouchStart, onTouchMove, onTouchEnd
 
     return (
         <div className="block md:hidden bg-[#F1F2F6] py-5 px-4">
-            <div className="mb-8">
-                <div className="w-[2px] h-[33px] bg-[#ebd457]" />
-                <h1 className="text-3xl wulkan-display-bold text-gray-800 ml-3 -mt-8">Your dream space in just four steps</h1>
+                <div className="mb-8">
+                    <div className="w-[2px] h-[33px] bg-[#ebd457]" />
+                    <h1 className="typography-h2 wulkan-display-bold text-gray-800 ml-3 -mt-8">Your dream space in just four steps</h1>
             </div>
 
             <div className="relative overflow-hidden px-4 pt-5">

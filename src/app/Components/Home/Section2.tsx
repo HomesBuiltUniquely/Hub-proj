@@ -126,7 +126,7 @@ export default function Section2() {
                         {/* Header */}
                         <div className="flex justify-between items-start mb-12 mx-auto">
                             <div className="flex-1">
-                                <h1 className="text-5xl wulkan-display-bold text-gray-800 mt-3 ">
+                                <h1 className="typography-h1 wulkan-display-bold text-gray-800 mt-3 ">
                                     Every space has a story, start yours here
                                 </h1>
                             </div>
@@ -226,7 +226,7 @@ export default function Section2() {
                         {/* Header */}
                         <div className="flex justify-between items-start mb-8 mx-20">
                             <div className="flex-1">
-                                <h1 className="text-5xl wulkan-display-bold text-gray-800 mt-3 ">
+                                <h1 className="typography-h1 wulkan-display-bold text-gray-800 mt-3 ">
                                     Every space has a story, start yours here
                                 </h1>
                             </div>
@@ -339,7 +339,7 @@ export default function Section2() {
                             {/* Header */}
                             <div className="flex justify-between items-start mb-10">
                                 <div className="flex-1">
-                                    <h1 className="text-5xl leading-tight wulkan-display-bold text-gray-800 mt-2">
+                                    <h1 className="typography-h1 leading-tight wulkan-display-bold text-gray-800 mt-2">
                                         Every space has a story, start yours here
                                     </h1>
                                 </div>
@@ -449,7 +449,7 @@ export default function Section2() {
                     <div className="bg-[#F1F2F6] py-8 px-4">
                         <div className="mb-8">
                             <div className="w-[2px] h-[38px] bg-[#ebd457] ml-"></div>
-                            <h1 className="text-3xl wulkan-display-bold text-gray-800 text-left pl-4 -mt-9">
+                            <h1 className="typography-h2 wulkan-display-bold text-gray-800 text-left pl-4 -mt-9">
                                 Every space has a story, <div className='text-3xl'>start yours here</div>
                             </h1>
                         </div>
