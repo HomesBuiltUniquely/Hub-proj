@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { getVerificationStatus } from '@/lib/leadVerification';
 
 export async function POST(req: Request) {
   try {
@@ -15,6 +16,8 @@ export async function POST(req: Request) {
         email: '', // Popup doesn't collect email
         phoneNumber: phone || '',
         propertyPin: pincode || '',
+        verificationStatus: getVerificationStatus(false),
+        otpSuccess: false,
       };
 
       console.log('Sending popup data to WebsiteLead API:', websiteLeadPayload);
@@ -28,8 +31,8 @@ export async function POST(req: Request) {
       });
 
       if (websiteLeadResponse.ok) {
-        const websiteLeadData = await websiteLeadResponse.json();
-        console.log('WebsiteLead API response:', websiteLeadData);
+        const websiteLeadText = await websiteLeadResponse.text();
+        console.log('WebsiteLead API response:', websiteLeadText);
       } else {
         console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
       }

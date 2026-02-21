@@ -118,14 +118,14 @@ export default function HeroSections() {
 
   // Auto-close modal and submit as unverified after 3 minutes if OTP was sent but not verified
   const handleModalClose = async () => {
-    if (verificationStatus === 'Unverified User') {
+    if (verificationStatus === 'UNVERIFIED') {
       // User started OTP process but didn't complete it - submit as unverified
       console.log('Modal closed with unverified OTP - submitting as unverified');
-      await handleFinalSubmit('Unverified User');
+      await handleFinalSubmit('UNVERIFIED');
     } else if (verificationStatus === '') {
       // User never clicked "Send OTP" - submit as unverified
       console.log('Modal closed without sending OTP - submitting as unverified');
-      await handleFinalSubmit('Unverified User');
+      await handleFinalSubmit('UNVERIFIED');
     }
 
     setShowOtpModal(false);
@@ -182,10 +182,10 @@ export default function HeroSections() {
 
         setOtp('');
         // Removed alert - no interruption during verification
-        setVerificationStatus('Verified User');
+        setVerificationStatus('VERIFIED');
 
         // Automatically submit the form as verified user
-        await handleFinalSubmit('Verified User');
+        await handleFinalSubmit('VERIFIED');
       } else {
         // Removed alert - no interruption during verification
       }
@@ -231,7 +231,7 @@ export default function HeroSections() {
 
     // Submit form data immediately as unverified (without resetting form)
     console.log('Submitting form data immediately as unverified');
-    await handleFinalSubmitWithoutReset('Unverified User');
+    await handleFinalSubmitWithoutReset('UNVERIFIED');
 
     // Automatically send OTP and show modal
     await handleAutoSendOtp();
@@ -268,7 +268,7 @@ export default function HeroSections() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setVerificationStatus('Unverified User'); // Set status to unverified
+        setVerificationStatus('UNVERIFIED'); // Set status to unverified
         setShowOtpModal(true);
         // Removed alert - OTP modal appears directly
       } else {
@@ -284,7 +284,7 @@ export default function HeroSections() {
     }
   };
 
-  const handleFinalSubmitWithoutReset = async (verificationStatus = 'Unverified User') => {
+  const handleFinalSubmitWithoutReset = async (verificationStatus = 'UNVERIFIED') => {
     console.log('handleFinalSubmitWithoutReset called with status:', verificationStatus);
     console.log('formData:', formData);
     console.log('selectedCity:', selectedCity);
@@ -303,7 +303,8 @@ export default function HeroSections() {
         pincode: selectedPincode,
         whatsappConsent: whatsappConsent,
         pageUrl: currentUrl,
-        verificationStatus: verificationStatus
+        verificationStatus: verificationStatus,
+        otpSuccess: verificationStatus === 'VERIFIED'
       };
 
       console.log('Sending data to API:', requestData);
@@ -336,9 +337,12 @@ export default function HeroSections() {
             email: requestData.email,
             phoneNumber: requestData.phone,
             pinCode: requestData.pincode || null,
+            propertyPin: requestData.pincode || null,
             propertyType: requestData.city || null,
             bookASlot: null,
             leadSource: 'Website',
+            verificationStatus: requestData.verificationStatus,
+            otpSuccess: requestData.otpSuccess,
           };
 
           await fetch('https://hows.hubinterior.com/v1/MetaLead', {
@@ -373,7 +377,7 @@ export default function HeroSections() {
     }
   };
 
-  const handleFinalSubmit = async (verificationStatus = 'Unverified User') => {
+  const handleFinalSubmit = async (verificationStatus = 'UNVERIFIED') => {
     console.log('handleFinalSubmit called with status:', verificationStatus);
     console.log('formData:', formData);
     console.log('selectedCity:', selectedCity);
@@ -392,7 +396,8 @@ export default function HeroSections() {
         pincode: selectedPincode,
         whatsappConsent: whatsappConsent,
         pageUrl: currentUrl,
-        verificationStatus: verificationStatus
+        verificationStatus: verificationStatus,
+        otpSuccess: verificationStatus === 'VERIFIED'
       };
 
       console.log('Sending data to API:', requestData);
@@ -417,10 +422,35 @@ export default function HeroSections() {
       const responseData = await response.json();
       console.log('API response data:', responseData);
 
-      // Note: Do NOT send to localhost here; only on initial submit
+      // On verified submission, also notify MetaLead so backend can upgrade UNVERIFIED -> VERIFIED.
+      if (verificationStatus === 'VERIFIED') {
+        (async () => {
+          try {
+            const metaLeadPayload = {
+              name: requestData.name,
+              email: requestData.email,
+              phoneNumber: requestData.phone,
+              pinCode: requestData.pincode || null,
+              propertyPin: requestData.pincode || null,
+              propertyType: requestData.city || null,
+              bookASlot: null,
+              leadSource: 'Website',
+              verificationStatus: requestData.verificationStatus,
+              otpSuccess: requestData.otpSuccess,
+            };
+            await fetch('https://hows.hubinterior.com/v1/MetaLead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(metaLeadPayload),
+            });
+          } catch (err) {
+            console.warn('Failed to POST verified update to https://hows.hubinterior.com/v1/MetaLead', err);
+          }
+        })();
+      }
 
       if (response.ok && responseData.success) {
-        if (verificationStatus === 'Verified User') {
+        if (verificationStatus === 'VERIFIED') {
           // Removed alert - redirect happens silently
 
           // Set flag to trigger reload on Thank You page

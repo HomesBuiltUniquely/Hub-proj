@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 import OverlapNavBar from "../OverlapNavBar";
+import { getVerificationStatus } from "@/lib/leadVerification";
 
 export function HeroSection() {
     const router = useRouter();
@@ -236,6 +237,8 @@ export function HeroSection() {
             formData.append('propertyType', updatedForm.property);
             formData.append('timeSlot', updatedForm.Scheduler);
             formData.append('pageUrl', window.location.href);
+            formData.append('verificationStatus', getVerificationStatus(isVerified));
+            formData.append('otpSuccess', String(isVerified));
 
             if (selectedFile) {
                 formData.append('file', selectedFile);
@@ -255,8 +258,11 @@ export function HeroSection() {
                         email: updatedForm.email,
                         phoneNumber: updatedForm.phonennumber,
                         pinCode: updatedForm.pincode,
+                        propertyPin: updatedForm.pincode,
                         propertyType: updatedForm.property,
                         bookASlot: updatedForm.Scheduler,
+                        verificationStatus: getVerificationStatus(isVerified),
+                        otpSuccess: isVerified,
                     };
 
                     await fetch('https://hows.hubinterior.com/v1/MetaLead', {
@@ -355,6 +361,8 @@ export function HeroSection() {
             formData.append('propertyType', updatedForm.property);
             formData.append('timeSlot', updatedForm.Scheduler);
             formData.append('pageUrl', window.location.href);
+            formData.append('verificationStatus', getVerificationStatus(isVerified));
+            formData.append('otpSuccess', String(isVerified));
 
             if (selectedFile) {
                 formData.append('file', selectedFile);
@@ -376,8 +384,11 @@ export function HeroSection() {
                         email: updatedForm.email,
                         phoneNumber: updatedForm.phonennumber,
                         pinCode: updatedForm.pincode,
+                        propertyPin: updatedForm.pincode,
                         propertyType: updatedForm.property,
                         bookASlot: updatedForm.Scheduler,
+                        verificationStatus: getVerificationStatus(isVerified),
+                        otpSuccess: isVerified,
                     };
 
                     await fetch('https://hows.hubinterior.com/v1/MetaLead', {

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { budgetOptions } from './DropDown2';
 import { normalizePhoneNumber } from '@/lib/utils';
+import { getVerificationStatus } from '@/lib/leadVerification';
 
 interface CalculatorData {
   bhkType?: string;
@@ -152,7 +153,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         date: selectedDate,
         time: selectedTime,
         pageUrl: currentUrl,
-        verificationStatus: isVerified ? 'Verified User' : 'No OTP',
+        verificationStatus: getVerificationStatus(isVerified),
+        otpSuccess: isVerified,
         // Include calculator data both nested and flattened for backend email processing
         calculator: c,
         bhkType: c.bhkType ?? '',
@@ -178,6 +180,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               email: requestData.email,
               phoneNumber: requestData.phone,
               propertyPin: requestData.pincode,
+              verificationStatus: requestData.verificationStatus,
+              otpSuccess: requestData.otpSuccess,
             };
 
             await fetch('https://Hows.hubinterior.com/v1/WebsiteLead', {

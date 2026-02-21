@@ -4,6 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { budgetOptions } from './DropDown2';
+import { getVerificationStatus } from '@/lib/leadVerification';
 
 interface CalculatorData {
   bhkType?: string;
@@ -140,7 +141,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         possession: selectedPossession,
         pincode: selectedPincode,
         pageUrl: currentUrl,
-        verificationStatus: isVerified ? 'Verified User' : 'No OTP',
+        verificationStatus: getVerificationStatus(isVerified),
+        otpSuccess: isVerified,
         // Include calculator data both nested and flattened for backend email processing
         calculator: c,
         bhkType: c.bhkType ?? '',
