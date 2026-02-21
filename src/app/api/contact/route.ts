@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { resolveLeadVerificationStatus } from '@/lib/leadVerification';
 
 export async function POST(req: Request) {
   try {
@@ -15,6 +16,7 @@ export async function POST(req: Request) {
       whatsappConsent,
       pageUrl,
       verificationStatus,
+      otpSuccess,
       date,
       time,
       // New calculator fields (flattened)
@@ -52,6 +54,11 @@ export async function POST(req: Request) {
 
     const path = (pageUrl || '').toString();
     const pathLower = path.toLowerCase();
+    const normalizedVerificationStatus = resolveLeadVerificationStatus({
+      verificationStatus,
+      otpSuccess,
+    });
+    const normalizedOtpSuccess = normalizedVerificationStatus === 'VERIFIED';
 
     // Identify Meta lead pages (best-interior-designers-in-bangalore and its calculator)
     const isBestInteriorBangalorePage =
@@ -79,9 +86,12 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: phone || '',
           pinCode: pincode || null,
+          propertyPin: pincode || null,
           propertyType: bhkType || city || null,
           bookASlot: date || time || null,
           leadSource: 'Website',
+          verificationStatus: normalizedVerificationStatus,
+          otpSuccess: normalizedOtpSuccess,
         };
 
         console.log('Sending data to MetaLead API:', metaLeadPayload);
@@ -95,8 +105,8 @@ export async function POST(req: Request) {
         });
 
         if (metaLeadResponse.ok) {
-          const metaLeadData = await metaLeadResponse.json();
-          console.log('MetaLead API response:', metaLeadData);
+          const metaLeadText = await metaLeadResponse.text();
+          console.log('MetaLead API response:', metaLeadText);
         } else {
           console.error('MetaLead API error:', metaLeadResponse.status, metaLeadResponse.statusText);
         }
@@ -112,6 +122,8 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: phone || '',
           propertyPin: pincode || '',
+          verificationStatus: normalizedVerificationStatus,
+          otpSuccess: normalizedOtpSuccess,
         };
 
         console.log('Sending data to WebsiteLead API:', websiteLeadPayload);
@@ -125,8 +137,8 @@ export async function POST(req: Request) {
         });
 
         if (websiteLeadResponse.ok) {
-          const websiteLeadData = await websiteLeadResponse.json();
-          console.log('WebsiteLead API response:', websiteLeadData);
+          const websiteLeadText = await websiteLeadResponse.text();
+          console.log('WebsiteLead API response:', websiteLeadText);
         } else {
           console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
         }
@@ -173,7 +185,7 @@ export async function POST(req: Request) {
 
     // ✅ Email content including all form data
     const verificationStatusText =
-      verificationStatus === 'Verified User' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
+      normalizedVerificationStatus === 'VERIFIED' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
 
     // Check if this is a calculator submission (has calculator data)
     const isCalculatorSubmission = !!(
@@ -203,32 +215,32 @@ export async function POST(req: Request) {
     // Check for Meta lead page first (best-interior-designers-in-bangalore)
     if (isBestInteriorBangalorePage) {
       subject =
-        verificationStatus === 'Verified User'
+        normalizedVerificationStatus === 'VERIFIED'
           ? 'Meta Lead (Verified)'
           : 'Meta Lead (Unverified)';
     } else if (isInteriorCalculator || isInteriorBangalorePage) {
       subject =
-        verificationStatus === 'Verified User'
+        normalizedVerificationStatus === 'VERIFIED'
           ? 'Google Ads Lead (Verified)'
           : 'Google Ads Lead (Unverified)';
     } else if (isHubCalculator) {
       subject =
-        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+        normalizedVerificationStatus === 'VERIFIED' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
     } else if (isHomeCalculator) {
       subject =
-        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+        normalizedVerificationStatus === 'VERIFIED' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
     } else if (isContactPage) {
       subject =
-        verificationStatus === 'Verified User'
+        normalizedVerificationStatus === 'VERIFIED'
           ? 'Lead from Website(Verified)'
           : 'Lead from Website (Unverified)';
     } else if (isCalculatorSubmission) {
       // If calculator data is present but URL didn't match known routes, default to Website Lead
       subject =
-        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+        normalizedVerificationStatus === 'VERIFIED' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
     } else {
       subject =
-        verificationStatus === 'Verified User'
+        normalizedVerificationStatus === 'VERIFIED'
           ? 'Google Ads Lead (Verified)'
           : 'Google Ads Lead (Unverified)';
     }
@@ -260,13 +272,13 @@ export async function POST(req: Request) {
           typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'
         }</p>
         <p><strong>Verification Status:</strong> <span style="color: ${
-          verificationStatus === 'Verified User' ? 'green' : 'red'
+          normalizedVerificationStatus === 'VERIFIED' ? 'green' : 'red'
         }; font-weight: bold;">${verificationStatusText}</span></p>
         <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${
           pageUrl || 'Not provided'
         }</a></p>
         ${
-          verificationStatus !== 'Verified User'
+          normalizedVerificationStatus !== 'VERIFIED'
             ? '<p style="color: red; font-weight: bold;">⚠️ IMPORTANT: This user did not verify their phone number. Please follow up to verify their details.</p>'
             : ''
         }

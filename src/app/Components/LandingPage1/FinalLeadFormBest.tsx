@@ -4,6 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { normalizePhoneNumber } from '@/lib/utils';
+import { getVerificationStatus } from '@/lib/leadVerification';
 
 interface CalculatorData {
   bhkType?: string;
@@ -175,7 +176,8 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
         possession: '', // Project Type & Possession removed from form
         pincode: selectedPincode,
         pageUrl: currentUrl,
-        verificationStatus: isVerified ? 'Verified User' : 'No OTP',
+        verificationStatus: getVerificationStatus(isVerified),
+        otpSuccess: isVerified,
         // Include calculator data both nested and flattened for backend email processing
         calculator: c,
         bhkType: c.bhkType ?? '',
@@ -201,9 +203,12 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
               email: requestData.email,
               phoneNumber: requestData.phone,
               pinCode: requestData.pincode || null,
+              propertyPin: requestData.pincode || null,
               propertyType: requestData.bhkType || requestData.possession || null,
               bookASlot: null,
               leadSource: 'Website',
+              verificationStatus: requestData.verificationStatus,
+              otpSuccess: requestData.otpSuccess,
             };
 
             await fetch('https://hows.hubinterior.com/v1/MetaLead', {
