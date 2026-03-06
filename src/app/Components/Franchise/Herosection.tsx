@@ -880,7 +880,7 @@ const Home: React.FC = () => {
           <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" />
 
           {/* top logo */}
-          <div className="absolute top-2 -mt-5 -ml-1">
+          <div className="absolute top-2 -mt-8 -ml-1">
             <Image
               src="/redlogo.png"
               alt="HUB Interior Logo"
@@ -893,12 +893,12 @@ const Home: React.FC = () => {
 
           {/* text + cta */}
           <h2 className="manrope leading-tight">
-            <div className="absolute top-40 text-white w-full px-3 mt-10">
+            <div className="absolute top-40 text-white w-full px-3 mt-10 ">
               <div className="text-4xl wulkan-display-bold drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
-                Become a <div>Franchisee!</div>
+                {/* Becomea <div>Franchisee!</div> */}
               </div>
               <p className="manrope-medium w-[300px] shadow-lg  mt-2 ml-3">
-                Future of smart investing
+                {/* Future of smart investing */}
               </p>
             </div>
           </h2>
