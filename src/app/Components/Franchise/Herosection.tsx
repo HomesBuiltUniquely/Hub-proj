@@ -35,7 +35,6 @@ import { normalizePhoneNumber } from "@/lib/utils";
 // Add more objects if you want more franchise cards
 // ];
 
-
 function handleClick() {
   router.push("/");
 }
@@ -43,15 +42,15 @@ function handleClick() {
 const Home: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const router = useRouter();
-  
+
   // OTP related states
-  const [phoneNumber, setPhoneNumber] = React.useState('');
+  const [phoneNumber, setPhoneNumber] = React.useState("");
   const [otpSent, setOtpSent] = React.useState(false);
-  const [otp, setOtp] = React.useState('');
+  const [otp, setOtp] = React.useState("");
   const [isVerifying, setIsVerifying] = React.useState(false);
   const [isSendingOTP, setIsSendingOTP] = React.useState(false);
   const [isVerified, setIsVerified] = React.useState(false);
-  const [otpError, setOtpError] = React.useState('');
+  const [otpError, setOtpError] = React.useState("");
 
   // const scrollToForm = () => {
   //   if (typeof window !== 'undefined') {
@@ -64,46 +63,48 @@ const Home: React.FC = () => {
 
   const sendOTP = async () => {
     if (!phoneNumber) {
-      setOtpError('Please enter a phone number first');
+      setOtpError("Please enter a phone number first");
       return;
     }
 
     if (phoneNumber.length !== 10) {
-      setOtpError('Please enter a valid 10-digit phone number');
+      setOtpError("Please enter a valid 10-digit phone number");
       return;
     }
 
     setIsSendingOTP(true);
-    setOtpError('');
+    setOtpError("");
 
     try {
-      console.log('Sending OTP request for phone:', phoneNumber);
-      const response = await fetch('/api/send-msg91-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      console.log("Sending OTP request for phone:", phoneNumber);
+      const response = await fetch("/api/send-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: phoneNumber }),
       });
 
-      console.log('OTP API response status:', response.status);
-      
+      console.log("OTP API response status:", response.status);
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log('OTP API response data:', data);
-      
+      console.log("OTP API response data:", data);
+
       if (data.success) {
         setOtpSent(true);
-        setOtpError('');
+        setOtpError("");
       } else {
-        const errorMsg = data.message || 'Failed to send OTP';
-        console.error('OTP send failed:', errorMsg, data);
+        const errorMsg = data.message || "Failed to send OTP";
+        console.error("OTP send failed:", errorMsg, data);
         setOtpError(errorMsg);
       }
     } catch (error) {
-      console.error('OTP send error:', error);
-      setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+      console.error("OTP send error:", error);
+      setOtpError(
+        `Failed to send OTP: ${error instanceof Error ? error.message : "Please try again."}`,
+      );
     } finally {
       setIsSendingOTP(false);
     }
@@ -111,27 +112,27 @@ const Home: React.FC = () => {
 
   const verifyOTP = async () => {
     if (!otp) {
-      setOtpError('Please enter the OTP');
+      setOtpError("Please enter the OTP");
       return;
     }
 
     setIsVerifying(true);
     try {
-      const response = await fetch('/api/verify-msg91-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/verify-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: phoneNumber, otp }),
       });
 
       const data = await response.json();
       if (data.success) {
         setIsVerified(true);
-        setOtpError('');
+        setOtpError("");
       } else {
-        setOtpError(data.message || 'Invalid OTP');
+        setOtpError(data.message || "Invalid OTP");
       }
     } catch {
-      setOtpError('Failed to verify OTP. Please try again.');
+      setOtpError("Failed to verify OTP. Please try again.");
     } finally {
       setIsVerifying(false);
     }
@@ -141,7 +142,7 @@ const Home: React.FC = () => {
     e.preventDefault();
 
     if (!isVerified) {
-      setOtpError('Please verify your phone number with OTP first');
+      setOtpError("Please verify your phone number with OTP first");
       return;
     }
 
@@ -152,17 +153,17 @@ const Home: React.FC = () => {
 
     const formData = new FormData(e.currentTarget);
     const data = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string,
-      city: formData.get('city') as string,
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      city: formData.get("city") as string,
     };
 
     try {
-      const response = await fetch('/api/franchise-contact', {
-        method: 'POST',
+      const response = await fetch("/api/franchise-contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -172,28 +173,30 @@ const Home: React.FC = () => {
       if (result.success) {
         // Reset OTP states
         setOtpSent(false);
-        setOtp('');
+        setOtp("");
         setIsVerified(false);
-        setOtpError('');
-        setPhoneNumber('');
+        setOtpError("");
+        setPhoneNumber("");
         // Redirect to thank you page
-        router.push('/thank-you-franchisee');
+        router.push("/thank-you-franchisee");
       } else {
-        alert('There was an error submitting your inquiry. Please try again.');
+        alert("There was an error submitting your inquiry. Please try again.");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting your inquiry. Please try again.');
+      console.error("Error submitting form:", error);
+      alert("There was an error submitting your inquiry. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleMobileFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleMobileFormSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
     e.preventDefault();
 
     if (!isVerified) {
-      setOtpError('Please verify your phone number with OTP first');
+      setOtpError("Please verify your phone number with OTP first");
       return;
     }
 
@@ -203,20 +206,20 @@ const Home: React.FC = () => {
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get('firstName') as string;
-    const lastName = formData.get('lastName') as string;
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
     const data = {
       name: `${firstName} ${lastName}`.trim(),
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string,
-      city: formData.get('city') as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      city: formData.get("city") as string,
     };
 
     try {
-      const response = await fetch('/api/franchise-contact', {
-        method: 'POST',
+      const response = await fetch("/api/franchise-contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -226,26 +229,25 @@ const Home: React.FC = () => {
       if (result.success) {
         // Reset OTP states
         setOtpSent(false);
-        setOtp('');
+        setOtp("");
         setIsVerified(false);
-        setOtpError('');
-        setPhoneNumber('');
+        setOtpError("");
+        setPhoneNumber("");
         // Redirect to thank you page
-        router.push('/thank-you-franchisee');
+        router.push("/thank-you-franchisee");
       } else {
-        alert('There was an error submitting your inquiry. Please try again.');
+        alert("There was an error submitting your inquiry. Please try again.");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting your inquiry. Please try again.');
+      console.error("Error submitting form:", error);
+      alert("There was an error submitting your inquiry. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-
   const handleGetEstimate = () => {
-    router.push('/GetEstimate');
+    router.push("/GetEstimate");
   };
 
   // const [currentSlide, setCurrentSlide] = useState(0);
@@ -266,7 +268,7 @@ const Home: React.FC = () => {
   return (
     <>
       <style jsx>{`
-     /* Hide all by default */
+        /* Hide all by default */
         .desktop-1280,
         .desktop-1920,
         .desktop-2560 {
@@ -294,15 +296,13 @@ const Home: React.FC = () => {
           }
         }
 
-         /* mobile layout for extra large desktops (>1920px) */
+        /* mobile layout for extra large desktops (>1920px) */
         @media (max-width: 1023px) {
           .mobile-1 {
             display: block !important;
           }
         }
-
       `}</style>
-
 
       {/* 2560 Version */}
 
@@ -310,8 +310,7 @@ const Home: React.FC = () => {
         <div
           className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
           style={{
-            backgroundImage:
-              "url('/kh.png')",
+            backgroundImage: "url('/kh.png')",
           }}
         >
           {/* Navbar */}
@@ -339,7 +338,6 @@ const Home: React.FC = () => {
                 className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 BOOK CONSULTATION
-
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
@@ -357,15 +355,24 @@ const Home: React.FC = () => {
               <h1 className="text-white  text-5xl lg:text-6xl wulkan-display-bold mt-70 mb-2 drop-shadow-lg text-nowrap -ml-5">
                 Become a franchisee!
               </h1>
-              <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">Future of smart investing</p>
+              <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">
+                Future of smart investing
+              </p>
             </div>
           </div>
 
-
           {/* Right: Form */}
-          <div id="franchise-form" className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-100 ml-210 self-center pointer-events-auto">
-            <div className="text-white text-2xl manrope-medium mb-5">Enter your details to get started</div>
-            <form onSubmit={handleFormSubmit} className="space-y-4 pointer-events-auto">
+          <div
+            id="franchise-form"
+            className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-100 ml-210 self-center pointer-events-auto"
+          >
+            <div className="text-white text-2xl manrope-medium mb-5">
+              Enter your details to get started
+            </div>
+            <form
+              onSubmit={handleFormSubmit}
+              className="space-y-4 pointer-events-auto"
+            >
               <div className="flex gap-3">
                 <div className="">
                   <label className="pl-1 text-white "> Name*</label>
@@ -378,8 +385,7 @@ const Home: React.FC = () => {
                     type="text"
                   />
                 </div>
-                <div className="">
-                </div>
+                <div className=""></div>
               </div>
               <label className="pl-1 text-white">Email Id*</label>
               <input
@@ -399,13 +405,13 @@ const Home: React.FC = () => {
                 onChange={(e) => {
                   const value = normalizePhoneNumber(e.target.value);
                   setPhoneNumber(value);
-                  setOtpError('');
+                  setOtpError("");
                 }}
                 disabled={isSubmitting}
                 className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="tel"
               />
-              
+
               {/* OTP Section */}
               {phoneNumber && phoneNumber.length > 0 && (
                 <div className="space-y-2 mt-2">
@@ -416,7 +422,7 @@ const Home: React.FC = () => {
                       disabled={phoneNumber.length !== 10 || isSendingOTP}
                       className="w-full py-2 px-4 rounded text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                      {isSendingOTP ? "Sending OTP..." : "Send OTP"}
                     </button>
                   ) : !isVerified ? (
                     <div className="space-y-2">
@@ -433,7 +439,7 @@ const Home: React.FC = () => {
                         disabled={isVerifying}
                         className="w-full py-2 px-4 rounded text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
                       >
-                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                        {isVerifying ? "Verifying..." : "Verify OTP"}
                       </button>
                     </div>
                   ) : (
@@ -441,13 +447,15 @@ const Home: React.FC = () => {
                       ✅ Phone Number Verified
                     </div>
                   )}
-                  
+
                   {otpError && (
-                    <p className="text-red-500 text-sm manrope-medium">{otpError}</p>
+                    <p className="text-red-500 text-sm manrope-medium">
+                      {otpError}
+                    </p>
                   )}
                 </div>
               )}
-              
+
               <label className="pl-1 text-white">City*</label>
               <input
                 required
@@ -460,29 +468,44 @@ const Home: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full manrope py-2 rounded mt-4 transition flex items-center justify-center ${isSubmitting
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-red-600 hover:bg-red-700'
-                  }`}
+                className={`w-full manrope py-2 rounded mt-4 transition flex items-center justify-center ${
+                  isSubmitting
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-red-600 hover:bg-red-700"
+                }`}
               >
                 {isSubmitting ? (
                   <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
                     </svg>
                     Submitting...
                   </>
                 ) : (
-                  'Submit'
+                  "Submit"
                 )}
               </button>
             </form>
           </div>
-
         </div>
       </div>
-
 
       {/* 1920 Version */}
 
@@ -490,8 +513,7 @@ const Home: React.FC = () => {
         <div
           className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
           style={{
-            backgroundImage:
-              "url('/kh.png')",
+            backgroundImage: "url('/kh.png')",
           }}
         >
           {/* Navbar */}
@@ -520,7 +542,6 @@ const Home: React.FC = () => {
                 className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 BOOK CONSULTATION
-
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
@@ -538,15 +559,24 @@ const Home: React.FC = () => {
               <h1 className="text-white  text-5xl lg:text-6xl wulkan-display-bold mt-70 mb-2 drop-shadow-lg text-nowrap -ml-5">
                 Become a franchisee!
               </h1>
-              <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">Future of smart investing</p>
+              <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">
+                Future of smart investing
+              </p>
             </div>
           </div>
 
-
           {/* Right: Form */}
-          <div id="franchise-form" className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-80 ml-225 self-center pointer-events-auto">
-            <div className="text-white text-2xl manrope-medium mb-5">Enter your details to get started</div>
-            <form onSubmit={handleFormSubmit} className="space-y-4 pointer-events-auto">
+          <div
+            id="franchise-form"
+            className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-80 ml-225 self-center pointer-events-auto"
+          >
+            <div className="text-white text-2xl manrope-medium mb-5">
+              Enter your details to get started
+            </div>
+            <form
+              onSubmit={handleFormSubmit}
+              className="space-y-4 pointer-events-auto"
+            >
               <div className="flex gap-3">
                 <div className="">
                   <label className="pl-1 text-white "> Name*</label>
@@ -559,8 +589,7 @@ const Home: React.FC = () => {
                     type="text"
                   />
                 </div>
-                <div className="">
-                </div>
+                <div className=""></div>
               </div>
               <label className="pl-1 text-white">Email Id*</label>
               <input
@@ -580,13 +609,13 @@ const Home: React.FC = () => {
                 onChange={(e) => {
                   const value = normalizePhoneNumber(e.target.value);
                   setPhoneNumber(value);
-                  setOtpError('');
+                  setOtpError("");
                 }}
                 disabled={isSubmitting}
                 className="w-full px-4 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="tel"
               />
-              
+
               {/* OTP Section */}
               {phoneNumber && phoneNumber.length > 0 && (
                 <div className="space-y-2 mt-2">
@@ -597,7 +626,7 @@ const Home: React.FC = () => {
                       disabled={phoneNumber.length !== 10 || isSendingOTP}
                       className="w-full py-2 px-4 rounded text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                      {isSendingOTP ? "Sending OTP..." : "Send OTP"}
                     </button>
                   ) : !isVerified ? (
                     <div className="space-y-2">
@@ -614,7 +643,7 @@ const Home: React.FC = () => {
                         disabled={isVerifying}
                         className="w-full py-2 px-4 rounded text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
                       >
-                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                        {isVerifying ? "Verifying..." : "Verify OTP"}
                       </button>
                     </div>
                   ) : (
@@ -622,13 +651,15 @@ const Home: React.FC = () => {
                       ✅ Phone Number Verified
                     </div>
                   )}
-                  
+
                   {otpError && (
-                    <p className="text-red-500 text-sm manrope-medium">{otpError}</p>
+                    <p className="text-red-500 text-sm manrope-medium">
+                      {otpError}
+                    </p>
                   )}
                 </div>
               )}
-              
+
               <label className="pl-1 text-white">City*</label>
               <input
                 required
@@ -641,37 +672,51 @@ const Home: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full font-bold py-2 rounded mt-4 manrope transition flex items-center justify-center ${isSubmitting
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-red-600 hover:bg-red-700'
-                  }`}
+                className={`w-full font-bold py-2 rounded mt-4 manrope transition flex items-center justify-center ${
+                  isSubmitting
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-red-600 hover:bg-red-700"
+                }`}
               >
                 {isSubmitting ? (
                   <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
                     </svg>
                     Submitting...
                   </>
                 ) : (
-                  'Submit'
+                  "Submit"
                 )}
               </button>
             </form>
           </div>
-
         </div>
-
-
       </div>
-
 
       {/* 1280 Version */}
       <div className="desktop-1280 px-5">
-        <div className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-          style={{ backgroundImage: "url('/kh.png')" }}>
-
+        <div
+          className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
+          style={{ backgroundImage: "url('/kh.png')" }}
+        >
           {/* Navbar */}
           <div className="relative z-30 flex items-center justify-between px-8">
             {/* Logo */}
@@ -687,8 +732,6 @@ const Home: React.FC = () => {
 
             {/* Center Navigation */}
             <div className="hidden md:flex -mt-12 items-center gap-12">
-
-
               {/* NAV BAR — unchanged */}
               <div className=" bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
                 <OfferingsDropdown textColor="text-white" />
@@ -702,7 +745,6 @@ const Home: React.FC = () => {
                 className="relative bg-[#ef0101] mr-1 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 BOOK CONSULTATION
-
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
@@ -710,7 +752,6 @@ const Home: React.FC = () => {
                   </span>
                 </span>
               </button>
-
             </div>
           </div>
 
@@ -734,7 +775,10 @@ const Home: React.FC = () => {
             <div className="text-white text-2xl manrope-medium mb-5">
               Enter your details to get started
             </div>
-            <form onSubmit={handleFormSubmit} className="space-y-4 pointer-events-auto">
+            <form
+              onSubmit={handleFormSubmit}
+              className="space-y-4 pointer-events-auto"
+            >
               <div className="flex gap-3">
                 <div className="">
                   <label className="pl-1 text-white "> Name*</label>
@@ -769,13 +813,13 @@ const Home: React.FC = () => {
                 onChange={(e) => {
                   const value = normalizePhoneNumber(e.target.value);
                   setPhoneNumber(value);
-                  setOtpError('');
+                  setOtpError("");
                 }}
                 disabled={isSubmitting}
                 className="w-full px-3 py-2 rounded border mt-4 bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="tel"
               />
-              
+
               {/* OTP Section */}
               {phoneNumber && phoneNumber.length > 0 && (
                 <div className="space-y-2 mt-2">
@@ -786,7 +830,7 @@ const Home: React.FC = () => {
                       disabled={phoneNumber.length !== 10 || isSendingOTP}
                       className="w-full py-2 px-4 rounded text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                      {isSendingOTP ? "Sending OTP..." : "Send OTP"}
                     </button>
                   ) : !isVerified ? (
                     <div className="space-y-2">
@@ -803,7 +847,7 @@ const Home: React.FC = () => {
                         disabled={isVerifying}
                         className="w-full py-2 px-4 rounded text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
                       >
-                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                        {isVerifying ? "Verifying..." : "Verify OTP"}
                       </button>
                     </div>
                   ) : (
@@ -811,9 +855,11 @@ const Home: React.FC = () => {
                       ✅ Phone Number Verified
                     </div>
                   )}
-                  
+
                   {otpError && (
-                    <p className="text-red-500 text-sm manrope-medium">{otpError}</p>
+                    <p className="text-red-500 text-sm manrope-medium">
+                      {otpError}
+                    </p>
                   )}
                 </div>
               )}
@@ -831,10 +877,11 @@ const Home: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full font-bold py-2 rounded mt-4 manrope transition flex items-center justify-center ${isSubmitting
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-red-600 hover:bg-red-700"
-                  }`}
+                className={`w-full font-bold py-2 rounded mt-4 manrope transition flex items-center justify-center ${
+                  isSubmitting
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-red-600 hover:bg-red-700"
+                }`}
               >
                 {isSubmitting ? (
                   <>
@@ -877,7 +924,10 @@ const Home: React.FC = () => {
       <div className="mobile-1 md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-hidden">
         <div className="relative h-full w-full p-2">
           {/* Rounded image only */}
-          <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp" alt="" />
+          <img
+            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/INSMH.webp"
+            alt=""
+          />
 
           {/* top logo */}
           <div className="absolute top-2 -mt-8 -ml-1">
@@ -888,27 +938,27 @@ const Home: React.FC = () => {
               height={25}
               className="cursor-pointer"
             />
-
           </div>
 
-          {/* text + cta */}
+          {/*
           <h2 className="manrope leading-tight">
             <div className="absolute top-40 text-white w-full px-3 mt-10 ">
               <div className="text-4xl wulkan-display-bold drop-shadow-lg w-[20px] text-nowrap mt-15 ml-3">
-                {/* Becomea <div>Franchisee!</div> */}
+                Becomea <div>Franchisee!</div>
               </div>
-              <p className="manrope-medium w-[300px] shadow-lg  mt-2 ml-3">
-                {/* Future of smart investing */}
-              </p>
+              <p className="manrope-medium w-[300px] shadow-lg mt-2 ml-3"></p>
             </div>
           </h2>
+          */}
         </div>
-
 
         {/* Section2 */}
         <div className="h-auto w-full flex justify-center px-2">
           <div className="w-[360px] max-w-full h-auto border-2 border-[#DDCDC1] rounded-4xl mt-5 flex justify-center items-start p-4">
-            <form onSubmit={handleMobileFormSubmit} className="w-full flex flex-col items-center">
+            <form
+              onSubmit={handleMobileFormSubmit}
+              className="w-full flex flex-col items-center"
+            >
               <input
                 type="text"
                 name="firstName"
@@ -941,13 +991,13 @@ const Home: React.FC = () => {
                 onChange={(e) => {
                   const value = normalizePhoneNumber(e.target.value);
                   setPhoneNumber(value);
-                  setOtpError('');
+                  setOtpError("");
                 }}
                 required
                 disabled={isSubmitting}
                 className="w-full sm:w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-4 pl-4 pr-4 disabled:opacity-50 disabled:cursor-not-allowed"
               />
-              
+
               {/* OTP Section */}
               {phoneNumber && phoneNumber.length > 0 && (
                 <div className="space-y-2 w-full sm:w-[280px]">
@@ -958,7 +1008,7 @@ const Home: React.FC = () => {
                       disabled={phoneNumber.length !== 10 || isSendingOTP}
                       className="w-full h-[40px] rounded-full text-white manrope-medium bg-blue-500 hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                      {isSendingOTP ? "Sending OTP..." : "Send OTP"}
                     </button>
                   ) : !isVerified ? (
                     <div className="space-y-2">
@@ -975,7 +1025,7 @@ const Home: React.FC = () => {
                         disabled={isVerifying}
                         className="w-full h-[40px] rounded-full text-white manrope-medium bg-green-500 hover:bg-green-600 transition disabled:opacity-50"
                       >
-                        {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                        {isVerifying ? "Verifying..." : "Verify OTP"}
                       </button>
                     </div>
                   ) : (
@@ -983,13 +1033,15 @@ const Home: React.FC = () => {
                       ✅ Phone Number Verified
                     </div>
                   )}
-                  
+
                   {otpError && (
-                    <p className="text-red-500 text-sm manrope-medium text-center">{otpError}</p>
+                    <p className="text-red-500 text-sm manrope-medium text-center">
+                      {otpError}
+                    </p>
                   )}
                 </div>
               )}
-              
+
               <input
                 type="text"
                 name="city"
@@ -1001,21 +1053,38 @@ const Home: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-[180px] sm:w-[180px] h-[40px] rounded-full mt-6 manrope transition flex items-center justify-center ${isSubmitting
-                  ? 'bg-gray-400 cursor-not-allowed text-white'
-                  : 'bg-[#ef0101] text-white hover:bg-red-700'
-                  }`}
+                className={`w-[180px] sm:w-[180px] h-[40px] rounded-full mt-6 manrope transition flex items-center justify-center ${
+                  isSubmitting
+                    ? "bg-gray-400 cursor-not-allowed text-white"
+                    : "bg-[#ef0101] text-white hover:bg-red-700"
+                }`}
               >
                 {isSubmitting ? (
                   <>
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
                     </svg>
                     Submitting...
                   </>
                 ) : (
-                  'Join our network'
+                  "Join our network"
                 )}
               </button>
             </form>
@@ -1025,14 +1094,19 @@ const Home: React.FC = () => {
         {/* Section3 */}
         <div className="w-full mt-10 flex justify-center px-4 text-center">
           <p className="w-full max-w-[320px] sm:max-w-[360px] text-sm mx-auto">
-            HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.
+            HUB Interior is more than an interior brand; it&#39;s a movement
+            redefining how homes are designed and delivered. Our exclusive
+            34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in
+            speed, quality, and design excellence. With our brand-backed
+            business models and client-oriented products such as Homes Under
+            Budget, Hubsolute, The Office (commercial interiors), and Homes &
+            Merry, we bring innovation and trust to every space we create and
+            products we deliver.
           </p>
         </div>
 
         <OverlapNavBar />
-
       </div>
-
 
       {/* Section2 */}
 
@@ -1114,9 +1188,6 @@ const Home: React.FC = () => {
           <p className="w-[300px] text-sm mx-auto">HUB Interior is more than an interior brand; it&#39;s a movement redefining how homes are designed and delivered. Our exclusive 34-Day Fast Track Interior Service, we&#39;ve set new benchmarks in speed, quality, and design excellence. With our brand-backed business models and client-oriented products such as Homes Under Budget, Hubsolute, The Office (commercial interiors), and Homes & Merry, we bring innovation and trust to every space we create and products we deliver.</p>
 
         </div> */}
-
-
-
     </>
   );
 };
