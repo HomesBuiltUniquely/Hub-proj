@@ -15,22 +15,22 @@ export default function Section3() {
 
     const slides = [
         {
-            img: "j1.webp",
+            img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/designs_for_every_preference/modern_contemporary.webp",
             type: "Modern Contemporary Interior",
 
         },
         {
-            img: "j2.webp",
+            img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/designs_for_every_preference/modern_aesthetic.webp",
             type: "Modern Aesthetic Interior",
 
         },
         {
-            img: "j3.webp",
+            img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/designs_for_every_preference/wooden_traditional.webp",
             type: "Wooden Traditional Interior",
 
         },
         {
-            img: "j4.webp",
+            img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/designs_for_every_preference/art_deco_interior.webp",
             type: "Art Deco Interior",
 
         },
