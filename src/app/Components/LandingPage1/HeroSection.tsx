@@ -1095,7 +1095,7 @@ export default function HeroSections() {
                   </div>
 
                   {/* Phone Input */}
-                  <div className="flex flex-col gap-4 justify-center mt-6 sm:mt-8">
+                  <div className="flex flex-col gap-4 justify-center mt-6 sm:mt-5">
                     <input
                       id="e2"
                       type="tel"
@@ -1109,7 +1109,7 @@ export default function HeroSections() {
                   </div>
 
                   {/* Pincode Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-4 sm:mt-8">
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-4 sm:mt-5">
                     <select
                       name="pincode"
                       required
@@ -1137,7 +1137,7 @@ export default function HeroSections() {
                   </div>
 
                   {/* City Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-8">
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-5">
                     <div ref={cityRef1920}>
                       <div
                         onClick={() => {
@@ -1168,7 +1168,7 @@ export default function HeroSections() {
                   </div>
 
                   {/* Button Container (centered) */}
-                  <div className="flex items-center justify-center mt-6 sm:mt-8">
+                  <div className="flex items-center justify-center mt-6 sm:mt-5">
                     {/* Submit Button */}
                     <button
                       type="submit"

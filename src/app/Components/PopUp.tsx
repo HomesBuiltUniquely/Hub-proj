@@ -384,7 +384,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                     <div className="w-[550px] flex-shrink-2 self-stretch">
                         <Image
-                            src="/camping.png"
+                            src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/TvUnit_room.jpg"
                             alt="Offer Image"
                             width={550}
                             height={500}
@@ -406,7 +406,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                     <div className="w-full">
                         <Image
-                            src="/camping.png"
+                            src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/TvUnit_room.jpg"
                             alt="Offer Image"
                             width={450}
                             height={400}
