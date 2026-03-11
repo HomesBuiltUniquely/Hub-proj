@@ -9,7 +9,7 @@ import NavMore from "../NavMore";
 import OverlapNavBar from "../OverlapNavBar";
 import MagneticButton from "../Home/MagneticButton";
 
-const DINING_HERO_IMAGE = "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/Hero_Dining.png";
+const DINING_HERO_IMAGE = "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/dining_unit.jpg";
 
 const ContactHeader: React.FC = () => {
   const router = useRouter();

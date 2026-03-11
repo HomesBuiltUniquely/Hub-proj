@@ -141,7 +141,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       console.log('[FinalLeadForm] Received calculatorData:', c);
       const requestData = {
         name: formData.name,
-        email: '', // Email removed from form
+        email: formData.email,
         phone: formData.phone,
         possession: '', // Project Type & Possession removed from form
         pincode: selectedPincode,
@@ -216,7 +216,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   }, [formData, selectedPincode, isVerified, calculatorData, router]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.phone || !selectedPincode) {
+    if (!formData.name || !formData.email || !formData.phone || !selectedPincode) {
       return;
     }
     
@@ -249,6 +249,15 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             placeholder="Name *"
             required
             className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
+          />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Email *"
+            required
+            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
           <input
             type="tel"

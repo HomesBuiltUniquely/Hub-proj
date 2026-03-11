@@ -28,22 +28,22 @@ export default function Section6() {
       name: "Smart Storage",
       slides: [
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart1.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/spacesaving/smart_saving_1.png",
           title: "Tailored Storage Designs For Maximum Space",
           subtitle: "Unlock 25% Extra Space"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart2.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/spacesaving/smart_saving_2.png",
           title: "Built-in Wardrobe Solutions",
           subtitle: "Custom Storage for Every Room"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart3.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/spacesaving/smart_saving_3.png",
           title: "Multi-functional Furniture",
           subtitle: "Space-Saving Design Innovation"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//smart4.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/spacesaving/smart_saving_4.png",
           title: "Hidden Storage Solutions",
           subtitle: "Seamless Integration"
         }
@@ -53,22 +53,22 @@ export default function Section6() {
       name: "Modular Kitchens",
       slides: [
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//Kitchen1.jpg",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/modular_kitchen/modular_kitchen1.jpeg",
           title: "Modern Kitchen Design",
           subtitle: "Functional Beauty"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//KITCHEN%202.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/modular_kitchen/modular_kitchen2.png",
           title: "Smart Kitchen Storage",
           subtitle: "Organized Cooking Space"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064686.jpeg",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/modular_kitchen/modular_kitchen3.jpg",
           title: "Premium Kitchen Materials",
           subtitle: "Quality Craftsmanship"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064701.jpeg",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/modular_kitchen/modular_kitchen4.jpeg",
           title: "Kitchen Workflow Design",
           subtitle: "Efficient Layout Planning"
         }
@@ -78,22 +78,22 @@ export default function Section6() {
       name: "Bedrooms",
       slides: [
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//bedroom_interior_design.jpg",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/bedroom/BEDROOM1.png",
           title: "Master Bedroom Design",
           subtitle: "Luxury Meets Comfort"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//BEDROOM%202.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/bedroom/bedroom2.jpg",
           title: "Kids Room Solutions",
           subtitle: "Fun and Functional"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//BEDROOM%203.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/bedroom/BEDROOM+3.png",
           title: "Guest Room Design",
           subtitle: "Welcoming Spaces"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//BEDROOM%204.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/bedroom/BEDROOM+4.png",
           title: "Bedroom Storage Systems",
           subtitle: "Clutter-Free Living"
         }
@@ -103,22 +103,22 @@ export default function Section6() {
       name: "Living Spaces",
       slides: [
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//LIVING%201.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/living_room/living_room1.png",
           title: "Living Room Design",
           subtitle: "Entertainment Hub"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//LIVING%202.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/living_room/living_room2.jpeg",
           title: "Dining Area Solutions",
           subtitle: "Gathering Spaces"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//LIVING%203.png",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/living_room/living_room3.png",
           title: "Home Office Design",
           subtitle: "Productive Environments"
         },
         {
-          image: "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//1000064700.jpeg",
+          image: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/living_room/living_room4.png",
           title: "Entertainment Centers",
           subtitle: "Modern Living"
         }
