@@ -134,11 +134,11 @@ export default function Section6() {
             {/* 2560 version  */}
 
 
-            <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-30 px-85">
+            <div className="home-desktop desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-30 px-85">
                 <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
-                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
+                        <h1 className="type-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
                        
@@ -164,8 +164,8 @@ export default function Section6() {
                                                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                                             />
                                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                                                <h3 className="text-white text-xl manrope mb-1">{project.title}</h3>
-                                                <p className="text-white/80 text-sm manrope-medium">{project.subtitle}</p>
+                                                <h3 className="type-h3 text-white manrope-semibold">{project.title}</h3>
+                                                <p className="type-body text-white/80 manrope">{project.subtitle}</p>
                                             </div>
                                         </div>
                                     </Link>
@@ -211,11 +211,11 @@ export default function Section6() {
 
             {/* 1920 Version */}
 
-            <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-25 px-20">
+            <div className="home-desktop desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-25 px-20">
                 <div className="max-w-8xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
-                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
+                        <h1 className="type-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
                     </div>
@@ -242,8 +242,8 @@ export default function Section6() {
                                                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                                             />
                                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                                                <h3 className="text-white text-xl manrope mb-1">{project.title}</h3>
-                                                <p className="text-white/80 text-sm manrope-medium">{project.subtitle}</p>
+                                                <h3 className="type-h3 text-white manrope-semibold">{project.title}</h3>
+                                                <p className="type-body text-white/80 manrope">{project.subtitle}</p>
                                             </div>
                                         </div>
                                     </Link>
@@ -287,11 +287,11 @@ export default function Section6() {
 
             {/* 1280 Version */}
 
-            <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-35 px-6">
+            <div className="home-desktop desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[600px] -mt-35 px-6">
                 <div className="max-w-6xl mx-auto">
                     {/* Header & Navigation */}
                     <div className="flex justify-between items-start mb-12">
-                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
+                        <h1 className="type-h1 wulkan-display-bold text-gray-800 text-nowrap max-w-md">
                             Recent interior design projects
                         </h1>
                         
@@ -317,8 +317,8 @@ export default function Section6() {
                                                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                                             />
                                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                                                <h3 className="text-white text-xl manrope mb-1">{project.title}</h3>
-                                                <p className="text-white/80 text-sm manrope-medium">{project.subtitle}</p>
+                                                <h3 className="type-h3 text-white manrope-semibold">{project.title}</h3>
+                                                <p className="type-body text-white/80 manrope">{project.subtitle}</p>
                                             </div>
                                         </div>
                                     </Link>

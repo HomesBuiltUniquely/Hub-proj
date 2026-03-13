@@ -121,12 +121,12 @@ export default function Section2() {
 
                 {/* desktop-2560 */}
 
-                <div className="desktop-2560  w-full hidden md:block bg-[#F1F2F6] min-h-[580px] pt-14 pb-8 px-85">
+                <div className="home-desktop desktop-2560  w-full hidden md:block bg-[#F1F2F6] min-h-[580px] pt-14 pb-8 px-85">
                     <div className="max-w-8xl mx-auto">
                         {/* Header */}
                         <div className="flex justify-between items-start mb-12 mx-auto">
                             <div className="flex-1">
-                                <h1 className="typography-h1 wulkan-display-bold text-gray-800 mt-3 ">
+                                <h1 className="type-h1 wulkan-display-bold text-gray-800 mt-3 ">
                                     Every space has a story, start yours here
                                 </h1>
                             </div>
@@ -155,7 +155,7 @@ export default function Section2() {
                                                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                                                 />
                                                 <div className="absolute bottom-0 left-0 p-6">
-                                                    <h3 className="text-white text-xl manrope mb-2">{room.title}</h3>
+                                                    <h3 className="type-h3 text-white manrope-semibold">{room.title}</h3>
                                                 </div>
                                                 <div className="absolute bottom-6 right-6">
                                                     <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
@@ -221,12 +221,12 @@ export default function Section2() {
 
                 {/* desktop-1920 */}
 
-                <div className="desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[580px] pt-5 pb-8 ">
+                <div className="home-desktop desktop-1920 hidden md:block bg-[#F1F2F6] min-h-[580px] pt-5 pb-8 ">
                     <div className="w-full mx-auto">
                         {/* Header */}
                         <div className="flex justify-between items-start mb-8 mx-20">
                             <div className="flex-1">
-                                <h1 className="typography-h1 wulkan-display-bold text-gray-800 mt-3 ">
+                                <h1 className="type-h1 wulkan-display-bold text-gray-800 mt-3 ">
                                     Every space has a story, start yours here
                                 </h1>
                             </div>
@@ -264,7 +264,7 @@ export default function Section2() {
                                                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                                                 />
                                                 <div className="absolute bottom-0 left-0 p-6">
-                                                    <h3 className="text-white text-xl manrope mb-2">{room.title}</h3>
+                                                    <h3 className="type-h3 text-white manrope-semibold">{room.title}</h3>
                                                 </div>
                                                 <div className="absolute bottom-6 right-6">
                                                     <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
@@ -332,14 +332,14 @@ export default function Section2() {
 
 
 
-                <div className='desktop-1280'>
+                <div className='home-desktop desktop-1280'>
 
                     <div className="hidden md:block bg-[#F1F2F6] min-h-[560px] pb-10 px-4 mx-auto px-15 max-w-[1280px]">
                         <div className="max-w-[1280px] mx-auto">
                             {/* Header */}
                             <div className="flex justify-between items-start mb-10">
                                 <div className="flex-1">
-                                    <h1 className="typography-h1 leading-tight wulkan-display-bold text-gray-800 mt-2">
+                                    <h1 className="type-h1 leading-tight wulkan-display-bold text-gray-800 mt-2">
                                         Every space has a story, start yours here
                                     </h1>
                                 </div>
@@ -366,7 +366,7 @@ export default function Section2() {
                                                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                                                     />
                                                     <div className="absolute bottom-0 left-0 p-5">
-                                                        <h3 className="text-white text-lg manrope mb-1">
+                                                        <h3 className="type-h3 text-white manrope-semibold">
                                                             {room.title}
                                                         </h3>
                                                     </div>
