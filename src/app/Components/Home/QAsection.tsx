@@ -99,9 +99,9 @@ export function QAsection() {
       {/* 2560 version  */}
 
 
-       <div className=" desktop-2560 min-h-auto bg-[#F1F2F6] px-10 pt-8 pb-16 md:pt-8 md:pb-20">
+       <div className="home-desktop desktop-2560 min-h-auto bg-[#F1F2F6] px-10 pt-8 pb-16 md:pt-8 md:pb-20">
         <div className="max-w-screen-xl ">
-          <h1 className="typography-h1 mb-15  sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
+          <h1 className="type-h1 mb-15  sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
             Frequently asked questions
           </h1>
 
@@ -147,10 +147,10 @@ export function QAsection() {
 
       {/* 1920 Version */}
 
-      <div className='desktop-1920'>
+      <div className='home-desktop desktop-1920'>
         <div className="min-h-auto bg-[#F1F2F6] px-15 mt-15">
           <div className="max-w-full">
-            <h1 className="typography-h1 text-black wulkan-display-bold ml-5">
+            <h1 className="type-h1 text-black wulkan-display-bold ml-5">
               Frequently asked questions
             </h1>
 
@@ -197,9 +197,9 @@ export function QAsection() {
 
       {/* 1280 version */}
 
-      <div className="desktop-1280 min-h-auto bg-[#F1F2F6] px-15   md:pt-5">
+      <div className="home-desktop desktop-1280 min-h-auto bg-[#F1F2F6] px-15   md:pt-5">
         <div className="max-w-screen-xl mx-auto">
-          <h1 className="typography-h1 text-black wulkan-display-bold text-left tracking-wider">
+          <h1 className="type-h1 text-black wulkan-display-bold text-left tracking-wider">
             Frequently asked questions
           </h1>
 

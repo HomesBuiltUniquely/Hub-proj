@@ -1,19 +1,23 @@
-'use client';
-import { useState, useEffect } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 
 export default function Section9() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const testimonialImages = [
-    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%201.png",
+    "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/TvUnit_room.jpg",
     "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%202.png",
     "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%203.png",
     "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%204.png",
-    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%205.png"
+    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%205.png",
   ];
 
   // Create a looped array for seamless infinite scrolling
-  const loopedImages = [...testimonialImages, ...testimonialImages, ...testimonialImages];
+  const loopedImages = [
+    ...testimonialImages,
+    ...testimonialImages,
+    ...testimonialImages,
+  ];
 
   // Auto-advance carousel
   useEffect(() => {
@@ -49,49 +53,43 @@ export default function Section9() {
   };
 
   return (
-
     <div>
-
       <style global jsx>{`
+        /* Hide both by default */
+        .desktop-1280,
+        .desktop-1440 {
+          display: none !important;
+        }
 
-                /* Hide both by default */
-                .desktop-1280,
-                .desktop-1440 {
-                    display: none !important;
-                }
+        /* 1024px → 1439px = desktop-1280 */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+          .desktop-1280 {
+            display: block !important;
+          }
+        }
 
-                /* 1024px → 1439px = desktop-1280 */
-                @media (min-width: 1024px) and (max-width: 1439px) {
-                    .desktop-1280 {
-                        display: block !important;
-                    }
-                }
-
-                /* 1440px and above = desktop-1440 */
-                @media (min-width: 1440px) {
-                    .desktop-1440 {
-                        display: block !important;
-                    }
-                }
-
-            `}</style>
-
+        /* 1440px and above = desktop-1440 */
+        @media (min-width: 1440px) {
+          .desktop-1440 {
+            display: block !important;
+          }
+        }
+      `}</style>
 
       <div className="w-full bg-white pt-20 pb-8">
-
         <div className="max-w-7xl mx-auto px-6">
-
-
           {/* Desktop Carousel */}
 
-
-          <div className='desktop-1440'>
+          <div className="desktop-1440">
             {/* Header */}
             <div className=" text-center mb-16">
               <h3 className=" text-4xl sm:text-4xl manrope-medium mb-4">
                 What Our Happy Customers Have to Say!
               </h3>
-              <img className='w-[400px] h-[150px]  mx-auto mt-10' src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/Review.png"></img>
+              <img
+                className="w-[400px] h-[150px]  mx-auto mt-10"
+                src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/Review.png"
+              ></img>
             </div>
 
             <div className="hidden lg:block">
@@ -101,8 +99,18 @@ export default function Section9() {
                   onClick={prevSlide}
                   className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
                 >
-                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  <svg
+                    className="w-6 h-6 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
                   </svg>
                 </button>
 
@@ -110,8 +118,18 @@ export default function Section9() {
                   onClick={nextSlide}
                   className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
                 >
-                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg
+                    className="w-6 h-6 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </button>
 
@@ -119,13 +137,12 @@ export default function Section9() {
                 <div className="relative overflow-hidden">
                   <div
                     className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
+                    style={{
+                      transform: `translateX(-${currentSlide * 33.333}%)`,
+                    }}
                   >
                     {loopedImages.map((image, index) => (
-                      <div
-                        key={index}
-                        className="w-1/3 flex-shrink-0 px-4"
-                      >
+                      <div key={index} className="w-1/3 flex-shrink-0 px-4">
                         <div className="bg-white border-1 border-[#DDCDC1] rounded-2xl overflow-hidden">
                           <img
                             src={image}
@@ -140,17 +157,19 @@ export default function Section9() {
               </div>
             </div>
           </div>
-
 
           {/* 1280 Version */}
 
-          <div className='desktop-1280'>
+          <div className="desktop-1280">
             {/* Header */}
             <div className=" text-center mb-16">
               <h3 className=" text-4xl sm:text-4xl manrope-medium mb-4">
                 What Our Happy Customers Have to Say!
               </h3>
-              <img className='w-[400px] h-[150px] mx-auto mt-10' src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/Review.png"></img>
+              <img
+                className="w-[400px] h-[150px] mx-auto mt-10"
+                src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/Review.png"
+              ></img>
             </div>
 
             <div className="hidden lg:block">
@@ -160,8 +179,18 @@ export default function Section9() {
                   onClick={prevSlide}
                   className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
                 >
-                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  <svg
+                    className="w-6 h-6 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
                   </svg>
                 </button>
 
@@ -169,8 +198,18 @@ export default function Section9() {
                   onClick={nextSlide}
                   className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
                 >
-                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg
+                    className="w-6 h-6 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </button>
 
@@ -178,13 +217,12 @@ export default function Section9() {
                 <div className="relative overflow-hidden">
                   <div
                     className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
+                    style={{
+                      transform: `translateX(-${currentSlide * 33.333}%)`,
+                    }}
                   >
                     {loopedImages.map((image, index) => (
-                      <div
-                        key={index}
-                        className="w-1/3 flex-shrink-0 px-4"
-                      >
+                      <div key={index} className="w-1/3 flex-shrink-0 px-4">
                         <div className="bg-white border-1 border-[#DDCDC1] rounded-2xl overflow-hidden">
                           <img
                             src={image}
@@ -199,9 +237,6 @@ export default function Section9() {
               </div>
             </div>
           </div>
-
-
-
 
           {/* Mobile Layout */}
 
@@ -210,9 +245,11 @@ export default function Section9() {
             <h3 className=" text-4xl sm:text-4xl manrope-medium mb-4">
               What Our Happy Customers Have to Say!
             </h3>
-            <img className='w-auto h-auto  mx-auto mt-10' src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/Review.png"></img>
+            <img
+              className="w-auto h-auto  mx-auto mt-10"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/Review.png"
+            ></img>
           </div>
-
 
           <div className="lg:hidden">
             <div className="w-full bg-white px-4">
@@ -224,10 +261,7 @@ export default function Section9() {
                     style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                   >
                     {loopedImages.map((image, index) => (
-                      <div
-                        key={index}
-                        className="w-full flex-shrink-0 px-2"
-                      >
+                      <div key={index} className="w-full flex-shrink-0 px-2">
                         <div className="bg-white rounded-2xl border-1 border-[#DDCDC1] overflow-hidden mx-auto max-w-sm h-74">
                           <img
                             src={image}
@@ -245,6 +279,5 @@ export default function Section9() {
         </div>
       </div>
     </div>
-
   );
 }

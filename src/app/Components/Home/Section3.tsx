@@ -129,11 +129,11 @@ export default function Section3() {
 
             {/* 2560 Version */}
 
-            <div className="desktop-2560 hidden lg:block bg-[#F1F2F6] h-auto pt-5 px-75">
+            <div className="home-desktop desktop-2560 hidden lg:block bg-[#F1F2F6] h-auto pt-5 px-75">
                 <div className="max-w-8xl mx-auto">
                     {/* Header Section */}
                     <div className="flex flex-row justify-between items-center mb-12">
-                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
+                        <h1 className="type-h1 wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
                     </div>
 
                     {/* Carousel Section */}
@@ -187,12 +187,12 @@ export default function Section3() {
                                             {/* Content with fixed height */}
                                             <div className="p-8 flex flex-col text-center h-[260px]">
 
-                                                <h3 className="text-2xl font-bold text-gray-800 mb-4 manrope-semibold">
+                                                <h3 className="type-h3 text-gray-800 mb-4 manrope-medium">
                                                     {service.title}
                                                 </h3>
 
                                                 {/* Description auto grows, but limited inside container */}
-                                                <p className="text-gray-600 leading-relaxed manrope-medium flex-grow overflow-hidden">
+                                                <p className="type-body text-gray-600 manrope font-light flex-grow overflow-hidden">
                                                     {service.description}
                                                 </p>
 
@@ -219,12 +219,12 @@ export default function Section3() {
 
             {/* 1920 version */}
 
-            <div className="desktop-1920 bg-[#F1F2F6] hidden lg:block pt-8 pb-20">
+            <div className="home-desktop desktop-1920 bg-[#F1F2F6] hidden lg:block pt-8 pb-20">
                 <div className="max-w-8xl mx-auto px-20">
 
                     {/* Header Section */}
                     <div className="flex flex-row justify-between items-center mb-8">
-                        <h1 className="typography-h1 wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
+                        <h1 className="type-h1 wulkan-display-bold text-gray-800 ">All interior service, one destination</h1>
                         {/* <a href="/GetEstimate">
                             <button className=" bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope flex items-center gap-2">
                                 Book consultation
@@ -284,8 +284,8 @@ export default function Section3() {
                                                 />
                                             </div>
                                             <div className="p-8 flex-1 flex flex-col text-center">
-                                                <h3 className="text-2xl   text-gray-800 mb-4 manrope ">{service.title}</h3>
-                                                <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
+                                                <h3 className="type-h3 text-gray-800 mb-4 manrope-medium">{service.title}</h3>
+                                                <p className="type-body text-gray-600 mb-6 manrope font-light flex-grow">{service.description}</p>
                                                 <a href={service.link} className="mt-auto block">
                                                     <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl  hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
                                                         Request service
@@ -319,8 +319,8 @@ export default function Section3() {
                                                 />
                                             </div>
                                             <div className="p-8 flex-1 flex flex-col text-center">
-                                                <h3 className="text-xl text-nowrap  text-gray-800 mb-4 manrope ">{service.title}</h3>
-                                                <p className="text-gray-600 mb-6 leading-relaxed manrope-medium flex-grow">{service.description}</p>
+                                                <h3 className="type-h3 text-gray-800 mb-4 manrope-medium">{service.title}</h3>
+                                                <p className="type-body text-gray-600 mb-6 manrope font-light flex-grow">{service.description}</p>
                                                 <a href={service.link} className="mt-auto block">
                                                     <button className="w-full bg-[#ddcdc1] hover:bg-[#ebd457]  text-black px-4 py-2 rounded-4xl hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 manrope">
                                                         Request service
@@ -339,13 +339,13 @@ export default function Section3() {
 
 
             {/* 1280 version */}
-            <div className='desktop-1280'>
+            <div className='home-desktop desktop-1280'>
 
                 <div className="hidden lg:block bg-[#F1F2F6] h-auto pt-8 pb-10 px-15">
                     <div className="max-w-[1280px] mx-auto">
                         {/* Header Section */}
                         <div className="flex flex-row justify-between items-center mb-5">
-                            <h1 className="typography-h1 leading-tight wulkan-display-bold text-gray-800 ml-2">
+                            <h1 className="type-h1 leading-tight wulkan-display-bold text-gray-800 ml-2">
                                 All interior service, one destination
                             </h1>
                             {/* <a href="/GetEstimate">
@@ -440,10 +440,10 @@ export default function Section3() {
                                                     />
                                                 </div>
                                                 <div className="p-6 flex-1 flex flex-col text-center">
-                                                    <h3 className="text-xl font-bold text-gray-800 mb-3 manrope-semibold">
+                                                    <h3 className="type-h3 text-gray-800 mb-3 manrope-semibold">
                                                         {service.title}
                                                     </h3>
-                                                    <p className="text-gray-600 mb-5 leading-relaxed manrope-medium flex-grow">
+                                                    <p className="type-body text-gray-600 mb-5 manrope flex-grow">
                                                         {service.description}
                                                     </p>
                                                     <a href={service.link} className="mt-auto block">

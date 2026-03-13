@@ -92,11 +92,11 @@ export default function Section4() {
       {/* 2560 version  */}
 
 
-      <div className="desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[650px] -mt-10 px-80">
+      <div className="home-desktop desktop-2560 hidden md:block bg-[#F1F2F6] min-h-[650px] -mt-10 px-80">
         <div className="max-w-8xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
-            <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
+            <h1 className="type-h1 wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
               Trusted by homeowners like you
             </h1>
 
@@ -128,14 +128,14 @@ export default function Section4() {
                 </div>
 
                 {/* Quote Text */}
-                <blockquote className="text-xl text-gray-700 leading-relaxed mb-8 manrope-medium">
+                <blockquote className="text-[20px] leading-[1.6] text-gray-700 mb-8 manrope-medium">
                   {testimonials[currentSlide].quote}
                 </blockquote>
 
                 {/* Customer Info */}
                 <div className="flex items-center gap-4">
                   <div>
-                    <h4 className="text-md font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
+                    <h4 className="text-[24px] leading-[1.4] text-gray-800 manrope-semibold">{testimonials[currentSlide].name}</h4>
                   </div>
                 </div>
               </div>
@@ -176,13 +176,13 @@ export default function Section4() {
       {/* 1920 Version */}
 
 
-      <div className="desktop-1920 hidden">
+      <div className="home-desktop desktop-1920 hidden">
 
         <div className="md:block bg-[#F1F2F6] min-h-[650px] mx-20 -mt-20">
           <div className="w-full mx-auto">
             {/* Header Section */}
             <div className="flex justify-between items-start mb-12">
-              <h1 className="typography-h1  wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
+              <h1 className="type-h1  wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
                 Trusted by homeowners like you
               </h1>
             </div>
@@ -212,7 +212,7 @@ export default function Section4() {
                   </div>
 
                   {/* Quote Text */}
-                  <blockquote className="text-xl text-gray-700 leading-relaxed mb-8 manrope-medium">
+                  <blockquote className="text-[19px] leading-[1.6] text-gray-700 mb-8 manrope-medium">
                     {testimonials[currentSlide].quote}
                   </blockquote>
 
@@ -220,7 +220,7 @@ export default function Section4() {
                   <div className="flex items-center gap-4">
 
                     <div>
-                      <h4 className="text-md font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
+                      <h4 className="text-[22px] leading-[1.4] text-gray-800 manrope-semibold">{testimonials[currentSlide].name}</h4>
                     </div>
                   </div>
                 </div>
@@ -262,11 +262,11 @@ export default function Section4() {
 
       {/* 1280 Version */}
 
-      <div className="desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] -mt-20  px-5">
+      <div className="home-desktop desktop-1280 hidden md:block bg-[#F1F2F6] min-h-[650px] -mt-20  px-5">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="flex justify-between items-start mb-12">
-            <h1 className="typography-h1 wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
+            <h1 className="type-h1 wulkan-display-bold text-gray-800 text-nowrap w-[450px] h-[120px]">
               Trusted by homeowners like you
             </h1>
           </div>
@@ -296,14 +296,14 @@ export default function Section4() {
                 </div>
 
                 {/* Quote Text */}
-                <blockquote className="text-xl text-gray-700 leading-relaxed mb-8 manrope-medium">
+                <blockquote className="text-[18px] leading-[1.6] text-gray-700 mb-8 manrope-medium">
                   {testimonials[currentSlide].quote}
                 </blockquote>
 
                 {/* Customer Info */}
                 <div className="flex items-center gap-4">
                   <div>
-                    <h4 className="text-md font-bold text-gray-800 manrope-medium">{testimonials[currentSlide].name}</h4>
+                    <h4 className="text-[20px] leading-[1.4] text-gray-800 manrope-semibold">{testimonials[currentSlide].name}</h4>
                   </div>
                 </div>
               </div>
