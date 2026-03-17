@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import CallFloatingButton from "./Components/CallFloatingButton";
 import WhatsAppFloatingButton from "./Components/WhatsAppFloatingButton";
 
 const geistSans = Geist({
@@ -115,6 +116,7 @@ export default function RootLayout({
         </noscript>
 
         {children}
+        <CallFloatingButton />
         <WhatsAppFloatingButton />
 
         {/* Vercel Analytics */}
