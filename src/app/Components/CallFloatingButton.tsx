@@ -1,4 +1,4 @@
-/*"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -12,7 +12,8 @@ const HIDE_CALL_PATHS = [
 
 const CALL_NUMBER = "07316914731";
 const COMPANY_NAME = "HUB Interior";
-const GREETING_MESSAGE = "Hello from HUB Interior. We are here to help with your interiors.";
+const GREETING_MESSAGE =
+  "Hello from HUB Interior. We are here to help with your interiors.";
 
 export default function CallFloatingButton() {
   const pathname = usePathname() || "/";
@@ -38,7 +39,10 @@ export default function CallFloatingButton() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
         setCopied(false);
       }
@@ -52,7 +56,7 @@ export default function CallFloatingButton() {
   }, []);
 
   const shouldHide = HIDE_CALL_PATHS.some(
-    path => pathname === path || pathname.startsWith(`${path}/`)
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
   );
 
   if (shouldHide) {
@@ -65,7 +69,7 @@ export default function CallFloatingButton() {
       return;
     }
 
-    setIsOpen(current => !current);
+    setIsOpen((current) => !current);
     setCopied(false);
   };
 
@@ -93,8 +97,12 @@ export default function CallFloatingButton() {
             {GREETING_MESSAGE}
           </p>
           <div className="mt-4 rounded-2xl bg-[#EFF6FF] px-4 py-3">
-            <p className="text-xs uppercase tracking-[0.14em] text-[#64748B]">Phone Number</p>
-            <p className="mt-1 text-lg font-semibold tracking-[0.06em]">{CALL_NUMBER}</p>
+            <p className="text-xs uppercase tracking-[0.14em] text-[#64748B]">
+              Phone Number
+            </p>
+            <p className="mt-1 text-lg font-semibold tracking-[0.06em]">
+              {CALL_NUMBER}
+            </p>
           </div>
           <div className="mt-4 flex gap-3">
             <button
@@ -134,4 +142,3 @@ export default function CallFloatingButton() {
     </div>
   );
 }
-*/
