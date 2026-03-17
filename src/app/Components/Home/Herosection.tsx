@@ -219,7 +219,7 @@ const Herosection: React.FC = () => {
 
       {/* 2560 Version */}
 
-      <div className="hidden md:block  desktop-2560 w-full max-w-[1440px] h-[900px] mx-auto overflow-hidden relative ">
+      <div className="home-desktop hidden md:block  desktop-2560 w-full max-w-[1440px] h-[900px] mx-auto overflow-hidden relative ">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-full max-w-8xl h-[full]">
           {heroSlides.map((slide, index) => (
@@ -294,7 +294,7 @@ const Herosection: React.FC = () => {
         {/* Hero content (hidden on video slide) */}
         {heroSlides[currentSlide].type !== "video" && (
           <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-            <h1 className="typography-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+            <h1 className="type-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
               {heroSlides[currentSlide].title}
             </h1>
             <MagneticButton
@@ -332,7 +332,7 @@ const Herosection: React.FC = () => {
       </div>
 
       {/* 1920 version  */}
-      <div className="relative hidden md:block  desktop-1920 w-full max-w-[1920px] h-[900px]  overflow-hidden">
+      <div className="home-desktop relative hidden md:block  desktop-1920 w-full max-w-[1920px] h-[900px]  overflow-hidden">
         {/* Background Image Carousel */}
         <div className="absolute inset-0 w-full h-[900px]">
           {heroSlides.map((slide, index) => (
@@ -407,7 +407,7 @@ const Herosection: React.FC = () => {
         {/* Hero content (hidden on video slide) */}
         {heroSlides[currentSlide].type !== "video" && (
           <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-            <h1 className="typography-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+            <h1 className="type-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
               {heroSlides[currentSlide].title}
             </h1>
             <MagneticButton
@@ -446,7 +446,7 @@ const Herosection: React.FC = () => {
 
       {/* 1280 version */}
       <div>
-        <div className="desktop-1280 max-w-[1280px] h-[800px] mx-auto overflow-hidden relative">
+        <div className="home-desktop desktop-1280 max-w-[1280px] h-[800px] mx-auto overflow-hidden relative">
           {/* Background Image Carousel */}
           <div className="absolute inset-0">
             {heroSlides.map((slide, index) => (
@@ -510,7 +510,7 @@ const Herosection: React.FC = () => {
                 {/* FREE Badge */}
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
-                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[1 0px]">
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
                     FREE
                   </span>
                 </span>
@@ -521,7 +521,7 @@ const Herosection: React.FC = () => {
           {/* Hero content (hidden on video slide) */}
           {heroSlides[currentSlide].type !== "video" && (
             <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-              <h1 className="w-[1000px] typography-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+              <h1 className="w-[1000px] type-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
                 {heroSlides[currentSlide].title}
               </h1>
               <MagneticButton

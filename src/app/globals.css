@@ -201,64 +201,88 @@ body {
 
 @font-face {
   font-family: 'WulkanDisplay';
-  src: url('/WulkanDisplayBlackItalic.woff2') format('woff2');
-  font-weight: normal;
+  src: url('/WulkanDisplayBold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-.wulkan-display {
-  font-family: 'WulkanDisplay', serif;
+@font-face {
+  font-family: 'WulkanDisplay';
+  src: url('/WulkanDisplayBlackItalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Manrope';
-  src: url('/Manrope-Bold.ttf') format('truetype');
-  font-weight: normal;
+  src: url('/Manrope-Medium.ttf') format('truetype');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
-.manrope {
-  font-family: 'Manrope', sans-serif;
-}
-
 @font-face {
-  font-family: 'WulkanDisplayBold';
-  src: url('/WulkanDisplayBold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-.wulkan-display-bold {
-  font-family: 'WulkanDisplayBold', serif;
-}
-
-@font-face {
-  font-family: 'ManropeSemiBold';
+  font-family: 'Manrope';
   src: url('/Manrope-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
-.manrope-semibold {
-  font-family: 'ManropeSemiBold', sans-serif;
-  font-weight: 600;
-}
-
 @font-face {
-  font-family: 'ManropeMedium';
-  src: url('/Manrope-Medium.ttf') format('truetype');
-  font-weight: 600;
+  font-family: 'Manrope';
+  src: url('/Manrope-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
+.manrope {
+  font-family: 'Manrope', sans-serif !important;
+}
+
 .manrope-medium {
-  font-family: 'ManropeMedium', sans-serif;
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 500;
+}
+
+.manrope-semibold {
+  font-family: 'Manrope', sans-serif !important;
   font-weight: 600;
+}
+
+.manrope-bold {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 700;
+}
+
+.wulkan-display,
+.wulkan-display-bold {
+  font-family: 'WulkanDisplay', serif !important;
+}
+
+.wulkan-display-bold {
+  font-weight: 700;
+}
+
+.home-desktop,
+.home-desktop * {
+  font-family: 'Manrope', sans-serif;
+}
+
+.home-desktop .typography-h1,
+.home-desktop .type-h1,
+.home-desktop .wulkan-display,
+.home-desktop .wulkan-display-bold {
+  font-family: 'WulkanDisplay', serif !important;
+}
+
+.home-desktop .typography-body,
+.home-desktop .type-body {
+  font-weight: 300 !important;
+  line-height: 1.55;
 }
 
 /* globals.css */
@@ -357,3 +381,75 @@ body {
   font-weight: 400;
 }
 
+@media (min-width: 768px) {
+  .typography-h1,
+  .type-h1 {
+    font-size: 50px;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  .typography-h2,
+  .type-h2 {
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .typography-h3,
+  .type-h3 {
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  .typography-body,
+  .type-body {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 300 !important;
+  }
+
+  .typography-caption,
+  .type-caption {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 300 !important;
+  }
+}
+
+@layer components {
+  .type-h1 {
+    font-size: 50px;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  .type-h2 {
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .type-h3 {
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  .type-body {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 300 !important;
+  }
+
+  .type-caption {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 300 !important;
+  }
+}
