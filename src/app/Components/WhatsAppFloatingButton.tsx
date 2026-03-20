@@ -10,7 +10,7 @@ const HIDE_WHATSAPP_PATHS = [
   "/home-renovation-in-bangalore",
 ];
 
-const WHATSAPP_NUMBER = "918898892223";
+const WHATSAPP_NUMBER = "919008502770";
 const WHATSAPP_MESSAGE = `Hi , I am looking for interiors.
 
 Name:
@@ -38,11 +38,11 @@ export default function WhatsAppFloatingButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#25D366]"
+      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#25D366]"
     >
       <svg
-        width="24"
-        height="24"
+        width="28"
+        height="28"
         viewBox="0 0 32 32"
         fill="currentColor"
         aria-hidden="true"
