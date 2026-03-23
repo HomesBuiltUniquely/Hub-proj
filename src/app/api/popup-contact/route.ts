@@ -5,15 +5,15 @@ import { getVerificationStatus } from '@/lib/leadVerification';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, pincode, pageUrl } = body;
+    const { name, email, phone, pincode, pageUrl } = body;
 
-    console.log('Popup form API route called with data:', { name, phone, pincode, pageUrl });
+    console.log('Popup form API route called with data:', { name, email, phone, pincode, pageUrl });
     
     // Send data to unified API endpoint
     try {
       const websiteLeadPayload = {
         name: name || '',
-        email: '', // Popup doesn't collect email
+        email: email || '',
         phoneNumber: phone || '',
         propertyPin: pincode || '',
         verificationStatus: getVerificationStatus(false),
@@ -102,6 +102,10 @@ export async function POST(req: Request) {
                   <span style="color: #333; font-size: 16px;">${phone || 'Not provided'}</span>
                 </div>
                 <div>
+                  <strong style="color: #555;">Email:</strong><br>
+                  <span style="color: #333; font-size: 16px;">${email || 'Not provided'}</span>
+                </div>
+                <div>
                   <strong style="color: #555;">Pincode:</strong><br>
                   <span style="color: #333; font-size: 16px;">${pincode || 'Not provided'}</span>
                 </div>
@@ -138,7 +142,7 @@ export async function POST(req: Request) {
       `,
     };
 
-    console.log('Sending popup form email with data:', { name, phone, pincode, pageUrl });
+    console.log('Sending popup form email with data:', { name, email, phone, pincode, pageUrl });
     console.log('Email configuration:', {
       from: process.env.GMAIL_USER,
       to: recipientEmail,
@@ -177,4 +181,3 @@ export async function POST(req: Request) {
     }, { status: 500 });
   }
 }
-

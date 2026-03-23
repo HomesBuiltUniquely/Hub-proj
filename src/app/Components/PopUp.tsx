@@ -41,6 +41,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         "562130", "562149", "562157", "562162", "563163", "635103"];
 
     const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [pin, setPin] = useState("");
     const [error, setError] = useState("");
@@ -56,6 +57,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
     const pinRef = useRef<HTMLDivElement>(null);
     const prevPhoneRef = useRef<string>('');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Reset OTP when phone number changes
     useEffect(() => {
@@ -193,8 +195,12 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             return;
         }
 
-        if (!name.trim() || !phone.trim() || !pin.trim()) {
+        if (!name.trim() || !email.trim() || !phone.trim() || !pin.trim()) {
             setError("All fields are mandatory");
+            return;
+        }
+        if (!emailRegex.test(email.trim())) {
+            setError("Enter a valid email address");
             return;
         }
         if (phone.length !== 10) {
@@ -225,6 +231,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                 },
                 body: JSON.stringify({
                     name: name.trim(),
+                    email: email.trim(),
                     phone: phone.trim(),
                     pincode: pin.trim(),
                     pageUrl: pageUrl
@@ -281,6 +288,17 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 value={name}
                                 onChange={(e) => {
                                     setName(e.target.value);
+                                    setError("");
+                                }}
+                                className="py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:ring-0 focus:outline-none"
+                            />
+
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
                                     setError("");
                                 }}
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:ring-0 focus:outline-none"
@@ -432,6 +450,17 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 }}
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400"
                             />
+
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    setError("");
+                                }}
+                                className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400"
+                            />
                             
                             <div className="relative">
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 font-medium">+91</span>
@@ -450,12 +479,9 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                             </div>
                             
                             {/* OTP Section */}
+                            {phone && phone.length > 0 && (
                             <div className="space-y-2">
-                                {!phone || phone.length === 0 ? (
-                                    <div className="text-sm text-gray-500 text-center">
-                                        
-                                    </div>
-                                ) : !otpSent ? (
+                                {!otpSent ? (
                                     <button
                                         type="button"
                                         onClick={sendOTP}
@@ -501,6 +527,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                     <p className="text-red-600 text-sm manrope-medium text-center">{otpError}</p>
                                 )}
                             </div>
+                            )}
 
                             <input
                                 type="text"
