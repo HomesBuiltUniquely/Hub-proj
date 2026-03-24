@@ -31,7 +31,6 @@ export default function HeroSections() {
 
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otp, setOtp] = useState("");
-  const [verificationStatus, setVerificationStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSendingOtpAuto, setIsSendingOtpAuto] = useState(false);
   const [shouldHideForm, setShouldHideForm] = useState(false);
@@ -134,7 +133,6 @@ export default function HeroSections() {
       await handleFinalSubmit("UNVERIFIED");
     }
     setShowOtpModal(false);
-    setVerificationStatus("");
     setOtp("");
     setOtpTimerSeconds(0);
     setResendVisible(false);
@@ -249,7 +247,6 @@ export default function HeroSections() {
       if (response.ok && data.success) {
         setOtp("");
         // Removed alert - no interruption during verification
-        setVerificationStatus("VERIFIED");
 
         // Automatically submit the form as verified user
         await handleFinalSubmit("VERIFIED");
@@ -338,7 +335,6 @@ export default function HeroSections() {
       if (response.ok && data.success) {
         setLeadSentToCrm("none");
         leadSentToCrmRef.current = "none";
-        setVerificationStatus("UNVERIFIED");
         setShowOtpModal(true);
         setOtpTimerSeconds(120);
         setResendVisible(false);
@@ -389,110 +385,6 @@ export default function HeroSections() {
       console.error("Error resending OTP:", error);
     } finally {
       setIsSendingOtpAuto(false);
-    }
-  };
-
-  const handleFinalSubmitWithoutReset = async (
-    verificationStatus = "UNVERIFIED",
-  ) => {
-    console.log(
-      "handleFinalSubmitWithoutReset called with status:",
-      verificationStatus,
-    );
-    console.log("formData:", formData);
-    console.log("selectedCity:", selectedCity);
-    console.log("selectedPincode:", selectedPincode);
-
-    setIsSubmitting(true);
-
-    try {
-      const currentUrl = window.location.href;
-      const requestData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        city: selectedCity,
-        budget: "", // Budget removed from form
-        pincode: selectedPincode,
-        whatsappConsent: whatsappConsent,
-        pageUrl: currentUrl,
-        verificationStatus: verificationStatus,
-        otpSuccess: verificationStatus === "VERIFIED",
-      };
-
-      console.log("Sending data to API:", requestData);
-
-      // Add timeout to prevent hanging
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
-
-      // 1) Existing internal API submission (preserved)
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestData),
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-      console.log("API response status:", response.status);
-
-      const responseData = await response.json();
-      console.log("API response data:", responseData);
-
-      // 2) ALSO send to MetaLead endpoint (fire-and-forget)
-      (async () => {
-        try {
-          const metaLeadPayload = {
-            name: requestData.name,
-            email: requestData.email,
-            phoneNumber: requestData.phone,
-            pinCode: requestData.pincode || null,
-            propertyPin: requestData.pincode || null,
-            propertyType: requestData.city || null,
-            bookASlot: null,
-            leadSource: "Website",
-            verificationStatus: requestData.verificationStatus,
-            otpSuccess: requestData.otpSuccess,
-          };
-
-          await fetch("https://hows.hubinterior.com/v1/MetaLead", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(metaLeadPayload),
-          });
-        } catch (err) {
-          console.warn(
-            "Failed to POST to https://hows.hubinterior.com/v1/MetaLead",
-            err,
-          );
-        }
-      })();
-
-      if (response.ok && responseData.success) {
-        // Form submitted successfully as unverified - no alert needed
-        // OTP modal will appear directly
-      } else {
-        alert(
-          responseData.message || "Failed to submit form. Please try again.",
-        );
-      }
-    } catch (error: unknown) {
-      console.error("Error submitting form:", error);
-
-      if (error instanceof Error && error.name === "AbortError") {
-        alert(
-          "Request timed out. Please check your internet connection and try again.",
-        );
-      } else {
-        alert("Failed to submit form. Please try again.");
-      }
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
