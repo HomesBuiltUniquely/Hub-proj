@@ -31,10 +31,20 @@ export default function HeroSections() {
 
   const [showOtpModal, setShowOtpModal] = useState(false);
   const [otp, setOtp] = useState("");
-  const [verificationStatus, setVerificationStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSendingOtpAuto, setIsSendingOtpAuto] = useState(false);
   const [shouldHideForm, setShouldHideForm] = useState(false);
+
+  // 2 min timer + single CRM hit logic
+  const [otpTimerSeconds, setOtpTimerSeconds] = useState(0);
+  const [resendVisible, setResendVisible] = useState(false);
+  const [leadSentToCrm, setLeadSentToCrm] = useState<"none" | "VERIFIED" | "UNVERIFIED">("none");
+  const leadSentToCrmRef = useRef<"none" | "VERIFIED" | "UNVERIFIED">("none");
+  const leadPayloadRef = useRef<Record<string, unknown> | null>(null);
+
+  useEffect(() => {
+    leadSentToCrmRef.current = leadSentToCrm;
+  }, [leadSentToCrm]);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -116,25 +126,16 @@ export default function HeroSections() {
     }
   };
 
-  // Auto-close modal and submit as unverified after 3 minutes if OTP was sent but not verified
+  // Modal close = fallback: send UNVERIFIED only if not already sent (2 min / verify)
   const handleModalClose = async () => {
-    if (verificationStatus === "UNVERIFIED") {
-      // User started OTP process but didn't complete it - submit as unverified
-      console.log(
-        "Modal closed with unverified OTP - submitting as unverified",
-      );
-      await handleFinalSubmit("UNVERIFIED");
-    } else if (verificationStatus === "") {
-      // User never clicked "Send OTP" - submit as unverified
-      console.log(
-        "Modal closed without sending OTP - submitting as unverified",
-      );
+    if (leadSentToCrmRef.current === "none") {
+      console.log("Modal closed before 2 min / verify - sending UNVERIFIED");
       await handleFinalSubmit("UNVERIFIED");
     }
-
     setShowOtpModal(false);
-    setVerificationStatus("");
     setOtp("");
+    setOtpTimerSeconds(0);
+    setResendVisible(false);
   };
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -157,6 +158,66 @@ export default function HeroSections() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // beforeunload: send UNVERIFIED on page reload if not already sent
+  useEffect(() => {
+    const handler = () => {
+      if (leadSentToCrmRef.current !== "none" || !leadPayloadRef.current)
+        return;
+      const payload = leadPayloadRef.current;
+      const requestData = {
+        ...payload,
+        budget: "",
+        pageUrl: typeof window !== "undefined" ? window.location.href : "",
+        verificationStatus: "UNVERIFIED",
+        otpSuccess: false,
+      };
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestData),
+        keepalive: true,
+      }).catch(() => {});
+      fetch("https://hows.hubinterior.com/v1/Home1", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: payload.name,
+          email: payload.email,
+          phoneNumber: payload.phone,
+          propertyPin: payload.pincode || null,
+          interiorSetup: payload.city || null,
+          possessionIn: payload.budget || "",
+          verificationStatus: "UNVERIFIED",
+          otpSuccess: false,
+        }),
+        keepalive: true,
+      }).catch(() => {});
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, []);
+
+  // 2 min timer: on expiry send UNVERIFIED and show Resend
+  useEffect(() => {
+    if (!showOtpModal || otpTimerSeconds <= 0) return;
+    const id = setInterval(() => {
+      setOtpTimerSeconds((prev) => {
+        if (prev <= 1) {
+          clearInterval(id);
+          if (leadSentToCrmRef.current === "none") {
+            handleFinalSubmit("UNVERIFIED").catch(console.error);
+            setLeadSentToCrm("UNVERIFIED");
+            leadSentToCrmRef.current = "UNVERIFIED";
+          }
+          setResendVisible(true);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(id);
+  }, [showOtpModal, otpTimerSeconds]);
 
   const handleOtpSubmit = async () => {
     if (!otp || otp.length === 0) {
@@ -184,7 +245,6 @@ export default function HeroSections() {
       if (response.ok && data.success) {
         setOtp("");
         // Removed alert - no interruption during verification
-        setVerificationStatus("VERIFIED");
 
         // Automatically submit the form as verified user
         await handleFinalSubmit("VERIFIED");
@@ -235,11 +295,7 @@ export default function HeroSections() {
       return;
     }
 
-    // Submit form data immediately as unverified (without resetting form)
-    console.log("Submitting form data immediately as unverified");
-    await handleFinalSubmitWithoutReset("UNVERIFIED");
-
-    // Automatically send OTP and show modal
+    // Don't send to CRM yet - wait for 2 min / modal close / verify
     await handleAutoSendOtp();
   };
 
@@ -274,33 +330,68 @@ export default function HeroSections() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setVerificationStatus("UNVERIFIED"); // Set status to unverified
+        setLeadSentToCrm("none");
+        leadSentToCrmRef.current = "none";
         setShowOtpModal(true);
-        // Removed alert - OTP modal appears directly
+        setOtpTimerSeconds(120);
+        setResendVisible(false);
+        leadPayloadRef.current = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: selectedCity,
+          pincode: selectedPincode,
+          whatsappConsent: whatsappConsent,
+        };
       } else {
-        // Still show modal but user needs to manually send OTP
+        setLeadSentToCrm("none");
+        leadSentToCrmRef.current = "none";
         setShowOtpModal(true);
+        setOtpTimerSeconds(120);
+        setResendVisible(false);
+        leadPayloadRef.current = { name: formData.name, email: formData.email, phone: formData.phone, city: selectedCity, pincode: selectedPincode, whatsappConsent };
       }
     } catch (error) {
       console.error("Error sending OTP:", error);
-      // Still show modal but user needs to manually send OTP
+      setLeadSentToCrm("none");
+      leadSentToCrmRef.current = "none";
       setShowOtpModal(true);
+      setOtpTimerSeconds(120);
+      setResendVisible(false);
+      leadPayloadRef.current = { name: formData.name, email: formData.email, phone: formData.phone, city: selectedCity, pincode: selectedPincode, whatsappConsent };
     } finally {
       setIsSendingOtpAuto(false);
     }
   };
 
-  const handleFinalSubmitWithoutReset = async (
-    verificationStatus = "UNVERIFIED",
-  ) => {
-    console.log(
-      "handleFinalSubmitWithoutReset called with status:",
-      verificationStatus,
-    );
-    console.log("formData:", formData);
-    console.log("selectedCity:", selectedCity);
-    console.log("selectedPincode:", selectedPincode);
+  const handleResendOtp = async () => {
+    try {
+      setIsSendingOtpAuto(true);
+      const cleanedPhone = normalizePhoneNumber(formData.phone);
+      const response = await fetch("/api/resend-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: cleanedPhone }),
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setOtpTimerSeconds(120);
+        setResendVisible(false);
+      }
+    } catch (error) {
+      console.error("Error resending OTP:", error);
+    } finally {
+      setIsSendingOtpAuto(false);
+    }
+  };
 
+  const handleFinalSubmit = async (
+    verificationStatus: "VERIFIED" | "UNVERIFIED" = "UNVERIFIED",
+  ) => {
+    setLeadSentToCrm(verificationStatus);
+    leadSentToCrmRef.current = verificationStatus;
+
+    console.log("handleFinalSubmit called with status:", verificationStatus);
     setIsSubmitting(true);
 
     try {
@@ -310,7 +401,7 @@ export default function HeroSections() {
         email: formData.email,
         phone: formData.phone,
         city: selectedCity,
-        budget: "", // Budget removed from form
+        budget: "",
         pincode: selectedPincode,
         whatsappConsent: whatsappConsent,
         pageUrl: currentUrl,
@@ -318,30 +409,20 @@ export default function HeroSections() {
         otpSuccess: verificationStatus === "VERIFIED",
       };
 
-      console.log("Sending data to API:", requestData);
-
-      // Add timeout to prevent hanging
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-      // 1) Existing internal API submission (preserved)
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
         signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
-      console.log("API response status:", response.status);
-
       const responseData = await response.json();
-      console.log("API response data:", responseData);
 
-      // 2) ALSO send to external Home1 endpoint with a minimal, renamed payload
-      // Run fire-and-forget; errors are caught and logged.
+      // Send to Home1 for both VERIFIED and UNVERIFIED
       (async () => {
         try {
           const home1Payload = {
@@ -354,120 +435,15 @@ export default function HeroSections() {
             verificationStatus: requestData.verificationStatus,
             otpSuccess: requestData.otpSuccess,
           };
-
           await fetch("https://hows.hubinterior.com/v1/Home1", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(home1Payload),
           });
         } catch (err) {
-          console.warn(
-            "Failed to POST to https://hows.hubinterior.com/v1/Home1",
-            err,
-          );
+          console.warn("Failed to POST to Home1", err);
         }
       })();
-
-      if (response.ok && responseData.success) {
-        // Form submitted successfully as unverified - no alert needed
-        // OTP modal will appear directly
-      } else {
-        alert(
-          responseData.message || "Failed to submit form. Please try again.",
-        );
-      }
-    } catch (error: unknown) {
-      console.error("Error submitting form:", error);
-
-      if (error instanceof Error && error.name === "AbortError") {
-        alert(
-          "Request timed out. Please check your internet connection and try again.",
-        );
-      } else {
-        alert("Failed to submit form. Please try again.");
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleFinalSubmit = async (verificationStatus = "UNVERIFIED") => {
-    console.log("handleFinalSubmit called with status:", verificationStatus);
-    console.log("formData:", formData);
-    console.log("selectedCity:", selectedCity);
-    console.log("selectedPincode:", selectedPincode);
-
-    setIsSubmitting(true);
-
-    try {
-      const currentUrl = window.location.href;
-      const requestData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        city: selectedCity,
-        budget: "", // Budget removed from form
-        pincode: selectedPincode,
-        whatsappConsent: whatsappConsent,
-        pageUrl: currentUrl,
-        verificationStatus: verificationStatus,
-        otpSuccess: verificationStatus === "VERIFIED",
-      };
-
-      console.log("Sending data to API:", requestData);
-
-      // Add timeout to prevent hanging
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
-
-      // 1) Existing internal API submission (preserved)
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestData),
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-      console.log("API response status:", response.status);
-
-      const responseData = await response.json();
-      console.log("API response data:", responseData);
-
-      // On verified submission, also notify Home1 so backend can upgrade UNVERIFIED -> VERIFIED.
-      if (verificationStatus === "VERIFIED") {
-        (async () => {
-          try {
-            const home1Payload = {
-              name: requestData.name,
-              email: requestData.email,
-              phoneNumber: requestData.phone,
-              propertyPin: requestData.pincode,
-              interiorSetup: requestData.city,
-              possessionIn: requestData.budget,
-              verificationStatus: requestData.verificationStatus,
-              otpSuccess: requestData.otpSuccess,
-            };
-
-            await fetch("https://hows.hubinterior.com/v1/Home1", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(home1Payload),
-            });
-          } catch (err) {
-            console.warn(
-              "Failed to POST verified update to https://hows.hubinterior.com/v1/Home1",
-              err,
-            );
-          }
-        })();
-      }
 
       if (response.ok && responseData.success) {
         if (verificationStatus === "VERIFIED") {
@@ -1465,21 +1441,29 @@ export default function HeroSections() {
                 maxLength={4}
                 className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium"
               />
+              {!resendVisible && otpTimerSeconds > 0 && (
+                <p className="text-sm text-gray-500 mb-2">
+                  Resend OTP in {Math.floor(otpTimerSeconds / 60)}:
+                  {(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                </p>
+              )}
               <div className="flex gap-3">
                 <button
                   onClick={handleOtpSubmit}
                   disabled={isOtpVerifying || otp.length !== 4}
-                  className="flex-1 bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-manrope hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
+                  className={`${resendVisible ? "flex-1" : "w-full"} bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-manrope hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium`}
                 >
                   {isOtpVerifying ? "Verifying..." : "Verify OTP"}
                 </button>
-                <button
-                  onClick={handleAutoSendOtp}
-                  disabled={isSendingOtpAuto}
-                  className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
-                >
-                  {isSendingOtpAuto ? "Sending..." : "Resend OTP"}
-                </button>
+                {resendVisible && (
+                  <button
+                    onClick={handleResendOtp}
+                    disabled={isSendingOtpAuto}
+                    className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
+                  >
+                    {isSendingOtpAuto ? "Sending..." : "Resend OTP"}
+                  </button>
+                )}
               </div>
             </div>
           </div>
