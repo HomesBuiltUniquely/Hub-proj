@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useCallback, type MouseEvent } from "react";
 
 const HIDE_WHATSAPP_PATHS = [
   "/interior-designers-in-bangalore",
@@ -11,11 +12,7 @@ const HIDE_WHATSAPP_PATHS = [
 ];
 
 const WHATSAPP_NUMBER = "919008502770";
-const WHATSAPP_MESSAGE = `Hi , I am looking for interiors.
-
-Name:
-Phone number:
-Property Pincode: `;
+const WHATSAPP_MESSAGE = `Hi I'd like to make an enquiry`;
 
 export default function WhatsAppFloatingButton() {
   const pathname = usePathname() || "/";
@@ -24,17 +21,39 @@ export default function WhatsAppFloatingButton() {
     path => pathname === path || pathname.startsWith(`${path}/`)
   );
 
-  if (shouldHide) {
-    return null;
-  }
-
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     WHATSAPP_MESSAGE
   )}`;
 
+  const handleClick = useCallback(
+    async (e: MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      try {
+        await fetch("/api/whatsapp-lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            pageUrl:
+              typeof window !== "undefined" ? window.location.href : pathname,
+            message: WHATSAPP_MESSAGE,
+          }),
+        });
+      } catch {
+        // Still open WhatsApp if logging fails
+      }
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    },
+    [pathname, whatsappUrl]
+  );
+
+  if (shouldHide) {
+    return null;
+  }
+
   return (
     <a
       href={whatsappUrl}
+      onClick={handleClick}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
