@@ -172,27 +172,11 @@ export default function HeroSections() {
         verificationStatus: "UNVERIFIED",
         otpSuccess: false,
       };
+      // Only /api/contact — it already POSTs MetaLead for best-interior URLs (avoid duplicate MetaLead)
       fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
-        keepalive: true,
-      }).catch(() => {});
-      fetch("https://hows.hubinterior.com/v1/MetaLead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: payload.name,
-          email: payload.email,
-          phoneNumber: payload.phone,
-          pinCode: payload.pincode || null,
-          propertyPin: payload.pincode || null,
-          propertyType: payload.city || null,
-          bookASlot: null,
-          leadSource: "Website",
-          verificationStatus: "UNVERIFIED",
-          otpSuccess: false,
-        }),
         keepalive: true,
       }).catch(() => {});
     };
@@ -200,7 +184,7 @@ export default function HeroSections() {
     return () => window.removeEventListener("beforeunload", handler);
   }, []);
 
-  // 2 min timer: on expiry send UNVERIFIED and show Resend
+  // 2 min timer: on expiry send UNVERIFIED and show Resend (same as HeroSection LandingPage1)
   useEffect(() => {
     if (!showOtpModal || otpTimerSeconds <= 0) return;
     const id = setInterval(() => {
@@ -425,30 +409,7 @@ export default function HeroSections() {
       clearTimeout(timeoutId);
       const responseData = await response.json();
 
-      // Send to MetaLead for both VERIFIED and UNVERIFIED
-      (async () => {
-        try {
-          const metaLeadPayload = {
-            name: requestData.name,
-            email: requestData.email,
-            phoneNumber: requestData.phone,
-            pinCode: requestData.pincode || null,
-            propertyPin: requestData.pincode || null,
-            propertyType: requestData.city || null,
-            bookASlot: null,
-            leadSource: "Website",
-            verificationStatus: requestData.verificationStatus,
-            otpSuccess: requestData.otpSuccess,
-          };
-          await fetch("https://hows.hubinterior.com/v1/MetaLead", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(metaLeadPayload),
-          });
-        } catch (err) {
-          console.warn("Failed to POST to MetaLead", err);
-        }
-      })();
+      // MetaLead is sent inside POST /api/contact for best-interior URLs — do not duplicate here
 
       if (response.ok && responseData.success) {
         if (verificationStatus === "VERIFIED") {
