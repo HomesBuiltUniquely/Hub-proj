@@ -28,6 +28,8 @@ export async function POST(req: Request) {
       material,
       // Nested calculator object (optional)
       calculator,
+      mailOnly,
+      skipEmail,
     } = body;
 
     console.log('API route called with data:', {
@@ -78,8 +80,8 @@ export async function POST(req: Request) {
 
     const isGoogleAdsLead = isInteriorBangalorePage || isInteriorBangaloreCalculator;
 
-    // Send to MetaLead API for best-interior-designers-in-bangalore (main + calculator)
-    if (isMetaLeadPage) {
+    // Send lead integrations unless this request is mail-only
+    if (!mailOnly && isMetaLeadPage) {
       try {
         const metaLeadPayload = {
           name: name || '',
@@ -115,7 +117,7 @@ export async function POST(req: Request) {
       }
     }
     // Send data to WebsiteLead API only for WEBSITE leads (not Google Ads, not Meta lead pages)
-    else if (!isGoogleAdsLead) {
+    else if (!mailOnly && !isGoogleAdsLead) {
       try {
         const websiteLeadPayload = {
           name: name || '',
@@ -145,11 +147,19 @@ export async function POST(req: Request) {
       } catch (websiteLeadError) {
         console.error('Error sending to WebsiteLead API:', websiteLeadError);
       }
-    } else {
+    } else if (!mailOnly) {
       console.log(
         'Skipping WebsiteLead API for Google Ads lead from path:',
         path
       );
+    }
+
+    // Allow callers to suppress email while still processing lead integrations.
+    if (skipEmail) {
+      return NextResponse.json({
+        success: true,
+        message: 'Lead processed successfully (email suppressed)',
+      });
     }
 
     console.log('Environment variables check:');

@@ -126,6 +126,32 @@ export default function HeroSections() {
     }
   };
 
+  // Keep old behavior for email only: send immediate UNVERIFIED mail on submit.
+  const sendImmediateUnverifiedMail = async () => {
+    try {
+      const currentUrl = window.location.href;
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: selectedCity,
+          budget: "",
+          pincode: selectedPincode,
+          whatsappConsent: whatsappConsent,
+          pageUrl: currentUrl,
+          verificationStatus: "UNVERIFIED",
+          otpSuccess: false,
+          mailOnly: true,
+        }),
+      });
+    } catch (error) {
+      console.warn("Immediate unverified mail failed:", error);
+    }
+  };
+
   // Modal close = fallback: send UNVERIFIED only if not already sent (2 min / verify)
   const handleModalClose = async () => {
     if (leadSentToCrmRef.current === "none") {
@@ -171,6 +197,7 @@ export default function HeroSections() {
         pageUrl: typeof window !== "undefined" ? window.location.href : "",
         verificationStatus: "UNVERIFIED",
         otpSuccess: false,
+        skipEmail: true,
       };
       // Only /api/contact — it already POSTs MetaLead for best-interior URLs (avoid duplicate MetaLead)
       fetch("/api/contact", {
@@ -280,6 +307,9 @@ export default function HeroSections() {
       alert("Please agree to receive WhatsApp updates.");
       return;
     }
+
+    // Old mail behavior: send one immediate UNVERIFIED mail at submit.
+    await sendImmediateUnverifiedMail();
 
     // Don't send to CRM yet - wait for 2 min / modal close / verify
     // Automatically send OTP and show modal
@@ -394,6 +424,8 @@ export default function HeroSections() {
         pageUrl: currentUrl,
         verificationStatus: verificationStatus,
         otpSuccess: verificationStatus === "VERIFIED",
+        // Avoid duplicate UNVERIFIED emails from timer/close/reload.
+        skipEmail: verificationStatus === "UNVERIFIED",
       };
 
       const controller = new AbortController();
