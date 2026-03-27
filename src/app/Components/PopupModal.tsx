@@ -1,47 +1,40 @@
 'use client'
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import PopUp from "./PopUp";
 
 export default function PopUpModal() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [reopenCount, setReopenCount] = useState(0); // how many times reopened
+  const pageCloseKey = `popupClosed:${pathname}`;
 
-
-  // On mount — check if already submitted
+  // Show once per page after 30s unless already submitted or closed on that page.
   useEffect(() => {
-    const saved = localStorage.getItem("popupSubmitted");
+    setOpen(false);
+    const pageClosed = sessionStorage.getItem(pageCloseKey);
 
-    if (saved === "true") {
+    if (pageClosed === "true") {
       setSubmitted(true);
       return;
     }
 
-    // first open after 1.5s
-    const timer = setTimeout(() => setOpen(true), 1500);
+    setSubmitted(false);
+
+    const timer = setTimeout(() => setOpen(true), 30000);
 
     return () => clearTimeout(timer);
-  }, []);
-
-
-  // Auto-reopen every 15s (max 3 times)
-  useEffect(() => {
-    if (submitted) return;
-
-    if (reopenCount >= 1) return;   // ✅ FIXED (was 1 earlier)
-
-    const interval = setInterval(() => {
-      setOpen(true);
-      setReopenCount(prev => prev + 1);
-    }, 15000);
-
-    return () => clearInterval(interval);
-  }, [submitted, reopenCount]);
+  }, [pageCloseKey]);
 
 
   const handleFormSuccess = () => {
     setSubmitted(true);
-    localStorage.setItem("popupSubmitted", "true");
+    setOpen(false);
+  };
+
+  const handleClose = () => {
+    sessionStorage.setItem(pageCloseKey, "true");
+    setSubmitted(true);
     setOpen(false);
   };
 
@@ -60,7 +53,7 @@ export default function PopUpModal() {
             <PopUp onFormSuccess={handleFormSuccess} />
 
             <button
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
               className="absolute top-12 -right-4 bg-black/60 text-white rounded-full px-3 py-1 text-sm"
             >
               ✕
@@ -75,7 +68,7 @@ export default function PopUpModal() {
             <PopUp onFormSuccess={handleFormSuccess} />
 
             <button
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
               className="absolute -top-23 right-2 bg-black/70 text-white rounded-full px-3 py-1 text-base"
             >
               ✕
