@@ -41,6 +41,7 @@ export default function HeroSections() {
   const [leadSentToCrm, setLeadSentToCrm] = useState<"none" | "VERIFIED" | "UNVERIFIED">("none");
   const leadSentToCrmRef = useRef<"none" | "VERIFIED" | "UNVERIFIED">("none");
   const leadPayloadRef = useRef<Record<string, unknown> | null>(null);
+  const heroSubmitLockRef = useRef(false);
 
   useEffect(() => {
     leadSentToCrmRef.current = leadSentToCrm;
@@ -288,6 +289,7 @@ export default function HeroSections() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (heroSubmitLockRef.current) return;
     console.log("Form submitted with data:", {
       name: formData.name,
       phone: formData.phone,
@@ -322,11 +324,15 @@ export default function HeroSections() {
       return;
     }
 
-    // Old mail behavior: send one immediate UNVERIFIED mail at submit.
-    await sendImmediateUnverifiedMail();
-
-    // Don't send to CRM yet - wait for 2 min / modal close / verify
-    await handleAutoSendOtp();
+    heroSubmitLockRef.current = true;
+    setIsSendingOtpAuto(true);
+    try {
+      // Fire-and-forget: do not block OTP modal on slow mail API
+      void sendImmediateUnverifiedMail();
+      await handleAutoSendOtp();
+    } finally {
+      heroSubmitLockRef.current = false;
+    }
   };
 
   // New function to automatically send OTP
