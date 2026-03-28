@@ -33,6 +33,8 @@ export default function HeroSections() {
   const [otp, setOtp] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSendingOtpAuto, setIsSendingOtpAuto] = useState(false);
+  /** True while MSG91 send/resend is in flight; modal opens first, timer starts only after success */
+  const [isPendingOtpSms, setIsPendingOtpSms] = useState(false);
   const [shouldHideForm, setShouldHideForm] = useState(false);
 
   // 2 min timer + single CRM hit logic
@@ -163,6 +165,7 @@ export default function HeroSections() {
     setOtp("");
     setOtpTimerSeconds(0);
     setResendVisible(false);
+    setIsPendingOtpSms(false);
   };
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -340,61 +343,63 @@ export default function HeroSections() {
     try {
       setIsSendingOtpAuto(true);
 
-      // Validate phone number
       if (!formData.phone || formData.phone.length < 10) {
         alert("Please enter a valid 10-digit phone number");
         return;
       }
 
-      // Clean and format phone number
       const cleanedPhone = normalizePhoneNumber(formData.phone);
       if (cleanedPhone.length !== 10) {
         alert("Please enter a valid 10-digit phone number");
         return;
       }
 
-      console.log("Automatically sending OTP to:", cleanedPhone);
+      setLeadSentToCrm("none");
+      leadSentToCrmRef.current = "none";
+      leadPayloadRef.current = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        city: selectedCity,
+        pincode: selectedPincode,
+        whatsappConsent: whatsappConsent,
+      };
+
+      // Optimistic: open modal immediately; MSG91 can take several seconds
+      setShowOtpModal(true);
+      setOtpTimerSeconds(0);
+      setResendVisible(false);
+      setIsPendingOtpSms(true);
+      setIsSendingOtpAuto(false);
 
       const response = await fetch("/api/send-msg91-otp", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: cleanedPhone }),
+        signal: AbortSignal.timeout(25000),
       });
 
       const data = await response.json();
+      setIsPendingOtpSms(false);
 
       if (response.ok && data.success) {
-        setLeadSentToCrm("none");
-        leadSentToCrmRef.current = "none";
-        setShowOtpModal(true);
         setOtpTimerSeconds(120);
         setResendVisible(false);
-        leadPayloadRef.current = {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: selectedCity,
-          pincode: selectedPincode,
-          whatsappConsent: whatsappConsent,
-        };
       } else {
-        setLeadSentToCrm("none");
-        leadSentToCrmRef.current = "none";
-        setShowOtpModal(true);
-        setOtpTimerSeconds(120);
-        setResendVisible(false);
-        leadPayloadRef.current = { name: formData.name, email: formData.email, phone: formData.phone, city: selectedCity, pincode: selectedPincode, whatsappConsent };
+        alert(data.message || "Failed to send OTP. Tap Resend to try again.");
+        setResendVisible(true);
       }
     } catch (error) {
       console.error("Error sending OTP:", error);
-      setLeadSentToCrm("none");
-      leadSentToCrmRef.current = "none";
+      setIsPendingOtpSms(false);
       setShowOtpModal(true);
-      setOtpTimerSeconds(120);
-      setResendVisible(false);
-      leadPayloadRef.current = { name: formData.name, email: formData.email, phone: formData.phone, city: selectedCity, pincode: selectedPincode, whatsappConsent };
+      setOtpTimerSeconds(0);
+      setResendVisible(true);
+      alert(
+        error instanceof Error && error.name === "TimeoutError"
+          ? "OTP request timed out. Tap Resend to try again."
+          : "Failed to send OTP. Tap Resend to try again.",
+      );
     } finally {
       setIsSendingOtpAuto(false);
     }
@@ -403,19 +408,33 @@ export default function HeroSections() {
   const handleResendOtp = async () => {
     try {
       setIsSendingOtpAuto(true);
+      setIsPendingOtpSms(true);
+      setOtpTimerSeconds(0);
       const cleanedPhone = normalizePhoneNumber(formData.phone);
       const response = await fetch("/api/resend-msg91-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: cleanedPhone }),
+        signal: AbortSignal.timeout(25000),
       });
       const data = await response.json();
+      setIsPendingOtpSms(false);
       if (response.ok && data.success) {
         setOtpTimerSeconds(120);
         setResendVisible(false);
+      } else {
+        alert(data.message || "Resend failed. Please try again.");
+        setResendVisible(true);
       }
     } catch (error) {
       console.error("Error resending OTP:", error);
+      setIsPendingOtpSms(false);
+      setResendVisible(true);
+      alert(
+        error instanceof Error && error.name === "TimeoutError"
+          ? "Resend timed out. Please try again."
+          : "Resend failed. Please try again.",
+      );
     } finally {
       setIsSendingOtpAuto(false);
     }
@@ -1468,18 +1487,25 @@ export default function HeroSections() {
             </div>
 
             <div>
-              <p className="text-gray-600 mb-4">
-                Enter the 4-digit OTP sent to {formData.phone}
-              </p>
+              {isPendingOtpSms ? (
+                <p className="text-gray-700 mb-4 manrope-medium">
+                  Sending OTP to {formData.phone}… Please wait.
+                </p>
+              ) : (
+                <p className="text-gray-600 mb-4">
+                  Enter the 4-digit OTP sent to {formData.phone}
+                </p>
+              )}
               <input
                 type="text"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="Enter 4-digit OTP"
                 maxLength={4}
-                className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium"
+                disabled={isPendingOtpSms}
+                className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium disabled:bg-gray-100 disabled:text-gray-400"
               />
-              {!resendVisible && otpTimerSeconds > 0 && (
+              {!resendVisible && otpTimerSeconds > 0 && !isPendingOtpSms && (
                 <p className="text-sm text-gray-500 mb-2">
                   Resend OTP in {Math.floor(otpTimerSeconds / 60)}:
                   {(otpTimerSeconds % 60).toString().padStart(2, "0")}
@@ -1488,7 +1514,9 @@ export default function HeroSections() {
               <div className="flex gap-3">
                 <button
                   onClick={handleOtpSubmit}
-                  disabled={isOtpVerifying || otp.length !== 4}
+                  disabled={
+                    isPendingOtpSms || isOtpVerifying || otp.length !== 4
+                  }
                   className={`${resendVisible ? "flex-1" : "w-full"} bg-[#DDCDC1] text-amber-950 py-3 rounded-xl font-manrope hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium`}
                 >
                   {isOtpVerifying ? "Verifying..." : "Verify OTP"}
@@ -1496,10 +1524,12 @@ export default function HeroSections() {
                 {resendVisible && (
                   <button
                     onClick={handleResendOtp}
-                    disabled={isSendingOtpAuto}
+                    disabled={isSendingOtpAuto || isPendingOtpSms}
                     className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed manrope-medium"
                   >
-                    {isSendingOtpAuto ? "Sending..." : "Resend OTP"}
+                    {isSendingOtpAuto || isPendingOtpSms
+                      ? "Sending..."
+                      : "Resend OTP"}
                   </button>
                 )}
               </div>
