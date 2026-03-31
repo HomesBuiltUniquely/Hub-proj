@@ -341,7 +341,7 @@ export default function Section1() {
             </div>
 
             <div className="bg-[#F1F2F6] rounded-2xl h-[110px] w-full flex flex-col justify-center items-center px-4">
-              <div className="text-red-600 text-3xl manrope-medium">2</div>
+              <div className="text-red-600 text-3xl manrope-medium">3</div>
               <p className="manrope-medium w-[100px]">Experience Centre</p>
             </div>
           </div>

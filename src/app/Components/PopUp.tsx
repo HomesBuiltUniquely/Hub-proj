@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import cityOptions from "./LandingPage1/DropDown1";
 
 
 type PopUpProps = {
@@ -44,6 +45,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [pin, setPin] = useState("");
+    const [interiorSetup, setInteriorSetup] = useState("");
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
     
@@ -195,7 +197,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             return;
         }
 
-        if (!name.trim() || !email.trim() || !phone.trim() || !pin.trim()) {
+        if (!name.trim() || !email.trim() || !phone.trim() || !pin.trim() || !interiorSetup.trim()) {
             setError("All fields are mandatory");
             return;
         }
@@ -234,6 +236,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                     email: email.trim(),
                     phone: phone.trim(),
                     pincode: pin.trim(),
+                    interiorSetup: interiorSetup.trim(),
                     pageUrl: pageUrl
                 }),
             });
@@ -252,6 +255,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                 setOtp('');
                 setIsVerified(false);
                 setOtpError('');
+                setInteriorSetup('');
 
                 // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
@@ -384,6 +388,25 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 }}
                                 className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:outline-none focus:ring-0"
                             />
+
+                            <select
+                                value={interiorSetup}
+                                onChange={(e) => {
+                                    setInteriorSetup(e.target.value);
+                                    setError("");
+                                }}
+                                className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:outline-none focus:ring-0 bg-white"
+                                required
+                            >
+                                <option value="" disabled>
+                                    Choose Your Interior Setup
+                                </option>
+                                {cityOptions.map((option: string) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
 
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium">{error}</p>
@@ -542,6 +565,25 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 }}
                                 className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400"
                             />
+
+                            <select
+                                value={interiorSetup}
+                                onChange={(e) => {
+                                    setInteriorSetup(e.target.value);
+                                    setError("");
+                                }}
+                                className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 bg-white"
+                                required
+                            >
+                                <option value="" disabled>
+                                    Choose Your Interior Setup
+                                </option>
+                                {cityOptions.map((option: string) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
 
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium text-center">{error}</p>

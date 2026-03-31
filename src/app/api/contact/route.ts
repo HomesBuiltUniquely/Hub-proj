@@ -116,6 +116,41 @@ export async function POST(req: Request) {
         console.error('Error sending to MetaLead API:', metaLeadError);
       }
     }
+    // Send Home1 data for Google Ads interior pages/calculator.
+    // Keep this server-side so CRM delivery does not depend on browser behavior.
+    else if (!mailOnly && isGoogleAdsLead) {
+      try {
+        const home1Payload = {
+          name: name || '',
+          email: email || '',
+          phoneNumber: phone || '',
+          propertyPin: pincode || '',
+          interiorSetup: possession || '',
+          possessionIn: possession || '',
+          verificationStatus: normalizedVerificationStatus,
+          otpSuccess: normalizedOtpSuccess,
+        };
+
+        console.log('Sending data to Home1 API:', home1Payload);
+
+        const home1Response = await fetch('https://hows.hubinterior.com/v1/Home1', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(home1Payload),
+        });
+
+        if (home1Response.ok) {
+          const home1Text = await home1Response.text();
+          console.log('Home1 API response:', home1Text);
+        } else {
+          console.error('Home1 API error:', home1Response.status, home1Response.statusText);
+        }
+      } catch (home1Error) {
+        console.error('Error sending to Home1 API:', home1Error);
+      }
+    }
     // Send data to WebsiteLead API only for WEBSITE leads (not Google Ads, not Meta lead pages)
     else if (!mailOnly && !isGoogleAdsLead) {
       try {
@@ -147,11 +182,6 @@ export async function POST(req: Request) {
       } catch (websiteLeadError) {
         console.error('Error sending to WebsiteLead API:', websiteLeadError);
       }
-    } else if (!mailOnly) {
-      console.log(
-        'Skipping WebsiteLead API for Google Ads lead from path:',
-        path
-      );
     }
 
     // Allow callers to suppress email while still processing lead integrations.

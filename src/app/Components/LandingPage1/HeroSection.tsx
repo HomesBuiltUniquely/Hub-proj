@@ -21,7 +21,13 @@ const carouselImages1 = [
   "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png",
 ];
 
-export default function HeroSections() {
+type HeroSectionsProps = {
+  submitApiUrl?: string;
+};
+
+export default function HeroSections({
+  submitApiUrl = "/api/contact",
+}: HeroSectionsProps) {
   const router = useRouter();
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
@@ -133,7 +139,7 @@ export default function HeroSections() {
   const sendImmediateUnverifiedMail = async () => {
     try {
       const currentUrl = window.location.href;
-      await fetch("/api/contact", {
+      await fetch(submitApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -203,7 +209,7 @@ export default function HeroSections() {
         otpSuccess: false,
         skipEmail: true,
       };
-      fetch("/api/contact", {
+      fetch(submitApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
@@ -469,7 +475,7 @@ export default function HeroSections() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-      const response = await fetch("/api/contact", {
+      const response = await fetch(submitApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
