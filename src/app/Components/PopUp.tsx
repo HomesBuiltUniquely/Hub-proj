@@ -60,6 +60,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
     const pinRef = useRef<HTMLDivElement>(null);
     const prevPhoneRef = useRef<string>('');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const showInteriorSetup = pin.length === 6;
 
     // Reset OTP when phone number changes
     useEffect(() => {
@@ -389,24 +390,26 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:outline-none focus:ring-0"
                             />
 
-                            <select
-                                value={interiorSetup}
-                                onChange={(e) => {
-                                    setInteriorSetup(e.target.value);
-                                    setError("");
-                                }}
-                                className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:outline-none focus:ring-0 bg-white"
-                                required
-                            >
-                                <option value="" disabled>
-                                    Choose Your Interior Setup
-                                </option>
-                                {cityOptions.map((option: string) => (
-                                    <option key={option} value={option}>
-                                        {option}
+                            {showInteriorSetup && (
+                                <select
+                                    value={interiorSetup}
+                                    onChange={(e) => {
+                                        setInteriorSetup(e.target.value);
+                                        setError("");
+                                    }}
+                                    className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:outline-none focus:ring-0 bg-white"
+                                    required
+                                >
+                                    <option value="" disabled>
+                                        Choose Your Interior Setup
                                     </option>
-                                ))}
-                            </select>
+                                    {cityOptions.map((option: string) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
 
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium">{error}</p>
@@ -566,24 +569,26 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400"
                             />
 
-                            <select
-                                value={interiorSetup}
-                                onChange={(e) => {
-                                    setInteriorSetup(e.target.value);
-                                    setError("");
-                                }}
-                                className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 bg-white"
-                                required
-                            >
-                                <option value="" disabled>
-                                    Choose Your Interior Setup
-                                </option>
-                                {cityOptions.map((option: string) => (
-                                    <option key={option} value={option}>
-                                        {option}
+                            {showInteriorSetup && (
+                                <select
+                                    value={interiorSetup}
+                                    onChange={(e) => {
+                                        setInteriorSetup(e.target.value);
+                                        setError("");
+                                    }}
+                                    className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400 bg-white"
+                                    required
+                                >
+                                    <option value="" disabled>
+                                        Choose Your Interior Setup
                                     </option>
-                                ))}
-                            </select>
+                                    {cityOptions.map((option: string) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
 
                             {error && (
                                 <p className="text-red-600 text-sm manrope-medium text-center">{error}</p>
