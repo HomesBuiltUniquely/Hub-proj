@@ -8,6 +8,7 @@ const HIDE_CALL_PATHS = [
   "/interior-designers-in-bangalore/Calculator",
   "/best-interior-designers-in-bangalore",
   "/best-interior-designers-in-bangalore/Calculator",
+  "/home-renovation-in-bangalore",
 ];
 
 const CALL_NUMBER = "07316914731";

@@ -7,6 +7,7 @@ const HIDE_WHATSAPP_PATHS = [
   "/interior-designers-in-bangalore/Calculator",
   "/best-interior-designers-in-bangalore",
   "/best-interior-designers-in-bangalore/Calculator",
+  "/home-renovation-in-bangalore",
 ];
 
 const WHATSAPP_NUMBER = "918898892223";

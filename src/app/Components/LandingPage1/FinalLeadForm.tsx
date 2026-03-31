@@ -157,10 +157,16 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         collections: c.collections ? JSON.stringify(c.collections) : '',
         material: c.material ? JSON.stringify(c.material) : '',
       };
-      console.log('[FinalLeadForm] Submitting payload to /api/contact:', requestData);
+      const submitUrl = '/api/contact';
+      console.log('[FinalLeadForm] Submitting payload to:', submitUrl, requestData);
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);
-      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(requestData), signal: controller.signal });
+      const res = await fetch(submitUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestData),
+        signal: controller.signal
+      });
       clearTimeout(timeoutId);
       const data = await res.json();
       console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
