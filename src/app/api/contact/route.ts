@@ -77,7 +77,6 @@ export async function POST(req: Request) {
       !isBestInteriorBangalorePage;
     const isInteriorBangaloreCalculator =
       pathLower.includes('/interior-designers-in-bangalore/calculator');
-
     const isGoogleAdsLead = isInteriorBangalorePage || isInteriorBangaloreCalculator;
 
     // Send lead integrations unless this request is mail-only

@@ -157,7 +157,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         collections: c.collections ? JSON.stringify(c.collections) : '',
         material: c.material ? JSON.stringify(c.material) : '',
       };
-      const submitUrl = '/api/contact';
+      const submitUrl = 'http://localhost:8081/renovation';
       console.log('[FinalLeadForm] Submitting payload to:', submitUrl, requestData);
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);

@@ -9,7 +9,7 @@ import Section8 from "../Components/LandingPage1/Section8";
 import Section9 from "../Components/LandingPage1/Section9";
 import BrandCarousel from "../Components/LandingPage1/Brand";
 import { QAsection } from "../Components/LandingPage1/QASEC";
-import CalculatorPage from "../Components/LandingPage1/CalculatorPage";
+import RenovationCalculatorPage from "../Components/Renovation/CalculatorPage";
 import Section33 from "../Components/LandingPage1/Caron";
 
 export default function HomeRenovationInBangalore() {
@@ -22,7 +22,7 @@ export default function HomeRenovationInBangalore() {
       <Section10 />
       <Section4 />
       <Section6 />
-      <CalculatorPage />
+      <RenovationCalculatorPage />
       <Section7 />
       <Section8 />
       <Section9 />
