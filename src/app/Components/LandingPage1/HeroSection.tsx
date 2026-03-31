@@ -23,10 +23,12 @@ const carouselImages1 = [
 
 type HeroSectionsProps = {
   submitApiUrl?: string;
+  redirectOnHttpOkOnly?: boolean;
 };
 
 export default function HeroSections({
   submitApiUrl = "/api/contact",
+  redirectOnHttpOkOnly = false,
 }: HeroSectionsProps) {
   const router = useRouter();
   const [cityOpen, setCityOpen] = useState(false);
@@ -508,7 +510,11 @@ export default function HeroSections({
         }
       })();
 
-      if (response.ok && responseData.success) {
+      const isSuccessfulSubmit = redirectOnHttpOkOnly
+        ? response.ok
+        : response.ok && responseData.success;
+
+      if (isSuccessfulSubmit) {
         if (verificationStatus === "VERIFIED") {
           // Removed alert - redirect happens silently
 

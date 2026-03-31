@@ -157,7 +157,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         collections: c.collections ? JSON.stringify(c.collections) : '',
         material: c.material ? JSON.stringify(c.material) : '',
       };
-      const submitUrl = 'http://localhost:8081/renovation';
+      const submitUrl = '/api/contact';
       console.log('[FinalLeadForm] Submitting payload to:', submitUrl, requestData);
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);
@@ -170,7 +170,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       clearTimeout(timeoutId);
       const data = await res.json();
       console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
-      if (res.ok && data.success) {
+      if (res.ok) {
         setSelectedPincode('');
         setFormData({ name: '', email: '', phone: '' });
         // Reset OTP states
