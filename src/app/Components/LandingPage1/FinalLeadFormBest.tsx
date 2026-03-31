@@ -195,34 +195,6 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
       const data = await res.json();
       console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
       if (res.ok && data.success) {
-        // Fire-and-forget to MetaLead endpoint
-        (async () => {
-          try {
-            const metaLeadPayload = {
-              name: requestData.name,
-              email: requestData.email,
-              phoneNumber: requestData.phone,
-              pinCode: requestData.pincode || null,
-              propertyPin: requestData.pincode || null,
-              propertyType: requestData.bhkType || requestData.possession || null,
-              bookASlot: null,
-              leadSource: 'Website',
-              verificationStatus: requestData.verificationStatus,
-              otpSuccess: requestData.otpSuccess,
-            };
-
-            await fetch('https://hows.hubinterior.com/v1/MetaLead', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(metaLeadPayload),
-            });
-          } catch (err) {
-            console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
-          }
-        })();
-
         setSelectedPincode('');
         setFormData({ name: '', email: '', phone: '' });
         // Reset OTP states

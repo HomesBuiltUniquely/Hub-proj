@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { normalizePhoneNumber } from "@/lib/utils";
+import cityOptions from "../LandingPage1/DropDown1";
 
 const MobileFormSection: React.FC = () => {
   const router = useRouter();
@@ -10,7 +11,8 @@ const MobileFormSection: React.FC = () => {
     name: '',
     email: '',
     phone: '',
-    pincode: ''
+    pincode: '',
+    interiorSetup: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -142,7 +144,7 @@ const MobileFormSection: React.FC = () => {
 
       if (result.success) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', pincode: '' });
+        setFormData({ name: '', email: '', phone: '', pincode: '', interiorSetup: '' });
         // Reset OTP states
         setOtpSent(false);
         setOtp('');
@@ -262,6 +264,28 @@ const MobileFormSection: React.FC = () => {
                 className="w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
                 placeholder="Pincode"
               />
+            </div>
+
+            <div>
+              <select
+                id="interiorSetup"
+                name="interiorSetup"
+                value={formData.interiorSetup}
+                onChange={(e) =>
+                  setFormData(prev => ({ ...prev, interiorSetup: e.target.value }))
+                }
+                required
+                className="w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 text-base"
+              >
+                <option value="" disabled>
+                  Choose Your Interior Setup
+                </option>
+                {cityOptions.map((option: string) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <button
