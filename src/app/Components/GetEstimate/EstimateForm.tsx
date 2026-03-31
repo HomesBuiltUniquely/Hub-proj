@@ -24,6 +24,7 @@ const EstimateForm: React.FC = () => {
   const [isSendingOTP, setIsSendingOTP] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [otpError, setOtpError] = useState('');
+  const showInteriorSetup = formData.pincode.trim().length === 6;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -263,27 +264,29 @@ const EstimateForm: React.FC = () => {
           />
         </div>
 
-        <div>
-          <select
-            id="interiorSetup"
-            name="interiorSetup"
-            value={formData.interiorSetup}
-            onChange={(e) =>
-              setFormData(prev => ({ ...prev, interiorSetup: e.target.value }))
-            }
-            required
-            className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 text-base"
-          >
-            <option value="" disabled>
-              Choose Your Interior Setup*
-            </option>
-            {cityOptions.map((option: string) => (
-              <option key={option} value={option}>
-                {option}
+        {showInteriorSetup && (
+          <div>
+            <select
+              id="interiorSetup"
+              name="interiorSetup"
+              value={formData.interiorSetup}
+              onChange={(e) =>
+                setFormData(prev => ({ ...prev, interiorSetup: e.target.value }))
+              }
+              required
+              className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 text-base"
+            >
+              <option value="" disabled>
+                Choose Your Interior Setup*
               </option>
-            ))}
-          </select>
-        </div>
+              {cityOptions.map((option: string) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <button
           type="submit"
