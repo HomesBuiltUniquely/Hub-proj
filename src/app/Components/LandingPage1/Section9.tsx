@@ -5,11 +5,11 @@ export default function Section9() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const testimonialImages = [
-    "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/TvUnit_room.jpg",
-    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%202.png",
-    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%203.png",
-    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%204.png",
-    "https://tgqcnyhwjfretjmnlmaq.supabase.co/storage/v1/object/public/hubinteriors//TESTIMONIAL%205.png",
+    "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/interior_design_review1.png",
+    "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/interior_design_review2.png",
+    "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/interior_design_review3.png",
+    "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/interior_design_review4.png",
+    "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/review_section/interior_design_review5.png",
   ];
 
   // Create a looped array for seamless infinite scrolling
