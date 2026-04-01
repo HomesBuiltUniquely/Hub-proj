@@ -38,8 +38,8 @@ export async function POST(req) {
         propertyPin: pincode || '',
         interiorSetup: interiorSetup || '',
         pageUrl: pageUrl || '',
-        verificationStatus: getVerificationStatus(false),
-        otpSuccess: false,
+        verificationStatus: getVerificationStatus(true),
+        otpSuccess: true,
       };
 
       console.log('Sending get-estimate data to WebsiteLead API:', websiteLeadPayload);

@@ -17,8 +17,8 @@ export async function POST(req: Request) {
         phoneNumber: phone || '',
         propertyPin: pincode || '',
         interiorSetup: interiorSetup || '',
-        verificationStatus: getVerificationStatus(false),
-        otpSuccess: false,
+        verificationStatus: getVerificationStatus(true),
+        otpSuccess: true,
       };
 
       console.log('Sending popup data to WebsiteLead API:', websiteLeadPayload);
