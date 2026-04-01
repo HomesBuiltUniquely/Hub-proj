@@ -61,6 +61,12 @@ export async function POST(req: Request) {
       otpSuccess,
     });
     const normalizedOtpSuccess = normalizedVerificationStatus === 'VERIFIED';
+    const hasVerificationInput =
+      typeof verificationStatus !== 'undefined' || typeof otpSuccess !== 'undefined';
+    const websiteLeadVerificationStatus = hasVerificationInput
+      ? normalizedVerificationStatus
+      : 'VERIFIED';
+    const websiteLeadOtpSuccess = hasVerificationInput ? normalizedOtpSuccess : true;
 
     // Identify Meta lead pages (best-interior-designers-in-bangalore and its calculator)
     const isBestInteriorBangalorePage =
@@ -158,8 +164,8 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: phone || '',
           propertyPin: pincode || '',
-          verificationStatus: normalizedVerificationStatus,
-          otpSuccess: normalizedOtpSuccess,
+          verificationStatus: websiteLeadVerificationStatus,
+          otpSuccess: websiteLeadOtpSuccess,
         };
 
         console.log('Sending data to WebsiteLead API:', websiteLeadPayload);
