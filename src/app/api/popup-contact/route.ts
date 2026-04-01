@@ -5,9 +5,9 @@ import { getVerificationStatus } from '@/lib/leadVerification';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, phone, pincode, pageUrl } = body;
+    const { name, email, phone, pincode, interiorSetup, pageUrl } = body;
 
-    console.log('Popup form API route called with data:', { name, email, phone, pincode, pageUrl });
+    console.log('Popup form API route called with data:', { name, email, phone, pincode, interiorSetup, pageUrl });
     
     // Send data to unified API endpoint
     try {
@@ -16,6 +16,7 @@ export async function POST(req: Request) {
         email: email || '',
         phoneNumber: phone || '',
         propertyPin: pincode || '',
+        interiorSetup: interiorSetup || '',
         verificationStatus: getVerificationStatus(false),
         otpSuccess: false,
       };
