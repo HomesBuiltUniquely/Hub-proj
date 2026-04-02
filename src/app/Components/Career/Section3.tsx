@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useRef, useState } from "react";
 
@@ -30,7 +30,8 @@ const JoinUsPage: React.FC = () => {
   const fileToBase64 = (file: File) =>
     new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = () => resolve((reader.result as string).split(",")[1] || "");
+      reader.onload = () =>
+        resolve((reader.result as string).split(",")[1] || "");
       reader.onerror = () => reject(reader.error);
       reader.readAsDataURL(file);
     });
@@ -45,7 +46,9 @@ const JoinUsPage: React.FC = () => {
       const formData = new FormData(form);
       const resumeFile = formData.get("resume");
       const resolvedResumeFile =
-        resumeFile instanceof File && resumeFile.size > 0 ? resumeFile : selectedFile;
+        resumeFile instanceof File && resumeFile.size > 0
+          ? resumeFile
+          : selectedFile;
       if (!resolvedResumeFile) {
         throw new Error("Resume is required.");
       }
@@ -77,7 +80,9 @@ const JoinUsPage: React.FC = () => {
 
       const responseData = await response.json();
       if (!response.ok || !responseData.success) {
-        throw new Error(responseData.message || "Failed to submit application.");
+        throw new Error(
+          responseData.message || "Failed to submit application.",
+        );
       }
 
       alert("Application submitted!");
@@ -87,7 +92,9 @@ const JoinUsPage: React.FC = () => {
     } catch (error) {
       console.error("Career form submit error:", error);
       const message =
-        error instanceof Error ? error.message : "Failed to submit application. Please try again.";
+        error instanceof Error
+          ? error.message
+          : "Failed to submit application. Please try again.";
       alert(message);
     } finally {
       setIsSubmitting(false);
@@ -95,11 +102,9 @@ const JoinUsPage: React.FC = () => {
   };
 
   return (
-
     <div>
-
       <style jsx>{`
-     /* Hide both by default */
+        /* Hide both by default */
         .desktop-1280,
         .desktop-1440 {
           display: none !important;
@@ -118,25 +123,27 @@ const JoinUsPage: React.FC = () => {
             display: block !important;
           }
         }
-    `}</style>
+      `}</style>
 
       <div className="desktop-1440 min-h-full flex items-start justify-center bg-[#f4f5f8] px-20 pt-24 pb-12 ml-3">
         {/* Left: Text and brochure */}
 
         <div className="flex flex-col justify-start flex-1 px-2 ml-20 ">
           <h1 className="text-5xl lg:text-6xl wulkan-display-bold  mb-3 leading-tight">
-            Ready to<br />join us?
+            Ready to
+            <br />
+            join us?
           </h1>
           <p className="text-gray-600 mb-2 manrope-medium">
             Fill out your details and let’s create beautiful spaces—together.
           </p>
-          <a
+          {/* <a
             href="/trail.pdf"
             download
             className="underline text-sm manrope text-gray-700 hover:text-red-600 manrope"
           >
             Download Our Brochure
-          </a>
+          </a> */}
         </div>
 
         {/* Right: Form */}
@@ -148,7 +155,9 @@ const JoinUsPage: React.FC = () => {
             {/* First Row */}
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm manrope mb-1">First Name*</label>
+                <label className="block text-gray-700 text-sm manrope mb-1">
+                  First Name*
+                </label>
                 <input
                   type="text"
                   required
@@ -158,7 +167,9 @@ const JoinUsPage: React.FC = () => {
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm manrope mb-1">Last Name</label>
+                <label className="block text-gray-700 text-sm manrope mb-1">
+                  Last Name
+                </label>
                 <input
                   type="text"
                   name="lastName"
@@ -171,7 +182,9 @@ const JoinUsPage: React.FC = () => {
             {/* Second Row */}
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm manrope mb-1">Email*</label>
+                <label className="block text-gray-700 text-sm manrope mb-1">
+                  Email*
+                </label>
                 <input
                   type="email"
                   required
@@ -181,7 +194,9 @@ const JoinUsPage: React.FC = () => {
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm manrope mb-1">Phone Number*</label>
+                <label className="block text-gray-700 text-sm manrope mb-1">
+                  Phone Number*
+                </label>
                 <input
                   type="tel"
                   required
@@ -195,7 +210,9 @@ const JoinUsPage: React.FC = () => {
 
             {/* Position */}
             <div>
-              <label className="block text-gray-700 text-sm manrope mb-1">Position Applying For*</label>
+              <label className="block text-gray-700 text-sm manrope mb-1">
+                Position Applying For*
+              </label>
               <select
                 required
                 name="position"
@@ -212,7 +229,6 @@ const JoinUsPage: React.FC = () => {
               </select>
             </div>
 
-
             {/* Upload Resume */}
             <div>
               <label className="block text-gray-700 text-sm manrope mb-2">
@@ -226,7 +242,9 @@ const JoinUsPage: React.FC = () => {
                 >
                   Choose File
                 </button>
-                <span className="text-gray-600 text-sm truncate manrope-medium w-40">{fileName || "No file chosen"}</span>
+                <span className="text-gray-600 text-sm truncate manrope-medium w-40">
+                  {fileName || "No file chosen"}
+                </span>
               </div>
               <input
                 ref={fileRef}
@@ -238,12 +256,11 @@ const JoinUsPage: React.FC = () => {
               />
             </div>
 
-
-
-
             {/* About */}
             <div>
-              <label className="block text-gray-700 text-sm manrope mb-1">Tell Us About You</label>
+              <label className="block text-gray-700 text-sm manrope mb-1">
+                Tell Us About You
+              </label>
               <textarea
                 rows={4}
                 name="about"
@@ -265,28 +282,27 @@ const JoinUsPage: React.FC = () => {
         </div>
       </div>
 
-
-
       {/* 1280 version */}
-
 
       <div className="desktop-1280 min-h-full flex items-start justify-center bg-[#f4f5f8] px-20 pt-24 pb-12">
         {/* Left: Text and brochure */}
 
         <div className="flex flex-col justify-start flex-1 px-2  ">
           <h1 className="text-5xl lg:text-6xl wulkan-display-bold  mb-3 leading-tight">
-            Ready to<br />join us?
+            Ready to
+            <br />
+            join us?
           </h1>
           <p className="text-gray-600 mb-2 manrope-medium">
             Fill out your details and let’s create beautiful spaces—together.
           </p>
-          <a
+          {/* <a
             href="/trail.pdf"
             download
             className="underline text-sm manrope text-gray-700 hover:text-red-600 manrope"
           >
             Download Our Brochure
-          </a>
+          </a> */}
         </div>
 
         {/* Right: Form */}
@@ -298,7 +314,9 @@ const JoinUsPage: React.FC = () => {
             {/* First Row */}
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm manrope mb-1">First Name*</label>
+                <label className="block text-gray-700 text-sm manrope mb-1">
+                  First Name*
+                </label>
                 <input
                   type="text"
                   required
@@ -308,7 +326,9 @@ const JoinUsPage: React.FC = () => {
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm manrope mb-1">Last Name</label>
+                <label className="block text-gray-700 text-sm manrope mb-1">
+                  Last Name
+                </label>
                 <input
                   type="text"
                   name="lastName"
@@ -321,7 +341,9 @@ const JoinUsPage: React.FC = () => {
             {/* Second Row */}
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm manrope mb-1">Email*</label>
+                <label className="block text-gray-700 text-sm manrope mb-1">
+                  Email*
+                </label>
                 <input
                   type="email"
                   required
@@ -331,7 +353,9 @@ const JoinUsPage: React.FC = () => {
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm manrope mb-1">Phone Number*</label>
+                <label className="block text-gray-700 text-sm manrope mb-1">
+                  Phone Number*
+                </label>
                 <input
                   type="tel"
                   required
@@ -345,7 +369,9 @@ const JoinUsPage: React.FC = () => {
 
             {/* Position */}
             <div>
-              <label className="block text-gray-700 text-sm manrope mb-1">Position Applying For*</label>
+              <label className="block text-gray-700 text-sm manrope mb-1">
+                Position Applying For*
+              </label>
               <select
                 required
                 name="position"
@@ -362,7 +388,6 @@ const JoinUsPage: React.FC = () => {
               </select>
             </div>
 
-
             {/* Upload Resume */}
             <div>
               <label className="block text-gray-700 text-sm manrope mb-2">
@@ -376,7 +401,9 @@ const JoinUsPage: React.FC = () => {
                 >
                   Choose File
                 </button>
-                <span className="text-gray-600 text-sm truncate manrope-medium w-40">{fileName || "No file chosen"}</span>
+                <span className="text-gray-600 text-sm truncate manrope-medium w-40">
+                  {fileName || "No file chosen"}
+                </span>
               </div>
               <input
                 ref={fileRef}
@@ -388,12 +415,11 @@ const JoinUsPage: React.FC = () => {
               />
             </div>
 
-
-
-
             {/* About */}
             <div>
-              <label className="block text-gray-700 text-sm manrope mb-1">Tell Us About You</label>
+              <label className="block text-gray-700 text-sm manrope mb-1">
+                Tell Us About You
+              </label>
               <textarea
                 rows={4}
                 name="about"
@@ -415,19 +441,20 @@ const JoinUsPage: React.FC = () => {
         </div>
       </div>
 
-
       {/* Mobile Version */}
 
       <div className="md:hidden w-full max-w-[425px] mx-auto  overflow-hidden">
         <div className="relative h-full w-full p-2">
-
           <div className="mx-auto ">
             <div className="flex mr-1 items-start">
               <div className="w-[2px] h-[78px] bg-amber-300 mb-3 ml-2"></div>
-              <h1 className="text-3xl  wulkan-display-bold mb-5 ml-3 text-gray-800 w-[250px]">Ready to <div>join us?</div></h1>
+              <h1 className="text-3xl  wulkan-display-bold mb-5 ml-3 text-gray-800 w-[250px]">
+                Ready to <div>join us?</div>
+              </h1>
             </div>
             <p className="text-gray-500 w-[275px] text-sm ml-4 manrope-medium mb-8">
-              Fill out your destails and lets&#39;s create beautiful spaces-together
+              Fill out your destails and lets&#39;s create beautiful
+              spaces-together
             </p>
           </div>
 
@@ -542,7 +569,9 @@ const JoinUsPage: React.FC = () => {
 
                 {/* About */}
                 <div>
-                  <label className="block text-gray-700 text-sm manrope mb-1">Tell Us About You</label>
+                  <label className="block text-gray-700 text-sm manrope mb-1">
+                    Tell Us About You
+                  </label>
                   <textarea
                     rows={4}
                     name="about"
@@ -550,8 +579,6 @@ const JoinUsPage: React.FC = () => {
                     placeholder="Share your story, skills, or portfolio link"
                   />
                 </div>
-
-
               </div>
 
               {/* Apply Button */}
@@ -565,19 +592,9 @@ const JoinUsPage: React.FC = () => {
               </div>
             </form>
           </div>
-
         </div>
-
-
-
       </div>
-
     </div>
-
-
-
-
-
   );
 };
 
