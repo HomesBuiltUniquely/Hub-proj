@@ -15,14 +15,14 @@ import Section33 from "../Components/LandingPage1/Caron";
 export default function HomeRenovationInBangalore() {
   return (
     <div>
-      <RenovationHeroSection />
+      <RenovationHeroSection verifiedRedirectUrl="https://hubinterior.com/Get-Estimate-Thank-You" />
       <Section1 />
       <Section3 />
       <Section33 />
       <Section10 />
       <Section4 />
       <Section6 />
-      <RenovationCalculatorPage />
+      {/* <RenovationCalculatorPage /> */}
       <Section7 />
       <Section8 />
       <Section9 />

@@ -85,6 +85,11 @@ export async function POST(req: Request) {
       pathLower.includes('/interior-designers-in-bangalore/calculator');
     const isGoogleAdsLead = isInteriorBangalorePage || isInteriorBangaloreCalculator;
 
+    /** Detected from pageUrl only — no coupling to a specific route module. */
+    const isHomeRenovationBangalorePage =
+      pathLower.includes('/home-renovation-in-bangalore') ||
+      pathLower.includes('home-renovation-in-bangalore');
+
     // Send lead integrations unless this request is mail-only
     if (!mailOnly && isMetaLeadPage) {
       try {
@@ -299,6 +304,21 @@ export async function POST(req: Request) {
       }
     };
 
+    const renovationLeadDetailsHtml = isHomeRenovationBangalorePage
+      ? `
+        <p><strong>Requirements:</strong> ${city || 'Not provided'}</p>
+        <p><strong>Renovation budget:</strong> ${budget || 'Not provided'}</p>
+      `
+      : '';
+
+    const defaultLeadDetailsHtml = !isHomeRenovationBangalorePage
+      ? `
+        <p><strong>Interior Setup:</strong> ${city || 'Not provided'}</p>
+        <p><strong>Budget:</strong> ${budget || 'Not provided'}</p>
+        <p><strong>Possession Timeline:</strong> ${possession || 'Not provided'}</p>
+      `
+      : '';
+
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER, // You can change this to a team email
@@ -309,8 +329,8 @@ export async function POST(req: Request) {
         <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
         <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
-        <p><strong>Interior Setup:</strong> ${city || 'Not provided'}</p>
-        <p><strong>Possession Timeline:</strong> ${possession || budget || 'Not provided'}</p>
+        ${renovationLeadDetailsHtml}
+        ${defaultLeadDetailsHtml}
         <p><strong>Preferred Date:</strong> ${date ? (date.includes('-') ? date : `Dec-${date}`) : 'Not provided'}</p>
         <p><strong>Preferred Time:</strong> ${time || 'Not provided'}</p>
         <p><strong>WhatsApp Consent:</strong> ${
