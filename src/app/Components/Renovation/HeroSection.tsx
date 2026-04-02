@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode";
-import cityOptions from "./DropDown1";
 import { normalizePhoneNumber } from "@/lib/utils";
 
 const carouselImages = [
@@ -21,16 +20,29 @@ const carouselImages1 = [
   "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png",
 ];
 
+const requirementOptions = [
+  "Full Home Renovation",
+  "(Living room+ Bedroom+ Kitchen+ Bathroom ) Renovation",
+  "(Living room+ Bedroom+ Kitchen ) Renovation",
+  "Kitchen Renovation",
+];
+
+const budgetOptions = ["4 - 6 Lakhs", "6 - 8 Lakhs", "8 - 10 lakhs", "10 Lakhs+"];
+
 type HeroSectionsProps = {
   submitApiUrl?: string;
+  /** If set, successful verified submits navigate here instead of /Form-Submit-Thank-You (e.g. external thank-you URL). */
+  verifiedRedirectUrl?: string;
 };
 
 export default function HeroSections({
   submitApiUrl = "/api/contact",
+  verifiedRedirectUrl,
 }: HeroSectionsProps) {
   const router = useRouter();
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedBudget, setSelectedBudget] = useState("");
   const [selectedPincode, setSelectedPincode] = useState("");
   const [whatsappConsent, setWhatsappConsent] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -147,7 +159,7 @@ export default function HeroSections({
           email: formData.email,
           phone: formData.phone,
           city: selectedCity,
-          budget: "",
+          budget: selectedBudget,
           pincode: selectedPincode,
           whatsappConsent: whatsappConsent,
           pageUrl: currentUrl,
@@ -203,7 +215,7 @@ export default function HeroSections({
       const payload = leadPayloadRef.current;
       const requestData = {
         ...payload,
-        budget: "",
+        budget: selectedBudget,
         pageUrl: typeof window !== "undefined" ? window.location.href : "",
         verificationStatus: "UNVERIFIED",
         otpSuccess: false,
@@ -325,7 +337,11 @@ export default function HeroSections({
       return;
     }
     if (!selectedCity) {
-      alert("Please choose your interior setup.");
+      alert("Please choose your requirements.");
+      return;
+    }
+    if (!selectedBudget) {
+      alert("Please choose your budget.");
       return;
     }
     if (!whatsappConsent) {
@@ -367,6 +383,7 @@ export default function HeroSections({
         email: formData.email,
         phone: formData.phone,
         city: selectedCity,
+        budget: selectedBudget,
         pincode: selectedPincode,
         whatsappConsent: whatsappConsent,
       };
@@ -462,7 +479,7 @@ export default function HeroSections({
         email: formData.email,
         phone: formData.phone,
         city: selectedCity,
-        budget: "",
+        budget: selectedBudget,
         pincode: selectedPincode,
         whatsappConsent: whatsappConsent,
         pageUrl: currentUrl,
@@ -522,14 +539,17 @@ export default function HeroSections({
 
           // Reset form
           setSelectedCity("");
-          // setSelectedBudget("");
+          setSelectedBudget("");
           setSelectedPincode("");
           setWhatsappConsent(true);
           setFormData({ name: "", email: "", phone: "" });
           setShowOtpModal(false);
 
-          // Redirect to thank you page
-          router.push("/Form-Submit-Thank-You");
+          if (verifiedRedirectUrl) {
+            window.location.assign(verifiedRedirectUrl);
+          } else {
+            router.push("/Form-Submit-Thank-You");
+          }
         } else {
           // Removed alert - OTP modal will appear directly
         }
@@ -746,8 +766,8 @@ export default function HeroSections({
                   Interiors For Every <span className="text-red-600">Home</span>
                 </div>
 
-                {/* Name Input */}
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                <div className="flex flex-col gap-4">
+                  {/* Name Input */}
                   <input
                     type="text"
                     name="name"
@@ -755,12 +775,10 @@ export default function HeroSections({
                     onChange={handleInputChange}
                     placeholder="Name *"
                     required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    className="w-full sm:w-[250px] sm:mx-auto h-[50px] bg-[#f1f2f6] sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 pr-6 sm:pl-8 sm:pr-8 placeholder-gray-400 manrope-medium text-gray-700"
                   />
-                </div>
 
-                {/* Email Input */}
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-1">
+                  {/* Email Input */}
                   <input
                     type="email"
                     name="email"
@@ -768,71 +786,103 @@ export default function HeroSections({
                     onChange={handleInputChange}
                     placeholder="Email *"
                     required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-5 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    className="w-full sm:w-[250px] sm:mx-auto h-[50px] bg-[#f1f2f6] rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 pr-6 sm:pl-8 sm:pr-8 placeholder-gray-400 manrope-medium text-gray-700"
                   />
-                </div>
 
-                {/* Phone and Pincode Row */}
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="Phone Number *"
-                    required
-                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-6 sm:mt-10 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                  />
-                  {/* Pincode Dropdown */}
-                  <div className="relative w-full sm:w-[250px] mt-2 sm:mt-10">
-                    <select
-                      name="pincode"
+                  {/* Phone and Pincode Row */}
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 sm:justify-center sm:mt-10">
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="Phone Number *"
                       required
-                      value={selectedPincode}
-                      onChange={(e) => setSelectedPincode(e.target.value)}
-                      className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
-                    >
-                      <option className="text-gray-400" value="" disabled>
-                        Property Pincode ( Bangalore Only ) *
-                      </option>
-                      {Pincode.map((pin, idx) => (
-                        <option key={idx} value={pin}>
-                          {pin}
+                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 pr-6 sm:pl-8 sm:pr-8 placeholder-gray-400 manrope-medium text-gray-700"
+                    />
+                    {/* Pincode Dropdown */}
+                    <div className="relative w-full sm:w-[250px]">
+                      <select
+                        name="pincode"
+                        required
+                        value={selectedPincode}
+                        onChange={(e) => setSelectedPincode(e.target.value)}
+                        className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-2xl lg:rounded-2xl text-base sm:text-[18px] pl-6 pr-11 sm:pl-8 sm:pr-12 text-left text-gray-700 appearance-none cursor-pointer"
+                      >
+                        <option className="text-gray-400" value="" disabled>
+                          Property Pincode ( Bangalore Only ) *
                         </option>
-                      ))}
-                    </select>
-                    {/* Custom dropdown arrow icon */}
-                    <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">
-                      &#9662;
-                    </span>
+                        {Pincode.map((pin, idx) => (
+                          <option key={idx} value={pin}>
+                            {pin}
+                          </option>
+                        ))}
+                      </select>
+                      <span
+                        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                        aria-hidden
+                      >
+                        &#9662;
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                {/* City Dropdown */}
-                <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10">
-                  <div className="relative w-full sm:w-[520px] mx-auto">
+                  {/* Requirements Dropdown */}
+                  <div className="relative w-full sm:w-[520px] sm:mx-auto sm:mt-10">
                     <select
-                      name="city"
+                      name="requirements"
                       required
                       value={selectedCity}
                       onChange={(e) => setSelectedCity(e.target.value)}
-                      className="manrope-medium w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-3xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer"
+                      className="manrope-medium w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-3xl text-base sm:text-[18px] pl-6 pr-11 sm:pl-8 sm:pr-12 text-left text-gray-700 appearance-none cursor-pointer"
                     >
                       <option
                         className="text-gray-400 manrope-medium"
                         value=""
                         disabled
                       >
-                        Choose Your Interior Setup *
+                        Choose Your Requirements *
                       </option>
-                      {cityOptions.map((option: string) => (
+                      {requirementOptions.map((option: string) => (
                         <option key={option} value={option}>
                           {option}
                         </option>
                       ))}
                     </select>
-                    {/* Custom dropdown arrow icon */}
-                    <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">
+                    <span
+                      className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                      aria-hidden
+                    >
+                      &#9662;
+                    </span>
+                  </div>
+
+                  {/* Budget Dropdown */}
+                  <div className="relative w-full sm:w-[520px] sm:mx-auto">
+                    <select
+                      name="budget"
+                      required
+                      value={selectedBudget}
+                      onChange={(e) => setSelectedBudget(e.target.value)}
+                      className="manrope-medium w-full h-[50px] font-medium bg-[#f1f2f6] rounded-2xl lg:rounded-3xl text-base sm:text-[18px] pl-6 pr-11 sm:pl-8 sm:pr-12 text-left text-gray-700 appearance-none cursor-pointer"
+                    >
+                      <option
+                        className="text-gray-400 manrope-medium"
+                        value=""
+                        disabled
+                      >
+                        Choose Your Budget *
+                      </option>
+                      {budgetOptions.map((option: string) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    <span
+                      className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                      aria-hidden
+                    >
                       &#9662;
                     </span>
                   </div>
@@ -959,7 +1009,7 @@ export default function HeroSections({
                       required
                       value={selectedPincode}
                       onChange={(e) => setSelectedPincode(e.target.value)}
-                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
+                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-11 sm:pr-12 text-left text-gray-700 appearance-none cursor-pointer manrope-medium"
                     >
                       <option
                         className="text-gray-400 manrope-medium"
@@ -974,13 +1024,15 @@ export default function HeroSections({
                         </option>
                       ))}
                     </select>
-                    {/* Custom dropdown arrow icon */}
-                    <span className="text-gray-500 absolute mt-4 -ml-8 text-[16px]">
+                    <span
+                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                      aria-hidden
+                    >
                       &#9662;
                     </span>
                   </div>
 
-                  {/* City Dropdown */}
+                  {/* Requirements Dropdown */}
                   <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10">
                     <div ref={cityRef2560}>
                       <div
@@ -991,13 +1043,13 @@ export default function HeroSections({
                         className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate">
-                          {selectedCity || "Choose Your Interior Setup"}
+                          {selectedCity || "Choose Your Requirements"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
                       {cityOpen && (
                         <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto manrope-medium">
-                          {cityOptions.map((option: string) => (
+                          {requirementOptions.map((option: string) => (
                             <li
                               key={option}
                               onClick={() => handleCitySelect(option)}
@@ -1009,6 +1061,36 @@ export default function HeroSections({
                         </ul>
                       )}
                     </div>
+                  </div>
+
+                  {/* Budget Dropdown */}
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-6">
+                    <select
+                      name="budget"
+                      required
+                      value={selectedBudget}
+                      onChange={(e) => setSelectedBudget(e.target.value)}
+                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-11 sm:pr-12 text-left text-gray-700 appearance-none cursor-pointer manrope-medium"
+                    >
+                      <option
+                        className="text-gray-400 manrope-medium"
+                        value=""
+                        disabled
+                      >
+                        Choose Your Budget *
+                      </option>
+                      {budgetOptions.map((option: string) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    <span
+                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                      aria-hidden
+                    >
+                      &#9662;
+                    </span>
                   </div>
 
                   {/* Button Container (centered) */}
@@ -1154,7 +1236,7 @@ export default function HeroSections({
                       required
                       value={selectedPincode}
                       onChange={(e) => setSelectedPincode(e.target.value)}
-                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
+                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-11 sm:pr-12 text-left text-gray-700 appearance-none cursor-pointer manrope-medium"
                     >
                       <option
                         className="text-gray-400 manrope-medium"
@@ -1169,13 +1251,15 @@ export default function HeroSections({
                         </option>
                       ))}
                     </select>
-                    {/* Custom dropdown arrow icon */}
-                    <span className="text-gray-500 absolute mt-4 -ml-8 text-[16px]">
+                    <span
+                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                      aria-hidden
+                    >
                       &#9662;
                     </span>
                   </div>
 
-                  {/* City Dropdown */}
+                  {/* Requirements Dropdown */}
                   <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-5">
                     <div ref={cityRef1920}>
                       <div
@@ -1186,13 +1270,13 @@ export default function HeroSections({
                         className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate whitespace-nowrap overflow-hidden max-w-[430px]">
-                          {selectedCity || "Choose Your Interior Setup"}
+                          {selectedCity || "Choose Your Requirements"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
                       {cityOpen && (
                         <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto manrope-medium">
-                          {cityOptions.map((option: string) => (
+                          {requirementOptions.map((option: string) => (
                             <li
                               key={option}
                               onClick={() => handleCitySelect(option)}
@@ -1204,6 +1288,36 @@ export default function HeroSections({
                         </ul>
                       )}
                     </div>
+                  </div>
+
+                  {/* Budget Dropdown */}
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-5">
+                    <select
+                      name="budget"
+                      required
+                      value={selectedBudget}
+                      onChange={(e) => setSelectedBudget(e.target.value)}
+                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-11 sm:pr-12 text-left text-gray-700 appearance-none cursor-pointer manrope-medium"
+                    >
+                      <option
+                        className="text-gray-400 manrope-medium"
+                        value=""
+                        disabled
+                      >
+                        Choose Your Budget *
+                      </option>
+                      {budgetOptions.map((option: string) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    <span
+                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                      aria-hidden
+                    >
+                      &#9662;
+                    </span>
                   </div>
 
                   {/* Button Container (centered) */}
@@ -1346,30 +1460,34 @@ export default function HeroSections({
                   </div>
 
                   {/* Pincode */}
-                  <div className="relative w-full flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-5">
-                    <select
-                      name="pincode"
-                      required
-                      value={selectedPincode}
-                      onChange={(e) => setSelectedPincode(e.target.value)}
-                      className="w-full sm:w-[500px] h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
-                    >
-                      <option className="text-gray-400" value="" disabled>
-                        Property Pincode ( Bangalore Only ) *
-                      </option>
-                      {Pincode.map((pin, idx) => (
-                        <option key={idx} value={pin}>
-                          {pin}
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-5">
+                    <div className="relative w-full sm:w-[500px]">
+                      <select
+                        name="pincode"
+                        required
+                        value={selectedPincode}
+                        onChange={(e) => setSelectedPincode(e.target.value)}
+                        className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-11 text-left text-gray-700 appearance-none cursor-pointer manrope-medium"
+                      >
+                        <option className="text-gray-400" value="" disabled>
+                          Property Pincode ( Bangalore Only ) *
                         </option>
-                      ))}
-                    </select>
-
-                    <span className="text-gray-500 absolute top-[14px] right-6 text-[16px]">
-                      &#9662;
-                    </span>
+                        {Pincode.map((pin, idx) => (
+                          <option key={idx} value={pin}>
+                            {pin}
+                          </option>
+                        ))}
+                      </select>
+                      <span
+                        className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                        aria-hidden
+                      >
+                        &#9662;
+                      </span>
+                    </div>
                   </div>
 
-                  {/* City Dropdown */}
+                  {/* Requirements Dropdown */}
                   <div className="relative w-full mx-auto mt-5">
                     <div ref={cityRef1280} className="relative">
                       <div
@@ -1380,14 +1498,14 @@ export default function HeroSections({
                         className={`w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate">
-                          {selectedCity || "Choose Your Interior Setup"}
+                          {selectedCity || "Choose Your Requirements"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
 
                       {cityOpen && (
                         <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] max-h-60 overflow-y-auto manrope-medium">
-                          {cityOptions.map((option: string) => (
+                          {requirementOptions.map((option: string) => (
                             <li
                               key={option}
                               onClick={() => handleCitySelect(option)}
@@ -1398,6 +1516,34 @@ export default function HeroSections({
                           ))}
                         </ul>
                       )}
+                    </div>
+                  </div>
+
+                  {/* Budget Dropdown */}
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-5">
+                    <div className="relative w-full sm:w-[500px]">
+                      <select
+                        name="budget"
+                        required
+                        value={selectedBudget}
+                        onChange={(e) => setSelectedBudget(e.target.value)}
+                        className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-11 text-left text-gray-700 appearance-none cursor-pointer manrope-medium"
+                      >
+                        <option className="text-gray-400" value="" disabled>
+                          Choose Your Budget *
+                        </option>
+                        {budgetOptions.map((option: string) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                      <span
+                        className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                        aria-hidden
+                      >
+                        &#9662;
+                      </span>
                     </div>
                   </div>
 
