@@ -268,6 +268,12 @@ export async function POST(req: Request) {
         normalizedVerificationStatus === 'VERIFIED'
           ? 'Meta Lead (Verified)'
           : 'Meta Lead (Unverified)';
+    } else if (isHomeRenovationBangalorePage) {
+      // Standalone branch: only matches pageUrl; safe to remove with the renovation route later.
+      subject =
+        normalizedVerificationStatus === 'VERIFIED'
+          ? 'Renovation Ads Lead (Verified)'
+          : 'Renovation Ads Lead (Unverified)';
     } else if (isInteriorCalculator || isInteriorBangalorePage) {
       subject =
         normalizedVerificationStatus === 'VERIFIED'
