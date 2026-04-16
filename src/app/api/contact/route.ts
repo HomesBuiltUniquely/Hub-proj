@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { resolveLeadVerificationStatus } from '@/lib/leadVerification';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 export async function POST(req: Request) {
   try {
@@ -32,9 +33,17 @@ export async function POST(req: Request) {
       skipEmail,
     } = body;
 
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits.' },
+        { status: 400 },
+      );
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
+
     console.log('API route called with data:', {
       name,
-      phone,
+      phone: normalizedPhone,
       email,
       pincode,
       city,
@@ -96,7 +105,7 @@ export async function POST(req: Request) {
         const metaLeadPayload = {
           name: name || '',
           email: email || '',
-          phoneNumber: phone || '',
+          phoneNumber: normalizedPhone,
           pinCode: pincode || null,
           propertyPin: pincode || null,
           propertyType: bhkType || city || null,
@@ -167,7 +176,7 @@ export async function POST(req: Request) {
         const websiteLeadPayload = {
           name: name || '',
           email: email || '',
-          phoneNumber: phone || '',
+          phoneNumber: normalizedPhone,
           propertyPin: pincode || '',
           verificationStatus: websiteLeadVerificationStatus,
           otpSuccess: websiteLeadOtpSuccess,
@@ -332,7 +341,7 @@ export async function POST(req: Request) {
       html: `
         <h3>Contact Form Submission</h3>
         <p><strong>Name:</strong> ${name || 'Not provided'}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Phone:</strong> ${normalizedPhone || 'Not provided'}</p>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
         <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
         ${renovationLeadDetailsHtml}
@@ -381,7 +390,7 @@ export async function POST(req: Request) {
 
     console.log('Sending email with data (flattened + calculator):', {
       name,
-      phone,
+      phone: normalizedPhone,
       email,
       pincode,
       city,

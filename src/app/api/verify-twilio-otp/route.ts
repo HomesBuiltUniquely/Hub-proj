@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 // TypeScript declarations for global OTP store
 declare global {
@@ -12,6 +13,13 @@ declare global {
 export async function POST(req: Request) {
   try {
     const { phone, otp } = await req.json();
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json({
+        success: false,
+        message: 'Phone number must be exactly 10 digits'
+      }, { status: 400 });
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
     // Check if OTP store exists
     if (!global.otpStore) {
@@ -21,7 +29,7 @@ export async function POST(req: Request) {
       }, { status: 400 });
     }
 
-    const otpData = global.otpStore.get(phone);
+    const otpData = global.otpStore.get(normalizedPhone);
     
     if (!otpData) {
       return NextResponse.json({ 
@@ -37,7 +45,7 @@ export async function POST(req: Request) {
 
     if (otpAge > fiveMinutes) {
       // Remove expired OTP
-      global.otpStore.delete(phone);
+      global.otpStore.delete(normalizedPhone);
       return NextResponse.json({ 
         success: false, 
         message: 'OTP has expired. Please request a new one.' 
@@ -47,7 +55,7 @@ export async function POST(req: Request) {
     // Check if too many attempts
     if (otpData.attempts >= 3) {
       // Remove OTP after too many failed attempts
-      global.otpStore.delete(phone);
+      global.otpStore.delete(normalizedPhone);
       return NextResponse.json({ 
         success: false, 
         message: 'Too many failed attempts. Please request a new OTP.' 
@@ -57,7 +65,7 @@ export async function POST(req: Request) {
     // Verify OTP
     if (otpData.otp === otp) {
       // Remove OTP after successful verification
-      global.otpStore.delete(phone);
+      global.otpStore.delete(normalizedPhone);
       
       return NextResponse.json({ 
         success: true, 
@@ -66,7 +74,7 @@ export async function POST(req: Request) {
     } else {
       // Increment attempt counter
       otpData.attempts += 1;
-      global.otpStore.set(phone, otpData);
+      global.otpStore.set(normalizedPhone, otpData);
       
       return NextResponse.json({ 
         success: false, 
