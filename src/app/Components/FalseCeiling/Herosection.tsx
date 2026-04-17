@@ -105,6 +105,7 @@ const ContactHeader: React.FC = () => {
                 />
               </div>
               <div className="hidden md:flex items-center gap-12">
+              
               {/* NAV BAR — unchanged */}
               <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
                 <OfferingsDropdown textColor="text-white" />
