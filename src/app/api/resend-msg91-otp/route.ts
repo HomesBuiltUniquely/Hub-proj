@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 const MSG91_AUTH_KEY = '474017ATbezJxlxhn69454948P1';
 const MSG91_RESEND_OTP_URL = 'https://control.msg91.com/api/v5/otp/retry';
@@ -13,16 +14,15 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits' },
+        { status: 400 }
+      );
+    }
 
     // Normalize phone number to MSG91 format
-    // Always add 91 prefix regardless of what user entered
-    let mobileNumber = phone.toString().trim();
-    
-    // Remove any + or spaces, keep only digits
-    mobileNumber = mobileNumber.replace(/[\s+]/g, '').replace(/\D/g, '');
-    
-    // Always add 91 prefix (even if it already starts with 91)
-    mobileNumber = `91${mobileNumber}`;
+    const mobileNumber = `91${normalizeIndianPhone(phone)}`;
 
     // Resend OTP via MSG91
     const url = `${MSG91_RESEND_OTP_URL}?authkey=${MSG91_AUTH_KEY}&retrytype=${retrytype}&mobile=${mobileNumber}`;

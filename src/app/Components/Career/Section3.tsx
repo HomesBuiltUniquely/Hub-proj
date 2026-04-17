@@ -296,13 +296,6 @@ const JoinUsPage: React.FC = () => {
           <p className="text-gray-600 mb-2 manrope-medium">
             Fill out your details and let’s create beautiful spaces—together.
           </p>
-          {/* <a
-            href="/trail.pdf"
-            download
-            className="underline text-sm manrope text-gray-700 hover:text-red-600 manrope"
-          >
-            Download Our Brochure
-          </a> */}
         </div>
 
         {/* Right: Form */}

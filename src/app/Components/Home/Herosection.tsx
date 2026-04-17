@@ -562,7 +562,7 @@ const Herosection: React.FC = () => {
       {/* Mobile Version - Different Design for below */}
       <div className="block md:hidden">
         {/* Mobile Version 1 - Small Mobile (320px to 360px) */}
-        <div className="mobile-small w-full max-w-[360px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto px-3 -mt-7">
+        <div className="mobile-small w-full max-w-[320px] h-[610px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto px-3 -mt-7">
           {/* Mobile Header */}
           <div className="w-full max-w-[360px] relative bg-gray-100 mt-1 rounded-[35px] overflow-hidden mx-auto">
             <div className="relative z-20 flex items-center justify-between ">
@@ -574,11 +574,8 @@ const Herosection: React.FC = () => {
           </div>
 
           {/* Image Container with Overlay Content */}
-          <div className="relative w-full max-w-[360px] mx-auto -mt-14">
-            <img
-              className="w-full max-w-[360px] h-auto rounded-4xl"
-              src={`/hh1${Math.min(currentSlide, 2) + 1}.png`}
-            />
+          <div className="relative w-full  mx-auto -mt-14">
+            <img className="w-[400px] h-auto " src={`/hh1${currentSlide + 1}.png`} />
 
             {/* Text Overlay */}
             <div className="absolute bottom-[140px] left-0 w-[300px] text-left text-4xl manrope text-white wulkan-display-bold ml-4">
@@ -598,9 +595,9 @@ const Herosection: React.FC = () => {
         </div>
 
         {/* Mobile Version 2 - Large Mobile (361px to 767px) */}
-        <div className="mobile-large max-w-[425px] h-auto relative bg-gray-100 rounded-[35px] px-3 overflow-hidden mx-auto">
+        <div className="mobile-large  h-auto relative bg-gray-100 rounded-[35px] px-3 overflow-hidden mx-auto">
           {/* Mobile Header */}
-          <div className="w-[340px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
+          <div className="w-[440px] relative bg-gray-100 rounded-[35px] overflow-hidden mx-auto ">
             <div className="relative z-20 flex items-center justify-start">
               <Image
                 src="/redlogo.png"
@@ -613,11 +610,8 @@ const Herosection: React.FC = () => {
           </div>
 
           {/* Image Container with Overlay Content */}
-          <div className="relative max-w-[425px] mx-auto -mt-18">
-            <img
-              className="max-w-[425px] h-[500px] mx-auto rounded-4xl"
-              src={`/hh1${Math.min(currentSlide, 2) + 1}.png`}
-            />
+          <div className="relative  mx-auto -mt-18">
+            <img className="w-full h-[500px] mx-auto " src={`/hh1${currentSlide + 1}.png`} />
 
             {/* Text Overlay */}
             <div className="absolute bottom-[140px] left-0 w-[250px] text-left text-3xl manrope text-white wulkan-display-bold ml-20">

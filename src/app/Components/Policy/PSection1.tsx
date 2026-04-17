@@ -229,6 +229,7 @@ const getContent = (tab: string) => {
                           </span>{" "}
                           if the total sign-up value decreases.
                         </li>
+
                       </ul>
                     </li>
                   </ul>

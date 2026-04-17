@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 type CareerPayload = {
   jobTitle?: string;
@@ -32,13 +33,20 @@ export async function POST(req: Request) {
       pageUrl,
       resume,
     } = body;
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits.' },
+        { status: 400 },
+      );
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
     console.log('Career form API route called with data:', {
       jobTitle,
       firstName,
       lastName,
       email,
-      phone,
+      phone: normalizedPhone,
       position,
     about,
       pageUrl,
@@ -126,7 +134,7 @@ export async function POST(req: Request) {
         <p><strong>First Name:</strong> ${firstName || 'Not provided'}</p>
         <p><strong>Last Name:</strong> ${lastName || 'Not provided'}</p>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Phone:</strong> ${normalizedPhone || 'Not provided'}</p>
         <p><strong>Resume:</strong> ${resume?.name || 'Not provided'}</p>
         <p><strong>About:</strong> ${about || 'Not provided'}</p>
         <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${
