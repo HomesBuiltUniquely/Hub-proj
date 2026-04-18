@@ -90,7 +90,7 @@ const ContactHeader: React.FC = () => {
       {/* 2560 Version */}
 
       <div>
-        <div className="desktop-2560  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/TV%20UNIT%20RH.png')" }}>
+        <div className="desktop-2560  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/tv+unit/tv_unit_header/interior_design_tv_unit.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
@@ -151,7 +151,7 @@ const ContactHeader: React.FC = () => {
 
       <div className="desktop-1920">
 
-        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/TV%20UNIT%20RH.png')" }}>
+        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/tv+unit/tv_unit_header/interior_design_tv_unit.png')" }}>
           {/* Bg- image */}
 
           {/* Navbar */}
@@ -217,7 +217,7 @@ const ContactHeader: React.FC = () => {
           {/* Inner container with background */}
           <div
             className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-            style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/TV%20UNIT%20RH.png')" }}
+            style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/tv+unit/tv_unit_header/interior_design_tv_unit.png')" }}
           >
             {/* Navbar */}
             <div className="flex items-center justify-between px-8">
@@ -296,7 +296,7 @@ const ContactHeader: React.FC = () => {
           {/* Rounded image only */}
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
-              src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/TvUnit%20MH.png"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/tv+unit/tv_unit_header/interior_design_tv_unit.png"
               alt="TV Unit"
               fill
               priority
@@ -339,7 +339,7 @@ const ContactHeader: React.FC = () => {
           {/* Rounded image only */}
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
-              src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/TvUnit%20MH.png"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/tv+unit/tv_unit_header/interior_design_tv_unit.png"
               alt="TV Unit"
               fill
               priority
