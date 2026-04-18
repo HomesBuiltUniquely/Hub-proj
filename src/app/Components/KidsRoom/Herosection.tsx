@@ -86,7 +86,7 @@ const ContactHeader: React.FC = () => {
       {/* 2560 Version */}
 
       <div>
-        <div className="desktop-2560  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Kids%20Room%20RH.png')" }}>
+        <div className="desktop-2560  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/kids+room/kids_room_interior_design.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
@@ -147,7 +147,7 @@ const ContactHeader: React.FC = () => {
 
       <div className="desktop-1920">
 
-        <div className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Inspir%20RH.png')" }}>
+        <div className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative" style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/kids+room/kids_room_interior_design.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
@@ -222,7 +222,7 @@ const ContactHeader: React.FC = () => {
           {/* Inner container with background */}
           <div
             className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-            style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Kids%20Room%20RH.png')" }}
+            style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/kids+room/kids_room_interior_design.png')" }}
           >
             {/* Navbar */}
             <div className="flex items-center justify-between px-8">
@@ -303,7 +303,7 @@ const ContactHeader: React.FC = () => {
           {/* Rounded image only */}
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
-              src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/KidsRoom%20MH.png"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/kids+room/kids_room_interior_design.png"
               alt="Kids room"
               fill
               priority
@@ -348,7 +348,7 @@ const ContactHeader: React.FC = () => {
           {/* Rounded image only */}
           <div className="absolute inset-0 rounded-4xl overflow-hidden">
             <Image
-              src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/KidsRoom%20MH.png"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/kids+room/kids_room_interior_design.png"
               alt="Kids room"
               fill
               priority
