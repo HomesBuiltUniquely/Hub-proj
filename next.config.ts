@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    // Force Turbopack to use this project folder as root.
+    root: process.cwd(),
+  },
   images: {
     remotePatterns: [
       {

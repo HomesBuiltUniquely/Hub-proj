@@ -229,17 +229,7 @@ const getContent = (tab: string) => {
                           </span>{" "}
                           if the total sign-up value decreases.
                         </li>
-                        <li className="mt-2">
-                          For example, for{" "}
-                          <span className="manrope">
-                            {" "}
-                            every ₹1,00,000 reduction
-                          </span>{" "}
-                          from the original sign-up amount, the{" "}
-                          <span className="manrope">
-                            discount will reduce by 5%{" "}
-                          </span>
-                        </li>
+
                       </ul>
                     </li>
                   </ul>
@@ -314,7 +304,7 @@ const getContent = (tab: string) => {
                       <ul className="list-[circle] pl-6 mt-2 space-y-2 manrope-medium">
                         <li>
                           <span className="manrope"> Without PAN:</span> Maximum
-                          ₹49,999/-s
+                          ₹49,999/-
                         </li>
                         <li className="mt-2">
                           <span className="manrope"> With PAN:</span> Maximum

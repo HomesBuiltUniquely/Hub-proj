@@ -279,6 +279,9 @@ export function HeroSection() {
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
+                sessionStorage.setItem('userName', updatedForm.name);
+                sessionStorage.setItem('userEmail', updatedForm.email);
+                sessionStorage.setItem('userPhone', updatedForm.phonennumber);
                 setForm({
                     name: "",
                     email: "",
@@ -298,11 +301,14 @@ export function HeroSection() {
                 setIsVerified(false);
                 setOtpError('');
 
-                // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
-                    // Set flag to trigger reload on Thank You page
                     sessionStorage.setItem('formSubmitted', 'true');
-                    router.push('/Submitted-Thank-You');
+                    const q = new URLSearchParams({
+                        name: updatedForm.name,
+                        email: updatedForm.email,
+                        phone: updatedForm.phonennumber,
+                    });
+                    router.push(`/Submitted-Thank-You?${q.toString()}`);
                 }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");
@@ -405,6 +411,9 @@ export function HeroSection() {
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
+                sessionStorage.setItem('userName', updatedForm.name);
+                sessionStorage.setItem('userEmail', updatedForm.email);
+                sessionStorage.setItem('userPhone', updatedForm.phonennumber);
                 // Reset form
                 setForm({
                     name: "",
@@ -425,11 +434,14 @@ export function HeroSection() {
                 setIsVerified(false);
                 setOtpError('');
 
-                // Navigate to Thank-You page after successful submission
                 setTimeout(() => {
-                    // Set flag to trigger reload on Thank You page
                     sessionStorage.setItem('formSubmitted', 'true');
-                    router.push('/Submitted-Thank-You');
+                    const q = new URLSearchParams({
+                        name: updatedForm.name,
+                        email: updatedForm.email,
+                        phone: updatedForm.phonennumber,
+                    });
+                    router.push(`/Submitted-Thank-You?${q.toString()}`);
                 }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");

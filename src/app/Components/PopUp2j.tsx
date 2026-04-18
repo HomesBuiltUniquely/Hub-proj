@@ -249,6 +249,9 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                 // Set flag to trigger reload on Thank You page
                 sessionStorage.setItem('formSubmitted', 'true');
+                sessionStorage.setItem('userName', name.trim());
+                sessionStorage.setItem('userEmail', email.trim());
+                sessionStorage.setItem('userPhone', phone.trim());
 
                 // Reset OTP states
                 setOtpSent(false);
@@ -257,9 +260,13 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                 setOtpError('');
                 setInteriorSetup('');
 
-                // Navigate to Thank-You page after successful submission
+                const q = new URLSearchParams({
+                    name: name.trim(),
+                    email: email.trim(),
+                    phone: phone.trim(),
+                });
                 setTimeout(() => {
-                    router.push('/Submitted-Thank-You');
+                    router.push(`/Submitted-Thank-You?${q.toString()}`);
                 }, 500);
             } else {
                 setError("Failed to submit form. Please try again.");

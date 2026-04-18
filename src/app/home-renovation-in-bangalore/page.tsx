@@ -9,20 +9,18 @@ import Section8 from "../Components/LandingPage1/Section8";
 import Section9 from "../Components/LandingPage1/Section9";
 import BrandCarousel from "../Components/LandingPage1/Brand";
 import { QAsection } from "../Components/LandingPage1/QASEC";
-import RenovationCalculatorPage from "../Components/Renovation/CalculatorPage";
 import Section33 from "../Components/LandingPage1/Caron";
 
 export default function HomeRenovationInBangalore() {
   return (
     <div>
-      <RenovationHeroSection />
+      <RenovationHeroSection verifiedRedirectUrl="https://hubinterior.com/Get-Estimate-Thank-You" />
       <Section1 />
       <Section3 />
       <Section33 />
       <Section10 />
       <Section4 />
       <Section6 />
-      <RenovationCalculatorPage />
       <Section7 />
       <Section8 />
       <Section9 />

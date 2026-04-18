@@ -1,20 +1,35 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { getVerificationStatus } from '@/lib/leadVerification';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { name, email, phone, pincode, interiorSetup, pageUrl } = body;
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits.' },
+        { status: 400 },
+      );
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
-    console.log('Popup form API route called with data:', { name, email, phone, pincode, interiorSetup, pageUrl });
+    console.log('Popup form API route called with data:', {
+      name,
+      email,
+      phone: normalizedPhone,
+      pincode,
+      interiorSetup,
+      pageUrl,
+    });
     
     // Send data to unified API endpoint
     try {
       const websiteLeadPayload = {
         name: name || '',
         email: email || '',
-        phoneNumber: phone || '',
+        phoneNumber: normalizedPhone,
         propertyPin: pincode || '',
         interiorSetup: interiorSetup || '',
         verificationStatus: getVerificationStatus(true),
@@ -100,7 +115,7 @@ export async function POST(req: Request) {
                 </div>
                 <div>
                   <strong style="color: #555;">Phone:</strong><br>
-                  <span style="color: #333; font-size: 16px;">${phone || 'Not provided'}</span>
+                  <span style="color: #333; font-size: 16px;">${normalizedPhone || 'Not provided'}</span>
                 </div>
                 <div>
                   <strong style="color: #555;">Email:</strong><br>
@@ -143,7 +158,7 @@ export async function POST(req: Request) {
       `,
     };
 
-    console.log('Sending popup form email with data:', { name, email, phone, pincode, pageUrl });
+    console.log('Sending popup form email with data:', { name, email, phone: normalizedPhone, pincode, pageUrl });
     console.log('Email configuration:', {
       from: process.env.GMAIL_USER,
       to: recipientEmail,

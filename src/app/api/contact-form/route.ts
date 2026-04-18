@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 export async function POST(req: Request) {
   try {
@@ -11,12 +12,19 @@ export async function POST(req: Request) {
       phone,
       message
     } = body;
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits.' },
+        { status: 400 },
+      );
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
     console.log('Contact form API route called with data:', {
       firstName,
       lastName,
       email,
-      phone,
+      phone: normalizedPhone,
       message
     });
 
@@ -57,7 +65,7 @@ export async function POST(req: Request) {
               <h3 style="color: #333; margin-bottom: 15px;">Contact Information</h3>
               <p style="margin: 8px 0;"><strong>Name:</strong> ${firstName || 'Not provided'} ${lastName ? lastName : ''}</p>
               <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:${email || ''}" style="color: #dc2626;">${email || 'Not provided'}</a></p>
-              <p style="margin: 8px 0;"><strong>Phone:</strong> <a href="tel:${phone || ''}" style="color: #dc2626;">${phone || 'Not provided'}</a></p>
+              <p style="margin: 8px 0;"><strong>Phone:</strong> <a href="tel:${normalizedPhone || ''}" style="color: #dc2626;">${normalizedPhone || 'Not provided'}</a></p>
             </div>
             
             ${message ? `
