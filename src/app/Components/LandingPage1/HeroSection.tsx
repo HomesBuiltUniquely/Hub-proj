@@ -215,7 +215,7 @@ export default function HeroSections({
         body: JSON.stringify(requestData),
         keepalive: true,
       }).catch(() => {});
-      fetch("https://hows.hubinterior.com/v1/Home1", {
+      fetch("http://localhost:8081/v1/Home1", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -498,7 +498,7 @@ export default function HeroSections({
             verificationStatus: requestData.verificationStatus,
             otpSuccess: requestData.otpSuccess,
           };
-          await fetch("https://hows.hubinterior.com/v1/Home1", {
+          await fetch("http://localhost:8081/v1/Home1", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(home1Payload),
