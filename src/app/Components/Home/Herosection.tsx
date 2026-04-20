@@ -77,8 +77,7 @@ const Herosection: React.FC = () => {
   const heroSlides = [
     {
       type: "video" as const,
-      videoUrl:
-        "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/FINAL+VIDEO.mp4",
+      videoUrl:"https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/home+page/header/interior_design_ritty_ad.mp4",
       title: "From floor plan to lifestyle home, uniquely built",
       subtitle: "Innovative interior design",
       buttonText: "Book Free Consultation",
@@ -350,7 +349,7 @@ const Herosection: React.FC = () => {
               ) : (
                 <video
                   key={videoKey}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-[850px] object-cover"
                   src={slide.videoUrl}
                   autoPlay
                   muted={isMuted}
@@ -429,7 +428,7 @@ const Herosection: React.FC = () => {
         )}
 
         {/* Carousel Indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+        <div className="absolute bottom-15 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
           {heroSlides.map((_, index) => (
             <button
               key={index}
