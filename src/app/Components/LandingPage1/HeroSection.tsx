@@ -46,7 +46,9 @@ export default function HeroSections({
   // 2 min timer + single CRM hit logic
   const [otpTimerSeconds, setOtpTimerSeconds] = useState(0);
   const [resendVisible, setResendVisible] = useState(false);
-  const [leadSentToCrm, setLeadSentToCrm] = useState<"none" | "VERIFIED" | "UNVERIFIED">("none");
+  const [leadSentToCrm, setLeadSentToCrm] = useState<
+    "none" | "VERIFIED" | "UNVERIFIED"
+  >("none");
   const leadSentToCrmRef = useRef<"none" | "VERIFIED" | "UNVERIFIED">("none");
   const leadPayloadRef = useRef<Record<string, unknown> | null>(null);
   const heroSubmitLockRef = useRef(false);
