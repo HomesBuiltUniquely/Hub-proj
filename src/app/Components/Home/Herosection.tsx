@@ -309,7 +309,7 @@ const Herosection: React.FC = () => {
           <button
             onClick={toggleMute}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
-            className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+            className="absolute z-20 bottom-6 left-[30px] p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
           >
             <MuteIcon muted={isMuted} />
           </button>
@@ -331,7 +331,7 @@ const Herosection: React.FC = () => {
         </div>
       </div>
       <div className="desktop-2560 hidden md:block w-full">
-        <div className="flex w-full justify-center mt-6 mb-6">
+        <div className="flex w-full justify-center mt-12 mb-6">
           <Image
             alt="HUB LOGO"
             src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+b.png"
@@ -343,7 +343,7 @@ const Herosection: React.FC = () => {
       </div>
 
       {/* 1920 version  */}
-      <div className="h-[1020px] desktop-1920 hidden md:block w-full">
+      <div className="desktop-1920 hidden md:block w-full">
         <div className="home-desktop relative w-full max-w-[1920px] h-[910px] overflow-hidden mx-auto">
           {/* Background Image Carousel */}
           <div className="absolute inset-0 w-full h-[900px]">
@@ -362,7 +362,7 @@ const Herosection: React.FC = () => {
                 ) : (
                   <video
                     key={videoKey}
-                    className="absolute inset-0 w-full h-[850px] object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                     src={slide.videoUrl}
                     autoPlay
                     muted={isMuted}
@@ -434,14 +434,14 @@ const Herosection: React.FC = () => {
             <button
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute video" : "Mute video"}
-              className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+              className="absolute z-20 bottom-6 left-[30px] p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
             >
               <MuteIcon muted={isMuted} />
             </button>
           )}
 
           {/* Carousel Indicators */}
-          <div className="absolute bottom-15 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
             {heroSlides.map((_, index) => (
               <button
                 key={index}
@@ -455,10 +455,10 @@ const Herosection: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="w-full flex justify-center mt-6 mb-6">
+        <div className="w-full flex justify-center mt-12 mb-12">
           <Image
             alt="HUB LOGO"
-            src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+b.png"
+            src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+new1f.png"
             width={967}
             height={108}
             className="w-[85%] max-w-[1000px] h-auto object-contain mx-auto"
@@ -558,7 +558,7 @@ const Herosection: React.FC = () => {
             <button
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute video" : "Mute video"}
-              className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+              className="absolute z-20 bottom-6 left-[30px] p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
             >
               <MuteIcon muted={isMuted} />
             </button>
@@ -580,10 +580,10 @@ const Herosection: React.FC = () => {
           </div>
         </div>
         <div className="desktop-1280 hidden md:block w-full">
-          <div className="flex w-full justify-center mt-6 mb-6">
+          <div className="flex w-full justify-center mt-12">
             <Image
               alt="HUB LOGO"
-              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+b.png"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+new1f.png"
               width={967}
               height={108}
               className="w-[85%] max-w-[800px] h-auto object-contain mx-auto"
@@ -630,10 +630,10 @@ const Herosection: React.FC = () => {
           </div>
         </div>
         <div className="mobile-small w-full block">
-          <div className="flex w-full justify-center mt-6 mb-8">
+          <div className="flex w-full justify-center mt-12 mb-8">
             <Image
               alt="HUB LOGO"
-              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+b.png"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+new1f.png"
               width={967}
               height={108}
               className="w-[90%] max-w-[280px] h-auto object-contain mx-auto"
@@ -679,10 +679,10 @@ const Herosection: React.FC = () => {
           </div>
         </div>
         <div className="mobile-large w-full block">
-          <div className="flex w-full justify-center mt-6 mb-8">
+          <div className="flex w-full justify-center mt-12 mb-8">
             <Image
               alt="HUB LOGO"
-              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+b.png"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+new1f.png"
               width={967}
               height={108}
               className="w-[85%] max-w-[450px] h-auto object-contain mx-auto"
