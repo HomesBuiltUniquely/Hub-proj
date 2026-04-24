@@ -78,7 +78,7 @@ const Herosection: React.FC = () => {
     {
       type: "video" as const,
       videoUrl:
-        "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/FINAL+VIDEO.mp4",
+        "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/home+page/header/interior_design_ritty_ad.mp4",
       title: "From floor plan to lifestyle home, uniquely built",
       subtitle: "Innovative interior design",
       buttonText: "Book Free Consultation",
@@ -309,7 +309,7 @@ const Herosection: React.FC = () => {
           <button
             onClick={toggleMute}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
-            className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+            className="absolute z-20 bottom-6 left-[30px] p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
           >
             <MuteIcon muted={isMuted} />
           </button>
@@ -330,117 +330,139 @@ const Herosection: React.FC = () => {
           ))}
         </div>
       </div>
+      <div className="desktop-2560 hidden md:block w-full">
+        <div className="flex w-full justify-center mt-12 mb-6">
+          <Image
+            alt="HUB LOGO"
+            src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+b.png"
+            width={967}
+            height={108}
+            className="w-[85%] max-w-[1200px] h-auto object-contain mx-auto"
+          />
+        </div>
+      </div>
 
       {/* 1920 version  */}
-      <div className="home-desktop relative hidden md:block  desktop-1920 w-full max-w-[1920px] h-[900px]  overflow-hidden">
-        {/* Background Image Carousel */}
-        <div className="absolute inset-0 w-full h-[900px]">
-          {heroSlides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              {slide.type === "image" ? (
-                <div
-                  className="absolute inset-0 bg-cover"
-                  style={{ backgroundImage: `url('${slide.image}')` }}
-                />
-              ) : (
-                <video
-                  key={videoKey}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  src={slide.videoUrl}
-                  autoPlay
-                  muted={isMuted}
-                  playsInline
-                  onEnded={handleVideoEnded}
-                />
-              )}
+      <div className="desktop-1920 hidden md:block w-full">
+        <div className="home-desktop relative w-full max-w-[1920px] h-[910px] overflow-hidden mx-auto">
+          {/* Background Image Carousel */}
+          <div className="absolute inset-0 w-full h-[900px]">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  index === currentSlide ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {slide.type === "image" ? (
+                  <div
+                    className="absolute inset-0 bg-cover"
+                    style={{ backgroundImage: `url('${slide.image}')` }}
+                  />
+                ) : (
+                  <video
+                    key={videoKey}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src={slide.videoUrl}
+                    autoPlay
+                    muted={isMuted}
+                    playsInline
+                    onEnded={handleVideoEnded}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-[5]"></div>
+
+          {/* Navbar */}
+          <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
+            {/* Logo */}
+            <div onClick={handleClick}>
+              <Image
+                src="/whitelogo.png"
+                alt="HUB Interior Logo"
+                width={250}
+                height={250}
+                className="w-[230px] h-[250px] ml-9"
+              />
             </div>
-          ))}
-        </div>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent z-[5]"></div>
+            {/* Nav Links */}
 
-        {/* Navbar */}
-        <div className="relative z-10 flex items-center mt-5 justify-between h-[80px]">
-          {/* Logo */}
-          <div onClick={handleClick}>
-            <Image
-              src="/whitelogo.png"
-              alt="HUB Interior Logo"
-              width={250}
-              height={250}
-              className="w-[230px] h-[250px] ml-9"
-            />
-          </div>
+            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
+              <OfferingsDropdown textColor="text-white" />
+              <ExploreRoomsDropdown textColor="text-white" />
+              <NavMore textColor="text-white" />
+            </div>
 
-          {/* Nav Links */}
-
-          <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[500px] h-[45px] hidden md:flex items-center justify-center gap-12 manrope text-white tracking-widest ml-60">
-            <OfferingsDropdown textColor="text-white" />
-            <ExploreRoomsDropdown textColor="text-white" />
-            <NavMore textColor="text-white" />
-          </div>
-
-          {/* CTA */}
-          <div className="relative mr-15">
-            <button
-              onClick={handleGetEstimate}
-              className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
-            >
-              BOOK CONSULTATION
-              {/* FREE Badge */}
-              <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
-                <img src="/free.png" alt="Free" className="w-full h-full" />
-                <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
-                  FREE
+            {/* CTA */}
+            <div className="relative mr-15">
+              <button
+                onClick={handleGetEstimate}
+                className="relative bg-[#ef0101] hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+              >
+                BOOK CONSULTATION
+                {/* FREE Badge */}
+                <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                  <img src="/free.png" alt="Free" className="w-full h-full" />
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                    FREE
+                  </span>
                 </span>
-              </span>
+              </button>
+            </div>
+          </div>
+
+          {/* Hero content (hidden on video slide) */}
+          {heroSlides[currentSlide].type !== "video" && (
+            <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
+              <h1 className="type-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
+                {heroSlides[currentSlide].title}
+              </h1>
+              <MagneticButton
+                text={heroSlides[currentSlide].buttonText}
+                onClick={handleGetEstimate}
+              />
+            </div>
+          )}
+
+          {/* Mute / Unmute button on video slide */}
+          {heroSlides[currentSlide].type === "video" && (
+            <button
+              onClick={toggleMute}
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+              className="absolute z-20 bottom-6 left-[30px] p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+            >
+              <MuteIcon muted={isMuted} />
             </button>
+          )}
+
+          {/* Carousel Indicators */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-white scale-110"
+                    : "bg-white/50 hover:bg-white/60"
+                }`}
+              />
+            ))}
           </div>
         </div>
-
-        {/* Hero content (hidden on video slide) */}
-        {heroSlides[currentSlide].type !== "video" && (
-          <div className="relative z-10 flex flex-col items-start justify-start pt-24 pb-20 text-white text-left mt-60 w-[800px] ml-[60px] wulkan-display-bold">
-            <h1 className="type-h1 mb-6 drop-shadow-lg transition-all duration-1000 text-left">
-              {heroSlides[currentSlide].title}
-            </h1>
-            <MagneticButton
-              text={heroSlides[currentSlide].buttonText}
-              onClick={handleGetEstimate}
-            />
-          </div>
-        )}
-
-        {/* Mute / Unmute button on video slide */}
-        {heroSlides[currentSlide].type === "video" && (
-          <button
-            onClick={toggleMute}
-            aria-label={isMuted ? "Unmute video" : "Mute video"}
-            className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
-          >
-            <MuteIcon muted={isMuted} />
-          </button>
-        )}
-
-        {/* Carousel Indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? "bg-white scale-110"
-                  : "bg-white/50 hover:bg-white/60"
-              }`}
-            />
-          ))}
+        <div className="w-full flex justify-center mt-12 mb-12">
+          <Image
+            alt="HUB LOGO"
+            src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+new1f.png"
+            width={967}
+            height={108}
+            className="w-[85%] max-w-[1000px] h-auto object-contain mx-auto"
+          />
         </div>
       </div>
 
@@ -536,7 +558,7 @@ const Herosection: React.FC = () => {
             <button
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute video" : "Mute video"}
-              className="absolute z-20 bottom-6 right-6 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
+              className="absolute z-20 bottom-6 left-[30px] p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors flex items-center justify-center"
             >
               <MuteIcon muted={isMuted} />
             </button>
@@ -557,6 +579,17 @@ const Herosection: React.FC = () => {
             ))}
           </div>
         </div>
+        <div className="desktop-1280 hidden md:block w-full">
+          <div className="flex w-full justify-center mt-12">
+            <Image
+              alt="HUB LOGO"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+new1f.png"
+              width={967}
+              height={108}
+              className="w-[85%] max-w-[800px] h-auto object-contain mx-auto"
+            />
+          </div>
+        </div>
       </div>
 
       {/* Mobile Version - Different Design for below */}
@@ -575,7 +608,10 @@ const Herosection: React.FC = () => {
 
           {/* Image Container with Overlay Content */}
           <div className="relative w-full  mx-auto -mt-14">
-            <img className="w-[400px] h-auto " src={`/hh1${currentSlide + 1}.png`} />
+            <img
+              className="w-[400px] h-auto "
+              src={`/hh1${currentSlide + 1}.png`}
+            />
 
             {/* Text Overlay */}
             <div className="absolute bottom-[140px] left-0 w-[300px] text-left text-4xl manrope text-white wulkan-display-bold ml-4">
@@ -591,6 +627,17 @@ const Herosection: React.FC = () => {
             >
               {heroSlides[Math.min(currentSlide, 2)].buttonText}
             </button>
+          </div>
+        </div>
+        <div className="mobile-small w-full block">
+          <div className="flex w-full justify-center mt-12 mb-8">
+            <Image
+              alt="HUB LOGO"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+new1f.png"
+              width={967}
+              height={108}
+              className="w-[90%] max-w-[280px] h-auto object-contain mx-auto"
+            />
           </div>
         </div>
 
@@ -611,7 +658,10 @@ const Herosection: React.FC = () => {
 
           {/* Image Container with Overlay Content */}
           <div className="relative  mx-auto -mt-18">
-            <img className="w-full h-[500px] mx-auto " src={`/hh1${currentSlide + 1}.png`} />
+            <img
+              className="w-full h-[500px] mx-auto "
+              src={`/hh1${currentSlide + 1}.png`}
+            />
 
             {/* Text Overlay */}
             <div className="absolute bottom-[140px] left-0 w-[250px] text-left text-3xl manrope text-white wulkan-display-bold ml-20">
@@ -626,6 +676,17 @@ const Herosection: React.FC = () => {
             >
               {heroSlides[Math.min(currentSlide, 2)].buttonText}
             </button>
+          </div>
+        </div>
+        <div className="mobile-large w-full block">
+          <div className="flex w-full justify-center mt-12 mb-8">
+            <Image
+              alt="HUB LOGO"
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/logo/homes+uniquely+built+new1f.png"
+              width={967}
+              height={108}
+              className="w-[85%] max-w-[450px] h-auto object-contain mx-auto"
+            />
           </div>
         </div>
         <OverlapNavBar />

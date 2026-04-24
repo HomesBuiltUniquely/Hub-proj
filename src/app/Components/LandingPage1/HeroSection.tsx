@@ -46,7 +46,9 @@ export default function HeroSections({
   // 2 min timer + single CRM hit logic
   const [otpTimerSeconds, setOtpTimerSeconds] = useState(0);
   const [resendVisible, setResendVisible] = useState(false);
-  const [leadSentToCrm, setLeadSentToCrm] = useState<"none" | "VERIFIED" | "UNVERIFIED">("none");
+  const [leadSentToCrm, setLeadSentToCrm] = useState<
+    "none" | "VERIFIED" | "UNVERIFIED"
+  >("none");
   const leadSentToCrmRef = useRef<"none" | "VERIFIED" | "UNVERIFIED">("none");
   const leadPayloadRef = useRef<Record<string, unknown> | null>(null);
   const heroSubmitLockRef = useRef(false);
@@ -215,7 +217,7 @@ export default function HeroSections({
         body: JSON.stringify(requestData),
         keepalive: true,
       }).catch(() => {});
-      fetch("https://hows.hubinterior.com/v1/Home1", {
+      fetch("http://localhost:8081/v1/Home1", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -503,7 +505,7 @@ export default function HeroSections({
             verificationStatus: requestData.verificationStatus,
             otpSuccess: requestData.otpSuccess,
           };
-          await fetch("https://hows.hubinterior.com/v1/Home1", {
+          await fetch("http://localhost:8081/v1/Home1", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(home1Payload),
