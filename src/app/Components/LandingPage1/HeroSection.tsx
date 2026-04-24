@@ -286,11 +286,16 @@ export default function HeroSections({
         // Automatically submit the form as verified user
         await handleFinalSubmit("VERIFIED");
       } else {
-        // Removed alert - no interruption during verification
+        if (data?.reason === "MAX_ATTEMPTS") {
+          setResendVisible(true);
+          setOtpTimerSeconds(0);
+          setOtp("");
+        }
+        alert(data?.message || "Invalid OTP. Please try again.");
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      // Removed alert - no interruption during verification
+      alert("Failed to verify OTP. Please try again.");
     } finally {
       setIsOtpVerifying(false);
     }
