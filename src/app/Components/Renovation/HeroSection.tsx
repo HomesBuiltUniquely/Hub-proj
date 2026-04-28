@@ -779,15 +779,20 @@ export default function HeroSections({
                   />
 
                   {/* Email Input */}
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="Email *"
-                    required
-                    className="w-full sm:w-[250px] sm:mx-auto h-[50px] bg-[#f1f2f6] rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 pr-6 sm:pl-8 sm:pr-8 placeholder-gray-400 manrope-medium text-gray-700"
-                  />
+                  <div className="flex flex-col w-full sm:w-[250px] sm:mx-auto">
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Email *"
+                      required
+                      className="peer w-full h-[50px] bg-[#f1f2f6] rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 pr-6 sm:pl-8 sm:pr-8 placeholder-gray-400 manrope-medium text-gray-700"
+                    />
+                    <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full">
+                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+                    </div>
+                  </div>
 
                   {/* Phone and Pincode Row */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 sm:justify-center sm:mt-10">
@@ -976,7 +981,7 @@ export default function HeroSections({
                   </div>
 
                   {/* Email Input */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                  <div className="flex flex-col justify-center items-center">
                     <input
                       type="email"
                       name="email"
@@ -984,8 +989,11 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Email *"
                       required
-                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="peer w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
+                    <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[250px]">
+                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+                    </div>
                   </div>
 
                   {/* Phone Input */}
@@ -1203,7 +1211,7 @@ export default function HeroSections({
                   </div>
 
                   {/* Email Input */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                  <div className="flex flex-col justify-center items-center">
                     <input
                       type="email"
                       name="email"
@@ -1211,8 +1219,11 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Email *"
                       required
-                      className="w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="peer w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
+                    <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[520px]">
+                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+                    </div>
                   </div>
 
                   {/* Phone Input */}
@@ -1433,7 +1444,7 @@ export default function HeroSections({
                   </div>
 
                   {/* Email Input */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-1">
+                  <div className="flex flex-col justify-center items-center mt-1">
                     <input
                       type="email"
                       name="email"
@@ -1441,8 +1452,11 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Email *"
                       required
-                      className="w-full sm:w-[500px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="peer w-full sm:w-[500px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
+                    <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[500px]">
+                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+                    </div>
                   </div>
 
                   {/* Phone Input */}
