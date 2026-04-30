@@ -217,7 +217,7 @@ export default function HeroSections({
         body: JSON.stringify(requestData),
         keepalive: true,
       }).catch(() => {});
-      fetch("http://localhost:8081/v1/Home1", {
+      fetch("https://hows.hubinterior.com/v1/Home1", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -778,7 +778,9 @@ export default function HeroSections({
                     className="peer w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-5 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                   />
                   <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[250px]">
-                    <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+                    <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">
+                      Add Primary Email To Receive Quote
+                    </p>
                   </div>
                 </div>
 
@@ -947,7 +949,9 @@ export default function HeroSections({
                       className="peer w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                     <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[250px]">
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">
+                        Add Primary Email To Receive Quote
+                      </p>
                     </div>
                   </div>
 
@@ -1145,7 +1149,9 @@ export default function HeroSections({
                       className="peer w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                     <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[520px]">
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">
+                        Add Primary Email To Receive Quote
+                      </p>
                     </div>
                   </div>
 
@@ -1346,7 +1352,9 @@ export default function HeroSections({
                       className="peer w-full sm:w-[500px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                     <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[500px]">
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">
+                        Add Primary Email To Receive Quote
+                      </p>
                     </div>
                   </div>
 
