@@ -40,18 +40,25 @@ export default function ThankUPage() {
 
     setUserData({ name: userName, email: userEmail, phone: userPhone });
     
-    // Check if this is a fresh redirect from form submission
+    // Robust reload trigger for conversion tracking on first thank-you load
+    const submittedFromQuery = fromQuery.name || fromQuery.email || fromQuery.phone
+      ? false
+      : new URLSearchParams(window.location.search).get('submitted') === '1';
     const isFreshRedirect = sessionStorage.getItem('formSubmitted') === 'true';
-    
-    if (isFreshRedirect && !hasReloaded) {
-      // Clear the flag to prevent infinite reloads
+    const needsReload = sessionStorage.getItem('thankYouNeedsReload') === 'true';
+    const reloadedOnce = sessionStorage.getItem('thankYouReloadedOnce') === 'true';
+    const shouldReload = (isFreshRedirect || needsReload || submittedFromQuery) && !reloadedOnce && !hasReloaded;
+
+    if (shouldReload) {
+      // prevent loops, then force one hard reload
+      sessionStorage.setItem('thankYouReloadedOnce', 'true');
       sessionStorage.removeItem('formSubmitted');
-      
-      // Force a reload to ensure proper page load and GTM conversion tracking
+      sessionStorage.removeItem('thankYouNeedsReload');
+
       setTimeout(() => {
         window.location.reload();
-      }, 500); // Increased delay to ensure proper page load
-      
+      }, 350);
+
       setHasReloaded(true);
       return;
     }

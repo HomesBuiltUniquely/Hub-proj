@@ -299,11 +299,13 @@ export default function BookConsultationForm() {
         if (typeof window !== "undefined") {
           // Thank-you page conversion logic uses this flag for first-load tracking.
           sessionStorage.setItem("formSubmitted", "true");
+          sessionStorage.setItem("thankYouNeedsReload", "true");
+          sessionStorage.removeItem("thankYouReloadedOnce");
           if (firstFormDetails.name) sessionStorage.setItem("userName", firstFormDetails.name);
           if (firstFormDetails.email) sessionStorage.setItem("userEmail", firstFormDetails.email);
           if (firstFormDetails.phone) sessionStorage.setItem("userPhone", firstFormDetails.phone);
         }
-        router.push("/Form-Submit-Thank-You");
+        router.push("/Form-Submit-Thank-You?submitted=1");
       } else {
         alert(data.message || "Failed to submit consultation details.");
       }
