@@ -22,19 +22,11 @@ const preferredSlots = [
 ];
 
 const carouselImages = [
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/modular_litchen.jpg",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/relaxing_space.jpg",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/TvUnit_room.jpg",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/bedroom.jpg",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/dining_unit.jpg",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/20%25discount_interior_design.png",
 ];
 
 const carouselImages1 = [
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/living_room_1.png",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/Modular_kitchen_3.png",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/living_room_4.png",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/20%25discount_interior_design.png",
 ];
 
 function ConsultationCard({
@@ -106,7 +98,7 @@ function FormSection({
   const maxDate = formatDateForInput(maxSelectableDate);
 
   const inputClass =
-    "h-[58px] w-full rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
+    "h-[58px] w-full test-black rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
 
   return (
     <form
@@ -304,6 +296,13 @@ export default function BookConsultationForm() {
 
       const data = await response.json();
       if (response.ok && data.success) {
+        if (typeof window !== "undefined") {
+          // Thank-you page conversion logic uses this flag for first-load tracking.
+          sessionStorage.setItem("formSubmitted", "true");
+          if (firstFormDetails.name) sessionStorage.setItem("userName", firstFormDetails.name);
+          if (firstFormDetails.email) sessionStorage.setItem("userEmail", firstFormDetails.email);
+          if (firstFormDetails.phone) sessionStorage.setItem("userPhone", firstFormDetails.phone);
+        }
         router.push("/Form-Submit-Thank-You");
       } else {
         alert(data.message || "Failed to submit consultation details.");
@@ -323,37 +322,22 @@ export default function BookConsultationForm() {
       {/* MOBILE VERSION (< 1024px)                                    */}
       {/* =========================================================== */}
       <div className="block lg:hidden">
-        {/* 1. HEADER — full width centered */}
-        <div className="px-5 pt-10 pb-8 text-center">
+        {/* 1. IMAGE — full width top section */}
+        <div className="relative w-full h-[260px] sm:h-[310px] overflow-hidden">
+          <img
+            src={carouselImages1[0]}
+            alt="Interior"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* 2. HEADER — full width centered below image */}
+        <div className="px-5 pt-8 pb-6 text-center">
           <HeaderSection
             wrapperClassName="w-full"
             titleClassName="text-[32px] sm:text-[38px] font-[800] text-[#181B21] tracking-tight leading-[1.12]"
             textClassName="text-[15px] mt-3 text-[#5F6672] font-medium max-w-[380px] mx-auto"
           />
-        </div>
-
-        {/* 2. IMAGE — full width, only spans between header and benefits */}
-        <div className="relative w-full h-[260px] sm:h-[310px] overflow-hidden">
-          {carouselImages1.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Interior ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === carouselIndex ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          ))}
-          {/* Dot indicators */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-            {carouselImages1.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCarouselIndex(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${i === carouselIndex ? "w-5 bg-white" : "w-1.5 bg-white/50"}`}
-              />
-            ))}
-          </div>
         </div>
 
         {/* 3. FORM — white card below image */}
