@@ -536,7 +536,7 @@ export default function HeroSections({
           setShowOtpModal(false);
 
           // Redirect to thank you page
-          router.push("/Form-Submit-Thank-You");
+          router.push("/book-consultation");
         } else {
           // Removed alert - OTP modal will appear directly
         }

@@ -152,7 +152,7 @@ const MobileFormSection: React.FC = () => {
         setIsVerified(false);
         setOtpError('');
         // Redirect to thank you page after successful submission
-        router.push('/Form-Submit-Thank-You');
+        router.push('/book-consultation');
       } else {
         setSubmitStatus('error');
       }

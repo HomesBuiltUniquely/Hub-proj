@@ -308,7 +308,7 @@ export function HeroSection() {
                         email: updatedForm.email,
                         phone: updatedForm.phonennumber,
                     });
-                    router.push(`/Submitted-Thank-You?${q.toString()}`);
+                    router.push(`/book-consultation?${q.toString()}`);
                 }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");
@@ -441,7 +441,7 @@ export function HeroSection() {
                         email: updatedForm.email,
                         phone: updatedForm.phonennumber,
                     });
-                    router.push(`/Submitted-Thank-You?${q.toString()}`);
+                    router.push(`/book-consultation?${q.toString()}`);
                 }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");

@@ -31,7 +31,7 @@ const budgetOptions = ["4 - 6 Lakhs", "6 - 8 Lakhs", "8 - 10 lakhs", "10 Lakhs+"
 
 type HeroSectionsProps = {
   submitApiUrl?: string;
-  /** If set, successful verified submits navigate here instead of /Form-Submit-Thank-You (e.g. external thank-you URL). */
+  /** If set, successful verified submits navigate here instead of /book-consultation (e.g. external URL). */
   verifiedRedirectUrl?: string;
 };
 
@@ -548,7 +548,7 @@ export default function HeroSections({
           if (verifiedRedirectUrl) {
             window.location.assign(verifiedRedirectUrl);
           } else {
-            router.push("/Form-Submit-Thank-You");
+            router.push("/book-consultation");
           }
         } else {
           // Removed alert - OTP modal will appear directly

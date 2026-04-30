@@ -266,7 +266,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                     phone: phone.trim(),
                 });
                 setTimeout(() => {
-                    router.push(`/Submitted-Thank-You?${q.toString()}`);
+                    router.push(`/book-consultation?${q.toString()}`);
                 }, 500);
             } else {
                 setError("Failed to submit form. Please try again.");

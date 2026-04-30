@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
 
@@ -8,11 +9,16 @@ type ConsultationMode = "experience-center" | "video-call";
 type PossessionTimeline = "immediately" | "0-3-months" | "3-6-months";
 
 const preferredSlots = [
-  "09:00 AM - 11:00 AM",
-  "11:00 AM - 01:00 PM",
-  "02:00 PM - 04:00 PM",
-  "04:00 PM - 06:00 PM",
-  "06:00 PM - 08:00 PM",
+  "09:00 AM - 10:00 AM",
+  "10:00 AM - 11:00 AM",
+  "12:00 PM - 01:00 PM",
+  "01:00 PM - 02:00 PM",
+  "02:00 PM - 03:00 PM",
+  "03:00 PM - 04:00 PM",
+  "04:00 PM - 05:00 PM",
+  "05:00 PM - 06:00 PM",
+  "06:00 PM - 07:00 PM",
+  "07:00 PM - 08:00 PM"
 ];
 
 const carouselImages = [
@@ -71,6 +77,7 @@ function FormSection({
   setPropertyName,
   possessionTimeline,
   setPossessionTimeline,
+  onSubmit,
 }: {
   consultationMode: ConsultationMode;
   setConsultationMode: (v: ConsultationMode) => void;
@@ -82,12 +89,33 @@ function FormSection({
   setPropertyName: (v: string) => void;
   possessionTimeline: PossessionTimeline;
   setPossessionTimeline: (v: PossessionTimeline) => void;
+  onSubmit: () => void;
 }) {
+  const formatDateForInput = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const today = new Date();
+  const maxSelectableDate = new Date(today);
+  maxSelectableDate.setDate(today.getDate() + 14);
+
+  const minDate = formatDateForInput(today);
+  const maxDate = formatDateForInput(maxSelectableDate);
+
   const inputClass =
     "h-[58px] w-full rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
 
   return (
-    <form className="w-full" onSubmit={(e) => e.preventDefault()}>
+    <form
+      className="w-full"
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit();
+      }}
+    >
       {/* Step 1 */}
       <div className="mb-5 flex items-center gap-3">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
@@ -131,6 +159,8 @@ function FormSection({
           type="date"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
+          min={minDate}
+          max={maxDate}
           className={inputClass}
         />
         <div className="relative group">
@@ -166,7 +196,7 @@ function FormSection({
         type="text"
         value={propertyName}
         onChange={(e) => setPropertyName(e.target.value)}
-        placeholder="Property Name"
+        placeholder="Property Name/Individual House"
         className={inputClass}
       />
 
@@ -211,12 +241,15 @@ function FormSection({
 }
 
 export default function BookConsultationForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [consultationMode, setConsultationMode] = useState<ConsultationMode>("experience-center");
   const [selectedDate, setSelectedDate] = useState("");
   const [preferredSlot, setPreferredSlot] = useState("");
   const [propertyName, setPropertyName] = useState("");
   const [possessionTimeline, setPossessionTimeline] = useState<PossessionTimeline>("immediately");
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -224,6 +257,64 @@ export default function BookConsultationForm() {
     }, 3500);
     return () => clearInterval(interval);
   }, []);
+
+  const handleBookConsultationSubmit = async () => {
+    if (!selectedDate || !preferredSlot || !propertyName) {
+      alert("Please fill date, preferred slot and property details.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const fallbackName = searchParams.get("name") || "";
+      const fallbackEmail = searchParams.get("email") || "";
+      const fallbackPhone =
+        searchParams.get("phone") || searchParams.get("phoneNumber") || "";
+
+      const firstFormDetails = {
+        name:
+          (typeof window !== "undefined"
+            ? sessionStorage.getItem("userName")
+            : "") || fallbackName,
+        email:
+          (typeof window !== "undefined"
+            ? sessionStorage.getItem("userEmail")
+            : "") || fallbackEmail,
+        phone:
+          (typeof window !== "undefined"
+            ? sessionStorage.getItem("userPhone")
+            : "") || fallbackPhone,
+      };
+
+      const response = await fetch("/api/book-consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+          firstFormDetails,
+          consultationDetails: {
+            consultationMode,
+            selectedDate,
+            preferredSlot,
+            propertyName,
+            possessionTimeline,
+          },
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok && data.success) {
+        router.push("/Form-Submit-Thank-You");
+      } else {
+        alert(data.message || "Failed to submit consultation details.");
+      }
+    } catch (error) {
+      console.error("Book consultation submission failed:", error);
+      alert("Failed to submit consultation details. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="bg-[#F1F2F6] min-h-screen manrope">
@@ -279,6 +370,7 @@ export default function BookConsultationForm() {
               setPropertyName={setPropertyName}
               possessionTimeline={possessionTimeline}
               setPossessionTimeline={setPossessionTimeline}
+              onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
             />
           </div>
         </div>
@@ -314,7 +406,6 @@ export default function BookConsultationForm() {
             {/* Left: Form card — fully rounded, elevated, premium */}
             <div className="bg-white rounded-[28px] shadow-[0_8px_40px_rgba(15,23,42,0.08)] border border-gray-100/80 p-8 xl:p-10 flex flex-col">
               {/* Red left accent bar */}
-              <div className="w-1 h-10 rounded-full bg-[#EF2B2D] mb-8 shadow-[0_4px_10px_rgba(239,43,45,0.3)]"></div>
               <FormSection
                 consultationMode={consultationMode}
                 setConsultationMode={setConsultationMode}
@@ -326,6 +417,7 @@ export default function BookConsultationForm() {
                 setPropertyName={setPropertyName}
                 possessionTimeline={possessionTimeline}
                 setPossessionTimeline={setPossessionTimeline}
+                onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
               />
             </div>
 
