@@ -7,42 +7,66 @@ export default function BookConsultationPage() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const triggerBookConsultationTracking = () => {
-      const hasGtag = typeof (window as typeof window & { gtag?: (...args: unknown[]) => void }).gtag === "function";
-      const hasDataLayer = Array.isArray((window as typeof window & { dataLayer?: unknown[] }).dataLayer);
+    const trackingPayload = {
+      event: "contact",
+      page_title: "Book Consultation",
+      page_path: window.location.pathname,
+      page_location: window.location.href,
+      event_id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    };
 
-      if (!hasGtag && !hasDataLayer) return false;
+    // Always queue the event immediately.
+    // If GTM is not loaded yet, it will consume this from dataLayer after load.
+    const dataLayer = ((window as typeof window & { dataLayer?: Record<string, unknown>[] }).dataLayer ||= []);
+    dataLayer.push(trackingPayload);
 
+    const triggerGtagIfReady = () => {
       const gtag = (window as typeof window & { gtag?: (...args: unknown[]) => void }).gtag;
-      const dataLayer = ((window as typeof window & { dataLayer?: unknown[] }).dataLayer ||= []);
+      if (typeof gtag !== "function") return false;
 
-      if (hasGtag && gtag) {
-        gtag("event", "contact", {
-          page_title: "Book Consultation",
-          page_location: window.location.href,
-        });
-      }
+      gtag("event", "contact", {
+        page_title: "Book Consultation",
+        page_location: window.location.href,
+      });
+      return true;
+    };
 
+    // Try immediate gtag fire (for setups that rely on gtag listeners directly).
+    if (triggerGtagIfReady()) return;
+
+    const retry1 = window.setTimeout(triggerGtagIfReady, 800);
+    const retry2 = window.setTimeout(triggerGtagIfReady, 2000);
+    const retry3 = window.setTimeout(triggerGtagIfReady, 3500);
+    const retry4 = window.setTimeout(triggerGtagIfReady, 6000);
+    const retry5 = window.setTimeout(triggerGtagIfReady, 10000);
+
+    return () => {
+      window.clearTimeout(retry1);
+      window.clearTimeout(retry2);
+      window.clearTimeout(retry3);
+      window.clearTimeout(retry4);
+      window.clearTimeout(retry5);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handlePageShow = () => {
+      const dataLayer = ((window as typeof window & { dataLayer?: Record<string, unknown>[] }).dataLayer ||= []);
       dataLayer.push({
         event: "contact",
         page_title: "Book Consultation",
         page_path: window.location.pathname,
         page_location: window.location.href,
       });
-
-      return true;
     };
 
-    if (triggerBookConsultationTracking()) return;
-
-    const retry1 = window.setTimeout(triggerBookConsultationTracking, 800);
-    const retry2 = window.setTimeout(triggerBookConsultationTracking, 2000);
-    const retry3 = window.setTimeout(triggerBookConsultationTracking, 3500);
+    // Handles browser back-forward cache restores and repeated entries.
+    window.addEventListener("pageshow", handlePageShow);
 
     return () => {
-      window.clearTimeout(retry1);
-      window.clearTimeout(retry2);
-      window.clearTimeout(retry3);
+      window.removeEventListener("pageshow", handlePageShow);
     };
   }, []);
 
