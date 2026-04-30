@@ -11,7 +11,6 @@ declare global {
 }
 
 export default function ThankUPage() {
-  const [hasReloaded, setHasReloaded] = useState(false);
   const [userData, setUserData] = useState({ name: '', email: '', phone: '' });
 
   useEffect(() => {
@@ -41,25 +40,36 @@ export default function ThankUPage() {
     setUserData({ name: userName, email: userEmail, phone: userPhone });
     
     // Robust reload trigger for conversion tracking on first thank-you load
+    const params = new URLSearchParams(window.location.search);
     const submittedFromQuery = fromQuery.name || fromQuery.email || fromQuery.phone
       ? false
-      : new URLSearchParams(window.location.search).get('submitted') === '1';
+      : params.get('submitted') === '1';
+    const submissionIdFromQuery = params.get('sid') || '';
+    const submissionIdFromStorage = sessionStorage.getItem('thankYouSubmissionId') || '';
+    const currentSubmissionId = submissionIdFromQuery || submissionIdFromStorage;
+    const lastReloadedSubmissionId =
+      sessionStorage.getItem('lastThankYouReloadedSubmissionId') || '';
+
     const isFreshRedirect = sessionStorage.getItem('formSubmitted') === 'true';
     const needsReload = sessionStorage.getItem('thankYouNeedsReload') === 'true';
-    const reloadedOnce = sessionStorage.getItem('thankYouReloadedOnce') === 'true';
-    const shouldReload = (isFreshRedirect || needsReload || submittedFromQuery) && !reloadedOnce && !hasReloaded;
+    const isAlreadyReloadedForThisSubmission =
+      !!currentSubmissionId && currentSubmissionId === lastReloadedSubmissionId;
+    const shouldReload =
+      (isFreshRedirect || needsReload || submittedFromQuery) &&
+      !isAlreadyReloadedForThisSubmission;
 
     if (shouldReload) {
-      // prevent loops, then force one hard reload
-      sessionStorage.setItem('thankYouReloadedOnce', 'true');
+      // prevent loops, then force one hard reload for this submission only
+      if (currentSubmissionId) {
+        sessionStorage.setItem('lastThankYouReloadedSubmissionId', currentSubmissionId);
+      }
       sessionStorage.removeItem('formSubmitted');
       sessionStorage.removeItem('thankYouNeedsReload');
+      sessionStorage.removeItem('thankYouSubmissionId');
 
       setTimeout(() => {
         window.location.reload();
       }, 350);
-
-      setHasReloaded(true);
       return;
     }
 
@@ -108,7 +118,7 @@ export default function ThankUPage() {
         clearTimeout(longRetryTimer);
       };
     }
-  }, [hasReloaded]);
+  }, []);
 
   return (
     <div>

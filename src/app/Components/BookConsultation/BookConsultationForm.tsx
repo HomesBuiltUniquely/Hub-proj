@@ -296,16 +296,18 @@ export default function BookConsultationForm() {
 
       const data = await response.json();
       if (response.ok && data.success) {
+        const submissionId = Date.now().toString();
         if (typeof window !== "undefined") {
           // Thank-you page conversion logic uses this flag for first-load tracking.
           sessionStorage.setItem("formSubmitted", "true");
           sessionStorage.setItem("thankYouNeedsReload", "true");
-          sessionStorage.removeItem("thankYouReloadedOnce");
+          sessionStorage.setItem("thankYouSubmissionId", submissionId);
+          sessionStorage.removeItem("lastThankYouReloadedSubmissionId");
           if (firstFormDetails.name) sessionStorage.setItem("userName", firstFormDetails.name);
           if (firstFormDetails.email) sessionStorage.setItem("userEmail", firstFormDetails.email);
           if (firstFormDetails.phone) sessionStorage.setItem("userPhone", firstFormDetails.phone);
         }
-        router.push("/Form-Submit-Thank-You?submitted=1");
+        router.push(`/Form-Submit-Thank-You?submitted=1&sid=${submissionId}`);
       } else {
         alert(data.message || "Failed to submit consultation details.");
       }
