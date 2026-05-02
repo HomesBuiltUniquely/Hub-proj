@@ -5,6 +5,7 @@ import "./globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import FloatingContactButtons from "./Components/FloatingContactButtons";
+import OtpVerifiedConversionBeacon from "./Components/OtpVerifiedConversionBeacon";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -115,6 +116,7 @@ export default function RootLayout({
         </noscript>
 
         {children}
+        <OtpVerifiedConversionBeacon />
         <FloatingContactButtons />
 
         {/* Vercel Analytics */}

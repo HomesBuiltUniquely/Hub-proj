@@ -1,10 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Pincode } from "./Pincode";
 import cityOptions from "./DropDown1";
 import { normalizePhoneNumber } from "@/lib/utils";
+import {
+  consumePostVerifySubmitForPath,
+  executePostVerifyLeadSubmit,
+  savePostVerifySubmitAndReloadForConversion,
+} from "@/lib/otpVerifiedConversionReload";
 
 const carouselImages = [
   "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/modular_litchen.jpg",
@@ -29,6 +34,7 @@ export default function HeroSections({
   submitApiUrl = "/api/contact",
 }: HeroSectionsProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedPincode, setSelectedPincode] = useState("");
@@ -56,6 +62,34 @@ export default function HeroSections({
   useEffect(() => {
     leadSentToCrmRef.current = leadSentToCrm;
   }, [leadSentToCrm]);
+
+  // After OTP verify we full-reload for conversion tags; then finish verified POST once.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const payload = consumePostVerifySubmitForPath(pathname);
+    if (!payload) return;
+
+    setIsSubmitting(true);
+    void executePostVerifyLeadSubmit(payload, router, {
+      home1Ping: async (requestData) => {
+        const home1Payload = {
+          name: requestData.name,
+          email: requestData.email,
+          phoneNumber: requestData.phone,
+          propertyPin: requestData.pincode,
+          interiorSetup: requestData.city,
+          possessionIn: requestData.budget,
+          verificationStatus: requestData.verificationStatus,
+          otpSuccess: requestData.otpSuccess,
+        };
+        await fetch("http://localhost:8081/v1/Home1", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(home1Payload),
+        });
+      },
+    }).finally(() => setIsSubmitting(false));
+  }, [pathname, router]);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -283,10 +317,27 @@ export default function HeroSections({
 
       if (response.ok && data.success) {
         setOtp("");
-        // Removed alert - no interruption during verification
-
-        // Automatically submit the form as verified user
-        await handleFinalSubmit("VERIFIED");
+        const currentUrl = window.location.href;
+        const requestData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: selectedCity,
+          budget: "",
+          pincode: selectedPincode,
+          whatsappConsent: whatsappConsent,
+          pageUrl: currentUrl,
+          verificationStatus: "VERIFIED" as const,
+          otpSuccess: true,
+          skipEmail: false,
+        };
+        savePostVerifySubmitAndReloadForConversion({
+          originPath: window.location.pathname,
+          submitApiUrl: submitApiUrl,
+          requestData,
+          redirectPath: "/book-consultation",
+        });
+        return;
       } else {
         if (data?.reason === "MAX_ATTEMPTS") {
           setResendVisible(true);

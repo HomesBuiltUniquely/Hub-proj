@@ -1,10 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Pincode } from "./Pincode";
 import cityOptions from "./DropDown1";
 import { normalizePhoneNumber } from "@/lib/utils";
+import {
+  consumePostVerifySubmitForPath,
+  executePostVerifyLeadSubmit,
+  savePostVerifySubmitAndReloadForConversion,
+} from "@/lib/otpVerifiedConversionReload";
 
 const carouselImages = [
   "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/modular_litchen.jpg",
@@ -23,6 +28,7 @@ const carouselImages1 = [
 
 export default function HeroSections() {
   const router = useRouter();
+  const pathname = usePathname();
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedPincode, setSelectedPincode] = useState("");
@@ -47,6 +53,17 @@ export default function HeroSections() {
   useEffect(() => {
     leadSentToCrmRef.current = leadSentToCrm;
   }, [leadSentToCrm]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const payload = consumePostVerifySubmitForPath(pathname);
+    if (!payload) return;
+
+    setIsSubmitting(true);
+    void executePostVerifyLeadSubmit(payload, router).finally(() =>
+      setIsSubmitting(false),
+    );
+  }, [pathname, router]);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -260,10 +277,27 @@ export default function HeroSections() {
 
       if (response.ok && data.success) {
         setOtp("");
-        // Removed alert - no interruption during verification
-
-        // Automatically submit the form as verified user
-        await handleFinalSubmit("VERIFIED");
+        const currentUrl = window.location.href;
+        const requestData = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: selectedCity,
+          budget: "",
+          pincode: selectedPincode,
+          whatsappConsent: whatsappConsent,
+          pageUrl: currentUrl,
+          verificationStatus: "VERIFIED" as const,
+          otpSuccess: true,
+          skipEmail: false,
+        };
+        savePostVerifySubmitAndReloadForConversion({
+          originPath: window.location.pathname,
+          submitApiUrl: "/api/contact",
+          requestData,
+          redirectPath: "/book-consultation",
+        });
+        return;
       } else {
         // Removed alert - no interruption during verification
       }
