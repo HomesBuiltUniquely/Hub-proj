@@ -3,23 +3,30 @@
 import { useEffect } from "react";
 import { OTP_VERIFIED_CONVERSION_PENDING_KEY } from "@/lib/otpVerifiedConversionReload";
 
-declare global {
-  interface Window {
-    gtag?: (command: string, targetId: string, config?: Record<string, unknown>) => void;
-  }
+type GtagFn = (
+  command: string,
+  targetId: string,
+  config?: Record<string, unknown>,
+) => void;
+
+function getGtag(): GtagFn | undefined {
+  if (typeof window === "undefined") return undefined;
+  const g = (window as typeof window & { gtag?: GtagFn }).gtag;
+  return typeof g === "function" ? g : undefined;
 }
 
 function fireOtpVerifiedConversionEvents() {
-  if (typeof window === "undefined" || !window.gtag) return false;
-  window.gtag("event", "conversion", {
+  const gtag = getGtag();
+  if (!gtag) return false;
+  gtag("event", "conversion", {
     send_to: "17366893543",
   });
-  window.gtag("event", "form_submit", {
+  gtag("event", "form_submit", {
     event_category: "form",
     event_label: "otp_verified",
     value: 1,
   });
-  window.gtag("event", "page_view", {
+  gtag("event", "page_view", {
     page_title: "OTP Verified",
     page_location: window.location.href,
   });
