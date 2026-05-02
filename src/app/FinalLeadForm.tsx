@@ -215,15 +215,20 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             required
             className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 manrope-medium"
           />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            placeholder="Email *"
-            required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 manrope-medium"
-          />
+          <div>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Email *"
+              required
+              className="peer w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 manrope-medium"
+            />
+            <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full">
+              <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
+            </div>
+          </div>
           <input
             type="tel"
             name="phone"
