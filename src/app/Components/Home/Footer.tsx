@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const contactNumbers = [
-    { label: '+91 889 889 1117', value: '+918898891117', href: 'tel:+918898891117' },
     { label: '+91 889 889 2223', value: '+918898892223', href: 'tel:+918898892223' },
 ];
 
