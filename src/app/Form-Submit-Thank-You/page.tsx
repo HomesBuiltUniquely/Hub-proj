@@ -1,7 +1,9 @@
 'use client'
 
-import Script from 'next/script'
 import { useEffect, useState } from 'react'
+
+/** Cleared when starting a new book-consultation → thank-you flow; prevents double Ads conversion. */
+const THANK_YOU_CONVERSION_SENT_KEY = 'hubThankYouAdsConversionSent';
 
 // Declare gtag function for TypeScript
 declare global {
@@ -66,6 +68,7 @@ export default function ThankUPage() {
       sessionStorage.removeItem('formSubmitted');
       sessionStorage.removeItem('thankYouNeedsReload');
       sessionStorage.removeItem('thankYouSubmissionId');
+      // Do not fire Ads conversion on this pass — wait for post-reload load so it runs once.
 
       setTimeout(() => {
         window.location.reload();
@@ -73,46 +76,44 @@ export default function ThankUPage() {
       return;
     }
 
-    // Function to trigger GTM events
+    // Function to trigger GTM events (single source — no duplicate inline Script)
     const triggerGTMEvents = () => {
-      if (typeof window !== 'undefined' && window.gtag) {
-        // Conversion event for form submission
-        window.gtag('event', 'conversion', {
-          'send_to': '17366893543'
-        });
-        
-        // Additional event for form submission tracking
-        window.gtag('event', 'form_submit', {
-          'event_category': 'form',
-          'event_label': 'appointment_booking',
-          'value': 1
-        });
-        
-        // Page view event for Thank-You page
-        window.gtag('event', 'page_view', {
-          'page_title': 'Thank You - Appointment Confirmed',
-          'page_location': window.location.href
-        });
-        
-        console.log('GTM events triggered on Thank-You page');
+      if (typeof window === 'undefined' || !window.gtag) return false;
+      if (sessionStorage.getItem(THANK_YOU_CONVERSION_SENT_KEY) === '1') {
         return true;
       }
-      return false;
+
+      window.gtag('event', 'conversion', {
+        send_to: '17366893543',
+      });
+
+      window.gtag('event', 'form_submit', {
+        event_category: 'form',
+        event_label: 'appointment_booking',
+        value: 1,
+      });
+
+      window.gtag('event', 'page_view', {
+        page_title: 'Thank You - Appointment Confirmed',
+        page_location: window.location.href,
+      });
+
+      sessionStorage.setItem(THANK_YOU_CONVERSION_SENT_KEY, '1');
+      console.log('GTM events triggered on Thank-You page');
+      return true;
     };
 
-    // Try to trigger events immediately
     if (!triggerGTMEvents()) {
-      // If gtag is not available, wait a bit and try again
       const retryTimer = setTimeout(() => {
+        if (sessionStorage.getItem(THANK_YOU_CONVERSION_SENT_KEY) === '1') return;
         triggerGTMEvents();
       }, 1000);
-      
-      // Also try after a longer delay to ensure GTM is fully loaded
+
       const longRetryTimer = setTimeout(() => {
+        if (sessionStorage.getItem(THANK_YOU_CONVERSION_SENT_KEY) === '1') return;
         triggerGTMEvents();
       }, 3000);
-      
-      // Cleanup timers
+
       return () => {
         clearTimeout(retryTimer);
         clearTimeout(longRetryTimer);
@@ -122,35 +123,6 @@ export default function ThankUPage() {
 
   return (
     <div>
-      <Script
-        id="google-conversion-tracking"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            // Ensure gtag is available
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'conversion', {
-                'send_to': '17366893543'
-              });
-              
-              gtag('event', 'form_submit', {
-                'event_category': 'form',
-                'event_label': 'appointment_booking',
-                'value': 1
-              });
-              
-              gtag('event', 'page_view', {
-                'page_title': 'Thank You - Appointment Confirmed',
-                'page_location': window.location.href
-              });
-              
-              console.log('GTM conversion events fired');
-            } else {
-              console.log('gtag not available, will retry in useEffect');
-            }
-          `,
-        }}
-      />
       {/* Desktop & Tablet Layout */}
       <div className="hidden md:block">
         <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "url('Tq.png')" }}>

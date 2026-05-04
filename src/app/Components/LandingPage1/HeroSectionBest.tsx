@@ -10,6 +10,7 @@ import {
   executePostVerifyLeadSubmit,
   savePostVerifySubmitAndReloadForConversion,
 } from "@/lib/otpVerifiedConversionReload";
+import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
 
 const carouselImages = [
   "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/modular_litchen.jpg",
@@ -295,7 +296,7 @@ export default function HeroSections() {
           originPath: window.location.pathname,
           submitApiUrl: "/api/contact",
           requestData,
-          redirectPath: "/book-consultation",
+          redirectPath: POST_LEAD_SUCCESS_PATH,
         });
         return;
       } else {
@@ -519,7 +520,7 @@ export default function HeroSections() {
           setShowOtpModal(false);
 
           // Redirect to thank you page
-          router.push("/book-consultation");
+          router.push(POST_LEAD_SUCCESS_PATH);
         } else {
           // Removed alert - OTP modal will appear directly
         }

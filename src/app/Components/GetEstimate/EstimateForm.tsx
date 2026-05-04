@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { normalizePhoneNumber } from "@/lib/utils";
 import cityOptions from "../LandingPage1/DropDown1";
+import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
 
 const EstimateForm: React.FC = () => {
   const router = useRouter();
@@ -152,7 +153,7 @@ const EstimateForm: React.FC = () => {
         setIsVerified(false);
         setOtpError('');
         // Redirect to thank you page after successful submission
-        router.push('/book-consultation');
+        router.push(POST_LEAD_SUCCESS_PATH);
       } else {
         setSubmitStatus('error');
       }

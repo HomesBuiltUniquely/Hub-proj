@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 import OverlapNavBar from "../OverlapNavBar";
 import { getVerificationStatus } from "@/lib/leadVerification";
+import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
 
 export function HeroSection() {
     const router = useRouter();
@@ -308,7 +309,7 @@ export function HeroSection() {
                         email: updatedForm.email,
                         phone: updatedForm.phonennumber,
                     });
-                    router.push(`/book-consultation?${q.toString()}`);
+                    router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
                 }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");
@@ -441,7 +442,7 @@ export function HeroSection() {
                         email: updatedForm.email,
                         phone: updatedForm.phonennumber,
                     });
-                    router.push(`/book-consultation?${q.toString()}`);
+                    router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
                 }, 1500);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");

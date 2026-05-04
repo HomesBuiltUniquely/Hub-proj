@@ -299,6 +299,7 @@ export default function BookConsultationForm() {
         const submissionId = Date.now().toString();
         if (typeof window !== "undefined") {
           // Thank-you page conversion logic uses this flag for first-load tracking.
+          sessionStorage.removeItem("hubThankYouAdsConversionSent");
           sessionStorage.setItem("formSubmitted", "true");
           sessionStorage.setItem("thankYouNeedsReload", "true");
           sessionStorage.setItem("thankYouSubmissionId", submissionId);

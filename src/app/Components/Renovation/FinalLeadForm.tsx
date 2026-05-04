@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { normalizePhoneNumber } from '../../../lib/utils';
 import { getVerificationStatus } from '@/lib/leadVerification';
+import { POST_LEAD_SUCCESS_PATH } from '@/lib/postLeadSubmitRedirect';
 
 interface CalculatorData {
   bhkType?: string;
@@ -186,7 +187,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         sessionStorage.setItem('userPhone', formData.phone);
         sessionStorage.setItem('userName', formData.name);
         
-        router.push('/book-consultation');
+        router.push(POST_LEAD_SUCCESS_PATH);
       }
     } catch (e) {
       console.error(e);

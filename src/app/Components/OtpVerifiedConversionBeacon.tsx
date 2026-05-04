@@ -18,9 +18,7 @@ function getGtag(): GtagFn | undefined {
 function fireOtpVerifiedConversionEvents() {
   const gtag = getGtag();
   if (!gtag) return false;
-  gtag("event", "conversion", {
-    send_to: "17366893543",
-  });
+  // Do not fire Ads `conversion` here — same `send_to` as thank-you page would duplicate counts.
   gtag("event", "form_submit", {
     event_category: "form",
     event_label: "otp_verified",

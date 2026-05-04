@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import cityOptions from "./LandingPage1/DropDown1";
+import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
 
 
 type PopUpProps = {
@@ -266,7 +267,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                     phone: phone.trim(),
                 });
                 setTimeout(() => {
-                    router.push(`/book-consultation?${q.toString()}`);
+                    router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
                 }, 500);
             } else {
                 setError("Failed to submit form. Please try again.");

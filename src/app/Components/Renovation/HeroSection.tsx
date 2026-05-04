@@ -9,6 +9,7 @@ import {
   executePostVerifyLeadSubmit,
   savePostVerifySubmitAndReloadForConversion,
 } from "@/lib/otpVerifiedConversionReload";
+import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
 
 const carouselImages = [
   "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/modular_litchen.jpg",
@@ -36,7 +37,7 @@ const budgetOptions = ["4 - 6 Lakhs", "6 - 8 Lakhs", "8 - 10 lakhs", "10 Lakhs+"
 
 type HeroSectionsProps = {
   submitApiUrl?: string;
-  /** If set, successful verified submits navigate here instead of /book-consultation (e.g. external URL). */
+  /** If set, successful verified submits navigate here instead of thank-you (e.g. external URL). */
   verifiedRedirectUrl?: string;
 };
 
@@ -344,7 +345,7 @@ export default function HeroSections({
           originPath: window.location.pathname,
           submitApiUrl: submitApiUrl,
           requestData,
-          redirectPath: "/book-consultation",
+          redirectPath: POST_LEAD_SUCCESS_PATH,
           verifiedRedirectExternalUrl: verifiedRedirectUrl || null,
         });
         return;
@@ -599,7 +600,7 @@ export default function HeroSections({
           if (verifiedRedirectUrl) {
             window.location.assign(verifiedRedirectUrl);
           } else {
-            router.push("/book-consultation");
+            router.push(POST_LEAD_SUCCESS_PATH);
           }
         } else {
           // Removed alert - OTP modal will appear directly
