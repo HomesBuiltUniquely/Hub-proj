@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 
 /** Cleared when starting a new book-consultation → thank-you flow; prevents double Ads conversion. */
 const THANK_YOU_CONVERSION_SENT_KEY = 'hubThankYouAdsConversionSent';
+const THANK_YOU_NEXT_REDIRECT_PATH = '/book-consultation';
+const THANK_YOU_NEXT_REDIRECT_DELAY_MS = 2200;
 
 // Declare gtag function for TypeScript
 declare global {
@@ -16,6 +18,8 @@ export default function ThankUPage() {
   const [userData, setUserData] = useState({ name: '', email: '', phone: '' });
 
   useEffect(() => {
+    let redirectTimer: ReturnType<typeof setTimeout> | null = null;
+
     // URL query survives the forced full reload; sessionStorage covers other flows
     let fromQuery = { name: '', email: '', phone: '' };
     if (typeof window !== 'undefined') {
@@ -103,6 +107,12 @@ export default function ThankUPage() {
       return true;
     };
 
+    const scheduleBookConsultationRedirect = () => {
+      redirectTimer = setTimeout(() => {
+        window.location.assign(THANK_YOU_NEXT_REDIRECT_PATH);
+      }, THANK_YOU_NEXT_REDIRECT_DELAY_MS);
+    };
+
     if (!triggerGTMEvents()) {
       const retryTimer = setTimeout(() => {
         if (sessionStorage.getItem(THANK_YOU_CONVERSION_SENT_KEY) === '1') return;
@@ -113,12 +123,20 @@ export default function ThankUPage() {
         if (sessionStorage.getItem(THANK_YOU_CONVERSION_SENT_KEY) === '1') return;
         triggerGTMEvents();
       }, 3000);
+      scheduleBookConsultationRedirect();
 
       return () => {
         clearTimeout(retryTimer);
         clearTimeout(longRetryTimer);
+        if (redirectTimer) clearTimeout(redirectTimer);
       };
     }
+
+    scheduleBookConsultationRedirect();
+
+    return () => {
+      if (redirectTimer) clearTimeout(redirectTimer);
+    };
   }, []);
 
   return (

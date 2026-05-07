@@ -266,9 +266,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                     email: email.trim(),
                     phone: phone.trim(),
                 });
-                setTimeout(() => {
-                    router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
-                }, 500);
+                router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
             } else {
                 setError("Failed to submit form. Please try again.");
             }

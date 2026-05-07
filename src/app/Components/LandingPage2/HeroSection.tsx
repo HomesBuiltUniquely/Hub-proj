@@ -302,15 +302,13 @@ export function HeroSection() {
                 setIsVerified(false);
                 setOtpError('');
 
-                setTimeout(() => {
-                    sessionStorage.setItem('formSubmitted', 'true');
-                    const q = new URLSearchParams({
-                        name: updatedForm.name,
-                        email: updatedForm.email,
-                        phone: updatedForm.phonennumber,
-                    });
-                    router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
-                }, 1500);
+                sessionStorage.setItem('formSubmitted', 'true');
+                const q = new URLSearchParams({
+                    name: updatedForm.name,
+                    email: updatedForm.email,
+                    phone: updatedForm.phonennumber,
+                });
+                router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");
             }
@@ -435,15 +433,13 @@ export function HeroSection() {
                 setIsVerified(false);
                 setOtpError('');
 
-                setTimeout(() => {
-                    sessionStorage.setItem('formSubmitted', 'true');
-                    const q = new URLSearchParams({
-                        name: updatedForm.name,
-                        email: updatedForm.email,
-                        phone: updatedForm.phonennumber,
-                    });
-                    router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
-                }, 1500);
+                sessionStorage.setItem('formSubmitted', 'true');
+                const q = new URLSearchParams({
+                    name: updatedForm.name,
+                    email: updatedForm.email,
+                    phone: updatedForm.phonennumber,
+                });
+                router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
             } else {
                 setSubmitMessage("Failed to submit appointment request. Please try again.");
             }

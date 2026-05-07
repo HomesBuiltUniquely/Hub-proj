@@ -1,12 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
 
 type ConsultationMode = "experience-center" | "video-call";
-type PossessionTimeline = "immediately" | "0-3-months" | "3-6-months";
+type PossessionTimeline =
+  | "immediately"
+  | "0-3-months"
+  | "3-6-months"
+  | "more-than-6-months"
+  | "under-construction"
+  | "construction-not-yet-ready";
 
 const preferredSlots = [
   "09:00 AM - 10:00 AM",
@@ -99,6 +105,11 @@ function FormSection({
 
   const inputClass =
     "h-[58px] w-full text-black rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
+  const dateInputStyle = {
+    color: selectedDate ? "#24262B" : "#9AA1AE",
+    WebkitTextFillColor: selectedDate ? "#24262B" : "#9AA1AE",
+    colorScheme: "light" as const,
+  };
 
   return (
     <form
@@ -147,14 +158,22 @@ function FormSection({
       </div>
 
       <div className="mt-5 grid grid-cols-2 gap-4">
-        <input
-          type="date"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-          min={minDate}
-          max={maxDate}
-          className={inputClass}
-        />
+        <div className="relative">
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            min={minDate}
+            max={maxDate}
+            className={`${inputClass} [color-scheme:light]`}
+            style={dateInputStyle}
+          />
+          {!selectedDate && (
+            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope lg:hidden">
+              Select Date
+            </span>
+          )}
+        </div>
         <div className="relative group">
           <select
             value={preferredSlot}
@@ -197,6 +216,9 @@ function FormSection({
           { id: "immediately" as PossessionTimeline, label: "Immediately" },
           { id: "0-3-months" as PossessionTimeline, label: "0 - 3 months" },
           { id: "3-6-months" as PossessionTimeline, label: "3 - 6 months" },
+          { id: "more-than-6-months" as PossessionTimeline, label: "More than 6 months" },
+          { id: "under-construction" as PossessionTimeline, label: "Under construction" },
+          { id: "construction-not-yet-ready" as PossessionTimeline, label: "Construction not yet ready" },
         ].map((item) => (
           <button
             key={item.id}
@@ -233,7 +255,6 @@ function FormSection({
 }
 
 export default function BookConsultationForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [consultationMode, setConsultationMode] = useState<ConsultationMode>("experience-center");
   const [selectedDate, setSelectedDate] = useState("");
@@ -296,19 +317,11 @@ export default function BookConsultationForm() {
 
       const data = await response.json();
       if (response.ok && data.success) {
-        const submissionId = Date.now().toString();
-        if (typeof window !== "undefined") {
-          // Thank-you page conversion logic uses this flag for first-load tracking.
-          sessionStorage.removeItem("hubThankYouAdsConversionSent");
-          sessionStorage.setItem("formSubmitted", "true");
-          sessionStorage.setItem("thankYouNeedsReload", "true");
-          sessionStorage.setItem("thankYouSubmissionId", submissionId);
-          sessionStorage.removeItem("lastThankYouReloadedSubmissionId");
-          if (firstFormDetails.name) sessionStorage.setItem("userName", firstFormDetails.name);
-          if (firstFormDetails.email) sessionStorage.setItem("userEmail", firstFormDetails.email);
-          if (firstFormDetails.phone) sessionStorage.setItem("userPhone", firstFormDetails.phone);
-        }
-        router.push(`/Form-Submit-Thank-You?submitted=1&sid=${submissionId}`);
+        alert("Thank you for your submission.");
+        setSelectedDate("");
+        setPreferredSlot("");
+        setPropertyName("");
+        setPossessionTimeline("immediately");
       } else {
         alert(data.message || "Failed to submit consultation details.");
       }

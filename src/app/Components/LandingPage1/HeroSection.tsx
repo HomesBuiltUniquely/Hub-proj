@@ -1,15 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode";
 import cityOptions from "./DropDown1";
 import { normalizePhoneNumber } from "@/lib/utils";
-import {
-  consumePostVerifySubmitForPath,
-  executePostVerifyLeadSubmit,
-  savePostVerifySubmitAndReloadForConversion,
-} from "@/lib/otpVerifiedConversionReload";
 import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
 
 const carouselImages = [
@@ -35,7 +30,6 @@ export default function HeroSections({
   submitApiUrl = "/api/contact",
 }: HeroSectionsProps) {
   const router = useRouter();
-  const pathname = usePathname();
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedPincode, setSelectedPincode] = useState("");
@@ -63,34 +57,6 @@ export default function HeroSections({
   useEffect(() => {
     leadSentToCrmRef.current = leadSentToCrm;
   }, [leadSentToCrm]);
-
-  // After OTP verify we full-reload for conversion tags; then finish verified POST once.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const payload = consumePostVerifySubmitForPath(pathname);
-    if (!payload) return;
-
-    setIsSubmitting(true);
-    void executePostVerifyLeadSubmit(payload, router, {
-      home1Ping: async (requestData) => {
-        const home1Payload = {
-          name: requestData.name,
-          email: requestData.email,
-          phoneNumber: requestData.phone,
-          propertyPin: requestData.pincode,
-          interiorSetup: requestData.city,
-          possessionIn: requestData.budget,
-          verificationStatus: requestData.verificationStatus,
-          otpSuccess: requestData.otpSuccess,
-        };
-        await fetch("http://localhost:8081/v1/Home1", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(home1Payload),
-        });
-      },
-    }).finally(() => setIsSubmitting(false));
-  }, [pathname, router]);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -318,26 +284,8 @@ export default function HeroSections({
 
       if (response.ok && data.success) {
         setOtp("");
-        const currentUrl = window.location.href;
-        const requestData = {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: selectedCity,
-          budget: "",
-          pincode: selectedPincode,
-          whatsappConsent: whatsappConsent,
-          pageUrl: currentUrl,
-          verificationStatus: "VERIFIED" as const,
-          otpSuccess: true,
-          skipEmail: false,
-        };
-        savePostVerifySubmitAndReloadForConversion({
-          originPath: window.location.pathname,
-          submitApiUrl: submitApiUrl,
-          requestData,
-          redirectPath: POST_LEAD_SUCCESS_PATH,
-        });
+        // Keep user on OTP modal with "Verifying..." state until submit completes.
+        await handleFinalSubmit("VERIFIED");
         return;
       } else {
         if (data?.reason === "MAX_ATTEMPTS") {
@@ -1565,6 +1513,7 @@ export default function HeroSections({
               </h3>
               <button
                 onClick={handleModalClose}
+                disabled={isOtpVerifying}
                 className="text-gray-500 hover:text-gray-700"
               >
                 ✕
@@ -1572,6 +1521,13 @@ export default function HeroSections({
             </div>
 
             <div>
+              {isOtpVerifying && (
+                <div className="mb-4 rounded-xl bg-gray-100 p-4">
+                  <div className="mb-2 h-3 w-32 animate-pulse rounded bg-gray-300" />
+                  <div className="h-3 w-full animate-pulse rounded bg-gray-200" />
+                  <p className="mt-3 text-sm text-gray-600">Verifying your OTP, please wait...</p>
+                </div>
+              )}
               {isPendingOtpSms ? (
                 <p className="text-gray-700 mb-4 manrope-medium">
                   Sending OTP to {formData.phone}… Please wait.
@@ -1587,7 +1543,7 @@ export default function HeroSections({
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="Enter 4-digit OTP"
                 maxLength={4}
-                disabled={isPendingOtpSms}
+                disabled={isPendingOtpSms || isOtpVerifying}
                 className="w-full border border-gray-300 rounded-xl p-3 mb-4 text-center text-lg font-medium manrope-medium disabled:bg-gray-100 disabled:text-gray-400"
               />
               {!resendVisible && otpTimerSeconds > 0 && !isPendingOtpSms && (
