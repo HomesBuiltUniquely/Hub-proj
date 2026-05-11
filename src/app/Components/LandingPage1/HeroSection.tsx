@@ -505,7 +505,7 @@ export default function HeroSections({
             verificationStatus: requestData.verificationStatus,
             otpSuccess: requestData.otpSuccess,
           };
-          await fetch("http://localhost:8081/v1/Home1", {
+          await fetch("https://hows.hubinterior.com/v1/Home1", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(home1Payload),
@@ -1525,7 +1525,9 @@ export default function HeroSections({
                 <div className="mb-4 rounded-xl bg-gray-100 p-4">
                   <div className="mb-2 h-3 w-32 animate-pulse rounded bg-gray-300" />
                   <div className="h-3 w-full animate-pulse rounded bg-gray-200" />
-                  <p className="mt-3 text-sm text-gray-600">Verifying your OTP, please wait...</p>
+                  <p className="mt-3 text-sm text-gray-600">
+                    Verifying your OTP, please wait...
+                  </p>
                 </div>
               )}
               {isPendingOtpSms ? (

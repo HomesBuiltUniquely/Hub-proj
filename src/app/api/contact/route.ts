@@ -137,6 +137,7 @@ export async function POST(req: Request) {
     }
     // Send Home1 data for Google Ads interior pages/calculator.
     // Keep this server-side so CRM delivery does not depend on browser behavior.
+    // NOTE: HeroSection sends the dropdown selection as `city` (not `possession`).
     else if (!mailOnly && isGoogleAdsLead) {
       try {
         const home1Payload = {
@@ -144,8 +145,8 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: phone || '',
           propertyPin: pincode || '',
-          interiorSetup: possession || '',
-          possessionIn: possession || '',
+          interiorSetup: city || possession || '',
+          possessionIn: possession || city || '',
           verificationStatus: normalizedVerificationStatus,
           otpSuccess: normalizedOtpSuccess,
         };
@@ -178,6 +179,7 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: normalizedPhone,
           propertyPin: pincode || '',
+          interiorSetup: city || possession || '',
           verificationStatus: websiteLeadVerificationStatus,
           otpSuccess: websiteLeadOtpSuccess,
         };
