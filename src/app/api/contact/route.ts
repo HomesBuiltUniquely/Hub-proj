@@ -188,7 +188,7 @@ export async function POST(req: Request) {
 
         console.log('Sending home renovation data to Home1 API:', home1Payload);
 
-        const home1Response = await fetch('http://localhost:8081/v1/Home1', {
+        const home1Response = await fetch('https://hows.hubinterior.com/v1/Home1', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
