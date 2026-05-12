@@ -228,21 +228,6 @@ export default function HeroSections({
         body: JSON.stringify(requestData),
         keepalive: true,
       }).catch(() => {});
-      fetch("https://hows.hubinterior.com/v1/Home1", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: payload.name,
-          email: payload.email,
-          phoneNumber: payload.phone,
-          propertyPin: payload.pincode || null,
-          interiorSetup: payload.city || null,
-          possessionIn: payload.budget || "",
-          verificationStatus: "UNVERIFIED",
-          otpSuccess: false,
-        }),
-        keepalive: true,
-      }).catch(() => {});
     };
     window.addEventListener("beforeunload", handler);
     return () => window.removeEventListener("beforeunload", handler);
@@ -500,29 +485,6 @@ export default function HeroSections({
 
       clearTimeout(timeoutId);
       const responseData = await response.json();
-
-      // Send to Home1 for both VERIFIED and UNVERIFIED
-      (async () => {
-        try {
-          const home1Payload = {
-            name: requestData.name,
-            email: requestData.email,
-            phoneNumber: requestData.phone,
-            propertyPin: requestData.pincode,
-            interiorSetup: requestData.city,
-            possessionIn: requestData.budget,
-            verificationStatus: requestData.verificationStatus,
-            otpSuccess: requestData.otpSuccess,
-          };
-          await fetch("https://hows.hubinterior.com/v1/Home1", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(home1Payload),
-          });
-        } catch (err) {
-          console.warn("Failed to POST to Home1", err);
-        }
-      })();
 
       if (response.ok) {
         if (verificationStatus === "VERIFIED") {

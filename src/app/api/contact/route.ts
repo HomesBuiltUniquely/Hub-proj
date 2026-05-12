@@ -171,6 +171,41 @@ export async function POST(req: Request) {
         console.error('Error sending to Home1 API:', home1Error);
       }
     }
+    // Send home RENOVATION leads to Home1 instead of WebsiteLead.
+    else if (!mailOnly && isHomeRenovationBangalorePage) {
+      try {
+        const home1Payload = {
+          name: name || '',
+          email: email || '',
+          phoneNumber: normalizedPhone,
+          propertyPin: pincode || '',
+          interiorSetup: city || possession || '',
+          possessionIn: budget || '',
+          budget: budget || '',
+          verificationStatus: normalizedVerificationStatus,
+          otpSuccess: normalizedOtpSuccess,
+        };
+
+        console.log('Sending home renovation data to Home1 API:', home1Payload);
+
+        const home1Response = await fetch('http://localhost:8081/v1/Home1', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(home1Payload),
+        });
+
+        if (home1Response.ok) {
+          const home1Text = await home1Response.text();
+          console.log('Home1 API response:', home1Text);
+        } else {
+          console.error('Home1 API error:', home1Response.status, home1Response.statusText);
+        }
+      } catch (home1Error) {
+        console.error('Error sending home renovation to Home1 API:', home1Error);
+      }
+    }
     // Send data to WebsiteLead API only for WEBSITE leads (not Google Ads, not Meta lead pages)
     else if (!mailOnly && !isGoogleAdsLead) {
       try {
