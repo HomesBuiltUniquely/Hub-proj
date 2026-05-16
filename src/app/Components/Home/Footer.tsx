@@ -3,19 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-const contactNumbers = [
-    { label: '+91 889 889 2223', value: '+918898892223', href: 'tel:+918898892223' },
-];
-
 export default function Footer() {
-    const copyNumber = async (phoneNumber: string) => {
-        try {
-            await navigator.clipboard.writeText(phoneNumber);
-        } catch (error) {
-            console.error('Failed to copy number:', error);
-        }
-    };
-
     return (
         <div>
             {/* 3xl Footer - Tailwind Classes */}
@@ -79,6 +67,7 @@ export default function Footer() {
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
                                         <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Career</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
+
                                     </div>
                                 </div>
                             </div>
