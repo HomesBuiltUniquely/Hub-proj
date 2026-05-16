@@ -401,12 +401,7 @@ const ContactSection: React.FC = () => {
                 <span>hello@hubinterior.com</span>
               </div>
 
-              <div className="text-xl flex items-start gap-4 text-black manrope-medium">
-                <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M22 17.92V21a1 1 0 0 1-1.11 1A19.8 19.8 0 0 1 3 4.11 1 1 0 0 1 4 3h3.09A1 1 0 0 1 8 4a16 16 0 0 0 .66 2.3 1 1 0 0 1-.25 1L6.13 8.27a16 16 0 0 0 6.58 6.58l1-1.28a1 1 0 0 1 1-.26A16 16 0 0 0 20 19a1 1 0 0 1 .92 1z" />
-                </svg>
-                <span>+91 889 889 1117 / 889 889 2223</span>
-              </div>
+
             </div>
 
             {/* Social Links */}
@@ -644,12 +639,7 @@ const ContactSection: React.FC = () => {
                 <span>hello@hubinterior.com</span>
               </div>
 
-              <div className="text-xl flex items-start gap-4 text-black manrope-medium">
-                <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M22 17.92V21a1 1 0 0 1-1.11 1A19.8 19.8 0 0 1 3 4.11 1 1 0 0 1 4 3h3.09A1 1 0 0 1 8 4a16 16 0 0 0 .66 2.3 1 1 0 0 1-.25 1L6.13 8.27a16 16 0 0 0 6.58 6.58l1-1.28a1 1 0 0 1 1-.26A16 16 0 0 0 20 19a1 1 0 0 1 .92 1z" />
-                </svg>
-                <span>+91 889 889 1117 / 889 889 2223</span>
-              </div>
+
             </div>
 
             {/* Social Links */}
@@ -889,12 +879,7 @@ const ContactSection: React.FC = () => {
                 <span>hello@hubinterior.com</span>
               </div>
 
-              <div className="text-xl flex items-start gap-4 text-black manrope-medium">
-                <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M22 17.92V21a1 1 0 0 1-1.11 1A19.8 19.8 0 0 1 3 4.11 1 1 0 0 1 4 3h3.09A1 1 0 0 1 8 4a16 16 0 0 0 .66 2.3 1 1 0 0 1-.25 1L6.13 8.27a16 16 0 0 0 6.58 6.58l1-1.28a1 1 0 0 1 1-.26A16 16 0 0 0 20 19a1 1 0 0 1 .92 1z" />
-                </svg>
-                <span>+91 889 889 1117 / 889 889 2223</span>
-              </div>
+
             </div>
 
             {/* Social Links */}

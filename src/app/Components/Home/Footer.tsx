@@ -79,22 +79,6 @@ export default function Footer() {
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
                                         <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Career</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
-                                        <div className="pt-4">
-                                            <p className="text-[17px] manrope-medium mb-3">Quick Connect</p>
-                                            <div className="space-y-2">
-                                                {contactNumbers.map((number) => (
-                                                    <button
-                                                        key={number.href}
-                                                        type="button"
-                                                        onClick={() => copyNumber(number.value)}
-                                                        title={`Copy ${number.label}`}
-                                                        className="block text-[16px] manrope-medium underline underline-offset-4 hover:text-[#ebd657] transition-colors duration-300 text-left"
-                                                    >
-                                                        {number.label}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -179,22 +163,6 @@ export default function Footer() {
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
                                         <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Career</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
-                                        <div className="pt-4">
-                                            <p className="text-[17px] manrope-medium mb-3">Quick Connect</p>
-                                            <div className="space-y-2">
-                                                {contactNumbers.map((number) => (
-                                                    <button
-                                                        key={number.href}
-                                                        type="button"
-                                                        onClick={() => copyNumber(number.value)}
-                                                        title={`Copy ${number.label}`}
-                                                        className="block text-[16px] manrope-medium underline underline-offset-4 hover:text-[#ebd657] transition-colors duration-300 text-left"
-                                                    >
-                                                        {number.label}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -277,22 +245,6 @@ export default function Footer() {
                                         <a href="/ContactUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p> </a>
                                         <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
                                         <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
-                                        <div className="pt-4">
-                                            <p className="text-[17px] manrope-medium mb-3">Quick Connect</p>
-                                            <div className="space-y-2">
-                                                {contactNumbers.map((number) => (
-                                                    <button
-                                                        key={number.href}
-                                                        type="button"
-                                                        onClick={() => copyNumber(number.value)}
-                                                        title={`Copy ${number.label}`}
-                                                        className="block text-[16px] manrope-medium underline underline-offset-4 hover:text-[#ebd657] transition-colors duration-300 text-left"
-                                                    >
-                                                        {number.label}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -379,22 +331,6 @@ export default function Footer() {
                                         <a href="/ContactUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p> </a>
                                         <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
                                         <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
-                                        <div className="pt-4">
-                                            <p className="text-[17px] manrope-medium mb-3">Quick Connect</p>
-                                            <div className="space-y-2">
-                                                {contactNumbers.map((number) => (
-                                                    <button
-                                                        key={number.href}
-                                                        type="button"
-                                                        onClick={() => copyNumber(number.value)}
-                                                        title={`Copy ${number.label}`}
-                                                        className="block text-[16px] manrope-medium underline underline-offset-4 hover:text-[#ebd657] transition-colors duration-300 text-left"
-                                                    >
-                                                        {number.label}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -455,22 +391,6 @@ export default function Footer() {
                                         <Link href="/ContactUs"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
                                         <Link href="/Career"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Career</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Franchise</p></Link>
-                                        <div className="pt-3">
-                                            <p className="text-base manrope-medium mb-2">Quick Connect</p>
-                                            <div className="space-y-2">
-                                                {contactNumbers.map((number) => (
-                                                    <button
-                                                        key={number.href}
-                                                        type="button"
-                                                        onClick={() => copyNumber(number.value)}
-                                                        title={`Copy ${number.label}`}
-                                                        className="block text-base manrope-medium underline underline-offset-4 hover:text-[#ebd657] transition-colors duration-300 text-left"
-                                                    >
-                                                        {number.label}
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -544,20 +464,6 @@ export default function Footer() {
                                     <Link href="/ContactUs"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Contact Us</p></Link>
                                     <Link href="/Career"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Career</p></Link>
                                     <Link href="/interior-design-franchise"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Franchise</p></Link>
-                                    <div className="pt-3">
-                                        <p className="text-sm manrope-medium mb-2">Quick Connect</p>
-                                        <div className="space-y-2">
-                                            {contactNumbers.map((number) => (
-                                                <a
-                                                    key={number.href}
-                                                    href={number.href}
-                                                    className="block text-sm manrope-medium underline underline-offset-4 hover:text-[#ebd657] transition-colors duration-300"
-                                                >
-                                                    {number.label}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
