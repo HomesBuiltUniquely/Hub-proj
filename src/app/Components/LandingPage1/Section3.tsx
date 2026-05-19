@@ -16,17 +16,17 @@ export default function Section3() {
     {
       img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/4bhk_price.jpg",
       type: "4 BHK",
-      price: "8.0 Lakhs Onwards*",
+      price: "5.1 Lakhs Onwards*",
     },
     {
       img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/3bhk_price.jpg",
       type: "3 BHK",
-      price: "6.0 Lakhs Onwards*",
+      price: "4.3 Lakhs Onwards*",
     },
     {
       img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/2bhk_price.jpg",
       type: "2 BHK",
-      price: "4.0 Lakhs Onwards*",
+      price: "3.5 Lakhs Onwards*",
     },
     {
       img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/Modular_kitchen_price.jpeg",
