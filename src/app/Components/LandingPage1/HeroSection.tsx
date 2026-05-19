@@ -139,30 +139,30 @@ export default function HeroSections({
   };
 
   // Keep old behavior for email only: send immediate UNVERIFIED mail on submit.
-  const sendImmediateUnverifiedMail = async () => {
-    try {
-      const currentUrl = window.location.href;
-      await fetch(submitApiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: selectedCity,
-          budget: "",
-          pincode: selectedPincode,
-          whatsappConsent: whatsappConsent,
-          pageUrl: currentUrl,
-          verificationStatus: "UNVERIFIED",
-          otpSuccess: false,
-          mailOnly: true,
-        }),
-      });
-    } catch (error) {
-      console.warn("Immediate unverified mail failed:", error);
-    }
-  };
+  // const sendImmediateUnverifiedMail = async () => {
+  //   try {
+  //     const currentUrl = window.location.href;
+  //     await fetch(submitApiUrl, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         name: formData.name,
+  //         email: formData.email,
+  //         phone: formData.phone,
+  //         city: selectedCity,
+  //         budget: "",
+  //         pincode: selectedPincode,
+  //         whatsappConsent: whatsappConsent,
+  //         pageUrl: currentUrl,
+  //         verificationStatus: "UNVERIFIED",
+  //         otpSuccess: false,
+  //         mailOnly: true,
+  //       }),
+  //     });
+  //   } catch (error) {
+  //     console.warn("Immediate unverified mail failed:", error);
+  //   }
+  // };
 
   // Modal close = fallback: send UNVERIFIED only if not already sent (2 min / verify)
   const handleModalClose = async () => {
@@ -210,27 +210,12 @@ export default function HeroSections({
         pageUrl: typeof window !== "undefined" ? window.location.href : "",
         verificationStatus: "UNVERIFIED",
         otpSuccess: false,
-        skipEmail: true,
+        skipEmail: false,
       };
       fetch(submitApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
-        keepalive: true,
-      }).catch(() => {});
-      fetch("https://hows.hubinterior.com/v1/Home1", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: payload.name,
-          email: payload.email,
-          phoneNumber: payload.phone,
-          propertyPin: payload.pincode || null,
-          interiorSetup: payload.city || null,
-          possessionIn: payload.budget || "",
-          verificationStatus: "UNVERIFIED",
-          otpSuccess: false,
-        }),
         keepalive: true,
       }).catch(() => {});
     };
@@ -344,7 +329,7 @@ export default function HeroSections({
     setIsSendingOtpAuto(true);
     try {
       // Fire-and-forget: do not block OTP modal on slow mail API
-      void sendImmediateUnverifiedMail();
+      // void sendImmediateUnverifiedMail();
       await handleAutoSendOtp();
     } finally {
       heroSubmitLockRef.current = false;
@@ -463,7 +448,7 @@ export default function HeroSections({
     setIsSubmitting(true);
 
     try {
-      const currentUrl = window.location.href;
+      const currentUrl = typeof window !== "undefined" ? window.location.href : "";
       const requestData = {
         name: formData.name,
         email: formData.email,
@@ -476,7 +461,7 @@ export default function HeroSections({
         verificationStatus: verificationStatus,
         otpSuccess: verificationStatus === "VERIFIED",
         // Avoid duplicate UNVERIFIED emails from timer/close/reload.
-        skipEmail: verificationStatus === "UNVERIFIED",
+        skipEmail: false,
       };
 
       const controller = new AbortController();
@@ -492,28 +477,6 @@ export default function HeroSections({
       clearTimeout(timeoutId);
       const responseData = await response.json();
 
-      // Send to Home1 for both VERIFIED and UNVERIFIED
-      (async () => {
-        try {
-          const home1Payload = {
-            name: requestData.name,
-            email: requestData.email,
-            phoneNumber: requestData.phone,
-            propertyPin: requestData.pincode,
-            interiorSetup: requestData.city,
-            possessionIn: requestData.budget,
-            verificationStatus: requestData.verificationStatus,
-            otpSuccess: requestData.otpSuccess,
-          };
-          await fetch("https://hows.hubinterior.com/v1/Home1", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(home1Payload),
-          });
-        } catch (err) {
-          console.warn("Failed to POST to Home1", err);
-        }
-      })();
 
       if (response.ok && responseData.success) {
         if (verificationStatus === "VERIFIED") {

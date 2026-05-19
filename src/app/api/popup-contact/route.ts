@@ -125,6 +125,10 @@ export async function POST(req: Request) {
                   <strong style="color: #555;">Pincode:</strong><br>
                   <span style="color: #333; font-size: 16px;">${pincode || 'Not provided'}</span>
                 </div>
+                <div style="grid-column: span 2; margin-top: 5px;">
+                  <strong style="color: #555;">Interior Setup:</strong><br>
+                  <span style="color: #ef0101; font-size: 16px; font-weight: bold;">${interiorSetup || 'Not provided'}</span>
+                </div>
               </div>
             </div>
 

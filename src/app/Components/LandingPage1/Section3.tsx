@@ -31,7 +31,7 @@ export default function Section3() {
     {
       img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/Modular_kitchen_price.jpeg",
       type: "Modular Kitchen",
-      price: "1.5 Lakhs Onwards*",
+      price: "1.8 Lakhs Onwards*",
     },
   ];
 

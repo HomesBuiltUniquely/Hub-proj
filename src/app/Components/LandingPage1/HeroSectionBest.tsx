@@ -130,30 +130,30 @@ export default function HeroSections() {
   };
 
   // Keep old behavior for email only: send immediate UNVERIFIED mail on submit.
-  const sendImmediateUnverifiedMail = async () => {
-    try {
-      const currentUrl = window.location.href;
-      await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: selectedCity,
-          budget: "",
-          pincode: selectedPincode,
-          whatsappConsent: whatsappConsent,
-          pageUrl: currentUrl,
-          verificationStatus: "UNVERIFIED",
-          otpSuccess: false,
-          mailOnly: true,
-        }),
-      });
-    } catch (error) {
-      console.warn("Immediate unverified mail failed:", error);
-    }
-  };
+  // const sendImmediateUnverifiedMail = async () => {
+  //   try {
+  //     const currentUrl = window.location.href;
+  //     await fetch("/api/contact", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         name: formData.name,
+  //         email: formData.email,
+  //         phone: formData.phone,
+  //         city: selectedCity,
+  //         budget: "",
+  //         pincode: selectedPincode,
+  //         whatsappConsent: whatsappConsent,
+  //         pageUrl: currentUrl,
+  //         verificationStatus: "UNVERIFIED",
+  //         otpSuccess: false,
+  //         mailOnly: true,
+  //       }),
+  //     });
+  //   } catch (error) {
+  //     console.warn("Immediate unverified mail failed:", error);
+  //   }
+  // };
 
   // Modal close = fallback: send UNVERIFIED only if not already sent (2 min / verify)
   const handleModalClose = async () => {
@@ -201,7 +201,7 @@ export default function HeroSections() {
         pageUrl: typeof window !== "undefined" ? window.location.href : "",
         verificationStatus: "UNVERIFIED",
         otpSuccess: false,
-        skipEmail: true,
+        skipEmail: false,
       };
       // Only /api/contact — it already POSTs MetaLead for best-interior URLs (avoid duplicate MetaLead)
       fetch("/api/contact", {
@@ -314,7 +314,7 @@ export default function HeroSections() {
     heroSubmitLockRef.current = true;
     setIsSendingOtpAuto(true);
     try {
-      void sendImmediateUnverifiedMail();
+      // void sendImmediateUnverifiedMail();
       await handleAutoSendOtp();
     } finally {
       heroSubmitLockRef.current = false;
@@ -432,7 +432,7 @@ export default function HeroSections() {
     setIsSubmitting(true);
 
     try {
-      const currentUrl = window.location.href;
+      const currentUrl = typeof window !== "undefined" ? window.location.href : "";
       const requestData = {
         name: formData.name,
         email: formData.email,
@@ -445,7 +445,7 @@ export default function HeroSections() {
         verificationStatus: verificationStatus,
         otpSuccess: verificationStatus === "VERIFIED",
         // Avoid duplicate UNVERIFIED emails from timer/close/reload.
-        skipEmail: verificationStatus === "UNVERIFIED",
+        skipEmail: false,
       };
 
       const controller = new AbortController();
