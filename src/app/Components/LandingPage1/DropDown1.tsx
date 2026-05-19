@@ -1,4 +1,8 @@
 const cityOptions = [
+  "2 BHK Interiors starts @ 3.5 Lakhs",
+  "3 BHK Interiors starts @ 4.3 Lakhs",
+  "4 BHK Interiors starts @ 5.1 Lakhs",
+  /*
   "2 BHK Essential Interiors - 4.0 Lakhs Onwards ( Modular Kitchen, Wardrobes, TV Unit )",
   "3 BHK Essential Interiors - 6.0 Lakhs Onwards ( Modular Kitchen, Wardrobes, TV Unit )",
   "4 BHK Essential Interiors - 8.0 Lakhs Onwards ( Modular Kitchen, Wardrobes, TV Unit )",
@@ -8,6 +12,7 @@ const cityOptions = [
   "2 BHK Luxury Interiors - 9 Lakhs+",
   "3 BHK Luxury Interiors - 12 Lakhs+",
   "4 BHK Luxury Interiors - 15 Lakhs+",
+  */
 ];
 
 export default cityOptions;
