@@ -210,7 +210,7 @@ export default function HeroSections({
         pageUrl: typeof window !== "undefined" ? window.location.href : "",
         verificationStatus: "UNVERIFIED",
         otpSuccess: false,
-        skipEmail: true,
+        skipEmail: false,
       };
       fetch(submitApiUrl, {
         method: "POST",
@@ -329,7 +329,7 @@ export default function HeroSections({
     setIsSendingOtpAuto(true);
     try {
       // Fire-and-forget: do not block OTP modal on slow mail API
-      void sendImmediateUnverifiedMail();
+      // void sendImmediateUnverifiedMail();
       await handleAutoSendOtp();
     } finally {
       heroSubmitLockRef.current = false;
@@ -448,7 +448,7 @@ export default function HeroSections({
     setIsSubmitting(true);
 
     try {
-      const currentUrl = window.location.href;
+      const currentUrl = typeof window !== "undefined" ? window.location.href : "";
       const requestData = {
         name: formData.name,
         email: formData.email,
@@ -461,7 +461,7 @@ export default function HeroSections({
         verificationStatus: verificationStatus,
         otpSuccess: verificationStatus === "VERIFIED",
         // Avoid duplicate UNVERIFIED emails from timer/close/reload.
-        skipEmail: verificationStatus === "UNVERIFIED",
+        skipEmail: false,
       };
 
       const controller = new AbortController();
