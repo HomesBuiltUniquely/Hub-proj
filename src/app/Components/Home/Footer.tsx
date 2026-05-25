@@ -3,6 +3,68 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+function QuickConnectSection({
+    titleClassName,
+    itemClassName,
+    wrapperClassName = '',
+}: {
+    titleClassName: string;
+    itemClassName: string;
+    wrapperClassName?: string;
+}) {
+    return (
+        <div className={wrapperClassName}>
+            <h1 className={titleClassName}>Quick Connect</h1>
+            <div className="space-y-4">
+                <a
+                    href="tel:07316914731"
+                    className={`${itemClassName} flex items-start gap-3`}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="mt-0.5 h-4 w-4 flex-shrink-0"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M19.5 9.75a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 1.5 0v2.69l4.72-4.72a.75.75 0 1 1 1.06 1.06L16.06 9h2.69a.75.75 0 0 1 .75.75Z"
+                            clipRule="evenodd"
+                        />
+                        <path
+                            fillRule="evenodd"
+                            d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                    <span>
+                        <span className="block">Via Call</span>
+                        <span className="block">07316914731</span>
+                    </span>
+                </a>
+                <a
+                    href="mailto:hello@hubinterior.com"
+                    className={`${itemClassName} flex items-start gap-3`}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="mt-0.5 h-4 w-4 flex-shrink-0"
+                    >
+                        <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                        <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                    </svg>
+                    <span>
+                        <span className="block">Via Email</span>
+                        <span className="block break-all">hello@hubinterior.com</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    );
+}
+
 export default function Footer() {
     return (
         <div>
@@ -69,6 +131,11 @@ export default function Footer() {
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
 
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[180px]"
+                                        titleClassName="text-[18px] manrope mb-6"
+                                        itemClassName="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                             <div className="flex justify-between mt-10 ">
@@ -153,6 +220,11 @@ export default function Footer() {
                                         <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Career</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[180px]"
+                                        titleClassName="text-[18px] manrope mb-6"
+                                        itemClassName="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                             <div className="flex justify-between mt-10">
@@ -235,6 +307,11 @@ export default function Footer() {
                                         <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
                                         <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[180px]"
+                                        titleClassName="text-[18px] manrope mb-6"
+                                        itemClassName="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                             <div className="flex justify-between mt-10">
@@ -321,6 +398,11 @@ export default function Footer() {
                                         <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
                                         <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[180px]"
+                                        titleClassName="text-[18px] manrope mb-6"
+                                        itemClassName="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -381,6 +463,11 @@ export default function Footer() {
                                         <Link href="/Career"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Career</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[220px]"
+                                        titleClassName="text-lg manrope font-medium mb-5"
+                                        itemClassName="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -454,6 +541,11 @@ export default function Footer() {
                                     <Link href="/Career"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Career</p></Link>
                                     <Link href="/interior-design-franchise"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Franchise</p></Link>
                                 </div>
+                                <QuickConnectSection
+                                    wrapperClassName="mt-6"
+                                    titleClassName="text-base manrope mb-4"
+                                    itemClassName="text-xs manrope-medium hover:text-[#ebd657] transition-colors cursor-pointer"
+                                />
                             </div>
                         </div>
 
