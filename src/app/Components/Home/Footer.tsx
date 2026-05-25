@@ -39,7 +39,7 @@ function QuickConnectSection({
                     </svg>
                     <span>
                         <span className="block">Via Call</span>
-                        <span className="block">07316914731</span>
+                        <span className="block underline">07316914731</span>
                     </span>
                 </a>
                 <a
