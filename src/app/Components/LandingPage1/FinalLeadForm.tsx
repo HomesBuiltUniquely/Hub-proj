@@ -197,7 +197,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   }, [formData, selectedPincode, isVerified, calculatorData, router]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.email || !formData.phone || !selectedPincode) {
+    if (!formData.name || !formData.phone || !selectedPincode) {
       return;
     }
     
@@ -231,6 +231,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             required
             className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
+          {/* Email field hidden per request.
           <input
             type="email"
             name="email"
@@ -240,6 +241,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             required
             className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
+          */}
           <input
             type="tel"
             name="phone"

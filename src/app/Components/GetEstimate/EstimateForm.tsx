@@ -239,6 +239,7 @@ const EstimateForm: React.FC = () => {
           </div>
         )}
 
+        {/* Email field hidden per request.
         <div>
           <input
             type="email"
@@ -251,6 +252,7 @@ const EstimateForm: React.FC = () => {
             placeholder="Email*"
           />
         </div>
+        */}
 
         <div>
           <input

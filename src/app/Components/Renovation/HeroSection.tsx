@@ -308,10 +308,11 @@ export default function HeroSections({
       alert("Please enter your name.");
       return;
     }
-    if (!formData.email) {
-      alert("Please enter your email.");
-      return;
-    }
+    // Email field hidden per request.
+    // if (!formData.email) {
+    //   alert("Please enter your email.");
+    //   return;
+    // }
     if (!formData.phone) {
       alert("Please enter your phone number.");
       return;
@@ -739,7 +740,7 @@ export default function HeroSections({
                     className="w-full sm:w-[250px] sm:mx-auto h-[50px] bg-[#f1f2f6] sm:mt-12 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 pr-6 sm:pl-8 sm:pr-8 placeholder-gray-400 manrope-medium text-gray-700"
                   />
 
-                  {/* Email Input */}
+                  {/* Email Input hidden per request.
                   <div className="flex flex-col w-full sm:w-[250px] sm:mx-auto">
                     <input
                       type="email"
@@ -754,6 +755,7 @@ export default function HeroSections({
                       <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
                     </div>
                   </div>
+                  */}
 
                   {/* Phone and Pincode Row */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 sm:justify-center sm:mt-10">
@@ -941,7 +943,7 @@ export default function HeroSections({
                     />
                   </div>
 
-                  {/* Email Input */}
+                  {/* Email Input hidden per request.
                   <div className="flex flex-col justify-center items-center">
                     <input
                       type="email"
@@ -956,6 +958,7 @@ export default function HeroSections({
                       <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
                     </div>
                   </div>
+                  */}
 
                   {/* Phone Input */}
                   <div className="flex flex-col gap-4 justify-center mt-6 sm:mt-10">
@@ -1171,7 +1174,7 @@ export default function HeroSections({
                     />
                   </div>
 
-                  {/* Email Input */}
+                  {/* Email Input hidden per request.
                   <div className="flex flex-col justify-center items-center">
                     <input
                       type="email"
@@ -1186,6 +1189,7 @@ export default function HeroSections({
                       <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
                     </div>
                   </div>
+                  */}
 
                   {/* Phone Input */}
                   <div className="flex flex-col gap-4 justify-center mt-6 sm:mt-5">
@@ -1404,7 +1408,7 @@ export default function HeroSections({
                     />
                   </div>
 
-                  {/* Email Input */}
+                  {/* Email Input hidden per request.
                   <div className="flex flex-col justify-center items-center mt-1">
                     <input
                       type="email"
@@ -1419,6 +1423,7 @@ export default function HeroSections({
                       <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">Add Primary Email To Receive Quote</p>
                     </div>
                   </div>
+                  */}
 
                   {/* Phone Input */}
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-5">

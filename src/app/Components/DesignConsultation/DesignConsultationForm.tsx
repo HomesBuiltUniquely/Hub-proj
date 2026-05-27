@@ -91,7 +91,9 @@ function FormSection({
 
       <div className="flex flex-col gap-4">
         <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Full Name" className={inputClass} />
+        {/* Email field hidden per request.
         <input type="email" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} placeholder="Email Address" className={inputClass} />
+        */}
         <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="Phone Number" className={inputClass} />
       </div>
 

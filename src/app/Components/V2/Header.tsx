@@ -240,7 +240,9 @@ export default function Header() {
           <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
             <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
             <input type="tel" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
+            {/* Email field hidden per request.
             <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
+            */}
             <input type="text" name="pincode" placeholder="Pincode" value={form.pincode} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
             <div className="flex items-center gap-2 text-sm md:text-base">
               <input required id="confirm-details" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-blue-600" />
