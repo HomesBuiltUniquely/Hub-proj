@@ -303,7 +303,7 @@ export default function HeroSections() {
       return;
     }
     if (!selectedCity) {
-      alert("Please choose your interior setup.");
+      alert("Please select your budget for home interiors.");
       return;
     }
     if (!whatsappConsent) {
@@ -781,7 +781,7 @@ export default function HeroSections() {
                         value=""
                         disabled
                       >
-                        Choose Your Interior Setup *
+                        What is your budget for home interiors?*
                       </option>
                       {cityOptions.map((option: string) => (
                         <option key={option} value={option}>
@@ -948,7 +948,7 @@ export default function HeroSections() {
                         className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate">
-                          {selectedCity || "Choose Your Interior Setup"}
+                          {selectedCity || "What is your budget for home interiors?"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
@@ -1138,7 +1138,7 @@ export default function HeroSections() {
                         className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate whitespace-nowrap overflow-hidden max-w-[430px]">
-                          {selectedCity || "Choose Your Interior Setup"}
+                          {selectedCity || "What is your budget for home interiors?"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
@@ -1335,7 +1335,7 @@ export default function HeroSections() {
                         className={`w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate">
-                          {selectedCity || "Choose Your Interior Setup"}
+                          {selectedCity || "What is your budget for home interiors?"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
