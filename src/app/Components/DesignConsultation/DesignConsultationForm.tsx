@@ -60,7 +60,6 @@ function ConsultationCard({
 
 function FormSection({
   fullName, setFullName,
-  emailAddress, setEmailAddress,
   phoneNumber, setPhoneNumber,
   consultationMode, setConsultationMode,
   selectedDate, setSelectedDate,
@@ -69,7 +68,6 @@ function FormSection({
   possessionTimeline, setPossessionTimeline,
 }: {
   fullName: string; setFullName: (v: string) => void;
-  emailAddress: string; setEmailAddress: (v: string) => void;
   phoneNumber: string; setPhoneNumber: (v: string) => void;
   consultationMode: ConsultationMode; setConsultationMode: (v: ConsultationMode) => void;
   selectedDate: string; setSelectedDate: (v: string) => void;
@@ -223,7 +221,6 @@ function BenefitsSection({
 
 export default function DesignConsultationForm() {
   const [fullName, setFullName] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [consultationMode, setConsultationMode] = useState<ConsultationMode>("experience-center");
   const [selectedDate, setSelectedDate] = useState("");
@@ -239,7 +236,7 @@ export default function DesignConsultationForm() {
     return () => clearInterval(interval);
   }, []);
 
-  const formProps = { fullName, setFullName, emailAddress, setEmailAddress, phoneNumber, setPhoneNumber, consultationMode, setConsultationMode, selectedDate, setSelectedDate, preferredSlot, setPreferredSlot, propertyName, setPropertyName, possessionTimeline, setPossessionTimeline };
+  const formProps = { fullName, setFullName, phoneNumber, setPhoneNumber, consultationMode, setConsultationMode, selectedDate, setSelectedDate, preferredSlot, setPreferredSlot, propertyName, setPropertyName, possessionTimeline, setPossessionTimeline };
 
   return (
     <div className="bg-[#F1F2F6] min-h-screen manrope">

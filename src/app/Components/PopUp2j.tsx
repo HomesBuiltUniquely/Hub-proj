@@ -43,7 +43,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         "562130", "562149", "562157", "562162", "563163", "635103"];
 
     const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const [email] = useState("");
     const [phone, setPhone] = useState("");
     const [pin, setPin] = useState("");
     const [interiorSetup, setInteriorSetup] = useState("");
