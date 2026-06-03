@@ -207,7 +207,7 @@ export function HeroSection() {
         };
 
         // Basic validation
-        if (!updatedForm.name || !updatedForm.email || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
+        if (!updatedForm.name || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
             setSubmitMessage("Please fill in all required fields");
             return;
         }
@@ -336,7 +336,7 @@ export function HeroSection() {
         };
 
         // Basic validation
-        if (!updatedForm.name || !updatedForm.email || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
+        if (!updatedForm.name || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
             setSubmitMessage("Please fill in all required fields");
             return;
         }
@@ -482,6 +482,7 @@ export function HeroSection() {
                                                 className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
                                             />
                                         </div>
+                                        {/* Email field hidden per request.
                                         <div className="flex-1">
                                             <input
                                                 type="text"
@@ -492,6 +493,7 @@ export function HeroSection() {
                                                 className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
                                             />
                                         </div>
+                                        */}
                                     </div>
 
                                     {/* Phone and Pincode Row */}
@@ -802,7 +804,7 @@ export function HeroSection() {
                                     required
                                 />
 
-                                {/* Email Input */}
+                                {/* Email Input hidden per request.
                                 <input
                                     type="email"
                                     name="email"
@@ -811,6 +813,7 @@ export function HeroSection() {
                                     className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 text-white"
                                     placeholder="Email"
                                 />
+                                */}
 
                                 {/* Phone Input */}
                                 <input

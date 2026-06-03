@@ -253,7 +253,7 @@ const ContactSection: React.FC = () => {
             <form onSubmit={handleSubmit} className="relative z-10 md:w-[550px] bg-transparent space-y-8 -mt-10 mr-10 pointer-events-auto">
               {/* First & Last Name */}
               <div className="flex gap-6">
-                <div className="w-1/2">
+                <div className="w-full">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">First Name*</p>
                   <input
                     name="firstName"
@@ -264,7 +264,7 @@ const ContactSection: React.FC = () => {
                   />
                 </div>
 
-                <div className="w-1/2">
+                <div className="w-full">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Last Name</p>
                   <input
                     name="lastName"
@@ -277,7 +277,8 @@ const ContactSection: React.FC = () => {
 
               {/* Email & Phone */}
               <div className="flex gap-6">
-                <div className="w-1/2">
+                {/* Email field hidden per request.
+                <div className="w-full">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Email*</p>
                   <input
                     name="email"
@@ -288,6 +289,7 @@ const ContactSection: React.FC = () => {
                     required
                   />
                 </div>
+                */}
 
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Phone Number*</p>
@@ -529,6 +531,7 @@ const ContactSection: React.FC = () => {
 
               {/* Email & Phone */}
               <div className="flex gap-6">
+                {/* Email field hidden per request.
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Email*</p>
                   <input
@@ -540,6 +543,7 @@ const ContactSection: React.FC = () => {
                     required
                   />
                 </div>
+                */}
 
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Phone Number*</p>
@@ -784,6 +788,7 @@ const ContactSection: React.FC = () => {
 
               {/* Email & Phone */}
               <div className="flex gap-5">
+                {/* Email field hidden per request.
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Email*</p>
                   <input
@@ -795,6 +800,7 @@ const ContactSection: React.FC = () => {
                     required
                   />
                 </div>
+                */}
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Phone Number*</p>
                   <input
@@ -1029,7 +1035,7 @@ const ContactSection: React.FC = () => {
                 className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               />
 
-              {/* Email */}
+              {/* Email field hidden per request.
               <input
                 name="email"
                 type="email"
@@ -1040,6 +1046,7 @@ const ContactSection: React.FC = () => {
                 required
                 className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               />
+              */}
 
               {/* Phone */}
               <input

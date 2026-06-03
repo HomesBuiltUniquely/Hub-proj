@@ -184,6 +184,7 @@ const MobileFormSection: React.FC = () => {
               />
             </div>
 
+            {/* Email field hidden per request.
             <div>
               <input
                 type="email"
@@ -196,6 +197,7 @@ const MobileFormSection: React.FC = () => {
                 placeholder="Email"
               />
             </div>
+            */}
 
             <div>
               <input

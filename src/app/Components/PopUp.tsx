@@ -43,7 +43,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         "562130", "562149", "562157", "562162", "563163", "635103"];
 
     const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const [email] = useState("");
     const [phone, setPhone] = useState("");
     const [pin, setPin] = useState("");
     const [interiorSetup, setInteriorSetup] = useState("");
@@ -60,7 +60,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
     const pinRef = useRef<HTMLDivElement>(null);
     const prevPhoneRef = useRef<string>('');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const showInteriorSetup = pin.length === 6;
 
     // Reset OTP when phone number changes
@@ -199,14 +199,15 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
             return;
         }
 
-        if (!name.trim() || !email.trim() || !phone.trim() || !pin.trim() || !interiorSetup.trim()) {
+        if (!name.trim() || !phone.trim() || !pin.trim() || !interiorSetup.trim()) {
             setError("All fields are mandatory");
             return;
         }
-        if (!emailRegex.test(email.trim())) {
-            setError("Enter a valid email address");
-            return;
-        }
+        // Email validation hidden per request.
+        // if (!emailRegex.test(email.trim())) {
+        //     setError("Enter a valid email address");
+        //     return;
+        // }
         if (phone.length !== 10) {
             setError("Enter a valid 10-digit phone number");
             return;
@@ -305,6 +306,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:ring-0 focus:outline-none"
                             />
 
+                            {/* Email field hidden per request.
                             <input
                                 type="email"
                                 placeholder="Email"
@@ -315,6 +317,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 }}
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400 focus:border-red-500 focus:ring-0 focus:outline-none"
                             />
+                            */}
 
                             <div className="relative">
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 font-medium">+91</span>
@@ -484,6 +487,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 className="py-2 px-4 manrope-medium rounded-full border border-gray-400"
                             />
 
+                            {/* Email field hidden per request.
                             <input
                                 type="email"
                                 placeholder="Email"
@@ -494,6 +498,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 }}
                                 className="w-full py-2 px-4 manrope-medium rounded-full border border-gray-400"
                             />
+                            */}
                             
                             <div className="relative">
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 font-medium">+91</span>
