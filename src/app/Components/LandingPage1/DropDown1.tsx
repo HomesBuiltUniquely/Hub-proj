@@ -1,9 +1,9 @@
 const cityOptions = [
 
-  "3 - 5 Lakhs",    
-  "5 - 7 Lakhs",
-  "7 - 10 Lakhs",
-  "10+ Lakhs"
+"4 - 6 Lakhs",
+"6 - 8 Lakhs",
+"8 - 10 Lakhs",
+"10+ Lakhs"
   // "2 BHK Interiors starts @ 3.5 Lakhs",
   // "3 BHK Interiors starts @ 4.3 Lakhs",
   // "4 BHK Interiors starts @ 5.1 Lakhs",
