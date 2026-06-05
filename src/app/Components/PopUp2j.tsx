@@ -408,7 +408,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 required
                             >
                                 <option value="" disabled>
-                                    Choose Your Interior Setup
+                                    What is your budget for home interiors ?
                                 </option>
                                 {cityOptions.map((option: string) => (
                                     <option key={option} value={option}>
@@ -586,7 +586,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                                 required
                             >
                                 <option value="" disabled>
-                                    Choose Your Interior Setup
+                                    What is your budget for home interiors ?
                                 </option>
                                 {cityOptions.map((option: string) => (
                                     <option key={option} value={option}>

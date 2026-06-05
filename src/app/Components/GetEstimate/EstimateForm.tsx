@@ -280,7 +280,7 @@ const EstimateForm: React.FC = () => {
               className="w-full px-4 py-4 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 text-base"
             >
               <option value="" disabled>
-                Choose Your Interior Setup*
+                What is your budget for home interiors ?*
               </option>
               {cityOptions.map((option: string) => (
                 <option key={option} value={option}>
