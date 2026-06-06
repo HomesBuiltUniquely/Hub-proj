@@ -1,9 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { normalizePhoneNumber } from "@/lib/utils";
+import { Pincode } from "../LandingPage1/Pincode";
 
 type ConsultationMode = "experience-center" | "video-call";
-type PossessionTimeline = "immediately" | "0-3-months" | "3-6-months";
+type PossessionTimeline =
+  | "immediately"
+  | "0-3-months"
+  | "3-6-months"
+  | "more-than-6-months"
+  | "under-construction"
+  | "construction-not-yet-ready";
 
 const preferredSlots = [
   "09:00 AM - 11:00 AM",
@@ -14,19 +22,11 @@ const preferredSlots = [
 ];
 
 const carouselImages = [
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/modular_litchen.jpg",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/relaxing_space.jpg",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/TvUnit_room.jpg",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/bedroom.jpg",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/dining_unit.jpg",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/25%25discount_home_interior.jpeg",
 ];
 
 const carouselImages1 = [
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/living_room_1.png",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/Modular_kitchen_3.png",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/living_room_4.png",
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/Google_ads_LP1/modular_kitchen_2.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/25%25discount_home_interior.jpeg",
 ];
 
 function ConsultationCard({
@@ -59,45 +59,208 @@ function ConsultationCard({
 }
 
 function FormSection({
-  fullName, setFullName,
-  phoneNumber, setPhoneNumber,
-  consultationMode, setConsultationMode,
-  selectedDate, setSelectedDate,
-  preferredSlot, setPreferredSlot,
-  propertyName, setPropertyName,
-  possessionTimeline, setPossessionTimeline,
+  fullName,
+  setFullName,
+  phoneNumber,
+  setPhoneNumber,
+  selectedPincode,
+  setSelectedPincode,
+  isPhoneVerified,
+  otpSent,
+  otp,
+  setOtp,
+  otpError,
+  isPendingOtpSms,
+  isOtpVerifying,
+  isSendingOtp,
+  otpTimerSeconds,
+  resendVisible,
+  onSendOtp,
+  onVerifyOtp,
+  onResendOtp,
+  consultationMode,
+  setConsultationMode,
+  selectedDate,
+  setSelectedDate,
+  preferredSlot,
+  setPreferredSlot,
+  propertyName,
+  setPropertyName,
+  possessionTimeline,
+  setPossessionTimeline,
+  onSubmit,
+  isSubmitting,
 }: {
-  fullName: string; setFullName: (v: string) => void;
-  phoneNumber: string; setPhoneNumber: (v: string) => void;
-  consultationMode: ConsultationMode; setConsultationMode: (v: ConsultationMode) => void;
-  selectedDate: string; setSelectedDate: (v: string) => void;
-  preferredSlot: string; setPreferredSlot: (v: string) => void;
-  propertyName: string; setPropertyName: (v: string) => void;
-  possessionTimeline: PossessionTimeline; setPossessionTimeline: (v: PossessionTimeline) => void;
+  fullName: string;
+  setFullName: (v: string) => void;
+  phoneNumber: string;
+  setPhoneNumber: (v: string) => void;
+  selectedPincode: string;
+  setSelectedPincode: (v: string) => void;
+  isPhoneVerified: boolean;
+  otpSent: boolean;
+  otp: string;
+  setOtp: (v: string) => void;
+  otpError: string;
+  isPendingOtpSms: boolean;
+  isOtpVerifying: boolean;
+  isSendingOtp: boolean;
+  otpTimerSeconds: number;
+  resendVisible: boolean;
+  onSendOtp: () => void;
+  onVerifyOtp: () => void;
+  onResendOtp: () => void;
+  consultationMode: ConsultationMode;
+  setConsultationMode: (v: ConsultationMode) => void;
+  selectedDate: string;
+  setSelectedDate: (v: string) => void;
+  preferredSlot: string;
+  setPreferredSlot: (v: string) => void;
+  propertyName: string;
+  setPropertyName: (v: string) => void;
+  possessionTimeline: PossessionTimeline;
+  setPossessionTimeline: (v: PossessionTimeline) => void;
+  onSubmit: () => void;
+  isSubmitting: boolean;
 }) {
   const inputClass =
     "h-[58px] w-full rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
 
   return (
-    <form className="w-full" onSubmit={(e) => e.preventDefault()}>
-
+    <form
+      className="w-full"
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit();
+      }}
+    >
       {/* STEP 1 — Personal Details */}
       <div className="mb-5 flex items-center gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">1</div>
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+          1
+        </div>
         <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">Personal Details</h2>
       </div>
 
       <div className="flex flex-col gap-4">
-        <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Full Name" className={inputClass} />
-        {/* Email field hidden per request.
-        <input type="email" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} placeholder="Email Address" className={inputClass} />
-        */}
-        <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="Phone Number" className={inputClass} />
+        <input
+          type="text"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          placeholder="Full Name"
+          className={inputClass}
+        />
+        <div className="relative">
+          <input
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(normalizePhoneNumber(e.target.value))}
+            placeholder="Phone Number"
+            className={inputClass}
+          />
+          {isPhoneVerified && (
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[12px] font-semibold text-green-600 manrope">
+              Verified
+            </span>
+          )}
+        </div>
+        {phoneNumber.length === 10 && !isPhoneVerified && (
+          <div className="flex flex-col gap-3">
+            {!otpSent ? (
+              <button
+                type="button"
+                onClick={onSendOtp}
+                disabled={isSendingOtp || isPendingOtpSms}
+                className="h-[50px] w-full rounded-[14px] bg-[#EF2B2D] text-[15px] font-[700] text-white manrope transition-all hover:bg-[#D92123] disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSendingOtp || isPendingOtpSms ? "Sending OTP..." : "Send OTP"}
+              </button>
+            ) : (
+              <>
+                {isOtpVerifying ? (
+                  <div className="rounded-xl bg-gray-100 p-4">
+                    <div className="mb-2 h-3 w-32 animate-pulse rounded bg-gray-300" />
+                    <div className="h-3 w-full animate-pulse rounded bg-gray-200" />
+                    <p className="mt-3 text-sm text-[#6A7280] manrope">Verifying your OTP, please wait...</p>
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-[13px] text-[#6A7280] manrope">
+                      Enter the 4-digit OTP sent to {phoneNumber}
+                    </p>
+                    <input
+                      type="text"
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 4))}
+                      placeholder="Enter 4-digit OTP"
+                      maxLength={4}
+                      disabled={isPendingOtpSms || isOtpVerifying}
+                      className={`${inputClass} text-center`}
+                    />
+                    {!resendVisible && otpTimerSeconds > 0 && !isPendingOtpSms && (
+                      <p className="text-[12px] text-[#9AA1AE] manrope">
+                        Resend OTP in {Math.floor(otpTimerSeconds / 60)}:
+                        {(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                      </p>
+                    )}
+                    <div className="flex gap-3">
+                      <button
+                        type="button"
+                        onClick={onVerifyOtp}
+                        disabled={isPendingOtpSms || isOtpVerifying || otp.length !== 4}
+                        className={`${resendVisible ? "flex-1" : "w-full"} h-[50px] rounded-[14px] bg-[#DDCDC1] text-[15px] font-[700] text-amber-950 manrope transition-all hover:bg-[#c4b5a8] disabled:opacity-50 disabled:cursor-not-allowed`}
+                      >
+                        {isOtpVerifying ? "Verifying..." : "Verify OTP"}
+                      </button>
+                      {resendVisible && (
+                        <button
+                          type="button"
+                          onClick={onResendOtp}
+                          disabled={isSendingOtp || isPendingOtpSms}
+                          className="flex-1 h-[50px] rounded-[14px] bg-[#ECEFF4] text-[15px] font-[600] text-[#24262B] manrope transition-all hover:bg-[#E2E6ED] disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {isSendingOtp || isPendingOtpSms ? "Sending..." : "Resend OTP"}
+                        </button>
+                      )}
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+            {otpError && (
+              <p className="text-[12px] text-red-500 manrope text-center">{otpError}</p>
+            )}
+          </div>
+        )}
+
+        <div className="relative group">
+          <select
+            value={selectedPincode}
+            onChange={(e) => setSelectedPincode(e.target.value)}
+            className={`${inputClass} appearance-none cursor-pointer ${!selectedPincode ? "text-[#9AA1AE]" : ""}`}
+          >
+            <option value="" disabled>
+              Property Pincode ( Bangalore Only ) *
+            </option>
+            {Pincode.map((pin) => (
+              <option key={pin} value={pin}>
+                {pin}
+              </option>
+            ))}
+          </select>
+          <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#9AA1AE]">
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </span>
+        </div>
       </div>
 
       {/* STEP 2 — Consultation Mode */}
       <div className="mt-8 mb-5 flex items-center gap-3 border-t border-[#ECEFF4] pt-8">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">2</div>
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+          2
+        </div>
         <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">Consultation Mode</h2>
       </div>
 
@@ -107,7 +270,11 @@ function FormSection({
           title="Experience Center Visit"
           icon={
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 20h16" /><path d="M7 20v-7h10v7" /><path d="M5 13h14" /><path d="M6 8h12" /><path d="M8 8V5h8v3" />
+              <path d="M4 20h16" />
+              <path d="M7 20v-7h10v7" />
+              <path d="M5 13h14" />
+              <path d="M6 8h12" />
+              <path d="M8 8V5h8v3" />
             </svg>
           }
           onClick={() => setConsultationMode("experience-center")}
@@ -126,11 +293,31 @@ function FormSection({
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-4">
-        <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className={inputClass} />
+        <div className="relative">
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            className={`${inputClass} [color-scheme:light]`}
+          />
+          {!selectedDate && (
+            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope lg:hidden">
+              Select Date
+            </span>
+          )}
+        </div>
         <div className="relative group">
-          <select value={preferredSlot} onChange={(e) => setPreferredSlot(e.target.value)} className={`${inputClass} appearance-none cursor-pointer`}>
+          <select
+            value={preferredSlot}
+            onChange={(e) => setPreferredSlot(e.target.value)}
+            className={`${inputClass} appearance-none cursor-pointer`}
+          >
             <option value="">Preferred Slot</option>
-            {preferredSlots.map((slot) => <option key={slot} value={slot}>{slot}</option>)}
+            {preferredSlots.map((slot) => (
+              <option key={slot} value={slot}>
+                {slot}
+              </option>
+            ))}
           </select>
           <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#9AA1AE]">
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -142,17 +329,28 @@ function FormSection({
 
       {/* STEP 3 — Property & Possession */}
       <div className="mt-8 mb-5 flex items-center gap-3 border-t border-[#ECEFF4] pt-8">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">3</div>
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+          3
+        </div>
         <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">Property & Possession</h2>
       </div>
 
-      <input type="text" value={propertyName} onChange={(e) => setPropertyName(e.target.value)} placeholder="Property Name" className={inputClass} />
+      <input
+        type="text"
+        value={propertyName}
+        onChange={(e) => setPropertyName(e.target.value)}
+        placeholder="Property Name/Individual House"
+        className={inputClass}
+      />
 
       <div className="mt-4 flex flex-wrap gap-3">
         {[
           { id: "immediately" as PossessionTimeline, label: "Immediately" },
           { id: "0-3-months" as PossessionTimeline, label: "0 - 3 months" },
           { id: "3-6-months" as PossessionTimeline, label: "3 - 6 months" },
+          { id: "more-than-6-months" as PossessionTimeline, label: "More than 6 months" },
+          { id: "under-construction" as PossessionTimeline, label: "Under construction" },
+          { id: "construction-not-yet-ready" as PossessionTimeline, label: "Construction not yet ready" },
         ].map((item) => (
           <button
             key={item.id}
@@ -169,14 +367,15 @@ function FormSection({
         ))}
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
-        className="flex h-[60px] w-full mt-10 items-center justify-center gap-2 bg-[#EF2B2D] hover:bg-[#D92123] shadow-[0_12px_24px_-8px_rgba(239,43,45,0.6)] hover:shadow-[0_16px_32px_-8px_rgba(239,43,45,0.7)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 text-[18px] font-[800] text-white manrope rounded-full group"
+        disabled={isSubmitting}
+        className="flex h-[60px] w-full mt-10 items-center justify-center gap-2 bg-[#EF2B2D] hover:bg-[#D92123] shadow-[0_12px_24px_-8px_rgba(239,43,45,0.6)] hover:shadow-[0_16px_32px_-8px_rgba(239,43,45,0.7)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 text-[18px] font-[800] text-white manrope rounded-full group disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Book Now
+        {isSubmitting ? "Submitting..." : "Book Now"}
         <svg viewBox="0 0 24 24" className="h-5 w-5 ml-1 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M5 12h14" /><path d="m13 5 7 7-7 7" />
+          <path d="M5 12h14" />
+          <path d="m13 5 7 7-7 7" />
         </svg>
       </button>
 
@@ -188,9 +387,13 @@ function FormSection({
 }
 
 function BenefitsSection({
-  wrapperClassName, titleClassName, textClassName,
+  wrapperClassName,
+  titleClassName,
+  textClassName,
 }: {
-  wrapperClassName: string; titleClassName: string; textClassName: string;
+  wrapperClassName: string;
+  titleClassName: string;
+  textClassName: string;
 }) {
   return (
     <div className={wrapperClassName}>
@@ -222,12 +425,24 @@ function BenefitsSection({
 export default function DesignConsultationForm() {
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [selectedPincode, setSelectedPincode] = useState("");
   const [consultationMode, setConsultationMode] = useState<ConsultationMode>("experience-center");
   const [selectedDate, setSelectedDate] = useState("");
   const [preferredSlot, setPreferredSlot] = useState("");
   const [propertyName, setPropertyName] = useState("");
   const [possessionTimeline, setPossessionTimeline] = useState<PossessionTimeline>("immediately");
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [otpError, setOtpError] = useState("");
+  const [isOtpVerifying, setIsOtpVerifying] = useState(false);
+  const [isPendingOtpSms, setIsPendingOtpSms] = useState(false);
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [otpTimerSeconds, setOtpTimerSeconds] = useState(0);
+  const [resendVisible, setResendVisible] = useState(false);
+  const [isPhoneVerified, setIsPhoneVerified] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -236,18 +451,248 @@ export default function DesignConsultationForm() {
     return () => clearInterval(interval);
   }, []);
 
-  const formProps = { fullName, setFullName, phoneNumber, setPhoneNumber, consultationMode, setConsultationMode, selectedDate, setSelectedDate, preferredSlot, setPreferredSlot, propertyName, setPropertyName, possessionTimeline, setPossessionTimeline };
+  useEffect(() => {
+    if (!otpSent || otpTimerSeconds <= 0) return;
+    const id = setInterval(() => {
+      setOtpTimerSeconds((prev) => (prev <= 1 ? 0 : prev - 1));
+    }, 1000);
+    return () => clearInterval(id);
+  }, [otpSent, otpTimerSeconds]);
+
+  const handlePhoneChange = (value: string) => {
+    setPhoneNumber(value);
+    setIsPhoneVerified(false);
+    setOtpSent(false);
+    setOtp("");
+    setOtpError("");
+    setResendVisible(false);
+    setOtpTimerSeconds(0);
+  };
+
+  const validateForm = () => {
+    if (!fullName.trim()) {
+      alert("Please enter your full name.");
+      return false;
+    }
+    if (!phoneNumber || phoneNumber.length !== 10) {
+      alert("Please enter a valid 10-digit phone number.");
+      return false;
+    }
+    if (!selectedPincode) {
+      alert("Please select your property pincode.");
+      return false;
+    }
+    if (!selectedDate || !preferredSlot) {
+      alert("Please select date and preferred slot.");
+      return false;
+    }
+    if (!propertyName.trim()) {
+      alert("Please enter property name.");
+      return false;
+    }
+    return true;
+  };
+
+  const sendOtp = async () => {
+    const cleanedPhone = normalizePhoneNumber(phoneNumber);
+    if (cleanedPhone.length !== 10) {
+      setOtpError("Please enter a valid 10-digit phone number.");
+      return;
+    }
+
+    setIsSendingOtp(true);
+    setIsPendingOtpSms(true);
+    setOtpError("");
+    setOtpTimerSeconds(0);
+    setResendVisible(false);
+
+    try {
+      const response = await fetch("/api/send-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: cleanedPhone }),
+        signal: AbortSignal.timeout(25000),
+      });
+      const data = await response.json();
+      setIsPendingOtpSms(false);
+
+      if (response.ok && data.success) {
+        setOtpSent(true);
+        setOtpTimerSeconds(120);
+        return;
+      }
+
+      setOtpSent(true);
+      setResendVisible(true);
+      setOtpError(data.message || "Failed to send OTP. Tap Resend to try again.");
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      setIsPendingOtpSms(false);
+      setOtpSent(true);
+      setResendVisible(true);
+      setOtpError(
+        error instanceof Error && error.name === "TimeoutError"
+          ? "OTP request timed out. Tap Resend to try again."
+          : "Failed to send OTP. Tap Resend to try again.",
+      );
+    } finally {
+      setIsSendingOtp(false);
+    }
+  };
+
+  const handleResendOtp = async () => {
+    setOtp("");
+    await sendOtp();
+  };
+
+  const handleOtpSubmit = async () => {
+    if (!otp || otp.length !== 4) {
+      setOtpError("Please enter the 4-digit OTP.");
+      return;
+    }
+
+    setIsOtpVerifying(true);
+    setOtpError("");
+    try {
+      const cleanedPhone = normalizePhoneNumber(phoneNumber);
+      const response = await fetch("/api/verify-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: cleanedPhone, otp }),
+      });
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsPhoneVerified(true);
+        setOtp("");
+        setOtpSent(false);
+        setOtpError("");
+        return;
+      }
+
+      if (data?.reason === "MAX_ATTEMPTS") {
+        setResendVisible(true);
+        setOtpTimerSeconds(0);
+        setOtp("");
+      }
+      setOtpError(data?.message || "Invalid OTP. Please try again.");
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      setOtpError("Failed to verify OTP. Please try again.");
+    } finally {
+      setIsOtpVerifying(false);
+    }
+  };
+
+  const submitConsultation = async () => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/book-consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+          formSource: "design-consultation",
+          phoneVerified: isPhoneVerified,
+          firstFormDetails: {
+            name: fullName.trim(),
+            email: "",
+            phone: phoneNumber,
+            pincode: selectedPincode,
+          },
+          consultationDetails: {
+            consultationMode,
+            selectedDate,
+            preferredSlot,
+            propertyName: propertyName.trim(),
+            possessionTimeline,
+          },
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok && data.success) {
+        alert("Thank you for your submission.");
+        setFullName("");
+        setPhoneNumber("");
+        setSelectedPincode("");
+        setSelectedDate("");
+        setPreferredSlot("");
+        setPropertyName("");
+        setPossessionTimeline("immediately");
+        setConsultationMode("experience-center");
+        setIsPhoneVerified(false);
+        setOtpSent(false);
+        setOtp("");
+        setOtpError("");
+      } else {
+        alert(data.message || "Failed to submit consultation details.");
+      }
+    } catch (error) {
+      console.error("Design consultation submission failed:", error);
+      alert("Failed to submit consultation details. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleBookNow = async () => {
+    if (!validateForm()) return;
+
+    if (!isPhoneVerified) {
+      setOtpError("Please verify your phone number with OTP first.");
+      return;
+    }
+
+    await submitConsultation();
+  };
+
+  const formProps = {
+    fullName,
+    setFullName,
+    phoneNumber,
+    setPhoneNumber: handlePhoneChange,
+    selectedPincode,
+    setSelectedPincode,
+    isPhoneVerified,
+    otpSent,
+    otp,
+    setOtp,
+    otpError,
+    isPendingOtpSms,
+    isOtpVerifying,
+    isSendingOtp,
+    otpTimerSeconds,
+    resendVisible,
+    onSendOtp: sendOtp,
+    onVerifyOtp: handleOtpSubmit,
+    onResendOtp: handleResendOtp,
+    consultationMode,
+    setConsultationMode,
+    selectedDate,
+    setSelectedDate,
+    preferredSlot,
+    setPreferredSlot,
+    propertyName,
+    setPropertyName,
+    possessionTimeline,
+    setPossessionTimeline,
+    onSubmit: handleBookNow,
+    isSubmitting: isSubmitting || isSendingOtp,
+  };
 
   return (
     <div className="bg-[#F1F2F6] min-h-screen manrope">
-
-      {/* =========================================================== */}
-      {/* MOBILE VERSION (< 1024px)                                    */}
-      {/* =========================================================== */}
       <div className="block lg:hidden">
+        <div className="relative w-full h-[260px] sm:h-[310px] overflow-hidden">
+          <img
+            src={carouselImages1[0]}
+            alt="Interior"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-        {/* 1. HEADER — full width centered */}
-        <div className="px-5 pt-10 pb-8 text-center">
+        <div className="px-5 pt-8 pb-6 text-center">
           <h1 className="text-[32px] sm:text-[38px] font-[800] text-[#181B21] tracking-tight leading-[1.12]">
             Book Your Free <span className="text-[#EF2B2D]">Design Consultation</span>
           </h1>
@@ -256,30 +701,12 @@ export default function DesignConsultationForm() {
           </p>
         </div>
 
-        {/* 2. IMAGE — full width, spans between header and form */}
-        <div className="relative w-full h-[260px] sm:h-[310px] overflow-hidden">
-          {carouselImages1.map((image, index) => (
-            <img key={index} src={image} alt={`Interior ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === carouselIndex ? "opacity-100" : "opacity-0"}`}
-            />
-          ))}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-            {carouselImages1.map((_, i) => (
-              <button key={i} onClick={() => setCarouselIndex(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${i === carouselIndex ? "w-5 bg-white" : "w-1.5 bg-white/50"}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* 3. FORM */}
         <div className="px-4 sm:px-6 pt-6 pb-4">
           <div className="bg-white rounded-[28px] shadow-[0_16px_40px_rgba(15,23,42,0.06)] border border-gray-100 p-6 sm:p-8">
             <FormSection {...formProps} />
           </div>
         </div>
 
-        {/* 4. BENEFITS — full width centered below form */}
         <div className="px-4 sm:px-6 py-8">
           <BenefitsSection
             wrapperClassName="w-full max-w-[500px] mx-auto"
@@ -289,12 +716,7 @@ export default function DesignConsultationForm() {
         </div>
       </div>
 
-      {/* =========================================================== */}
-      {/* DESKTOP VERSION (>= 1024px)                                  */}
-      {/* =========================================================== */}
       <div className="hidden lg:block">
-
-        {/* 1. HEADER — full width, centered at top */}
         <div className="text-center pt-16 pb-10 px-8">
           <h1 className="text-[40px] xl:text-[50px] 2xl:text-[56px] font-[800] text-[#181B21] tracking-tight leading-[1.1]">
             Book Your Free <span className="text-[#EF2B2D]">Design Consultation</span>
@@ -304,30 +726,30 @@ export default function DesignConsultationForm() {
           </p>
         </div>
 
-        {/* 2. FORM + IMAGE — balanced grid with consistent padding on both sides */}
         <div className="px-8 xl:px-12">
           <div className="max-w-[1440px] mx-auto grid grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1.15fr] gap-6 xl:gap-8 items-stretch">
-
-            {/* Left: Form card — fully rounded, elevated, premium */}
             <div className="bg-white rounded-[28px] shadow-[0_8px_40px_rgba(15,23,42,0.08)] border border-gray-100/80 p-8 xl:p-10 flex flex-col">
-              {/* Red left accent bar */}
-              <div className="w-1 h-10 rounded-full bg-[#EF2B2D] mb-8 shadow-[0_4px_10px_rgba(239,43,45,0.3)]"></div>
               <FormSection {...formProps} />
             </div>
 
-            {/* Right: Image Carousel — fully rounded, same shadow level */}
+            {/* Right: Image — same layout as book-consultation */}
             <div className="relative overflow-hidden rounded-[28px] shadow-[0_8px_40px_rgba(15,23,42,0.12)] min-h-[520px]">
               {carouselImages.map((img, i) => (
-                <img key={i} src={img} alt={`Interior ${i + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === carouselIndex ? "opacity-100" : "opacity-0"}`}
+                <img
+                  key={i}
+                  src={img}
+                  alt={`Interior ${i + 1}`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                    i === carouselIndex ? "opacity-100" : "opacity-0"
+                  }`}
                 />
               ))}
-              {/* Gradient overlay at bottom for dots readability */}
               <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-              {/* Dot indicators */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {carouselImages.map((_, i) => (
-                  <button key={i} onClick={() => setCarouselIndex(i)}
+                  <button
+                    key={i}
+                    onClick={() => setCarouselIndex(i)}
                     className={`h-2 rounded-full transition-all duration-300 ${i === carouselIndex ? "w-6 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
                   />
                 ))}
@@ -336,7 +758,6 @@ export default function DesignConsultationForm() {
           </div>
         </div>
 
-        {/* 3. BENEFITS — full width centered below */}
         <div className="px-8 xl:px-12 pt-12 pb-16">
           <div className="max-w-[800px] mx-auto">
             <BenefitsSection

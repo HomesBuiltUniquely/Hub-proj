@@ -28,11 +28,11 @@ const preferredSlots = [
 ];
 
 const carouselImages = [
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/20%25discount_interior_design.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/25%25discount_home_interior.jpeg",
 ];
 
 const carouselImages1 = [
-  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/20%25discount_interior_design.png",
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/25%25discount_home_interior.jpeg",
 ];
 
 function ConsultationCard({
