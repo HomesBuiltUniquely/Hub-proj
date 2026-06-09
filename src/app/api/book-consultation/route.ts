@@ -13,8 +13,6 @@ type ConsultationDetails = {
   consultationMode?: string;
   selectedDate?: string;
   preferredSlot?: string;
-  propertyName?: string;
-  possessionTimeline?: string;
 };
 
 function formatConsultationMode(mode?: string): string {
@@ -23,18 +21,7 @@ function formatConsultationMode(mode?: string): string {
   return mode || "Not provided";
 }
 
-function formatPossessionTimeline(timeline?: string): string {
-  const labels: Record<string, string> = {
-    immediately: "Immediately",
-    "0-3-months": "0 - 3 months",
-    "3-6-months": "3 - 6 months",
-    "more-than-6-months": "More than 6 months",
-    "under-construction": "Under construction",
-    "construction-not-yet-ready": "Construction not yet ready",
-  };
-  if (!timeline) return "Not provided";
-  return labels[timeline] || timeline;
-}
+
 
 export async function POST(req: Request) {
   try {
@@ -45,9 +32,16 @@ export async function POST(req: Request) {
     const formSource: string = body?.formSource || "book-consultation";
     const phoneVerified: boolean = body?.phoneVerified === true;
 
-    if (!consultationDetails.selectedDate || !consultationDetails.preferredSlot) {
+    if (!firstFormDetails.name || !firstFormDetails.phone || !firstFormDetails.pincode) {
       return NextResponse.json(
-        { success: false, message: "Date and preferred slot are required." },
+        { success: false, message: "Name, phone, and pincode are required." },
+        { status: 400 }
+      );
+    }
+
+    if (!consultationDetails.consultationMode || !consultationDetails.selectedDate || !consultationDetails.preferredSlot) {
+      return NextResponse.json(
+        { success: false, message: "Consultation mode, date, and preferred slot are required." },
         { status: 400 }
       );
     }
@@ -92,10 +86,6 @@ export async function POST(req: Request) {
       <p><strong>Consultation Mode:</strong> ${formatConsultationMode(consultationDetails.consultationMode)}</p>
       <p><strong>Preferred Date:</strong> ${consultationDetails.selectedDate || "Not provided"}</p>
       <p><strong>Preferred Slot:</strong> ${consultationDetails.preferredSlot || "Not provided"}</p>
-      <hr />
-      <h3>Property & Possession</h3>
-      <p><strong>Property Name / Individual House:</strong> ${consultationDetails.propertyName || "Not provided"}</p>
-      <p><strong>Possession Timeline:</strong> ${formatPossessionTimeline(consultationDetails.possessionTimeline)}</p>
       <hr />
       <p><strong>Page URL:</strong> <a href="${pageUrl || "#"}">${pageUrl || "Not provided"}</a></p>
     `;
