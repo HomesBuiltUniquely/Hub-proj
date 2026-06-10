@@ -498,6 +498,7 @@ export default function HeroSections({
           sessionStorage.setItem("userEmail", formData.email);
           sessionStorage.setItem("userPhone", formData.phone);
           sessionStorage.setItem("userName", formData.name);
+          sessionStorage.setItem("userPincode", selectedPincode);
 
           // Reset form
           setSelectedCity("");

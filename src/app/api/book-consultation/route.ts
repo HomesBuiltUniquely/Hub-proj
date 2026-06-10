@@ -13,6 +13,8 @@ type ConsultationDetails = {
   consultationMode?: string;
   selectedDate?: string;
   preferredSlot?: string;
+  propertyName?: string;
+  possessionTimeline?: string;
 };
 
 function formatConsultationMode(mode?: string): string {
@@ -86,6 +88,12 @@ export async function POST(req: Request) {
       <p><strong>Consultation Mode:</strong> ${formatConsultationMode(consultationDetails.consultationMode)}</p>
       <p><strong>Preferred Date:</strong> ${consultationDetails.selectedDate || "Not provided"}</p>
       <p><strong>Preferred Slot:</strong> ${consultationDetails.preferredSlot || "Not provided"}</p>
+      ${consultationDetails.propertyName || consultationDetails.possessionTimeline ? `
+      <hr />
+      <h3>Property & Possession Details</h3>
+      ${consultationDetails.propertyName ? `<p><strong>Property Name:</strong> ${consultationDetails.propertyName}</p>` : ""}
+      ${consultationDetails.possessionTimeline ? `<p><strong>Possession Timeline:</strong> ${consultationDetails.possessionTimeline}</p>` : ""}
+      ` : ""}
       <hr />
       <p><strong>Page URL:</strong> <a href="${pageUrl || "#"}">${pageUrl || "Not provided"}</a></p>
     `;

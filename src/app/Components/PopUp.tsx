@@ -255,6 +255,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                 sessionStorage.setItem('userName', name.trim());
                 sessionStorage.setItem('userEmail', email.trim());
                 sessionStorage.setItem('userPhone', phone.trim());
+                sessionStorage.setItem('userPincode', pin.trim());
 
                 // Reset OTP states
                 setOtpSent(false);
