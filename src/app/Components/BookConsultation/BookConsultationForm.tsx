@@ -284,6 +284,8 @@ export default function BookConsultationForm() {
       const fallbackPhone =
         searchParams.get("phone") || searchParams.get("phoneNumber") || "";
 
+      const fallbackPincode = searchParams.get("pincode") || "";
+
       const firstFormDetails = {
         name:
           (typeof window !== "undefined"
@@ -297,6 +299,10 @@ export default function BookConsultationForm() {
           (typeof window !== "undefined"
             ? sessionStorage.getItem("userPhone")
             : "") || fallbackPhone,
+        pincode:
+          (typeof window !== "undefined"
+            ? sessionStorage.getItem("userPincode")
+            : "") || fallbackPincode,
       };
 
       const response = await fetch("/api/book-consultation", {

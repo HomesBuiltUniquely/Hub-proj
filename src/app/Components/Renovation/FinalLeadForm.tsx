@@ -186,6 +186,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
         sessionStorage.setItem('userEmail', formData.email);
         sessionStorage.setItem('userPhone', formData.phone);
         sessionStorage.setItem('userName', formData.name);
+        sessionStorage.setItem('userPincode', selectedPincode);
         
         router.push(POST_LEAD_SUCCESS_PATH);
       }

@@ -283,6 +283,7 @@ export function HeroSection() {
                 sessionStorage.setItem('userName', updatedForm.name);
                 sessionStorage.setItem('userEmail', updatedForm.email);
                 sessionStorage.setItem('userPhone', updatedForm.phonennumber);
+                sessionStorage.setItem('userPincode', updatedForm.pincode);
                 setForm({
                     name: "",
                     email: "",
@@ -413,6 +414,7 @@ export function HeroSection() {
                 sessionStorage.setItem('userName', updatedForm.name);
                 sessionStorage.setItem('userEmail', updatedForm.email);
                 sessionStorage.setItem('userPhone', updatedForm.phonennumber);
+                sessionStorage.setItem('userPincode', updatedForm.pincode);
                 // Reset form
                 setForm({
                     name: "",
