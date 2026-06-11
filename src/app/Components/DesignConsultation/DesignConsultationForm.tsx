@@ -5,13 +5,6 @@ import { normalizePhoneNumber } from "@/lib/utils";
 import { Pincode } from "../LandingPage1/Pincode";
 
 type ConsultationMode = "experience-center" | "video-call";
-type PossessionTimeline =
-  | "immediately"
-  | "0-3-months"
-  | "3-6-months"
-  | "more-than-6-months"
-  | "under-construction"
-  | "construction-not-yet-ready";
 
 const preferredSlots = [
   "09:00 AM - 11:00 AM",
@@ -84,10 +77,7 @@ function FormSection({
   setSelectedDate,
   preferredSlot,
   setPreferredSlot,
-  propertyName,
-  setPropertyName,
-  possessionTimeline,
-  setPossessionTimeline,
+
   onSubmit,
   isSubmitting,
 }: {
@@ -116,10 +106,7 @@ function FormSection({
   setSelectedDate: (v: string) => void;
   preferredSlot: string;
   setPreferredSlot: (v: string) => void;
-  propertyName: string;
-  setPropertyName: (v: string) => void;
-  possessionTimeline: PossessionTimeline;
-  setPossessionTimeline: (v: PossessionTimeline) => void;
+
   onSubmit: () => void;
   isSubmitting: boolean;
 }) {
@@ -327,45 +314,7 @@ function FormSection({
         </div>
       </div>
 
-      {/* STEP 3 — Property & Possession */}
-      <div className="mt-8 mb-5 flex items-center gap-3 border-t border-[#ECEFF4] pt-8">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
-          3
-        </div>
-        <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">Property & Possession</h2>
-      </div>
 
-      <input
-        type="text"
-        value={propertyName}
-        onChange={(e) => setPropertyName(e.target.value)}
-        placeholder="Property Name/Individual House"
-        className={inputClass}
-      />
-
-      <div className="mt-4 flex flex-wrap gap-3">
-        {[
-          { id: "immediately" as PossessionTimeline, label: "Immediately" },
-          { id: "0-3-months" as PossessionTimeline, label: "0 - 3 months" },
-          { id: "3-6-months" as PossessionTimeline, label: "3 - 6 months" },
-          { id: "more-than-6-months" as PossessionTimeline, label: "More than 6 months" },
-          { id: "under-construction" as PossessionTimeline, label: "Under construction" },
-          { id: "construction-not-yet-ready" as PossessionTimeline, label: "Construction not yet ready" },
-        ].map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => setPossessionTimeline(item.id)}
-            className={`flex-1 h-[58px] min-w-[110px] items-center justify-center flex rounded-[14px] border-2 text-[15px] font-medium manrope transition-all duration-300 active:scale-95 ${
-              possessionTimeline === item.id
-                ? "border-[#EF2B2D] bg-white text-[#EF2B2D] ring-4 ring-[#EF2B2D]/10 shadow-sm"
-                : "border-transparent bg-[#F4F6F9] text-[#24262B] hover:bg-[#EAEFF5] shadow-sm"
-            }`}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
 
       <button
         type="submit"
@@ -429,8 +378,7 @@ export default function DesignConsultationForm() {
   const [consultationMode, setConsultationMode] = useState<ConsultationMode>("experience-center");
   const [selectedDate, setSelectedDate] = useState("");
   const [preferredSlot, setPreferredSlot] = useState("");
-  const [propertyName, setPropertyName] = useState("");
-  const [possessionTimeline, setPossessionTimeline] = useState<PossessionTimeline>("immediately");
+
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -482,12 +430,16 @@ export default function DesignConsultationForm() {
       alert("Please select your property pincode.");
       return false;
     }
-    if (!selectedDate || !preferredSlot) {
-      alert("Please select date and preferred slot.");
+    if (!consultationMode) {
+      alert("Please select a consultation mode.");
       return false;
     }
-    if (!propertyName.trim()) {
-      alert("Please enter property name.");
+    if (!selectedDate) {
+      alert("Please select a preferred date.");
+      return false;
+    }
+    if (!preferredSlot) {
+      alert("Please select a preferred time slot.");
       return false;
     }
     return true;
@@ -604,8 +556,6 @@ export default function DesignConsultationForm() {
             consultationMode,
             selectedDate,
             preferredSlot,
-            propertyName: propertyName.trim(),
-            possessionTimeline,
           },
         }),
       });
@@ -618,8 +568,6 @@ export default function DesignConsultationForm() {
         setSelectedPincode("");
         setSelectedDate("");
         setPreferredSlot("");
-        setPropertyName("");
-        setPossessionTimeline("immediately");
         setConsultationMode("experience-center");
         setIsPhoneVerified(false);
         setOtpSent(false);
@@ -673,10 +621,6 @@ export default function DesignConsultationForm() {
     setSelectedDate,
     preferredSlot,
     setPreferredSlot,
-    propertyName,
-    setPropertyName,
-    possessionTimeline,
-    setPossessionTimeline,
     onSubmit: handleBookNow,
     isSubmitting: isSubmitting || isSendingOtp,
   };
