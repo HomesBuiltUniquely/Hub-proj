@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
+import CareerSuccessModal from './CareerSuccessModal';
 
 
 const CareersSection: React.FC = () => {
@@ -16,6 +17,7 @@ const CareersSection: React.FC = () => {
     const [fileName, setFileName] = useState<string>("");
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     const MAX_RESUME_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
 
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -89,7 +91,7 @@ const CareersSection: React.FC = () => {
                 throw new Error(responseData.message || 'Failed to submit application.');
             }
 
-            alert('Application submitted!');
+            setShowSuccessModal(true);
             form.reset();
             setFileName("");
             setSelectedFile(null);
@@ -608,6 +610,10 @@ const CareersSection: React.FC = () => {
 
 
             </div>
+            <CareerSuccessModal
+                open={showSuccessModal}
+                onClose={() => setShowSuccessModal(false)}
+            />
         </div>
 
 

@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import CareerSuccessModal from "./CareerSuccessModal";
 
 const JoinUsPage: React.FC = () => {
   const fileRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const MAX_RESUME_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -85,7 +87,7 @@ const JoinUsPage: React.FC = () => {
         );
       }
 
-      alert("Application submitted!");
+      setShowSuccessModal(true);
       form.reset();
       setFileName("");
       setSelectedFile(null);
@@ -587,6 +589,10 @@ const JoinUsPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <CareerSuccessModal
+        open={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+      />
     </div>
   );
 };

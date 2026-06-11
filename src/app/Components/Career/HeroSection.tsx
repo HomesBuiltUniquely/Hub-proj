@@ -253,7 +253,11 @@ const ContactHeader: React.FC = () => {
         <div className="md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-hidden">
           <div className="relative h-full w-full p-2">
             {/* Rounded image only */}
-            <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/CareeR%20MH.png" alt="Career Hero" />
+            <img
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/po.png"
+              alt="Career Hero"
+              className="w-full h-full object-cover"
+            />
 
             {/* top logo */}
             <div className="absolute top-2 -mt-5 -ml-1 z-10">

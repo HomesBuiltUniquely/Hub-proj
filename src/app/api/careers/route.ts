@@ -75,7 +75,7 @@ export async function POST(req: Request) {
 
     const mailUser = process.env.CAREER_GMAIL_USER || process.env.GMAIL_USER;
     const mailPass = process.env.CAREER_GMAIL_PASS || process.env.GMAIL_PASS;
-    const toEmail = process.env.CAREER_EMAIL || 'career@hubinterior.com';
+    const toEmail = process.env.CAREER_EMAIL || 'careers@hubinterior.com';
 
     // Log credential status (without showing actual values)
     console.log('Career email configuration check:');
@@ -124,8 +124,9 @@ export async function POST(req: Request) {
         : [];
 
     const mailOptions = {
-      from: mailUser,
+      from: `"HUB Interior Careers" <${mailUser}>`,
       to: toEmail,
+      replyTo: email || undefined,
       subject: `Career Application${jobTitle ? ` - ${jobTitle}` : ''}`,
       html: `
         <h3>Career Application Submission</h3>
