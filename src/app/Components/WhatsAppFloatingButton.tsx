@@ -10,12 +10,8 @@ const HIDE_WHATSAPP_PATHS = [
   "/home-renovation-in-bangalore",
 ];
 
-const WHATSAPP_NUMBER = "918898892223";
-const WHATSAPP_MESSAGE = `Hi , I am looking for interiors.
-
-Name:
-Phone number:
-Property Pincode: `;
+const WHATSAPP_NUMBER = "919008502770";
+const WHATSAPP_MESSAGE = `Hi I’d like to make an enquiry`;
 
 export default function WhatsAppFloatingButton() {
   const pathname = usePathname() || "/";
