@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode";
 import cityOptions from "./DropDown1";
 import { normalizePhoneNumber } from "@/lib/utils";
-import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
+import { POST_LEAD_SUCCESS_PATH, saveLeadContactToSession } from "@/lib/postLeadSubmitRedirect";
 
 const carouselImages = [
   "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/LP_DESKTOP/header_section_desktop_version/modular_litchen.jpg",
@@ -487,10 +487,12 @@ export default function HeroSections({
           sessionStorage.setItem("formSubmitted", "true");
 
           // Store user data for thank you page
-          sessionStorage.setItem("userEmail", formData.email);
-          sessionStorage.setItem("userPhone", formData.phone);
-          sessionStorage.setItem("userName", formData.name);
-          sessionStorage.setItem("userPincode", selectedPincode);
+          saveLeadContactToSession({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            pincode: selectedPincode,
+          });
 
           // Reset form
           setSelectedCity("");
