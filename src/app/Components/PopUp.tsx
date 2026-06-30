@@ -3,7 +3,11 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import cityOptions from "./LandingPage1/DropDown1";
-import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
+import {
+  POST_LEAD_SUCCESS_PATH,
+  buildLeadThankYouQuery,
+  saveLeadContactToSession,
+} from "@/lib/postLeadSubmitRedirect";
 
 
 type PopUpProps = {
@@ -252,10 +256,12 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                 // Set flag to trigger reload on Thank You page
                 sessionStorage.setItem('formSubmitted', 'true');
-                sessionStorage.setItem('userName', name.trim());
-                sessionStorage.setItem('userEmail', email.trim());
-                sessionStorage.setItem('userPhone', phone.trim());
-                sessionStorage.setItem('userPincode', pin.trim());
+                saveLeadContactToSession({
+                    name: name.trim(),
+                    email: email.trim(),
+                    phone: phone.trim(),
+                    pincode: pin.trim(),
+                });
 
                 // Reset OTP states
                 setOtpSent(false);
@@ -265,7 +271,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                 setInteriorSetup('');
 
                 // Navigate with query params so details survive the thank-you page reload (GTM)
-                const q = new URLSearchParams({
+                const q = buildLeadThankYouQuery({
                     name: name.trim(),
                     email: email.trim(),
                     phone: phone.trim(),

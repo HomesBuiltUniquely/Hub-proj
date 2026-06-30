@@ -2,6 +2,8 @@
 
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
+import { saveLeadContactToSession } from '@/lib/postLeadSubmitRedirect'
+import { formatIndianPhoneE164 } from '@/lib/utils'
 
 // Declare gtag function for TypeScript
 declare global {
@@ -24,9 +26,7 @@ export default function ThankUPage() {
         phone: params.get('phone')?.trim() || '',
       };
       if (fromQuery.name || fromQuery.email || fromQuery.phone) {
-        if (fromQuery.name) sessionStorage.setItem('userName', fromQuery.name);
-        if (fromQuery.email) sessionStorage.setItem('userEmail', fromQuery.email);
-        if (fromQuery.phone) sessionStorage.setItem('userPhone', fromQuery.phone);
+        saveLeadContactToSession(fromQuery);
       }
     }
 
@@ -34,8 +34,14 @@ export default function ThankUPage() {
       sessionStorage.getItem('userName') || fromQuery.name || '';
     const userEmail =
       sessionStorage.getItem('userEmail') || fromQuery.email || '';
-    const userPhone =
+    const rawPhone =
       sessionStorage.getItem('userPhone') || fromQuery.phone || '';
+    const userPhone = rawPhone ? formatIndianPhoneE164(rawPhone) : '';
+
+    if (userPhone) {
+      sessionStorage.setItem('userPhone', userPhone);
+    }
+
     setUserData({ name: userName, email: userEmail, phone: userPhone });
 
     // Check if this is a fresh redirect from form submission
@@ -146,7 +152,7 @@ export default function ThankUPage() {
           )}
           {userData.phone && (
             <p className="text-gray-700">
-              <span className="font-medium">Phone:</span> +91 {userData.phone}
+              <span className="font-medium">Phone:</span> {userData.phone}
             </p>
           )}
         </div>
@@ -159,7 +165,7 @@ export default function ThankUPage() {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 shrink-0">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                 </svg>
-                <span className="text-lg">+91 {userData.phone}</span>
+                <span className="text-lg">{userData.phone}</span>
               </div>
             )}
             {userData.email && (
@@ -232,7 +238,7 @@ export default function ThankUPage() {
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="mx-auto mb-2 size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                       </svg>
-                      +91 {userData.phone}
+                      {userData.phone}
                     </div>
                   )}
                   {userData.email && (

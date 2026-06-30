@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 import OverlapNavBar from "../OverlapNavBar";
 import { getVerificationStatus } from "@/lib/leadVerification";
-import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
+import {
+  POST_LEAD_SUCCESS_PATH,
+  buildLeadThankYouQuery,
+  saveLeadContactToSession,
+} from "@/lib/postLeadSubmitRedirect";
 
 export function HeroSection() {
     const router = useRouter();
@@ -280,10 +284,12 @@ export function HeroSection() {
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
-                sessionStorage.setItem('userName', updatedForm.name);
-                sessionStorage.setItem('userEmail', updatedForm.email);
-                sessionStorage.setItem('userPhone', updatedForm.phonennumber);
-                sessionStorage.setItem('userPincode', updatedForm.pincode);
+                saveLeadContactToSession({
+                    name: updatedForm.name,
+                    email: updatedForm.email,
+                    phone: updatedForm.phonennumber,
+                    pincode: updatedForm.pincode,
+                });
                 setForm({
                     name: "",
                     email: "",
@@ -304,7 +310,7 @@ export function HeroSection() {
                 setOtpError('');
 
                 sessionStorage.setItem('formSubmitted', 'true');
-                const q = new URLSearchParams({
+                const q = buildLeadThankYouQuery({
                     name: updatedForm.name,
                     email: updatedForm.email,
                     phone: updatedForm.phonennumber,
@@ -411,10 +417,12 @@ export function HeroSection() {
 
             if (data.success) {
                 setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
-                sessionStorage.setItem('userName', updatedForm.name);
-                sessionStorage.setItem('userEmail', updatedForm.email);
-                sessionStorage.setItem('userPhone', updatedForm.phonennumber);
-                sessionStorage.setItem('userPincode', updatedForm.pincode);
+                saveLeadContactToSession({
+                    name: updatedForm.name,
+                    email: updatedForm.email,
+                    phone: updatedForm.phonennumber,
+                    pincode: updatedForm.pincode,
+                });
                 // Reset form
                 setForm({
                     name: "",
@@ -436,7 +444,7 @@ export function HeroSection() {
                 setOtpError('');
 
                 sessionStorage.setItem('formSubmitted', 'true');
-                const q = new URLSearchParams({
+                const q = buildLeadThankYouQuery({
                     name: updatedForm.name,
                     email: updatedForm.email,
                     phone: updatedForm.phonennumber,
