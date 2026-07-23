@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { saveLeadContactToSession } from '@/lib/postLeadSubmitRedirect'
+import { formatIndianPhoneE164 } from '@/lib/utils'
 
 /** Cleared when starting a new book-consultation → thank-you flow; prevents double Ads conversion. */
 const THANK_YOU_CONVERSION_SENT_KEY = 'hubThankYouAdsConversionSent';
@@ -30,9 +32,7 @@ export default function ThankUPage() {
         phone: params.get('phone')?.trim() || '',
       };
       if (fromQuery.name || fromQuery.email || fromQuery.phone) {
-        if (fromQuery.name) sessionStorage.setItem('userName', fromQuery.name);
-        if (fromQuery.email) sessionStorage.setItem('userEmail', fromQuery.email);
-        if (fromQuery.phone) sessionStorage.setItem('userPhone', fromQuery.phone);
+        saveLeadContactToSession(fromQuery);
       }
     }
 
@@ -40,8 +40,13 @@ export default function ThankUPage() {
       sessionStorage.getItem('userName') || fromQuery.name || '';
     const userEmail =
       sessionStorage.getItem('userEmail') || fromQuery.email || '';
-    const userPhone =
+    const rawPhone =
       sessionStorage.getItem('userPhone') || fromQuery.phone || '';
+    const userPhone = rawPhone ? formatIndianPhoneE164(rawPhone) : '';
+
+    if (userPhone) {
+      sessionStorage.setItem('userPhone', userPhone);
+    }
 
     setUserData({ name: userName, email: userEmail, phone: userPhone });
     
@@ -186,7 +191,7 @@ export default function ThankUPage() {
               {userData.phone && (
                 <p id="desktop-phone" className="text-center text-gray-700">
                   <span className="font-medium">Phone:</span>{' '}
-                  <span id="user-phone">+91 {userData.phone}</span>
+                  <span id="user-phone">{userData.phone}</span>
                 </p>
               )}
             </div>
@@ -203,7 +208,7 @@ export default function ThankUPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                       </svg>
                       <span className="text-center text-sm md:text-left md:text-base">
-                        +91 {userData.phone}
+                        {userData.phone}
                       </span>
                     </div>
                   )}
@@ -272,7 +277,7 @@ export default function ThankUPage() {
                 <div className="space-y-2">
                   {userData.name && <p id='user-name' className="text-gray-700 text-center"><span className="font-medium">Name:</span> {userData.name}</p>}
                   {userData.email && <p id="user-email" className="text-gray-700 text-center"><span className="font-medium">Email:</span> {userData.email}</p>}
-                  {userData.phone && <p id="user-phone" className="text-gray-700 text-center"><span className="font-medium">Phone:</span> +91 {userData.phone}</p>}
+                  {userData.phone && <p id="user-phone" className="text-gray-700 text-center"><span className="font-medium">Phone:</span> {userData.phone}</p>}
                 </div>
               </div>
             )}
@@ -287,7 +292,7 @@ export default function ThankUPage() {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-5 w-5 shrink-0">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                         </svg>
-                        <span className="text-sm sm:text-base">+91 {userData.phone}</span>
+                        <span className="text-sm sm:text-base">{userData.phone}</span>
                       </div>
                     )}
                     {userData.email && (

@@ -3,7 +3,11 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import cityOptions from "./LandingPage1/DropDown1";
-import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
+import {
+  POST_LEAD_SUCCESS_PATH,
+  buildLeadThankYouQuery,
+  saveLeadContactToSession,
+} from "@/lib/postLeadSubmitRedirect";
 
 
 type PopUpProps = {
@@ -251,9 +255,11 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
 
                 // Set flag to trigger reload on Thank You page
                 sessionStorage.setItem('formSubmitted', 'true');
-                sessionStorage.setItem('userName', name.trim());
-                sessionStorage.setItem('userEmail', email.trim());
-                sessionStorage.setItem('userPhone', phone.trim());
+                saveLeadContactToSession({
+                    name: name.trim(),
+                    email: email.trim(),
+                    phone: phone.trim(),
+                });
 
                 // Reset OTP states
                 setOtpSent(false);
@@ -262,7 +268,7 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
                 setOtpError('');
                 setInteriorSetup('');
 
-                const q = new URLSearchParams({
+                const q = buildLeadThankYouQuery({
                     name: name.trim(),
                     email: email.trim(),
                     phone: phone.trim(),

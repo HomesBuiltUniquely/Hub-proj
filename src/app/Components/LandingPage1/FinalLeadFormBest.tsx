@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { normalizePhoneNumber } from '@/lib/utils';
 import { getVerificationStatus } from '@/lib/leadVerification';
-import { POST_LEAD_SUCCESS_PATH } from '@/lib/postLeadSubmitRedirect';
+import { POST_LEAD_SUCCESS_PATH, saveLeadContactToSession } from '@/lib/postLeadSubmitRedirect';
 
 interface CalculatorData {
   bhkType?: string;
@@ -205,12 +205,14 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
         setOtpError('');
         // Set flag to trigger reload on thank you page for GTM tracking
         sessionStorage.setItem('formSubmitted', 'true');
-        
+
         // Store user data for thank you page
-        sessionStorage.setItem('userEmail', formData.email);
-        sessionStorage.setItem('userPhone', formData.phone);
-        sessionStorage.setItem('userName', formData.name);
-        sessionStorage.setItem('userPincode', selectedPincode);
+        saveLeadContactToSession({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          pincode: selectedPincode,
+        });
         
         router.push(POST_LEAD_SUCCESS_PATH);
       }

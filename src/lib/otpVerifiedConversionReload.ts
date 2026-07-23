@@ -4,6 +4,8 @@
  * keyed by pathname so the same page can finish /api/contact after reload.
  */
 
+import { saveLeadContactToSession } from './postLeadSubmitRedirect';
+
 export const OTP_VERIFIED_CONVERSION_PENDING_KEY = 'hubOtpVerifiedConversionPending';
 export const OTP_POST_VERIFY_SUBMIT_KEY = 'hubOtpPostVerifySubmit';
 
@@ -92,9 +94,7 @@ export async function executePostVerifyLeadSubmit(
     const phone = String(payload.requestData.phone ?? '');
 
     sessionStorage.setItem('formSubmitted', 'true');
-    sessionStorage.setItem('userName', name);
-    sessionStorage.setItem('userEmail', email);
-    sessionStorage.setItem('userPhone', phone);
+    saveLeadContactToSession({ name, email, phone });
 
     clearPostVerifySubmitPayload();
 

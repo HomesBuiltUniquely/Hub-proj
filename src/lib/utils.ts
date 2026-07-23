@@ -28,3 +28,12 @@ export function normalizePhoneNumber(phone: string): string {
   // Limit to 10 digits
   return cleaned.slice(0, 10);
 }
+
+/**
+ * Formats phone as +91XXXXXXXXXX (no space between country code and number).
+ */
+export function formatIndianPhoneE164(phone: string): string {
+  const digits = normalizePhoneNumber(phone);
+  if (!digits) return "";
+  return `+91${digits}`;
+}
