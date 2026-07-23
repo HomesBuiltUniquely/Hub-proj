@@ -12,11 +12,12 @@ type PossessionTimeline =
   | "3-6-months"
   | "more-than-6-months"
   | "under-construction"
-  | "construction-not-yet-ready";
+
 
 const preferredSlots = [
   "09:00 AM - 10:00 AM",
   "10:00 AM - 11:00 AM",
+  "11:00 AM - 12:00 PM",
   "12:00 PM - 01:00 PM",
   "01:00 PM - 02:00 PM",
   "02:00 PM - 03:00 PM",
@@ -146,7 +147,7 @@ function FormSection({
         />
         <ConsultationCard
           active={consultationMode === "video-call"}
-          title="Video Conference"
+          title="Virtual meeting"
           icon={
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
               <path d="M15 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8Z" />
@@ -218,7 +219,6 @@ function FormSection({
           { id: "3-6-months" as PossessionTimeline, label: "3 - 6 months" },
           { id: "more-than-6-months" as PossessionTimeline, label: "More than 6 months" },
           { id: "under-construction" as PossessionTimeline, label: "Under construction" },
-          { id: "construction-not-yet-ready" as PossessionTimeline, label: "Construction not yet ready" },
         ].map((item) => (
           <button
             key={item.id}

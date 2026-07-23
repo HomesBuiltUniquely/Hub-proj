@@ -7,11 +7,17 @@ import { Pincode } from "../LandingPage1/Pincode";
 type ConsultationMode = "experience-center" | "video-call";
 
 const preferredSlots = [
-  "09:00 AM - 11:00 AM",
-  "11:00 AM - 01:00 PM",
-  "02:00 PM - 04:00 PM",
-  "04:00 PM - 06:00 PM",
-  "06:00 PM - 08:00 PM",
+  "09:00 AM - 10:00 AM",
+  "10:00 AM - 11:00 AM",
+  "11:00 AM - 12:00 PM",
+  "12:00 PM - 01:00 PM",
+  "01:00 PM - 02:00 PM",
+  "02:00 PM - 03:00 PM",
+  "03:00 PM - 04:00 PM",
+  "04:00 PM - 05:00 PM",
+  "05:00 PM - 06:00 PM",
+  "06:00 PM - 07:00 PM",
+  "07:00 PM - 08:00 PM"
 ];
 
 const carouselImages = [
@@ -110,6 +116,20 @@ function FormSection({
   onSubmit: () => void;
   isSubmitting: boolean;
 }) {
+  const formatDateForInput = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const today = new Date();
+  const maxSelectableDate = new Date(today);
+  maxSelectableDate.setDate(today.getDate() + 14);
+
+  const minDate = formatDateForInput(today);
+  const maxDate = formatDateForInput(maxSelectableDate);
+
   const inputClass =
     "h-[58px] w-full rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
 
@@ -268,7 +288,7 @@ function FormSection({
         />
         <ConsultationCard
           active={consultationMode === "video-call"}
-          title="Video Conference"
+          title="Virtual meeting"
           icon={
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
               <path d="M15 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8Z" />
@@ -285,6 +305,8 @@ function FormSection({
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
+            min={minDate}
+            max={maxDate}
             className={`${inputClass} [color-scheme:light]`}
           />
           {!selectedDate && (
