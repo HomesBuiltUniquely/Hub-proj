@@ -157,6 +157,7 @@ const Home: React.FC = () => {
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
       city: formData.get("city") as string,
+      franchiseType: formData.get("franchiseType") as string,
     };
 
     try {
@@ -213,6 +214,7 @@ const Home: React.FC = () => {
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
       city: formData.get("city") as string,
+      franchiseType: formData.get("franchiseType") as string,
     };
 
     try {
@@ -465,6 +467,29 @@ const Home: React.FC = () => {
                 className="w-full px-4 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="text"
               />
+              <label className="pl-1 text-white">Franchise Type*</label>
+              <div className="relative w-full">
+                <select
+                  name="franchiseType"
+                  disabled={isSubmitting}
+                  defaultValue=""
+                  className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled selected hidden></option>
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
+                    FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
+                  </option>
+                  <option value="FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)
+                  </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -669,6 +694,29 @@ const Home: React.FC = () => {
                 className="w-full px-4 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="text"
               />
+              <label className="pl-1 text-white">Franchise Type*</label>
+              <div className="relative w-full">
+                <select
+                  name="franchiseType"
+                  disabled={isSubmitting}
+                  defaultValue=""
+                  className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled selected hidden></option>
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
+                    FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
+                  </option>
+                  <option value="FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)
+                  </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -874,6 +922,30 @@ const Home: React.FC = () => {
                 type="text"
               />
 
+              <label className="pl-1 text-white">Franchise Type*</label>
+              <div className="relative w-full">
+                <select
+                  name="franchiseType"
+                  disabled={isSubmitting}
+                  defaultValue=""
+                  className="w-full px-3 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled selected hidden></option>
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
+                    FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
+                  </option>
+                  <option value="FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)
+                  </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -1050,6 +1122,28 @@ const Home: React.FC = () => {
                 disabled={isSubmitting}
                 className="w-full sm:w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-4 pl-4 disabled:opacity-50 disabled:cursor-not-allowed"
               />
+              <div className="relative w-full sm:w-[280px]">
+                <select
+                  name="franchiseType"
+                  disabled={isSubmitting}
+                  defaultValue=""
+                  className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] mt-4 pl-4 pr-10 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled selected hidden></option>
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
+                    FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
+                  </option>
+                  <option value="FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)
+                  </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
