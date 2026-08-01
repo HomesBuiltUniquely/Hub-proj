@@ -470,15 +470,16 @@ const Home: React.FC = () => {
                 <select
                   name="franchiseType"
                   disabled={isSubmitting}
+                  required
                   defaultValue=""
                   className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
                 >
-                  <option value="" disabled selected hidden></option>
+                  <option value="" disabled hidden></option>
                   <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
                     FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
                   </option>
-                  <option value="FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)">
-                    FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)
+                  <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)
                   </option>
                 </select>
                 <span
@@ -697,15 +698,16 @@ const Home: React.FC = () => {
                 <select
                   name="franchiseType"
                   disabled={isSubmitting}
+                  required
                   defaultValue=""
                   className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
                 >
-                  <option value="" disabled selected hidden></option>
+                  <option value="" disabled hidden></option>
                   <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
                     FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
                   </option>
-                  <option value="FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)">
-                    FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)
+                  <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)
                   </option>
                 </select>
                 <span
@@ -925,15 +927,18 @@ const Home: React.FC = () => {
                 <select
                   name="franchiseType"
                   disabled={isSubmitting}
+                  required
                   defaultValue=""
                   className="w-full px-3 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
                 >
-                  <option value="" disabled selected hidden></option>
+                  <option value="" disabled hidden></option>
+
                   <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
                     FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
                   </option>
-                  <option value="FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)">
-                    FOCO - Franchise Owned, Company Operated (₹50 Lakhs+)
+
+                  <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)
                   </option>
                 </select>
                 <span
@@ -1124,12 +1129,12 @@ const Home: React.FC = () => {
                     Franchise Format
                   </option>
 
-                  <option value="FOFO">
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
                     FOFO – Franchise Owned, Franchise Operated (₹20–40 Lakhs)
                   </option>
 
-                  <option value="FOCO">
-                    FOCO – Franchise Owned, Company Operated (₹50 Lakhs+)
+                  <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
+                    FOCO – Franchise Owned, Company Operated (₹60 Lakhs+)
                   </option>
                 </select>
                 <span

@@ -10,6 +10,7 @@ export async function POST(req: Request) {
       email,
       phone,
       city,
+      franchiseType,
     } = body;
     if (!isValidIndianPhone(phone)) {
       return NextResponse.json(
@@ -24,6 +25,7 @@ export async function POST(req: Request) {
       email,
       phone: normalizedPhone,
       city,
+      franchiseType,
     });
 
     // Use franchise-specific credentials
@@ -95,6 +97,7 @@ export async function POST(req: Request) {
             <p><strong>Email:</strong> ${email || 'Not provided'}</p>
             <p><strong>Phone:</strong> ${normalizedPhone || 'Not provided'}</p>
             <p><strong>City:</strong> ${city || 'Not provided'}</p>
+            <p><strong>Franchise Type:</strong> ${franchiseType || 'Not provided'}</p>
           </div>
 
           <div style="background-color: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
