@@ -1,9 +1,27 @@
 const cityOptions = [
+  //"4 - 6 Lakhs",
+  //"6 - 8 Lakhs",
+  //"8 - 10 Lakhs",
+  //"10+ Lakhs"
 
-"4 - 6 Lakhs",
-"6 - 8 Lakhs",
-"8 - 10 Lakhs",
-"10+ Lakhs"
+  "2 BHK Essential Interiors - 4 Lakhs+ ( Modular Kitchen, Wardrobes, TV Unit )",
+
+  "3 BHK Essential Interiors - 6 Lakhs+ ( Modular Kitchen, Wardrobes, TV Unit )",
+
+  "4 BHK Essential Interiors - 8 Lakhs+ ( Modular Kitchen, Wardrobes, TV Unit )",
+
+  "2 BHK Standard Interiors - 6 Lakhs+",
+
+  "3 BHK Standard Interiors - 8 Lakhs+",
+
+  "4 BHK Standard Interiors - 10 Lakhs+",
+
+  "2 BHK Luxury Interiors - 9 Lakhs+",
+
+  "3 BHK Luxury Interiors - 12 Lakhs+",
+
+  "4 BHK Luxury Interiors - 15 Lakhs+",
+
   // "2 BHK Interiors starts @ 3.5 Lakhs",
   // "3 BHK Interiors starts @ 4.3 Lakhs",
   // "4 BHK Interiors starts @ 5.1 Lakhs",
