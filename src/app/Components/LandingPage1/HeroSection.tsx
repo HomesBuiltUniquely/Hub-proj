@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode";
 import cityOptions from "./DropDown1";
 import { normalizePhoneNumber } from "@/lib/utils";
@@ -42,7 +41,6 @@ const projectPossessionTimelineOptions = [
 export default function HeroSections({
   submitApiUrl = "/api/contact",
 }: HeroSectionsProps) {
-  const router = useRouter();
   const [cityOpen, setCityOpen] = useState(false);
   const [possessionTimelineOpen, setPossessionTimelineOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
@@ -71,19 +69,10 @@ export default function HeroSections({
     "Renovation (Currently Staying Here)",
   ];
 
-  // 2 min timer + single CRM hit logic
+  // 2 min OTP timer (resend only)
   const [otpTimerSeconds, setOtpTimerSeconds] = useState(0);
   const [resendVisible, setResendVisible] = useState(false);
-  const [leadSentToCrm, setLeadSentToCrm] = useState<
-    "none" | "VERIFIED" | "UNVERIFIED"
-  >("none");
-  const leadSentToCrmRef = useRef<"none" | "VERIFIED" | "UNVERIFIED">("none");
-  const leadPayloadRef = useRef<Record<string, unknown> | null>(null);
   const heroSubmitLockRef = useRef(false);
-
-  useEffect(() => {
-    leadSentToCrmRef.current = leadSentToCrm;
-  }, [leadSentToCrm]);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -173,34 +162,6 @@ export default function HeroSections({
     }
   };
 
-  // Keep old behavior for email only: send immediate UNVERIFIED mail on submit.
-  const sendImmediateUnverifiedMail = async () => {
-    try {
-      const currentUrl = window.location.href;
-      await fetch(submitApiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: selectedCity,
-          budget: "",
-          pincode: selectedPincode,
-          projectPossessionTimeline,
-          possession: projectPossessionTimeline,
-          whatsappConsent: whatsappConsent,
-          pageUrl: currentUrl,
-          verificationStatus: "UNVERIFIED",
-          otpSuccess: false,
-          mailOnly: true,
-        }),
-      });
-    } catch (error) {
-      console.warn("Immediate unverified mail failed:", error);
-    }
-  };
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
@@ -224,31 +185,6 @@ export default function HeroSections({
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  // beforeunload: send UNVERIFIED on page reload if not already sent
-  useEffect(() => {
-    const handler = () => {
-      if (leadSentToCrmRef.current !== "none" || !leadPayloadRef.current)
-        return;
-      const payload = leadPayloadRef.current;
-      const requestData = {
-        ...payload,
-        budget: "",
-        pageUrl: typeof window !== "undefined" ? window.location.href : "",
-        verificationStatus: "UNVERIFIED",
-        otpSuccess: false,
-        skipEmail: true,
-      };
-      fetch(submitApiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestData),
-        keepalive: true,
-      }).catch(() => {});
-    };
-    window.addEventListener("beforeunload", handler);
-    return () => window.removeEventListener("beforeunload", handler);
   }, []);
 
   // 2 min timer: on expiry show Resend
@@ -338,8 +274,7 @@ export default function HeroSections({
     heroSubmitLockRef.current = true;
     setIsSubmitting(true);
     try {
-      void sendImmediateUnverifiedMail();
-      await handleFinalSubmit("VERIFIED");
+      handleFinalSubmit();
     } finally {
       heroSubmitLockRef.current = false;
     }
@@ -362,19 +297,6 @@ export default function HeroSections({
       alert("Please enter a valid 10-digit phone number");
       return;
     }
-
-    setLeadSentToCrm("none");
-    leadSentToCrmRef.current = "none";
-    leadPayloadRef.current = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      city: selectedCity,
-      pincode: selectedPincode,
-      projectPossessionTimeline,
-      possession: projectPossessionTimeline,
-      whatsappConsent,
-    };
 
     setIsSendingOtpAuto(true);
     setIsPendingOtpSms(true);
@@ -452,96 +374,61 @@ export default function HeroSections({
     }
   };
 
-  const handleFinalSubmit = async (
-    verificationStatus: "VERIFIED" | "UNVERIFIED" = "UNVERIFIED",
-  ) => {
-    setLeadSentToCrm(verificationStatus);
-    leadSentToCrmRef.current = verificationStatus;
-
-    console.log("handleFinalSubmit called with status:", verificationStatus);
+  /** Redirect immediately; CRM/email POST runs in background so Ads conversion isn't delayed. */
+  const handleFinalSubmit = () => {
     setIsSubmitting(true);
 
-    try {
-      const currentUrl = window.location.href;
-      const requestData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        city: selectedCity,
-        budget: "",
-        pincode: selectedPincode,
-        projectPossessionTimeline,
-        possession: projectPossessionTimeline,
-        whatsappConsent: whatsappConsent,
-        pageUrl: currentUrl,
-        verificationStatus: verificationStatus,
-        otpSuccess: verificationStatus === "VERIFIED",
-        // Avoid duplicate UNVERIFIED emails from timer/close/reload.
-        skipEmail: verificationStatus === "UNVERIFIED",
-      };
+    const currentUrl = window.location.href;
+    const requestData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      city: selectedCity,
+      budget: "",
+      pincode: selectedPincode,
+      projectPossessionTimeline,
+      possession: projectPossessionTimeline,
+      whatsappConsent: whatsappConsent,
+      pageUrl: currentUrl,
+      verificationStatus: "VERIFIED" as const,
+      otpSuccess: true,
+    };
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
+    const timelineForRedirect = projectPossessionTimeline;
 
-      const response = await fetch(submitApiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestData),
-        signal: controller.signal,
-      });
+    saveLeadContactToSession({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      pincode: selectedPincode,
+    });
+    sessionStorage.setItem("formSubmitted", "true");
+    sessionStorage.removeItem("hubThankYouAdsConversionSent");
 
-      clearTimeout(timeoutId);
-      const responseData = await response.json();
+    // Fire-and-forget — keepalive so the request survives navigation
+    fetch(submitApiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestData),
+      keepalive: true,
+    }).catch((error) => {
+      console.error("Background lead submit failed:", error);
+    });
 
-      if (response.ok && responseData.success) {
-        if (verificationStatus === "VERIFIED") {
-          // Store user data for thank you page
-          saveLeadContactToSession({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            pincode: selectedPincode,
-          });
+    setSelectedCity("");
+    setSelectedPincode("");
+    setProjectPossessionTimeline("");
+    setWhatsappConsent(true);
+    setFormData({ name: "", email: "", phone: "" });
+    setOtpSent(false);
+    setOtpVerified(false);
+    setOtp("");
+    setIsSubmitting(false);
 
-          // Set flag to trigger reload on Thank You page
-          sessionStorage.setItem("formSubmitted", "true");
-
-          // Reset form
-          setSelectedCity("");
-          setSelectedPincode("");
-          setProjectPossessionTimeline("");
-          setWhatsappConsent(true);
-          setFormData({ name: "", email: "", phone: "" });
-          setOtpSent(false);
-          setOtpVerified(false);
-          setOtp("");
-
-          // Hot timelines → full Thank You page redirect; others → inline popup
-          if (HOT_TIMELINES.includes(projectPossessionTimeline)) {
-            router.push(POST_LEAD_SUCCESS_PATH);
-          } else {
-            setShowThankYouPopup(true);
-          }
-        } else {
-          // UNVERIFIED — no action needed
-        }
-      } else {
-        alert(
-          responseData.message || "Failed to submit form. Please try again.",
-        );
-      }
-    } catch (error: unknown) {
-      console.error("Error submitting form:", error);
-
-      if (error instanceof Error && error.name === "AbortError") {
-        alert(
-          "Request timed out. Please check your internet connection and try again.",
-        );
-      } else {
-        alert("Failed to submit form. Please try again.");
-      }
-    } finally {
-      setIsSubmitting(false);
+    if (HOT_TIMELINES.includes(timelineForRedirect)) {
+      window.location.assign(POST_LEAD_SUCCESS_PATH);
+    } else {
+      setShowThankYouPopup(true);
     }
   };
 

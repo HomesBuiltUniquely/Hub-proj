@@ -280,8 +280,7 @@ export async function POST(req: Request) {
     });
 
     // ✅ Email content including all form data
-    const verificationStatusText =
-      normalizedVerificationStatus === 'VERIFIED' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
+    const verificationStatusText = '✅ VERIFIED';
 
     // Check if this is a calculator submission (has calculator data)
     const isCalculatorSubmission = !!(
@@ -306,45 +305,27 @@ export async function POST(req: Request) {
     const isHomeCalculator =
       !isInteriorCalculator && (pathLower.includes('/calculator') || pathLower.endsWith('/calculator'));
 
-    let subject = 'Google Ads Lead (Unverified)';
+    let subject = 'Google Ads Lead';
 
     // Check for Meta lead page first (best-interior-designers-in-bangalore)
     if (isBestInteriorBangalorePage) {
-      subject =
-        normalizedVerificationStatus === 'VERIFIED'
-          ? 'Meta Lead (Verified)'
-          : 'Meta Lead (Unverified)';
+      subject = 'Meta Lead';
     } else if (isHomeRenovationBangalorePage) {
       // Standalone branch: only matches pageUrl; safe to remove with the renovation route later.
-      subject =
-        normalizedVerificationStatus === 'VERIFIED'
-          ? 'Renovation Ads Lead (Verified)'
-          : 'Renovation Ads Lead (Unverified)';
+      subject = 'Renovation Ads Lead';
     } else if (isInteriorCalculator || isInteriorBangalorePage) {
-      subject =
-        normalizedVerificationStatus === 'VERIFIED'
-          ? 'Google Ads Lead (Verified)'
-          : 'Google Ads Lead (Unverified)';
+      subject = 'Google Ads Lead';
     } else if (isHubCalculator) {
-      subject =
-        normalizedVerificationStatus === 'VERIFIED' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+      subject = 'Website Lead';
     } else if (isHomeCalculator) {
-      subject =
-        normalizedVerificationStatus === 'VERIFIED' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+      subject = 'Website Lead';
     } else if (isContactPage) {
-      subject =
-        normalizedVerificationStatus === 'VERIFIED'
-          ? 'Lead from Website(Verified)'
-          : 'Lead from Website (Unverified)';
+      subject = 'Lead from Website';
     } else if (isCalculatorSubmission) {
       // If calculator data is present but URL didn't match known routes, default to Website Lead
-      subject =
-        normalizedVerificationStatus === 'VERIFIED' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+      subject = 'Website Lead';
     } else {
-      subject =
-        normalizedVerificationStatus === 'VERIFIED'
-          ? 'Google Ads Lead (Verified)'
-          : 'Google Ads Lead (Unverified)';
+      subject = 'Google Ads Lead';
     }
 
     const renderJSON = (value: unknown) => {
@@ -388,17 +369,10 @@ export async function POST(req: Request) {
         <p><strong>WhatsApp Consent:</strong> ${
           typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'
         }</p>
-        <p><strong>Verification Status:</strong> <span style="color: ${
-          normalizedVerificationStatus === 'VERIFIED' ? 'green' : 'red'
-        }; font-weight: bold;">${verificationStatusText}</span></p>
+        <p><strong>Verification Status:</strong> <span style="color: green; font-weight: bold;">${verificationStatusText}</span></p>
         <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${
           pageUrl || 'Not provided'
         }</a></p>
-        ${
-          normalizedVerificationStatus !== 'VERIFIED'
-            ? '<p style="color: red; font-weight: bold;">⚠️ IMPORTANT: This user did not verify their phone number. Please follow up to verify their details.</p>'
-            : ''
-        }
         <hr/>
         <h3>Selections (Calculator)</h3>
         <p><strong>BHK Type:</strong> ${bhkType || (calculator?.bhkType ?? 'Not provided')}</p>
