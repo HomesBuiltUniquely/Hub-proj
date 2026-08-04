@@ -59,6 +59,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/hubicon.svg",
   },
+  verification: {
+    other: {
+      "msvalidate.01": "4E806C4AB6D857DC63056ED1B9EF9CCB",
+    },
+  },
 };
 
 export default function RootLayout({
