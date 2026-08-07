@@ -14,6 +14,8 @@ export async function POST(req: Request) {
       city,
       budget,
       possession,
+      projectPossessionTimeline,
+      interiorSetup,
       whatsappConsent,
       pageUrl,
       verificationStatus,
@@ -33,6 +35,11 @@ export async function POST(req: Request) {
       skipEmail,
     } = body;
 
+    // Resolve aliases so landing / calculator / popup payloads all land in email
+    const resolvedInteriorPackage = city || interiorSetup || '';
+    const resolvedPossession =
+      possession || projectPossessionTimeline || '';
+
     if (!isValidIndianPhone(phone)) {
       return NextResponse.json(
         { success: false, message: 'Phone number must be exactly 10 digits.' },
@@ -46,9 +53,9 @@ export async function POST(req: Request) {
       phone: normalizedPhone,
       email,
       pincode,
-      city,
+      city: resolvedInteriorPackage,
       budget,
-      possession,
+      possession: resolvedPossession,
       whatsappConsent,
       pageUrl,
       verificationStatus,
@@ -108,7 +115,7 @@ export async function POST(req: Request) {
           phoneNumber: normalizedPhone,
           pinCode: pincode || null,
           propertyPin: pincode || null,
-          propertyType: bhkType || city || null,
+          propertyType: bhkType || resolvedInteriorPackage || null,
           bookASlot: date || time || null,
           leadSource: 'Website',
           verificationStatus: normalizedVerificationStatus,
@@ -145,8 +152,8 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: phone || '',
           propertyPin: pincode || '',
-          interiorSetup: city || possession || '',
-          possessionIn: possession || city || '',
+          interiorSetup: resolvedInteriorPackage,
+          possessionIn: resolvedPossession,
           verificationStatus: normalizedVerificationStatus,
           otpSuccess: normalizedOtpSuccess,
         };
@@ -179,7 +186,7 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: normalizedPhone,
           propertyPin: pincode || '',
-          interiorSetup: city || possession || '',
+          interiorSetup: resolvedInteriorPackage || resolvedPossession,
           possessionIn: budget || '',
           budget: budget || '',
           verificationStatus: normalizedVerificationStatus,
@@ -214,7 +221,8 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: normalizedPhone,
           propertyPin: pincode || '',
-          interiorSetup: city || possession || '',
+          interiorSetup: resolvedInteriorPackage,
+          possessionIn: resolvedPossession,
           verificationStatus: websiteLeadVerificationStatus,
           otpSuccess: websiteLeadOtpSuccess,
         };
@@ -339,16 +347,44 @@ export async function POST(req: Request) {
 
     const renovationLeadDetailsHtml = isHomeRenovationBangalorePage
       ? `
-        <p><strong>Requirements:</strong> ${city || 'Not provided'}</p>
+        <p><strong>Requirements:</strong> ${resolvedInteriorPackage || 'Not provided'}</p>
         <p><strong>Renovation budget:</strong> ${budget || 'Not provided'}</p>
       `
       : '';
 
     const defaultLeadDetailsHtml = !isHomeRenovationBangalorePage
       ? `
-        <p><strong>Interior Setup:</strong> ${city || 'Not provided'}</p>
+        <p><strong>Interior Package:</strong> ${resolvedInteriorPackage || 'Not provided'}</p>
         <p><strong>Budget:</strong> ${budget || 'Not provided'}</p>
-        <p><strong>Possession Timeline:</strong> ${possession || 'Not provided'}</p>
+        <p><strong>Project Possession Timeline:</strong> ${resolvedPossession || 'Not provided'}</p>
+      `
+      : '';
+
+    const calculatorSectionHtml = isCalculatorSubmission
+      ? `
+        <hr/>
+        <h3>Selections (Calculator)</h3>
+        <p><strong>BHK Type:</strong> ${bhkType || (calculator?.bhkType ?? 'Not provided')}</p>
+        <p><strong>Rooms:</strong></p>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          rooms || calculator?.rooms
+        )}</pre>
+        <p><strong>Wardrobe:</strong></p>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          wardrobe || calculator?.wardrobe
+        )}</pre>
+        <p><strong>Kitchen:</strong></p>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          kitchen || calculator?.kitchen
+        )}</pre>
+        <p><strong>Collections:</strong></p>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          collections || calculator?.collections
+        )}</pre>
+        <p><strong>Material Finish:</strong></p>
+        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
+          material || calculator?.material
+        )}</pre>
       `
       : '';
 
@@ -373,29 +409,7 @@ export async function POST(req: Request) {
         <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${
           pageUrl || 'Not provided'
         }</a></p>
-        <hr/>
-        <h3>Selections (Calculator)</h3>
-        <p><strong>BHK Type:</strong> ${bhkType || (calculator?.bhkType ?? 'Not provided')}</p>
-        <p><strong>Rooms:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
-          rooms || calculator?.rooms
-        )}</pre>
-        <p><strong>Wardrobe:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
-          wardrobe || calculator?.wardrobe
-        )}</pre>
-        <p><strong>Kitchen:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
-          kitchen || calculator?.kitchen
-        )}</pre>
-        <p><strong>Collections:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
-          collections || calculator?.collections
-        )}</pre>
-        <p><strong>Material Finish:</strong></p>
-        <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
-          material || calculator?.material
-        )}</pre>
+        ${calculatorSectionHtml}
       `,
     };
 
@@ -404,9 +418,9 @@ export async function POST(req: Request) {
       phone: normalizedPhone,
       email,
       pincode,
-      city,
+      city: resolvedInteriorPackage,
       budget,
-      possession,
+      possession: resolvedPossession,
       whatsappConsent,
       pageUrl,
       verificationStatus,

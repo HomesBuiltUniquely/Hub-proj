@@ -254,6 +254,10 @@ export default function HeroSections({
       alert("Please enter your name.");
       return;
     }
+    if (!formData.email) {
+      alert("Please enter your email.");
+      return;
+    }
     if (!formData.phone) {
       alert("Please enter your phone number.");
       return;
@@ -638,8 +642,8 @@ export default function HeroSections({
                   />
                 </div>
 
-                {/* Email Input hidden per request.
-                <div className="flex flex-col justify-center items-center mt-1">
+                {/* Email Input */}
+                <div className="flex flex-col justify-center items-center mt-4">
                   <input
                     type="email"
                     name="email"
@@ -647,18 +651,12 @@ export default function HeroSections({
                     onChange={handleInputChange}
                     placeholder="Email *"
                     required
-                    className="peer w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-5 rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                    className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                   />
-                  <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[250px]">
-                    <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">
-                      Add Primary Email To Receive Quote
-                    </p>
-                  </div>
                 </div>
-                */}
 
                 {/* Phone */}
-                <div className="flex flex-col justify-center mt-6">
+                <div className="flex flex-col justify-center mt-4">
                   <input
                     type="tel"
                     name="phone"
@@ -845,9 +843,8 @@ export default function HeroSections({
                 </div>
 
                 {/* Legal Text */}
-                <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 font-medium text-black-0 text-center sm:text-left mr-0 sm:mr-26 lg:ml-2 px-2">
-                  By submitting, you agree to our Privacy Policy, Terms and
-                  Conditions
+                <div className="text-xs sm:text-sm mt-3 font-medium text-black-0 text-center px-2">
+                  By submitting, you agree to Privacy Policy, Terms and Conditions
                 </div>
               </div>
             </div>
@@ -857,24 +854,24 @@ export default function HeroSections({
 
           {/* 2560 Version */}
           <div className=" desktop-2560 hidden lg:block bg-[#f1f2f6] justify-center min-h-screen p-4 sm:p-6">
-            <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto lg:mr-30">
+            <div className="flex flex-col lg:flex-row gap-6 items-start max-w-7xl mx-auto lg:mr-30">
               {/* Left side - Form */}
               <div className="w-full lg:w-auto">
                 <div className="flex justify-center lg:justify-start">
                   <img
                     src="/hub.png"
                     alt="Logo"
-                    className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2"
+                    className="h-[44px] sm:h-[50px] lg:h-[56px]"
                   />
                 </div>
-                <div className="bg-white w-full lg:min-w-[570px] h-auto mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
-                  <p className="lg:mr-20 mb-6 manrope lg:mb-0">
+                <div className="bg-white w-full lg:min-w-[570px] h-auto mt-3 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-7 sm:p-9 lg:p-10 shadow-2xl">
+                  <p className="lg:mr-20 mb-5 manrope lg:mb-3">
                     Interiors For Every{" "}
                     <span className="text-red-600">Home</span>
                   </p>
 
                   {/* Name Input */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                  <div className="flex flex-col justify-center items-center">
                     <input
                       type="text"
                       name="name"
@@ -882,11 +879,11 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Name *"
                       required
-                      className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-12 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
 
-                  {/* Email Input hidden per request.
+                  {/* Email Input */}
                   <div className="flex flex-col justify-center items-center">
                     <input
                       type="email"
@@ -895,18 +892,12 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Email *"
                       required
-                      className="peer w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
-                    <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[250px]">
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">
-                        Add Primary Email To Receive Quote
-                      </p>
-                    </div>
                   </div>
-                  */}
 
                   {/* Phone Input */}
-                  <div className="flex flex-col gap-4 justify-center mt-6 sm:mt-10">
+                  <div className="flex flex-col justify-center items-center mt-5">
                     <input
                       id="e2"
                       type="tel"
@@ -915,88 +906,92 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Phone Number *"
                       required
-                      className="w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
 
                   {/* Inline OTP — 2560 */}
-                  <div className="flex flex-col gap-4 justify-center mt-4">
-                    {normalizePhoneNumber(formData.phone).length === 10 &&
-                      !otpSent && (
-                        <button
-                          type="button"
-                          onClick={handleSendOtp}
-                          disabled={isSendingOtpAuto}
-                          className="w-full sm:w-[520px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                        >
-                          {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
-                        </button>
-                      )}
-                    {otpSent && !otpVerified && (
-                      <div className="flex flex-col gap-3 w-full sm:w-[520px]">
-                        {isPendingOtpSms ? (
-                          <p className="text-sm text-gray-500 manrope-medium text-center">
-                            Sending OTP to {formData.phone}…
-                          </p>
-                        ) : (
-                          <p className="text-sm text-gray-500 manrope-medium text-center">
-                            OTP sent to {formData.phone}
-                          </p>
-                        )}
-                        <input
-                          type="text"
-                          value={otp}
-                          onChange={(e) => setOtp(e.target.value)}
-                          placeholder="Enter OTP *"
-                          maxLength={6}
-                          disabled={isPendingOtpSms || isOtpVerifying}
-                          className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
-                        />
-                        {!resendVisible && otpTimerSeconds > 0 && (
-                          <p className="text-xs text-gray-400 manrope text-center">
-                            Resend in {Math.floor(otpTimerSeconds / 60)}:
-                            {(otpTimerSeconds % 60).toString().padStart(2, "0")}
-                          </p>
-                        )}
-                        <button
-                          type="button"
-                          onClick={handleOtpSubmit}
-                          disabled={
-                            isPendingOtpSms || isOtpVerifying || otp.length < 4
-                          }
-                          className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                        >
-                          {isOtpVerifying ? "Verifying…" : "Verify OTP"}
-                        </button>
-                        {resendVisible && (
+                  {(normalizePhoneNumber(formData.phone).length === 10 ||
+                    otpSent ||
+                    otpVerified) && (
+                    <div className="flex flex-col gap-4 justify-center mt-4">
+                      {normalizePhoneNumber(formData.phone).length === 10 &&
+                        !otpSent && (
                           <button
                             type="button"
-                            onClick={handleResendOtp}
-                            disabled={isSendingOtpAuto || isPendingOtpSms}
-                            className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
+                            onClick={handleSendOtp}
+                            disabled={isSendingOtpAuto}
+                            className="w-full sm:w-[520px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
                           >
-                            {isSendingOtpAuto || isPendingOtpSms
-                              ? "Sending…"
-                              : "Resend OTP"}
+                            {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
                           </button>
                         )}
-                      </div>
-                    )}
-                    {otpVerified && (
-                      <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[520px]">
-                        ✓ Phone verified
-                      </p>
-                    )}
-                  </div>
+                      {otpSent && !otpVerified && (
+                        <div className="flex flex-col gap-3 w-full sm:w-[520px]">
+                          {isPendingOtpSms ? (
+                            <p className="text-sm text-gray-500 manrope-medium text-center">
+                              Sending OTP to {formData.phone}…
+                            </p>
+                          ) : (
+                            <p className="text-sm text-gray-500 manrope-medium text-center">
+                              OTP sent to {formData.phone}
+                            </p>
+                          )}
+                          <input
+                            type="text"
+                            value={otp}
+                            onChange={(e) => setOtp(e.target.value)}
+                            placeholder="Enter OTP *"
+                            maxLength={6}
+                            disabled={isPendingOtpSms || isOtpVerifying}
+                            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
+                          />
+                          {!resendVisible && otpTimerSeconds > 0 && (
+                            <p className="text-xs text-gray-400 manrope text-center">
+                              Resend in {Math.floor(otpTimerSeconds / 60)}:
+                              {(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                            </p>
+                          )}
+                          <button
+                            type="button"
+                            onClick={handleOtpSubmit}
+                            disabled={
+                              isPendingOtpSms || isOtpVerifying || otp.length < 4
+                            }
+                            className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
+                          >
+                            {isOtpVerifying ? "Verifying…" : "Verify OTP"}
+                          </button>
+                          {resendVisible && (
+                            <button
+                              type="button"
+                              onClick={handleResendOtp}
+                              disabled={isSendingOtpAuto || isPendingOtpSms}
+                              className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
+                            >
+                              {isSendingOtpAuto || isPendingOtpSms
+                                ? "Sending…"
+                                : "Resend OTP"}
+                            </button>
+                          )}
+                        </div>
+                      )}
+                      {otpVerified && (
+                        <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[520px]">
+                          ✓ Phone verified
+                        </p>
+                      )}
+                    </div>
+                  )}
 
                   {/* Pincode Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-4 sm:mt-10">
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-5">
                     <select
                       name="pincode"
                       required
                       value={selectedPincode}
                       onChange={(e) => setSelectedPincode(e.target.value)}
-                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
+                      className="w-full h-[56px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
                     >
                       <option
                         className="text-gray-400 manrope-medium"
@@ -1012,20 +1007,20 @@ export default function HeroSections({
                       ))}
                     </select>
                     {/* Custom dropdown arrow icon */}
-                    <span className="text-gray-500 absolute mt-4 -ml-8 text-[16px]">
+                    <span className="pointer-events-none absolute top-1/2 right-4 sm:right-6 -translate-y-1/2 text-[16px] leading-none text-gray-500">
                       &#9662;
                     </span>
                   </div>
 
                   {/* City Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10">
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-5">
                     <div ref={cityRef2560}>
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
                           // setBudgetOpen(false);
                         }}
-                        className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && "text-gray-400"}`}
+                        className={`w-full h-[56px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate">
                           {selectedCity ||
@@ -1050,14 +1045,14 @@ export default function HeroSections({
                   </div>
 
                   {/* Project Possession Timeline Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-10">
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-5">
                     <div ref={possessionRef2560}>
                       <div
                         onClick={() => {
                           setPossessionTimelineOpen(!possessionTimelineOpen);
                           setCityOpen(false);
                         }}
-                        className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!projectPossessionTimeline && "text-gray-400"}`}
+                        className={`w-full h-[56px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!projectPossessionTimeline && "text-gray-400"}`}
                       >
                         <span className="truncate">
                           {projectPossessionTimeline ||
@@ -1084,12 +1079,12 @@ export default function HeroSections({
                   </div>
 
                   {/* Button Container (centered) */}
-                  <div className="flex items-center justify-center mt-6 sm:mt-8">
+                  <div className="flex items-center justify-center mt-6">
                     {/* Submit Button — always visible */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="manrope flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] justify-center items-center lg:mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="manrope flex w-[180px] sm:w-[200px] h-[48px] sm:h-[54px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <p>{isSubmitting ? "Sending..." : "Submit"}</p>
                       {!isSubmitting && (
@@ -1112,12 +1107,8 @@ export default function HeroSections({
                   </div>
 
                   {/* Legal Text */}
-                  <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 manrope-medium text-center sm:text-left mr-0 sm:mr-26 lg:ml-2 px-2">
-                    By submitting, you agree to Privacy Policy, Terms and
-                    Conditions{" "}
-                    <span className="text-[#000000] manrope-medium"></span>{" "}
-                    {"  "}
-                    <span className="text-[#000000] manrope-medium"></span>
+                  <div className="text-xs sm:text-sm lg:text-[14px] mt-4 manrope-medium text-center px-4">
+                    By submitting, you agree to Privacy Policy, Terms and Conditions
                   </div>
                 </div>
               </div>
@@ -1158,25 +1149,25 @@ export default function HeroSections({
 
           {/* 1920 Version */}
 
-          <div className=" desktop-1920 hidden lg:block bg-[#f1f2f6] justify-center mx-auto px-5 mt-3">
-            <div className="flex flex-col lg:flex-row gap-6  mx-auto ">
+          <div className=" desktop-1920 hidden lg:block bg-[#f1f2f6] justify-center mx-auto p-4 px-5 mt-0">
+            <div className="flex flex-col lg:flex-row gap-6 items-start mx-auto ">
               {/* Left side - Form */}
               <div className="w-full lg:w-auto">
                 <div className="flex justify-center lg:justify-start">
                   <img
                     src="/hub.png"
                     alt="Logo"
-                    className="h-[40px] sm:h-[50px] lg:h-[60px] "
+                    className="h-[44px] sm:h-[50px] lg:h-[56px]"
                   />
                 </div>
-                <div className="bg-white w-full lg:min-w-[570px] h-auto mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
-                  <p className="lg:mr-20 mb-6 manrope lg:mb-0 pt-2 mt-6">
+                <div className="bg-white w-full lg:min-w-[570px] h-auto mt-3 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-7 sm:p-9 lg:p-10 shadow-2xl">
+                  <p className="lg:mr-20 mb-5 manrope lg:mb-3">
                     Interiors For Every{" "}
                     <span className="text-red-600">Home</span>
                   </p>
 
                   {/* Name Input */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-2">
+                  <div className="flex flex-col justify-center items-center">
                     <input
                       type="text"
                       name="name"
@@ -1184,11 +1175,11 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Name *"
                       required
-                      className="w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] mt-4 sm:mt-10 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
 
-                  {/* Email Input hidden per request.
+                  {/* Email Input */}
                   <div className="flex flex-col justify-center items-center">
                     <input
                       type="email"
@@ -1197,18 +1188,12 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Email *"
                       required
-                      className="peer w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
-                    <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[520px]">
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">
-                        Add Primary Email To Receive Quote
-                      </p>
-                    </div>
                   </div>
-                  */}
 
                   {/* Phone Input */}
-                  <div className="flex flex-col gap-4 justify-center mt-6 sm:mt-5">
+                  <div className="flex flex-col justify-center items-center mt-5">
                     <input
                       id="e2"
                       type="tel"
@@ -1217,88 +1202,92 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Phone Number *"
                       required
-                      className="w-full sm:w-[520px] h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
 
                   {/* Inline OTP — 1920 */}
-                  <div className="flex flex-col gap-4 justify-center mt-4">
-                    {normalizePhoneNumber(formData.phone).length === 10 &&
-                      !otpSent && (
-                        <button
-                          type="button"
-                          onClick={handleSendOtp}
-                          disabled={isSendingOtpAuto}
-                          className="w-full sm:w-[520px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                        >
-                          {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
-                        </button>
-                      )}
-                    {otpSent && !otpVerified && (
-                      <div className="flex flex-col gap-3 w-full sm:w-[520px]">
-                        {isPendingOtpSms ? (
-                          <p className="text-sm text-gray-500 manrope-medium text-center">
-                            Sending OTP to {formData.phone}…
-                          </p>
-                        ) : (
-                          <p className="text-sm text-gray-500 manrope-medium text-center">
-                            OTP sent to {formData.phone}
-                          </p>
-                        )}
-                        <input
-                          type="text"
-                          value={otp}
-                          onChange={(e) => setOtp(e.target.value)}
-                          placeholder="Enter OTP *"
-                          maxLength={6}
-                          disabled={isPendingOtpSms || isOtpVerifying}
-                          className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
-                        />
-                        {!resendVisible && otpTimerSeconds > 0 && (
-                          <p className="text-xs text-gray-400 manrope text-center">
-                            Resend in {Math.floor(otpTimerSeconds / 60)}:
-                            {(otpTimerSeconds % 60).toString().padStart(2, "0")}
-                          </p>
-                        )}
-                        <button
-                          type="button"
-                          onClick={handleOtpSubmit}
-                          disabled={
-                            isPendingOtpSms || isOtpVerifying || otp.length < 4
-                          }
-                          className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                        >
-                          {isOtpVerifying ? "Verifying…" : "Verify OTP"}
-                        </button>
-                        {resendVisible && (
+                  {(normalizePhoneNumber(formData.phone).length === 10 ||
+                    otpSent ||
+                    otpVerified) && (
+                    <div className="flex flex-col gap-4 justify-center mt-4">
+                      {normalizePhoneNumber(formData.phone).length === 10 &&
+                        !otpSent && (
                           <button
                             type="button"
-                            onClick={handleResendOtp}
-                            disabled={isSendingOtpAuto || isPendingOtpSms}
-                            className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
+                            onClick={handleSendOtp}
+                            disabled={isSendingOtpAuto}
+                            className="w-full sm:w-[520px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
                           >
-                            {isSendingOtpAuto || isPendingOtpSms
-                              ? "Sending…"
-                              : "Resend OTP"}
+                            {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
                           </button>
                         )}
-                      </div>
-                    )}
-                    {otpVerified && (
-                      <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[520px]">
-                        ✓ Phone verified
-                      </p>
-                    )}
-                  </div>
+                      {otpSent && !otpVerified && (
+                        <div className="flex flex-col gap-3 w-full sm:w-[520px]">
+                          {isPendingOtpSms ? (
+                            <p className="text-sm text-gray-500 manrope-medium text-center">
+                              Sending OTP to {formData.phone}…
+                            </p>
+                          ) : (
+                            <p className="text-sm text-gray-500 manrope-medium text-center">
+                              OTP sent to {formData.phone}
+                            </p>
+                          )}
+                          <input
+                            type="text"
+                            value={otp}
+                            onChange={(e) => setOtp(e.target.value)}
+                            placeholder="Enter OTP *"
+                            maxLength={6}
+                            disabled={isPendingOtpSms || isOtpVerifying}
+                            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
+                          />
+                          {!resendVisible && otpTimerSeconds > 0 && (
+                            <p className="text-xs text-gray-400 manrope text-center">
+                              Resend in {Math.floor(otpTimerSeconds / 60)}:
+                              {(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                            </p>
+                          )}
+                          <button
+                            type="button"
+                            onClick={handleOtpSubmit}
+                            disabled={
+                              isPendingOtpSms || isOtpVerifying || otp.length < 4
+                            }
+                            className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
+                          >
+                            {isOtpVerifying ? "Verifying…" : "Verify OTP"}
+                          </button>
+                          {resendVisible && (
+                            <button
+                              type="button"
+                              onClick={handleResendOtp}
+                              disabled={isSendingOtpAuto || isPendingOtpSms}
+                              className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
+                            >
+                              {isSendingOtpAuto || isPendingOtpSms
+                                ? "Sending…"
+                                : "Resend OTP"}
+                            </button>
+                          )}
+                        </div>
+                      )}
+                      {otpVerified && (
+                        <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[520px]">
+                          ✓ Phone verified
+                        </p>
+                      )}
+                    </div>
+                  )}
 
                   {/* Pincode Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-4 sm:mt-5">
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-5">
                     <select
                       name="pincode"
                       required
                       value={selectedPincode}
                       onChange={(e) => setSelectedPincode(e.target.value)}
-                      className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
+                      className="w-full h-[56px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
                     >
                       <option
                         className="text-gray-400 manrope-medium"
@@ -1314,20 +1303,20 @@ export default function HeroSections({
                       ))}
                     </select>
                     {/* Custom dropdown arrow icon */}
-                    <span className="text-gray-500 absolute mt-4 -ml-8 text-[16px]">
+                    <span className="pointer-events-none absolute top-1/2 right-4 sm:right-6 -translate-y-1/2 text-[16px] leading-none text-gray-500">
                       &#9662;
                     </span>
                   </div>
 
                   {/* City Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-5">
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-5">
                     <div ref={cityRef1920}>
                       <div
                         onClick={() => {
                           setCityOpen(!cityOpen);
                           // setBudgetOpen(false);
                         }}
-                        className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && "text-gray-400"}`}
+                        className={`w-full h-[56px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate whitespace-nowrap overflow-hidden max-w-[430px]">
                           {selectedCity ||
@@ -1352,14 +1341,14 @@ export default function HeroSections({
                   </div>
 
                   {/* Project Possession Timeline Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-6 sm:mt-5">
+                  <div className="relative w-full sm:w-[520px] mx-auto mt-5">
                     <div ref={possessionRef1920}>
                       <div
                         onClick={() => {
                           setPossessionTimelineOpen(!possessionTimelineOpen);
                           setCityOpen(false);
                         }}
-                        className={`w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!projectPossessionTimeline && "text-gray-400"}`}
+                        className={`w-full h-[56px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!projectPossessionTimeline && "text-gray-400"}`}
                       >
                         <span className="truncate whitespace-nowrap overflow-hidden max-w-[430px]">
                           {projectPossessionTimeline ||
@@ -1386,12 +1375,12 @@ export default function HeroSections({
                   </div>
 
                   {/* Button Container (centered) */}
-                  <div className="flex items-center justify-center mt-6 sm:mt-5">
+                  <div className="flex items-center justify-center mt-6">
                     {/* Submit Button — always visible */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="manrope flex w-[180px] sm:w-[200px] h-[45px] sm:h-[50px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] justify-center items-center lg:mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="manrope flex w-[180px] sm:w-[200px] h-[48px] sm:h-[54px] bg-[#DDCDC1] rounded-3xl lg:rounded-4xl text-xl sm:text-2xl lg:text-[24px] justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <p>{isSubmitting ? "Sending..." : "Submit"}</p>
                       {!isSubmitting && (
@@ -1414,12 +1403,8 @@ export default function HeroSections({
                   </div>
 
                   {/* Legal Text */}
-                  <div className="text-xs sm:text-sm lg:text-[14px] mt-4 sm:mt-6 manrope-medium text-center sm:text-left mr-0 sm:mr-26 lg:ml-2 px-2">
-                    By submitting, you agree to Privacy Policy, Terms and
-                    Conditions{" "}
-                    <span className="text-[#000000] manrope-medium"></span>{" "}
-                    {"  "}
-                    <span className="text-[#000000] manrope-medium"></span>
+                  <div className="text-xs sm:text-sm lg:text-[14px] mt-4 manrope-medium text-center px-4">
+                    By submitting, you agree to Privacy Policy, Terms and Conditions
                   </div>
                 </div>
               </div>
@@ -1460,28 +1445,26 @@ export default function HeroSections({
 
           {/* 1280 Version */}
           <div className=" desktop-1280 hidden lg:block bg-[#f1f2f6] min-h-screen p-4 sm:p-6">
-            <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-6 items-start max-w-7xl mx-auto">
               {/* Left side - Form */}
               <div className="w-full lg:w-[520px]">
-                {/* Logo */}
                 <div className="flex justify-center lg:justify-start">
                   <img
                     src="/hub.png"
                     alt="Logo"
-                    className="h-[40px] sm:h-[50px] lg:h-[60px] mt-2"
+                    className="h-[44px] sm:h-[50px] lg:h-[56px]"
                   />
                 </div>
-
                 {/* Form Card */}
-                <div className="bg-white w-[500px] h-auto mt-6 lg:mt-12 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl text-center p-6 sm:p-8 lg:p-10 shadow-2xl">
+                <div className="bg-white w-[500px] h-auto mt-3 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl text-center p-7 sm:p-9 lg:p-10 shadow-2xl">
                   {/* Heading */}
-                  <p className="mb-6 whitespace-nowrap manrope mt-5">
+                  <p className="mb-5 whitespace-nowrap manrope mt-1">
                     Interiors For Every{" "}
                     <span className="text-red-600">Home</span>
                   </p>
 
                   {/* Name Input */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center ">
+                  <div className="flex flex-col justify-center items-center">
                     <input
                       type="text"
                       name="name"
@@ -1489,12 +1472,12 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Name *"
                       required
-                      className="w-full sm:w-[500px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[500px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
 
-                  {/* Email Input hidden per request.
-                  <div className="flex flex-col justify-center items-center mt-1">
+                  {/* Email Input */}
+                  <div className="flex flex-col justify-center items-center">
                     <input
                       type="email"
                       name="email"
@@ -1502,18 +1485,12 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Email *"
                       required
-                      className="peer w-full sm:w-[500px] h-[50px] bg-[#f1f2f6] mt-4 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
+                      className="w-full sm:w-[500px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
-                    <div className="overflow-hidden max-h-0 opacity-0 peer-focus:max-h-[30px] peer-focus:opacity-100 transition-all duration-300 ease-in-out w-full sm:w-[500px]">
-                      <p className="text-[11px] sm:text-[12px] text-gray-500 manrope mt-1 text-left pl-2 sm:pl-4">
-                        Add Primary Email To Receive Quote
-                      </p>
-                    </div>
                   </div>
-                  */}
 
                   {/* Phone Input */}
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-5">
+                  <div className="flex flex-col justify-center items-center mt-5">
                     <input
                       id="e2"
                       type="tel"
@@ -1522,89 +1499,92 @@ export default function HeroSections({
                       onChange={handleInputChange}
                       placeholder="Phone Number *"
                       required
-                      className="w-full sm:w-[500px] h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium h-[50px]"
+                      className="w-full sm:w-[500px] h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
 
                   {/* Inline OTP — 1280 */}
-                  {/* <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-4">*/}
-                  <div className="flex flex-col sm:flex-row justify-center sm:mt-2 sm:mb-4">
-                    {normalizePhoneNumber(formData.phone).length === 10 &&
-                      !otpSent && (
-                        <button
-                          type="button"
-                          onClick={handleSendOtp}
-                          disabled={isSendingOtpAuto}
-                          className="w-full sm:w-[500px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                        >
-                          {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
-                        </button>
-                      )}
-                    {otpSent && !otpVerified && (
-                      <div className="flex flex-col gap-3 w-full sm:w-[500px]">
-                        {isPendingOtpSms ? (
-                          <p className="text-sm text-gray-500 manrope-medium text-center">
-                            Sending OTP to {formData.phone}…
-                          </p>
-                        ) : (
-                          <p className="text-sm text-gray-500 manrope-medium text-center">
-                            OTP sent to {formData.phone}
-                          </p>
-                        )}
-                        <input
-                          type="text"
-                          value={otp}
-                          onChange={(e) => setOtp(e.target.value)}
-                          placeholder="Enter OTP *"
-                          maxLength={6}
-                          disabled={isPendingOtpSms || isOtpVerifying}
-                          className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
-                        />
-                        {!resendVisible && otpTimerSeconds > 0 && (
-                          <p className="text-xs text-gray-400 manrope text-center">
-                            Resend in {Math.floor(otpTimerSeconds / 60)}:
-                            {(otpTimerSeconds % 60).toString().padStart(2, "0")}
-                          </p>
-                        )}
-                        <button
-                          type="button"
-                          onClick={handleOtpSubmit}
-                          disabled={
-                            isPendingOtpSms || isOtpVerifying || otp.length < 4
-                          }
-                          className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                        >
-                          {isOtpVerifying ? "Verifying…" : "Verify OTP"}
-                        </button>
-                        {resendVisible && (
+                  {(normalizePhoneNumber(formData.phone).length === 10 ||
+                    otpSent ||
+                    otpVerified) && (
+                    <div className="flex flex-col sm:flex-row justify-center mt-4">
+                      {normalizePhoneNumber(formData.phone).length === 10 &&
+                        !otpSent && (
                           <button
                             type="button"
-                            onClick={handleResendOtp}
-                            disabled={isSendingOtpAuto || isPendingOtpSms}
-                            className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
+                            onClick={handleSendOtp}
+                            disabled={isSendingOtpAuto}
+                            className="w-full sm:w-[500px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
                           >
-                            {isSendingOtpAuto || isPendingOtpSms
-                              ? "Sending…"
-                              : "Resend OTP"}
+                            {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
                           </button>
                         )}
-                      </div>
-                    )}
-                    {otpVerified && (
-                      <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[500px]">
-                        ✓ Phone verified
-                      </p>
-                    )}
-                  </div>
+                      {otpSent && !otpVerified && (
+                        <div className="flex flex-col gap-3 w-full sm:w-[500px]">
+                          {isPendingOtpSms ? (
+                            <p className="text-sm text-gray-500 manrope-medium text-center">
+                              Sending OTP to {formData.phone}…
+                            </p>
+                          ) : (
+                            <p className="text-sm text-gray-500 manrope-medium text-center">
+                              OTP sent to {formData.phone}
+                            </p>
+                          )}
+                          <input
+                            type="text"
+                            value={otp}
+                            onChange={(e) => setOtp(e.target.value)}
+                            placeholder="Enter OTP *"
+                            maxLength={6}
+                            disabled={isPendingOtpSms || isOtpVerifying}
+                            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
+                          />
+                          {!resendVisible && otpTimerSeconds > 0 && (
+                            <p className="text-xs text-gray-400 manrope text-center">
+                              Resend in {Math.floor(otpTimerSeconds / 60)}:
+                              {(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                            </p>
+                          )}
+                          <button
+                            type="button"
+                            onClick={handleOtpSubmit}
+                            disabled={
+                              isPendingOtpSms || isOtpVerifying || otp.length < 4
+                            }
+                            className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
+                          >
+                            {isOtpVerifying ? "Verifying…" : "Verify OTP"}
+                          </button>
+                          {resendVisible && (
+                            <button
+                              type="button"
+                              onClick={handleResendOtp}
+                              disabled={isSendingOtpAuto || isPendingOtpSms}
+                              className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
+                            >
+                              {isSendingOtpAuto || isPendingOtpSms
+                                ? "Sending…"
+                                : "Resend OTP"}
+                            </button>
+                          )}
+                        </div>
+                      )}
+                      {otpVerified && (
+                        <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[500px]">
+                          ✓ Phone verified
+                        </p>
+                      )}
+                    </div>
+                  )}
 
                   {/* Pincode */}
-                  <div className="relative w-full flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-1 sm:-mt-1">
+                  <div className="relative w-full flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-4">
                     <select
                       name="pincode"
                       required
                       value={selectedPincode}
                       onChange={(e) => setSelectedPincode(e.target.value)}
-                      className="w-full sm:w-[500px] h-[50px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
+                      className="w-full sm:w-[500px] h-[56px] font-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 pr-10 lg:pr-16 text-gray-400 appearance-none cursor-pointer manrope-medium"
                     >
                       <option className="text-gray-400" value="" disabled>
                         Property Pincode ( Bangalore Only ) *
@@ -1616,7 +1596,7 @@ export default function HeroSections({
                       ))}
                     </select>
 
-                    <span className="text-gray-500 absolute top-[14px] right-6 text-[16px]">
+                    <span className="pointer-events-none absolute top-1/2 right-4 sm:right-6 -translate-y-1/2 text-[16px] leading-none text-gray-500">
                       &#9662;
                     </span>
                   </div>
@@ -1629,7 +1609,7 @@ export default function HeroSections({
                           setCityOpen(!cityOpen);
                           // setBudgetOpen(false);
                         }}
-                        className={`w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!selectedCity && "text-gray-400"}`}
+                        className={`w-full h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!selectedCity && "text-gray-400"}`}
                       >
                         <span className="truncate">
                           {selectedCity ||
@@ -1662,7 +1642,7 @@ export default function HeroSections({
                           setPossessionTimelineOpen(!possessionTimelineOpen);
                           setCityOpen(false);
                         }}
-                        className={`w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!projectPossessionTimeline && "text-gray-400"}`}
+                        className={`w-full h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!projectPossessionTimeline && "text-gray-400"}`}
                       >
                         <span className="truncate">
                           {projectPossessionTimeline ||
@@ -1717,9 +1697,8 @@ export default function HeroSections({
                   </div>
 
                   {/* Legal */}
-                  <div className="text-xs sm:text-sm lg:text-[14px] mt-6 manrope-medium text-center sm:text-left px-2">
-                    By submitting, you agree to Privacy Policy, Terms and
-                    Conditions
+                  <div className="text-xs sm:text-sm lg:text-[14px] mt-4 manrope-medium text-center px-4">
+                    By submitting, you agree to Privacy Policy, Terms and Conditions
                   </div>
                 </div>
               </div>
