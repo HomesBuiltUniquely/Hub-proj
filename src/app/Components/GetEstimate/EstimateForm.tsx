@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import { normalizePhoneNumber } from "@/lib/utils";
 import cityOptions from "../LandingPage1/DropDown1";
 import { Pincode } from "../LandingPage1/Pincode";
 import {
-  POST_LEAD_SUCCESS_PATH,
-  saveLeadContactToSession,
+  prepareLeadThankYou,
+  fireAndForgetLeadSubmit,
+  redirectToLeadThankYou,
 } from "@/lib/postLeadSubmitRedirect";
 
 const projectPossessionTimelineOptions = [
@@ -23,7 +23,6 @@ const inputClass =
   "w-full px-4 py-3.5 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base";
 
 const EstimateForm: React.FC = () => {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -132,51 +131,35 @@ const EstimateForm: React.FC = () => {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    try {
-      const pageUrl =
-        typeof window !== "undefined" ? window.location.href : "";
-      const response = await fetch("/api/get-estimate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          pageUrl,
-        }),
-      });
+    const pageUrl =
+      typeof window !== "undefined" ? window.location.href : "";
 
-      const result = await response.json();
+    prepareLeadThankYou({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phoneNumber,
+      pincode: formData.pincode,
+    });
 
-      if (result.success) {
-        setSubmitStatus("success");
-        saveLeadContactToSession({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phoneNumber,
-          pincode: formData.pincode,
-        });
-        sessionStorage.setItem("formSubmitted", "true");
-        setFormData({
-          name: "",
-          email: "",
-          phoneNumber: "",
-          pincode: "",
-          interiorSetup: "",
-          projectPossessionTimeline: "",
-        });
-        setOtpSent(false);
-        setOtp("");
-        setIsVerified(false);
-        setOtpError("");
-        router.push(POST_LEAD_SUCCESS_PATH);
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    fireAndForgetLeadSubmit("/api/get-estimate", {
+      ...formData,
+      pageUrl,
+    });
+
+    setSubmitStatus("success");
+    setFormData({
+      name: "",
+      email: "",
+      phoneNumber: "",
+      pincode: "",
+      interiorSetup: "",
+      projectPossessionTimeline: "",
+    });
+    setOtpSent(false);
+    setOtp("");
+    setIsVerified(false);
+    setOtpError("");
+    redirectToLeadThankYou();
   };
 
   return (

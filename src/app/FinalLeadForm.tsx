@@ -1,11 +1,14 @@
 'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
 import { normalizePhoneNumber } from '@/lib/utils';
 import { getVerificationStatus } from '@/lib/leadVerification';
-import { POST_LEAD_SUCCESS_PATH, saveLeadContactToSession } from '@/lib/postLeadSubmitRedirect';
+import {
+  prepareLeadThankYou,
+  fireAndForgetLeadSubmit,
+  redirectToLeadThankYou,
+} from '@/lib/postLeadSubmitRedirect';
 
 interface CalculatorData {
   bhkType?: string;
@@ -53,8 +56,6 @@ const HOT_TIMELINES = [
 type FinalLeadFormProps = { calculatorData?: CalculatorData };
 
 const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
-  const router = useRouter();
-
   const [selectedPincode, setSelectedPincode] = useState('');
   const [selectedTimeline, setSelectedTimeline] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -158,73 +159,50 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     }
   };
 
-  const handleFinalSubmit = useCallback(async () => {
+  const handleFinalSubmit = useCallback(() => {
     setIsSubmitting(true);
-    try {
-      const currentUrl = window.location.href;
-      const c = calculatorData || {};
-      console.log('[FinalLeadForm] Received calculatorData:', c);
-      const requestData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        possession: selectedTimeline,
-        projectPossessionTimeline: selectedTimeline,
-        pincode: selectedPincode,
-        pageUrl: currentUrl,
-        verificationStatus: getVerificationStatus(isVerified),
-        otpSuccess: isVerified,
-        // Calculator data — both nested and flattened for backend email processing
-        calculator: c,
-        bhkType: c.bhkType ?? '',
-        rooms: c.rooms ? JSON.stringify(c.rooms) : '',
-        wardrobe: c.wardrobe ? JSON.stringify(c.wardrobe) : '',
-        kitchen: c.kitchen ? JSON.stringify(c.kitchen) : '',
-        collections: c.collections ? JSON.stringify(c.collections) : '',
-        material: c.material ? JSON.stringify(c.material) : '',
-      };
-      console.log('[FinalLeadForm] Submitting payload to /api/contact:', requestData);
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(requestData),
-        signal: controller.signal,
-      });
-      clearTimeout(timeoutId);
+    const currentUrl = window.location.href;
+    const c = calculatorData || {};
+    const requestData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      possession: selectedTimeline,
+      projectPossessionTimeline: selectedTimeline,
+      pincode: selectedPincode,
+      pageUrl: currentUrl,
+      verificationStatus: getVerificationStatus(isVerified),
+      otpSuccess: isVerified,
+      calculator: c,
+      bhkType: c.bhkType ?? '',
+      rooms: c.rooms ? JSON.stringify(c.rooms) : '',
+      wardrobe: c.wardrobe ? JSON.stringify(c.wardrobe) : '',
+      kitchen: c.kitchen ? JSON.stringify(c.kitchen) : '',
+      collections: c.collections ? JSON.stringify(c.collections) : '',
+      material: c.material ? JSON.stringify(c.material) : '',
+    };
 
-      const data = await res.json();
-      console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
+    const timeline = selectedTimeline;
 
-      if (res.ok && data.success) {
-        sessionStorage.setItem('formSubmitted', 'true');
-        saveLeadContactToSession({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          pincode: selectedPincode,
-        });
+    prepareLeadThankYou({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      pincode: selectedPincode,
+    });
 
-        // Capture timeline before any state changes
-        const timeline = selectedTimeline;
+    fireAndForgetLeadSubmit('/api/contact', requestData);
 
-        if (HOT_TIMELINES.includes(timeline)) {
-          // High-intent lead → redirect to thank-you page immediately
-          resetForm();
-          router.push(POST_LEAD_SUCCESS_PATH);
-        } else {
-          // Lower-intent lead → show inline Thank You popup, stay on page
-          setShowThankYouPopup(true);
-        }
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSubmitting(false);
+    if (HOT_TIMELINES.includes(timeline)) {
+      resetForm();
+      redirectToLeadThankYou();
+      return;
     }
-  }, [formData, selectedTimeline, selectedPincode, isVerified, calculatorData, router]);
+
+    setShowThankYouPopup(true);
+    setIsSubmitting(false);
+  }, [formData, selectedTimeline, selectedPincode, isVerified, calculatorData]);
 
   const performSubmitFlow = useCallback(async () => {
     if (!formData.name || !formData.email || !formData.phone || !selectedTimeline || !selectedPincode) {

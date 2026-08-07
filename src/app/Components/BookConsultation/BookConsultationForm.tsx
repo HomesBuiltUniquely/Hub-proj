@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 type ConsultationMode = "experience-center" | "video-call";
 type PossessionTimeline =
@@ -200,7 +201,7 @@ function FormSection({
           2
         </div>
         <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
-          Property & Possession
+          Property Name
         </h2>
       </div>
 
@@ -208,11 +209,11 @@ function FormSection({
         type="text"
         value={propertyName}
         onChange={(e) => setPropertyName(e.target.value)}
-        placeholder="Property Name/Individual House"
+        placeholder="Mention Your Property Name (or) Individual House"
         className={inputClass}
       />
 
-      <div className="mt-4 flex flex-wrap gap-3">
+      {/* <div className="mt-4 flex flex-wrap gap-3">
         {[
           { id: "immediately" as PossessionTimeline, label: "Immediately" },
           { id: "0-3-months" as PossessionTimeline, label: "0 - 3 months" },
@@ -233,7 +234,7 @@ function FormSection({
             {item.label}
           </button>
         ))}
-      </div>
+      </div> */}
 
       {/* Submit */}
       <button
@@ -271,72 +272,57 @@ export default function BookConsultationForm() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleBookConsultationSubmit = async () => {
+  const handleBookConsultationSubmit = () => {
     if (!selectedDate || !preferredSlot || !propertyName) {
       alert("Please fill date, preferred slot and property details.");
       return;
     }
 
     setIsSubmitting(true);
-    try {
-      const fallbackName = searchParams.get("name") || "";
-      const fallbackEmail = searchParams.get("email") || "";
-      const fallbackPhone =
-        searchParams.get("phone") || searchParams.get("phoneNumber") || "";
 
-      const fallbackPincode = searchParams.get("pincode") || "";
+    const fallbackName = searchParams.get("name") || "";
+    const fallbackEmail = searchParams.get("email") || "";
+    const fallbackPhone =
+      searchParams.get("phone") || searchParams.get("phoneNumber") || "";
+    const fallbackPincode = searchParams.get("pincode") || "";
 
-      const firstFormDetails = {
-        name:
-          (typeof window !== "undefined"
-            ? sessionStorage.getItem("userName")
-            : "") || fallbackName,
-        email:
-          (typeof window !== "undefined"
-            ? sessionStorage.getItem("userEmail")
-            : "") || fallbackEmail,
-        phone:
-          (typeof window !== "undefined"
-            ? sessionStorage.getItem("userPhone")
-            : "") || fallbackPhone,
-        pincode:
-          (typeof window !== "undefined"
-            ? sessionStorage.getItem("userPincode")
-            : "") || fallbackPincode,
-      };
+    const firstFormDetails = {
+      name:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userName")
+          : "") || fallbackName,
+      email:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userEmail")
+          : "") || fallbackEmail,
+      phone:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userPhone")
+          : "") || fallbackPhone,
+      pincode:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userPincode")
+          : "") || fallbackPincode,
+    };
 
-      const response = await fetch("/api/book-consultation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          pageUrl: typeof window !== "undefined" ? window.location.href : "",
-          firstFormDetails,
-          consultationDetails: {
-            consultationMode,
-            selectedDate,
-            preferredSlot,
-            propertyName,
-            possessionTimeline,
-          },
-        }),
-      });
+    fireAndForgetLeadSubmit("/api/book-consultation", {
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      firstFormDetails,
+      consultationDetails: {
+        consultationMode,
+        selectedDate,
+        preferredSlot,
+        propertyName,
+        possessionTimeline,
+      },
+    });
 
-      const data = await response.json();
-      if (response.ok && data.success) {
-        alert("Thank you for your submission.");
-        setSelectedDate("");
-        setPreferredSlot("");
-        setPropertyName("");
-        setPossessionTimeline("immediately");
-      } else {
-        alert(data.message || "Failed to submit consultation details.");
-      }
-    } catch (error) {
-      console.error("Book consultation submission failed:", error);
-      alert("Failed to submit consultation details. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    alert("Thank you for your submission.");
+    setSelectedDate("");
+    setPreferredSlot("");
+    setPropertyName("");
+    setPossessionTimeline("immediately");
+    setIsSubmitting(false);
   };
 
   return (

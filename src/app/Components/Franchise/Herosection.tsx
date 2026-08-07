@@ -10,6 +10,7 @@ import NavMore from "../NavMore";
 import router from "next/router";
 import OverlapNavBar from "../OverlapNavBar";
 import { normalizePhoneNumber } from "@/lib/utils";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 // const FRANCHISE_OPTIONS = [
 //   {
@@ -160,35 +161,14 @@ const Home: React.FC = () => {
       franchiseType: formData.get("franchiseType") as string,
     };
 
-    try {
-      const response = await fetch("/api/franchise-contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+    fireAndForgetLeadSubmit("/api/franchise-contact", data);
 
-      const result = await response.json();
-
-      if (result.success) {
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp("");
-        setIsVerified(false);
-        setOtpError("");
-        setPhoneNumber("");
-        // Redirect to thank you page
-        router.push("/thank-you-franchisee");
-      } else {
-        alert("There was an error submitting your inquiry. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error submitting your inquiry. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    setOtpSent(false);
+    setOtp("");
+    setIsVerified(false);
+    setOtpError("");
+    setPhoneNumber("");
+    window.location.assign("/thank-you-franchisee");
   };
 
   const handleMobileFormSubmit = async (
@@ -215,35 +195,14 @@ const Home: React.FC = () => {
       franchiseType: formData.get("franchiseType") as string,
     };
 
-    try {
-      const response = await fetch("/api/franchise-contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+    fireAndForgetLeadSubmit("/api/franchise-contact", data);
 
-      const result = await response.json();
-
-      if (result.success) {
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp("");
-        setIsVerified(false);
-        setOtpError("");
-        setPhoneNumber("");
-        // Redirect to thank you page
-        router.push("/thank-you-franchisee");
-      } else {
-        alert("There was an error submitting your inquiry. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error submitting your inquiry. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    setOtpSent(false);
+    setOtp("");
+    setIsVerified(false);
+    setOtpError("");
+    setPhoneNumber("");
+    window.location.assign("/thank-you-franchisee");
   };
 
   const handleGetEstimate = () => {

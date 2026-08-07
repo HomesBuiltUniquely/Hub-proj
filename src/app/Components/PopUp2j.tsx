@@ -1,14 +1,14 @@
 'use client'
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import cityOptions from "./LandingPage1/DropDown1";
 import { Pincode } from "./LandingPage1/Pincode";
 import { normalizePhoneNumber } from "@/lib/utils";
 import {
-  POST_LEAD_SUCCESS_PATH,
+  prepareLeadThankYou,
+  fireAndForgetLeadSubmit,
+  redirectToLeadThankYou,
   buildLeadThankYouQuery,
-  saveLeadContactToSession,
 } from "@/lib/postLeadSubmitRedirect";
 
 type PopUpProps = {
@@ -29,7 +29,6 @@ const fieldClass =
   "w-full py-2.5 px-4 manrope-medium rounded-full border border-gray-400 bg-white focus:border-red-500 focus:ring-0 focus:outline-none text-sm";
 
 const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
-  const router = useRouter();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -206,51 +205,37 @@ const PopUp2j: React.FC<PopUpProps> = ({ onFormSuccess }) => {
     setError("");
     setIsSubmitting(true);
 
-    try {
-      const pageUrl = typeof window !== "undefined" ? window.location.href : "";
-      const cleanedPhone = normalizePhoneNumber(phone);
+    const pageUrl = typeof window !== "undefined" ? window.location.href : "";
+    const cleanedPhone = normalizePhoneNumber(phone);
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedPin = pin.trim();
 
-      const response = await fetch("/api/popup-contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          phone: cleanedPhone,
-          pincode: pin.trim(),
-          interiorSetup: interiorPackage.trim(),
-          projectPossessionTimeline: projectPossessionTimeline.trim(),
-          pageUrl,
-        }),
-      });
+    prepareLeadThankYou({
+      name: trimmedName,
+      email: trimmedEmail,
+      phone: cleanedPhone,
+      pincode: trimmedPin,
+    });
 
-      const data = await response.json();
+    fireAndForgetLeadSubmit("/api/popup-contact", {
+      name: trimmedName,
+      email: trimmedEmail,
+      phone: cleanedPhone,
+      pincode: trimmedPin,
+      interiorSetup: interiorPackage.trim(),
+      projectPossessionTimeline: projectPossessionTimeline.trim(),
+      pageUrl,
+    });
 
-      if (data.success) {
-        onFormSuccess();
-        sessionStorage.setItem("formSubmitted", "true");
-        saveLeadContactToSession({
-          name: name.trim(),
-          email: email.trim(),
-          phone: cleanedPhone,
-          pincode: pin.trim(),
-        });
-
-        const q = buildLeadThankYouQuery({
-          name: name.trim(),
-          email: email.trim(),
-          phone: cleanedPhone,
-        });
-        router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
-      } else {
-        setError(data.message || "Failed to submit form. Please try again.");
-      }
-    } catch (err) {
-      console.error("Form submission error:", err);
-      setError("An error occurred. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    onFormSuccess();
+    redirectToLeadThankYou(
+      buildLeadThankYouQuery({
+        name: trimmedName,
+        email: trimmedEmail,
+        phone: cleanedPhone,
+      }),
+    );
   };
 
   const formFields = (

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { NavBar } from "./Navbar";
 import Image from "next/image";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 export default function Header() {
   const images = [
@@ -143,33 +144,20 @@ export default function Header() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      // Get the originally tracked URL with all parameters
-      const landingUrl = sessionStorage.getItem("initialLandingUrl") || window.location.href;
-      
-      const formData = {
-        ...form,
-        pageUrl: landingUrl // Changed from urlParams to pageUrl
-      };
+    setError("");
 
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    const landingUrl =
+      sessionStorage.getItem("initialLandingUrl") || window.location.href;
 
-      if (res.ok) {
-        setSubmitted(true);
-        setForm({ name: '', phone: '', email: '', pincode: '', urlParams: '' });
-      } else {
-        const data = await res.json();
-        setError(data.message || 'Submission failed.');
-      }
-    } catch {
-      setError('Error submitting the form. Please try again.');
-    }
+    fireAndForgetLeadSubmit("/api/contact", {
+      ...form,
+      pageUrl: landingUrl,
+    });
+
+    setSubmitted(true);
+    setForm({ name: "", phone: "", email: "", pincode: "", urlParams: "" });
   };
 
   return (

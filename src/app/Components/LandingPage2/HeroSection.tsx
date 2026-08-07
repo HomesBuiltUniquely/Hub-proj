@@ -2,18 +2,16 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 import OverlapNavBar from "../OverlapNavBar";
 import { getVerificationStatus } from "@/lib/leadVerification";
 import {
-  POST_LEAD_SUCCESS_PATH,
+  prepareLeadThankYou,
+  redirectToLeadThankYou,
   buildLeadThankYouQuery,
-  saveLeadContactToSession,
 } from "@/lib/postLeadSubmitRedirect";
 
 export function HeroSection() {
-    const router = useRouter();
     const [open, setOpen] = useState(false);
     const [propSelect, setpropSelect] = useState("");
     const options = ["2BHK", "3BHK", "4+BHK/Duplex"]
@@ -195,7 +193,68 @@ export function HeroSection() {
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const submitLeadAndRedirect = (updatedForm: typeof form) => {
+        setIsSubmitting(true);
+        setSubmitMessage("");
+
+        const formData = new FormData();
+        formData.append("name", updatedForm.name);
+        formData.append("phone", updatedForm.phonennumber);
+        formData.append("email", updatedForm.email);
+        formData.append("pincode", updatedForm.pincode);
+        formData.append("propertyType", updatedForm.property);
+        formData.append("timeSlot", updatedForm.Scheduler);
+        formData.append("pageUrl", window.location.href);
+        formData.append("verificationStatus", getVerificationStatus(isVerified));
+        formData.append("otpSuccess", String(isVerified));
+        if (selectedFile) {
+            formData.append("file", selectedFile);
+        }
+
+        fetch("/api/landingpage2-contact", {
+            method: "POST",
+            body: formData,
+            keepalive: true,
+        }).catch((error) => {
+            console.error("Background landingpage2 submit failed:", error);
+        });
+
+        fetch("https://hows.hubinterior.com/v1/MetaLead", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: updatedForm.name,
+                email: updatedForm.email,
+                phoneNumber: updatedForm.phonennumber,
+                pinCode: updatedForm.pincode,
+                propertyPin: updatedForm.pincode,
+                propertyType: updatedForm.property,
+                bookASlot: updatedForm.Scheduler,
+                verificationStatus: getVerificationStatus(isVerified),
+                otpSuccess: isVerified,
+            }),
+            keepalive: true,
+        }).catch((err) => {
+            console.warn("Failed to POST to MetaLead", err);
+        });
+
+        prepareLeadThankYou({
+            name: updatedForm.name,
+            email: updatedForm.email,
+            phone: updatedForm.phonennumber,
+            pincode: updatedForm.pincode,
+        });
+
+        redirectToLeadThankYou(
+            buildLeadThankYouQuery({
+                name: updatedForm.name,
+                email: updatedForm.email,
+                phone: updatedForm.phonennumber,
+            }),
+        );
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!isVerified) {
@@ -228,106 +287,10 @@ export function HeroSection() {
             return;
         }
 
-
-        setIsSubmitting(true);
-        setSubmitMessage("");
-
-        try {
-            // Create FormData for file upload
-            const formData = new FormData();
-            formData.append('name', updatedForm.name);
-            formData.append('phone', updatedForm.phonennumber);
-            formData.append('email', updatedForm.email);
-            formData.append('pincode', updatedForm.pincode);
-            formData.append('propertyType', updatedForm.property);
-            formData.append('timeSlot', updatedForm.Scheduler);
-            formData.append('pageUrl', window.location.href);
-            formData.append('verificationStatus', getVerificationStatus(isVerified));
-            formData.append('otpSuccess', String(isVerified));
-
-            if (selectedFile) {
-                formData.append('file', selectedFile);
-            }
-
-            const response = await fetch('/api/landingpage2-contact', {
-                method: 'POST',
-                body: formData, // Send as FormData instead of JSON
-            });
-
-            const data = await response.json();
-
-            (async () => {
-                try {
-                    const home1Payload = {
-                        name: updatedForm.name,
-                        email: updatedForm.email,
-                        phoneNumber: updatedForm.phonennumber,
-                        pinCode: updatedForm.pincode,
-                        propertyPin: updatedForm.pincode,
-                        propertyType: updatedForm.property,
-                        bookASlot: updatedForm.Scheduler,
-                        verificationStatus: getVerificationStatus(isVerified),
-                        otpSuccess: isVerified,
-                    };
-
-                    await fetch('https://hows.hubinterior.com/v1/MetaLead', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(home1Payload),
-                    });
-                } catch (err) {
-                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
-                }
-            })();
-
-            if (data.success) {
-                setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
-                saveLeadContactToSession({
-                    name: updatedForm.name,
-                    email: updatedForm.email,
-                    phone: updatedForm.phonennumber,
-                    pincode: updatedForm.pincode,
-                });
-                setForm({
-                    name: "",
-                    email: "",
-                    phonennumber: "",
-                    pincode: "",
-                    Scheduler: "",
-                    property: ""
-                });
-                setpropSelect("");
-                setSelected("Book A slot");
-                setSelectedPincode("");
-                setSelectedFile(null);
-                setFilePreview("");
-                // Reset OTP states
-                setOtpSent(false);
-                setOtp('');
-                setIsVerified(false);
-                setOtpError('');
-
-                sessionStorage.setItem('formSubmitted', 'true');
-                const q = buildLeadThankYouQuery({
-                    name: updatedForm.name,
-                    email: updatedForm.email,
-                    phone: updatedForm.phonennumber,
-                });
-                router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
-            } else {
-                setSubmitMessage("Failed to submit appointment request. Please try again.");
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            setSubmitMessage("An error occurred. Please try again.");
-        } finally {
-            setIsSubmitting(false);
-        }
+        submitLeadAndRedirect(updatedForm);
     };
 
-    const handleMobileSubmit = async (e: React.FormEvent) => {
+    const handleMobileSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!isVerified) {
@@ -335,14 +298,12 @@ export function HeroSection() {
             return;
         }
 
-        // Update form with selected property and time slot
         const updatedForm = {
             ...form,
             property: propSelect,
             Scheduler: Selected !== "Book A slot" ? Selected : ""
         };
 
-        // Basic validation
         if (!updatedForm.name || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
             setSubmitMessage("Please fill in all required fields");
             return;
@@ -359,106 +320,7 @@ export function HeroSection() {
             return;
         }
 
-
-        setIsSubmitting(true);
-        setSubmitMessage("");
-
-        try {
-            // Create FormData for file upload
-            const formData = new FormData();
-            formData.append('name', updatedForm.name);
-            formData.append('phone', updatedForm.phonennumber);
-            formData.append('email', updatedForm.email);
-            formData.append('pincode', updatedForm.pincode);
-            formData.append('propertyType', updatedForm.property);
-            formData.append('timeSlot', updatedForm.Scheduler);
-            formData.append('pageUrl', window.location.href);
-            formData.append('verificationStatus', getVerificationStatus(isVerified));
-            formData.append('otpSuccess', String(isVerified));
-
-            if (selectedFile) {
-                formData.append('file', selectedFile);
-            }
-
-            const response = await fetch('/api/landingpage2-contact', {
-                method: 'POST',
-                body: formData, // Send as FormData instead of JSON
-            });
-
-
-            const data = await response.json();
-
-            // Run fire-and-forget; errors are caught and logged.
-            (async () => {
-                try {
-                    const home1Payload = {
-                        name: updatedForm.name,
-                        email: updatedForm.email,
-                        phoneNumber: updatedForm.phonennumber,
-                        pinCode: updatedForm.pincode,
-                        propertyPin: updatedForm.pincode,
-                        propertyType: updatedForm.property,
-                        bookASlot: updatedForm.Scheduler,
-                        verificationStatus: getVerificationStatus(isVerified),
-                        otpSuccess: isVerified,
-                    };
-
-                    await fetch('https://hows.hubinterior.com/v1/MetaLead', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(home1Payload),
-                    });
-                } catch (err) {
-                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
-                }
-            })();
-
-            if (data.success) {
-                setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
-                saveLeadContactToSession({
-                    name: updatedForm.name,
-                    email: updatedForm.email,
-                    phone: updatedForm.phonennumber,
-                    pincode: updatedForm.pincode,
-                });
-                // Reset form
-                setForm({
-                    name: "",
-                    email: "",
-                    phonennumber: "",
-                    pincode: "",
-                    Scheduler: "",
-                    property: ""
-                });
-                setpropSelect("");
-                setSelected("Book A slot");
-                setSelectedPincode("");
-                setSelectedFile(null);
-                setFilePreview("");
-                // Reset OTP states
-                setOtpSent(false);
-                setOtp('');
-                setIsVerified(false);
-                setOtpError('');
-
-                sessionStorage.setItem('formSubmitted', 'true');
-                const q = buildLeadThankYouQuery({
-                    name: updatedForm.name,
-                    email: updatedForm.email,
-                    phone: updatedForm.phonennumber,
-                });
-                router.push(`${POST_LEAD_SUCCESS_PATH}?${q.toString()}`);
-            } else {
-                setSubmitMessage("Failed to submit appointment request. Please try again.");
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            setSubmitMessage("An error occurred. Please try again.");
-        } finally {
-            setIsSubmitting(false);
-        }
+        submitLeadAndRedirect(updatedForm);
     };
 
     return (
