@@ -6,7 +6,7 @@ import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation'
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, phone, pincode, interiorSetup, pageUrl } = body;
+    const { name, email, phone, pincode, interiorSetup, projectPossessionTimeline, pageUrl } = body;
     if (!isValidIndianPhone(phone)) {
       return NextResponse.json(
         { success: false, message: 'Phone number must be exactly 10 digits.' },
@@ -21,6 +21,7 @@ export async function POST(req: Request) {
       phone: normalizedPhone,
       pincode,
       interiorSetup,
+      projectPossessionTimeline,
       pageUrl,
     });
     
@@ -32,6 +33,7 @@ export async function POST(req: Request) {
         phoneNumber: normalizedPhone,
         propertyPin: pincode || '',
         interiorSetup: interiorSetup || '',
+        possessionIn: projectPossessionTimeline || '',
         verificationStatus: getVerificationStatus(true),
         otpSuccess: true,
       };
@@ -126,8 +128,12 @@ export async function POST(req: Request) {
                   <span style="color: #333; font-size: 16px;">${pincode || 'Not provided'}</span>
                 </div>
                 <div style="grid-column: span 2; margin-top: 5px;">
-                  <strong style="color: #555;">Interior Setup:</strong><br>
+                  <strong style="color: #555;">Interior Package:</strong><br>
                   <span style="color: #ef0101; font-size: 16px; font-weight: bold;">${interiorSetup || 'Not provided'}</span>
+                </div>
+                <div style="grid-column: span 2; margin-top: 5px;">
+                  <strong style="color: #555;">Project Possession Timeline:</strong><br>
+                  <span style="color: #333; font-size: 16px;">${projectPossessionTimeline || 'Not provided'}</span>
                 </div>
               </div>
             </div>

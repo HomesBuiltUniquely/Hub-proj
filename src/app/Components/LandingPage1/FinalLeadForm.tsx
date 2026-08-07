@@ -222,6 +222,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const performSubmitFlow = useCallback(async () => {
     if (
       !formData.name ||
+      !formData.email ||
       !formData.phone ||
       !selectedPincode ||
       !selectedTimeline
@@ -264,6 +265,17 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             value={formData.name}
             onChange={handleInputChange}
             placeholder="Name *"
+            required
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
+          />
+
+          {/* Email */}
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Email *"
             required
             className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
