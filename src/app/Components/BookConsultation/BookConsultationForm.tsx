@@ -75,8 +75,6 @@ function FormSection({
   setPreferredSlot,
   propertyName,
   setPropertyName,
-  possessionTimeline,
-  setPossessionTimeline,
   onSubmit,
 }: {
   consultationMode: ConsultationMode;
@@ -87,8 +85,6 @@ function FormSection({
   setPreferredSlot: (v: string) => void;
   propertyName: string;
   setPropertyName: (v: string) => void;
-  possessionTimeline: PossessionTimeline;
-  setPossessionTimeline: (v: PossessionTimeline) => void;
   onSubmit: () => void;
 }) {
   const formatDateForInput = (date: Date) => {
@@ -362,8 +358,6 @@ export default function BookConsultationForm() {
               setPreferredSlot={setPreferredSlot}
               propertyName={propertyName}
               setPropertyName={setPropertyName}
-              possessionTimeline={possessionTimeline}
-              setPossessionTimeline={setPossessionTimeline}
               onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
             />
           </div>
@@ -409,8 +403,6 @@ export default function BookConsultationForm() {
                 setPreferredSlot={setPreferredSlot}
                 propertyName={propertyName}
                 setPropertyName={setPropertyName}
-                possessionTimeline={possessionTimeline}
-                setPossessionTimeline={setPossessionTimeline}
                 onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
               />
             </div>
