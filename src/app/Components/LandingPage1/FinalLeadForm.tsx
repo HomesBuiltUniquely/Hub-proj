@@ -20,12 +20,6 @@ const projectPossessionTimelineOptions = [
   "Renovation (Currently Staying Here)",
 ];
 
-const HOT_TIMELINES = [
-  "Ready to Move",
-  "0 - 3 Months",
-  "Renovation (Currently Staying Here)",
-];
-
 interface CalculatorData {
   bhkType?: string;
   rooms?: Record<string, number>;
@@ -45,7 +39,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const [selectedPincode, setSelectedPincode] = useState("");
   const [selectedTimeline, setSelectedTimeline] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showThankYouPopup, setShowThankYouPopup] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
 
   // OTP states
@@ -166,8 +159,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       material: c.material ? JSON.stringify(c.material) : "",
     };
 
-    const timeline = selectedTimeline;
-
     prepareLeadThankYou({
       name: formData.name,
       email: formData.email,
@@ -177,20 +168,14 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
     fireAndForgetLeadSubmit("/api/contact", requestData);
 
-    if (HOT_TIMELINES.includes(timeline)) {
-      setFormData({ name: "", email: "", phone: "" });
-      setSelectedPincode("");
-      setSelectedTimeline("");
-      setOtpSent(false);
-      setOtp("");
-      setIsVerified(false);
-      setOtpError("");
-      redirectToLeadThankYou();
-      return;
-    }
-
-    setShowThankYouPopup(true);
-    setIsSubmitting(false);
+    setFormData({ name: "", email: "", phone: "" });
+    setSelectedPincode("");
+    setSelectedTimeline("");
+    setOtpSent(false);
+    setOtp("");
+    setIsVerified(false);
+    setOtpError("");
+    redirectToLeadThankYou();
   }, [
     formData,
     selectedPincode,
@@ -385,68 +370,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
           <span>Terms & Conditions</span>
         </div>
       </div>
-
-      {/* Thank You Popup — for non-hot timelines */}
-      {showThankYouPopup && (
-        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-[9999] p-4">
-          <div className="bg-white rounded-2xl p-8 w-full max-w-sm text-center shadow-2xl relative">
-            <button
-              onClick={() => {
-                setShowThankYouPopup(false);
-                setFormData({ name: "", email: "", phone: "" });
-                setSelectedPincode("");
-                setSelectedTimeline("");
-                setOtpSent(false);
-                setOtp("");
-                setIsVerified(false);
-                setOtpError("");
-              }}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl leading-none"
-            >
-              ×
-            </button>
-            <div className="flex items-center justify-center mb-5">
-              <div className="w-16 h-16 rounded-full border-[3px] border-dashed border-red-500 flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-7 h-7 text-red-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2.5}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 12.75l6 6 9-13.5"
-                  />
-                </svg>
-              </div>
-            </div>
-            <h2 className="text-2xl font-semibold text-gray-800 manrope mb-2">
-              Thank you!
-            </h2>
-            <p className="text-gray-500 font-medium mb-6">
-              Your form has been submitted.
-            </p>
-            <button
-              onClick={() => {
-                setShowThankYouPopup(false);
-                setFormData({ name: "", email: "", phone: "" });
-                setSelectedPincode("");
-                setSelectedTimeline("");
-                setOtpSent(false);
-                setOtp("");
-                setIsVerified(false);
-                setOtpError("");
-              }}
-              className="w-full border border-red-400 text-red-500 rounded-xl py-3 text-base font-medium hover:bg-red-50 transition-colors"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </>
   );
 };
