@@ -12,6 +12,7 @@ export async function POST(req) {
       phone,
       pincode,
       interiorSetup,
+      projectPossessionTimeline,
       tellUsMore,
       pageUrl,
     } = body;
@@ -25,6 +26,7 @@ export async function POST(req) {
       phoneNumberFinal,
       pincode,
       interiorSetup,
+      projectPossessionTimeline,
       tellUsMore,
       pageUrl,
     });
@@ -37,6 +39,7 @@ export async function POST(req) {
         phoneNumber: phoneNumberFinal || '',
         propertyPin: pincode || '',
         interiorSetup: interiorSetup || '',
+        possessionIn: projectPossessionTimeline || '',
         pageUrl: pageUrl || '',
         verificationStatus: getVerificationStatus(true),
         otpSuccess: true,
@@ -97,7 +100,8 @@ export async function POST(req) {
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
         <p><strong>Phone Number:</strong> ${phoneNumberFinal || 'Not provided'}</p>
         <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
-        <p><strong>Property Details:</strong> ${interiorSetup || 'Not provided'}</p>
+        <p><strong>Interior Package:</strong> ${interiorSetup || 'Not provided'}</p>
+        <p><strong>Project Possession Timeline:</strong> ${projectPossessionTimeline || 'Not provided'}</p>
         <p><strong>Tell Us More:</strong> ${tellUsMore || 'Not provided'}</p>
         <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank" rel="noopener noreferrer">${pageUrl || 'Not provided'}</a></p>
         <hr/>

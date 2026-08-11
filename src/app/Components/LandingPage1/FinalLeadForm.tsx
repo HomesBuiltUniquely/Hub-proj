@@ -1,11 +1,24 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import { Pincode } from './Pincode';
-import { normalizePhoneNumber } from '../../../lib/utils';
-import { getVerificationStatus } from '@/lib/leadVerification';
-import { POST_LEAD_SUCCESS_PATH, saveLeadContactToSession } from '@/lib/postLeadSubmitRedirect';
+import React, { useEffect, useState, useCallback } from "react";
+import { Pincode } from "./Pincode";
+import { normalizePhoneNumber } from "../../../lib/utils";
+import { getVerificationStatus } from "@/lib/leadVerification";
+import {
+  prepareLeadThankYou,
+  fireAndForgetLeadSubmit,
+  redirectToLeadThankYou,
+} from "@/lib/postLeadSubmitRedirect";
+
+const projectPossessionTimelineOptions = [
+  "Ready to Move",
+  "0 - 3 Months",
+  "3 - 6 Months",
+  "6+ Months",
+  "Under Construction",
+  "No Property Yet",
+  "Renovation (Currently Staying Here)",
+];
 
 interface CalculatorData {
   bhkType?: string;
@@ -13,92 +26,83 @@ interface CalculatorData {
   wardrobe?: {
     type?: string;
     height?: string;
-    measurements?: {
-      width?: number;
-      height?: number;
-      depth?: number;
-    };
+    measurements?: { width?: number; height?: number; depth?: number };
   };
-  kitchen?: {
-    layout?: string;
-    size?: string;
-    units?: string[];
-  };
-  collections?: {
-    selections?: string[];
-  };
-  material?: {
-    type?: string;
-    finish?: string;
-  };
+  kitchen?: { layout?: string; size?: string; units?: string[] };
+  collections?: { selections?: string[] };
+  material?: { type?: string; finish?: string };
 }
 
 type FinalLeadFormProps = { calculatorData?: CalculatorData };
 
 const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
-  const router = useRouter();
-
-  const [selectedPincode, setSelectedPincode] = useState('');
+  const [selectedPincode, setSelectedPincode] = useState("");
+  const [selectedTimeline, setSelectedTimeline] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
-  
-  // OTP related states
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+
+  // OTP states
   const [otpSent, setOtpSent] = useState(false);
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState("");
   const [isVerifying, setIsVerifying] = useState(false);
   const [isSendingOTP, setIsSendingOTP] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [otpError, setOtpError] = useState('');
+  const [otpError, setOtpError] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === 'phone') {
+    if (e.target.name === "phone") {
       const value = normalizePhoneNumber(e.target.value);
-      setFormData(prev => ({ ...prev, [e.target.name]: value }));
-      // Reset OTP states when phone changes
+      setFormData((prev) => ({ ...prev, phone: value }));
       if (value !== formData.phone) {
         setOtpSent(false);
-        setOtp('');
+        setOtp("");
         setIsVerified(false);
-        setOtpError('');
+        setOtpError("");
       }
     } else {
-      setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+      setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
   };
 
   const sendOTP = async () => {
-    if (!formData.phone) {
-      setOtpError('Please enter a phone number first');
-      return;
-    }
-
-    if (formData.phone.length !== 10) {
-      setOtpError('Please enter a valid 10-digit phone number');
-      return;
-    }
-
     setIsSendingOTP(true);
-    setOtpError('');
-
+    setOtpError("");
     try {
       const cleanedPhone = normalizePhoneNumber(formData.phone);
-      
-      const response = await fetch('/api/send-msg91-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/send-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: cleanedPhone }),
       });
-
       const data = await response.json();
       if (data.success) {
         setOtpSent(true);
-        setOtpError('');
       } else {
-        setOtpError(data.message || 'Failed to send OTP');
+        setOtpError(data.message || "Failed to send OTP");
       }
     } catch (error) {
-      console.error('OTP send error:', error);
-      setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+      setOtpError(
+        `Failed to send OTP: ${error instanceof Error ? error.message : "Please try again."}`,
+      );
+    } finally {
+      setIsSendingOTP(false);
+    }
+  };
+
+  const resendOTP = async () => {
+    setIsSendingOTP(true);
+    setOtpError("");
+    try {
+      const cleanedPhone = normalizePhoneNumber(formData.phone);
+      const response = await fetch("/api/resend-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: cleanedPhone }),
+      });
+      const data = await response.json();
+      if (!data.success) setOtpError(data.message || "Failed to resend OTP");
+    } catch {
+      setOtpError("Failed to resend OTP. Please try again.");
     } finally {
       setIsSendingOTP(false);
     }
@@ -106,125 +110,120 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
   const verifyOTP = async () => {
     if (!otp) {
-      setOtpError('Please enter the OTP');
+      setOtpError("Please enter the OTP");
       return;
     }
-
     setIsVerifying(true);
     try {
       const cleanedPhone = normalizePhoneNumber(formData.phone);
-      
-      const response = await fetch('/api/verify-msg91-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/verify-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: cleanedPhone, otp }),
       });
-
       const data = await response.json();
       if (data.success) {
         setIsVerified(true);
-        setOtpError('');
+        setOtpError("");
       } else {
-        setOtpError(data.message || 'Invalid OTP');
+        setOtpError(data.message || "Invalid OTP");
       }
     } catch {
-      setOtpError('Failed to verify OTP. Please try again.');
+      setOtpError("Failed to verify OTP. Please try again.");
     } finally {
       setIsVerifying(false);
     }
   };
 
-  const handleFinalSubmit = useCallback(async () => {
+  const handleFinalSubmit = useCallback(() => {
     setIsSubmitting(true);
-    try {
-      const currentUrl = window.location.href;
-      const c = calculatorData || {};
-      console.log('[FinalLeadForm] Received calculatorData:', c);
-      const requestData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        possession: '', // Project Type & Possession removed from form
-        pincode: selectedPincode,
-        pageUrl: currentUrl,
-        verificationStatus: getVerificationStatus(isVerified),
-        otpSuccess: isVerified,
-        // Include calculator data both nested and flattened for backend email processing
-        calculator: c,
-        bhkType: c.bhkType ?? '',
-        rooms: c.rooms ? JSON.stringify(c.rooms) : '',
-        wardrobe: c.wardrobe ? JSON.stringify(c.wardrobe) : '',
-        kitchen: c.kitchen ? JSON.stringify(c.kitchen) : '',
-        collections: c.collections ? JSON.stringify(c.collections) : '',
-        material: c.material ? JSON.stringify(c.material) : '',
-      };
-      const submitUrl = '/api/contact';
-      console.log('[FinalLeadForm] Submitting payload to:', submitUrl, requestData);
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
-      const res = await fetch(submitUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(requestData),
-        signal: controller.signal
-      });
-      clearTimeout(timeoutId);
-      const data = await res.json();
-      console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
-      if (res.ok && data.success) {
-        setSelectedPincode('');
-        setFormData({ name: '', email: '', phone: '' });
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp('');
-        setIsVerified(false);
-        setOtpError('');
-        // Set flag to trigger reload on thank you page for GTM tracking
-        sessionStorage.setItem('formSubmitted', 'true');
 
-        // Store user data for thank you page
-        saveLeadContactToSession({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          pincode: selectedPincode,
-        });
-        
-        router.push(POST_LEAD_SUCCESS_PATH);
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSubmitting(false);
-    } 
-  }, [formData, selectedPincode, isVerified, calculatorData, router]);
+    const currentUrl = window.location.href;
+    const c = calculatorData || {};
+    const requestData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      possession: selectedTimeline,
+      projectPossessionTimeline: selectedTimeline,
+      pincode: selectedPincode,
+      pageUrl: currentUrl,
+      verificationStatus: getVerificationStatus(isVerified),
+      otpSuccess: isVerified,
+      calculator: c,
+      bhkType: c.bhkType ?? "",
+      rooms: c.rooms ? JSON.stringify(c.rooms) : "",
+      wardrobe: c.wardrobe ? JSON.stringify(c.wardrobe) : "",
+      kitchen: c.kitchen ? JSON.stringify(c.kitchen) : "",
+      collections: c.collections ? JSON.stringify(c.collections) : "",
+      material: c.material ? JSON.stringify(c.material) : "",
+    };
+
+    prepareLeadThankYou({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      pincode: selectedPincode,
+    });
+
+    fireAndForgetLeadSubmit("/api/contact", requestData);
+
+    setFormData({ name: "", email: "", phone: "" });
+    setSelectedPincode("");
+    setSelectedTimeline("");
+    setOtpSent(false);
+    setOtp("");
+    setIsVerified(false);
+    setOtpError("");
+    redirectToLeadThankYou();
+  }, [
+    formData,
+    selectedPincode,
+    selectedTimeline,
+    isVerified,
+    calculatorData,
+  ]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.phone || !selectedPincode) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !selectedPincode ||
+      !selectedTimeline
+    )
       return;
-    }
-    
     if (!isVerified) {
-      setOtpError('Please verify your phone number with OTP first');
+      setOtpError("Please verify your phone number with OTP first");
       return;
     }
-    
     await handleFinalSubmit();
-  }, [formData, selectedPincode, isVerified, handleFinalSubmit]);
+  }, [
+    formData,
+    selectedPincode,
+    selectedTimeline,
+    isVerified,
+    handleFinalSubmit,
+  ]);
 
   useEffect(() => {
-    const handler = () => { performSubmitFlow(); };
-    window.addEventListener('calculator:submit-final', handler);
-    return () => { window.removeEventListener('calculator:submit-final', handler); };
+    const handler = () => {
+      performSubmitFlow();
+    };
+    window.addEventListener("calculator:submit-final", handler);
+    return () => window.removeEventListener("calculator:submit-final", handler);
   }, [performSubmitFlow]);
 
   return (
-    <div className=''>
+    <>
       <div className={`bg-white w-[95%] max-w-[400px] sm:max-w-[500px] lg:max-w-[650px] rounded-3xl shadow-2xl p-4 sm:p-5 lg:p-6 mx-auto mt-10 transition-all duration-300 overflow-hidden ${otpSent && !isVerified ? 'min-h-[480px]' : 'min-h-[360px]'}`}>
-        <div className="text-[24px] sm:text-2xl lg:text-3xl manrope-semibold text-center mb-4 sm:mb-5 text-amber-950">Get Your Free Estimate</div>
+        <div className="text-[24px] sm:text-2xl lg:text-3xl manrope-semibold text-center mb-4 sm:mb-5 text-amber-950">
+          Get Your Free Estimate
+        </div>
 
-        {/* Stacked inputs, one after another */}
-        <div className="space-y-4 sm:space-y-3 lg:space-y-4">
+        {/* All fields — uniform space-y-4 gap between every element */}
+        <div className="space-y-4">
+          {/* Name */}
           <input
             type="text"
             name="name"
@@ -232,9 +231,10 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             onChange={handleInputChange}
             placeholder="Name *"
             required
-            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
-          {/* Email field hidden per request.
+
+          {/* Email */}
           <input
             type="email"
             name="email"
@@ -242,9 +242,10 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             onChange={handleInputChange}
             placeholder="Email *"
             required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
-          */}
+
+          {/* Phone */}
           <input
             type="tel"
             name="phone"
@@ -252,73 +253,124 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             onChange={handleInputChange}
             placeholder="Phone Number *"
             required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
-          
-          {/* OTP Section */}
-          {formData.phone && (
-            <div className="space-y-3">
-              {!otpSent ? (
-                <button
-                  type="button"
-                  onClick={sendOTP}
-                  disabled={formData.phone.length !== 10 || isSendingOTP}
-                  className="w-full h-[50px] bg-blue-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
-                </button>
-              ) : !isVerified ? (
-                <div className="space-y-3">
-                  <input
-                    type="text"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
-                    placeholder="Enter OTP *"
-                    className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
-                  />
-                  <button
-                    type="button"
-                    onClick={verifyOTP}
-                    disabled={isVerifying}
-                    className="w-full h-[50px] bg-green-500 text-white rounded-3xl text-base sm:text-lg font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
-                  >
-                    {isVerifying ? 'Verifying...' : 'Verify OTP'}
-                  </button>
-                </div>
-              ) : (
-                <div className="w-full h-[50px] bg-green-100 text-green-700 rounded-3xl text-base sm:text-lg pl-6 flex items-center font-medium">
-                  ✅ Phone Number Verified
-                </div>
-              )}
-              
-              {otpError && (
-                <div className="text-red-500 text-sm text-center">{otpError}</div>
-              )}
-            </div>
+
+          {/* Send OTP — only appears once exactly 10 digits entered, not yet sent/verified */}
+          {normalizePhoneNumber(formData.phone).length === 10 &&
+            !otpSent &&
+            !isVerified && (
+              <button
+                type="button"
+                onClick={sendOTP}
+                disabled={isSendingOTP}
+                className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl text-base font-medium hover:bg-[#c4b5a8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSendingOTP ? "Sending OTP…" : "Send OTP"}
+              </button>
+            )}
+
+          {/* OTP input + Verify — after OTP sent */}
+          {otpSent && !isVerified && (
+            <>
+              <p className="text-sm text-gray-500 text-center">
+                OTP sent to {formData.phone}
+              </p>
+              <input
+                type="text"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                placeholder="Enter OTP *"
+                maxLength={6}
+                className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
+              />
+              <button
+                type="button"
+                onClick={verifyOTP}
+                disabled={isVerifying || otp.length < 4}
+                className="w-full h-[50px] bg-[#c0392b] text-white rounded-3xl text-base font-medium hover:bg-[#a93226] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isVerifying ? "Verifying…" : "Verify OTP"}
+              </button>
+              <button
+                type="button"
+                onClick={resendOTP}
+                disabled={isSendingOTP}
+                className="w-full h-[44px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-sm font-medium hover:bg-[#f9f5f2] transition-colors disabled:opacity-50"
+              >
+                {isSendingOTP ? "Sending…" : "Resend OTP"}
+              </button>
+            </>
           )}
-          
+
+          {/* Verified badge */}
+          {isVerified && (
+            <p className="text-sm text-green-600 font-medium text-center">
+              ✓ Phone verified
+            </p>
+          )}
+
+          {otpError && (
+            <p className="text-red-500 text-sm text-center">{otpError}</p>
+          )}
+
+          {/* Property Pincode */}
           <div className="relative w-full">
             <select
               name="pincode"
               required
               value={selectedPincode}
-              onChange={e => setSelectedPincode(e.target.value)}
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none"
+              onChange={(e) => setSelectedPincode(e.target.value)}
+              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none"
             >
-              <option className="text-gray-400" value="" disabled>Property Pincode *</option>
-              {Pincode.map((pin, idx) => (<option key={idx} value={pin}>{pin}</option>))}
+              <option value="" disabled>
+                Property Pincode *
+              </option>
+              {Pincode.map((pin, idx) => (
+                <option key={idx} value={pin}>
+                  {pin}
+                </option>
+              ))}
             </select>
-            <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[18px] pointer-events-none">&#9662;</span>
+            <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[16px] pointer-events-none">
+              &#9662;
+            </span>
+          </div>
+
+          {/* Project Possession Timeline */}
+          <div className="relative w-full">
+            <select
+              name="projectPossessionTimeline"
+              required
+              value={selectedTimeline}
+              onChange={(e) => setSelectedTimeline(e.target.value)}
+              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none"
+            >
+              <option value="" disabled>
+                Project Possession Timeline ? *
+              </option>
+              {projectPossessionTimelineOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[16px] pointer-events-none">
+              &#9662;
+            </span>
           </div>
         </div>
 
-        {/* Status row (no submit or WhatsApp checkbox) */}
-        <div className="flex items-center justify-end mt-4">
-          <div className="text-sm text-gray-500">{isSubmitting ? 'Submitting...' : ''}</div>
+        {isSubmitting && (
+          <p className="text-sm text-gray-500 text-center mt-3">Submitting…</p>
+        )}
+
+        <div className="text-xs text-left mt-4 font-medium pl-4">
+          By submitting, you agree to our Privacy Policy ,{" "}
+          <span>Terms & Conditions</span>
         </div>
-        <div className='text-xs text-left mt-4 font-medium pl-4'>By submitting, you agree to our Privacy Policy , <p className='text-left '>Terms & Conditions</p></div>
       </div>
-    </div>
+    </>
   );
 };
 

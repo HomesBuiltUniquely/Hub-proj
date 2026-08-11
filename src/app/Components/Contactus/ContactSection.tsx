@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { normalizePhoneNumber } from "@/lib/utils";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -142,44 +143,22 @@ const ContactSection: React.FC = () => {
     setSubmitStatus('idle');
     setStatusMessage('');
 
-    try {
-      const response = await fetch('/api/contact-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+    fireAndForgetLeadSubmit('/api/contact-form', formData);
 
-      const result = await response.json();
-
-      if (result.success) {
-        setSubmitStatus('success');
-        setStatusMessage(result.message);
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          message: ''
-        });
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp('');
-        setIsVerified(false);
-        setOtpError('');
-      } else {
-        setSubmitStatus('error');
-        setStatusMessage(result.message);
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-      setStatusMessage('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setSubmitStatus('success');
+    setStatusMessage('Thank you! Your message has been sent.');
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+    setOtpSent(false);
+    setOtp('');
+    setIsVerified(false);
+    setOtpError('');
+    setIsSubmitting(false);
   };
 
   return (

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode";
 import cityOptions from "./DropDown1";
 import { normalizePhoneNumber } from "@/lib/utils";
@@ -23,7 +22,6 @@ const carouselImages1 = [
 ];
 
 export default function HeroSections() {
-  const router = useRouter();
   const [cityOpen, setCityOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedPincode, setSelectedPincode] = useState("");
@@ -37,17 +35,10 @@ export default function HeroSections() {
   const [isPendingOtpSms, setIsPendingOtpSms] = useState(false);
   const [shouldHideForm, setShouldHideForm] = useState(false);
 
-  // 2 min timer + single CRM hit logic
+  // 2 min OTP timer (resend only)
   const [otpTimerSeconds, setOtpTimerSeconds] = useState(0);
   const [resendVisible, setResendVisible] = useState(false);
-  const [leadSentToCrm, setLeadSentToCrm] = useState<"none" | "VERIFIED" | "UNVERIFIED">("none");
-  const leadSentToCrmRef = useRef<"none" | "VERIFIED" | "UNVERIFIED">("none");
-  const leadPayloadRef = useRef<Record<string, unknown> | null>(null);
   const heroSubmitLockRef = useRef(false);
-
-  useEffect(() => {
-    leadSentToCrmRef.current = leadSentToCrm;
-  }, [leadSentToCrm]);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -129,38 +120,8 @@ export default function HeroSections() {
     }
   };
 
-  // Keep old behavior for email only: send immediate UNVERIFIED mail on submit.
-  const sendImmediateUnverifiedMail = async () => {
-    try {
-      const currentUrl = window.location.href;
-      await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: selectedCity,
-          budget: "",
-          pincode: selectedPincode,
-          whatsappConsent: whatsappConsent,
-          pageUrl: currentUrl,
-          verificationStatus: "UNVERIFIED",
-          otpSuccess: false,
-          mailOnly: true,
-        }),
-      });
-    } catch (error) {
-      console.warn("Immediate unverified mail failed:", error);
-    }
-  };
-
-  // Modal close = fallback: send UNVERIFIED only if not already sent (2 min / verify)
-  const handleModalClose = async () => {
-    if (leadSentToCrmRef.current === "none") {
-      console.log("Modal closed before 2 min / verify - sending UNVERIFIED");
-      await handleFinalSubmit("UNVERIFIED");
-    }
+  // Modal close — no lead is sent until OTP is verified
+  const handleModalClose = () => {
     setShowOtpModal(false);
     setOtp("");
     setOtpTimerSeconds(0);
@@ -189,44 +150,13 @@ export default function HeroSections() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // beforeunload: send UNVERIFIED on page reload if not already sent
-  useEffect(() => {
-    const handler = () => {
-      if (leadSentToCrmRef.current !== "none" || !leadPayloadRef.current)
-        return;
-      const payload = leadPayloadRef.current;
-      const requestData = {
-        ...payload,
-        budget: "",
-        pageUrl: typeof window !== "undefined" ? window.location.href : "",
-        verificationStatus: "UNVERIFIED",
-        otpSuccess: false,
-        skipEmail: true,
-      };
-      // Only /api/contact — it already POSTs MetaLead for best-interior URLs (avoid duplicate MetaLead)
-      fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestData),
-        keepalive: true,
-      }).catch(() => {});
-    };
-    window.addEventListener("beforeunload", handler);
-    return () => window.removeEventListener("beforeunload", handler);
-  }, []);
-
-  // 2 min timer: on expiry send UNVERIFIED and show Resend (same as HeroSection LandingPage1)
+  // 2 min timer: on expiry show Resend
   useEffect(() => {
     if (!showOtpModal || otpTimerSeconds <= 0) return;
     const id = setInterval(() => {
       setOtpTimerSeconds((prev) => {
         if (prev <= 1) {
           clearInterval(id);
-          if (leadSentToCrmRef.current === "none") {
-            handleFinalSubmit("UNVERIFIED").catch(console.error);
-            setLeadSentToCrm("UNVERIFIED");
-            leadSentToCrmRef.current = "UNVERIFIED";
-          }
           setResendVisible(true);
           return 0;
         }
@@ -261,7 +191,7 @@ export default function HeroSections() {
 
       if (response.ok && data.success) {
         setOtp("");
-        await handleFinalSubmit("VERIFIED");
+        handleFinalSubmit();
         return;
       } else {
         // Removed alert - no interruption during verification
@@ -315,7 +245,6 @@ export default function HeroSections() {
     heroSubmitLockRef.current = true;
     setIsSendingOtpAuto(true);
     try {
-      void sendImmediateUnverifiedMail();
       await handleAutoSendOtp();
     } finally {
       heroSubmitLockRef.current = false;
@@ -337,17 +266,6 @@ export default function HeroSections() {
         alert("Please enter a valid 10-digit phone number");
         return;
       }
-
-      setLeadSentToCrm("none");
-      leadSentToCrmRef.current = "none";
-      leadPayloadRef.current = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        city: selectedCity,
-        pincode: selectedPincode,
-        whatsappConsent: whatsappConsent,
-      };
 
       setShowOtpModal(true);
       setOtpTimerSeconds(0);
@@ -423,93 +341,50 @@ export default function HeroSections() {
     }
   };
 
-  const handleFinalSubmit = async (
-    verificationStatus: "VERIFIED" | "UNVERIFIED" = "UNVERIFIED",
-  ) => {
-    setLeadSentToCrm(verificationStatus);
-    leadSentToCrmRef.current = verificationStatus;
-
-    console.log("handleFinalSubmit called with status:", verificationStatus);
+  /** Redirect immediately; CRM/email POST runs in background so Ads conversion isn't delayed. */
+  const handleFinalSubmit = () => {
     setIsSubmitting(true);
 
-    try {
-      const currentUrl = window.location.href;
-      const requestData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        city: selectedCity,
-        budget: "",
-        pincode: selectedPincode,
-        whatsappConsent: whatsappConsent,
-        pageUrl: currentUrl,
-        verificationStatus: verificationStatus,
-        otpSuccess: verificationStatus === "VERIFIED",
-        // Avoid duplicate UNVERIFIED emails from timer/close/reload.
-        skipEmail: verificationStatus === "UNVERIFIED",
-      };
+    const currentUrl = window.location.href;
+    const requestData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      city: selectedCity,
+      budget: "",
+      pincode: selectedPincode,
+      whatsappConsent: whatsappConsent,
+      pageUrl: currentUrl,
+      verificationStatus: "VERIFIED" as const,
+      otpSuccess: true,
+    };
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
+    sessionStorage.setItem("formSubmitted", "true");
+    sessionStorage.removeItem("hubThankYouAdsConversionSent");
+    saveLeadContactToSession({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      pincode: selectedPincode,
+    });
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestData),
-        signal: controller.signal,
-      });
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestData),
+      keepalive: true,
+    }).catch((error) => {
+      console.error("Background lead submit failed:", error);
+    });
 
-      clearTimeout(timeoutId);
-      const responseData = await response.json();
+    setSelectedCity("");
+    setSelectedPincode("");
+    setWhatsappConsent(true);
+    setFormData({ name: "", email: "", phone: "" });
+    setShowOtpModal(false);
+    setIsSubmitting(false);
 
-      // MetaLead is sent inside POST /api/contact for best-interior URLs — do not duplicate here
-
-      if (response.ok && responseData.success) {
-        if (verificationStatus === "VERIFIED") {
-          // Removed alert - redirect happens silently
-
-          // Set flag to trigger reload on Thank You page
-          sessionStorage.setItem("formSubmitted", "true");
-
-          // Store user data for thank you page
-          saveLeadContactToSession({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            pincode: selectedPincode,
-          });
-
-          // Reset form
-          setSelectedCity("");
-          // setSelectedBudget("");
-          setSelectedPincode("");
-          setWhatsappConsent(true);
-          setFormData({ name: "", email: "", phone: "" });
-          setShowOtpModal(false);
-
-          // Redirect to thank you page
-          router.push(POST_LEAD_SUCCESS_PATH);
-        } else {
-          // Removed alert - OTP modal will appear directly
-        }
-      } else {
-        alert(
-          responseData.message || "Failed to submit form. Please try again.",
-        );
-      }
-    } catch (error: unknown) {
-      console.error("Error submitting form:", error);
-
-      if (error instanceof Error && error.name === "AbortError") {
-        alert(
-          "Request timed out. Please check your internet connection and try again.",
-        );
-      } else {
-        alert("Failed to submit form. Please try again.");
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
+    window.location.assign(POST_LEAD_SUCCESS_PATH);
   };
 
   return (

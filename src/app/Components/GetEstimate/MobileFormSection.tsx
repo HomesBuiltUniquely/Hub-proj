@@ -1,90 +1,87 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import { normalizePhoneNumber } from "@/lib/utils";
 import cityOptions from "../LandingPage1/DropDown1";
-import { POST_LEAD_SUCCESS_PATH } from "@/lib/postLeadSubmitRedirect";
+import { Pincode } from "../LandingPage1/Pincode";
+import {
+  prepareLeadThankYou,
+  fireAndForgetLeadSubmit,
+  redirectToLeadThankYou,
+} from "@/lib/postLeadSubmitRedirect";
+
+const projectPossessionTimelineOptions = [
+  "Ready to Move",
+  "0 - 3 Months",
+  "3 - 6 Months",
+  "6+ Months",
+  "Under Construction",
+  "No Property Yet",
+  "Renovation (Currently Staying Here)",
+];
+
+const inputClass =
+  "w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base";
 
 const MobileFormSection: React.FC = () => {
-  const router = useRouter();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    pincode: '',
-    interiorSetup: ''
+    name: "",
+    email: "",
+    phone: "",
+    pincode: "",
+    interiorSetup: "",
+    projectPossessionTimeline: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  
-  // OTP related states
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  );
+
   const [otpSent, setOtpSent] = useState(false);
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState("");
   const [isVerifying, setIsVerifying] = useState(false);
   const [isSendingOTP, setIsSendingOTP] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
-  const [otpError, setOtpError] = useState('');
-  const showInteriorSetup = formData.pincode.trim().length === 6;
+  const [otpError, setOtpError] = useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
-    if (name === 'phone') {
-      const normalized = normalizePhoneNumber(value);
-      setFormData(prev => ({
+    if (name === "phone") {
+      setFormData((prev) => ({
         ...prev,
-        [name]: normalized
+        [name]: normalizePhoneNumber(value),
       }));
     } else {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        [name]: value
+        [name]: value,
       }));
     }
   };
 
   const sendOTP = async () => {
-    if (!formData.phone) {
-      setOtpError('Please enter a phone number first');
-      return;
-    }
-
     if (formData.phone.length !== 10) {
-      setOtpError('Please enter a valid 10-digit phone number');
+      setOtpError("Please enter a valid 10-digit phone number");
       return;
     }
-
     setIsSendingOTP(true);
-    setOtpError('');
-
+    setOtpError("");
     try {
-      console.log('Sending OTP request for phone:', formData.phone);
-      const response = await fetch('/api/send-msg91-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/send-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: formData.phone }),
       });
-
-      console.log('OTP API response status:', response.status);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
       const data = await response.json();
-      console.log('OTP API response data:', data);
-      
       if (data.success) {
         setOtpSent(true);
-        setOtpError('');
       } else {
-        const errorMsg = data.message || 'Failed to send OTP';
-        console.error('OTP send failed:', errorMsg, data);
-        setOtpError(errorMsg);
+        setOtpError(data.message || "Failed to send OTP");
       }
-    } catch (error) {
-      console.error('OTP send error:', error);
-      setOtpError(`Failed to send OTP: ${error instanceof Error ? error.message : 'Please try again.'}`);
+    } catch {
+      setOtpError("Failed to send OTP. Please try again.");
     } finally {
       setIsSendingOTP(false);
     }
@@ -92,27 +89,25 @@ const MobileFormSection: React.FC = () => {
 
   const verifyOTP = async () => {
     if (!otp) {
-      setOtpError('Please enter the OTP');
+      setOtpError("Please enter the OTP");
       return;
     }
-
     setIsVerifying(true);
     try {
-      const response = await fetch('/api/verify-msg91-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/verify-msg91-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: formData.phone, otp }),
       });
-
       const data = await response.json();
       if (data.success) {
         setIsVerified(true);
-        setOtpError('');
+        setOtpError("");
       } else {
-        setOtpError(data.message || 'Invalid OTP');
+        setOtpError(data.message || "Invalid OTP");
       }
     } catch {
-      setOtpError('Failed to verify OTP. Please try again.');
+      setOtpError("Failed to verify OTP. Please try again.");
     } finally {
       setIsVerifying(false);
     }
@@ -120,195 +115,200 @@ const MobileFormSection: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!isVerified) {
-      setOtpError('Please verify your phone number with OTP first');
+      setOtpError("Please verify your phone number with OTP first");
       return;
     }
-    
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
-      const response = await fetch('/api/get-estimate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          pageUrl: pageUrl
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', pincode: '', interiorSetup: '' });
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp('');
-        setIsVerified(false);
-        setOtpError('');
-        // Redirect to thank you page after successful submission
-        router.push(POST_LEAD_SUCCESS_PATH);
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+    if (!Pincode.includes(formData.pincode)) {
+      setOtpError("Service unavailable for this pincode");
+      return;
     }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const pageUrl =
+      typeof window !== "undefined" ? window.location.href : "";
+
+    prepareLeadThankYou({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      pincode: formData.pincode,
+    });
+
+    fireAndForgetLeadSubmit("/api/get-estimate", {
+      ...formData,
+      pageUrl,
+    });
+
+    setSubmitStatus("success");
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      pincode: "",
+      interiorSetup: "",
+      projectPossessionTimeline: "",
+    });
+    setOtpSent(false);
+    setOtp("");
+    setIsVerified(false);
+    setOtpError("");
+    redirectToLeadThankYou();
   };
 
   return (
     <div className="block md:hidden bg-gray-100 py-10 px-4">
       <div className="max-w-md mx-auto">
-        {/* Form Container */}
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-[#DDCDC1]">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
-                placeholder="Name"
-              />
-            </div>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+              className={inputClass}
+              placeholder="Name *"
+            />
 
-            {/* Email field hidden per request.
-            <div>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-4 bg-white  rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
-                placeholder="Email"
-              />
-            </div>
-            */}
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              className={inputClass}
+              placeholder="Email *"
+            />
 
-            <div>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
-                  setFormData(prev => ({ ...prev, phone: value }));
-                }}
-                required
-                className="w-full px-4 py-4 bg-white  rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
-                placeholder="Phone"
-              />
-            </div>
-            
-            {/* OTP Section */}
-            {formData.phone && formData.phone.length > 0 && (
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                setFormData((prev) => ({ ...prev, phone: value }));
+                setOtpSent(false);
+                setIsVerified(false);
+                setOtp("");
+                setOtpError("");
+              }}
+              required
+              className={inputClass}
+              placeholder="Phone Number *"
+            />
+
+            {formData.phone.length === 10 && !otpSent && (
+              <button
+                type="button"
+                onClick={sendOTP}
+                disabled={isSendingOTP}
+                className="w-full bg-[#DDCDC1] text-amber-950 rounded-full py-3 px-4 font-medium hover:bg-[#c4b5a8] transition-colors disabled:opacity-50"
+              >
+                {isSendingOTP ? "Sending OTP…" : "Send OTP"}
+              </button>
+            )}
+
+            {otpSent && !isVerified && (
               <div className="space-y-3">
-                {!otpSent ? (
+                <input
+                  type="text"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  placeholder="Enter OTP *"
+                  maxLength={6}
+                  className={inputClass}
+                />
                 <button
                   type="button"
-                  onClick={sendOTP}
-                  disabled={formData.phone.length !== 10 || isSendingOTP}
-                  className="w-full bg-blue-500 text-white rounded-full py-3 px-4 font-medium hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={verifyOTP}
+                  disabled={isVerifying || otp.length < 4}
+                  className="w-full bg-[#DDCDC1] text-amber-950 rounded-full py-3 px-4 font-medium hover:bg-[#c4b5a8] transition-colors disabled:opacity-50"
                 >
-                  {isSendingOTP ? 'Sending OTP...' : 'Send OTP'}
+                  {isVerifying ? "Verifying…" : "Verify OTP"}
                 </button>
-              ) : !isVerified ? (
-                <div className="space-y-3">
-                  <input
-                    type="text"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
-                    placeholder="Enter OTP *"
-                    className="w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
-                  />
-                  <button
-                    type="button"
-                    onClick={verifyOTP}
-                    disabled={isVerifying}
-                    className="w-full bg-green-500 text-white rounded-full py-3 px-4 font-medium hover:bg-green-600 transition-colors disabled:opacity-50"
-                  >
-                    {isVerifying ? 'Verifying...' : 'Verify OTP'}
-                  </button>
-                </div>
-              ) : (
-                <div className="w-full bg-green-100 text-green-700 rounded-full py-3 px-4 flex items-center font-medium">
-                  ✅ Phone Number Verified
-                </div>
-              )}
-              
-              {otpError && (
-                <div className="text-red-500 text-sm text-center">{otpError}</div>
-              )}
               </div>
             )}
 
-            <div>
-              <input
-                type="text"
-                id="pincode"
-                name="pincode"
-                value={formData.pincode}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base"
-                placeholder="Pincode"
-              />
-            </div>
-
-            {showInteriorSetup && (
-              <div>
-                <select
-                  id="interiorSetup"
-                  name="interiorSetup"
-                  value={formData.interiorSetup}
-                  onChange={(e) =>
-                    setFormData(prev => ({ ...prev, interiorSetup: e.target.value }))
-                  }
-                  required
-                  className="w-full px-4 py-4 bg-white rounded-full border border-[#DDCDC1] focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none transition-all duration-200 text-gray-800 text-base"
-                >
-                  <option value="" disabled>
-                    What is your budget for home interiors ?
-                  </option>
-                  {cityOptions.map((option: string) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
+            {isVerified && (
+              <div className="w-full bg-green-100 text-green-700 rounded-full py-3 px-4 text-center font-medium text-sm">
+                ✓ Phone Number Verified
               </div>
             )}
+
+            {otpError && (
+              <div className="text-red-500 text-sm text-center">{otpError}</div>
+            )}
+
+            <select
+              name="pincode"
+              value={formData.pincode}
+              onChange={handleInputChange}
+              required
+              className={`${inputClass} text-gray-500`}
+            >
+              <option value="" disabled>
+                Property Pincode ( Bangalore Only ) *
+              </option>
+              {Pincode.map((pin) => (
+                <option key={pin} value={pin}>
+                  {pin}
+                </option>
+              ))}
+            </select>
+
+            <select
+              name="interiorSetup"
+              value={formData.interiorSetup}
+              onChange={handleInputChange}
+              required
+              className={`${inputClass} text-gray-500`}
+            >
+              <option value="" disabled>
+                Which Interior Package are you looking for?
+              </option>
+              {cityOptions.map((option: string) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+
+            <select
+              name="projectPossessionTimeline"
+              value={formData.projectPossessionTimeline}
+              onChange={handleInputChange}
+              required
+              className={`${inputClass} text-gray-500`}
+            >
+              <option value="" disabled>
+                Project Possession Timeline ? *
+              </option>
+              {projectPossessionTimelineOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className=" bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white manrope py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed text-base shadow-lg"
+              className="w-full bg-red-500 hover:bg-red-600 disabled:bg-red-300 text-white manrope py-3 px-4 rounded-full transition-all duration-200 disabled:cursor-not-allowed text-base shadow-lg"
             >
-              {isSubmitting ? 'Submitting...' : 'Submit'}
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
 
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl">
                 Thank you! We&apos;ll get back to you soon with your estimate.
               </div>
             )}
 
-            {submitStatus === 'error' && (
+            {submitStatus === "error" && (
               <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl">
                 Something went wrong. Please try again.
               </div>

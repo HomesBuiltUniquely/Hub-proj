@@ -10,6 +10,7 @@ import NavMore from "../NavMore";
 import router from "next/router";
 import OverlapNavBar from "../OverlapNavBar";
 import { normalizePhoneNumber } from "@/lib/utils";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 // const FRANCHISE_OPTIONS = [
 //   {
@@ -157,37 +158,17 @@ const Home: React.FC = () => {
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
       city: formData.get("city") as string,
+      franchiseType: formData.get("franchiseType") as string,
     };
 
-    try {
-      const response = await fetch("/api/franchise-contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+    fireAndForgetLeadSubmit("/api/franchise-contact", data);
 
-      const result = await response.json();
-
-      if (result.success) {
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp("");
-        setIsVerified(false);
-        setOtpError("");
-        setPhoneNumber("");
-        // Redirect to thank you page
-        router.push("/thank-you-franchisee");
-      } else {
-        alert("There was an error submitting your inquiry. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error submitting your inquiry. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    setOtpSent(false);
+    setOtp("");
+    setIsVerified(false);
+    setOtpError("");
+    setPhoneNumber("");
+    window.location.assign("/thank-you-franchisee");
   };
 
   const handleMobileFormSubmit = async (
@@ -206,44 +187,22 @@ const Home: React.FC = () => {
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
     const data = {
-      name: `${firstName} ${lastName}`.trim(),
+      name: formData.get("name") as string,
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
       city: formData.get("city") as string,
+      franchiseType: formData.get("franchiseType") as string,
     };
 
-    try {
-      const response = await fetch("/api/franchise-contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+    fireAndForgetLeadSubmit("/api/franchise-contact", data);
 
-      const result = await response.json();
-
-      if (result.success) {
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp("");
-        setIsVerified(false);
-        setOtpError("");
-        setPhoneNumber("");
-        // Redirect to thank you page
-        router.push("/thank-you-franchisee");
-      } else {
-        alert("There was an error submitting your inquiry. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error submitting your inquiry. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    setOtpSent(false);
+    setOtp("");
+    setIsVerified(false);
+    setOtpError("");
+    setPhoneNumber("");
+    window.location.assign("/thank-you-franchisee");
   };
 
   const handleGetEstimate = () => {
@@ -465,6 +424,30 @@ const Home: React.FC = () => {
                 className="w-full px-4 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="text"
               />
+              <label className="pl-1 text-white">Franchise Type*</label>
+              <div className="relative w-full">
+                <select
+                  name="franchiseType"
+                  disabled={isSubmitting}
+                  required
+                  defaultValue=""
+                  className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
+                    FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
+                  </option>
+                  <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)
+                  </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -669,6 +652,30 @@ const Home: React.FC = () => {
                 className="w-full px-4 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
                 type="text"
               />
+              <label className="pl-1 text-white">Franchise Type*</label>
+              <div className="relative w-full">
+                <select
+                  name="franchiseType"
+                  disabled={isSubmitting}
+                  required
+                  defaultValue=""
+                  className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
+                    FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
+                  </option>
+                  <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)
+                  </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -874,6 +881,33 @@ const Home: React.FC = () => {
                 type="text"
               />
 
+              <label className="pl-1 text-white">Franchise Type*</label>
+              <div className="relative w-full">
+                <select
+                  name="franchiseType"
+                  disabled={isSubmitting}
+                  required
+                  defaultValue=""
+                  className="w-full px-3 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
+                    FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)
+                  </option>
+
+                  <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
+                    FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)
+                  </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -921,7 +955,7 @@ const Home: React.FC = () => {
 
       {/* Mobile version */}
 
-      <div className="mobile-1 md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-hidden">
+      <div className="mobile-1 md:hidden w-full max-w-[425px] mx-auto mb-5 overflow-visible">
         <div className="relative h-full w-full p-2">
           {/* Rounded image only */}
           <img
@@ -930,7 +964,7 @@ const Home: React.FC = () => {
           />
 
           {/* top logo */}
-          <div className="absolute top-2 -mt-8 -ml-1">
+          <div className="absolute top-2 -mt-8 -ml-1 mb-8">
             <Image
               src="/redlogo.png"
               alt="HUB Interior Logo"
@@ -953,7 +987,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Section2 */}
-        <div className="h-auto w-full flex justify-center px-2">
+        <div className="h-auto w-full flex justify-center px-2 mt-8">
           <div className="w-[360px] max-w-full h-auto border-2 border-[#DDCDC1] rounded-4xl mt-5 flex justify-center items-start p-4">
             <form
               onSubmit={handleMobileFormSubmit}
@@ -961,19 +995,11 @@ const Home: React.FC = () => {
             >
               <input
                 type="text"
-                name="firstName"
-                placeholder="First Name"
+                name="name"
+                placeholder="Name"
                 required
                 disabled={isSubmitting}
                 className="w-full sm:w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-6 pl-4 disabled:opacity-50 disabled:cursor-not-allowed"
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                required
-                disabled={isSubmitting}
-                className="w-full sm:w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-4 pl-4 disabled:opacity-50 disabled:cursor-not-allowed"
               />
               <input
                 type="email"
@@ -1050,6 +1076,33 @@ const Home: React.FC = () => {
                 disabled={isSubmitting}
                 className="w-full sm:w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-4 pl-4 disabled:opacity-50 disabled:cursor-not-allowed"
               />
+              <div className="relative w-full sm:w-[280px]">
+                <select
+                  name="franchiseType"
+                  required
+                  defaultValue=""
+                  disabled={isSubmitting}
+                  className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] bg-transparent mt-4 pl-4 pr-10 appearance-none text-[16px] text-[#7A8599] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <option value="" disabled hidden>
+                    Franchise Format
+                  </option>
+
+                  <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
+                    FOFO – Franchise Owned, Franchise Operated (₹20–40 Lakhs)
+                  </option>
+
+                  <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
+                    FOCO – Franchise Owned, Company Operated (₹60 Lakhs+)
+                  </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
               <button
                 type="submit"
                 disabled={isSubmitting}

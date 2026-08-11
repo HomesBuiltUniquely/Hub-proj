@@ -12,7 +12,7 @@ const faqData: FAQItem[] = [
     question:
       "1. What is the interior design cost in Bangalore for 2BHK, 3BHK, 4BHK, Villa, and Kitchen?",
     answer:
-      "Interior design cost in Bangalore depends on the home size, design complexity, and materials used. At HUB Interior, we offer transparent pricing with value-packed packages:\n2BHK interior design: ₹3.5 Lakhs onwards\n3BHK interior design: ₹4.3 Lakhs onwards\n4BHK interiors: ₹5.1 Lakhs onwards\nModular kitchen interiors: ₹1.8 Lakhs onwards\nWe focus on affordable interior design without compromising on quality, finish, or craftsmanship.",
+      "Interior design cost in Bangalore depends on the home size, design complexity, and materials used. At HUB Interior, we offer transparent pricing with value-packed packages:\n2BHK interior design: ₹4 Lakhs onwards\n3BHK interior design: ₹6 Lakhs onwards\n4BHK interiors: ₹8 Lakhs onwards\nModular kitchen interiors: ₹2 Lakhs onwards\nWe focus on affordable interior design without compromising on quality, finish, or craftsmanship.",
   },
   // {
   //   question: "2. What is the 2BHK interior design cost in Bangalore?",

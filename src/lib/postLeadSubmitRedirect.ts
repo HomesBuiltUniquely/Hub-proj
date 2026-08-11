@@ -28,6 +28,42 @@ export function saveLeadContactToSession(details: LeadContactDetails): void {
   if (pincode) sessionStorage.setItem("userPincode", pincode);
 }
 
+/** Mark lead submitted for GTM / thank-you and persist contact fields. */
+export function prepareLeadThankYou(details: LeadContactDetails): void {
+  if (typeof window === "undefined") return;
+  sessionStorage.setItem("formSubmitted", "true");
+  sessionStorage.removeItem("hubThankYouAdsConversionSent");
+  saveLeadContactToSession(details);
+}
+
+/**
+ * Fire-and-forget lead POST so thank-you / Ads conversion is not blocked by CRM/email.
+ * `keepalive` lets the request finish after navigation.
+ */
+export function fireAndForgetLeadSubmit(
+  url: string,
+  body: object,
+): void {
+  if (typeof window === "undefined") return;
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    keepalive: true,
+  }).catch((error) => {
+    console.error("Background lead submit failed:", error);
+  });
+}
+
+/** Full-page thank-you redirect (preferred with keepalive submits). */
+export function redirectToLeadThankYou(query?: URLSearchParams): void {
+  if (typeof window === "undefined") return;
+  const qs = query?.toString();
+  window.location.assign(
+    qs ? `${POST_LEAD_SUCCESS_PATH}?${qs}` : POST_LEAD_SUCCESS_PATH,
+  );
+}
+
 /** Query string for thank-you reload (phone stored as +91XXXXXXXXXX). */
 export function buildLeadThankYouQuery(details: LeadContactDetails): URLSearchParams {
   const q = new URLSearchParams();

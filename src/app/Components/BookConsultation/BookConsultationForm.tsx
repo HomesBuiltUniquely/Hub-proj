@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 type ConsultationMode = "experience-center" | "video-call";
 type PossessionTimeline =
@@ -12,11 +13,12 @@ type PossessionTimeline =
   | "3-6-months"
   | "more-than-6-months"
   | "under-construction"
-  | "construction-not-yet-ready";
+
 
 const preferredSlots = [
   "09:00 AM - 10:00 AM",
   "10:00 AM - 11:00 AM",
+  "11:00 AM - 12:00 PM",
   "12:00 PM - 01:00 PM",
   "01:00 PM - 02:00 PM",
   "02:00 PM - 03:00 PM",
@@ -73,8 +75,6 @@ function FormSection({
   setPreferredSlot,
   propertyName,
   setPropertyName,
-  possessionTimeline,
-  setPossessionTimeline,
   onSubmit,
 }: {
   consultationMode: ConsultationMode;
@@ -85,8 +85,6 @@ function FormSection({
   setPreferredSlot: (v: string) => void;
   propertyName: string;
   setPropertyName: (v: string) => void;
-  possessionTimeline: PossessionTimeline;
-  setPossessionTimeline: (v: PossessionTimeline) => void;
   onSubmit: () => void;
 }) {
   const formatDateForInput = (date: Date) => {
@@ -146,7 +144,7 @@ function FormSection({
         />
         <ConsultationCard
           active={consultationMode === "video-call"}
-          title="Video Conference"
+          title="Virtual meeting"
           icon={
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
               <path d="M15 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8Z" />
@@ -199,7 +197,7 @@ function FormSection({
           2
         </div>
         <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
-          Property & Possession
+          Property Name
         </h2>
       </div>
 
@@ -207,18 +205,17 @@ function FormSection({
         type="text"
         value={propertyName}
         onChange={(e) => setPropertyName(e.target.value)}
-        placeholder="Property Name/Individual House"
+        placeholder="Mention Your Property Name (or) Individual House"
         className={inputClass}
       />
 
-      <div className="mt-4 flex flex-wrap gap-3">
+      {/* <div className="mt-4 flex flex-wrap gap-3">
         {[
           { id: "immediately" as PossessionTimeline, label: "Immediately" },
           { id: "0-3-months" as PossessionTimeline, label: "0 - 3 months" },
           { id: "3-6-months" as PossessionTimeline, label: "3 - 6 months" },
           { id: "more-than-6-months" as PossessionTimeline, label: "More than 6 months" },
           { id: "under-construction" as PossessionTimeline, label: "Under construction" },
-          { id: "construction-not-yet-ready" as PossessionTimeline, label: "Construction not yet ready" },
         ].map((item) => (
           <button
             key={item.id}
@@ -233,7 +230,7 @@ function FormSection({
             {item.label}
           </button>
         ))}
-      </div>
+      </div> */}
 
       {/* Submit */}
       <button
@@ -271,72 +268,57 @@ export default function BookConsultationForm() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleBookConsultationSubmit = async () => {
+  const handleBookConsultationSubmit = () => {
     if (!selectedDate || !preferredSlot || !propertyName) {
       alert("Please fill date, preferred slot and property details.");
       return;
     }
 
     setIsSubmitting(true);
-    try {
-      const fallbackName = searchParams.get("name") || "";
-      const fallbackEmail = searchParams.get("email") || "";
-      const fallbackPhone =
-        searchParams.get("phone") || searchParams.get("phoneNumber") || "";
 
-      const fallbackPincode = searchParams.get("pincode") || "";
+    const fallbackName = searchParams.get("name") || "";
+    const fallbackEmail = searchParams.get("email") || "";
+    const fallbackPhone =
+      searchParams.get("phone") || searchParams.get("phoneNumber") || "";
+    const fallbackPincode = searchParams.get("pincode") || "";
 
-      const firstFormDetails = {
-        name:
-          (typeof window !== "undefined"
-            ? sessionStorage.getItem("userName")
-            : "") || fallbackName,
-        email:
-          (typeof window !== "undefined"
-            ? sessionStorage.getItem("userEmail")
-            : "") || fallbackEmail,
-        phone:
-          (typeof window !== "undefined"
-            ? sessionStorage.getItem("userPhone")
-            : "") || fallbackPhone,
-        pincode:
-          (typeof window !== "undefined"
-            ? sessionStorage.getItem("userPincode")
-            : "") || fallbackPincode,
-      };
+    const firstFormDetails = {
+      name:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userName")
+          : "") || fallbackName,
+      email:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userEmail")
+          : "") || fallbackEmail,
+      phone:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userPhone")
+          : "") || fallbackPhone,
+      pincode:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userPincode")
+          : "") || fallbackPincode,
+    };
 
-      const response = await fetch("/api/book-consultation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          pageUrl: typeof window !== "undefined" ? window.location.href : "",
-          firstFormDetails,
-          consultationDetails: {
-            consultationMode,
-            selectedDate,
-            preferredSlot,
-            propertyName,
-            possessionTimeline,
-          },
-        }),
-      });
+    fireAndForgetLeadSubmit("/api/book-consultation", {
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      firstFormDetails,
+      consultationDetails: {
+        consultationMode,
+        selectedDate,
+        preferredSlot,
+        propertyName,
+        possessionTimeline,
+      },
+    });
 
-      const data = await response.json();
-      if (response.ok && data.success) {
-        alert("Thank you for your submission.");
-        setSelectedDate("");
-        setPreferredSlot("");
-        setPropertyName("");
-        setPossessionTimeline("immediately");
-      } else {
-        alert(data.message || "Failed to submit consultation details.");
-      }
-    } catch (error) {
-      console.error("Book consultation submission failed:", error);
-      alert("Failed to submit consultation details. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    alert("Thank you for your submission.");
+    setSelectedDate("");
+    setPreferredSlot("");
+    setPropertyName("");
+    setPossessionTimeline("immediately");
+    setIsSubmitting(false);
   };
 
   return (
@@ -376,8 +358,6 @@ export default function BookConsultationForm() {
               setPreferredSlot={setPreferredSlot}
               propertyName={propertyName}
               setPropertyName={setPropertyName}
-              possessionTimeline={possessionTimeline}
-              setPossessionTimeline={setPossessionTimeline}
               onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
             />
           </div>
@@ -423,8 +403,6 @@ export default function BookConsultationForm() {
                 setPreferredSlot={setPreferredSlot}
                 propertyName={propertyName}
                 setPropertyName={setPropertyName}
-                possessionTimeline={possessionTimeline}
-                setPossessionTimeline={setPossessionTimeline}
                 onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
               />
             </div>

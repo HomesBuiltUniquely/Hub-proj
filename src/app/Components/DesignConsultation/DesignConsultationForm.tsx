@@ -3,15 +3,22 @@
 import React, { useState, useEffect } from "react";
 import { normalizePhoneNumber } from "@/lib/utils";
 import { Pincode } from "../LandingPage1/Pincode";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 type ConsultationMode = "experience-center" | "video-call";
 
 const preferredSlots = [
-  "09:00 AM - 11:00 AM",
-  "11:00 AM - 01:00 PM",
-  "02:00 PM - 04:00 PM",
-  "04:00 PM - 06:00 PM",
-  "06:00 PM - 08:00 PM",
+  "09:00 AM - 10:00 AM",
+  "10:00 AM - 11:00 AM",
+  "11:00 AM - 12:00 PM",
+  "12:00 PM - 01:00 PM",
+  "01:00 PM - 02:00 PM",
+  "02:00 PM - 03:00 PM",
+  "03:00 PM - 04:00 PM",
+  "04:00 PM - 05:00 PM",
+  "05:00 PM - 06:00 PM",
+  "06:00 PM - 07:00 PM",
+  "07:00 PM - 08:00 PM"
 ];
 
 const carouselImages = [
@@ -77,6 +84,8 @@ function FormSection({
   setSelectedDate,
   preferredSlot,
   setPreferredSlot,
+  propertyName,
+  setPropertyName,
 
   onSubmit,
   isSubmitting,
@@ -106,10 +115,26 @@ function FormSection({
   setSelectedDate: (v: string) => void;
   preferredSlot: string;
   setPreferredSlot: (v: string) => void;
+  propertyName: string;
+  setPropertyName: (v: string) => void;
 
   onSubmit: () => void;
   isSubmitting: boolean;
 }) {
+  const formatDateForInput = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const today = new Date();
+  const maxSelectableDate = new Date(today);
+  maxSelectableDate.setDate(today.getDate() + 14);
+
+  const minDate = formatDateForInput(today);
+  const maxDate = formatDateForInput(maxSelectableDate);
+
   const inputClass =
     "h-[58px] w-full rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
 
@@ -268,7 +293,7 @@ function FormSection({
         />
         <ConsultationCard
           active={consultationMode === "video-call"}
-          title="Video Conference"
+          title="Virtual meeting"
           icon={
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
               <path d="M15 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8Z" />
@@ -285,6 +310,8 @@ function FormSection({
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
+            min={minDate}
+            max={maxDate}
             className={`${inputClass} [color-scheme:light]`}
           />
           {!selectedDate && (
@@ -314,7 +341,23 @@ function FormSection({
         </div>
       </div>
 
+      {/* STEP 3 — Property Name */}
+      <div className="mt-8 mb-5 flex items-center gap-3 border-t border-[#ECEFF4] pt-8">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+          3
+        </div>
+        <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
+          Property Name
+        </h2>
+      </div>
 
+      <input
+        type="text"
+        value={propertyName}
+        onChange={(e) => setPropertyName(e.target.value)}
+        placeholder="Mention Your Property Name (or) Individual House"
+        className={inputClass}
+      />
 
       <button
         type="submit"
@@ -378,6 +421,7 @@ export default function DesignConsultationForm() {
   const [consultationMode, setConsultationMode] = useState<ConsultationMode>("experience-center");
   const [selectedDate, setSelectedDate] = useState("");
   const [preferredSlot, setPreferredSlot] = useState("");
+  const [propertyName, setPropertyName] = useState("");
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -440,6 +484,10 @@ export default function DesignConsultationForm() {
     }
     if (!preferredSlot) {
       alert("Please select a preferred time slot.");
+      return false;
+    }
+    if (!propertyName.trim()) {
+      alert("Please enter your property name.");
       return false;
     }
     return true;
@@ -536,55 +584,43 @@ export default function DesignConsultationForm() {
     }
   };
 
-  const submitConsultation = async () => {
+  const submitConsultation = () => {
     setIsSubmitting(true);
-    try {
-      const response = await fetch("/api/book-consultation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          pageUrl: typeof window !== "undefined" ? window.location.href : "",
-          formSource: "design-consultation",
-          phoneVerified: isPhoneVerified,
-          firstFormDetails: {
-            name: fullName.trim(),
-            email: "",
-            phone: phoneNumber,
-            pincode: selectedPincode,
-          },
-          consultationDetails: {
-            consultationMode,
-            selectedDate,
-            preferredSlot,
-          },
-        }),
-      });
 
-      const data = await response.json();
-      if (response.ok && data.success) {
-        alert("Thank you for your submission.");
-        setFullName("");
-        setPhoneNumber("");
-        setSelectedPincode("");
-        setSelectedDate("");
-        setPreferredSlot("");
-        setConsultationMode("experience-center");
-        setIsPhoneVerified(false);
-        setOtpSent(false);
-        setOtp("");
-        setOtpError("");
-      } else {
-        alert(data.message || "Failed to submit consultation details.");
-      }
-    } catch (error) {
-      console.error("Design consultation submission failed:", error);
-      alert("Failed to submit consultation details. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    fireAndForgetLeadSubmit("/api/book-consultation", {
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      formSource: "design-consultation",
+      phoneVerified: isPhoneVerified,
+      firstFormDetails: {
+        name: fullName.trim(),
+        email: "",
+        phone: phoneNumber,
+        pincode: selectedPincode,
+      },
+      consultationDetails: {
+        consultationMode,
+        selectedDate,
+        preferredSlot,
+        propertyName: propertyName.trim(),
+      },
+    });
+
+    alert("Thank you for your submission.");
+    setFullName("");
+    setPhoneNumber("");
+    setSelectedPincode("");
+    setSelectedDate("");
+    setPreferredSlot("");
+    setPropertyName("");
+    setConsultationMode("experience-center");
+    setIsPhoneVerified(false);
+    setOtpSent(false);
+    setOtp("");
+    setOtpError("");
+    setIsSubmitting(false);
   };
 
-  const handleBookNow = async () => {
+  const handleBookNow = () => {
     if (!validateForm()) return;
 
     if (!isPhoneVerified) {
@@ -592,7 +628,7 @@ export default function DesignConsultationForm() {
       return;
     }
 
-    await submitConsultation();
+    submitConsultation();
   };
 
   const formProps = {
@@ -621,6 +657,8 @@ export default function DesignConsultationForm() {
     setSelectedDate,
     preferredSlot,
     setPreferredSlot,
+    propertyName,
+    setPropertyName,
     onSubmit: handleBookNow,
     isSubmitting: isSubmitting || isSendingOtp,
   };
