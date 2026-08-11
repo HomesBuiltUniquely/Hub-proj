@@ -44,13 +44,13 @@ export default function Section7() {
 
         <div className="home-desktop desktop-2560 hidden md:block  min-h-[500px] bg-[#F1F2F6] px-85">
 
-          <div className="w-full h-[410px] rounded-3xl  mx-auto relative overflow-hidden">
+          <div className="w-full h-[410px] rounded-3xl mx-auto relative overflow-hidden bg-black/5">
             <img
               src="/HOME-CTA.png"
               alt="img"
-              className="mx-auto w-full h-[410px]  object-center"
+              className="mx-auto w-full h-[410px] blur-[2px] object-center"
             />
-            <div className="absolute inset-0  rounded-3xl flex flex-col justify-center items-center text-center">
+            <div className="absolute inset-0 rounded-3xl bg-black/20 flex flex-col justify-center items-center text-center">
               <h1 className="type-h1 text-white wulkan-display-bold">
                 Meet our interior designers
               </h1>
@@ -73,13 +73,13 @@ export default function Section7() {
 
         <div className="home-desktop desktop-1920 hidden md:block  min-h-[500px]  bg-[#F1F2F6] mx-20">
 
-          <div className="w-full h-[410px] rounded-3xl  mx-auto relative overflow-hidden">
+          <div className="w-full h-[410px] rounded-3xl mx-auto relative overflow-hidden bg-black/5">
             <img
               src="/HOME-CTA.png"
               alt="img"
-              className="mx-auto w-full h-[410px]  object-center"
+              className="mx-auto w-full h-[410px] blur-[2px] object-center"
             />
-            <div className="absolute inset-1  rounded-3xl flex flex-col justify-center items-center text-center">
+            <div className="absolute inset-0 rounded-3xl bg-black/20 flex flex-col justify-center items-center text-center">
               <h1 className="type-h1 text-white wulkan-display-bold">
                 Meet our interior designers
               </h1>
@@ -102,23 +102,23 @@ export default function Section7() {
         <div className="home-desktop desktop-1280 hidden md:block max-w-[1280px] -mt-5 -mb-5 mx-15 min-h-[500px] bg-[#F1F2F6]">
           <div className="w-full h-[410px] rounded-3xl bg-black/5 mx-auto relative overflow-hidden">
             <img src="/HOME-CTA.png" alt="img" className="mx-auto w-full h-[410px] blur-[2px] object-center" />
-            <div className="absolute top-0 left-0 w-full h-full bg-black/20- rounded-3xl pt-35 pl-90 ">
+            <div className="absolute inset-0 bg-black/20 rounded-3xl flex flex-col justify-center items-center text-center">
               <h1 className="type-h2 text-white wulkan-display-bold">Meet our interior designers</h1>
-              <p className="type-body text-white manrope mt-4  pl-[3rem]">Experts Creating Spaces You&#39;ll Love</p>
-              <a href="/GetEstimate" ><button className="manrope bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 mt-4 ml-30">Book your consultation</button></a>
+              <p className="type-body text-white manrope mt-4">Experts Creating Spaces You&#39;ll Love</p>
+              <a href="/GetEstimate"><button className="manrope bg-[#ef0101] hover:bg-[#ebd457] transition-colors text-white px-4 py-2 rounded-4xl font-semibold shadow shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 mt-6">Book your consultation</button></a>
             </div>
           </div>
         </div>
 
         {/* mobile */}
         <div className="block md:hidden w-[340px] min-h-[500px] bg-[#F1F2F6] mt-8 -mb-4 mx-auto">
-          <div className=" h-[380px] bg-white mx-auto rounded-3xl mt-4 relative">
-            <img src="/HOME-CTA.png" alt="img" className=" h-full object-center rounded-3xl bg-transparent" />
-            <div className="absolute top-0 left-0 w-full h-full  rounded-3xl pt-20 ">
+          <div className="h-[380px] bg-white mx-auto rounded-3xl mt-4 relative overflow-hidden">
+            <img src="/HOME-CTA.png" alt="img" className="w-full h-full object-cover blur-[2px] rounded-3xl bg-transparent" />
+            <div className="absolute inset-0 bg-black/20 rounded-3xl flex flex-col justify-center items-center text-center px-4">
               <h1 className="typography-h2 text-white wulkan-display-bold text-center">Meet our interior designers</h1>
-              <p className="text-white text-xl manrope-medium mt-4 text-center w-[260px] mx-auto">Experts creating spaces you&#39;ll love</p>
+              <p className="text-white text-xl manrope-medium mt-4 text-center w-[260px] mx-auto">Experts Creating Spaces You&#39;ll Love</p>
               <div className="text-center mt-10 w-[250px] mx-auto">
-                <a href="/GetEstimate" ><button className="manrope bg-[#ef0101] hover:bg-[#ebd457]  text-white px-4 py-2 rounded-4xl   shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 w-full">Book your consultation</button></a>
+                <a href="/GetEstimate"><button className="manrope bg-[#ef0101] hover:bg-[#ebd457] text-white px-4 py-2 rounded-4xl shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg active:shadow-black/20 transition-shadow duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 w-full">Book your consultation</button></a>
               </div>
             </div>
           </div>
