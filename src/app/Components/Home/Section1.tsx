@@ -68,11 +68,12 @@ export default function npSection1() {
           <div className="grid grid-rows-2  mt-10">
             <div className="w-[330px] h-[250px] bg-[#DDCDC1] rounded-3xl pt-10 pl-6">
               <div className="text-[50px] leading-[1.15] manrope-bold">0%</div>
-              <h3 className="type-h3 manrope-semibold pt-3">EMI</h3>
-              <p className="type-body manrope pt-2 w-[250px]">
+              <h3 className="type-h3 manrope-semibold pt-1">EMI*</h3>
+              <p className="type-body manrope pt-1 w-[260px] leading-snug">
                 Bring home the interiors you love with our 0% interest EMI plans
                 — flexible, stress-free, and designed around your comfort.
               </p>
+              <p className="text-[10px] manrope text-right pr-6 mt-1 opacity-70">*Terms & Conditions apply</p>
             </div>
             <div className="w-[330px] h-[400px] bg-red-00 rounded-3xl -mt-35">
               <Image
@@ -109,12 +110,13 @@ export default function npSection1() {
           <div className="grid grid-rows-2  mt-10">
             <div className="w-[330px] h-[250px] bg-[#DDCDC1] rounded-3xl pt-10 pl-6">
               <div className="text-[50px] leading-[1.15] manrope-bold">34</div>
-              <h3 className="type-h3 manrope-semibold pt-3">Days Delivery</h3>
-              <p className="type-body manrope pt-2 w-[250px]">
+              <h3 className="type-h3 manrope-semibold pt-1">Days Delivery*</h3>
+              <p className="type-body manrope pt-1 w-[260px] leading-snug">
                 Experience thoughtfully designed spaces with our fast-track
                 delivery promise — without compromising on quality, detail, or
                 elegance.
               </p>
+              <p className="text-[10px] manrope text-right pr-6 mt-1 opacity-70">*Terms & Conditions apply</p>
             </div>
             <div className="w-[330px] h-[400px] bg-red-500 rounded-3xl -mt-35">
               <Image
@@ -166,16 +168,17 @@ export default function npSection1() {
               </div>
             </div>
             <div className="grid grid-rows-2 gap-37 -mt-26">
-              <div className="w-[325px] h-[250px] bg-[#DDCDC1] rounded-3xl pt-8 pl-6 ">
+              <div className="w-[325px] h-[250px] bg-[#DDCDC1] rounded-3xl pt-8 pl-6">
                 <div className="text-[50px] leading-[1.15] manrope-bold">
                   0%
                 </div>
-                <h3 className="type-h3 manrope-semibold pt-3">EMI</h3>
-                <p className="type-body manrope pt-2 w-[250px]">
+                <h3 className="type-h3 manrope-semibold pt-1">EMI*</h3>
+                <p className="type-body manrope pt-1 w-[260px] leading-snug">
                   Bring home the interiors you love with our 0% interest EMI
                   plans — flexible, stress-free, and designed around your
                   comfort.
                 </p>
+                <p className="text-[10px] manrope text-right pr-6 mt-1 opacity-70">*Terms & Conditions apply</p>
               </div>
               <div className="w-[325px] h-[400px] bg-red-500 rounded-3xl -mt-35">
                 <Image
@@ -210,16 +213,17 @@ export default function npSection1() {
               </div>
             </div>
             <div className="grid grid-rows-2 gap-37 -mt-26">
-              <div className="w-[325px] h-[250px] bg-[#DDCDC1] rounded-3xl pt-8 pl-6 ">
+              <div className="w-[325px] h-[250px] bg-[#DDCDC1] rounded-3xl pt-8 pl-6">
                 <div className="text-[50px] leading-[1.15] manrope-bold">
                   34
                 </div>
-                <h3 className="type-h3 manrope-semibold pt-3">Days Delivery</h3>
-                <p className="type-body manrope pt-2 w-[250px]">
+                <h3 className="type-h3 manrope-semibold pt-1">Days Delivery*</h3>
+                <p className="type-body manrope pt-1 w-[260px] leading-snug">
                   Experience thoughtfully designed spaces with our fast-track
                   delivery promise — without compromising on quality, detail, or
                   elegance.
                 </p>
+                <p className="text-[10px] manrope text-right pr-6 mt-1 opacity-70">*Terms & Conditions apply</p>
               </div>
               <div className="w-[325px] h-[400px] bg-red-500 rounded-3xl -mt-35">
                 <Image
@@ -316,11 +320,12 @@ export default function npSection1() {
           <div className="grid grid-rows-2 gap-36 -mt-26">
             <div className="w-[285px] h-[250px] bg-[#DDCDC1] rounded-3xl pt-8 pl-3">
               <div className="text-[50px] leading-[1.15] manrope-bold">0%</div>
-              <h3 className="type-h3 manrope-semibold pt-3">EMI</h3>
-              <p className="type-body manrope pt-2 w-[250px]">
+              <h3 className="type-h3 manrope-semibold pt-1">EMI*</h3>
+              <p className="type-body manrope pt-1 w-[260px] leading-snug text-[13px]">
                 Bring home the interiors you love with our 0% interest EMI plans
                 — flexible, stress-free, and designed around your comfort.
               </p>
+              <p className="text-[10px] manrope text-right pr-4 mt-1 opacity-70">*Terms & Conditions apply</p>
             </div>
             <div className="w-[285px] h-[400px] bg-red-500 rounded-3xl -mt-35">
               <Image
@@ -357,12 +362,13 @@ export default function npSection1() {
           <div className="grid grid-rows-2 gap-36 -mt-26">
             <div className="w-[285px] h-[250px] bg-[#DDCDC1] rounded-3xl pt-8 pl-3">
               <div className="text-[50px] leading-[1.15] manrope-bold">34</div>
-              <h3 className="type-h3 manrope-semibold pt-3">Days Delivery</h3>
-              <p className="type-body manrope pt-2 w-[250px]">
+              <h3 className="type-h3 manrope-semibold pt-1">Days Delivery*</h3>
+              <p className="type-body manrope pt-1 w-[260px] leading-snug text-[13px]">
                 Experience thoughtfully designed spaces with our fast-track
                 delivery promise — without compromising on quality, detail, or
                 elegance.
               </p>
+              <p className="text-[10px] manrope text-right pr-4 mt-1 opacity-70">*Terms & Conditions apply</p>
             </div>
             <div className="w-[285px] h-[400px] bg-red-500 rounded-3xl -mt-35">
               <Image
@@ -415,25 +421,31 @@ export default function npSection1() {
                 </div>
               </div>
 
-              <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4">
-                <h1 className="text-4xl sm:text-5xl manrope  text-[#ef0101] mb-2  -mt-10">
+              <div className="w-full h-[180px] sm:h-[200px] border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4 relative">
+                <h1 className="text-4xl sm:text-5xl manrope text-[#ef0101] mb-2 -mt-4">
                   0%
                 </h1>
                 <div className="text-lg sm:text-xl manrope-medium text-black ml-1">
-                  EMI
+                  EMI*
+                </div>
+                <div className="absolute bottom-3 right-4 text-[9px] sm:text-[10px] manrope opacity-70 text-black">
+                  *Terms & Conditions apply
                 </div>
               </div>
 
               {/* Bottom Row */}
-              <div className="w-full h-[180px] sm:h-[200px]  border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4">
-                <h1 className="text-4xl sm:text-5xl manrope  text-[#ef0101] mb-2">
+              <div className="w-full h-[180px] sm:h-[200px] border border-[#ddcdc1] rounded-3xl flex flex-col justify-center items-start pl-4 relative">
+                <h1 className="text-4xl sm:text-5xl manrope text-[#ef0101] mb-2 -mt-4">
                   34
                 </h1>
                 <div className="text-lg sm:text-xl manrope-medium text-black">
                   Days
                 </div>
                 <div className="text-lg sm:text-xl manrope-medium text-black">
-                  Delivery
+                  Delivery*
+                </div>
+                <div className="absolute bottom-3 right-4 text-[9px] sm:text-[10px] manrope opacity-70 text-black">
+                  *Terms & Conditions apply
                 </div>
               </div>
 
