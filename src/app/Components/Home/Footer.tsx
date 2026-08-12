@@ -127,7 +127,7 @@ export default function Footer() {
                                     <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Career</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
 
                                     </div>
@@ -143,10 +143,9 @@ export default function Footer() {
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.instagram.com/hubinterior_/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://x.com/hubinterior1" target="_blank" rel="noopener noreferrer"><Image src="/twitter.png" alt="Twitter" width={23} height={23} className="w-[23px] h-[23px]" /></Link>
+                                    <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +216,7 @@ export default function Footer() {
                                     <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Career</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
                                     </div>
                                     <QuickConnectSection
@@ -233,9 +232,8 @@ export default function Footer() {
                                 <div className="flex gap-8">
                                     <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.instagram.com/hubinterior_/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://x.com/hubinterior1" target="_blank" rel="noopener noreferrer"><Image src="/twitter.png" alt="Twitter" width={23} height={23} className="w-[23px] h-[23px]" /></Link>
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -319,10 +317,9 @@ export default function Footer() {
                                 <a href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p></a>
                                 <div className="flex gap-8">
                                     <a href="https://in.linkedin.com/company/hubinterior"> <img src="/linkedin.png " className="w-[25px] h-[25px] "></img></a>
-                                    <a href="https://www.youtube.com/@homesunderbudget"><img src="/youtube.png" className="w-[25px] h-[25px]  "></img></a>
-                                    <a href="https://www.facebook.com/HomesUnderBudget/"><img src="/facebook.png" className="w-[25px] h-[25px] "></img></a>
-                                    <a href="https://www.instagram.com/hubinterior_/"><img src="/instagram.png" className="w-[25px] h-[25px] "></img></a>
-                                    <a href="https://x.com/hubinterior1"><img src="/twitter.png" className="w-[23px] h-[23px] "></img></a>
+                                    <a href="https://www.youtube.com/@hubinterior"><img src="/youtube.png" className="w-[25px] h-[25px]  "></img></a>
+                                    <a href="https://www.facebook.com/hubinteriorofficial"><img src="/facebook.png" className="w-[25px] h-[25px] "></img></a>
+                                    <a href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw"><img src="/instagram.png" className="w-[25px] h-[25px] "></img></a>
                                 </div>
                             </div>
                         </div>
@@ -562,19 +559,16 @@ export default function Footer() {
                                     <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <span className="text-white text-xs font-bold"> <img src="/linkedin.png " className="w-[25px] h-[25px] "></img></span>
                                     </Link>
-                                    <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 s rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer" className="w-8 h-8 s rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <span className="text-white text-xs font-bold w-7 h-7 border-1 border-white rounded-full pt-1.5 pl-1"> <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                                         </svg></span>
                                     </Link>
-                                    <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <img src="/instagram.png" className="w-[25px] h-[25px] "></img>
                                     </Link>
-                                    <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <span className="text-white text-xs font-bold"><img src="/facebook.png" className="w-[25px] h-[25px] "></img></span>
-                                    </Link>
-                                    <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                        <span className="text-white text-xs font-bold"><img src="/twitter.png" className="w-[23px] h-[23px] hover:text-[#ebd657] transition-colors duration-300"></img></span>
                                     </Link>
                                 </div>
 

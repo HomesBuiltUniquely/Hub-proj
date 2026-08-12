@@ -13,6 +13,7 @@ import {
 
 type PopUpProps = {
   onFormSuccess: () => void;
+  onClose?: () => void;
 };
 
 const projectPossessionTimelineOptions = [
@@ -28,7 +29,7 @@ const projectPossessionTimelineOptions = [
 const fieldClass =
   "w-full py-2.5 px-4 manrope-medium rounded-full border border-gray-400 bg-white focus:border-red-500 focus:ring-0 focus:outline-none text-sm";
 
-const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
+const PopUp: React.FC<PopUpProps> = ({ onFormSuccess, onClose }) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -410,7 +411,16 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
   return (
     <>
       <div className="desktop-wrapper">
-        <div className="w-[780px] max-h-[90vh] bg-gray-100 rounded-3xl flex justify-between items-stretch mx-auto mt-10 shadow-lg overflow-hidden">
+        <div className="w-[780px] max-h-[90vh] bg-gray-100 rounded-3xl flex justify-between items-stretch mx-auto mt-10 shadow-lg overflow-hidden relative">
+          {onClose && (
+            <button
+              onClick={onClose}
+              type="button"
+              className="absolute top-4 right-4 z-10 w-9 h-9 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center text-lg transition-colors shadow-md"
+            >
+              ✕
+            </button>
+          )}
           <div className="flex flex-col w-[48%] py-4 px-3 overflow-y-auto max-h-[90vh]">
             <h2 className="text-3xl manrope px-3 mt-1 mb-1">
               Get your free quote
@@ -436,7 +446,16 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
       </div>
 
       <div className="mobile-wrapper -mt-25 px-1">
-        <div className="w-full bg-gray-100 rounded-2xl mx-auto shadow-lg flex flex-col overflow-hidden max-h-[85vh]">
+        <div className="w-full bg-gray-100 rounded-2xl mx-auto shadow-lg flex flex-col overflow-hidden max-h-[85vh] relative">
+          {onClose && (
+            <button
+              onClick={onClose}
+              type="button"
+              className="absolute top-4 right-4 z-10 w-9 h-9 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center text-lg transition-colors shadow-md"
+            >
+              ✕
+            </button>
+          )}
           <div className="w-full shrink-0">
             <Image
               src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/TvUnit_room.jpg"
