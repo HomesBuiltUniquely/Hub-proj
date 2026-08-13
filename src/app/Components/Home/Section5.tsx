@@ -55,16 +55,16 @@ export default function Section5() {
             icon: '/discussion.png',
         },
         {
-            title: 'Get your quote',
-            description: 'Receive a transparent estimate tailored to you.',
-            image: '/bed1.jpg',
-            icon: '/file.png',
-        },
-        {
             title: 'Customize your home',
             description: 'Pick layouts, finishes, and designs.',
             image: '/kids1.jpg',
             icon: '/home-repair.png',
+        },
+        {
+            title: 'Get your quote',
+            description: 'Receive a transparent estimate tailored to you.',
+            image: '/bed1.jpg',
+            icon: '/file.png',
         },
         {
             title: 'Hassle-free execution',

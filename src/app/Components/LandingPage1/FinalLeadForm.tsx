@@ -184,7 +184,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
   return (
     <>
-      <div className="bg-white rounded-3xl shadow-2xl p-4 sm:p-5 lg:p-6 w-[300px] sm:w-[400px] lg:w-[500px] mx-auto mt-10">
+      <div className={`bg-white w-[95%] max-w-[400px] sm:max-w-[500px] lg:max-w-[650px] rounded-3xl shadow-2xl p-4 sm:p-5 lg:p-6 mx-auto mt-10 transition-all duration-300 overflow-hidden ${otpSent && !isVerified ? 'min-h-[480px]' : 'min-h-[360px]'}`}>
         <div className="text-[24px] sm:text-2xl lg:text-3xl manrope-semibold text-center mb-4 sm:mb-5 text-amber-950">
           Get Your Free Estimate
         </div>

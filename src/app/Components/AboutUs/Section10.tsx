@@ -98,11 +98,11 @@ const Section10 = () => {
               </div>
 
               {/* Background Image */}
-              <div className="w-[900px] xl:w-[1100px] h-[220px] xl:h-[600px] relative rounded-2xl overflow-hidden shadow-md mb-10">
+              <div className="w-[900px] xl:w-[1100px] aspect-[1199/484] relative rounded-2xl overflow-hidden shadow-md mb-10">
                 <img
-                  src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Team%20Hub.webp"
+                  src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/about_us/image.png"
                   alt="Interior Design Background"
-                  className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                  className="absolute inset-0 w-full h-full object-contain rounded-2xl"
                 />
               </div>
 
@@ -162,11 +162,11 @@ const Section10 = () => {
               </div>
 
               {/* Background Image */}
-              <div className="w-[900px] xl:w-[1000px] h-[220px] xl:h-[500px] relative rounded-2xl overflow-hidden shadow-md">
+              <div className="w-[900px] xl:w-[1000px] aspect-[1199/484] relative rounded-2xl overflow-hidden shadow-md">
                 <img
-                  src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Team%20Hub.webp"
+                  src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/about_us/image.png"
                   alt="Interior Design Background"
-                  className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                  className="absolute inset-0 w-full h-full object-contain rounded-2xl"
                 />
               </div>
 
@@ -299,10 +299,10 @@ const Section10 = () => {
             </div>
 
             {/* First Background Image */}
-            <div className="w-full h-[220px] relative rounded-xl overflow-hidden mb-6">
+            <div className="w-full aspect-[1199/484] relative rounded-xl overflow-hidden mb-6">
               <img
-                src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Team%20Hub.webp"
-                className="absolute w-[full] h-full object-cover rounded-xl"
+                src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/about_us/image.png"
+                className="absolute w-full h-full object-contain rounded-xl"
                 alt="Interior Design Background"
               />
             </div>

@@ -23,13 +23,13 @@ const Section6 = () => {
 
               {/* Mission Points */}
               <div className="aboutus-section6-3xl-points manrope-medium">
-                To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
+                To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Homes Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
               </div>
             </div>
 
             {/* Right Side - Image */}
             <div className="aboutus-section6-3xl-image-container">
-              <img src="/Values.png" alt="Mission Image" className="aboutus-section6-3xl-image"></img>
+              <img src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/about_us/interior_design.png" alt="Mission Image" className="aboutus-section6-3xl-image"></img>
             </div>
           </div>
         </div>
@@ -51,10 +51,10 @@ const Section6 = () => {
 
             {/* Mission Points */}
             <div className="w-[400px]  manrope-medium pt-10 text-xl leading-relaxed">
-              To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
+              To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Homes Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
             </div>
           </div>
-          <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Values.png" className="w-[500px] h-[500px] rounded-2xl  ml-16"></img>
+          <img src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/about_us/interior_design.png" className="w-[500px] h-[500px] rounded-2xl  ml-16"></img>
         </div>
       </section>
 
@@ -74,9 +74,9 @@ const Section6 = () => {
 
             {/* Mission Points */}
             <div className="w-[400px]  manrope-medium pt-10 text-lg leading-relaxed">
-              To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.          </div>
+              To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Homes Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.          </div>
           </div>
-          <img src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Values.png" className="w-[500px] h-[500px] rounded-2xl"></img>
+          <img src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/about_us/interior_design.png" className="w-[500px] h-[500px] rounded-2xl"></img>
         </div>
       </section>
 
@@ -237,11 +237,11 @@ const Section6 = () => {
               </p>
 
               <p className="text-xs manrope-medium leading-relaxed mt-4">
-                To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Home, Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
+                To be the most trusted Interior Designer in Bengaluru and beyond, providing end-to-end home solutions — from interiors and furnishings to appliances and decor. Our vision is to create “Homes Uniquely Built” for every customer, blending lifestyle, culture, and individuality under one brand.
               </p>
 
               <img
-                src="Values.png"
+                src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/about_us/interior_design.png"
                 alt="Vision illustration"
                 className="mt-6 w-full h-auto rounded-xl object-cover"
               />
