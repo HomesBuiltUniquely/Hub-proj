@@ -10,16 +10,6 @@ import {
   redirectToLeadThankYou,
 } from "@/lib/postLeadSubmitRedirect";
 
-const projectPossessionTimelineOptions = [
-  "Ready to Move",
-  "0 - 3 Months",
-  "3 - 6 Months",
-  "6+ Months",
-  "Under Construction",
-  "No Property Yet",
-  "Renovation (Currently Staying Here)",
-];
-
 interface CalculatorData {
   bhkType?: string;
   rooms?: Record<string, number>;
@@ -37,7 +27,6 @@ type FinalLeadFormProps = { calculatorData?: CalculatorData };
 
 const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const [selectedPincode, setSelectedPincode] = useState("");
-  const [selectedTimeline, setSelectedTimeline] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
 
@@ -144,8 +133,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
-      possession: selectedTimeline,
-      projectPossessionTimeline: selectedTimeline,
       pincode: selectedPincode,
       pageUrl: currentUrl,
       verificationStatus: getVerificationStatus(isVerified),
@@ -170,41 +157,22 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
     setFormData({ name: "", email: "", phone: "" });
     setSelectedPincode("");
-    setSelectedTimeline("");
     setOtpSent(false);
     setOtp("");
     setIsVerified(false);
     setOtpError("");
     redirectToLeadThankYou();
-  }, [
-    formData,
-    selectedPincode,
-    selectedTimeline,
-    isVerified,
-    calculatorData,
-  ]);
+  }, [formData, selectedPincode, isVerified, calculatorData]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.phone ||
-      !selectedPincode ||
-      !selectedTimeline
-    )
+    if (!formData.name || !formData.email || !formData.phone || !selectedPincode)
       return;
     if (!isVerified) {
       setOtpError("Please verify your phone number with OTP first");
       return;
     }
     await handleFinalSubmit();
-  }, [
-    formData,
-    selectedPincode,
-    selectedTimeline,
-    isVerified,
-    handleFinalSubmit,
-  ]);
+  }, [formData, selectedPincode, isVerified, handleFinalSubmit]);
 
   useEffect(() => {
     const handler = () => {
@@ -329,29 +297,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               {Pincode.map((pin, idx) => (
                 <option key={idx} value={pin}>
                   {pin}
-                </option>
-              ))}
-            </select>
-            <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[16px] pointer-events-none">
-              &#9662;
-            </span>
-          </div>
-
-          {/* Project Possession Timeline */}
-          <div className="relative w-full">
-            <select
-              name="projectPossessionTimeline"
-              required
-              value={selectedTimeline}
-              onChange={(e) => setSelectedTimeline(e.target.value)}
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none"
-            >
-              <option value="" disabled>
-                Project Possession Timeline ? *
-              </option>
-              {projectPossessionTimelineOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
                 </option>
               ))}
             </select>

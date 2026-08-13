@@ -9,16 +9,6 @@ import {
   redirectToLeadThankYou,
 } from "@/lib/postLeadSubmitRedirect";
 
-const projectPossessionTimelineOptions = [
-  "Ready to Move",
-  "0 - 3 Months",
-  "3 - 6 Months",
-  "6+ Months",
-  "Under Construction",
-  "No Property Yet",
-  "Renovation (Currently Staying Here)",
-];
-
 const inputClass =
   "w-full px-4 py-3.5 bg-white rounded-xl border-0 focus:ring-2 focus:ring-red-500 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-500 text-base";
 
@@ -29,7 +19,6 @@ const EstimateForm: React.FC = () => {
     phoneNumber: "",
     pincode: "",
     interiorSetup: "",
-    projectPossessionTimeline: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
@@ -153,7 +142,6 @@ const EstimateForm: React.FC = () => {
       phoneNumber: "",
       pincode: "",
       interiorSetup: "",
-      projectPossessionTimeline: "",
     });
     setOtpSent(false);
     setOtp("");
@@ -269,26 +257,9 @@ const EstimateForm: React.FC = () => {
           className={`${inputClass} text-gray-500`}
         >
           <option value="" disabled>
-            Which Interior Package are you looking for?
+            What is the Budget for your Home Interiors ?
           </option>
           {cityOptions.map((option: string) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-
-        <select
-          name="projectPossessionTimeline"
-          value={formData.projectPossessionTimeline}
-          onChange={handleInputChange}
-          required
-          className={`${inputClass} text-gray-500`}
-        >
-          <option value="" disabled>
-            Project Possession Timeline ? *
-          </option>
-          {projectPossessionTimelineOptions.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>

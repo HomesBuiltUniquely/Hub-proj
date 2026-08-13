@@ -15,16 +15,6 @@ type PopUpProps = {
   onFormSuccess: () => void;
 };
 
-const projectPossessionTimelineOptions = [
-  "Ready to Move",
-  "0 - 3 Months",
-  "3 - 6 Months",
-  "6+ Months",
-  "Under Construction",
-  "No Property Yet",
-  "Renovation (Currently Staying Here)",
-];
-
 const fieldClass =
   "w-full py-2.5 px-4 manrope-medium rounded-full border border-gray-400 bg-white focus:border-red-500 focus:ring-0 focus:outline-none text-sm";
 
@@ -35,7 +25,6 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
   const [phone, setPhone] = useState("");
   const [pin, setPin] = useState("");
   const [interiorPackage, setInteriorPackage] = useState("");
-  const [projectPossessionTimeline, setProjectPossessionTimeline] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -197,10 +186,6 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
       setError("Please select your interior package");
       return;
     }
-    if (!projectPossessionTimeline.trim()) {
-      setError("Please select your project possession timeline");
-      return;
-    }
 
     setError("");
     setIsSubmitting(true);
@@ -224,7 +209,6 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
       phone: cleanedPhone,
       pincode: trimmedPin,
       interiorSetup: interiorPackage.trim(),
-      projectPossessionTimeline: projectPossessionTimeline.trim(),
       pageUrl,
     });
 
@@ -365,28 +349,9 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess }) => {
         required
       >
         <option value="" disabled>
-          Which Interior Package are you looking for?
+          What is the Budget for your Home Interiors ?
         </option>
         {cityOptions.map((option: string) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-
-      <select
-        value={projectPossessionTimeline}
-        onChange={(e) => {
-          setProjectPossessionTimeline(e.target.value);
-          setError("");
-        }}
-        className={`${fieldClass} text-gray-500`}
-        required
-      >
-        <option value="" disabled>
-          Project Possession Timeline ? *
-        </option>
-        {projectPossessionTimelineOptions.map((option) => (
           <option key={option} value={option}>
             {option}
           </option>

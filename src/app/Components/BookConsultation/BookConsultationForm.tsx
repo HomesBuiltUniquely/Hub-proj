@@ -75,6 +75,8 @@ function FormSection({
   setPreferredSlot,
   propertyName,
   setPropertyName,
+  possessionTimeline,
+  setPossessionTimeline,
   onSubmit,
 }: {
   consultationMode: ConsultationMode;
@@ -85,6 +87,8 @@ function FormSection({
   setPreferredSlot: (v: string) => void;
   propertyName: string;
   setPropertyName: (v: string) => void;
+  possessionTimeline: PossessionTimeline;
+  setPossessionTimeline: (v: PossessionTimeline) => void;
   onSubmit: () => void;
 }) {
   const formatDateForInput = (date: Date) => {
@@ -209,7 +213,17 @@ function FormSection({
         className={inputClass}
       />
 
-      {/* <div className="mt-4 flex flex-wrap gap-3">
+      {/* Step 3 */}
+      <div className="mt-8 mb-5 flex items-center gap-3 border-t border-[#ECEFF4] pt-8">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+          3
+        </div>
+        <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
+          Possession Timeline
+        </h2>
+      </div>
+
+      <div className="flex flex-wrap gap-3">
         {[
           { id: "immediately" as PossessionTimeline, label: "Immediately" },
           { id: "0-3-months" as PossessionTimeline, label: "0 - 3 months" },
@@ -230,7 +244,7 @@ function FormSection({
             {item.label}
           </button>
         ))}
-      </div> */}
+      </div>
 
       {/* Submit */}
       <button
@@ -358,6 +372,8 @@ export default function BookConsultationForm() {
               setPreferredSlot={setPreferredSlot}
               propertyName={propertyName}
               setPropertyName={setPropertyName}
+              possessionTimeline={possessionTimeline}
+              setPossessionTimeline={setPossessionTimeline}
               onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
             />
           </div>
@@ -403,6 +419,8 @@ export default function BookConsultationForm() {
                 setPreferredSlot={setPreferredSlot}
                 propertyName={propertyName}
                 setPropertyName={setPropertyName}
+                possessionTimeline={possessionTimeline}
+                setPossessionTimeline={setPossessionTimeline}
                 onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
               />
             </div>

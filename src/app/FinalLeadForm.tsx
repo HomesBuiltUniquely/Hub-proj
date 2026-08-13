@@ -36,21 +36,10 @@ interface CalculatorData {
   };
 }
 
-const projectPossessionTimelineOptions = [
-  'Ready to Move',
-  '0 - 3 Months',
-  '3 - 6 Months',
-  '6+ Months',
-  'Under Construction',
-  'No Property Yet',
-  'Renovation (Currently Staying Here)',
-];
-
 type FinalLeadFormProps = { calculatorData?: CalculatorData };
 
 const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const [selectedPincode, setSelectedPincode] = useState('');
-  const [selectedTimeline, setSelectedTimeline] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
 
@@ -65,7 +54,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
   const resetForm = () => {
     setFormData({ name: '', email: '', phone: '' });
     setSelectedPincode('');
-    setSelectedTimeline('');
     setOtpSent(false);
     setOtp('');
     setIsVerified(false);
@@ -160,8 +148,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
-      possession: selectedTimeline,
-      projectPossessionTimeline: selectedTimeline,
       pincode: selectedPincode,
       pageUrl: currentUrl,
       verificationStatus: getVerificationStatus(isVerified),
@@ -186,10 +172,10 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
 
     resetForm();
     redirectToLeadThankYou();
-  }, [formData, selectedTimeline, selectedPincode, isVerified, calculatorData]);
+  }, [formData, selectedPincode, isVerified, calculatorData]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.email || !formData.phone || !selectedTimeline || !selectedPincode) {
+    if (!formData.name || !formData.email || !formData.phone || !selectedPincode) {
       return;
     }
     if (!isVerified) {
@@ -197,7 +183,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       return;
     }
     await handleFinalSubmit();
-  }, [formData, selectedTimeline, selectedPincode, isVerified, handleFinalSubmit]);
+  }, [formData, selectedPincode, isVerified, handleFinalSubmit]);
 
   useEffect(() => {
     const handler = () => { performSubmitFlow(); };
@@ -295,23 +281,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
               >
                 <option className="text-gray-400" value="" disabled>Property Pincode *</option>
                 {Pincode.map((pin, idx) => (<option key={idx} value={pin}>{pin}</option>))}
-              </select>
-              <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[18px] pointer-events-none">&#9662;</span>
-            </div>
-
-            {/* Project Possession Timeline */}
-            <div className="relative w-full">
-              <select
-                name="projectPossessionTimeline"
-                required
-                value={selectedTimeline}
-                onChange={e => setSelectedTimeline(e.target.value)}
-                className="w-full h-[50px] manrope-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
-              >
-                <option className="text-gray-400" value="" disabled>Project Possession Timeline? *</option>
-                {projectPossessionTimelineOptions.map((option) => (
-                  <option key={option} value={option}>{option}</option>
-                ))}
               </select>
               <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[18px] pointer-events-none">&#9662;</span>
             </div>

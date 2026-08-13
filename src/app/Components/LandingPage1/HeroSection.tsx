@@ -28,25 +28,12 @@ type HeroSectionsProps = {
   submitApiUrl?: string;
 };
 
-const projectPossessionTimelineOptions = [
-  "Ready to Move",
-  "0 - 3 Months",
-  "3 - 6 Months",
-  "6+ Months",
-  "Under Construction",
-  "No Property Yet",
-  "Renovation (Currently Staying Here)",
-];
-
 export default function HeroSections({
   submitApiUrl = "/api/contact",
 }: HeroSectionsProps) {
   const [cityOpen, setCityOpen] = useState(false);
-  const [possessionTimelineOpen, setPossessionTimelineOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedPincode, setSelectedPincode] = useState("");
-  const [projectPossessionTimeline, setProjectPossessionTimeline] =
-    useState("");
   const [whatsappConsent, setWhatsappConsent] = useState(true);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -117,20 +104,12 @@ export default function HeroSections({
 
   // Refs for 1280 version
   const cityRef1280 = useRef<HTMLDivElement>(null);
-  const possessionRef2560 = useRef<HTMLDivElement>(null);
-  const possessionRef1920 = useRef<HTMLDivElement>(null);
-  const possessionRef1280 = useRef<HTMLDivElement>(null);
   // const budgetRef1280 = useRef<HTMLDivElement>(null);
 
   const handleCitySelect = (value: string) => {
     console.log("City selected:", value);
     setSelectedCity(value);
     setTimeout(() => setCityOpen(false), 100);
-  };
-
-  const handlePossessionTimelineSelect = (value: string) => {
-    setProjectPossessionTimeline(value);
-    setTimeout(() => setPossessionTimelineOpen(false), 100);
   };
 
   // const handleBudgetSelect = (value: string) => {
@@ -163,16 +142,7 @@ export default function HeroSections({
         (cityRef1920.current && cityRef1920.current.contains(target)) ||
         (cityRef1280.current && cityRef1280.current.contains(target));
 
-      const clickedInsidePossession =
-        (possessionRef2560.current &&
-          possessionRef2560.current.contains(target)) ||
-        (possessionRef1920.current &&
-          possessionRef1920.current.contains(target)) ||
-        (possessionRef1280.current &&
-          possessionRef1280.current.contains(target));
-
       if (!clickedInsideCity) setCityOpen(false);
-      if (!clickedInsidePossession) setPossessionTimelineOpen(false);
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -260,10 +230,6 @@ export default function HeroSections({
     }
     if (!selectedCity) {
       alert("Please select your interior package.");
-      return;
-    }
-    if (!projectPossessionTimeline) {
-      alert("Please select your project possession timeline.");
       return;
     }
 
@@ -382,8 +348,6 @@ export default function HeroSections({
       city: selectedCity,
       budget: "",
       pincode: selectedPincode,
-      projectPossessionTimeline,
-      possession: projectPossessionTimeline,
       whatsappConsent: whatsappConsent,
       pageUrl: currentUrl,
       verificationStatus: "VERIFIED" as const,
@@ -411,7 +375,6 @@ export default function HeroSections({
 
     setSelectedCity("");
     setSelectedPincode("");
-    setProjectPossessionTimeline("");
     setWhatsappConsent(true);
     setFormData({ name: "", email: "", phone: "" });
     setOtpSent(false);
@@ -759,38 +722,9 @@ export default function HeroSections({
                       value=""
                       disabled
                     >
-                      Which Interior Package are you looking for?*
+                      What is the Budget for your Home Interiors ?*
                     </option>
                     {cityOptions.map((option: string) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  <span className="text-gray-500 absolute top-[16px] right-4 text-[16px] pointer-events-none">
-                    &#9662;
-                  </span>
-                </div>
-
-                {/* Project Possession Timeline Dropdown */}
-                <div className="relative w-full mt-4">
-                  <select
-                    name="projectPossessionTimeline"
-                    required
-                    value={projectPossessionTimeline}
-                    onChange={(e) =>
-                      setProjectPossessionTimeline(e.target.value)
-                    }
-                    className="manrope-medium w-full h-[50px] bg-[#f1f2f6] rounded-2xl text-base pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none focus:outline-none focus:ring-0"
-                  >
-                    <option
-                      className="text-gray-400 manrope-medium"
-                      value=""
-                      disabled
-                    >
-                      Project Possession Timeline ? *
-                    </option>
-                    {projectPossessionTimelineOptions.map((option) => (
                       <option key={option} value={option}>
                         {option}
                       </option>
@@ -1010,7 +944,7 @@ export default function HeroSections({
                       >
                         <span className="truncate">
                           {selectedCity ||
-                            "Which Interior Package are you looking for?"}
+                            "What is the Budget for your Home Interiors ?"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
@@ -1020,40 +954,6 @@ export default function HeroSections({
                             <li
                               key={option}
                               onClick={() => handleCitySelect(option)}
-                              className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
-                            >
-                              {option}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Project Possession Timeline Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-5">
-                    <div ref={possessionRef2560}>
-                      <div
-                        onClick={() => {
-                          setPossessionTimelineOpen(!possessionTimelineOpen);
-                          setCityOpen(false);
-                        }}
-                        className={`w-full h-[56px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!projectPossessionTimeline && "text-gray-400"}`}
-                      >
-                        <span className="truncate">
-                          {projectPossessionTimeline ||
-                            "Project Possession Timeline ? *"}
-                        </span>
-                        <span className="text-gray-500">&#9662;</span>
-                      </div>
-                      {possessionTimelineOpen && (
-                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto manrope-medium">
-                          {projectPossessionTimelineOptions.map((option) => (
-                            <li
-                              key={option}
-                              onClick={() =>
-                                handlePossessionTimelineSelect(option)
-                              }
                               className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
                             >
                               {option}
@@ -1306,7 +1206,7 @@ export default function HeroSections({
                       >
                         <span className="truncate whitespace-nowrap overflow-hidden max-w-[430px]">
                           {selectedCity ||
-                            "Which Interior Package are you looking for?"}
+                            "What is the Budget for your Home Interiors ?"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
@@ -1316,40 +1216,6 @@ export default function HeroSections({
                             <li
                               key={option}
                               onClick={() => handleCitySelect(option)}
-                              className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
-                            >
-                              {option}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Project Possession Timeline Dropdown */}
-                  <div className="relative w-full sm:w-[520px] mx-auto mt-5">
-                    <div ref={possessionRef1920}>
-                      <div
-                        onClick={() => {
-                          setPossessionTimelineOpen(!possessionTimelineOpen);
-                          setCityOpen(false);
-                        }}
-                        className={`w-full h-[56px] manrope-medium bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-4 sm:px-6 cursor-pointer ${!projectPossessionTimeline && "text-gray-400"}`}
-                      >
-                        <span className="truncate whitespace-nowrap overflow-hidden max-w-[430px]">
-                          {projectPossessionTimeline ||
-                            "Project Possession Timeline ? *"}
-                        </span>
-                        <span className="text-gray-500">&#9662;</span>
-                      </div>
-                      {possessionTimelineOpen && (
-                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto manrope-medium">
-                          {projectPossessionTimelineOptions.map((option) => (
-                            <li
-                              key={option}
-                              onClick={() =>
-                                handlePossessionTimelineSelect(option)
-                              }
                               className="px-4 sm:px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-xs sm:text-sm"
                             >
                               {option}
@@ -1599,7 +1465,7 @@ export default function HeroSections({
                       >
                         <span className="truncate">
                           {selectedCity ||
-                            "Which Interior Package are you looking for?"}
+                            "What is the Budget for your Home Interiors ?"}
                         </span>
                         <span className="text-gray-500">&#9662;</span>
                       </div>
@@ -1610,41 +1476,6 @@ export default function HeroSections({
                             <li
                               key={option}
                               onClick={() => handleCitySelect(option)}
-                              className="px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-sm"
-                            >
-                              {option}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Project Possession Timeline Dropdown */}
-                  <div className="relative w-full mx-auto mt-5">
-                    <div ref={possessionRef1280} className="relative">
-                      <div
-                        onClick={() => {
-                          setPossessionTimelineOpen(!possessionTimelineOpen);
-                          setCityOpen(false);
-                        }}
-                        className={`w-full h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] flex items-center justify-between px-6 cursor-pointer manrope-medium ${!projectPossessionTimeline && "text-gray-400"}`}
-                      >
-                        <span className="truncate">
-                          {projectPossessionTimeline ||
-                            "Project Possession Timeline ? *"}
-                        </span>
-                        <span className="text-gray-500">&#9662;</span>
-                      </div>
-
-                      {possessionTimelineOpen && (
-                        <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl lg:rounded-2xl shadow-lg z-[9999] max-h-60 overflow-y-auto manrope-medium">
-                          {projectPossessionTimelineOptions.map((option) => (
-                            <li
-                              key={option}
-                              onClick={() =>
-                                handlePossessionTimelineSelect(option)
-                              }
                               className="px-6 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 text-sm"
                             >
                               {option}
