@@ -43,30 +43,37 @@ function handleClick() {
 const FRANCHISE_LOCATIONS = {
   FOFO: {
     "Tamil Nadu": [
+      "Chennai" ,
+      "Coimbatore",
       "Madurai",
       "Salem",
       "Tiruppur",
       "Tiruchirappalli (Trichy)",
     ],
     Kerala: [
+      "Kochi",
       "Thiruvananthapuram",
       "Thrissur",
       "Kozhikode",
       "Kollam",
     ],
     Telangana: [
+      "Hyderabad",
       "Warangal",
       "Karimnagar",
       "Nizamabad",
       "Khammam",
     ],
     Karnataka: [
+      "Bengaluru",
       "Mysuru",
       "Mangaluru",
       "Hubballi",
       "Belagavi",
     ],
     Maharashtra: [
+      "Mumbai",
+       "Pune",
       "Nagpur",
       "Nashik",
       "Nanded",
@@ -1312,7 +1319,7 @@ fireAndForgetLeadSubmit("/api/franchise-contact", data);
                   disabled={isSubmitting}
                   className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] bg-transparent pl-4 pr-10 appearance-none text-[16px] text-[#7A8599] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option value="" disabled hidden></option>
+                  <option value="" disabled hidden>Franchise Type</option>
                   <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
                     FOFO – Franchise Owned, Franchise Operated (₹20–40 Lakhs)
                   </option>
@@ -1340,7 +1347,7 @@ fireAndForgetLeadSubmit("/api/franchise-contact", data);
                   disabled={isSubmitting || !franchiseType}
                   className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] bg-transparent pl-4 pr-10 appearance-none text-[16px] text-[#7A8599] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option value="" disabled hidden></option>
+                  <option value="" disabled hidden>State</option>
                   {availableStates.map((stateName) => (
                     <option key={stateName} value={stateName}>
                       {stateName}
@@ -1364,7 +1371,7 @@ fireAndForgetLeadSubmit("/api/franchise-contact", data);
                   disabled={isSubmitting || !state}
                   className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] bg-transparent pl-4 pr-10 appearance-none text-[16px] text-[#7A8599] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option value="" disabled hidden></option>
+                  <option value="" disabled hidden>City / Town</option>
                   {availableCities.map((cityName) => (
                     <option key={cityName} value={cityName}>
                       {cityName}
