@@ -40,6 +40,54 @@ function handleClick() {
   router.push("/");
 }
 
+const FRANCHISE_LOCATIONS = {
+  FOFO: {
+    "Tamil Nadu": [
+      "Madurai",
+      "Salem",
+      "Tiruppur",
+      "Tiruchirappalli (Trichy)",
+    ],
+    Kerala: [
+      "Thiruvananthapuram",
+      "Thrissur",
+      "Kozhikode",
+      "Kollam",
+    ],
+    Telangana: [
+      "Warangal",
+      "Karimnagar",
+      "Nizamabad",
+      "Khammam",
+    ],
+    Karnataka: [
+      "Mysuru",
+      "Mangaluru",
+      "Hubballi",
+      "Belagavi",
+    ],
+    Maharashtra: [
+      "Nagpur",
+      "Nashik",
+      "Nanded",
+      "Chhatrapati Sambhajinagar (Aurangabad)",
+    ],
+    "Andhra Pradesh": [
+      "Visakhapatnam",
+      "Vijayawada",
+      "Tirupati",
+    ],
+  },
+
+  FOCO: {
+    "Tamil Nadu": ["Chennai", "Coimbatore"],
+    Kerala: ["Kochi"],
+    Telangana: ["Hyderabad"],
+    Karnataka: ["Bengaluru"],
+    Maharashtra: ["Mumbai", "Pune"],
+  },
+} as const;
+
 const Home: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const router = useRouter();
@@ -52,6 +100,24 @@ const Home: React.FC = () => {
   const [isSendingOTP, setIsSendingOTP] = React.useState(false);
   const [isVerified, setIsVerified] = React.useState(false);
   const [otpError, setOtpError] = React.useState("");
+  const [franchiseType, setFranchiseType] = React.useState("");
+  const [state, setState] = React.useState("");
+  const [city, setCity] = React.useState("");
+  const selectedFranchiseType =
+  franchiseType.startsWith("FOFO")
+    ? "FOFO"
+    : franchiseType.startsWith("FOCO")
+      ? "FOCO"
+      : "";
+  const availableStates = selectedFranchiseType
+  ? Object.keys(FRANCHISE_LOCATIONS[selectedFranchiseType])
+  : [];
+  const availableCities =
+  selectedFranchiseType && state
+    ? FRANCHISE_LOCATIONS[selectedFranchiseType][
+        state as keyof (typeof FRANCHISE_LOCATIONS)[typeof selectedFranchiseType]
+      ] || []
+    : [];
 
   // const scrollToForm = () => {
   //   if (typeof window !== 'undefined') {
@@ -152,16 +218,17 @@ const Home: React.FC = () => {
 
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      phone: formData.get("phone") as string,
-      city: formData.get("city") as string,
-      franchiseType: formData.get("franchiseType") as string,
-    };
+const formData = new FormData(e.currentTarget);
+const data = {
+  name: formData.get("name") as string,
+  email: formData.get("email") as string,
+  phone: formData.get("phone") as string,
+  state: formData.get("state") as string,
+  city: formData.get("city") as string,
+  franchiseType: formData.get("franchiseType") as string,
+};
 
-    fireAndForgetLeadSubmit("/api/franchise-contact", data);
+fireAndForgetLeadSubmit("/api/franchise-contact", data);
 
     setOtpSent(false);
     setOtp("");
@@ -191,6 +258,7 @@ const Home: React.FC = () => {
       name: formData.get("name") as string,
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
+      state: formData.get("state") as string,
       city: formData.get("city") as string,
       franchiseType: formData.get("franchiseType") as string,
     };
@@ -323,7 +391,7 @@ const Home: React.FC = () => {
           {/* Right: Form */}
           <div
             id="franchise-form"
-            className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-100 ml-210 self-center pointer-events-auto"
+            className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-7 py-8 ml-210 self-center pointer-events-auto transform -translate-y-[130px]"
           >
             <div className="text-white text-2xl manrope-medium mb-5">
               Enter your details to get started
@@ -415,22 +483,18 @@ const Home: React.FC = () => {
                 </div>
               )}
 
-              <label className="pl-1 text-white">City*</label>
-              <input
-                required
-                name="city"
-                placeholder=""
-                disabled={isSubmitting}
-                className="w-full px-4 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
-                type="text"
-              />
               <label className="pl-1 text-white">Franchise Type*</label>
               <div className="relative w-full">
                 <select
                   name="franchiseType"
+                  value={franchiseType}
+                  onChange={(e) => {
+                    setFranchiseType(e.target.value);
+                    setState("");
+                    setCity("");
+                  }}
                   disabled={isSubmitting}
                   required
-                  defaultValue=""
                   className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
                 >
                   <option value="" disabled hidden></option>
@@ -441,6 +505,65 @@ const Home: React.FC = () => {
                     FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)
                   </option>
                 </select>
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
+              <label className="pl-1 text-white">State*</label>
+
+              <div className="relative w-full">
+                <select
+                  name="state"
+                  value={state}
+                  onChange={(e) => {
+                    setState(e.target.value);
+                    setCity("");
+                  }}
+                  disabled={isSubmitting || !franchiseType}
+                  required
+                  className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+
+                  {availableStates.map((stateName) => (
+                    <option key={stateName} value={stateName}>
+                      {stateName}
+                    </option>
+                  ))}
+                </select>
+
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
+              <label className="pl-1 text-white">City / Town*</label>
+
+              <div className="relative w-full">
+                <select
+                  name="city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  disabled={isSubmitting || !state}
+                  required
+                  className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+
+                  {availableCities.map((cityName) => (
+                    <option key={cityName} value={cityName}>
+                      {cityName}
+                    </option>
+                  ))}
+                </select>
+
                 <span
                   className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
                   aria-hidden
@@ -551,7 +674,7 @@ const Home: React.FC = () => {
           {/* Right: Form */}
           <div
             id="franchise-form"
-            className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-xl shadow-lg px-7 py-8 -mt-80 ml-225 self-center pointer-events-auto"
+            className="relative z-20 md:w-[500px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-7 py-8 -mt-100 ml-225 self-center pointer-events-auto"
           >
             <div className="text-white text-2xl manrope-medium mb-5">
               Enter your details to get started
@@ -643,22 +766,18 @@ const Home: React.FC = () => {
                 </div>
               )}
 
-              <label className="pl-1 text-white">City*</label>
-              <input
-                required
-                name="city"
-                placeholder=""
-                disabled={isSubmitting}
-                className="w-full px-4 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
-                type="text"
-              />
               <label className="pl-1 text-white">Franchise Type*</label>
               <div className="relative w-full">
                 <select
                   name="franchiseType"
+                  value={franchiseType}
+                  onChange={(e) => {
+                    setFranchiseType(e.target.value);
+                    setState("");
+                    setCity("");
+                  }}
                   disabled={isSubmitting}
                   required
-                  defaultValue=""
                   className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
                 >
                   <option value="" disabled hidden></option>
@@ -669,6 +788,65 @@ const Home: React.FC = () => {
                     FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)
                   </option>
                 </select>
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
+              <label className="pl-1 text-white">State*</label>
+
+              <div className="relative w-full">
+                <select
+                  name="state"
+                  value={state}
+                  onChange={(e) => {
+                    setState(e.target.value);
+                    setCity("");
+                  }}
+                  disabled={isSubmitting || !franchiseType}
+                  required
+                  className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+
+                  {availableStates.map((stateName) => (
+                    <option key={stateName} value={stateName}>
+                      {stateName}
+                    </option>
+                  ))}
+                </select>
+
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
+              <label className="pl-1 text-white">City / Town*</label>
+
+              <div className="relative w-full">
+                <select
+                  name="city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  disabled={isSubmitting || !state}
+                  required
+                  className="w-full px-4 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+
+                  {availableCities.map((cityName) => (
+                    <option key={cityName} value={cityName}>
+                      {cityName}
+                    </option>
+                  ))}
+                </select>
+
                 <span
                   className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
                   aria-hidden
@@ -777,7 +955,7 @@ const Home: React.FC = () => {
           {/* ✅ Right: Form (same structure, just visually smaller) */}
           <div
             id="franchise-form"
-            className="relative  md:w-[420px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-100 ml-190 self-center pointer-events-auto"
+            className="relative md:w-[420px] h-auto min-h-[550px] w-full manrope-medium bg-black/60 rounded-3xl shadow-lg px-6 py-6 -mt-120 ml-190 self-center pointer-events-auto"
           >
             <div className="text-white text-2xl manrope-medium mb-5">
               Enter your details to get started
@@ -871,23 +1049,18 @@ const Home: React.FC = () => {
                 </div>
               )}
 
-              <label className="pl-1 text-white">City*</label>
-              <input
-                required
-                name="city"
-                placeholder=""
-                disabled={isSubmitting}
-                className="w-full px-3 py-2 mt-2 rounded border bg-[#f2f2f6]/70 disabled:opacity-50 disabled:cursor-not-allowed"
-                type="text"
-              />
-
               <label className="pl-1 text-white">Franchise Type*</label>
               <div className="relative w-full">
                 <select
                   name="franchiseType"
+                  value={franchiseType}
+                  onChange={(e) => {
+                    setFranchiseType(e.target.value);
+                    setState("");
+                    setCity("");
+                  }}
                   disabled={isSubmitting}
                   required
-                  defaultValue=""
                   className="w-full px-3 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
                 >
                   <option value="" disabled hidden></option>
@@ -908,6 +1081,64 @@ const Home: React.FC = () => {
                 </span>
               </div>
 
+              <label className="pl-1 text-white">State*</label>
+
+              <div className="relative w-full">
+                <select
+                  name="state"
+                  value={state}
+                  onChange={(e) => {
+                    setState(e.target.value);
+                    setCity("");
+                  }}
+                  disabled={isSubmitting || !franchiseType}
+                  required
+                  className="w-full px-3 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+
+                  {availableStates.map((stateName) => (
+                    <option key={stateName} value={stateName}>
+                      {stateName}
+                    </option>
+                  ))}
+                </select>
+
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
+              <label className="pl-1 text-white">City / Town*</label>
+
+              <div className="relative w-full">
+                <select
+                  name="city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  disabled={isSubmitting || !state}
+                  required
+                  className="w-full px-3 py-2 mt-2 pr-10 rounded border bg-[#f2f2f6]/70 appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-gray-700"
+                >
+                  <option value="" disabled hidden></option>
+
+                  {availableCities.map((cityName) => (
+                    <option key={cityName} value={cityName}>
+                      {cityName}
+                    </option>
+                  ))}
+                </select>
+
+                <span
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -1068,33 +1299,77 @@ const Home: React.FC = () => {
                 </div>
               )}
 
-              <input
-                type="text"
-                name="city"
-                placeholder="Preferred Location"
-                required
-                disabled={isSubmitting}
-                className="w-full sm:w-[280px] h-[50px] rounded-full border-2 border-[#ddcdc1] mt-4 pl-4 disabled:opacity-50 disabled:cursor-not-allowed"
-              />
-              <div className="relative w-full sm:w-[280px]">
+              <div className="relative w-full sm:w-[280px] mt-4">
                 <select
                   name="franchiseType"
+                  value={franchiseType}
+                  onChange={(e) => {
+                    setFranchiseType(e.target.value);
+                    setState("");
+                    setCity("");
+                  }}
                   required
-                  defaultValue=""
                   disabled={isSubmitting}
-                  className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] bg-transparent mt-4 pl-4 pr-10 appearance-none text-[16px] text-[#7A8599] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] bg-transparent pl-4 pr-10 appearance-none text-[16px] text-[#7A8599] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option value="" disabled hidden>
-                    Franchise Format
-                  </option>
-
+                  <option value="" disabled hidden></option>
                   <option value="FOFO - Franchise Owned, Franchise Operated (₹20-40 Lakhs)">
                     FOFO – Franchise Owned, Franchise Operated (₹20–40 Lakhs)
                   </option>
-
                   <option value="FOCO - Franchise Owned, Company Operated (₹60 Lakhs+)">
                     FOCO – Franchise Owned, Company Operated (₹60 Lakhs+)
                   </option>
+                </select>
+                <span
+                  className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
+              <div className="relative w-full sm:w-[280px] mt-4">
+                <select
+                  name="state"
+                  value={state}
+                  onChange={(e) => {
+                    setState(e.target.value);
+                    setCity("");
+                  }}
+                  required
+                  disabled={isSubmitting || !franchiseType}
+                  className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] bg-transparent pl-4 pr-10 appearance-none text-[16px] text-[#7A8599] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <option value="" disabled hidden></option>
+                  {availableStates.map((stateName) => (
+                    <option key={stateName} value={stateName}>
+                      {stateName}
+                    </option>
+                  ))}
+                </select>
+                <span
+                  className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
+                  aria-hidden
+                >
+                  &#9662;
+                </span>
+              </div>
+
+              <div className="relative w-full sm:w-[280px] mt-4">
+                <select
+                  name="city"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                  disabled={isSubmitting || !state}
+                  className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] bg-transparent pl-4 pr-10 appearance-none text-[16px] text-[#7A8599] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <option value="" disabled hidden></option>
+                  {availableCities.map((cityName) => (
+                    <option key={cityName} value={cityName}>
+                      {cityName}
+                    </option>
+                  ))}
                 </select>
                 <span
                   className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 text-lg leading-none select-none"
