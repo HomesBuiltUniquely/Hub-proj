@@ -9,6 +9,7 @@ export async function POST(req: Request) {
       name,
       email,
       phone,
+      state,
       city,
       franchiseType,
     } = body;
@@ -24,6 +25,7 @@ export async function POST(req: Request) {
       name,
       email,
       phone: normalizedPhone,
+      state,
       city,
       franchiseType,
     });
@@ -96,6 +98,7 @@ export async function POST(req: Request) {
             <p><strong>Name:</strong> ${name || 'Not provided'}</p>
             <p><strong>Email:</strong> ${email || 'Not provided'}</p>
             <p><strong>Phone:</strong> ${normalizedPhone || 'Not provided'}</p>
+            <p><strong>State:</strong> ${state || 'Not provided'}</p>
             <p><strong>City:</strong> ${city || 'Not provided'}</p>
             <p><strong>Franchise Type:</strong> ${franchiseType || 'Not provided'}</p>
           </div>
