@@ -47,7 +47,7 @@ const NavMore: React.FC<OfferingsDropdownProps> = ({
    {'title':'About Us',
     link:'/AboutUs'}, 
     {'title':'Career',
-    link:'/Career'},
+    link:'https://hubinterior.keka.com/careers'},
     { 'title':'Contact Us',
     link:'/ContactUs'},
     { 'title':'Privacy Policy',

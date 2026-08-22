@@ -127,7 +127,7 @@ export default function Footer() {
                                     <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
-                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2" onClick={() => window.open('https://hubinterior.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
 
                                     </div>
@@ -216,7 +216,7 @@ export default function Footer() {
                                     <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
-                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2" onClick={() => window.open('https://hubinterior.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
                                     </div>
                                     <QuickConnectSection
@@ -302,7 +302,7 @@ export default function Footer() {
                                     <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <a href="/ContactUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p> </a>
-                                        <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
+                                        <a href="https://hubinterior.keka.com/careers"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
                                         <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
                                     </div>
                                     <QuickConnectSection
@@ -392,7 +392,7 @@ export default function Footer() {
                                     <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <a href="/ContactUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p> </a>
-                                        <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
+                                        <a href="https://hubinterior.keka.com/careers"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
                                         <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
                                     </div>
                                     <QuickConnectSection
@@ -457,7 +457,7 @@ export default function Footer() {
                                     <h1 className="text-lg manrope font-medium mb-5">Information</h1>
                                     <div className="space-y-3">
                                         <Link href="/ContactUs"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
-                                        <Link href="/Career"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <Link href="https://hubinterior.keka.com/careers"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Career</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                     </div>
                                     <QuickConnectSection
