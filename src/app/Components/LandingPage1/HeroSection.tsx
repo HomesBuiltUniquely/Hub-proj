@@ -149,6 +149,23 @@ export default function HeroSections({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Auto-send OTP when phone reaches exactly 10 digits
+  useEffect(() => {
+    const cleaned = normalizePhoneNumber(formData.phone);
+    if (cleaned.length === 10 && !otpSent && !otpVerified && !isSendingOtpAuto) {
+      handleSendOtp();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.phone]);
+
+  // Auto-verify OTP when user has typed 4+ digits
+  useEffect(() => {
+    if (otpSent && !otpVerified && otp.length >= 4 && !isPendingOtpSms && !isOtpVerifying) {
+      handleOtpSubmit();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [otp]);
+
   // 2 min timer: on expiry show Resend
   useEffect(() => {
     if (!otpSent || otpTimerSeconds <= 0) return;
@@ -214,10 +231,6 @@ export default function HeroSections({
 
     if (!formData.name) {
       alert("Please enter your name.");
-      return;
-    }
-    if (!formData.email) {
-      alert("Please enter your email.");
       return;
     }
     if (!formData.phone) {
@@ -574,8 +587,8 @@ export default function HeroSections({
             {/* Mobile Form Card */}
             <div className="relative z-20 -mt-10 ">
               <div className="bg-white w-full rounded-3xl shadow-2xl pt-8 pb-4 px-3 ">
-                <div className="text-3xl manrope-semibold text-center mb-6 text-black-950 text-nowrap">
-                  Interiors For Every <span className="text-red-600">Home</span>
+                <div className="text-[21px] min-[375px]:text-[23px] sm:text-[26px] manrope-semibold text-center mb-6 text-black-950 whitespace-nowrap">
+                  Get a Free Home <span className="text-red-600">Interior Quote</span>
                 </div>
 
                 {/* Name Input */}
@@ -591,15 +604,14 @@ export default function HeroSections({
                   />
                 </div>
 
-                {/* Email Input */}
-                <div className="flex flex-col justify-center items-center mt-4">
+                {/* Email Input — hidden */}
+                <div className="hidden">
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Email *"
-                    required
                     className="w-full sm:w-[250px] h-[50px] bg-[#f1f2f6] rounded-2xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                   />
                 </div>
@@ -616,74 +628,6 @@ export default function HeroSections({
                     className="w-full h-[50px] bg-[#f1f2f6] rounded-2xl text-base pl-6 placeholder-gray-400 manrope-medium"
                   />
                 </div>
-
-                {/* Inline OTP — Mobile */}
-                {normalizePhoneNumber(formData.phone).length === 10 &&
-                  !otpSent && (
-                    <button
-                      type="button"
-                      onClick={handleSendOtp}
-                      disabled={isSendingOtpAuto}
-                      className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-2xl text-base manrope-medium mt-4 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                    >
-                      {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
-                    </button>
-                  )}
-                {otpSent && !otpVerified && (
-                  <div className="mt-4 flex flex-col gap-3">
-                    {isPendingOtpSms ? (
-                      <p className="text-sm text-gray-500 manrope-medium text-center">
-                        Sending OTP to {formData.phone}…
-                      </p>
-                    ) : (
-                      <p className="text-sm text-gray-500 manrope-medium text-center">
-                        OTP sent to {formData.phone}
-                      </p>
-                    )}
-                    <input
-                      type="text"
-                      value={otp}
-                      onChange={(e) => setOtp(e.target.value)}
-                      placeholder="Enter OTP *"
-                      maxLength={6}
-                      disabled={isPendingOtpSms || isOtpVerifying}
-                      className="w-full h-[50px] bg-[#f1f2f6] rounded-2xl text-base pl-6 placeholder-gray-400 manrope-medium disabled:opacity-50"
-                    />
-                    {!resendVisible && otpTimerSeconds > 0 && (
-                      <p className="text-xs text-gray-400 manrope text-center">
-                        Resend in {Math.floor(otpTimerSeconds / 60)}:
-                        {(otpTimerSeconds % 60).toString().padStart(2, "0")}
-                      </p>
-                    )}
-                    <button
-                      type="button"
-                      onClick={handleOtpSubmit}
-                      disabled={
-                        isPendingOtpSms || isOtpVerifying || otp.length < 4
-                      }
-                      className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-2xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                    >
-                      {isOtpVerifying ? "Verifying…" : "Verify OTP"}
-                    </button>
-                    {resendVisible && (
-                      <button
-                        type="button"
-                        onClick={handleResendOtp}
-                        disabled={isSendingOtpAuto || isPendingOtpSms}
-                        className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-2xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
-                      >
-                        {isSendingOtpAuto || isPendingOtpSms
-                          ? "Sending…"
-                          : "Resend OTP"}
-                      </button>
-                    )}
-                  </div>
-                )}
-                {otpVerified && (
-                  <p className="text-sm text-green-600 manrope-medium mt-3 text-center">
-                    ✓ Phone verified
-                  </p>
-                )}
 
                 {/* Pincode Dropdown */}
                 <div className="relative w-full mt-4">
@@ -735,6 +679,46 @@ export default function HeroSections({
                   </span>
                 </div>
 
+                {/* OTP Block — Mobile (shown after all fields, before Submit) */}
+                {isSendingOtpAuto && !otpSent && (
+                  <p className="text-sm text-gray-500 manrope-medium text-left mt-4">Sending OTP…</p>
+                )}
+                {otpSent && !otpVerified && (
+                  <div className="mt-4 flex flex-col gap-2">
+                    <p className="text-sm text-gray-700 manrope-medium text-left">
+                      Enter the 4-digit OTP sent to {normalizePhoneNumber(formData.phone)}
+                    </p>
+                    <div className="flex gap-3 items-center">
+                      <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                        placeholder="Enter 4-digit OTP"
+                        maxLength={6}
+                        disabled={isPendingOtpSms || isOtpVerifying}
+                        className="flex-1 h-[50px] bg-[#f1f2f6] rounded-2xl text-base pl-4 placeholder-gray-400 manrope-medium disabled:opacity-50"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleResendOtp}
+                        disabled={isSendingOtpAuto || isPendingOtpSms || otpTimerSeconds > 0}
+                        className="h-[50px] px-5 bg-[#DDCDC1] text-amber-950 rounded-2xl text-base manrope-medium disabled:opacity-60 hover:bg-[#c4b5a8] transition-colors whitespace-nowrap"
+                      >
+                        {isSendingOtpAuto || isPendingOtpSms ? "Sending…" : "Resend"}
+                      </button>
+                    </div>
+                    {otpTimerSeconds > 0 && (
+                      <p className="text-xs text-gray-500 manrope text-left">
+                        Resend OTP in {Math.floor(otpTimerSeconds / 60)}:{(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                      </p>
+                    )}
+                  </div>
+                )}
+                {otpVerified && (
+                  <p className="text-sm text-green-600 manrope-medium mt-3 text-left">
+                    ✓ Phone verified
+                  </p>
+                )}
                 {/* Submit Button — always visible */}
                 <div className="flex flex-col items-start mt-6 gap-3">
                   <button
@@ -785,9 +769,9 @@ export default function HeroSections({
                   />
                 </div>
                 <div className="bg-white w-full lg:min-w-[570px] h-auto mt-3 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-7 sm:p-9 lg:p-10 shadow-2xl">
-                  <p className="lg:mr-20 mb-5 manrope lg:mb-3">
-                    Interiors For Every{" "}
-                    <span className="text-red-600">Home</span>
+                  <p className="lg:mr-20 mb-5 manrope lg:mb-3 whitespace-nowrap text-xl sm:text-2xl lg:text-[32px] font-semibold">
+                    Get a Free Home{" "}
+                    <span className="text-red-600">Interior Quote</span>
                   </p>
 
                   {/* Name Input */}
@@ -803,15 +787,14 @@ export default function HeroSections({
                     />
                   </div>
 
-                  {/* Email Input */}
-                  <div className="flex flex-col justify-center items-center">
+                  {/* Email Input — hidden */}
+                  <div className="hidden">
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Email *"
-                      required
                       className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
@@ -829,80 +812,6 @@ export default function HeroSections({
                       className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
-
-                  {/* Inline OTP — 2560 */}
-                  {(normalizePhoneNumber(formData.phone).length === 10 ||
-                    otpSent ||
-                    otpVerified) && (
-                    <div className="flex flex-col gap-4 justify-center mt-4">
-                      {normalizePhoneNumber(formData.phone).length === 10 &&
-                        !otpSent && (
-                          <button
-                            type="button"
-                            onClick={handleSendOtp}
-                            disabled={isSendingOtpAuto}
-                            className="w-full sm:w-[520px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                          >
-                            {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
-                          </button>
-                        )}
-                      {otpSent && !otpVerified && (
-                        <div className="flex flex-col gap-3 w-full sm:w-[520px]">
-                          {isPendingOtpSms ? (
-                            <p className="text-sm text-gray-500 manrope-medium text-center">
-                              Sending OTP to {formData.phone}…
-                            </p>
-                          ) : (
-                            <p className="text-sm text-gray-500 manrope-medium text-center">
-                              OTP sent to {formData.phone}
-                            </p>
-                          )}
-                          <input
-                            type="text"
-                            value={otp}
-                            onChange={(e) => setOtp(e.target.value)}
-                            placeholder="Enter OTP *"
-                            maxLength={6}
-                            disabled={isPendingOtpSms || isOtpVerifying}
-                            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
-                          />
-                          {!resendVisible && otpTimerSeconds > 0 && (
-                            <p className="text-xs text-gray-400 manrope text-center">
-                              Resend in {Math.floor(otpTimerSeconds / 60)}:
-                              {(otpTimerSeconds % 60).toString().padStart(2, "0")}
-                            </p>
-                          )}
-                          <button
-                            type="button"
-                            onClick={handleOtpSubmit}
-                            disabled={
-                              isPendingOtpSms || isOtpVerifying || otp.length < 4
-                            }
-                            className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                          >
-                            {isOtpVerifying ? "Verifying…" : "Verify OTP"}
-                          </button>
-                          {resendVisible && (
-                            <button
-                              type="button"
-                              onClick={handleResendOtp}
-                              disabled={isSendingOtpAuto || isPendingOtpSms}
-                              className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
-                            >
-                              {isSendingOtpAuto || isPendingOtpSms
-                                ? "Sending…"
-                                : "Resend OTP"}
-                            </button>
-                          )}
-                        </div>
-                      )}
-                      {otpVerified && (
-                        <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[520px]">
-                          ✓ Phone verified
-                        </p>
-                      )}
-                    </div>
-                  )}
 
                   {/* Pincode Dropdown */}
                   <div className="relative w-full sm:w-[520px] mx-auto mt-5">
@@ -964,6 +873,46 @@ export default function HeroSections({
                     </div>
                   </div>
 
+                  {/* OTP Block — 2560 (shown after all fields, before Submit) */}
+                  {isSendingOtpAuto && !otpSent && (
+                    <p className="text-sm text-gray-500 manrope-medium text-left mt-4">Sending OTP…</p>
+                  )}
+                  {otpSent && !otpVerified && (
+                    <div className="flex flex-col gap-2 mt-4 w-full sm:w-[520px]">
+                      <p className="text-sm text-gray-700 manrope-medium text-left">
+                        Enter the 4-digit OTP sent to {normalizePhoneNumber(formData.phone)}
+                      </p>
+                      <div className="flex gap-3 items-center">
+                        <input
+                          type="text"
+                          value={otp}
+                          onChange={(e) => setOtp(e.target.value)}
+                          placeholder="Enter 4-digit OTP"
+                          maxLength={6}
+                          disabled={isPendingOtpSms || isOtpVerifying}
+                          className="flex-1 h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 placeholder-gray-400 manrope-medium disabled:opacity-50"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleResendOtp}
+                          disabled={isSendingOtpAuto || isPendingOtpSms || otpTimerSeconds > 0}
+                          className="h-[50px] px-6 bg-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-60 hover:bg-[#c4b5a8] transition-colors whitespace-nowrap"
+                        >
+                          {isSendingOtpAuto || isPendingOtpSms ? "Sending…" : "Resend"}
+                        </button>
+                      </div>
+                      {otpTimerSeconds > 0 && (
+                        <p className="text-xs text-gray-500 manrope text-left">
+                          Resend OTP in {Math.floor(otpTimerSeconds / 60)}:{(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  {otpVerified && (
+                    <p className="text-sm text-green-600 manrope-medium mt-3 text-left w-full sm:w-[520px]">
+                      ✓ Phone verified
+                    </p>
+                  )}
                   {/* Button Container (centered) */}
                   <div className="flex items-center justify-center mt-6">
                     {/* Submit Button — always visible */}
@@ -1047,9 +996,9 @@ export default function HeroSections({
                   />
                 </div>
                 <div className="bg-white w-full lg:min-w-[570px] h-auto mt-3 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl font-semibold text-center p-7 sm:p-9 lg:p-10 shadow-2xl">
-                  <p className="lg:mr-20 mb-5 manrope lg:mb-3">
-                    Interiors For Every{" "}
-                    <span className="text-red-600">Home</span>
+                  <p className="lg:mr-20 mb-5 manrope lg:mb-3 whitespace-nowrap text-xl sm:text-2xl lg:text-[30px] font-semibold">
+                    Get a Free Home{" "}
+                    <span className="text-red-600">Interior Quote</span>
                   </p>
 
                   {/* Name Input */}
@@ -1065,15 +1014,14 @@ export default function HeroSections({
                     />
                   </div>
 
-                  {/* Email Input */}
-                  <div className="flex flex-col justify-center items-center">
+                  {/* Email Input — hidden */}
+                  <div className="hidden">
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Email *"
-                      required
                       className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
@@ -1091,80 +1039,6 @@ export default function HeroSections({
                       className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
-
-                  {/* Inline OTP — 1920 */}
-                  {(normalizePhoneNumber(formData.phone).length === 10 ||
-                    otpSent ||
-                    otpVerified) && (
-                    <div className="flex flex-col gap-4 justify-center mt-4">
-                      {normalizePhoneNumber(formData.phone).length === 10 &&
-                        !otpSent && (
-                          <button
-                            type="button"
-                            onClick={handleSendOtp}
-                            disabled={isSendingOtpAuto}
-                            className="w-full sm:w-[520px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                          >
-                            {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
-                          </button>
-                        )}
-                      {otpSent && !otpVerified && (
-                        <div className="flex flex-col gap-3 w-full sm:w-[520px]">
-                          {isPendingOtpSms ? (
-                            <p className="text-sm text-gray-500 manrope-medium text-center">
-                              Sending OTP to {formData.phone}…
-                            </p>
-                          ) : (
-                            <p className="text-sm text-gray-500 manrope-medium text-center">
-                              OTP sent to {formData.phone}
-                            </p>
-                          )}
-                          <input
-                            type="text"
-                            value={otp}
-                            onChange={(e) => setOtp(e.target.value)}
-                            placeholder="Enter OTP *"
-                            maxLength={6}
-                            disabled={isPendingOtpSms || isOtpVerifying}
-                            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
-                          />
-                          {!resendVisible && otpTimerSeconds > 0 && (
-                            <p className="text-xs text-gray-400 manrope text-center">
-                              Resend in {Math.floor(otpTimerSeconds / 60)}:
-                              {(otpTimerSeconds % 60).toString().padStart(2, "0")}
-                            </p>
-                          )}
-                          <button
-                            type="button"
-                            onClick={handleOtpSubmit}
-                            disabled={
-                              isPendingOtpSms || isOtpVerifying || otp.length < 4
-                            }
-                            className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                          >
-                            {isOtpVerifying ? "Verifying…" : "Verify OTP"}
-                          </button>
-                          {resendVisible && (
-                            <button
-                              type="button"
-                              onClick={handleResendOtp}
-                              disabled={isSendingOtpAuto || isPendingOtpSms}
-                              className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
-                            >
-                              {isSendingOtpAuto || isPendingOtpSms
-                                ? "Sending…"
-                                : "Resend OTP"}
-                            </button>
-                          )}
-                        </div>
-                      )}
-                      {otpVerified && (
-                        <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[520px]">
-                          ✓ Phone verified
-                        </p>
-                      )}
-                    </div>
-                  )}
 
                   {/* Pincode Dropdown */}
                   <div className="relative w-full sm:w-[520px] mx-auto mt-5">
@@ -1226,6 +1100,46 @@ export default function HeroSections({
                     </div>
                   </div>
 
+                  {/* OTP Block — 1920 (shown after all fields, before Submit) */}
+                  {isSendingOtpAuto && !otpSent && (
+                    <p className="text-sm text-gray-500 manrope-medium text-left mt-4">Sending OTP…</p>
+                  )}
+                  {otpSent && !otpVerified && (
+                    <div className="flex flex-col gap-2 mt-4 w-full sm:w-[520px]">
+                      <p className="text-sm text-gray-700 manrope-medium text-left">
+                        Enter the 4-digit OTP sent to {normalizePhoneNumber(formData.phone)}
+                      </p>
+                      <div className="flex gap-3 items-center">
+                        <input
+                          type="text"
+                          value={otp}
+                          onChange={(e) => setOtp(e.target.value)}
+                          placeholder="Enter 4-digit OTP"
+                          maxLength={6}
+                          disabled={isPendingOtpSms || isOtpVerifying}
+                          className="flex-1 h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 placeholder-gray-400 manrope-medium disabled:opacity-50"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleResendOtp}
+                          disabled={isSendingOtpAuto || isPendingOtpSms || otpTimerSeconds > 0}
+                          className="h-[50px] px-6 bg-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-60 hover:bg-[#c4b5a8] transition-colors whitespace-nowrap"
+                        >
+                          {isSendingOtpAuto || isPendingOtpSms ? "Sending…" : "Resend"}
+                        </button>
+                      </div>
+                      {otpTimerSeconds > 0 && (
+                        <p className="text-xs text-gray-500 manrope text-left">
+                          Resend OTP in {Math.floor(otpTimerSeconds / 60)}:{(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  {otpVerified && (
+                    <p className="text-sm text-green-600 manrope-medium mt-3 text-left w-full sm:w-[520px]">
+                      ✓ Phone verified
+                    </p>
+                  )}
                   {/* Button Container (centered) */}
                   <div className="flex items-center justify-center mt-6">
                     {/* Submit Button — always visible */}
@@ -1310,9 +1224,9 @@ export default function HeroSections({
                 {/* Form Card */}
                 <div className="bg-white w-[500px] h-auto mt-3 rounded-3xl lg:rounded-4xl text-2xl sm:text-3xl lg:text-4xl text-center p-7 sm:p-9 lg:p-10 shadow-2xl">
                   {/* Heading */}
-                  <p className="mb-5 whitespace-nowrap manrope mt-1">
-                    Interiors For Every{" "}
-                    <span className="text-red-600">Home</span>
+                  <p className="mb-5 whitespace-nowrap manrope mt-1 text-xl sm:text-2xl lg:text-[26px] font-semibold">
+                    Get a Free Home{" "}
+                    <span className="text-red-600">Interior Quote</span>
                   </p>
 
                   {/* Name Input */}
@@ -1328,15 +1242,14 @@ export default function HeroSections({
                     />
                   </div>
 
-                  {/* Email Input */}
-                  <div className="flex flex-col justify-center items-center">
+                  {/* Email Input — hidden */}
+                  <div className="hidden">
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Email *"
-                      required
                       className="w-full sm:w-[500px] h-[56px] bg-[#f1f2f6] mt-5 rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
                     />
                   </div>
@@ -1355,81 +1268,7 @@ export default function HeroSections({
                     />
                   </div>
 
-                  {/* Inline OTP — 1280 */}
-                  {(normalizePhoneNumber(formData.phone).length === 10 ||
-                    otpSent ||
-                    otpVerified) && (
-                    <div className="flex flex-col sm:flex-row justify-center mt-4">
-                      {normalizePhoneNumber(formData.phone).length === 10 &&
-                        !otpSent && (
-                          <button
-                            type="button"
-                            onClick={handleSendOtp}
-                            disabled={isSendingOtpAuto}
-                            className="w-full sm:w-[500px] h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                          >
-                            {isSendingOtpAuto ? "Sending OTP…" : "Send OTP"}
-                          </button>
-                        )}
-                      {otpSent && !otpVerified && (
-                        <div className="flex flex-col gap-3 w-full sm:w-[500px]">
-                          {isPendingOtpSms ? (
-                            <p className="text-sm text-gray-500 manrope-medium text-center">
-                              Sending OTP to {formData.phone}…
-                            </p>
-                          ) : (
-                            <p className="text-sm text-gray-500 manrope-medium text-center">
-                              OTP sent to {formData.phone}
-                            </p>
-                          )}
-                          <input
-                            type="text"
-                            value={otp}
-                            onChange={(e) => setOtp(e.target.value)}
-                            placeholder="Enter OTP *"
-                            maxLength={6}
-                            disabled={isPendingOtpSms || isOtpVerifying}
-                            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-[18px] pl-6 sm:pl-8 placeholder-gray-400 manrope-medium disabled:opacity-50"
-                          />
-                          {!resendVisible && otpTimerSeconds > 0 && (
-                            <p className="text-xs text-gray-400 manrope text-center">
-                              Resend in {Math.floor(otpTimerSeconds / 60)}:
-                              {(otpTimerSeconds % 60).toString().padStart(2, "0")}
-                            </p>
-                          )}
-                          <button
-                            type="button"
-                            onClick={handleOtpSubmit}
-                            disabled={
-                              isPendingOtpSms || isOtpVerifying || otp.length < 4
-                            }
-                            className="w-full h-[50px] bg-[#DDCDC1] text-amber-950 rounded-3xl lg:rounded-4xl text-base manrope-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#c4b5a8] transition-colors"
-                          >
-                            {isOtpVerifying ? "Verifying…" : "Verify OTP"}
-                          </button>
-                          {resendVisible && (
-                            <button
-                              type="button"
-                              onClick={handleResendOtp}
-                              disabled={isSendingOtpAuto || isPendingOtpSms}
-                              className="w-full h-[50px] bg-white border border-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-50 hover:bg-[#f9f5f2] transition-colors"
-                            >
-                              {isSendingOtpAuto || isPendingOtpSms
-                                ? "Sending…"
-                                : "Resend OTP"}
-                            </button>
-                          )}
-                        </div>
-                      )}
-                      {otpVerified && (
-                        <p className="text-sm text-green-600 manrope-medium text-center w-full sm:w-[500px]">
-                          ✓ Phone verified
-                        </p>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Pincode */}
+                  {/* Pincode Dropdown */}
                   <div className="relative w-full flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-4">
                     <select
                       name="pincode"
@@ -1486,6 +1325,46 @@ export default function HeroSections({
                     </div>
                   </div>
 
+                  {/* OTP Block — 1280 (shown after all fields, before Submit) */}
+                  {isSendingOtpAuto && !otpSent && (
+                    <p className="text-sm text-gray-500 manrope-medium text-left mt-4">Sending OTP…</p>
+                  )}
+                  {otpSent && !otpVerified && (
+                    <div className="flex flex-col gap-2 mt-4 w-full sm:w-[500px]">
+                      <p className="text-sm text-gray-700 manrope-medium text-left">
+                        Enter the 4-digit OTP sent to {normalizePhoneNumber(formData.phone)}
+                      </p>
+                      <div className="flex gap-3 items-center">
+                        <input
+                          type="text"
+                          value={otp}
+                          onChange={(e) => setOtp(e.target.value)}
+                          placeholder="Enter 4-digit OTP"
+                          maxLength={6}
+                          disabled={isPendingOtpSms || isOtpVerifying}
+                          className="flex-1 h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 placeholder-gray-400 manrope-medium disabled:opacity-50"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleResendOtp}
+                          disabled={isSendingOtpAuto || isPendingOtpSms || otpTimerSeconds > 0}
+                          className="h-[50px] px-6 bg-[#DDCDC1] text-amber-950 rounded-3xl text-base manrope-medium disabled:opacity-60 hover:bg-[#c4b5a8] transition-colors whitespace-nowrap"
+                        >
+                          {isSendingOtpAuto || isPendingOtpSms ? "Sending…" : "Resend"}
+                        </button>
+                      </div>
+                      {otpTimerSeconds > 0 && (
+                        <p className="text-xs text-gray-500 manrope text-left">
+                          Resend OTP in {Math.floor(otpTimerSeconds / 60)}:{(otpTimerSeconds % 60).toString().padStart(2, "0")}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  {otpVerified && (
+                    <p className="text-sm text-green-600 manrope-medium mt-3 text-left w-full sm:w-[500px]">
+                      ✓ Phone verified
+                    </p>
+                  )}
                   {/* Submit — always visible */}
                   <div className="mt-5">
                     <button
