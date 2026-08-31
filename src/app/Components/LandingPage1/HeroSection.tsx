@@ -50,7 +50,6 @@ export default function HeroSections({
 
   // 2 min OTP timer (resend only)
   const [otpTimerSeconds, setOtpTimerSeconds] = useState(0);
-  const [resendVisible, setResendVisible] = useState(false);
   const heroSubmitLockRef = useRef(false);
 
   // Function to scroll to calculator section
@@ -173,7 +172,6 @@ export default function HeroSections({
       setOtpTimerSeconds((prev) => {
         if (prev <= 1) {
           clearInterval(id);
-          setResendVisible(true);
           return 0;
         }
         return prev - 1;
@@ -205,7 +203,6 @@ export default function HeroSections({
         setOtp("");
       } else {
         if (data?.reason === "MAX_ATTEMPTS") {
-          setResendVisible(true);
           setOtpTimerSeconds(0);
           setOtp("");
         }
@@ -277,7 +274,6 @@ export default function HeroSections({
     setIsPendingOtpSms(true);
     setOtpSent(true);
     setOtpTimerSeconds(0);
-    setResendVisible(false);
     setOtpVerified(false);
     setOtp("");
 
@@ -294,15 +290,12 @@ export default function HeroSections({
 
       if (response.ok && data.success) {
         setOtpTimerSeconds(120);
-        setResendVisible(false);
       } else {
         alert(data.message || "Failed to send OTP. Tap Resend to try again.");
-        setResendVisible(true);
       }
     } catch (error) {
       console.error("Error sending OTP:", error);
       setIsPendingOtpSms(false);
-      setResendVisible(true);
       alert(
         error instanceof Error && error.name === "TimeoutError"
           ? "OTP request timed out. Tap Resend to try again."
@@ -318,7 +311,6 @@ export default function HeroSections({
       setIsSendingOtpAuto(true);
       setIsPendingOtpSms(true);
       setOtpTimerSeconds(0);
-      setResendVisible(false);
       const cleanedPhone = normalizePhoneNumber(formData.phone);
       const response = await fetch("/api/resend-msg91-otp", {
         method: "POST",
@@ -330,15 +322,12 @@ export default function HeroSections({
       setIsPendingOtpSms(false);
       if (response.ok && data.success) {
         setOtpTimerSeconds(120);
-        setResendVisible(false);
       } else {
         alert(data.message || "Resend failed. Please try again.");
-        setResendVisible(true);
       }
     } catch (error) {
       console.error("Error resending OTP:", error);
       setIsPendingOtpSms(false);
-      setResendVisible(true);
       alert(
         error instanceof Error && error.name === "TimeoutError"
           ? "Resend timed out. Please try again."
