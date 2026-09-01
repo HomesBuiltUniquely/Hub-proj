@@ -338,6 +338,16 @@ export default function HeroSections({
     }
   };
 
+  /** Reset OTP state so user can correct their phone number and trigger a fresh OTP */
+  const handleEditPhone = () => {
+    setOtpSent(false);
+    setOtpVerified(false);
+    setOtp("");
+    setOtpTimerSeconds(0);
+    setIsSendingOtpAuto(false);
+    setIsPendingOtpSms(false);
+  };
+
   /** Redirect immediately; CRM/email POST runs in background so Ads conversion isn't delayed. */
   const handleFinalSubmit = () => {
     setIsSubmitting(true);
@@ -607,15 +617,32 @@ export default function HeroSections({
 
                 {/* Phone */}
                 <div className="flex flex-col justify-center mt-4">
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="Phone Number *"
-                    required
-                    className="w-full h-[50px] bg-[#f1f2f6] rounded-2xl text-base pl-6 placeholder-gray-400 manrope-medium"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="Phone Number *"
+                      required
+                      readOnly={otpSent || otpVerified}
+                      className={`w-full h-[50px] bg-[#f1f2f6] rounded-2xl text-base pl-6 placeholder-gray-400 manrope-medium pr-20 ${
+                        otpSent || otpVerified ? "opacity-70 cursor-default" : ""
+                      }`}
+                    />
+                    {(otpSent || otpVerified) && (
+                      <button
+                        type="button"
+                        onClick={handleEditPhone}
+                        className="absolute right-3 flex items-center gap-1 text-xs text-amber-900 manrope-medium bg-[#DDCDC1] hover:bg-[#c4b5a8] transition-colors rounded-xl px-2 py-1"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                        </svg>
+                        Edit
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 {/* Pincode Dropdown */}
@@ -790,16 +817,33 @@ export default function HeroSections({
 
                   {/* Phone Input */}
                   <div className="flex flex-col justify-center items-center mt-5">
-                    <input
-                      id="e2"
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="Phone Number *"
-                      required
-                      className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                    />
+                    <div className="relative flex items-center w-full sm:w-[520px]">
+                      <input
+                        id="e2"
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Phone Number *"
+                        required
+                        readOnly={otpSent || otpVerified}
+                        className={`w-full h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium pr-24 ${
+                          otpSent || otpVerified ? "opacity-70 cursor-default" : ""
+                        }`}
+                      />
+                      {(otpSent || otpVerified) && (
+                        <button
+                          type="button"
+                          onClick={handleEditPhone}
+                          className="absolute right-3 flex items-center gap-1 text-xs text-amber-900 manrope-medium bg-[#DDCDC1] hover:bg-[#c4b5a8] transition-colors rounded-xl px-3 py-1.5"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                          </svg>
+                          Edit
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   {/* Pincode Dropdown */}
@@ -1017,16 +1061,33 @@ export default function HeroSections({
 
                   {/* Phone Input */}
                   <div className="flex flex-col justify-center items-center mt-5">
-                    <input
-                      id="e2"
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="Phone Number *"
-                      required
-                      className="w-full sm:w-[520px] h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                    />
+                    <div className="relative flex items-center w-full sm:w-[520px]">
+                      <input
+                        id="e2"
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Phone Number *"
+                        required
+                        readOnly={otpSent || otpVerified}
+                        className={`w-full h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium pr-24 ${
+                          otpSent || otpVerified ? "opacity-70 cursor-default" : ""
+                        }`}
+                      />
+                      {(otpSent || otpVerified) && (
+                        <button
+                          type="button"
+                          onClick={handleEditPhone}
+                          className="absolute right-3 flex items-center gap-1 text-xs text-amber-900 manrope-medium bg-[#DDCDC1] hover:bg-[#c4b5a8] transition-colors rounded-xl px-3 py-1.5"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                          </svg>
+                          Edit
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   {/* Pincode Dropdown */}
@@ -1245,16 +1306,33 @@ export default function HeroSections({
 
                   {/* Phone Input */}
                   <div className="flex flex-col justify-center items-center mt-5">
-                    <input
-                      id="e2"
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="Phone Number *"
-                      required
-                      className="w-full sm:w-[500px] h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium"
-                    />
+                    <div className="relative flex items-center w-full sm:w-[500px]">
+                      <input
+                        id="e2"
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Phone Number *"
+                        required
+                        readOnly={otpSent || otpVerified}
+                        className={`w-full h-[56px] bg-[#f1f2f6] rounded-3xl lg:rounded-4xl text-base sm:text-lg pl-6 sm:pl-8 placeholder-gray-400 manrope-medium pr-24 ${
+                          otpSent || otpVerified ? "opacity-70 cursor-default" : ""
+                        }`}
+                      />
+                      {(otpSent || otpVerified) && (
+                        <button
+                          type="button"
+                          onClick={handleEditPhone}
+                          className="absolute right-3 flex items-center gap-1 text-xs text-amber-900 manrope-medium bg-[#DDCDC1] hover:bg-[#c4b5a8] transition-colors rounded-xl px-3 py-1.5"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3 h-3">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                          </svg>
+                          Edit
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   {/* Pincode Dropdown */}
