@@ -101,6 +101,14 @@ export async function POST(req: Request) {
       pathLower.includes('/interior-designers-in-bangalore/calculator');
     const isGoogleAdsLead = isInteriorBangalorePage || isInteriorBangaloreCalculator;
 
+    // Google Ads Bangalore LP: email + CRM only after a verified OTP
+    if (isGoogleAdsLead && normalizedVerificationStatus !== 'VERIFIED') {
+      return NextResponse.json(
+        { success: false, message: 'OTP must be verified before this lead can be submitted.' },
+        { status: 400 },
+      );
+    }
+
     /** Detected from pageUrl only — no coupling to a specific route module. */
     const isHomeRenovationBangalorePage =
       pathLower.includes('/home-renovation-in-bangalore') ||

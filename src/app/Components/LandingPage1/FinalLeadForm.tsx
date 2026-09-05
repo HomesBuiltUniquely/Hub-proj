@@ -114,6 +114,9 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       if (data.success) {
         setIsVerified(true);
         setOtpError("");
+        if (formData.name && formData.email && formData.phone && selectedPincode) {
+          handleFinalSubmit(true);
+        }
       } else {
         setOtpError(data.message || "Invalid OTP");
       }
@@ -124,7 +127,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     }
   };
 
-  const handleFinalSubmit = useCallback(() => {
+  const handleFinalSubmit = useCallback((otpWasVerified = isVerified) => {
+    if (!otpWasVerified) return;
     setIsSubmitting(true);
 
     const currentUrl = window.location.href;
@@ -135,8 +139,8 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       phone: formData.phone,
       pincode: selectedPincode,
       pageUrl: currentUrl,
-      verificationStatus: getVerificationStatus(isVerified),
-      otpSuccess: isVerified,
+      verificationStatus: getVerificationStatus(true),
+      otpSuccess: true,
       calculator: c,
       bhkType: c.bhkType ?? "",
       rooms: c.rooms ? JSON.stringify(c.rooms) : "",
@@ -224,6 +228,29 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
 
+          {/* Property Pincode — collected before OTP so verify can submit the full lead */}
+          <div className="relative w-full">
+            <select
+              name="pincode"
+              required
+              value={selectedPincode}
+              onChange={(e) => setSelectedPincode(e.target.value)}
+              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none"
+            >
+              <option value="" disabled>
+                Property Pincode *
+              </option>
+              {Pincode.map((pin, idx) => (
+                <option key={idx} value={pin}>
+                  {pin}
+                </option>
+              ))}
+            </select>
+            <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[16px] pointer-events-none">
+              &#9662;
+            </span>
+          </div>
+
           {/* Send OTP — only appears once exactly 10 digits entered, not yet sent/verified */}
           {normalizePhoneNumber(formData.phone).length === 10 &&
             !otpSent &&
@@ -281,29 +308,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
           {otpError && (
             <p className="text-red-500 text-sm text-center">{otpError}</p>
           )}
-
-          {/* Property Pincode */}
-          <div className="relative w-full">
-            <select
-              name="pincode"
-              required
-              value={selectedPincode}
-              onChange={(e) => setSelectedPincode(e.target.value)}
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none"
-            >
-              <option value="" disabled>
-                Property Pincode *
-              </option>
-              {Pincode.map((pin, idx) => (
-                <option key={idx} value={pin}>
-                  {pin}
-                </option>
-              ))}
-            </select>
-            <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[16px] pointer-events-none">
-              &#9662;
-            </span>
-          </div>
         </div>
 
         {isSubmitting && (
