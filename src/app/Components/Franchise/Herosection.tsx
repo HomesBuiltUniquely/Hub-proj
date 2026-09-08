@@ -389,9 +389,6 @@ fireAndForgetLeadSubmit("/api/franchise-contact", data);
               <h1 className="text-white  text-5xl lg:text-6xl wulkan-display-bold mt-70 mb-2 drop-shadow-lg text-nowrap -ml-5">
                 Become a franchisee!
               </h1>
-              <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">
-                Future of smart investing
-              </p>
             </div>
           </div>
 
@@ -672,9 +669,7 @@ fireAndForgetLeadSubmit("/api/franchise-contact", data);
               <h1 className="text-white  text-5xl lg:text-6xl wulkan-display-bold mt-70 mb-2 drop-shadow-lg text-nowrap -ml-5">
                 Become a franchisee!
               </h1>
-              <p className="text-2xl text-gray-100 mb-6 manrope-medium -ml-5">
-                Future of smart investing
-              </p>
+
             </div>
           </div>
 
@@ -954,9 +949,6 @@ fireAndForgetLeadSubmit("/api/franchise-contact", data);
               Become a franchisee!
             </h1>
 
-            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-              Future of smart investing
-            </p>
           </div>
 
           {/* ✅ Right: Form (same structure, just visually smaller) */}

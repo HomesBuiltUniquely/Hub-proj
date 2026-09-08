@@ -5,7 +5,7 @@ const FRANCHISE_OPTIONS = [
         title: "FICO (Franchise Invested Company Operated)",
         details: [
             "Exclusively Tier 1/Metro cities",
-            "Projected ROI - 3x in 3 years",
+            // "Projected ROI - 3x in 3 years",
             "Investment  50-80 Lakhs",
             "Minimum area - 2000 sq. ft."
         ],
@@ -15,7 +15,7 @@ const FRANCHISE_OPTIONS = [
         title: "FOFO (Franchise Owned Franchise Operated)",
         details: [
             "Tier 2 cities",
-            "Projected ROI - 200% in 1 year",
+            // "Projected ROI - 200% in 1 year",
             "Investment from 18 Lakh",
             "Minimum area - 800 sq. ft.",
         ],
