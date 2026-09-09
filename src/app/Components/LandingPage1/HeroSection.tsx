@@ -52,6 +52,9 @@ export default function HeroSections({
   // 2 min OTP timer (resend only)
   const [otpTimerSeconds, setOtpTimerSeconds] = useState(0);
   const heroSubmitLockRef = useRef(false);
+  const unverifiedMailSentRef = useRef(false);
+  /** True only while a 2-minute OTP wait is counting down (not a manual timer reset). */
+  const otpExpiryArmedRef = useRef(false);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -194,6 +197,7 @@ export default function HeroSections({
         setOtpVerified(true);
         setOtp("");
         setShowOtpModal(false);
+        otpExpiryArmedRef.current = false;
         handleFinalSubmit(true);
         return;
       } else {
@@ -270,6 +274,7 @@ export default function HeroSections({
     setOtpTimerSeconds(0);
     setOtpVerified(false);
     setOtp("");
+    otpExpiryArmedRef.current = false;
 
     try {
       const response = await fetch("/api/send-msg91-otp", {
@@ -283,13 +288,18 @@ export default function HeroSections({
       setIsPendingOtpSms(false);
 
       if (response.ok && data.success) {
+        otpExpiryArmedRef.current = true;
         setOtpTimerSeconds(120);
       } else {
+        otpExpiryArmedRef.current = false;
+        setOtpTimerSeconds(0);
         alert(data.message || "Failed to send OTP. Tap Resend to try again.");
       }
     } catch (error) {
       console.error("Error sending OTP:", error);
       setIsPendingOtpSms(false);
+      otpExpiryArmedRef.current = false;
+      setOtpTimerSeconds(0);
       alert(
         error instanceof Error && error.name === "TimeoutError"
           ? "OTP request timed out. Tap Resend to try again."
@@ -304,6 +314,7 @@ export default function HeroSections({
     try {
       setIsSendingOtpAuto(true);
       setIsPendingOtpSms(true);
+      otpExpiryArmedRef.current = false;
       setOtpTimerSeconds(0);
       const cleanedPhone = normalizePhoneNumber(formData.phone);
       const response = await fetch("/api/resend-msg91-otp", {
@@ -315,13 +326,18 @@ export default function HeroSections({
       const data = await response.json();
       setIsPendingOtpSms(false);
       if (response.ok && data.success) {
+        otpExpiryArmedRef.current = true;
         setOtpTimerSeconds(120);
       } else {
+        otpExpiryArmedRef.current = false;
+        setOtpTimerSeconds(0);
         alert(data.message || "Resend failed. Please try again.");
       }
     } catch (error) {
       console.error("Error resending OTP:", error);
       setIsPendingOtpSms(false);
+      otpExpiryArmedRef.current = false;
+      setOtpTimerSeconds(0);
       alert(
         error instanceof Error && error.name === "TimeoutError"
           ? "Resend timed out. Please try again."
@@ -332,12 +348,55 @@ export default function HeroSections({
     }
   };
 
+  const buildLeadPayload = (isVerified: boolean) => ({
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    city: selectedCity,
+    budget: "",
+    pincode: selectedPincode,
+    whatsappConsent: whatsappConsent,
+    pageUrl: window.location.href,
+    verificationStatus: isVerified ? ("VERIFIED" as const) : ("UNVERIFIED" as const),
+    otpSuccess: isVerified,
+  });
+
+  const sendLeadInBackground = (isVerified: boolean) => {
+    fetch(submitApiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(buildLeadPayload(isVerified)),
+      keepalive: true,
+    }).catch((error) => {
+      console.error("Background lead submit failed:", error);
+    });
+  };
+
+  const sendUnverifiedMailIfNeeded = () => {
+    if (otpVerified || unverifiedMailSentRef.current) return;
+    unverifiedMailSentRef.current = true;
+    sendLeadInBackground(false);
+  };
+
+  // After 2 minutes with no OTP, send unverified email (stay on the form)
+  useEffect(() => {
+    if (
+      otpSent &&
+      !otpVerified &&
+      otpTimerSeconds === 0 &&
+      otpExpiryArmedRef.current
+    ) {
+      otpExpiryArmedRef.current = false;
+      sendUnverifiedMailIfNeeded();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [otpTimerSeconds, otpSent, otpVerified]);
+
   const handleModalClose = () => {
     setShowOtpModal(false);
     setOtp("");
-    if (!otpVerified) {
-      handleFinalSubmit(false);
-    }
+    otpExpiryArmedRef.current = false;
+    sendUnverifiedMailIfNeeded();
   };
 
   /** Reset OTP state so user can correct their phone number and trigger a fresh OTP */
@@ -349,27 +408,18 @@ export default function HeroSections({
     setOtpTimerSeconds(0);
     setIsSendingOtpAuto(false);
     setIsPendingOtpSms(false);
+    otpExpiryArmedRef.current = false;
+    unverifiedMailSentRef.current = false;
   };
 
-  /** Email + CRM for verified and unverified; thank-you after either submit. */
+  /** Thank-you only after a verified OTP. */
   const handleFinalSubmit = (isVerified: boolean) => {
+    if (!isVerified) return;
     if (heroSubmitLockRef.current) return;
     heroSubmitLockRef.current = true;
     setIsSubmitting(true);
 
-    const currentUrl = window.location.href;
-    const requestData = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      city: selectedCity,
-      budget: "",
-      pincode: selectedPincode,
-      whatsappConsent: whatsappConsent,
-      pageUrl: currentUrl,
-      verificationStatus: isVerified ? ("VERIFIED" as const) : ("UNVERIFIED" as const),
-      otpSuccess: isVerified,
-    };
+    sendLeadInBackground(true);
 
     saveLeadContactToSession({
       name: formData.name,
@@ -379,16 +429,6 @@ export default function HeroSections({
     });
     sessionStorage.setItem("formSubmitted", "true");
     sessionStorage.removeItem("hubThankYouAdsConversionSent");
-
-    // Fire-and-forget — keepalive so the request survives navigation
-    fetch(submitApiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestData),
-      keepalive: true,
-    }).catch((error) => {
-      console.error("Background lead submit failed:", error);
-    });
 
     setSelectedCity("");
     setSelectedPincode("");
