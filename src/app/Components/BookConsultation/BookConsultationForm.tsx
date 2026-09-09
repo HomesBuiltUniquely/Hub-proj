@@ -5,6 +5,11 @@ import { useSearchParams } from "next/navigation";
 import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
 import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
+import {
+  formatDateForInput,
+  isPreferredSlotAvailable,
+  preferredSlots,
+} from "@/lib/consultationSlots";
 
 type ConsultationMode = "experience-center" | "video-call";
 type PossessionTimeline =
@@ -14,20 +19,6 @@ type PossessionTimeline =
   | "more-than-6-months"
   | "under-construction"
 
-
-const preferredSlots = [
-  "09:00 AM - 10:00 AM",
-  "10:00 AM - 11:00 AM",
-  "11:00 AM - 12:00 PM",
-  "12:00 PM - 01:00 PM",
-  "01:00 PM - 02:00 PM",
-  "02:00 PM - 03:00 PM",
-  "03:00 PM - 04:00 PM",
-  "04:00 PM - 05:00 PM",
-  "05:00 PM - 06:00 PM",
-  "06:00 PM - 07:00 PM",
-  "07:00 PM - 08:00 PM"
-];
 
 const carouselImages = [
   "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/25%25discount_home_interior.jpeg",
@@ -91,19 +82,13 @@ function FormSection({
   setPossessionTimeline: (v: PossessionTimeline) => void;
   onSubmit: () => void;
 }) {
-  const formatDateForInput = (date: Date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  };
-
   const today = new Date();
   const maxSelectableDate = new Date(today);
   maxSelectableDate.setDate(today.getDate() + 14);
 
   const minDate = formatDateForInput(today);
   const maxDate = formatDateForInput(maxSelectableDate);
+  const isSlotSelectEnabled = Boolean(selectedDate);
 
   const inputClass =
     "h-[58px] w-full text-black rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
@@ -164,7 +149,13 @@ function FormSection({
           <input
             type="date"
             value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
+            onChange={(e) => {
+              const nextDate = e.target.value;
+              setSelectedDate(nextDate);
+              if (preferredSlot && !isPreferredSlotAvailable(preferredSlot, nextDate)) {
+                setPreferredSlot("");
+              }
+            }}
             min={minDate}
             max={maxDate}
             className={`${inputClass} [color-scheme:light]`}
@@ -180,11 +171,22 @@ function FormSection({
           <select
             value={preferredSlot}
             onChange={(e) => setPreferredSlot(e.target.value)}
-            className={`${inputClass} appearance-none cursor-pointer`}
+            disabled={!isSlotSelectEnabled}
+            className={`${inputClass} appearance-none ${
+              isSlotSelectEnabled ? "cursor-pointer" : "cursor-not-allowed opacity-60"
+            }`}
           >
-            <option value="">Preferred Slot</option>
+            <option value="">
+              {isSlotSelectEnabled ? "Preferred Slot" : "Select date first"}
+            </option>
             {preferredSlots.map((slot) => (
-              <option key={slot} value={slot}>{slot}</option>
+              <option
+                key={slot}
+                value={slot}
+                disabled={!isPreferredSlotAvailable(slot, selectedDate)}
+              >
+                {slot}
+              </option>
             ))}
           </select>
           <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#9AA1AE]">
@@ -285,6 +287,10 @@ export default function BookConsultationForm() {
   const handleBookConsultationSubmit = () => {
     if (!selectedDate || !preferredSlot || !propertyName) {
       alert("Please fill date, preferred slot and property details.");
+      return;
+    }
+    if (!isPreferredSlotAvailable(preferredSlot, selectedDate)) {
+      alert("Please select a future time slot.");
       return;
     }
 
