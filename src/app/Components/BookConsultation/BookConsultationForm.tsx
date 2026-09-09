@@ -18,6 +18,7 @@ type PossessionTimeline =
   | "3-6-months"
   | "more-than-6-months"
   | "under-construction"
+  | "renovation"
 
 
 const carouselImages = [
@@ -89,6 +90,7 @@ function FormSection({
   const minDate = formatDateForInput(today);
   const maxDate = formatDateForInput(maxSelectableDate);
   const isSlotSelectEnabled = Boolean(selectedDate);
+  const [showSlotHint, setShowSlotHint] = useState(false);
 
   const inputClass =
     "h-[58px] w-full text-black rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
@@ -167,18 +169,19 @@ function FormSection({
             </span>
           )}
         </div>
-        <div className="relative group">
+        <div
+          className="relative group"
+          onMouseLeave={() => setShowSlotHint(false)}
+        >
           <select
             value={preferredSlot}
             onChange={(e) => setPreferredSlot(e.target.value)}
             disabled={!isSlotSelectEnabled}
             className={`${inputClass} appearance-none ${
-              isSlotSelectEnabled ? "cursor-pointer" : "cursor-not-allowed opacity-60"
+              isSlotSelectEnabled ? "cursor-pointer" : "cursor-not-allowed"
             }`}
           >
-            <option value="">
-              {isSlotSelectEnabled ? "Preferred Slot" : "Select date first"}
-            </option>
+            <option value="">Preferred Slot</option>
             {preferredSlots.map((slot) => (
               <option
                 key={slot}
@@ -194,6 +197,23 @@ function FormSection({
               <path d="m6 9 6 6 6-6" />
             </svg>
           </span>
+          {!isSlotSelectEnabled && (
+            <>
+              <button
+                type="button"
+                className="absolute inset-0 z-10 cursor-not-allowed"
+                onClick={() => setShowSlotHint(true)}
+                aria-label="Choose date first"
+              />
+              <span
+                className={`pointer-events-none absolute left-1/2 -top-10 z-20 -translate-x-1/2 whitespace-nowrap rounded-lg bg-[#1C1F26] px-3 py-1.5 text-[12px] font-medium text-white shadow-md ${
+                  showSlotHint ? "block" : "hidden group-hover:block"
+                }`}
+              >
+                Choose date first
+              </span>
+            </>
+          )}
         </div>
       </div>
 
@@ -232,6 +252,7 @@ function FormSection({
           { id: "3-6-months" as PossessionTimeline, label: "3 - 6 months" },
           { id: "more-than-6-months" as PossessionTimeline, label: "More than 6 months" },
           { id: "under-construction" as PossessionTimeline, label: "Under construction" },
+          { id: "renovation" as PossessionTimeline, label: "Renovation" },
         ].map((item) => (
           <button
             key={item.id}
