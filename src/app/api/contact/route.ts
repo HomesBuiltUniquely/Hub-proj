@@ -101,14 +101,6 @@ export async function POST(req: Request) {
       pathLower.includes('/interior-designers-in-bangalore/calculator');
     const isGoogleAdsLead = isInteriorBangalorePage || isInteriorBangaloreCalculator;
 
-    // Google Ads Bangalore LP: email + CRM only after a verified OTP
-    if (isGoogleAdsLead && normalizedVerificationStatus !== 'VERIFIED') {
-      return NextResponse.json(
-        { success: false, message: 'OTP must be verified before this lead can be submitted.' },
-        { status: 400 },
-      );
-    }
-
     /** Detected from pageUrl only — no coupling to a specific route module. */
     const isHomeRenovationBangalorePage =
       pathLower.includes('/home-renovation-in-bangalore') ||
@@ -296,7 +288,10 @@ export async function POST(req: Request) {
     });
 
     // ✅ Email content including all form data
-    const verificationStatusText = '✅ VERIFIED';
+    const verificationStatusText =
+      normalizedVerificationStatus === 'VERIFIED' ? '✅ VERIFIED' : '❌ UNVERIFIED';
+    const verificationStatusColor =
+      normalizedVerificationStatus === 'VERIFIED' ? 'green' : '#b45309';
 
     // Check if this is a calculator submission (has calculator data)
     const isCalculatorSubmission = !!(
@@ -413,7 +408,7 @@ export async function POST(req: Request) {
         <p><strong>WhatsApp Consent:</strong> ${
           typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'
         }</p>
-        <p><strong>Verification Status:</strong> <span style="color: green; font-weight: bold;">${verificationStatusText}</span></p>
+        <p><strong>Verification Status:</strong> <span style="color: ${verificationStatusColor}; font-weight: bold;">${verificationStatusText}</span></p>
         <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${
           pageUrl || 'Not provided'
         }</a></p>
