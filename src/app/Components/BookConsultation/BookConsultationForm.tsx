@@ -322,6 +322,7 @@ export default function BookConsultationForm() {
     const fallbackPhone =
       searchParams.get("phone") || searchParams.get("phoneNumber") || "";
     const fallbackPincode = searchParams.get("pincode") || "";
+    const fallbackBudget = searchParams.get("budget") || "";
 
     const firstFormDetails = {
       name:
@@ -340,6 +341,10 @@ export default function BookConsultationForm() {
         (typeof window !== "undefined"
           ? sessionStorage.getItem("userPincode")
           : "") || fallbackPincode,
+      budget:
+        (typeof window !== "undefined"
+          ? (sessionStorage.getItem("userBudget") || sessionStorage.getItem("budget"))
+          : "") || fallbackBudget,
     };
 
     fireAndForgetLeadSubmit("/api/book-consultation", {

@@ -107,6 +107,50 @@ export async function POST(req: Request) {
       html,
     });
 
+    // Sync Consultation details to dedicated CRM Lead Consultation Update endpoint
+    const crmBaseUrl = (process.env.CRM_API_URL || "https://Hows.hubinterior.com/v1/WebsiteLead")
+      .replace(/\/v1\/WebsiteLead\/?$/i, "")
+      .replace(/\/+$/, "");
+    const consultationApiUrl = `${crmBaseUrl}/v1/leads/consultation`;
+
+    try {
+      const consultationMeetingDate = `${consultationDetails.selectedDate || ""} ${consultationDetails.preferredSlot || ""}`.trim();
+      const consultationPayload = {
+        phoneNumber: firstFormDetails.phone,
+        name: firstFormDetails.name || null,
+        email: firstFormDetails.email || null,
+        propertyPin: firstFormDetails.pincode || null,
+        budget: firstFormDetails.budget || null,
+        bookingType: consultationDetails.consultationMode === "video-call"
+          ? "Video Conference"
+          : "Experience Center",
+        meetingDate: consultationMeetingDate || null,
+        propertyDetails: consultationDetails.propertyName || null,
+        possession: consultationDetails.possessionTimeline || null,
+        possessionIn: consultationDetails.possessionTimeline || null,
+        source: isDesignConsultation ? "Design Consultation" : "Website Book Consultation",
+      };
+
+      console.log("Sending book-consultation data to CRM Consultation API:", consultationPayload);
+      const crmResponse = await fetch(consultationApiUrl, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(consultationPayload),
+      });
+
+      if (crmResponse.ok) {
+        const crmJson = await crmResponse.json();
+        console.log("CRM Consultation API response:", crmJson);
+      } else {
+        console.error("CRM Consultation API error:", crmResponse.status, crmResponse.statusText);
+      }
+    } catch (crmError) {
+      console.error("Error sending book-consultation data to CRM:", crmError);
+      // Continue and return success so email flow isn't blocked
+    }
+
     return NextResponse.json({ success: true, message: "Consultation submitted successfully." });
   } catch (error) {
     console.error("Book consultation API error:", error);
