@@ -11,6 +11,7 @@ type LeadContactDetails = {
   email?: string;
   phone?: string;
   pincode?: string;
+  budget?: string;
 };
 
 /** Persists lead contact fields for thank-you / book-consultation handoff. */
@@ -21,11 +22,13 @@ export function saveLeadContactToSession(details: LeadContactDetails): void {
   const email = details.email?.trim();
   const phone = details.phone ? formatIndianPhoneE164(details.phone) : "";
   const pincode = details.pincode?.trim();
+  const budget = details.budget?.trim();
 
   if (name) sessionStorage.setItem("userName", name);
   if (email) sessionStorage.setItem("userEmail", email);
   if (phone) sessionStorage.setItem("userPhone", phone);
   if (pincode) sessionStorage.setItem("userPincode", pincode);
+  if (budget) sessionStorage.setItem("userBudget", budget);
 }
 
 /** Mark lead submitted for GTM / thank-you and persist contact fields. */
