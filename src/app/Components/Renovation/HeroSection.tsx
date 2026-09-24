@@ -390,6 +390,7 @@ export default function HeroSections({
       email: formData.email,
       phone: formData.phone,
       pincode: selectedPincode,
+      budget: selectedBudget || selectedCity,
     });
 
     fetch(submitApiUrl, {

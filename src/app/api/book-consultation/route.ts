@@ -115,19 +115,21 @@ export async function POST(req: Request) {
 
     try {
       const consultationMeetingDate = `${consultationDetails.selectedDate || ""} ${consultationDetails.preferredSlot || ""}`.trim();
+      const consultationMeetingType = consultationDetails.consultationMode === "video-call"
+        ? "Video Conference"
+        : (consultationDetails.consultationMode === "experience-center"
+            ? "Experience Center"
+            : consultationDetails.consultationMode || null);
       const consultationPayload = {
         phoneNumber: firstFormDetails.phone,
         name: firstFormDetails.name || null,
         email: firstFormDetails.email || null,
         propertyPin: firstFormDetails.pincode || null,
         budget: firstFormDetails.budget || null,
-        bookingType: consultationDetails.consultationMode === "video-call"
-          ? "Video Conference"
-          : "Experience Center",
+        meetingType: consultationMeetingType,
         meetingDate: consultationMeetingDate || null,
         propertyDetails: consultationDetails.propertyName || null,
         possession: consultationDetails.possessionTimeline || null,
-        possessionIn: consultationDetails.possessionTimeline || null,
         source: isDesignConsultation ? "Design Consultation" : "Website Book Consultation",
       };
 
