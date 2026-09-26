@@ -128,10 +128,12 @@ const EstimateForm: React.FC = () => {
       email: formData.email,
       phone: formData.phoneNumber,
       pincode: formData.pincode,
+      budget: formData.interiorSetup,
     });
 
     fireAndForgetLeadSubmit("/api/get-estimate", {
       ...formData,
+      budget: formData.interiorSetup,
       pageUrl,
     });
 

@@ -33,13 +33,20 @@ export async function POST(req) {
 
     // Send data to unified API endpoint
     try {
+      const isBudgetVal = (val) => {
+        if (!val) return false;
+        const lower = String(val).toLowerCase();
+        return lower.includes("lakh") || lower.includes("cr") || /\b\d+\s*-\s*\d+/.test(lower);
+      };
+      const resolvedBudget = body.budget || (isBudgetVal(interiorSetup) ? interiorSetup : '') || '';
       const websiteLeadPayload = {
         name: name || '',
         email: email || '',
         phoneNumber: phoneNumberFinal || '',
         propertyPin: pincode || '',
-        interiorSetup: interiorSetup || '',
+        interiorSetup: isBudgetVal(interiorSetup) ? '' : (interiorSetup || ''),
         possessionIn: projectPossessionTimeline || '',
+        budget: resolvedBudget,
         pageUrl: pageUrl || '',
         verificationStatus: getVerificationStatus(true),
         otpSuccess: true,

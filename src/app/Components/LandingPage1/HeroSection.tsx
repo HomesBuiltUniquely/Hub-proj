@@ -353,7 +353,7 @@ export default function HeroSections({
     email: formData.email,
     phone: formData.phone,
     city: selectedCity,
-    budget: "",
+    budget: selectedCity || "",
     pincode: selectedPincode,
     whatsappConsent: whatsappConsent,
     pageUrl: window.location.href,
@@ -426,6 +426,7 @@ export default function HeroSections({
       email: formData.email,
       phone: formData.phone,
       pincode: selectedPincode,
+      budget: selectedCity,
     });
     sessionStorage.setItem("formSubmitted", "true");
     sessionStorage.removeItem("hubThankYouAdsConversionSent");

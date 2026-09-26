@@ -202,6 +202,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess, onClose }) => {
       email: trimmedEmail,
       phone: cleanedPhone,
       pincode: trimmedPin,
+      budget: interiorPackage.trim(),
     });
 
     fireAndForgetLeadSubmit("/api/popup-contact", {
@@ -209,6 +210,7 @@ const PopUp: React.FC<PopUpProps> = ({ onFormSuccess, onClose }) => {
       email: trimmedEmail,
       phone: cleanedPhone,
       pincode: trimmedPin,
+      budget: interiorPackage.trim(),
       interiorSetup: interiorPackage.trim(),
       pageUrl,
     });
