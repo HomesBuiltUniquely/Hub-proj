@@ -39,6 +39,12 @@ export async function POST(req: Request) {
     const resolvedInteriorPackage = city || interiorSetup || '';
     const resolvedPossession =
       possession || projectPossessionTimeline || '';
+    const isBudgetVal = (val?: string) => {
+      if (!val) return false;
+      const lower = val.toLowerCase();
+      return lower.includes("lakh") || lower.includes("cr") || /\b\d+\s*-\s*\d+/.test(lower);
+    };
+    const resolvedBudget = budget || (isBudgetVal(resolvedInteriorPackage) ? resolvedInteriorPackage : '') || '';
 
     if (!isValidIndianPhone(phone)) {
       return NextResponse.json(
@@ -115,11 +121,12 @@ export async function POST(req: Request) {
           phoneNumber: normalizedPhone,
           pinCode: pincode || null,
           propertyPin: pincode || null,
-          propertyType: bhkType || resolvedInteriorPackage || null,
+          propertyType: bhkType || (isBudgetVal(resolvedInteriorPackage) ? null : resolvedInteriorPackage) || null,
           bookASlot: date || time || null,
           leadSource: 'Website',
           verificationStatus: normalizedVerificationStatus,
           otpSuccess: normalizedOtpSuccess,
+          budget: resolvedBudget || null,
         };
 
         console.log('Sending data to MetaLead API:', metaLeadPayload);
@@ -234,8 +241,9 @@ export async function POST(req: Request) {
           email: email || '',
           phoneNumber: normalizedPhone,
           propertyPin: pincode || '',
-          interiorSetup: resolvedInteriorPackage,
+          interiorSetup: isBudgetVal(resolvedInteriorPackage) ? '' : resolvedInteriorPackage,
           possessionIn: resolvedPossession,
+          budget: resolvedBudget,
           verificationStatus: websiteLeadVerificationStatus,
           otpSuccess: websiteLeadOtpSuccess,
         };
