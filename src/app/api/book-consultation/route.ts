@@ -30,6 +30,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const firstFormDetails: LeadDetails = body?.firstFormDetails || {};
     const consultationDetails: ConsultationDetails = body?.consultationDetails || {};
+    const floorPlan = body?.floorPlan || null;
     const pageUrl: string = body?.pageUrl || "";
     const formSource: string = body?.formSource || "book-consultation";
     const phoneVerified: boolean = body?.phoneVerified === true;
@@ -46,6 +47,47 @@ export async function POST(req: Request) {
         { success: false, message: "Consultation mode, date, and preferred slot are required." },
         { status: 400 }
       );
+    }
+
+    const crmBaseUrl = (process.env.CRM_API_URL || "https://Hows.hubinterior.com/v1/WebsiteLead")
+      .replace(/\/v1\/WebsiteLead\/?$/i, "")
+      .replace(/\/+$/, "");
+
+    let floorPlanUrl: string | null = null;
+    let floorPlanPublicToken: string | null = null;
+
+    if (floorPlan?.base64 && floorPlan?.name) {
+      try {
+        const base64Data = floorPlan.base64.replace(/^data:[^;]+;base64,/, "");
+        const buffer = Buffer.from(base64Data, "base64");
+        const blob = new Blob([buffer], { type: floorPlan.type || "application/octet-stream" });
+        const formData = new FormData();
+        formData.append("file", blob, floorPlan.name);
+        formData.append("leadType", "glead");
+        formData.append("leadId", "0");
+
+        const uploadApiUrl = `${crmBaseUrl}/v1/public/floor-plan/upload`;
+        console.log("Uploading floor plan file to CRM:", uploadApiUrl, floorPlan.name);
+        const uploadRes = await fetch(uploadApiUrl, {
+          method: "POST",
+          body: formData,
+        });
+
+        if (uploadRes.ok) {
+          const uploadJson = await uploadRes.json();
+          console.log("Floor plan upload response from CRM:", uploadJson);
+          if (uploadJson?.floorPlanUrl) {
+            floorPlanUrl = uploadJson.floorPlanUrl;
+          }
+          if (uploadJson?.floorPlanPublicToken) {
+            floorPlanPublicToken = uploadJson.floorPlanPublicToken;
+          }
+        } else {
+          console.error("Floor plan upload to CRM failed:", uploadRes.status, uploadRes.statusText);
+        }
+      } catch (uploadErr) {
+        console.error("Error uploading floor plan file:", uploadErr);
+      }
     }
 
     const mailUser = process.env.GMAIL_USER;
@@ -94,6 +136,11 @@ export async function POST(req: Request) {
       ${consultationDetails.propertyName ? `<p><strong>Property Name:</strong> ${consultationDetails.propertyName}</p>` : ""}
       ${consultationDetails.possessionTimeline ? `<p><strong>Possession Timeline:</strong> ${consultationDetails.possessionTimeline}</p>` : ""}
       ` : ""}
+      ${floorPlanUrl ? `
+      <hr />
+      <h3>Floor Plan Details</h3>
+      <p><strong>Floor Plan:</strong> <a href="${floorPlanPublicToken ? `${crmBaseUrl}/v1/public/floor-plan/${floorPlanPublicToken}` : (floorPlanUrl.startsWith("http") ? floorPlanUrl : "#")}" target="_blank" rel="noopener noreferrer" style="color: #EF2B2D; text-decoration: underline;">Click here to open</a></p>
+      ` : ""}
       <hr />
       <p><strong>Page URL:</strong> <a href="${pageUrl || "#"}">${pageUrl || "Not provided"}</a></p>
     `;
@@ -108,9 +155,6 @@ export async function POST(req: Request) {
     });
 
     // Sync Consultation details to dedicated CRM Lead Consultation Update endpoint
-    const crmBaseUrl = (process.env.CRM_API_URL || "https://Hows.hubinterior.com/v1/WebsiteLead")
-      .replace(/\/v1\/WebsiteLead\/?$/i, "")
-      .replace(/\/+$/, "");
     const consultationApiUrl = `${crmBaseUrl}/v1/leads/consultation`;
 
     try {
@@ -131,6 +175,8 @@ export async function POST(req: Request) {
         propertyDetails: consultationDetails.propertyName || null,
         possession: consultationDetails.possessionTimeline || null,
         source: isDesignConsultation ? "Design Consultation" : "Website Book Consultation",
+        floorPlanUrl: floorPlanUrl || null,
+        floorPlanPublicToken: floorPlanPublicToken || null,
       };
 
       console.log("Sending book-consultation data to CRM Consultation API:", consultationPayload);

@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
-import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 import {
   formatDateForInput,
   isPreferredSlotAvailable,
@@ -69,6 +68,8 @@ function FormSection({
   setPropertyName,
   possessionTimeline,
   setPossessionTimeline,
+  floorPlanFile,
+  setFloorPlanFile,
   onSubmit,
 }: {
   consultationMode: ConsultationMode;
@@ -81,6 +82,8 @@ function FormSection({
   setPropertyName: (v: string) => void;
   possessionTimeline: PossessionTimeline;
   setPossessionTimeline: (v: PossessionTimeline) => void;
+  floorPlanFile: File | null;
+  setFloorPlanFile: (v: File | null) => void;
   onSubmit: () => void;
 }) {
   const today = new Date();
@@ -91,6 +94,29 @@ function FormSection({
   const maxDate = formatDateForInput(maxSelectableDate);
   const isSlotSelectEnabled = Boolean(selectedDate);
   const [showSlotHint, setShowSlotHint] = useState(false);
+  const [fileError, setFileError] = useState("");
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
+    const allowedExtensions = [".jpg", ".jpeg", ".png", ".pdf"];
+    const fileExt = "." + file.name.split(".").pop()?.toLowerCase();
+
+    if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExt)) {
+      setFileError("Invalid file type. Please upload JPG, JPEG, PNG, or PDF file.");
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      setFileError("File size exceeds 10MB limit. Please upload a smaller file.");
+      return;
+    }
+
+    setFileError("");
+    setFloorPlanFile(file);
+  };
 
   const inputClass =
     "h-[58px] w-full text-black rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
@@ -269,6 +295,90 @@ function FormSection({
         ))}
       </div>
 
+      {/* Step 4: Upload Floor Plan */}
+      <div className="mt-8 mb-5 flex items-center justify-between border-t border-[#ECEFF4] pt-8">
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+            4
+          </div>
+          <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
+            Upload Floor Plan
+          </h2>
+        </div>
+        <span className="text-[13px] font-semibold text-[#9AA1AE] bg-[#F4F6F9] px-3 py-1 rounded-full manrope">
+          Optional
+        </span>
+      </div>
+
+      <div className="relative">
+        <input
+          type="file"
+          id="floorPlanUpload"
+          accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+
+        {!floorPlanFile ? (
+          <label
+            htmlFor="floorPlanUpload"
+            className="flex flex-col items-center justify-center w-full min-h-[120px] border-2 border-dashed border-[#D1D5DB] rounded-[18px] bg-[#F9FAFC] hover:bg-white hover:border-[#EF2B2D] transition-all duration-300 cursor-pointer p-4 group"
+          >
+            <div className="flex items-center justify-center w-11 h-11 mb-2 rounded-full bg-[#EF2B2D]/10 text-[#EF2B2D] group-hover:scale-110 transition-transform duration-300">
+              <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+            </div>
+            <p className="text-[14px] font-bold text-[#24262B] manrope">
+              Upload your floor plan
+            </p>
+            <p className="text-[12px] text-[#9AA1AE] mt-1 manrope">
+              JPG, JPEG, PNG or PDF (Max 10MB)
+            </p>
+          </label>
+        ) : (
+          <div className="flex items-center justify-between w-full p-4 rounded-[18px] border-2 border-[#EF2B2D]/30 bg-[#FFF8F8]">
+            <div className="flex items-center gap-3 overflow-hidden">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-white">
+                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <p className="text-[14px] font-bold text-[#24262B] truncate manrope">
+                  {floorPlanFile.name}
+                </p>
+                <p className="text-[12px] text-[#6A7280] manrope">
+                  {(floorPlanFile.size / (1024 * 1024)).toFixed(2)} MB
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setFloorPlanFile(null);
+                setFileError("");
+              }}
+              className="p-2 text-[#9AA1AE] hover:text-[#EF2B2D] hover:bg-white rounded-full transition-colors shrink-0"
+              title="Remove file"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        )}
+        {fileError && (
+          <p className="mt-2 text-[12px] font-semibold text-[#EF2B2D] manrope">
+            {fileError}
+          </p>
+        )}
+      </div>
+
       {/* Submit */}
       <button
         type="submit"
@@ -295,6 +405,7 @@ export default function BookConsultationForm() {
   const [preferredSlot, setPreferredSlot] = useState("");
   const [propertyName, setPropertyName] = useState("");
   const [possessionTimeline, setPossessionTimeline] = useState<PossessionTimeline>("immediately");
+  const [floorPlanFile, setFloorPlanFile] = useState<File | null>(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -305,7 +416,7 @@ export default function BookConsultationForm() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleBookConsultationSubmit = () => {
+  const handleBookConsultationSubmit = async () => {
     if (!selectedDate || !preferredSlot || !propertyName) {
       alert("Please fill date, preferred slot and property details.");
       return;
@@ -347,7 +458,26 @@ export default function BookConsultationForm() {
           : "") || fallbackBudget,
     };
 
-    fireAndForgetLeadSubmit("/api/book-consultation", {
+    let floorPlan = null;
+    if (floorPlanFile) {
+      try {
+        const base64Data = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = (error) => reject(error);
+          reader.readAsDataURL(floorPlanFile);
+        });
+        floorPlan = {
+          name: floorPlanFile.name,
+          type: floorPlanFile.type,
+          base64: base64Data,
+        };
+      } catch (e) {
+        console.error("Error reading floor plan file:", e);
+      }
+    }
+
+    const payload = {
       pageUrl: typeof window !== "undefined" ? window.location.href : "",
       firstFormDetails,
       consultationDetails: {
@@ -357,13 +487,25 @@ export default function BookConsultationForm() {
         propertyName,
         possessionTimeline,
       },
-    });
+      floorPlan,
+    };
+
+    try {
+      await fetch("/api/book-consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch (err) {
+      console.error("Background lead submit failed:", err);
+    }
 
     alert("Thank you for your submission.");
     setSelectedDate("");
     setPreferredSlot("");
     setPropertyName("");
     setPossessionTimeline("immediately");
+    setFloorPlanFile(null);
     setIsSubmitting(false);
   };
 
@@ -406,6 +548,8 @@ export default function BookConsultationForm() {
               setPropertyName={setPropertyName}
               possessionTimeline={possessionTimeline}
               setPossessionTimeline={setPossessionTimeline}
+              floorPlanFile={floorPlanFile}
+              setFloorPlanFile={setFloorPlanFile}
               onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
             />
           </div>
@@ -453,6 +597,8 @@ export default function BookConsultationForm() {
                 setPropertyName={setPropertyName}
                 possessionTimeline={possessionTimeline}
                 setPossessionTimeline={setPossessionTimeline}
+                floorPlanFile={floorPlanFile}
+                setFloorPlanFile={setFloorPlanFile}
                 onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
               />
             </div>
