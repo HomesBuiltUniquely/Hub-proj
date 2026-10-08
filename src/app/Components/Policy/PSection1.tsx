@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
-const TABS = [
+const TABS: { label: string; value: string; href?: string }[] = [
   { label: "Privacy Policy", value: "privacy" },
   {
     label: "What Information is collected from you?",
@@ -18,6 +19,11 @@ const TABS = [
   { label: "Information Sharing and Disclosures", value: "disclosures" },
   { label: "Policy Compliance", value: "compliance" },
   { label: "Your Choices", value: "choices" },
+  {
+    label: "Hows CRM Mobile — Privacy & Data Notice",
+    value: "hows-crm-mobile",
+    href: "/Policy/hows-crm-mobile",
+  },
 ];
 
 const getContent = (tab: string) => {
@@ -63,12 +69,12 @@ const getContent = (tab: string) => {
           </p>
         </div>
       );
-case "cancellation":
-  return (
-    <div className="text-gray-700 text-sm md:text-base py-3 md:py-5 leading-relaxed">
-      <h1 className="text-xl md:text-2xl manrope mb-4">
-        HUB Cancellation & Refund Policy
-      </h1>
+    case "cancellation":
+      return (
+        <div className="text-gray-700 text-sm md:text-base py-3 md:py-5 leading-relaxed">
+          <h1 className="text-xl md:text-2xl manrope mb-4">
+            HUB Cancellation & Refund Policy
+          </h1>
 
       <p className="manrope-medium">
         100% design advance (Booking amount) will be refunded if a valid modular
@@ -483,7 +489,17 @@ case "cancellation":
 };
 
 const LegalSection = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("privacy");
+
+  const handleTabSelect = (value: string) => {
+    const tab = TABS.find((item) => item.value === value);
+    if (tab && "href" in tab && tab.href) {
+      router.push(tab.href);
+      return;
+    }
+    setActiveTab(value);
+  };
 
   return (
     <div>
@@ -533,7 +549,7 @@ const LegalSection = () => {
                       : "bg-blue-50 text-gray-500 hover:bg-blue-100"
                   }
                 `}
-                  onClick={() => setActiveTab(tab.value)}
+                  onClick={() => handleTabSelect(tab.value)}
                   style={{
                     border: "none",
                     outline: "none",
@@ -570,7 +586,7 @@ const LegalSection = () => {
                       : "bg-blue-50 text-gray-500 hover:bg-blue-100"
                   }
                 `}
-                  onClick={() => setActiveTab(tab.value)}
+                  onClick={() => handleTabSelect(tab.value)}
                   style={{
                     border: "none",
                     outline: "none",
@@ -607,7 +623,7 @@ const LegalSection = () => {
                       : "bg-blue-50 text-gray-500 hover:bg-blue-100"
                   }
                 `}
-                  onClick={() => setActiveTab(tab.value)}
+                  onClick={() => handleTabSelect(tab.value)}
                   style={{
                     border: "none",
                     outline: "none",
@@ -633,7 +649,7 @@ const LegalSection = () => {
         <div className="relative px-1">
           <select
             value={activeTab}
-            onChange={(e) => setActiveTab(e.target.value)}
+            onChange={(e) => handleTabSelect(e.target.value)}
             className="w-full p-4 border-2 border-blue-300 rounded-xl bg-white text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none text-base"
           >
             {TABS.map((tab) => (
