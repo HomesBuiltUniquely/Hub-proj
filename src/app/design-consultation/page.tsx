@@ -1,3 +1,5 @@
+"use client";
+
 import DesignConsultationForm from "../Components/DesignConsultation/DesignConsultationForm";
 
 

@@ -112,14 +112,19 @@ function FormSection({
   onSubmit: () => void;
   isSubmitting: boolean;
 }) {
-  const today = new Date();
-  const maxSelectableDate = new Date(today);
-  maxSelectableDate.setDate(today.getDate() + 14);
-
-  const minDate = formatDateForInput(today);
-  const maxDate = formatDateForInput(maxSelectableDate);
-  const isSlotSelectEnabled = Boolean(selectedDate);
+  const [minDate, setMinDate] = useState("");
+  const [maxDate, setMaxDate] = useState("");
   const [showSlotHint, setShowSlotHint] = useState(false);
+
+  useEffect(() => {
+    const today = new Date();
+    const maxSelectableDate = new Date(today);
+    maxSelectableDate.setDate(today.getDate() + 14);
+    setMinDate(formatDateForInput(today));
+    setMaxDate(formatDateForInput(maxSelectableDate));
+  }, []);
+
+  const isSlotSelectEnabled = Boolean(selectedDate);
 
   const inputClass =
     "h-[58px] w-full rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
