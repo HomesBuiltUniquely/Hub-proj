@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { resolveLeadVerificationStatus } from '@/lib/leadVerification';
+import {
+  resolveLeadVerificationStatus,
+  toCrmVerificationStatus,
+} from '@/lib/leadVerification';
 import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 export async function POST(req: Request) {
@@ -83,12 +86,16 @@ export async function POST(req: Request) {
       otpSuccess,
     });
     const normalizedOtpSuccess = normalizedVerificationStatus === 'VERIFIED';
+    const crmVerificationStatus = toCrmVerificationStatus(
+      normalizedVerificationStatus,
+    );
     const hasVerificationInput =
       typeof verificationStatus !== 'undefined' || typeof otpSuccess !== 'undefined';
+    // Missing verification input = not OTP-verified. Never default to VERIFIED.
     const websiteLeadVerificationStatus = hasVerificationInput
-      ? normalizedVerificationStatus
-      : 'VERIFIED';
-    const websiteLeadOtpSuccess = hasVerificationInput ? normalizedOtpSuccess : true;
+      ? crmVerificationStatus
+      : 'UNVERIFIED';
+    const websiteLeadOtpSuccess = hasVerificationInput ? normalizedOtpSuccess : false;
 
     // Identify Meta lead pages (best-interior-designers-in-bangalore and its calculator)
     const isBestInteriorBangalorePage =
@@ -124,7 +131,7 @@ export async function POST(req: Request) {
           propertyType: bhkType || (isBudgetVal(resolvedInteriorPackage) ? null : resolvedInteriorPackage) || null,
           bookASlot: date || time || null,
           leadSource: 'Website',
-          verificationStatus: normalizedVerificationStatus,
+          verificationStatus: crmVerificationStatus,
           otpSuccess: normalizedOtpSuccess,
           budget: resolvedBudget || null,
         };
@@ -163,12 +170,12 @@ export async function POST(req: Request) {
         const home1Payload = {
           name: name || '',
           email: email || '',
-          phoneNumber: phone || '',
+          phoneNumber: normalizedPhone || phone || '',
           propertyPin: pincode || '',
           interiorSetup: isBudgetVal(resolvedInteriorPackage) ? '' : resolvedInteriorPackage,
           possessionIn: resolvedPossession,
           budget: resolvedBudget,
-          verificationStatus: normalizedVerificationStatus,
+          verificationStatus: crmVerificationStatus,
           otpSuccess: normalizedOtpSuccess,
         };
 
@@ -209,7 +216,7 @@ export async function POST(req: Request) {
           interiorSetup: isBudgetVal(resolvedInteriorPackage) ? '' : resolvedInteriorPackage,
           possessionIn: resolvedPossession,
           budget: resolvedBudget,
-          verificationStatus: normalizedVerificationStatus,
+          verificationStatus: crmVerificationStatus,
           otpSuccess: normalizedOtpSuccess,
         };
 

@@ -12,6 +12,13 @@ export function getVerificationStatus(otpSuccess: boolean): VerificationStatus {
   return otpSuccess ? "VERIFIED" : "UNVERIFIED";
 }
 
+/** Home1/MetaLead accepted values that actually store leads. */
+export function toCrmVerificationStatus(
+  status: VerificationStatus,
+): VerificationStatus {
+  return status;
+}
+
 export function resolveLeadVerificationStatus(lead: {
   verificationStatus?: unknown;
   otpSuccess?: unknown;
@@ -33,6 +40,17 @@ export function resolveLeadVerificationStatus(lead: {
 
   if (typeof lead?.otpSuccess === "boolean") {
     return getVerificationStatus(lead.otpSuccess);
+  }
+
+  // String "false"/"true" from some clients / FormData
+  if (typeof lead?.otpSuccess === "string") {
+    const normalizedOtp = lead.otpSuccess.trim().toLowerCase();
+    if (normalizedOtp === "true" || normalizedOtp === "1") {
+      return "VERIFIED";
+    }
+    if (normalizedOtp === "false" || normalizedOtp === "0") {
+      return "UNVERIFIED";
+    }
   }
 
   if (lead?.verified === true) {
