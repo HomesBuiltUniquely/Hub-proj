@@ -19,6 +19,45 @@ export function formatDateForInput(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
+/** Consultation dates are limited to today through the next 14 days (15 days total). */
+export function getConsultationDateBounds(now = new Date()) {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const maxSelectableDate = new Date(today);
+  maxSelectableDate.setDate(today.getDate() + 14);
+
+  return {
+    minDate: formatDateForInput(today),
+    maxDate: formatDateForInput(maxSelectableDate),
+  };
+}
+
+/** Only the next 15 selectable dates — used on mobile where native min/max is unreliable. */
+export function getConsultationDateOptions(now = new Date()) {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  return Array.from({ length: 15 }, (_, index) => {
+    const date = new Date(today);
+    date.setDate(today.getDate() + index);
+    const value = formatDateForInput(date);
+    const label = date.toLocaleDateString("en-IN", {
+      weekday: "short",
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+    return { value, label };
+  });
+}
+
+export function isConsultationDateInRange(
+  selectedDate: string,
+  now = new Date()
+) {
+  if (!selectedDate) return false;
+  const { minDate, maxDate } = getConsultationDateBounds(now);
+  return selectedDate >= minDate && selectedDate <= maxDate;
+}
+
 function getSlotStartMinutes(slot: string) {
   const start = slot.split(" - ")[0]?.trim() ?? "";
   const match = start.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);

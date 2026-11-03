@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import { normalizePhoneNumber } from "@/lib/utils";
 import { Pincode } from "../LandingPage1/Pincode";
 import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
+import ConsultationDatePicker from "../ConsultationDatePicker";
 import {
-  formatDateForInput,
+  isConsultationDateInRange,
   isPreferredSlotAvailable,
   preferredSlots,
 } from "@/lib/consultationSlots";
@@ -112,19 +113,21 @@ function FormSection({
   onSubmit: () => void;
   isSubmitting: boolean;
 }) {
-  const [minDate, setMinDate] = useState("");
-  const [maxDate, setMaxDate] = useState("");
   const [showSlotHint, setShowSlotHint] = useState(false);
-
-  useEffect(() => {
-    const today = new Date();
-    const maxSelectableDate = new Date(today);
-    maxSelectableDate.setDate(today.getDate() + 14);
-    setMinDate(formatDateForInput(today));
-    setMaxDate(formatDateForInput(maxSelectableDate));
-  }, []);
-
   const isSlotSelectEnabled = Boolean(selectedDate);
+
+  const handleDateChange = (nextDate: string) => {
+    if (nextDate && !isConsultationDateInRange(nextDate)) {
+      alert("Please select a date within the next 15 days.");
+      setSelectedDate("");
+      setPreferredSlot("");
+      return;
+    }
+    setSelectedDate(nextDate);
+    if (preferredSlot && !isPreferredSlotAvailable(preferredSlot, nextDate)) {
+      setPreferredSlot("");
+    }
+  };
 
   const inputClass =
     "h-[58px] w-full rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
@@ -296,27 +299,12 @@ function FormSection({
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-4">
-        <div className="relative">
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => {
-              const nextDate = e.target.value;
-              setSelectedDate(nextDate);
-              if (preferredSlot && !isPreferredSlotAvailable(preferredSlot, nextDate)) {
-                setPreferredSlot("");
-              }
-            }}
-            min={minDate}
-            max={maxDate}
-            className={`${inputClass} [color-scheme:light]`}
-          />
-          {!selectedDate && (
-            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope lg:hidden">
-              Select Date
-            </span>
-          )}
-        </div>
+        <ConsultationDatePicker
+          value={selectedDate}
+          onChange={handleDateChange}
+          className={inputClass}
+          placeholder="Select Date"
+        />
         <div
           className="relative group"
           onMouseLeave={() => setShowSlotHint(false)}
@@ -504,6 +492,10 @@ export default function DesignConsultationForm() {
     }
     if (!selectedDate) {
       alert("Please select a preferred date.");
+      return false;
+    }
+    if (!isConsultationDateInRange(selectedDate)) {
+      alert("Please select a date within the next 15 days.");
       return false;
     }
     if (!preferredSlot) {
