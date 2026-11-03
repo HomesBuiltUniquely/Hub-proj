@@ -2,6 +2,7 @@
 
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
+import { formatIndianPhoneE164 } from '@/lib/utils'
 
 
 // Declare gtag function for TypeScript
@@ -19,7 +20,8 @@ export default function ThankUPage() {
     // Load user data from sessionStorage
     const userName = sessionStorage.getItem('userName') || '';
     const userEmail = sessionStorage.getItem('userEmail') || '';
-    const userPhone = sessionStorage.getItem('userPhone') || '';
+    const userPhoneRaw = sessionStorage.getItem('userPhone') || '';
+    const userPhone = userPhoneRaw ? formatIndianPhoneE164(userPhoneRaw) : '';
     
     setUserData({ name: userName, email: userEmail, phone: userPhone });
     

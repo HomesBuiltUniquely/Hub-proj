@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
-import { budgetOptions } from './DropDown2';
 import { normalizePhoneNumber } from '@/lib/utils';
+import { getVerificationStatus } from '@/lib/leadVerification';
+import {
+  prepareLeadThankYou,
+  fireAndForgetLeadSubmit,
+  redirectToLeadThankYou,
+} from '@/lib/postLeadSubmitRedirect';
 
 interface CalculatorData {
   bhkType?: string;
@@ -35,11 +39,8 @@ interface CalculatorData {
 type FinalLeadFormProps = { calculatorData?: CalculatorData };
 
 const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
-  const router = useRouter();
 
   const [selectedPincode, setSelectedPincode] = useState('');
-  const [selectedPossession, setSelectedPossession] = useState('');
-  const [possessionOpen, setPossessionOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [selectedDate, setSelectedDate] = useState('');
@@ -61,13 +62,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
       setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     }
   };
-
-  const handlePossessionSelect = (option: string) => {
-    setSelectedPossession(option);
-    setPossessionOpen(false);
-  };
-
-  
 
   const sendOTP = async () => {
     if (!formData.phone) {
@@ -137,85 +131,48 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     }
   };
 
-  const handleFinalSubmit = useCallback(async () => {
+  const handleFinalSubmit = useCallback(() => {
     setIsSubmitting(true);
-    try {
-      const currentUrl = window.location.href;
-      const c = calculatorData || {};
-      console.log('[FinalLeadForm] Received calculatorData:', c);
-      const requestData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        possession: selectedPossession,
-        pincode: selectedPincode,
-        date: selectedDate,
-        time: selectedTime,
-        pageUrl: currentUrl,
-        verificationStatus: isVerified ? 'Verified User' : 'No OTP',
-        // Include calculator data both nested and flattened for backend email processing
-        calculator: c,
-        bhkType: c.bhkType ?? '',
-        rooms: c.rooms ? JSON.stringify(c.rooms) : '',
-        wardrobe: c.wardrobe ? JSON.stringify(c.wardrobe) : '',
-        kitchen: c.kitchen ? JSON.stringify(c.kitchen) : '',
-        collections: c.collections ? JSON.stringify(c.collections) : '',
-        material: c.material ? JSON.stringify(c.material) : '',
-      };
-      console.log('[FinalLeadForm] Submitting payload to /api/contact:', requestData);
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
-      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(requestData), signal: controller.signal });
-      clearTimeout(timeoutId);
-      const data = await res.json();
-      console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
-      if (res.ok && data.success) {
-        // Fire-and-forget to external endpoint (same pattern as LandingPage1)
-        (async () => {
-          try {
-            const home1Payload = {
-              name: requestData.name,
-              email: requestData.email,
-              phoneNumber: requestData.phone,
-              propertyPin: requestData.pincode,
-            };
 
-            await fetch('https://Hows.hubinterior.com/v1/WebsiteLead', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(home1Payload),
-            });
-          } catch (err) {
-            console.warn('Failed to POST to https://Hows.hubinterior.com/v1/WebsiteLead', err);
-          }
-        })();
+    const currentUrl = window.location.href;
+    const c = calculatorData || {};
+    const requestData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      pincode: selectedPincode,
+      date: selectedDate,
+      time: selectedTime,
+      pageUrl: currentUrl,
+      verificationStatus: getVerificationStatus(isVerified),
+      otpSuccess: isVerified,
+      calculator: c,
+      bhkType: c.bhkType ?? '',
+      rooms: c.rooms ? JSON.stringify(c.rooms) : '',
+      wardrobe: c.wardrobe ? JSON.stringify(c.wardrobe) : '',
+      kitchen: c.kitchen ? JSON.stringify(c.kitchen) : '',
+      collections: c.collections ? JSON.stringify(c.collections) : '',
+      material: c.material ? JSON.stringify(c.material) : '',
+    };
 
-        setSelectedPincode('');
-        setSelectedPossession('');
-        setSelectedDate('');
-        setSelectedTime('');
-        setFormData({ name: '', email: '', phone: '' });
-        // Set flag to trigger reload on thank you page for GTM tracking
-        sessionStorage.setItem('formSubmitted', 'true');
-        
-        // Store user data for thank you page
-        sessionStorage.setItem('userEmail', formData.email);
-        sessionStorage.setItem('userPhone', formData.phone);
-        sessionStorage.setItem('userName', formData.name);
-        
-        router.push('/Form-Submit-Thank-You');
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSubmitting(false);
-    } 
-  }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, calculatorData, router]);
+    prepareLeadThankYou({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      pincode: selectedPincode,
+    });
+
+    fireAndForgetLeadSubmit('/api/contact', requestData);
+
+    setSelectedPincode('');
+    setSelectedDate('');
+    setSelectedTime('');
+    setFormData({ name: '', email: '', phone: '' });
+    redirectToLeadThankYou();
+  }, [formData, selectedPincode, selectedDate, selectedTime, isVerified, calculatorData]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode) {
+    if (!formData.name || !formData.email || !formData.phone || !selectedPincode) {
       return;
     }
     
@@ -225,7 +182,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
     }
     
     await handleFinalSubmit();
-  }, [formData, selectedPossession, selectedPincode, isVerified, handleFinalSubmit]);
+  }, [formData, selectedPincode, isVerified, handleFinalSubmit]);
 
   useEffect(() => {
     const handler = () => { performSubmitFlow(); };
@@ -291,7 +248,7 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             onChange={handleInputChange}
             placeholder="Email *"
             required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
           />
           <input
             type="tel"
@@ -345,32 +302,6 @@ const FinalLeadForm: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
             </div>
           )}
           
-          <div className="relative w-full">
-            <div
-              onClick={() => {
-                setPossessionOpen(!possessionOpen);
-              }}
-              className={`w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-lg flex items-center justify-between px-6 cursor-pointer ${!selectedPossession && 'text-gray-400'}`}
-            >
-              <span>
-                {selectedPossession || "Project Type & Possession *"}
-              </span>
-              <span className="text-gray-500">&#9662;</span>
-            </div>
-            {possessionOpen && (
-              <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
-                {budgetOptions.map((option: string) => (
-                  <li
-                    key={option}
-                    onClick={() => handlePossessionSelect(option)}
-                    className="px-6 py-3 hover:bg-gray-100 cursor-pointer text-gray-700"
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
           <div className="relative w-full">
             <select
               name="pincode"

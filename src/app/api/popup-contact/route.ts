@@ -1,20 +1,48 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { getVerificationStatus } from '@/lib/leadVerification';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, pincode, pageUrl } = body;
+    const { name, email, phone, pincode, interiorSetup, projectPossessionTimeline, pageUrl } = body;
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits.' },
+        { status: 400 },
+      );
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
-    console.log('Popup form API route called with data:', { name, phone, pincode, pageUrl });
+    console.log('Popup form API route called with data:', {
+      name,
+      email,
+      phone: normalizedPhone,
+      pincode,
+      interiorSetup,
+      projectPossessionTimeline,
+      pageUrl,
+    });
     
     // Send data to unified API endpoint
     try {
+      const isBudgetVal = (val?: string) => {
+        if (!val) return false;
+        const lower = val.toLowerCase();
+        return lower.includes("lakh") || lower.includes("cr") || /\b\d+\s*-\s*\d+/.test(lower);
+      };
+      const resolvedBudget = body.budget || (isBudgetVal(interiorSetup) ? interiorSetup : '') || '';
       const websiteLeadPayload = {
         name: name || '',
-        email: '', // Popup doesn't collect email
-        phoneNumber: phone || '',
+        email: email || '',
+        phoneNumber: normalizedPhone,
         propertyPin: pincode || '',
+        interiorSetup: isBudgetVal(interiorSetup) ? '' : (interiorSetup || ''),
+        possessionIn: projectPossessionTimeline || '',
+        budget: resolvedBudget,
+        verificationStatus: getVerificationStatus(true),
+        otpSuccess: true,
       };
 
       console.log('Sending popup data to WebsiteLead API:', websiteLeadPayload);
@@ -28,8 +56,8 @@ export async function POST(req: Request) {
       });
 
       if (websiteLeadResponse.ok) {
-        const websiteLeadData = await websiteLeadResponse.json();
-        console.log('WebsiteLead API response:', websiteLeadData);
+        const websiteLeadText = await websiteLeadResponse.text();
+        console.log('WebsiteLead API response:', websiteLeadText);
       } else {
         console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
       }
@@ -96,11 +124,23 @@ export async function POST(req: Request) {
                 </div>
                 <div>
                   <strong style="color: #555;">Phone:</strong><br>
-                  <span style="color: #333; font-size: 16px;">${phone || 'Not provided'}</span>
+                  <span style="color: #333; font-size: 16px;">${normalizedPhone || 'Not provided'}</span>
+                </div>
+                <div>
+                  <strong style="color: #555;">Email:</strong><br>
+                  <span style="color: #333; font-size: 16px;">${email || 'Not provided'}</span>
                 </div>
                 <div>
                   <strong style="color: #555;">Pincode:</strong><br>
                   <span style="color: #333; font-size: 16px;">${pincode || 'Not provided'}</span>
+                </div>
+                <div style="grid-column: span 2; margin-top: 5px;">
+                  <strong style="color: #555;">Interior Package:</strong><br>
+                  <span style="color: #ef0101; font-size: 16px; font-weight: bold;">${interiorSetup || 'Not provided'}</span>
+                </div>
+                <div style="grid-column: span 2; margin-top: 5px;">
+                  <strong style="color: #555;">Project Possession Timeline:</strong><br>
+                  <span style="color: #333; font-size: 16px;">${projectPossessionTimeline || 'Not provided'}</span>
                 </div>
               </div>
             </div>
@@ -135,7 +175,7 @@ export async function POST(req: Request) {
       `,
     };
 
-    console.log('Sending popup form email with data:', { name, phone, pincode, pageUrl });
+    console.log('Sending popup form email with data:', { name, email, phone: normalizedPhone, pincode, pageUrl });
     console.log('Email configuration:', {
       from: process.env.GMAIL_USER,
       to: recipientEmail,
@@ -174,4 +214,3 @@ export async function POST(req: Request) {
     }, { status: 500 });
   }
 }
-

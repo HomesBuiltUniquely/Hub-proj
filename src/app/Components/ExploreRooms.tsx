@@ -79,7 +79,7 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
   const cards = [
     {
       title: 'Bedroom',
-      image: 'https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog8img1.jpg',
+      image: 'https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/All_HeroSection/bedroom.jpg',
       link: '/Bedroom'
     },
     {
@@ -94,7 +94,7 @@ const ExploreRoomsDropdown: React.FC<OfferingsDropdownProps> = ({
     },
     {
       title: 'Kids Room',
-      image: 'https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/blog12img3.png',
+      image: 'https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/kids+room/kids_room_interior_design.png',
       link: '/KidsRoom'
     }
   ];

@@ -1,16 +1,23 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
-
-type Post = { id: number; title: string; date: string; readTime: string; img: string; path?: string };
+type Post = {
+  id: number;
+  title: string;
+  date: string;
+  readTime: string;
+  img: string;
+  path?: string;
+};
 
 const allPostsInit: Post[] = [
   {
     id: 1,
-    title: "How Mr. Akhil's House Became Bhoo Aabharana (And Why We're Still Obsessed)?",
+    title:
+      "How Mr. Akhil's House Became Bhoo Aabharana (And Why We're Still Obsessed)?",
     date: "Sep 2025",
     readTime: "10 mins read",
     img: "/reelsiam.png",
@@ -26,7 +33,8 @@ const allPostsInit: Post[] = [
   },
   {
     id: 3,
-    title: "Before You Remodel, Check Out These 7 Kitchen Trends to Watch in 2026",
+    title:
+      "Before You Remodel, Check Out These 7 Kitchen Trends to Watch in 2026",
     date: "Sep 2025",
     readTime: "6 mins read",
     img: "/blog3title.jpg",
@@ -34,7 +42,8 @@ const allPostsInit: Post[] = [
   },
   {
     id: 4,
-    title: "Luxury Villa Interior Design – The Royal Tulip Project in Bengaluru by HUB Interior",
+    title:
+      "Luxury Villa Interior Design – The Royal Tulip Project in Bengaluru by HUB Interior",
     date: "August 1, 2025",
     readTime: "8 mins read",
     img: "/blog4title.jpg",
@@ -42,7 +51,8 @@ const allPostsInit: Post[] = [
   },
   {
     id: 5,
-    title: "Interior Design Bangalore: How HUB Interior Crafted Serenity Heights Apartment into a Living Masterpiece",
+    title:
+      "Interior Design Bangalore: How HUB Interior Crafted Serenity Heights Apartment into a Living Masterpiece",
     date: "August 3, 2025",
     readTime: "15 mins read",
     img: "/blog5title.jpg",
@@ -50,7 +60,8 @@ const allPostsInit: Post[] = [
   },
   {
     id: 6,
-    title: "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
+    title:
+      "How to Design a Functional Kitchen Interior in Bengaluru Without Compromising Style",
     date: "August 5, 2025",
     readTime: "12 mins read",
     img: "/blog6img2.jpg",
@@ -104,10 +115,10 @@ const allPostsInit: Post[] = [
 const categoryCards = [
   { id: 1, label: "Interiors", img: "bn.jpg", path: "/" },
   { id: 2, label: "Kitchens", img: "kh.png", path: "/" },
-  { id: 3, label: "Bedrooms", img: "bedroom.png", path: "/" },
+  { id: 3, label: "Bedrooms", img: "bed3.jpg", path: "/" },
   { id: 4, label: "Living Rooms", img: "ab2.png", path: "/" },
   { id: 5, label: "Offices", img: "gh11.png", path: "/" },
-  { id: 6, label: "Bathrooms", img: "Values.png", path: "/" }
+  { id: 6, label: "Bathrooms", img: "Values.png", path: "/" },
 ];
 
 const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
@@ -120,10 +131,13 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
   const remainingPosts = allPosts.length > 5 ? allPosts.slice(5) : [];
   const totalPages = Math.ceil(remainingPosts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentPosts = remainingPosts.slice(startIndex, startIndex + itemsPerPage);
+  const currentPosts = remainingPosts.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
 
   const handleReadMore = (post: Post) => {
-    if (post.path && post.path.startsWith('/')) {
+    if (post.path && post.path.startsWith("/")) {
       router.push(post.path);
     } else {
       router.push(`/Blog/${post.id}`);
@@ -145,7 +159,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
   // Listen for blog posts updates from admin panel
   React.useEffect(() => {
     const handleBlogPostsUpdate = () => {
-      const savedPosts = localStorage.getItem('blogPosts');
+      const savedPosts = localStorage.getItem("blogPosts");
       if (savedPosts) {
         const parsedPosts = JSON.parse(savedPosts);
         if (parsedPosts.length > 0) {
@@ -155,32 +169,31 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
       }
     };
 
-    window.addEventListener('blogPostsUpdated', handleBlogPostsUpdate);
-    return () => window.removeEventListener('blogPostsUpdated', handleBlogPostsUpdate);
+    window.addEventListener("blogPostsUpdated", handleBlogPostsUpdate);
+    return () =>
+      window.removeEventListener("blogPostsUpdated", handleBlogPostsUpdate);
   }, []);
 
   // Debug logging
   React.useEffect(() => {
-    console.log('BlogSection Debug:', {
+    console.log("BlogSection Debug:", {
       allPosts: allPosts.length,
       remainingPosts: remainingPosts.length,
       currentPage,
       totalPages,
-      currentPosts: currentPosts.length
+      currentPosts: currentPosts.length,
     });
   }, [allPosts, remainingPosts, currentPage, totalPages, currentPosts]);
 
-  const goToNext = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const goToNext = () =>
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const goToPrev = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  
+
   const [showRemainingPosts, setShowRemainingPosts] = useState(false);
 
   const handleLoadMore = () => {
     setShowRemainingPosts(true);
   };
-
-
-
 
   return (
     <div>
@@ -414,9 +427,9 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                   {currentPosts.map((post) => (
                     <div key={post.id} className="blog-ultrawide-card">
                       <div className="relative">
-                        <img 
-                          src={post.img} 
-                          alt={post.title} 
+                        <img
+                          src={post.img}
+                          alt={post.title}
                           className="blog-ultrawide-image"
                         />
                       </div>
@@ -425,8 +438,10 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                           <span>Blog • {post.readTime}</span>
                           <span>{post.date}</span>
                         </div>
-                        <h3 className="blog-ultrawide-title-text">{post.title}</h3>
-                        <button 
+                        <h3 className="blog-ultrawide-title-text">
+                          {post.title}
+                        </h3>
+                        <button
                           onClick={() => handleReadMore(post)}
                           className="blog-ultrawide-button"
                         >
@@ -441,17 +456,14 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                 {/* Ultra-wide Pagination */}
                 {remainingPosts.length > itemsPerPage && totalPages > 1 && (
                   <div className="blog-ultrawide-pagination">
-                    <button
-                      onClick={goToPrev}
-                      disabled={currentPage === 1}
-                    >
+                    <button onClick={goToPrev} disabled={currentPage === 1}>
                       &lt;
                     </button>
                     {Array.from({ length: totalPages }).map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setCurrentPage(i + 1)}
-                        className={currentPage === i + 1 ? 'active' : ''}
+                        className={currentPage === i + 1 ? "active" : ""}
                       >
                         {i + 1}
                       </button>
@@ -471,34 +483,38 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                 <p className="text-gray-500 text-xl max-w-3xl mx-auto">
                   {allPosts.length <= 5
                     ? `Showing all ${allPosts.length} blog posts in the featured section above.`
-                    : "No additional blog posts to display. The latest 5 posts are shown in the featured section above."
-                  }
+                    : "No additional blog posts to display. The latest 5 posts are shown in the featured section above."}
                 </p>
               </div>
             )}
 
-            <h2 className="blog-ultrawide-category-title manrope">Explore by Category</h2>
+            <h2 className="blog-ultrawide-category-title manrope">
+              Explore by Category
+            </h2>
             <div className="blog-ultrawide-category-grid">
               {categoryCards.map((cat) => (
-                <div 
-                  key={cat.id} 
+                <div
+                  key={cat.id}
                   className="blog-ultrawide-category-card"
                   onClick={() => router.push(cat.path)}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
-                  <img src={cat.img} alt={cat.label} className="blog-ultrawide-category-image" />
+                  <img
+                    src={cat.img}
+                    alt={cat.label}
+                    className="blog-ultrawide-category-image"
+                  />
                   <div className="blog-ultrawide-category-overlay">
                     <FaArrowRight className="blog-ultrawide-category-icon" />
-                    <span className="blog-ultrawide-category-label manrope-medium">{cat.label}</span>
+                    <span className="blog-ultrawide-category-label manrope-medium">
+                      {cat.label}
+                    </span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
-
-
-
 
         {/* Regular layout for screens below 2560px */}
         <section className="blog-section-regular w-full py-8 px-4 sm:px-6 lg:px-12 bg-[#f1f2f6] -mt-80">
@@ -552,21 +568,21 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
               {/* Pagination - Show when there are more than 3 remaining posts */}
               {remainingPosts.length > itemsPerPage && totalPages > 1 && (
                 <div className="flex justify-center items-center gap-1 sm:gap-2 mb-10 px-4  manrope-medium">
-                  <button 
-                    onClick={goToPrev} 
-                    disabled={currentPage === 1} 
+                  <button
+                    onClick={goToPrev}
+                    disabled={currentPage === 1}
                     className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
                   >
                     <span className="text-sm sm:text-base">&lt;</span>
                   </button>
                   <div className="flex gap-1 sm:gap-2 overflow-x-auto max-w-full">
                     {Array.from({ length: totalPages }).map((_, i) => (
-                      <button 
-                        key={i} 
-                        onClick={() => setCurrentPage(i + 1)} 
+                      <button
+                        key={i}
+                        onClick={() => setCurrentPage(i + 1)}
                         className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full font-medium focus:outline-none transition-colors duration-200 flex items-center justify-center ${
-                          currentPage === i + 1 
-                            ? "bg-gray-800 text-white" 
+                          currentPage === i + 1
+                            ? "bg-gray-800 text-white"
                             : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                         }`}
                       >
@@ -574,9 +590,9 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                       </button>
                     ))}
                   </div>
-                  <button 
-                    onClick={goToNext} 
-                    disabled={currentPage === totalPages} 
+                  <button
+                    onClick={goToNext}
+                    disabled={currentPage === totalPages}
                     className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center"
                   >
                     <span className="text-sm sm:text-base">&gt;</span>
@@ -586,40 +602,43 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
             </>
           ) : (
             <div className="text-center py-8 px-4">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 sm:mb-6 text-gray-900">All Blog Posts</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 sm:mb-6 text-gray-900">
+                All Blog Posts
+              </h2>
               <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">
-                {allPosts.length <= 5 
-                  ? `Showing all ${allPosts.length} blog posts in the featured section above.` 
-                  : "No additional blog posts to display. The latest 5 posts are shown in the featured section above."
-                }
+                {allPosts.length <= 5
+                  ? `Showing all ${allPosts.length} blog posts in the featured section above.`
+                  : "No additional blog posts to display. The latest 5 posts are shown in the featured section above."}
               </p>
             </div>
           )}
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">Explore by Category</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4">
-              {categoryCards.map((cat) => (
-                <div key={cat.id} 
-                  className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md"
-                  onClick={() => router.push(cat.path)}
-                  style={{ cursor: 'pointer' }}>
-                  <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                  <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
-                    <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
-                    <span className="text-white text-lg manrope-medium">{cat.label}</span>
-                  </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">
+            Explore by Category
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4">
+            {categoryCards.map((cat) => (
+              <div
+                key={cat.id}
+                className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md"
+                onClick={() => router.push(cat.path)}
+                style={{ cursor: "pointer" }}
+              >
+                <img
+                  src={cat.img}
+                  alt={cat.label}
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                />
+                <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300">
+                  <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
+                  <span className="text-white text-lg manrope-medium">
+                    {cat.label}
+                  </span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
         </section>
-
-
-
-
-
-      
-
-
 
         {/* Mobile Version */}
         <div className="section2-mobile">
@@ -627,7 +646,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
             {allPosts.length > 5 && (
               <>
                 {/* Show remaining posts only after button is clicked */}
-                {showRemainingPosts && (
+                {showRemainingPosts &&
                   allPosts.slice(3).map((post) => (
                     <div key={post.id} className="mb-8">
                       <img
@@ -649,8 +668,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                         Read More
                       </button>
                     </div>
-                  ))
-                )}
+                  ))}
 
                 {/* Show Load More button only if not yet clicked */}
                 {!showRemainingPosts && (
@@ -673,22 +691,35 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
                   All Blog Posts
                 </h2>
                 <p className="text-gray-500 text-base max-w-sm mx-auto manrope-medium">
-                  Showing all {allPosts.length} blog posts in the featured section above.
+                  Showing all {allPosts.length} blog posts in the featured
+                  section above.
                 </p>
               </div>
             )}
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">Explore by Category</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl manrope mb-6 sm:mb-8 mt-16 sm:mt-20 text-gray-900 text-center px-4">
+              Explore by Category
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 mt-8 sm:mt-12 px-4 manrope-medium">
               {categoryCards.map((cat) => (
-                <div key={cat.id} className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md">
-                  
-                  <img src={cat.img} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" /> 
-                  <div className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300"
-                   onClick={() => router.push(cat.path)}
-                  style={{ cursor: 'pointer' }}>
+                <div
+                  key={cat.id}
+                  className="relative h-48 rounded-xl overflow-hidden group cursor-pointer shadow-md"
+                >
+                  <img
+                    src={cat.img}
+                    alt={cat.label}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                  />
+                  <div
+                    className="absolute inset-0 bg-black/40 bg-opacity-45 group-hover:bg-opacity-60 flex flex-col justify-center items-center transition duration-300"
+                    onClick={() => router.push(cat.path)}
+                    style={{ cursor: "pointer" }}
+                  >
                     <FaArrowRight className="text-white text-xl mb-1 opacity-90" />
-                    <span className="text-white text-lg manrope-medium">{cat.label}</span>
+                    <span className="text-white text-lg manrope-medium">
+                      {cat.label}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -696,7 +727,7 @@ const HomeShowcase = ({ posts = [] }: { posts?: Post[] }) => {
           </div>
         </div>
       </>
-    </div>  
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { NavBar } from "./Navbar";
 import Image from "next/image";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 export default function Header() {
   const images = [
@@ -143,33 +144,20 @@ export default function Header() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      // Get the originally tracked URL with all parameters
-      const landingUrl = sessionStorage.getItem("initialLandingUrl") || window.location.href;
-      
-      const formData = {
-        ...form,
-        pageUrl: landingUrl // Changed from urlParams to pageUrl
-      };
+    setError("");
 
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    const landingUrl =
+      sessionStorage.getItem("initialLandingUrl") || window.location.href;
 
-      if (res.ok) {
-        setSubmitted(true);
-        setForm({ name: '', phone: '', email: '', pincode: '', urlParams: '' });
-      } else {
-        const data = await res.json();
-        setError(data.message || 'Submission failed.');
-      }
-    } catch {
-      setError('Error submitting the form. Please try again.');
-    }
+    fireAndForgetLeadSubmit("/api/contact", {
+      ...form,
+      pageUrl: landingUrl,
+    });
+
+    setSubmitted(true);
+    setForm({ name: "", phone: "", email: "", pincode: "", urlParams: "" });
   };
 
   return (
@@ -240,7 +228,9 @@ export default function Header() {
           <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
             <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
             <input type="tel" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
+            {/* Email field hidden per request.
             <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
+            */}
             <input type="text" name="pincode" placeholder="Pincode" value={form.pincode} onChange={handleChange} required className="w-full px-4 py-2 rounded-md bg-white/90 text-black placeholder-gray-500" />
             <div className="flex items-center gap-2 text-sm md:text-base">
               <input required id="confirm-details" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-blue-600" />

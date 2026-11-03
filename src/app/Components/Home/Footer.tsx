@@ -3,21 +3,83 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+function QuickConnectSection({
+    titleClassName,
+    itemClassName,
+    wrapperClassName = '',
+}: {
+    titleClassName: string;
+    itemClassName: string;
+    wrapperClassName?: string;
+}) {
+    return (
+        <div className={wrapperClassName}>
+            <h1 className={titleClassName}>Quick Connect</h1>
+            <div className="space-y-4">
+                <a
+                    href="tel:07316914731"
+                    className={`${itemClassName} flex items-start gap-3`}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="mt-0.5 h-4 w-4 flex-shrink-0"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M19.5 9.75a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 1.5 0v2.69l4.72-4.72a.75.75 0 1 1 1.06 1.06L16.06 9h2.69a.75.75 0 0 1 .75.75Z"
+                            clipRule="evenodd"
+                        />
+                        <path
+                            fillRule="evenodd"
+                            d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                    <span>
+                        <span className="block">Via Call</span>
+                        <span className="block underline">07316914731</span>
+                    </span>
+                </a>
+                <a
+                    href="mailto:hello@hubinterior.com"
+                    className={`${itemClassName} flex items-start gap-3`}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="mt-0.5 h-4 w-4 flex-shrink-0"
+                    >
+                        <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                        <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                    </svg>
+                    <span>
+                        <span className="block">Via Email</span>
+                        <span className="block break-all">hello@hubinterior.com</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    );
+}
+
 export default function Footer() {
     return (
         <div>
             {/* 3xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-3xl-container hidden 3xl:block mb-2">
+            <div className="home-desktop aboutus-footer-3xl-container hidden 3xl:block mb-2">
                 <div className="w-full h-auto min-h-[600px] px-20">
                     <div className="max-w-7xl mx-auto">
                         <div className="w-full h-auto min-h-[500px] bg-[#32261c] mt-20 rounded-2xl p-12">
                             <div className="flex flex-row text-white gap-40 justify-center">
                                 {/* Company Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Company</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]   transition-colors duration-300 cursor-pointer mt-3">About</p></Link>
-                                        <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Privacy Policy</p></Link>
                                         <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="/"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
@@ -27,7 +89,7 @@ export default function Footer() {
 
                                 {/* Services Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Offerings</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Offerings</h1>
                                     <div className="space-y-3">
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Full Home Interior</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Modular Interior</p>
@@ -41,7 +103,7 @@ export default function Footer() {
 
                                 {/* Other Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Explore Room</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Explore Room</h1>
                                     <div className="space-y-3">
                                         <Link href="/ModularKitchen"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
                                         <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></Link>
@@ -62,12 +124,18 @@ export default function Footer() {
 
                                 {/* Connect Us Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope mb-6">Information</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
-                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2" onClick={() => window.open('https://hubinterior.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
+
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[180px]"
+                                        titleClassName="text-[18px] manrope mb-6"
+                                        itemClassName="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                             <div className="flex justify-between mt-10 ">
@@ -75,10 +143,9 @@ export default function Footer() {
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.instagram.com/hubinterior_/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://x.com/hubinterior1" target="_blank" rel="noopener noreferrer"><Image src="/twitter.png" alt="Twitter" width={23} height={23} className="w-[23px] h-[23px]" /></Link>
+                                    <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -87,17 +154,17 @@ export default function Footer() {
             </div>
 
             {/* 2xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-2xl-section hidden 2xl:block 3xl:hidden mb-2">
+            <div className="home-desktop aboutus-footer-2xl-section hidden 2xl:block 3xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[580px] px-5">
                     <div className="max-w-8xl mx-auto">
                         <div className="w-full h-auto min-h-[480px] bg-[#32261c] mt-20 rounded-2xl p-12">
                             <div className="flex flex-row text-white gap-32 justify-center">
                                 {/* Company Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope mb-6">Company</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">About</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Privacy Policy</p></Link>
                                         <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="Project"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
@@ -107,7 +174,7 @@ export default function Footer() {
 
                                 {/* Services Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Offerings</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Offerings</h1>
                                     <div className="space-y-3">
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Full Home Interior</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Modular Interior</p>
@@ -125,7 +192,7 @@ export default function Footer() {
 
                                 {/* Other Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Explore Room</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Explore Room</h1>
                                     <div className="space-y-3">
                                         <Link href="/ModularKitchen"> <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer ">Modular Kitchen</p></Link>
                                         <Link href="/Bedroom">        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></Link>
@@ -146,12 +213,17 @@ export default function Footer() {
 
                                 {/* Connect Us Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Information</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
-                                        <Link href="/Policy"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2" onClick={() => window.open('https://hubinterior.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer mt-2">Franchise</p></Link>
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[180px]"
+                                        titleClassName="text-[18px] manrope mb-6"
+                                        itemClassName="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                             <div className="flex justify-between mt-10">
@@ -160,9 +232,8 @@ export default function Footer() {
                                 <div className="flex gap-8">
                                     <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                     <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.instagram.com/hubinterior_/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://x.com/hubinterior1" target="_blank" rel="noopener noreferrer"><Image src="/twitter.png" alt="Twitter" width={23} height={23} className="w-[23px] h-[23px]" /></Link>
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -171,17 +242,17 @@ export default function Footer() {
             </div>
 
             {/* xl Footer - Tailwind Classes */}
-            <div className="aboutus-footer-xl-section hidden xl:block 2xl:hidden mb-2">
+            <div className="home-desktop aboutus-footer-xl-section hidden xl:block 2xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[550px] px-6">
                     <div className="max-w-8xl mx-auto">
                         <div className="w-full h-auto min-h-[450px] bg-[#32261c] mt-18 rounded-2xl px-10 py-12">
                             <div className="flex flex-row text-white gap-20 justify-center">
                                 {/* Company Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6 ">Company</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <a href="/AboutUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer ">About</p></a>
-                                        <Link href="/Career"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/Policy"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Privacy Policy</p></Link>
                                         <Link href="/CustomerReviews"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="/Project"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <a href="/Blog"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Blogs</p></a>
@@ -191,7 +262,7 @@ export default function Footer() {
 
                                 {/* Services Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Offerings</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Offerings</h1>
                                     <div className="space-y-3">
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Full Home Interior</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Interior</p>
@@ -207,7 +278,7 @@ export default function Footer() {
 
                                 {/* Other Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Explore Room</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Explore Room</h1>
                                     <div className="space-y-3">
                                         <a href="/ModularKitchen">       <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p></a>
                                         <a href="/Bedroom">            <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></a>
@@ -228,12 +299,17 @@ export default function Footer() {
 
                                 {/* Connect Us Section */}
                                 <div className="mt-15 mr-10">
-                                    <h1 className="text-[16px] manrope mb-6">Information</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <a href="/ContactUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p> </a>
-                                        <a href="/Policy"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p> </a>
+                                        <a href="https://hubinterior.keka.com/careers"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
                                         <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[180px]"
+                                        titleClassName="text-[18px] manrope mb-6"
+                                        itemClassName="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                             <div className="flex justify-between mt-10">
@@ -241,10 +317,9 @@ export default function Footer() {
                                 <a href="/Policy"><p className="text-[14px] text-white pt-2 manrope-medium hover:text-[#ebd657]  transition-colors duration-300">Terms & Conditions</p></a>
                                 <div className="flex gap-8">
                                     <a href="https://in.linkedin.com/company/hubinterior"> <img src="/linkedin.png " className="w-[25px] h-[25px] "></img></a>
-                                    <a href="https://www.youtube.com/@homesunderbudget"><img src="/youtube.png" className="w-[25px] h-[25px]  "></img></a>
-                                    <a href="https://www.facebook.com/HomesUnderBudget/"><img src="/facebook.png" className="w-[25px] h-[25px] "></img></a>
-                                    <a href="https://www.instagram.com/hubinterior_/"><img src="/instagram.png" className="w-[25px] h-[25px] "></img></a>
-                                    <a href="https://x.com/hubinterior1"><img src="/twitter.png" className="w-[23px] h-[23px] "></img></a>
+                                    <a href="https://www.youtube.com/@hubinterior"><img src="/youtube.png" className="w-[25px] h-[25px]  "></img></a>
+                                    <a href="https://www.facebook.com/hubinteriorofficial"><img src="/facebook.png" className="w-[25px] h-[25px] "></img></a>
+                                    <a href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw"><img src="/instagram.png" className="w-[25px] h-[25px] "></img></a>
                                 </div>
                             </div>
                         </div>
@@ -254,17 +329,17 @@ export default function Footer() {
             </div>
 
             {/* lg Footer - Tailwind Classes */}
-            <div className="aboutus-footer-lg-section hidden lg:block xl:hidden mb-2">
+            <div className="home-desktop aboutus-footer-lg-section hidden lg:block xl:hidden mb-2">
                 <div className="w-full h-auto min-h-[500px] px-8">
                     <div className="max-w-6xl mx-auto">
                         <div className="w-full h-auto min-h-[400px] bg-[#32261c] mt-16 rounded-2xl p-10">
                             <div className="flex flex-row text-white gap-16 justify-center">
                                 {/* Company Section */}
                                 <div className="mt-12">
-                                    <h1 className="text-[16px] manrope font-medium mb-6">Company</h1>
+                                    <h1 className="text-[18px] manrope font-medium mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <a href="/AboutUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer ">About</p></a>
-                                        <Link href="/"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <Link href="/Policy"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Privacy Policy</p></Link>
                                         <Link href="/CustomerReviews"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="Project"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <a href="/Blog"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Blogs</p></a>
@@ -274,7 +349,7 @@ export default function Footer() {
 
                                 {/* Services Section */}
                                 <div className="mt-12 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Offerings</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Offerings</h1>
                                     <div className="space-y-3">
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Full Home Interior</p>
                                         <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Interior</p>
@@ -290,7 +365,7 @@ export default function Footer() {
 
                                 {/* Other Section */}
                                 <div className="mt-12 mr-10">
-                                    <h1 className="text-[16px] manrope  mb-6">Explore Room</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Explore Room</h1>
                                     <div className="space-y-3">
                                         <a href="/ModularKitchen"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p></a>
                                         <a href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-3">Bedroom</p></a>
@@ -314,12 +389,17 @@ export default function Footer() {
 
                                 {/* Connect Us Section */}
                                 <div className="mt-12 mr-10">
-                                    <h1 className="text-[16px] manrope mb-6">Information</h1>
+                                    <h1 className="text-[18px] manrope mb-6">Information</h1>
                                     <div className="space-y-3">
                                         <a href="/ContactUs"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p> </a>
-                                        <a href="/Policy"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Privacy Policy</p> </a>
+                                        <a href="https://hubinterior.keka.com/careers"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Career</p> </a>
                                         <a href="/interior-design-franchise"> <p className="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer mt-2">Franchise</p> </a>
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[180px]"
+                                        titleClassName="text-[18px] manrope mb-6"
+                                        itemClassName="text-[14px] manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -328,59 +408,63 @@ export default function Footer() {
             </div>
 
             {/* md Footer - Tailwind Classes */}
-            <div className="aboutus-footer-md-section hidden md:block lg:hidden mb-2">
+            <div className="home-desktop aboutus-footer-md-section hidden md:block lg:hidden mb-2">
                 <div className="w-full h-auto min-h-[450px] px-6">
                     <div className="max-w-5xl mx-auto">
                         <div className="w-full h-auto min-h-[350px] bg-[#32261c] mt-12 rounded-2xl p-8">
                             <div className="flex flex-col md:flex-row text-white gap-12 justify-center">
                                 {/* Company Section */}
                                 <div className="mt-10">
-                                    <h1 className="text-base manrope font-medium mb-5">Company</h1>
+                                    <h1 className="text-lg manrope font-medium mb-5">Company</h1>
                                     <div className="space-y-3">
                                         <Link href="/AboutUs"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">About</p></Link>
-                                        <Link href="/ModularKitchen"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
-                                        <Link href="/Bedroom"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
-                                        <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Franchise</p></Link>
+                                        <Link href="/Policy"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Privacy Policy</p></Link>
+                                        <Link href="/CustomerReviews"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Customer Reviews</p></Link>
+                                        <Link href="/Project"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Project</p></Link>
+                                        <Link href="/Blog"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Blogs</p></Link>
                                         <Link href="/"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Career</p></Link>
-                                        <Link href="/ContactUs"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
                                     </div>
                                 </div>
 
                                 {/* Services Section */}
                                 <div className="mt-10">
-                                    <h1 className="text-base manrope font-medium mb-5">Services</h1>
+                                    <h1 className="text-lg manrope font-medium mb-5">Offerings</h1>
                                     <div className="space-y-3">
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Interior Design</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Wardrobe Design</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Full Home Interior</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Interior</p>
                                         <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Renovation</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Consultation</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Space Management</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Fast Track</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Automations</p>
+                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Home Interior Price Calculator</p>
                                     </div>
                                 </div>
 
                                 {/* Other Section */}
                                 <div className="mt-10">
-                                    <h1 className="text-base manrope font-medium mb-5">Other</h1>
+                                    <h1 className="text-lg manrope font-medium mb-5">Explore Room</h1>
                                     <div className="space-y-3">
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Blog</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Gallery</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Reviews</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Privacy Policy</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Terms of Service</p>
+                                        <Link href="/ModularKitchen"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Modular Kitchen</p></Link>
+                                        <Link href="/Bedroom"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
+                                        <Link href="/LivingRoom"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Living Room</p></Link>
+                                        <Link href="/KidsRoom"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Kids Room</p></Link>
+                                        <Link href="/PoojaUnit"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Pooja Unit</p></Link>
                                     </div>
                                 </div>
 
                                 {/* Connect Us Section */}
                                 <div className="mt-10">
-                                    <h1 className="text-base manrope font-medium mb-5">Connect Us</h1>
+                                    <h1 className="text-lg manrope font-medium mb-5">Information</h1>
                                     <div className="space-y-3">
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Facebook</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">Instagram</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">LinkedIn</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">YouTube</p>
-                                        <p className="text-sm manrope-medium hover:text-[#ebd657]  transition-colors duration-300 cursor-pointer">WhatsApp</p>
+                                        <Link href="/ContactUs"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Contact Us</p></Link>
+                                        <Link href="https://hubinterior.keka.com/careers"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                     </div>
+                                    <QuickConnectSection
+                                        wrapperClassName="mt-8 max-w-[220px]"
+                                        titleClassName="text-lg manrope font-medium mb-5"
+                                        itemClassName="text-sm manrope-medium hover:text-[#ebd657] transition-colors duration-300 cursor-pointer"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -396,10 +480,10 @@ export default function Footer() {
                         <div className="grid grid-cols-2 gap-4 mb-8">
                             {/* Company Column */}
                             <div>
-                                <h3 className="text-sm manrope mb-4 manrope">Company</h3>
+                                <h3 className="text-base manrope mb-4">Company</h3>
                                 <div className="space-y-2">
                                     <Link href="/AboutUs"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">About</p></Link>
-                                    <Link href="/Career"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Career</p></Link>
+                                    <Link href="/Policy"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Privacy Policy</p></Link>
                                     <Link href="/CustomerReviews"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Customer Review</p></Link>
                                     <Link href="Project"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Project</p></Link>
                                     <Link href="/Blog"><p className="text-xs manrope-medium hover:text-[#ebd657] transition-colors cursor-pointer pt-2">Blogs</p></Link>
@@ -409,7 +493,7 @@ export default function Footer() {
 
                             {/* Offerings Column */}
                             <div>
-                                <h3 className="text-sm manrope mb-4 manrope">Offerings</h3>
+                                <h3 className="text-base manrope mb-4">Offerings</h3>
                                 <div className="space-y-2">
                                     <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Full Home Interior</p>
                                     <p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Modular Interior</p>
@@ -427,7 +511,7 @@ export default function Footer() {
 
                             {/* Explore Rooms Column */}
                             <div>
-                                <h3 className="text-sm manrope mb-4 manrope">Explore Rooms</h3>
+                                <h3 className="text-base manrope mb-4">Explore Room</h3>
                                 <div className="space-y-2">
                                     <Link href="/ModularKitchen"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Modular Kitchen</p></Link>
                                     <Link href="/Bedroom"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Bedroom</p></Link>
@@ -448,12 +532,17 @@ export default function Footer() {
 
                             {/* Information Column */}
                             <div>
-                                <h3 className="text-sm manrope mb-4 manrope">Information</h3>
+                                <h3 className="text-base manrope mb-4">Information</h3>
                                 <div className="space-y-2">
                                     <Link href="/ContactUs"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer">Contact Us</p></Link>
-                                    <Link href="/Policy"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Privacy Policy</p></Link>
+                                    <Link href="/Career"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Career</p></Link>
                                     <Link href="/interior-design-franchise"><p className="text-xs manrope-medium hover:text-[#ebd657]  transition-colors cursor-pointer pt-2">Franchise</p></Link>
                                 </div>
+                                <QuickConnectSection
+                                    wrapperClassName="mt-6"
+                                    titleClassName="text-base manrope mb-4"
+                                    itemClassName="text-xs manrope-medium hover:text-[#ebd657] transition-colors cursor-pointer"
+                                />
                             </div>
                         </div>
 
@@ -470,19 +559,16 @@ export default function Footer() {
                                     <Link href="https://in.linkedin.com/company/hubinterior" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <span className="text-white text-xs font-bold"> <img src="/linkedin.png " className="w-[25px] h-[25px] "></img></span>
                                     </Link>
-                                    <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 s rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer" className="w-8 h-8 s rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <span className="text-white text-xs font-bold w-7 h-7 border-1 border-white rounded-full pt-1.5 pl-1"> <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                                         </svg></span>
                                     </Link>
-                                    <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <img src="/instagram.png" className="w-[25px] h-[25px] "></img>
                                     </Link>
-                                    <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                         <span className="text-white text-xs font-bold"><img src="/facebook.png" className="w-[25px] h-[25px] "></img></span>
-                                    </Link>
-                                    <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8  rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                        <span className="text-white text-xs font-bold"><img src="/twitter.png" className="w-[23px] h-[23px] hover:text-[#ebd657] transition-colors duration-300"></img></span>
                                     </Link>
                                 </div>
 
@@ -499,8 +585,3 @@ export default function Footer() {
         </div>
     )
 }
-
-
-
-
-

@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { Pincode } from './Pincode';
-import { budgetOptions } from './DropDown2';
 import { normalizePhoneNumber } from '@/lib/utils';
+import { getVerificationStatus } from '@/lib/leadVerification';
+import {
+  prepareLeadThankYou,
+  fireAndForgetLeadSubmit,
+  redirectToLeadThankYou,
+} from '@/lib/postLeadSubmitRedirect';
 
 interface CalculatorData {
   bhkType?: string;
@@ -35,15 +39,10 @@ interface CalculatorData {
 type FinalLeadFormProps = { calculatorData?: CalculatorData };
 
 const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => {
-  const router = useRouter();
 
   const [selectedPincode, setSelectedPincode] = useState('');
-  const [selectedPossession, setSelectedPossession] = useState('');
-  const [possessionOpen, setPossessionOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
   
   // OTP related states
   const [otpSent, setOtpSent] = useState(false);
@@ -67,11 +66,6 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
     } else {
       setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     }
-  };
-
-  const handlePossessionSelect = (option: string) => {
-    setSelectedPossession(option);
-    setPossessionOpen(false);
   };
 
   const sendOTP = async () => {
@@ -172,92 +166,49 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
     }
   };
 
-  const handleFinalSubmit = useCallback(async () => {
+  const handleFinalSubmit = useCallback(() => {
     setIsSubmitting(true);
-    try {
-      const currentUrl = window.location.href;
-      const c = calculatorData || {};
-      console.log('[FinalLeadForm] Received calculatorData:', c);
-      const requestData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        possession: selectedPossession,
-        pincode: selectedPincode,
-        date: selectedDate,
-        time: selectedTime,
-        pageUrl: currentUrl,
-        verificationStatus: isVerified ? 'Verified User' : 'No OTP',
-        // Include calculator data both nested and flattened for backend email processing
-        calculator: c,
-        bhkType: c.bhkType ?? '',
-        rooms: c.rooms ? JSON.stringify(c.rooms) : '',
-        wardrobe: c.wardrobe ? JSON.stringify(c.wardrobe) : '',
-        kitchen: c.kitchen ? JSON.stringify(c.kitchen) : '',
-        collections: c.collections ? JSON.stringify(c.collections) : '',
-        material: c.material ? JSON.stringify(c.material) : '',
-      };
-      console.log('[FinalLeadForm] Submitting payload to /api/contact:', requestData);
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
-      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(requestData), signal: controller.signal });
-      clearTimeout(timeoutId);
-      const data = await res.json();
-      console.log('[FinalLeadForm] API status:', res.status, 'response:', data);
-      if (res.ok && data.success) {
-        // Fire-and-forget to external endpoint (same pattern as HeroSection)
-        (async () => {
-          try {
-            const home1Payload = {
-              name: requestData.name,
-              email: requestData.email,
-              phoneNumber: requestData.phone,
-              propertyPin: requestData.pincode,
-              interiorSetup: requestData.possession || '',
-              possessionIn: requestData.possession || '',
-            };
 
-            await fetch('https://hows.hubinterior.com/v1/Home1', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(home1Payload),
-            });
-          } catch (err) {
-            console.warn('Failed to POST to https://hows.hubinterior.com/v1/Home1', err);
-          }
-        })();
+    const currentUrl = window.location.href;
+    const c = calculatorData || {};
+    const requestData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      possession: '', // Project Type & Possession removed from form
+      pincode: selectedPincode,
+      pageUrl: currentUrl,
+      verificationStatus: getVerificationStatus(isVerified),
+      otpSuccess: isVerified,
+      calculator: c,
+      bhkType: c.bhkType ?? '',
+      rooms: c.rooms ? JSON.stringify(c.rooms) : '',
+      wardrobe: c.wardrobe ? JSON.stringify(c.wardrobe) : '',
+      kitchen: c.kitchen ? JSON.stringify(c.kitchen) : '',
+      collections: c.collections ? JSON.stringify(c.collections) : '',
+      material: c.material ? JSON.stringify(c.material) : '',
+    };
 
-        setSelectedPincode('');
-        setSelectedPossession('');
-        setSelectedDate('');
-        setSelectedTime('');
-        setFormData({ name: '', email: '', phone: '' });
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp('');
-        setIsVerified(false);
-        setOtpError('');
-        // Set flag to trigger reload on thank you page for GTM tracking
-        sessionStorage.setItem('formSubmitted', 'true');
-        
-        // Store user data for thank you page
-        sessionStorage.setItem('userEmail', formData.email);
-        sessionStorage.setItem('userPhone', formData.phone);
-        sessionStorage.setItem('userName', formData.name);
-        
-        router.push('/Form-Submit-Thank-You');
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSubmitting(false);
-    } 
-  }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, calculatorData, router]);
+    prepareLeadThankYou({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      pincode: selectedPincode,
+    });
+
+    fireAndForgetLeadSubmit('/api/contact', requestData);
+
+    setSelectedPincode('');
+    setFormData({ name: '', email: '', phone: '' });
+    setOtpSent(false);
+    setOtp('');
+    setIsVerified(false);
+    setOtpError('');
+    redirectToLeadThankYou();
+  }, [formData, selectedPincode, isVerified, calculatorData]);
 
   const performSubmitFlow = useCallback(async () => {
-    if (!formData.name || !formData.email || !formData.phone || !selectedPossession || !selectedPincode || !selectedDate || !selectedTime) {
+    if (!formData.name || !formData.email || !formData.phone || !selectedPincode) {
       return;
     }
     
@@ -267,7 +218,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
     }
     
     await handleFinalSubmit();
-  }, [formData, selectedPossession, selectedPincode, selectedDate, selectedTime, isVerified, handleFinalSubmit]);
+  }, [formData, selectedPincode, isVerified, handleFinalSubmit]);
 
   useEffect(() => {
     const handler = () => { performSubmitFlow(); };
@@ -277,65 +228,11 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
 
   return (
     <div>
-      <div className="bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-6">
-        <div className="text-2xl sm:text-3xl manrope-semibold text-center mb-6 text-amber-950">Book your free 3D design consultation</div>
-
-        <div className="flex gap-4 mb-4">
-          <div className="relative w-1/2">
-            <select
-              name="date"
-              value={selectedDate}
-              onChange={e => setSelectedDate(e.target.value)}
-              required
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
-            >
-              <option className="text-gray-400" value="" disabled>Date</option>
-              {(() => {
-                const today = new Date();
-                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                const dates = [];
-                
-                // Generate next 14 days (2 weeks)
-                for (let i = 0; i < 14; i++) {
-                  const date = new Date(today);
-                  date.setDate(today.getDate() + i);
-                  const day = date.getDate();
-                  const month = date.getMonth();
-                  const monthName = monthNames[month];
-                  const dateValue = `${monthName}-${day}`;
-                  dates.push({ value: dateValue, label: `${monthName}-${day}` });
-                }
-                
-                return dates.map((date, index) => (
-                  <option key={index} value={date.value} className="text-gray-700">{date.label}</option>
-                ));
-              })()}
-            </select>
-            <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute pointer-events-none">&#9662;</span>
-          </div>
-          <div className="relative w-1/2">
-            <select
-              name="time"
-              value={selectedTime}
-              onChange={e => setSelectedTime(e.target.value)}
-              required
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
-            >
-              <option className="text-gray-400" value="" disabled>Time</option>
-              <option value="11:30 to 1:30" className="text-gray-700">11:30 - 1:30</option>
-              <option value="12:30 to 2:30" className="text-gray-700">12:30 - 2:30</option>
-              <option value="1-3" className="text-gray-700">1:00 - 3:00</option>
-              <option value="2:30 to 4:30" className="text-gray-700">2:30 - 4:30</option>
-              <option value="3-5" className="text-gray-700">3:00 - 5:00</option>
-              <option value="5-7" className="text-gray-700">5:00 - 7:00</option>
-              <option value="6-8" className="text-gray-700">6:00 - 8:00</option>
-            </select>
-            <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute pointer-events-none">&#9662;</span>
-          </div>
-        </div>
+      <div className={`bg-white w-full rounded-3xl shadow-2xl p-4 sm:p-5 lg:p-6 w-[300px] sm:w-[400px] lg:w-[500px] mx-auto mt-10 transition-all duration-300 overflow-hidden ${otpSent && !isVerified ? 'min-h-[480px]' : 'min-h-[360px]'}`}>
+        <div className="text-[24px] sm:text-2xl lg:text-3xl manrope-semibold text-center mb-4 sm:mb-5 text-amber-950">Get Your Free Estimate</div>
 
         {/* Stacked inputs, one after another */}
-        <div className="space-y-4">
+        <div className="space-y-4 sm:space-y-3 lg:space-y-4">
           <input
             type="text"
             name="name"
@@ -343,7 +240,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
             onChange={handleInputChange}
             placeholder="Name *"
             required
-            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
           <input
             type="email"
@@ -352,7 +249,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
             onChange={handleInputChange}
             placeholder="Email *"
             required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f1f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
           <input
             type="tel"
@@ -361,7 +258,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
             onChange={handleInputChange}
             placeholder="Phone Number *"
             required
-            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+            className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
           />
           
           {/* OTP Section */}
@@ -383,7 +280,7 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                     placeholder="Enter OTP *"
-                    className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 placeholder-gray-400 font-medium"
+                    className="w-full h-[50px] bg-[#f2f2f6] rounded-3xl text-base sm:text-lg pl-6 pr-4 placeholder-gray-400 font-medium border-0 outline-none"
                   />
                   <div className="flex gap-2">
                     <button
@@ -417,55 +314,25 @@ const FinalLeadFormBest: React.FC<FinalLeadFormProps> = ({ calculatorData }) => 
           )}
           
           <div className="relative w-full">
-            <div
-              onClick={() => {
-                setPossessionOpen(!possessionOpen);
-              }}
-              className={`w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-lg flex items-center justify-between px-6 cursor-pointer ${!selectedPossession && 'text-gray-400'}`}
-            >
-              <span>
-                {selectedPossession || "Project Type & Possession *"}
-              </span>
-              <span className="text-gray-500">&#9662;</span>
-            </div>
-            {possessionOpen && (
-              <ul className="absolute top-[60px] left-0 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-[9999] text-left max-h-60 overflow-y-auto font-medium">
-                {budgetOptions.map((option: string) => (
-                  <li
-                    key={option}
-                    onClick={() => handlePossessionSelect(option)}
-                    className="px-6 py-3 hover:bg-gray-100 cursor-pointer text-gray-700"
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <div className="relative w-full">
             <select
               name="pincode"
               required
               value={selectedPincode}
               onChange={e => setSelectedPincode(e.target.value)}
-              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer"
+              className="w-full h-[50px] font-medium bg-[#f1f2f6] rounded-3xl text-base sm:text-[18px] pl-6 pr-10 text-gray-400 appearance-none cursor-pointer border-0 outline-none"
             >
               <option className="text-gray-400" value="" disabled>Property Pincode *</option>
               {Pincode.map((pin, idx) => (<option key={idx} value={pin}>{pin}</option>))}
             </select>
-            <span className="text-gray-500 mt-3 -ml-6 text-[18px] absolute">&#9662;</span>
+            <span className="text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 text-[18px] pointer-events-none">&#9662;</span>
           </div>
         </div>
 
         {/* Status row (no submit or WhatsApp checkbox) */}
-        <div className="flex items-center justify-end mt-6">
+        <div className="flex items-center justify-end mt-4">
           <div className="text-sm text-gray-500">{isSubmitting ? 'Submitting...' : ''}</div>
         </div>
-
-        <div className="text-xs mt-4 font-medium text-center">
-        By submitting, you agree to our Privacy Policy & Terms & Conditions
-
-        </div>
+        <div className='text-xs text-left mt-4 font-medium pl-4'>By submitting, you agree to our Privacy Policy , <p className='text-left '>Terms & Conditions</p></div>
       </div>
     </div>
   );

@@ -143,11 +143,11 @@ export default function BrandCarousel() {
       `}</style>
 
       {/* 2560 Version */}
-      <div className="desktop-2560 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-85">
+      <div className="home-desktop desktop-2560 hidden md:block w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8 px-85">
         <div className="flex items-center justify-between w-full gap-5">
 
           {/* LEFT TEXT */}
-          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+          <h2 className="type-h1 font-light wulkan-display-bold whitespace-nowrap">
             Trusted partners
           </h2>
 
@@ -187,11 +187,11 @@ export default function BrandCarousel() {
         </div>
       </div> */}
 
-      <div className="desktop-1920 -mt-10 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-10 px-20">
+      <div className="home-desktop desktop-1920 -mt-10 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-10 px-20">
         <div className="flex items-center justify-between w-full gap-5">
 
           {/* LEFT TEXT */}
-          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+          <h2 className="type-h1 font-light wulkan-display-bold whitespace-nowrap">
             Trusted partners
           </h2>
 
@@ -221,11 +221,11 @@ export default function BrandCarousel() {
 
 
       {/* 1280 Version */}
-      <div className="desktop-1280 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-5 px-15">
+      <div className="home-desktop desktop-1280 hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden  mb-5 px-15">
         <div className="flex items-center justify-between w-full gap-5">
 
           {/* LEFT TEXT */}
-          <h2 className="text-5xl font-light wulkan-display-bold whitespace-nowrap">
+          <h2 className="type-h1 font-light wulkan-display-bold whitespace-nowrap">
             Trusted partners
           </h2>
 
@@ -257,7 +257,7 @@ export default function BrandCarousel() {
       <div className="md:hidden w-full min-h-auto bg-[#F1F2F6] overflow-hidden mb-8">
 
         <div className="w-[2px] h-[33px] bg-[#ebd457] ml-4">
-          <h2 className="text-left mb-5 text-4xl text-nowrap font-light wulkan-display-bold ml-3">Trusted partners</h2>
+          <h2 className="typography-h2 text-left mb-5 text-nowrap font-light wulkan-display-bold ml-3">Trusted partners</h2>
         </div>
         <div ref={refMobile} className="flex w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
           {allLogos.map((logo, idx) => (

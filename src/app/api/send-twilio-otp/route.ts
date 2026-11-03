@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import twilio from 'twilio';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 // TypeScript declarations for global OTP store
 declare global {
@@ -16,6 +17,10 @@ export async function POST(req: Request) {
     if (!phone) {
       return NextResponse.json({ success: false, message: 'Phone is required' }, { status: 400 });
     }
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json({ success: false, message: 'Phone number must be exactly 10 digits' }, { status: 400 });
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
     // Check if required environment variables are set
     if (!process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN || !process.env.TWILIO_PHONE_NUMBER) {
@@ -38,24 +43,14 @@ export async function POST(req: Request) {
       global.otpStore = new Map();
     }
     
-    global.otpStore.set(phone, {
+    global.otpStore.set(normalizedPhone, {
       otp,
       timestamp: Date.now(),
       attempts: 0
     });
 
     // Normalize phone to E.164 (+91XXXXXXXXXX) for India
-    const digits = String(phone).replace(/\D/g, '');
-    let toNumber = '';
-    if (phone.startsWith('+')) {
-      toNumber = phone; // assume already E.164
-    } else if (digits.length === 10) {
-      toNumber = `+91${digits}`;
-    } else if (digits.length === 12 && digits.startsWith('91')) {
-      toNumber = `+${digits}`;
-    } else {
-      return NextResponse.json({ success: false, message: 'Invalid phone number' }, { status: 400 });
-    }
+    const toNumber = `+91${normalizedPhone}`;
 
     // Send SMS via Twilio
     const message = await client.messages.create({

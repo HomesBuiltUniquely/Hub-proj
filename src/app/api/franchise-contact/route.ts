@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 export async function POST(req: Request) {
   try {
@@ -8,37 +9,71 @@ export async function POST(req: Request) {
       name,
       email,
       phone,
+      state,
       city,
+      franchiseType,
     } = body;
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits.' },
+        { status: 400 },
+      );
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
     console.log('Franchise API route called with data:', {
       name,
       email,
-      phone,
+      phone: normalizedPhone,
+      state,
       city,
+      franchiseType,
     });
 
-    // Use franchise-specific credentials if available, otherwise fall back to main Gmail credentials
+    // Use franchise-specific credentials
     const franchiseEmail = process.env.GMAIL_FRANCHISE_USER || process.env.FRANCHISE_EMAIL || process.env.GMAIL_USER;
-    const franchisePass = process.env.GMAIL_FRANCHISE_PASS || process.env.GMAIL_PASS;
-    const fromEmail = process.env.GMAIL_USER;
+    const franchisePassRaw = process.env.GMAIL_FRANCHISE_PASS || process.env.GMAIL_PASS;
+    // Remove spaces from app password (Gmail app passwords sometimes have spaces)
+    const franchisePass = franchisePassRaw ? franchisePassRaw.replace(/\s/g, '') : '';
+    
+    // Get franchise recipient emails
+    const franchiseEmail1 = process.env.GMAIL_FRANCHISE_USER; // dorothy@hubinterior.com
+    const franchiseEmail2 = process.env.GMAIL_FRANCHISE_USER2; // expansion@hubinterior.com
+    
+    // Use franchise email as sender, fallback to GMAIL_USER
+    const fromEmail = franchiseEmail1 || process.env.GMAIL_USER;
+    
+    // Build array of recipient emails (remove duplicates and empty values)
+    const recipientEmails: string[] = [];
+    if (franchiseEmail1) recipientEmails.push(franchiseEmail1);
+    if (franchiseEmail2 && franchiseEmail2 !== franchiseEmail1) recipientEmails.push(franchiseEmail2);
+    
+    // Fallback to franchiseEmail if no recipients found
+    const toEmails = recipientEmails.length > 0 ? recipientEmails : [franchiseEmail];
 
     // Check if required environment variables are set
     if (!fromEmail || !franchisePass) {
-      console.error('Gmail credentials not configured');
-      console.error('GMAIL_USER:', !!fromEmail, 'GMAIL_PASS/GMAIL_FRANCHISE_PASS:', !!franchisePass);
+      console.error('Franchise Gmail credentials not configured');
+      console.error('GMAIL_FRANCHISE_USER:', !!franchiseEmail1, 'GMAIL_FRANCHISE_PASS:', !!process.env.GMAIL_FRANCHISE_PASS);
       console.log('For testing purposes, returning success without sending email');
       return NextResponse.json({ 
         success: true, 
         message: 'Franchise form data received successfully (email not sent - credentials not configured)',
       });
     }
+    
+    console.log('Franchise email configuration:');
+    console.log('From email:', fromEmail);
+    console.log('Recipients:', toEmails.join(', '));
+    console.log('GMAIL_FRANCHISE_USER:', franchiseEmail1 || 'Not set');
+    console.log('GMAIL_FRANCHISE_USER2:', franchiseEmail2 || 'Not set');
+    console.log('GMAIL_FRANCHISE_PASS:', process.env.GMAIL_FRANCHISE_PASS ? 'SET' : 'NOT SET');
 
-    // Setup transport using Gmail
+    // Setup transport using Gmail with franchise credentials
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: franchiseEmail,
+        user: franchiseEmail1 || franchiseEmail, // Use GMAIL_FRANCHISE_USER for authentication
         pass: franchisePass,
       },
       // Add connection timeout and retry options
@@ -50,7 +85,7 @@ export async function POST(req: Request) {
     // Email content for franchise inquiries
     const mailOptions = {
       from: fromEmail,
-      to: franchiseEmail, 
+      to: toEmails.join(', '), // Send to multiple recipients
       subject: 'New Franchise Inquiry - HUB Interior',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -62,8 +97,10 @@ export async function POST(req: Request) {
             <h3 style="color: #333; margin-top: 0;">Contact Details</h3>
             <p><strong>Name:</strong> ${name || 'Not provided'}</p>
             <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Phone:</strong> ${normalizedPhone || 'Not provided'}</p>
+            <p><strong>State:</strong> ${state || 'Not provided'}</p>
             <p><strong>City:</strong> ${city || 'Not provided'}</p>
+            <p><strong>Franchise Type:</strong> ${franchiseType || 'Not provided'}</p>
           </div>
 
           <div style="background-color: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
@@ -92,7 +129,7 @@ export async function POST(req: Request) {
       `,
     };
 
-    console.log('Sending franchise email to:', franchiseEmail);
+    console.log('Sending franchise email to:', toEmails.join(', '));
     console.log('From email:', fromEmail);
 
     await transporter.sendMail(mailOptions);

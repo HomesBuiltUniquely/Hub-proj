@@ -1,0 +1,210 @@
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
+
+type LeadDetails = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  pincode?: string;
+  budget?: string;
+};
+
+type ConsultationDetails = {
+  consultationMode?: string;
+  selectedDate?: string;
+  preferredSlot?: string;
+  propertyName?: string;
+  possessionTimeline?: string;
+};
+
+function formatConsultationMode(mode?: string): string {
+  if (mode === "experience-center") return "Experience Center Visit";
+  if (mode === "video-call") return "Video Conference";
+  return mode || "Not provided";
+}
+
+
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const firstFormDetails: LeadDetails = body?.firstFormDetails || {};
+    const consultationDetails: ConsultationDetails = body?.consultationDetails || {};
+    const floorPlan = body?.floorPlan || null;
+    const pageUrl: string = body?.pageUrl || "";
+    const formSource: string = body?.formSource || "book-consultation";
+    const phoneVerified: boolean = body?.phoneVerified === true;
+
+    if (!firstFormDetails.name || !firstFormDetails.phone || !firstFormDetails.pincode) {
+      return NextResponse.json(
+        { success: false, message: "Name, phone, and pincode are required." },
+        { status: 400 }
+      );
+    }
+
+    if (!consultationDetails.consultationMode || !consultationDetails.selectedDate || !consultationDetails.preferredSlot) {
+      return NextResponse.json(
+        { success: false, message: "Consultation mode, date, and preferred slot are required." },
+        { status: 400 }
+      );
+    }
+
+    const crmBaseUrl = (process.env.CRM_API_URL || "https://Hows.hubinterior.com/v1/WebsiteLead")
+      .replace(/\/v1\/WebsiteLead\/?$/i, "")
+      .replace(/\/+$/, "");
+
+    let floorPlanUrl: string | null = null;
+    let floorPlanPublicToken: string | null = null;
+
+    if (floorPlan?.base64 && floorPlan?.name) {
+      try {
+        const base64Data = floorPlan.base64.replace(/^data:[^;]+;base64,/, "");
+        const buffer = Buffer.from(base64Data, "base64");
+        const blob = new Blob([buffer], { type: floorPlan.type || "application/octet-stream" });
+        const formData = new FormData();
+        formData.append("file", blob, floorPlan.name);
+        formData.append("leadType", "glead");
+        formData.append("leadId", "0");
+
+        const uploadApiUrl = `${crmBaseUrl}/v1/public/floor-plan/upload`;
+        console.log("Uploading floor plan file to CRM:", uploadApiUrl, floorPlan.name);
+        const uploadRes = await fetch(uploadApiUrl, {
+          method: "POST",
+          body: formData,
+        });
+
+        if (uploadRes.ok) {
+          const uploadJson = await uploadRes.json();
+          console.log("Floor plan upload response from CRM:", uploadJson);
+          if (uploadJson?.floorPlanUrl) {
+            floorPlanUrl = uploadJson.floorPlanUrl;
+          }
+          if (uploadJson?.floorPlanPublicToken) {
+            floorPlanPublicToken = uploadJson.floorPlanPublicToken;
+          }
+        } else {
+          console.error("Floor plan upload to CRM failed:", uploadRes.status, uploadRes.statusText);
+        }
+      } catch (uploadErr) {
+        console.error("Error uploading floor plan file:", uploadErr);
+      }
+    }
+
+    const mailUser = process.env.GMAIL_USER;
+    const mailPass = process.env.GMAIL_PASS;
+    if (!mailUser || !mailPass) {
+      return NextResponse.json(
+        { success: false, message: "Email configuration is missing on server." },
+        { status: 500 }
+      );
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: mailUser,
+        pass: mailPass.replace(/\s/g, ""),
+      },
+    });
+
+    const isDesignConsultation = formSource === "design-consultation";
+    const submissionTitle = isDesignConsultation
+      ? "Design Consultation Submission"
+      : "Book Consultation Submission";
+    const personalSectionTitle = isDesignConsultation
+      ? "Personal Details"
+      : "First Form Details (Pre-OTP/Lead Form)";
+
+    const html = `
+      <h2>${submissionTitle}</h2>
+      <p><strong>Form Source:</strong> ${formSource}</p>
+      <h3>${personalSectionTitle}</h3>
+      <p><strong>Full Name:</strong> ${firstFormDetails.name || "Not provided"}</p>
+      <p><strong>Email:</strong> ${firstFormDetails.email || "Not provided"}</p>
+      <p><strong>Phone:</strong> ${firstFormDetails.phone || "Not provided"}</p>
+      <p><strong>Phone Verified (OTP):</strong> ${phoneVerified ? "Yes" : "No"}</p>
+      <p><strong>Property Pincode:</strong> ${firstFormDetails.pincode || "Not provided"}</p>
+      ${firstFormDetails.budget ? `<p><strong>Budget:</strong> ${firstFormDetails.budget}</p>` : ""}
+      <hr />
+      <h3>Consultation Details</h3>
+      <p><strong>Consultation Mode:</strong> ${formatConsultationMode(consultationDetails.consultationMode)}</p>
+      <p><strong>Preferred Date:</strong> ${consultationDetails.selectedDate || "Not provided"}</p>
+      <p><strong>Preferred Slot:</strong> ${consultationDetails.preferredSlot || "Not provided"}</p>
+      ${consultationDetails.propertyName || consultationDetails.possessionTimeline ? `
+      <hr />
+      <h3>Property & Possession Details</h3>
+      ${consultationDetails.propertyName ? `<p><strong>Property Name:</strong> ${consultationDetails.propertyName}</p>` : ""}
+      ${consultationDetails.possessionTimeline ? `<p><strong>Possession Timeline:</strong> ${consultationDetails.possessionTimeline}</p>` : ""}
+      ` : ""}
+      ${floorPlanUrl ? `
+      <hr />
+      <h3>Floor Plan Details</h3>
+      <p><strong>Floor Plan:</strong> <a href="${floorPlanPublicToken ? `${crmBaseUrl}/v1/public/floor-plan/${floorPlanPublicToken}` : (floorPlanUrl.startsWith("http") ? floorPlanUrl : "#")}" target="_blank" rel="noopener noreferrer" style="color: #EF2B2D; text-decoration: underline;">Click here to open</a></p>
+      ` : ""}
+      <hr />
+      <p><strong>Page URL:</strong> <a href="${pageUrl || "#"}">${pageUrl || "Not provided"}</a></p>
+    `;
+
+    await transporter.sendMail({
+      from: mailUser,
+      to: mailUser,
+      subject: isDesignConsultation
+        ? "Design Consultation Lead Submission"
+        : "Book Consultation Lead Submission",
+      html,
+    });
+
+    // Sync Consultation details to dedicated CRM Lead Consultation Update endpoint
+    const consultationApiUrl = `${crmBaseUrl}/v1/leads/consultation`;
+
+    try {
+      const consultationMeetingDate = `${consultationDetails.selectedDate || ""} ${consultationDetails.preferredSlot || ""}`.trim();
+      const consultationMeetingType = consultationDetails.consultationMode === "video-call"
+        ? "Video Conference"
+        : (consultationDetails.consultationMode === "experience-center"
+            ? "Experience Center"
+            : consultationDetails.consultationMode || null);
+      const consultationPayload = {
+        phoneNumber: firstFormDetails.phone,
+        name: firstFormDetails.name || null,
+        email: firstFormDetails.email || null,
+        propertyPin: firstFormDetails.pincode || null,
+        budget: firstFormDetails.budget || null,
+        meetingType: consultationMeetingType,
+        meetingDate: consultationMeetingDate || null,
+        propertyDetails: consultationDetails.propertyName || null,
+        possession: consultationDetails.possessionTimeline || null,
+        source: isDesignConsultation ? "Design Consultation" : "Website Book Consultation",
+        floorPlanUrl: floorPlanUrl || null,
+        floorPlanPublicToken: floorPlanPublicToken || null,
+      };
+
+      console.log("Sending book-consultation data to CRM Consultation API:", consultationPayload);
+      const crmResponse = await fetch(consultationApiUrl, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(consultationPayload),
+      });
+
+      if (crmResponse.ok) {
+        const crmJson = await crmResponse.json();
+        console.log("CRM Consultation API response:", crmJson);
+      } else {
+        console.error("CRM Consultation API error:", crmResponse.status, crmResponse.statusText);
+      }
+    } catch (crmError) {
+      console.error("Error sending book-consultation data to CRM:", crmError);
+      // Continue and return success so email flow isn't blocked
+    }
+
+    return NextResponse.json({ success: true, message: "Consultation submitted successfully." });
+  } catch (error) {
+    console.error("Book consultation API error:", error);
+    return NextResponse.json(
+      { success: false, message: "Failed to submit consultation details." },
+      { status: 500 }
+    );
+  }
+}

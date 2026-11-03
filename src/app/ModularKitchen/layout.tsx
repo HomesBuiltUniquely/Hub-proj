@@ -63,106 +63,56 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        {/* Favicon */}
-        <link rel="icon" type="image/svg+xml" href="/hubicon.svg" />
+    <>
+      {/* Meta Pixel Code (runs in body for this route segment) */}
+      <Script id="meta-pixel-modular-kitchen" strategy="afterInteractive">
+        {`!function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1486878599401922');
+          fbq('track', 'PageView');`}
+      </Script>
 
-        {/* Meta Pixel Code */}
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`!function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1486878599401922');
-            fbq('track', 'PageView');`}
-        </Script>
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          src="https://www.facebook.com/tr?id=1486878599401922&ev=PageView&noscript=1"
+          alt=""
+        />
+      </noscript>
 
-        <Script 
-      id="whatsapp-conditional"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
-          if (typeof window !== 'undefined') {
-            const currentPath = window.location.pathname;
-            const hideWhatsAppPaths = [
-              '/interior-designers-in-bangalore',
-              '/interior-designers-in-bangalore/Calculator',
-              
-            ];
-            
-            const shouldHideWhatsApp = hideWhatsAppPaths.some(path => 
-              currentPath === path || currentPath.startsWith(path + '/')
-            );
-            
-            console.log('Current path:', currentPath);
-            console.log('Should hide WhatsApp:', shouldHideWhatsApp);
-            
-            if (!shouldHideWhatsApp) {
-              console.log('Loading WhatsApp widget...');
-              const script = document.createElement('script');
-              script.type = 'text/javascript';
-              script.src = 'https://d3mkw6s8thqya7.cloudfront.net/integration-plugin.js';
-              script.id = 'aisensy-wa-widget';
-              script.setAttribute('widget-id', 'aaaqjb');
-              script.onload = function() {
-                console.log('WhatsApp widget loaded successfully');
-              };
-              script.onerror = function() {
-                console.error('Failed to load WhatsApp widget');
-              };
-              document.head.appendChild(script);
-            } else {
-              console.log('WhatsApp widget hidden for this page');
-            }
-          }
+      {/* Google Tag Manager for this route segment */}
+      <Script id="gtm-modular-kitchen" strategy="afterInteractive">
+        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?"&l="+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W8M2PLFJ');`}
+      </Script>
 
-        `
-      }}
-    />
-   
+      {/* GTM NoScript */}
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-W8M2PLFJ"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        />
+      </noscript>
 
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1486878599401922&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-
-        {/* Google Tag Manager Head */}
-        <Script id="gtm-head" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?"&l="+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-W8M2PLFJ');`}
-        </Script>
-      </head>
-
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* GTM NoScript */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-W8M2PLFJ"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-
+      <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+      </div>
 
-        {/* Vercel Analytics */}
-        <Analytics />
-      </body>
-      
-    </html>
+      {/* Vercel Analytics for this route segment */}
+      <Analytics />
+    </>
   );
 }

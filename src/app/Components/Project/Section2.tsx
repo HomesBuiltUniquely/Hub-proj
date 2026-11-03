@@ -8,10 +8,10 @@ import React, { useEffect, useRef } from "react";
 
 
 const FeaturedProjects = [
-  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP!.webp", title: "Designed for Life, Not Just Looks", path: `/Blog/Blog2`, button: "Get free estimate", estpath: `/GetEstimate`, description: "Warm & Functional Home Interiors by HUB Interior for Mr. Rijul at Azizam", BHK: "BHK", NO: "3BHK" },
-  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP3.webp", title: "Quiet Luxury Meets Thoughtful Living", path: `/Blog/Blog1`, button: "Get free estimate", estpath: `/GetEstimate`, description: "HUB Interior’s Modern Home Interior Design at Bhoo Aabharana, Bengaluru", BHK: "BHK", NO: "3BHK" },
-  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FP2.webp", title: "Royal Tulip Villa", path: `/Blog/Blog4`, button: "Get free estimate", estpath: `/GetEstimate`, description: "HUB Interior Creates a Home Filled with Story, Elegance & Comfort for the George Family", BHK: "BHK", NO: "3BHK" },
-  { img: "https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/iam.web3.webp", title: "Peaceful Retreat Designed with Care", path: `/Blog/Blog5`, button: "Get free estimate", estpath: `/GetEstimate`, description: "Modern Home Interior by HUB for Mr. Allen & Mrs. Ann", BHK: "BHK", NO: "3BHK" },
+  { img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/projects/hubinterior_rijul_project.jpeg", title: "Designed for Life, Not Just Looks", path: `/Blog/Blog2`, button: "Get free estimate", estpath: `/GetEstimate`, description: "Warm & Functional Home Interiors by HUB Interior for Mr. Rijul at Azizam", BHK: "BHK", NO: "3BHK" },
+  { img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/projects/hubinterior_akhil_project.jpeg", title: "Quiet Luxury Meets Thoughtful Living", path: `/Blog/Blog1`, button: "Get free estimate", estpath: `/GetEstimate`, description: "HUB Interior’s Modern Home Interior Design at Bhoo Aabharana, Bengaluru", BHK: "BHK", NO: "3BHK" },
+  { img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/projects/hubinterior_george_project.jpeg", title: "Royal Tulip Villa", path: `/Blog/Blog4`, button: "Get free estimate", estpath: `/GetEstimate`, description: "HUB Interior Creates a Home Filled with Story, Elegance & Comfort for the George Family", BHK: "BHK", NO: "3BHK" },
+  { img: "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/projects/hubinterior_allen_project.jpeg", title: "Peaceful Retreat Designed with Care", path: `/Blog/Blog5`, button: "Get free estimate", estpath: `/GetEstimate`, description: "Modern Home Interior by HUB for Mr. Allen & Mrs. Ann", BHK: "BHK", NO: "3BHK" },
 ];
 
 

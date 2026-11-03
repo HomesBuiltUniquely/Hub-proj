@@ -1,10 +1,21 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { getVerificationStatus } from '@/lib/leadVerification';
 
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, phoneNumber, phone, pincode, tellUsMore, pageUrl } = body;
+    const {
+      name,
+      email,
+      phoneNumber,
+      phone,
+      pincode,
+      interiorSetup,
+      projectPossessionTimeline,
+      tellUsMore,
+      pageUrl,
+    } = body;
 
     // Handle both desktop form (phoneNumber) and mobile form (phone) field names
     const phoneNumberFinal = phoneNumber || phone;
@@ -14,18 +25,31 @@ export async function POST(req) {
       email,
       phoneNumberFinal,
       pincode,
+      interiorSetup,
+      projectPossessionTimeline,
       tellUsMore,
       pageUrl,
     });
 
     // Send data to unified API endpoint
     try {
+      const isBudgetVal = (val) => {
+        if (!val) return false;
+        const lower = String(val).toLowerCase();
+        return lower.includes("lakh") || lower.includes("cr") || /\b\d+\s*-\s*\d+/.test(lower);
+      };
+      const resolvedBudget = body.budget || (isBudgetVal(interiorSetup) ? interiorSetup : '') || '';
       const websiteLeadPayload = {
         name: name || '',
         email: email || '',
         phoneNumber: phoneNumberFinal || '',
         propertyPin: pincode || '',
+        interiorSetup: isBudgetVal(interiorSetup) ? '' : (interiorSetup || ''),
+        possessionIn: projectPossessionTimeline || '',
+        budget: resolvedBudget,
         pageUrl: pageUrl || '',
+        verificationStatus: getVerificationStatus(true),
+        otpSuccess: true,
       };
 
       console.log('Sending get-estimate data to WebsiteLead API:', websiteLeadPayload);
@@ -39,8 +63,8 @@ export async function POST(req) {
       });
 
       if (websiteLeadResponse.ok) {
-        const websiteLeadData = await websiteLeadResponse.json();
-        console.log('WebsiteLead API response:', websiteLeadData);
+        const websiteLeadText = await websiteLeadResponse.text();
+        console.log('WebsiteLead API response:', websiteLeadText);
       } else {
         console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
       }
@@ -83,6 +107,8 @@ export async function POST(req) {
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
         <p><strong>Phone Number:</strong> ${phoneNumberFinal || 'Not provided'}</p>
         <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
+        <p><strong>Interior Package:</strong> ${interiorSetup || 'Not provided'}</p>
+        <p><strong>Project Possession Timeline:</strong> ${projectPossessionTimeline || 'Not provided'}</p>
         <p><strong>Tell Us More:</strong> ${tellUsMore || 'Not provided'}</p>
         <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank" rel="noopener noreferrer">${pageUrl || 'Not provided'}</a></p>
         <hr/>
@@ -95,6 +121,7 @@ export async function POST(req) {
       email,
       phoneNumberFinal,
       pincode,
+      interiorSetup,
       tellUsMore,
     });
     console.log('Email configuration:', {

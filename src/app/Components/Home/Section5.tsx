@@ -55,16 +55,16 @@ export default function Section5() {
             icon: '/discussion.png',
         },
         {
-            title: 'Get your quote',
-            description: 'Receive a transparent estimate tailored to you.',
-            image: '/bed1.jpg',
-            icon: '/file.png',
-        },
-        {
             title: 'Customize your home',
             description: 'Pick layouts, finishes, and designs.',
             image: '/kids1.jpg',
             icon: '/home-repair.png',
+        },
+        {
+            title: 'Get your quote',
+            description: 'Receive a transparent estimate tailored to you.',
+            image: '/bed1.jpg',
+            icon: '/file.png',
         },
         {
             title: 'Hassle-free execution',
@@ -284,10 +284,10 @@ export default function Section5() {
 
             {/* Desktop wrapper (single ref across breakpoints) */}
             <div ref={sectionRef} className="hidden md:block">
-                <div className="desktop-2560">
+                <div className="home-desktop desktop-2560">
                     <div className="bg-[#F1F2F6] min-h-[740px] px-85">
                         <div className="max-w-8xl mx-auto">
-                            <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
+                            <h1 className="type-h1 mb-16 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
                             </h1>
 
@@ -303,8 +303,8 @@ export default function Section5() {
                                             </div>
 
                                             <div className="pt-2 manrope-medium">
-                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
-                                                <p className={`text-lg ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'}`}>{step.description}</p>
+                                                <h3 className={`type-h3 ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
+                                                <p className={`type-body ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'} manrope`}>{step.description}</p>
                                             </div>
 
                                             {index < steps.length - 1 && (
@@ -330,10 +330,10 @@ export default function Section5() {
                 {/* 1920 Version */}
 
 
-                <div className="desktop-1920 ">
+                <div className="home-desktop desktop-1920 ">
                     <div className="bg-[#F1F2F6] min-h-[740px] px-20 ">
                         <div className="max-w-8xl mx-auto">
-                            <h1 className="text-5xl mb-16 wulkan-display-bold text-gray-800">
+                            <h1 className="type-h1 mb-16 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
                             </h1>
 
@@ -349,8 +349,8 @@ export default function Section5() {
                                             </div>
 
                                             <div className="pt-2 manrope-medium">
-                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
-                                                <p className={`text-lg ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'}`}>{step.description}</p>
+                                                <h3 className={`type-h3 ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
+                                                <p className={`type-body ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'} manrope`}>{step.description}</p>
                                             </div>
 
                                             {index < steps.length - 1 && (
@@ -374,10 +374,10 @@ export default function Section5() {
 
                 {/* 1280 Version */}
 
-                <div className="desktop-1280">
+                <div className="home-desktop desktop-1280">
                     <div className="bg-[#F1F2F6] min-h-[740px] px-15">
                         <div className="max-w-6xl mx-auto">
-                            <h1 className="text-5xl mb-10 wulkan-display-bold text-gray-800">
+                            <h1 className="type-h1 mb-10 wulkan-display-bold text-gray-800">
                                 Your dream space in just four steps
                             </h1>
 
@@ -393,8 +393,8 @@ export default function Section5() {
                                             </div>
 
                                             <div className="pt-2 manrope-medium">
-                                                <h3 className={`text-2xl ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
-                                                <p className={`text-lg ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'}`}>{step.description}</p>
+                                                <h3 className={`type-h3 ${index <= activeStep ? 'text-amber-950' : 'text-gray-500'}`}>{step.title}</h3>
+                                                <p className={`type-body ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'} manrope`}>{step.description}</p>
                                             </div>
 
                                             {index < steps.length - 1 && (
@@ -437,9 +437,9 @@ function MobileLayout({ steps, activeStep, onTouchStart, onTouchMove, onTouchEnd
 
     return (
         <div className="block md:hidden bg-[#F1F2F6] py-5 px-4">
-            <div className="mb-8">
-                <div className="w-[2px] h-[33px] bg-[#ebd457]" />
-                <h1 className="text-3xl wulkan-display-bold text-gray-800 ml-3 -mt-8">Your dream space in just four steps</h1>
+                <div className="mb-8">
+                    <div className="w-[2px] h-[33px] bg-[#ebd457]" />
+                    <h1 className="typography-h2 wulkan-display-bold text-gray-800 ml-3 -mt-8">Your dream space in just four steps</h1>
             </div>
 
             <div className="relative overflow-hidden px-4 pt-5">

@@ -20,7 +20,7 @@ export default function Footer(){
                                     <h1 className="text-[16px] manrope font-medium mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">About</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="/Project"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
@@ -78,10 +78,9 @@ export default function Footer(){
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://x.com/Homeunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/twitter.png" alt="Twitter" width={23} height={23} className="w-[23px] h-[23px]" /></Link>
+                                    <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +99,7 @@ export default function Footer(){
                                     <h1 className="text-[16px] manrope font-medium mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">About</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="/Project"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
@@ -158,10 +157,9 @@ export default function Footer(){
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/Linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://x.com/Homeunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/twitter.png" alt="Twitter" width={23} height={23} className="w-[23px] h-[23px]" /></Link>
+                                    <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -180,7 +178,7 @@ export default function Footer(){
                                     <h1 className="text-[16px] manrope font-medium mb-6 ">Company</h1>
                                     <div className="space-y-3">
                                        <a href="/AboutUs"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer ">About</p></a>
-                                        <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></a>
+                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <a href="/CustomerReviews"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></a>
                                         <a href="#"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></a>
                                         <a href="#"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></a>
@@ -238,10 +236,9 @@ export default function Footer(){
                         <a href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></a>
                         <div className="flex gap-8">
                        <a href="https://www.linkedin.com/company/homesunderbudget/"> <img src="Linkedin.png " className="w-[25px] h-[25px] "></img></a>
-                        <a href="https://www.youtube.com/@homesunderbudget"><img src="youtube.png" className="w-[25px] h-[25px]  "></img></a>
-                        <a href="https://www.facebook.com/HomesUnderBudget/"><img src="facebook.png" className="w-[25px] h-[25px] "></img></a>
-                        <a href="https://www.instagram.com/homesunderbudget/"><img src="instagram.png" className="w-[25px] h-[25px] "></img></a>
-                        <a href="https://x.com/Homeunderbudget"><img src="twitter.png" className="w-[23px] h-[23px] "></img></a>
+                        <a href="https://www.youtube.com/@hubinterior"><img src="youtube.png" className="w-[25px] h-[25px]  "></img></a>
+                        <a href="https://www.facebook.com/hubinteriorofficial"><img src="facebook.png" className="w-[25px] h-[25px] "></img></a>
+                        <a href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw"><img src="instagram.png" className="w-[25px] h-[25px] "></img></a>
                         </div>
                     </div>
                         </div>
@@ -265,7 +262,7 @@ export default function Footer(){
                                         <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                         <Link href="/Life@Hub"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact us</p></Link>
                                     </div>
                                 </div>
@@ -298,10 +295,10 @@ export default function Footer(){
                                 <div className="mt-12">
                                     <h1 className="text-[16px] manrope font-medium mb-6">Connect Us</h1>
                                     <div className="space-y-3">
-                                        <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Facebook</p></Link>
-                                        <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Instagram</p></Link>
+                                        <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Facebook</p></Link>
+                                        <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Instagram</p></Link>
                                         <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">linkedin</p></Link>
-                                        <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">YouTube</p></Link>
+                                        <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">YouTube</p></Link>
                                         <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">WhatsApp</p>
                                     </div>
                                 </div>
@@ -326,7 +323,7 @@ export default function Footer(){
                                         <Link href="/Bedroom"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                         <Link href="/Life@Hub"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/Career"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/ContactUs"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact us</p></Link>
                                     </div>
                                 </div>
@@ -387,7 +384,7 @@ export default function Footer(){
                                         <Link href="/Bedroom"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                         <Link href="/Life@Hub"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/Career"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/ContactUs"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact us</p></Link>
                                     </div>
                                 </div>
@@ -453,7 +450,7 @@ export default function Footer(){
                                     <h1 className="text-[16px] manrope font-medium mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">About</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="/Project"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
@@ -511,10 +508,9 @@ export default function Footer(){
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://x.com/Homeunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/twitter.png" alt="Twitter" width={23} height={23} className="w-[23px] h-[23px]" /></Link>
+                                    <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -533,7 +529,7 @@ export default function Footer(){
                                     <h1 className="text-[16px] manrope font-medium mb-6">Company</h1>
                                     <div className="space-y-3">
                                         <Link href="/AboutUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">About</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/CustomerReviews"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></Link>
                                         <Link href="/Project"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></Link>
                                         <Link href="/Blog"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></Link>
@@ -591,10 +587,9 @@ export default function Footer(){
                                 <Link href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></Link>
                                 <div className="flex gap-8">
                                     <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/Linkedin.png" alt="LinkedIn" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
-                                    <Link href="https://x.com/Homeunderbudget" target="_blank" rel="noopener noreferrer"><Image src="/twitter.png" alt="Twitter" width={23} height={23} className="w-[23px] h-[23px]" /></Link>
+                                    <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><Image src="/youtube.png" alt="YouTube" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><Image src="/facebook.png" alt="Facebook" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
+                                    <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><Image src="/instagram.png" alt="Instagram" width={25} height={25} className="w-[25px] h-[25px]" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -613,7 +608,7 @@ export default function Footer(){
                                     <h1 className="text-[16px] manrope font-medium mb-6 ">Company</h1>
                                     <div className="space-y-3">
                                        <a href="/AboutUs"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer ">About</p></a>
-                                        <a href="/Career"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Career</p></a>
+                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <a href="/CustomerReviews"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Customer Reviews</p></a>
                                         <a href="#"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Project</p></a>
                                         <a href="#"> <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer mt-3">Blogs</p></a>
@@ -671,10 +666,9 @@ export default function Footer(){
                         <a href="/Policy"><p className="text-[14px] text-white pt-2">Privacy Policy Terms & Conditions</p></a>
                         <div className="flex gap-8">
                        <a href="https://www.linkedin.com/company/homesunderbudget/"> <img src="Linkedin.png " className="w-[25px] h-[25px] "></img></a>
-                        <a href="https://www.youtube.com/@homesunderbudget"><img src="youtube.png" className="w-[25px] h-[25px]  "></img></a>
-                        <a href="https://www.facebook.com/HomesUnderBudget/"><img src="facebook.png" className="w-[25px] h-[25px] "></img></a>
-                        <a href="https://www.instagram.com/homesunderbudget/"><img src="instagram.png" className="w-[25px] h-[25px] "></img></a>
-                        <a href="https://x.com/Homeunderbudget"><img src="twitter.png" className="w-[23px] h-[23px] "></img></a>
+                        <a href="https://www.youtube.com/@hubinterior"><img src="youtube.png" className="w-[25px] h-[25px]  "></img></a>
+                        <a href="https://www.facebook.com/hubinteriorofficial"><img src="facebook.png" className="w-[25px] h-[25px] "></img></a>
+                        <a href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw"><img src="instagram.png" className="w-[25px] h-[25px] "></img></a>
                         </div>
                     </div>
                         </div>
@@ -698,7 +692,7 @@ export default function Footer(){
                                         <Link href="/Bedroom"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                         <Link href="/Life@Hub"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/Career"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/ContactUs"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact us</p></Link>
                                     </div>
                                 </div>
@@ -731,10 +725,10 @@ export default function Footer(){
                                 <div className="mt-12">
                                     <h1 className="text-[16px] manrope font-medium mb-6">Connect Us</h1>
                                     <div className="space-y-3">
-                                        <Link href="https://www.facebook.com/HomesUnderBudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Facebook</p></Link>
-                                        <Link href="https://www.instagram.com/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Instagram</p></Link>
+                                        <Link href="https://www.facebook.com/hubinteriorofficial" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Facebook</p></Link>
+                                        <Link href="https://www.instagram.com/hubinterior.india?igsh=Z2c0Z2tjYm9uMXFw" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Instagram</p></Link>
                                         <Link href="https://www.linkedin.com/company/homesunderbudget/" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">linkedin</p></Link>
-                                        <Link href="https://www.youtube.com/@homesunderbudget" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">YouTube</p></Link>
+                                        <Link href="https://www.youtube.com/@hubinterior" target="_blank" rel="noopener noreferrer"><p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">YouTube</p></Link>
                                         <p className="text-[14px] manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">WhatsApp</p>
                                     </div>
                                 </div>
@@ -759,7 +753,7 @@ export default function Footer(){
                                         <Link href="/Bedroom"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                         <Link href="/Life@Hub"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/Career"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/ContactUs"><p className="text-sm manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact us</p></Link>
                                     </div>
                                 </div>
@@ -820,7 +814,7 @@ export default function Footer(){
                                         <Link href="/Bedroom"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Bedroom</p></Link>
                                         <Link href="/interior-design-franchise"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Franchise</p></Link>
                                         <Link href="/Life@Hub"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Life at HUB</p></Link>
-                                        <Link href="/Career"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Career</p></Link>
+                                        <p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer" onClick={() => window.open('https://brightspace.keka.com/careers', '_blank', 'noopener,noreferrer')}>Career</p>
                                         <Link href="/ContactUs"><p className="text-xs manrope-medium hover:text-teal-200 transition-colors duration-300 cursor-pointer">Contact us</p></Link>
                                     </div>
                                 </div>

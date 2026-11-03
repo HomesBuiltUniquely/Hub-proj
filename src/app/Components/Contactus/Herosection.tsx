@@ -75,7 +75,7 @@ const ContactHeader: React.FC = () => {
 
       {/* 2560 Version */}
 
-      <div className="desktop-2560 w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Contactus.png" }}>
+      <div className="desktop-2560 w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('/Contactus.png')" }}>
         {/* Navbar */}
         <div className="flex items-center justify-between -mt-15 ">
           <div onClick={handleClick} className="cursor-pointer">
@@ -121,7 +121,7 @@ const ContactHeader: React.FC = () => {
 
       <div className="desktop-1920">
 
-        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Contactus.png')" }}>
+        <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover bg-center  relative" style={{ backgroundImage: "url('/Contactus.png')" }}>
           {/* Navbar */}
           <div className="flex items-center justify-between -mt-15">
             <div onClick={handleClick} className="cursor-pointer">
@@ -171,7 +171,7 @@ const ContactHeader: React.FC = () => {
           {/* Inner container with background */}
           <div
             className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-            style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Contactus.png')" }}
+            style={{ backgroundImage: "url('/Contactus.png')" }}
           >
             {/* Navbar */}
             <div className="flex items-center justify-between px-8">
@@ -236,7 +236,7 @@ const ContactHeader: React.FC = () => {
         <div className="relative h-full w-full p-2">
           {/* Rounded image only */}
           <img
-            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Contacus%20MH.webp"
+            src="/Mob.jpg"
             alt=""
             className="w-full h-full object-cover"
           />

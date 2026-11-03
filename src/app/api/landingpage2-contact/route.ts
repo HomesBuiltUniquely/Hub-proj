@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 export async function POST(req: Request) {
   try {
@@ -14,8 +15,15 @@ export async function POST(req: Request) {
     const timeSlot = formData.get('timeSlot') as string;
     const pageUrl = formData.get('pageUrl') as string;
     const file = formData.get('file') as File | null;
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits.' },
+        { status: 400 },
+      );
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
-    console.log('LandingPage2 API route called with data:', { name, phone, email, pincode, propertyType, timeSlot, pageUrl, hasFile: !!file });
+    console.log('LandingPage2 API route called with data:', { name, phone: normalizedPhone, email, pincode, propertyType, timeSlot, pageUrl, hasFile: !!file });
     console.log('Environment variables check:');
     console.log('GMAIL_USER exists:', !!process.env.GMAIL_USER);
     console.log('GMAIL_PASS exists:', !!process.env.GMAIL_PASS);
@@ -71,7 +79,7 @@ export async function POST(req: Request) {
                 </div>
                 <div>
                   <strong style="color: #555;">Phone:</strong><br>
-                  <span style="color: #333; font-size: 16px;">${phone || 'Not provided'}</span>
+                  <span style="color: #333; font-size: 16px;">${normalizedPhone || 'Not provided'}</span>
                 </div>
                 <div>
                   <strong style="color: #555;">Email:</strong><br>
@@ -158,7 +166,7 @@ export async function POST(req: Request) {
       }];
     }
 
-    console.log('Sending LandingPage2 email with data:', { name, phone, email, pincode, propertyType, timeSlot, pageUrl, hasFile: !!file });
+    console.log('Sending LandingPage2 email with data:', { name, phone: normalizedPhone, email, pincode, propertyType, timeSlot, pageUrl, hasFile: !!file });
     console.log('Email configuration:', {
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER,

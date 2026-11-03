@@ -90,7 +90,7 @@ const ContactHeader: React.FC = () => {
             className="w-[1400px] h-[900px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
             style={{
               backgroundImage:
-                "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')",
+                "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/false+ceiling/false_ceiling_header/false_ceiling_interior_design.jpg')",
             }}
           >
             {/* Navbar */}
@@ -105,6 +105,7 @@ const ContactHeader: React.FC = () => {
                 />
               </div>
               <div className="hidden md:flex items-center gap-12">
+              
               {/* NAV BAR — unchanged */}
               <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
                 <OfferingsDropdown textColor="text-white" />
@@ -162,7 +163,7 @@ const ContactHeader: React.FC = () => {
             className="hidden md:block w-full max-w-[1920px] h-[950px] mx-auto rounded-3xl overflow-hidden bg-cover bg-center relative"
             style={{
               backgroundImage:
-                "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')",
+                "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/false+ceiling/false_ceiling_header/false_ceiling_interior_design.jpg')",
             }}
           >
             {/* Navbar */}
@@ -236,7 +237,7 @@ const ContactHeader: React.FC = () => {
             {/* Inner container with background */}
             <div
               className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-              style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling.png')" }}
+              style={{ backgroundImage: "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/false+ceiling/false_ceiling_header/false_ceiling_interior_design.jpg')" }}
             >
               {/* Navbar */}
               <div className="flex items-center justify-between px-8">
@@ -318,7 +319,7 @@ const ContactHeader: React.FC = () => {
             {/* Rounded image only */}
             <div className="absolute inset-0 rounded-4xl overflow-hidden">
               <Image
-                src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
+                src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/false+ceiling/false_ceiling_header/false_ceiling_interior_design.jpg"
                 alt="False ceiling"
                 fill
                 priority
@@ -360,7 +361,7 @@ const ContactHeader: React.FC = () => {
             {/* Rounded image only */}
             <div className="absolute inset-0 rounded-4xl overflow-hidden">
               <Image
-                src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/FalseCeiling%20MH.png"
+                src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/false+ceiling/false_ceiling_header/false_ceiling_interior_design.jpg"
                 alt="Modular Kitchen Background"
                 fill
                 priority

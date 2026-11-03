@@ -50,30 +50,14 @@ useEffect(() => {
         {/* ========== DESKTOP VERSION ========== */}
         <div className="desktop-modal w-full h-full flex items-center justify-center bg-black/40 backdrop-blur-sm">
           <div className="relative">
-            <PopUp2j onFormSuccess={handleFormSuccess} />
-
-            {/* DESKTOP CLOSE BUTTON */}
-            <button 
-              onClick={() => setOpen(false)}
-              className="absolute top-12 -right-4 bg-black/60 text-white rounded-full px-3 py-1 text-sm"
-            >
-              ✕
-            </button>
+            <PopUp2j onFormSuccess={handleFormSuccess} onClose={() => setOpen(false)} />
           </div>
         </div>
 
         {/* ========== MOBILE VERSION ========== */}
         <div className="mobile-modal w-full h-screen flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="relative">
-            <PopUp2j onFormSuccess={handleFormSuccess} />
-
-            {/* MOBILE CLOSE BUTTON */}
-            <button
-              onClick={() => setOpen(false)}
-              className="absolute -top-23 right-2 bg-black/70 text-white rounded-full px-3 py-1 text-base"
-            >
-              ✕
-            </button>
+          <div className="relative w-[92%] mx-auto">
+            <PopUp2j onFormSuccess={handleFormSuccess} onClose={() => setOpen(false)} />
           </div>
         </div>
 

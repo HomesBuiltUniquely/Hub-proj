@@ -1,11 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    // Force Turbopack to use this project folder as root.
+    root: process.cwd(),
+  },
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "yzmnmgrkugecsfnsmhib.supabase.co",
+        pathname: "/storage/v1/object/public/**", // Match Supabase image paths
+      },
+      {
+        protocol: "https",
+        hostname: "luylvbilvdxntquphldh.supabase.co",
         pathname: "/storage/v1/object/public/**", // Match Supabase image paths
       },
        {
@@ -22,6 +31,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'ik.imagekit.io',
         pathname: '/k2xcrgitcr/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'hubinterior-quote-2026.s3.ap-south-2.amazonaws.com',
+        pathname: '/**',
       }
     ],
   },

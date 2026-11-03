@@ -9,12 +9,12 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: 'What is the interior design cost in Bangalore for 2BHK, 3BHK, villa, and kitchen?',
+    question: 'What is the interior design cost in Bangalore for 2BHK, 3BHK, 4BHK, and kitchen?',
     answer: `Interior design costs in Bangalore depend on factors like home size, materials, and customization. At HUB Interior, we offer transparent pricing and affordable design packages:
-2BHK Interiors: ₹2.8 Lakhs onwards
-3BHK Interiors: ₹3.8 Lakhs onwards
-Villa Interiors: ₹5.5 Lakhs onwards
-Kitchen Interiors: ₹1.25 Lakhs onwards
+2BHK Interiors: ₹3.5 Lakhs onwards
+3BHK Interiors: ₹4.3 Lakhs onwards
+4BHK Interiors: ₹5.1 Lakhs onwards
+Kitchen Interiors: ₹1.8 Lakhs onwards
 Our focus is on budget-friendly interiors with premium finishes and high-quality craftsmanship.`
   },
   {
@@ -46,7 +46,7 @@ Prayer Units & Study Areas
 Wall Décor & Kids' Room Designs
 False Ceiling & Lighting
 Foyer & Bar Unit Designs
-Whether you're designing a new home or renovating, we offer affordable interior designers in Bangalore who deliver functional, beautiful spaces.`
+Whether you're designing a new home or renovating, we offer premium interior designers in Bangalore who deliver functional, beautiful spaces.`
   }
 ];
 
@@ -99,9 +99,9 @@ export function QAsection() {
       {/* 2560 version  */}
 
 
-       <div className=" desktop-2560 min-h-auto bg-[#F1F2F6] px-10 pt-8 pb-16 md:pt-8 md:pb-20">
+       <div className="home-desktop desktop-2560 min-h-auto bg-[#F1F2F6] px-10 pt-8 pb-16 md:pt-8 md:pb-20">
         <div className="max-w-screen-xl ">
-          <h1 className="text-5xl sm:text-4xl lg:text-5xl mb-15  sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
+          <h1 className="type-h1 mb-15  sm:mb-10 text-black wulkan-display-bold text-center tracking-wider">
             Frequently asked questions
           </h1>
 
@@ -147,10 +147,10 @@ export function QAsection() {
 
       {/* 1920 Version */}
 
-      <div className='desktop-1920'>
+      <div className='home-desktop desktop-1920'>
         <div className="min-h-auto bg-[#F1F2F6] px-15 mt-15">
           <div className="max-w-full">
-            <h1 className="text-5xl sm:text-4xl lg:text-5xl  text-black wulkan-display-bold ml-5">
+            <h1 className="type-h1 text-black wulkan-display-bold ml-5">
               Frequently asked questions
             </h1>
 
@@ -197,9 +197,9 @@ export function QAsection() {
 
       {/* 1280 version */}
 
-      <div className="desktop-1280 min-h-auto bg-[#F1F2F6] px-15   md:pt-5">
+      <div className="home-desktop desktop-1280 min-h-auto bg-[#F1F2F6] px-15   md:pt-5">
         <div className="max-w-screen-xl mx-auto">
-          <h1 className="text-5xl sm:text-4xl lg:text-5xl  text-black wulkan-display-bold text-left tracking-wider">
+          <h1 className="type-h1 text-black wulkan-display-bold text-left tracking-wider">
             Frequently asked questions
           </h1>
 
@@ -247,7 +247,7 @@ export function QAsection() {
       <div className="md:hidden min-h-auto bg-[#F1F2F6] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-48 pt-8 pb-16 md:pt-8 md:pb-20">
         <div className="max-w-screen-xl mx-auto">
           <div className="w-[2px] h-[35px] bg-[#ebd457]">
-          <h1 className="text-4xl sm:text-4xl text-nowrap lg:text-5xl mb-15 ml-3 sm:mb-10 text-black wulkan-display-bold text-left tracking-wider">
+          <h1 className="typography-h2 text-nowrap mb-15 ml-3 sm:mb-10 text-black wulkan-display-bold text-left tracking-wider">
             Frequently asked <div>questions</div>
           </h1>
           </div>

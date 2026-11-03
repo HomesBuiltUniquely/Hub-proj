@@ -1,0 +1,648 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import HeaderSection from "./Header";
+import BenefitsSection from "./Benefits";
+import {
+  formatDateForInput,
+  isPreferredSlotAvailable,
+  preferredSlots,
+} from "@/lib/consultationSlots";
+
+type ConsultationMode = "experience-center" | "video-call";
+type PossessionTimeline =
+  | "immediately"
+  | "0-3-months"
+  | "3-6-months"
+  | "more-than-6-months"
+  | "under-construction"
+  | "renovation"
+
+
+const carouselImages = [
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/25%25discount_home_interior.jpeg",
+];
+
+const carouselImages1 = [
+  "https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/discount_images/25%25discount_home_interior.jpeg",
+];
+
+function ConsultationCard({
+  active,
+  title,
+  icon,
+  onClick,
+}: {
+  active: boolean;
+  title: string;
+  icon: React.ReactNode;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`flex w-full flex-col items-center justify-center rounded-[20px] border-2 min-h-[110px] transition-all duration-300 ease-out transform hover:-translate-y-1 active:scale-95 ${
+        active
+          ? "border-[#EF2B2D] bg-white text-[#EF2B2D] ring-4 ring-[#EF2B2D]/10"
+          : "border-transparent bg-[#F4F6F9] text-[#202329] hover:bg-white hover:border-gray-200"
+      }`}
+    >
+      <span className={`mb-2.5 transition-transform duration-300 ${active ? "scale-110" : ""}`}>
+        {icon}
+      </span>
+      <span className="text-[14px] font-[700] manrope">{title}</span>
+    </button>
+  );
+}
+
+function FormSection({
+  consultationMode,
+  setConsultationMode,
+  selectedDate,
+  setSelectedDate,
+  preferredSlot,
+  setPreferredSlot,
+  propertyName,
+  setPropertyName,
+  possessionTimeline,
+  setPossessionTimeline,
+  floorPlanFile,
+  setFloorPlanFile,
+  onSubmit,
+}: {
+  consultationMode: ConsultationMode;
+  setConsultationMode: (v: ConsultationMode) => void;
+  selectedDate: string;
+  setSelectedDate: (v: string) => void;
+  preferredSlot: string;
+  setPreferredSlot: (v: string) => void;
+  propertyName: string;
+  setPropertyName: (v: string) => void;
+  possessionTimeline: PossessionTimeline;
+  setPossessionTimeline: (v: PossessionTimeline) => void;
+  floorPlanFile: File | null;
+  setFloorPlanFile: (v: File | null) => void;
+  onSubmit: () => void;
+}) {
+  const today = new Date();
+  const maxSelectableDate = new Date(today);
+  maxSelectableDate.setDate(today.getDate() + 14);
+
+  const minDate = formatDateForInput(today);
+  const maxDate = formatDateForInput(maxSelectableDate);
+  const isSlotSelectEnabled = Boolean(selectedDate);
+  const [showSlotHint, setShowSlotHint] = useState(false);
+  const [fileError, setFileError] = useState("");
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
+    const allowedExtensions = [".jpg", ".jpeg", ".png", ".pdf"];
+    const fileExt = "." + file.name.split(".").pop()?.toLowerCase();
+
+    if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExt)) {
+      setFileError("Invalid file type. Please upload JPG, JPEG, PNG, or PDF file.");
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      setFileError("File size exceeds 10MB limit. Please upload a smaller file.");
+      return;
+    }
+
+    setFileError("");
+    setFloorPlanFile(file);
+  };
+
+  const inputClass =
+    "h-[58px] w-full text-black rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
+  const dateInputStyle = {
+    color: selectedDate ? "#24262B" : "#9AA1AE",
+    WebkitTextFillColor: selectedDate ? "#24262B" : "#9AA1AE",
+    colorScheme: "light" as const,
+  };
+
+  return (
+    <form
+      className="w-full"
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit();
+      }}
+    >
+      {/* Step 1 */}
+      <div className="mb-5 flex items-center gap-3">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+          1
+        </div>
+        <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
+          Consultation Mode
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <ConsultationCard
+          active={consultationMode === "experience-center"}
+          title="Experience Center Visit"
+          icon={
+            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 20h16" />
+              <path d="M7 20v-7h10v7" />
+              <path d="M5 13h14" />
+              <path d="M6 8h12" />
+              <path d="M8 8V5h8v3" />
+            </svg>
+          }
+          onClick={() => setConsultationMode("experience-center")}
+        />
+        <ConsultationCard
+          active={consultationMode === "video-call"}
+          title="Virtual meeting"
+          icon={
+            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
+              <path d="M15 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8Z" />
+              <path d="m21 8-4 2.5v3L21 16V8Z" />
+            </svg>
+          }
+          onClick={() => setConsultationMode("video-call")}
+        />
+      </div>
+
+      <div className="mt-5 grid grid-cols-2 gap-4">
+        <div className="relative">
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => {
+              const nextDate = e.target.value;
+              setSelectedDate(nextDate);
+              if (preferredSlot && !isPreferredSlotAvailable(preferredSlot, nextDate)) {
+                setPreferredSlot("");
+              }
+            }}
+            min={minDate}
+            max={maxDate}
+            className={`${inputClass} [color-scheme:light]`}
+            style={dateInputStyle}
+          />
+          {!selectedDate && (
+            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope lg:hidden">
+              Select Date
+            </span>
+          )}
+        </div>
+        <div
+          className="relative group"
+          onMouseLeave={() => setShowSlotHint(false)}
+        >
+          <select
+            value={preferredSlot}
+            onChange={(e) => setPreferredSlot(e.target.value)}
+            disabled={!isSlotSelectEnabled}
+            className={`${inputClass} appearance-none ${
+              isSlotSelectEnabled ? "cursor-pointer" : "cursor-not-allowed"
+            }`}
+          >
+            <option value="">Preferred Slot</option>
+            {preferredSlots.map((slot) => (
+              <option
+                key={slot}
+                value={slot}
+                disabled={!isPreferredSlotAvailable(slot, selectedDate)}
+              >
+                {slot}
+              </option>
+            ))}
+          </select>
+          <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#9AA1AE]">
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </span>
+          {!isSlotSelectEnabled && (
+            <>
+              <button
+                type="button"
+                className="absolute inset-0 z-10 cursor-not-allowed"
+                onClick={() => setShowSlotHint(true)}
+                aria-label="Choose date first"
+              />
+              <span
+                className={`pointer-events-none absolute left-1/2 -top-10 z-20 -translate-x-1/2 whitespace-nowrap rounded-lg bg-[#1C1F26] px-3 py-1.5 text-[12px] font-medium text-white shadow-md ${
+                  showSlotHint ? "block" : "hidden group-hover:block"
+                }`}
+              >
+                Choose date first
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Step 2 */}
+      <div className="mt-8 mb-5 flex items-center gap-3 border-t border-[#ECEFF4] pt-8">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+          2
+        </div>
+        <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
+          Property Name
+        </h2>
+      </div>
+
+      <input
+        type="text"
+        value={propertyName}
+        onChange={(e) => setPropertyName(e.target.value)}
+        placeholder="Mention Your Property Name (or) Individual House"
+        className={inputClass}
+      />
+
+      {/* Step 3 */}
+      <div className="mt-8 mb-5 flex items-center gap-3 border-t border-[#ECEFF4] pt-8">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+          3
+        </div>
+        <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
+          Possession Timeline
+        </h2>
+      </div>
+
+      <div className="flex flex-wrap gap-3">
+        {[
+          { id: "immediately" as PossessionTimeline, label: "Immediately" },
+          { id: "0-3-months" as PossessionTimeline, label: "0 - 3 months" },
+          { id: "3-6-months" as PossessionTimeline, label: "3 - 6 months" },
+          { id: "more-than-6-months" as PossessionTimeline, label: "More than 6 months" },
+          { id: "under-construction" as PossessionTimeline, label: "Under construction" },
+          { id: "renovation" as PossessionTimeline, label: "Renovation" },
+        ].map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setPossessionTimeline(item.id)}
+            className={`flex-1 h-[58px] min-w-[110px] items-center justify-center flex rounded-[14px] border-2 text-[15px] font-medium manrope transition-all duration-300 active:scale-95 ${
+              possessionTimeline === item.id
+                ? "border-[#EF2B2D] bg-white text-[#EF2B2D] ring-4 ring-[#EF2B2D]/10 shadow-sm"
+                : "border-transparent bg-[#F4F6F9] text-[#24262B] hover:bg-[#EAEFF5] shadow-sm"
+            }`}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Step 4: Upload Floor Plan */}
+      <div className="mt-8 mb-5 flex items-center justify-between border-t border-[#ECEFF4] pt-8">
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-[15px] font-[800] text-white shadow-[0_4px_10px_rgba(239,43,45,0.3)]">
+            4
+          </div>
+          <h2 className="text-[20px] font-[800] text-[#1C1F26] manrope tracking-tight">
+            Upload Floor Plan
+          </h2>
+        </div>
+        <span className="text-[13px] font-semibold text-[#9AA1AE] bg-[#F4F6F9] px-3 py-1 rounded-full manrope">
+          Optional
+        </span>
+      </div>
+
+      <div className="relative">
+        <input
+          type="file"
+          id="floorPlanUpload"
+          accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+
+        {!floorPlanFile ? (
+          <label
+            htmlFor="floorPlanUpload"
+            className="flex flex-col items-center justify-center w-full min-h-[120px] border-2 border-dashed border-[#D1D5DB] rounded-[18px] bg-[#F9FAFC] hover:bg-white hover:border-[#EF2B2D] transition-all duration-300 cursor-pointer p-4 group"
+          >
+            <div className="flex items-center justify-center w-11 h-11 mb-2 rounded-full bg-[#EF2B2D]/10 text-[#EF2B2D] group-hover:scale-110 transition-transform duration-300">
+              <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+            </div>
+            <p className="text-[14px] font-bold text-[#24262B] manrope">
+              Upload your floor plan
+            </p>
+            <p className="text-[12px] text-[#9AA1AE] mt-1 manrope">
+              JPG, JPEG, PNG or PDF (Max 10MB)
+            </p>
+          </label>
+        ) : (
+          <div className="flex items-center justify-between w-full p-4 rounded-[18px] border-2 border-[#EF2B2D]/30 bg-[#FFF8F8]">
+            <div className="flex items-center gap-3 overflow-hidden">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EF2B2D] text-white">
+                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <p className="text-[14px] font-bold text-[#24262B] truncate manrope">
+                  {floorPlanFile.name}
+                </p>
+                <p className="text-[12px] text-[#6A7280] manrope">
+                  {(floorPlanFile.size / (1024 * 1024)).toFixed(2)} MB
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setFloorPlanFile(null);
+                setFileError("");
+              }}
+              className="p-2 text-[#9AA1AE] hover:text-[#EF2B2D] hover:bg-white rounded-full transition-colors shrink-0"
+              title="Remove file"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        )}
+        {fileError && (
+          <p className="mt-2 text-[12px] font-semibold text-[#EF2B2D] manrope">
+            {fileError}
+          </p>
+        )}
+      </div>
+
+      {/* Submit */}
+      <button
+        type="submit"
+        className="flex h-[60px] w-full mt-10 items-center justify-center gap-2 bg-[#EF2B2D] hover:bg-[#D92123] shadow-[0_12px_24px_-8px_rgba(239,43,45,0.6)] hover:shadow-[0_16px_32px_-8px_rgba(239,43,45,0.7)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 text-[18px] font-[800] text-white manrope rounded-full group"
+      >
+        Book Now
+        <svg viewBox="0 0 24 24" className="h-5 w-5 ml-1 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M5 12h14" />
+          <path d="m13 5 7 7-7 7" />
+        </svg>
+      </button>
+
+      <p className="mx-auto mt-4 text-center text-[12px] leading-[1.6] text-[#9AA1AE] manrope">
+        By booking, you agree to our Terms of Service and Privacy Policy.
+      </p>
+    </form>
+  );
+}
+
+export default function BookConsultationForm() {
+  const searchParams = useSearchParams();
+  const [consultationMode, setConsultationMode] = useState<ConsultationMode>("experience-center");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [preferredSlot, setPreferredSlot] = useState("");
+  const [propertyName, setPropertyName] = useState("");
+  const [possessionTimeline, setPossessionTimeline] = useState<PossessionTimeline>("immediately");
+  const [floorPlanFile, setFloorPlanFile] = useState<File | null>(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCarouselIndex((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleBookConsultationSubmit = async () => {
+    if (!selectedDate || !preferredSlot || !propertyName) {
+      alert("Please fill date, preferred slot and property details.");
+      return;
+    }
+    if (!isPreferredSlotAvailable(preferredSlot, selectedDate)) {
+      alert("Please select a future time slot.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const fallbackName = searchParams.get("name") || "";
+    const fallbackEmail = searchParams.get("email") || "";
+    const fallbackPhone =
+      searchParams.get("phone") || searchParams.get("phoneNumber") || "";
+    const fallbackPincode = searchParams.get("pincode") || "";
+    const fallbackBudget = searchParams.get("budget") || "";
+
+    const firstFormDetails = {
+      name:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userName")
+          : "") || fallbackName,
+      email:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userEmail")
+          : "") || fallbackEmail,
+      phone:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userPhone")
+          : "") || fallbackPhone,
+      pincode:
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("userPincode")
+          : "") || fallbackPincode,
+      budget:
+        (typeof window !== "undefined"
+          ? (sessionStorage.getItem("userBudget") || sessionStorage.getItem("budget"))
+          : "") || fallbackBudget,
+    };
+
+    let floorPlan = null;
+    if (floorPlanFile) {
+      try {
+        const base64Data = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = (error) => reject(error);
+          reader.readAsDataURL(floorPlanFile);
+        });
+        floorPlan = {
+          name: floorPlanFile.name,
+          type: floorPlanFile.type,
+          base64: base64Data,
+        };
+      } catch (e) {
+        console.error("Error reading floor plan file:", e);
+      }
+    }
+
+    const payload = {
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      firstFormDetails,
+      consultationDetails: {
+        consultationMode,
+        selectedDate,
+        preferredSlot,
+        propertyName,
+        possessionTimeline,
+      },
+      floorPlan,
+    };
+
+    try {
+      await fetch("/api/book-consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch (err) {
+      console.error("Background lead submit failed:", err);
+    }
+
+    alert("Thank you for your submission.");
+    setSelectedDate("");
+    setPreferredSlot("");
+    setPropertyName("");
+    setPossessionTimeline("immediately");
+    setFloorPlanFile(null);
+    setIsSubmitting(false);
+  };
+
+  return (
+    <div className="bg-[#F1F2F6] min-h-screen manrope">
+
+      {/* =========================================================== */}
+      {/* MOBILE VERSION (< 1024px)                                    */}
+      {/* =========================================================== */}
+      <div className="block lg:hidden">
+        {/* 1. IMAGE — full width top section */}
+        <div className="relative w-full h-[260px] sm:h-[310px] overflow-hidden">
+          <img
+            src={carouselImages1[0]}
+            alt="Interior"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* 2. HEADER — full width centered below image */}
+        <div className="px-5 pt-8 pb-6 text-center">
+          <HeaderSection
+            wrapperClassName="w-full"
+            titleClassName="text-[32px] sm:text-[38px] font-[800] text-[#181B21] tracking-tight leading-[1.12]"
+            textClassName="text-[15px] mt-3 text-[#5F6672] font-medium max-w-[380px] mx-auto"
+          />
+        </div>
+
+        {/* 3. FORM — white card below image */}
+        <div className="px-4 sm:px-6 pt-6 pb-4">
+          <div className="bg-white rounded-[28px] shadow-[0_16px_40px_rgba(15,23,42,0.06)] border border-gray-100 p-6 sm:p-8">
+            <FormSection
+              consultationMode={consultationMode}
+              setConsultationMode={setConsultationMode}
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+              preferredSlot={preferredSlot}
+              setPreferredSlot={setPreferredSlot}
+              propertyName={propertyName}
+              setPropertyName={setPropertyName}
+              possessionTimeline={possessionTimeline}
+              setPossessionTimeline={setPossessionTimeline}
+              floorPlanFile={floorPlanFile}
+              setFloorPlanFile={setFloorPlanFile}
+              onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
+            />
+          </div>
+        </div>
+
+        {/* 4. BENEFITS — full width centered below form */}
+        <div className="px-4 sm:px-6 py-8">
+          <BenefitsSection
+            wrapperClassName="w-full max-w-[500px] mx-auto"
+            titleClassName="text-[16px] font-[800] text-[#1E2128] mt-2"
+            textClassName="text-[13px] text-[#6A7280] mt-1 leading-relaxed max-w-[140px] mx-auto"
+          />
+        </div>
+      </div>
+
+      {/* =========================================================== */}
+      {/* DESKTOP VERSION (>= 1024px)                                  */}
+      {/* =========================================================== */}
+      <div className="hidden lg:block">
+
+        {/* 1. HEADER — full width, centered at top */}
+        <div className="text-center pt-16 pb-10 px-8">
+          <HeaderSection
+            wrapperClassName="w-full"
+            titleClassName="text-[40px] xl:text-[50px] 2xl:text-[56px] font-[800] text-[#181B21] tracking-tight leading-[1.1]"
+            textClassName="text-[16px] xl:text-[17px] font-medium text-[#5F6672] mt-4 max-w-[580px] mx-auto leading-relaxed"
+          />
+        </div>
+
+        {/* 2. FORM + IMAGE — balanced grid with consistent padding on both sides */}
+        <div className="px-8 xl:px-12">
+          <div className="max-w-[1440px] mx-auto grid grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1.15fr] gap-6 xl:gap-8 items-stretch">
+
+            {/* Left: Form card — fully rounded, elevated, premium */}
+            <div className="bg-white rounded-[28px] shadow-[0_8px_40px_rgba(15,23,42,0.08)] border border-gray-100/80 p-8 xl:p-10 flex flex-col">
+              {/* Red left accent bar */}
+              <FormSection
+                consultationMode={consultationMode}
+                setConsultationMode={setConsultationMode}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+                preferredSlot={preferredSlot}
+                setPreferredSlot={setPreferredSlot}
+                propertyName={propertyName}
+                setPropertyName={setPropertyName}
+                possessionTimeline={possessionTimeline}
+                setPossessionTimeline={setPossessionTimeline}
+                floorPlanFile={floorPlanFile}
+                setFloorPlanFile={setFloorPlanFile}
+                onSubmit={isSubmitting ? () => {} : handleBookConsultationSubmit}
+              />
+            </div>
+
+            {/* Right: Image Carousel — fully rounded, same shadow level */}
+            <div className="relative overflow-hidden rounded-[28px] shadow-[0_8px_40px_rgba(15,23,42,0.12)] min-h-[520px]">
+              {carouselImages.map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt={`Interior ${i + 1}`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                    i === carouselIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+              {/* Gradient overlay at bottom for dots readability */}
+              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+              {/* Dot indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {carouselImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCarouselIndex(i)}
+                    className={`h-2 rounded-full transition-all duration-300 ${i === carouselIndex ? "w-6 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. BENEFITS — full width centered below */}
+        <div className="px-8 xl:px-12 pt-12 pb-16">
+          <div className="max-w-[800px] mx-auto">
+            <BenefitsSection
+              wrapperClassName="w-full"
+              titleClassName="text-[20px] xl:text-[22px] font-[800] text-[#1E2128] mt-2"
+              textClassName="text-[15px] xl:text-[16px] text-[#6A7280] mt-2 leading-relaxed max-w-[220px] mx-auto"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
+}

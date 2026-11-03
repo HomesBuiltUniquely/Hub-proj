@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Pincode } from "./Pincode"
 import OverlapNavBar from "../OverlapNavBar";
+import { getVerificationStatus } from "@/lib/leadVerification";
+import {
+  prepareLeadThankYou,
+  redirectToLeadThankYou,
+  buildLeadThankYouQuery,
+} from "@/lib/postLeadSubmitRedirect";
 
 export function HeroSection() {
-    const router = useRouter();
     const [open, setOpen] = useState(false);
     const [propSelect, setpropSelect] = useState("");
     const options = ["2BHK", "3BHK", "4+BHK/Duplex"]
@@ -189,7 +193,68 @@ export function HeroSection() {
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const submitLeadAndRedirect = (updatedForm: typeof form) => {
+        setIsSubmitting(true);
+        setSubmitMessage("");
+
+        const formData = new FormData();
+        formData.append("name", updatedForm.name);
+        formData.append("phone", updatedForm.phonennumber);
+        formData.append("email", updatedForm.email);
+        formData.append("pincode", updatedForm.pincode);
+        formData.append("propertyType", updatedForm.property);
+        formData.append("timeSlot", updatedForm.Scheduler);
+        formData.append("pageUrl", window.location.href);
+        formData.append("verificationStatus", getVerificationStatus(isVerified));
+        formData.append("otpSuccess", String(isVerified));
+        if (selectedFile) {
+            formData.append("file", selectedFile);
+        }
+
+        fetch("/api/landingpage2-contact", {
+            method: "POST",
+            body: formData,
+            keepalive: true,
+        }).catch((error) => {
+            console.error("Background landingpage2 submit failed:", error);
+        });
+
+        fetch("https://hows.hubinterior.com/v1/MetaLead", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: updatedForm.name,
+                email: updatedForm.email,
+                phoneNumber: updatedForm.phonennumber,
+                pinCode: updatedForm.pincode,
+                propertyPin: updatedForm.pincode,
+                propertyType: updatedForm.property,
+                bookASlot: updatedForm.Scheduler,
+                verificationStatus: getVerificationStatus(isVerified),
+                otpSuccess: isVerified,
+            }),
+            keepalive: true,
+        }).catch((err) => {
+            console.warn("Failed to POST to MetaLead", err);
+        });
+
+        prepareLeadThankYou({
+            name: updatedForm.name,
+            email: updatedForm.email,
+            phone: updatedForm.phonennumber,
+            pincode: updatedForm.pincode,
+        });
+
+        redirectToLeadThankYou(
+            buildLeadThankYouQuery({
+                name: updatedForm.name,
+                email: updatedForm.email,
+                phone: updatedForm.phonennumber,
+            }),
+        );
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!isVerified) {
@@ -205,7 +270,7 @@ export function HeroSection() {
         };
 
         // Basic validation
-        if (!updatedForm.name || !updatedForm.email || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
+        if (!updatedForm.name || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
             setSubmitMessage("Please fill in all required fields");
             return;
         }
@@ -222,94 +287,10 @@ export function HeroSection() {
             return;
         }
 
-
-        setIsSubmitting(true);
-        setSubmitMessage("");
-
-        try {
-            // Create FormData for file upload
-            const formData = new FormData();
-            formData.append('name', updatedForm.name);
-            formData.append('phone', updatedForm.phonennumber);
-            formData.append('email', updatedForm.email);
-            formData.append('pincode', updatedForm.pincode);
-            formData.append('propertyType', updatedForm.property);
-            formData.append('timeSlot', updatedForm.Scheduler);
-            formData.append('pageUrl', window.location.href);
-
-            if (selectedFile) {
-                formData.append('file', selectedFile);
-            }
-
-            const response = await fetch('/api/landingpage2-contact', {
-                method: 'POST',
-                body: formData, // Send as FormData instead of JSON
-            });
-
-            const data = await response.json();
-
-            (async () => {
-                try {
-                    const home1Payload = {
-                        name: updatedForm.name,
-                        email: updatedForm.email,
-                        phoneNumber: updatedForm.phonennumber,
-                        pinCode: updatedForm.pincode,
-                        propertyType: updatedForm.property,
-                        bookASlot: updatedForm.Scheduler,
-                    };
-
-                    await fetch('https://hows.hubinterior.com/v1/MetaLead', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(home1Payload),
-                    });
-                } catch (err) {
-                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
-                }
-            })();
-
-            if (data.success) {
-                setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
-                setForm({
-                    name: "",
-                    email: "",
-                    phonennumber: "",
-                    pincode: "",
-                    Scheduler: "",
-                    property: ""
-                });
-                setpropSelect("");
-                setSelected("Book A slot");
-                setSelectedPincode("");
-                setSelectedFile(null);
-                setFilePreview("");
-                // Reset OTP states
-                setOtpSent(false);
-                setOtp('');
-                setIsVerified(false);
-                setOtpError('');
-
-                // Navigate to Thank-You page after successful submission
-                setTimeout(() => {
-                    // Set flag to trigger reload on Thank You page
-                    sessionStorage.setItem('formSubmitted', 'true');
-                    router.push('/Submitted-Thank-You');
-                }, 1500);
-            } else {
-                setSubmitMessage("Failed to submit appointment request. Please try again.");
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            setSubmitMessage("An error occurred. Please try again.");
-        } finally {
-            setIsSubmitting(false);
-        }
+        submitLeadAndRedirect(updatedForm);
     };
 
-    const handleMobileSubmit = async (e: React.FormEvent) => {
+    const handleMobileSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!isVerified) {
@@ -317,15 +298,13 @@ export function HeroSection() {
             return;
         }
 
-        // Update form with selected property and time slot
         const updatedForm = {
             ...form,
             property: propSelect,
             Scheduler: Selected !== "Book A slot" ? Selected : ""
         };
 
-        // Basic validation
-        if (!updatedForm.name || !updatedForm.email || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
+        if (!updatedForm.name || !updatedForm.phonennumber || !updatedForm.pincode || !updatedForm.property || updatedForm.Scheduler === "") {
             setSubmitMessage("Please fill in all required fields");
             return;
         }
@@ -341,94 +320,7 @@ export function HeroSection() {
             return;
         }
 
-
-        setIsSubmitting(true);
-        setSubmitMessage("");
-
-        try {
-            // Create FormData for file upload
-            const formData = new FormData();
-            formData.append('name', updatedForm.name);
-            formData.append('phone', updatedForm.phonennumber);
-            formData.append('email', updatedForm.email);
-            formData.append('pincode', updatedForm.pincode);
-            formData.append('propertyType', updatedForm.property);
-            formData.append('timeSlot', updatedForm.Scheduler);
-            formData.append('pageUrl', window.location.href);
-
-            if (selectedFile) {
-                formData.append('file', selectedFile);
-            }
-
-            const response = await fetch('/api/landingpage2-contact', {
-                method: 'POST',
-                body: formData, // Send as FormData instead of JSON
-            });
-
-
-            const data = await response.json();
-
-            // Run fire-and-forget; errors are caught and logged.
-            (async () => {
-                try {
-                    const home1Payload = {
-                        name: updatedForm.name,
-                        email: updatedForm.email,
-                        phoneNumber: updatedForm.phonennumber,
-                        pinCode: updatedForm.pincode,
-                        propertyType: updatedForm.property,
-                        bookASlot: updatedForm.Scheduler,
-                    };
-
-                    await fetch('https://hows.hubinterior.com/v1/MetaLead', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(home1Payload),
-                    });
-                } catch (err) {
-                    console.warn('Failed to POST to https://hows.hubinterior.com/v1/MetaLead', err);
-                }
-            })();
-
-            if (data.success) {
-                setSubmitMessage("Appointment request submitted successfully! We'll contact you soon.");
-                // Reset form
-                setForm({
-                    name: "",
-                    email: "",
-                    phonennumber: "",
-                    pincode: "",
-                    Scheduler: "",
-                    property: ""
-                });
-                setpropSelect("");
-                setSelected("Book A slot");
-                setSelectedPincode("");
-                setSelectedFile(null);
-                setFilePreview("");
-                // Reset OTP states
-                setOtpSent(false);
-                setOtp('');
-                setIsVerified(false);
-                setOtpError('');
-
-                // Navigate to Thank-You page after successful submission
-                setTimeout(() => {
-                    // Set flag to trigger reload on Thank You page
-                    sessionStorage.setItem('formSubmitted', 'true');
-                    router.push('/Submitted-Thank-You');
-                }, 1500);
-            } else {
-                setSubmitMessage("Failed to submit appointment request. Please try again.");
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            setSubmitMessage("An error occurred. Please try again.");
-        } finally {
-            setIsSubmitting(false);
-        }
+        submitLeadAndRedirect(updatedForm);
     };
 
     return (
@@ -462,6 +354,7 @@ export function HeroSection() {
                                                 className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
                                             />
                                         </div>
+                                        {/* Email field hidden per request.
                                         <div className="flex-1">
                                             <input
                                                 type="text"
@@ -472,6 +365,7 @@ export function HeroSection() {
                                                 className="w-full h-[60px] border-2 border-[#DDCDC1] pl-8 rounded-4xl placeholder-white manrope bg-transparent text-white"
                                             />
                                         </div>
+                                        */}
                                     </div>
 
                                     {/* Phone and Pincode Row */}
@@ -782,7 +676,7 @@ export function HeroSection() {
                                     required
                                 />
 
-                                {/* Email Input */}
+                                {/* Email Input hidden per request.
                                 <input
                                     type="email"
                                     name="email"
@@ -791,6 +685,7 @@ export function HeroSection() {
                                     className="w-full h-[50px] border-2 border-[#DDCDC1] rounded-3xl placeholder-white pl-4 text-white"
                                     placeholder="Email"
                                 />
+                                */}
 
                                 {/* Phone Input */}
                                 <input
@@ -897,7 +792,7 @@ export function HeroSection() {
                                                 key={option}
                                                 onClick={() => setpropSelect(option)}
                                                 className={`cursor-pointer border-2 border-[#DDCDC1] px-4 py-2 rounded-3xl text-white text-sm
-                     ${propSelect === option ? "bg-[#ef0101]" : ""}`}
+                    ${propSelect === option ? "bg-[#ef0101]" : ""}`}
                                             >
                                                 {option}
                                             </div>
@@ -1000,4 +895,4 @@ export function HeroSection() {
             </div>
         </div>
     );
-}
+};

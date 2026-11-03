@@ -46,7 +46,7 @@ Prayer Units & Study Areas
 Wall Décor & Kids' Room Designs
 False Ceiling & Lighting
 Foyer & Bar Unit Designs
-Whether you're designing a new home or renovating, we offer affordable interior designers in Bangalore who deliver functional, beautiful spaces.`
+Whether you're designing a new home or renovating, we offer premium interior designers in Bangalore who deliver functional, beautiful spaces.`
   }
 ];
 

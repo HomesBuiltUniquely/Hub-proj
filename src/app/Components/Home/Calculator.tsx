@@ -110,7 +110,7 @@ const Step1BhkType: React.FC<StepProps> = ({ formData, setFormData }) => {
   return (
     <div className="text-center">
       {/* Laptop/Desktop Version */}
-      <div className="hidden lg:block">
+      <div className="home-desktop hidden lg:block">
       <h2 className="text-2xl manrope text-gray-800 mb-10">Select your BHK type</h2>
       <div className="space-y-4 max-w-md mx-auto">
         {bhkOptions.map((option) => (
@@ -202,7 +202,7 @@ const Step2Rooms: React.FC<StepProps> = ({ formData, setFormData }) => {
     return (
         <div className="text-center">
             {/* Laptop/Desktop Version */}
-            <div className="hidden lg:block">
+            <div className="home-desktop hidden lg:block">
                 <h2 className="text-2xl manrope text-gray-800 mb-10">Which rooms would you like to design?</h2>
             <div className="space-y-4 max-w-md mx-auto">
                 {roomOptions.map(room => {
@@ -304,7 +304,7 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
                 return (
                     <div>
                         {/* Laptop/Desktop Version */}
-                        <div className="hidden lg:block">
+                        <div className="home-desktop hidden lg:block">
                         <h3 className="text-center text-2xl manrope text-gray-800 mb-6">Select Wardrobe Type</h3>
                             <div className="flex gap-6 max-w-4xl mx-auto">
                             {wardrobeTypes.map(type => (
@@ -365,7 +365,7 @@ const Step3WardrobeMeasurement: React.FC<StepProps> = ({ formData, setFormData }
                 return (
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
-                        <div className="hidden lg:block">
+                        <div className="home-desktop hidden lg:block">
                         <h3 className="text-xl manrope text-gray-800 mb-6">Select Dimensions for {formData.wardrobe?.type} Wardrobe</h3>
                         <div className="max-w-lg mx-auto space-y-6">
                                 <div>
@@ -479,7 +479,7 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                 return (
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
-                        <div className="hidden lg:block">
+                        <div className="home-desktop hidden lg:block">
                         <h2 className="text-2xl manrope text-gray-800">Select the layout of your kitchen</h2>
                         <p className="text-sm text-gray-500 my-2 manrope-medium">
                             Want to know more. <a href="#" className="text-red-500 manrope-medium">Check here</a>
@@ -549,7 +549,7 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                 return (
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
-                        <div className="hidden lg:block">
+                        <div className="home-desktop hidden lg:block">
                         <h3 className="text-xl manrope text-gray-800 mb-6">Select Kitchen Size</h3>
                         <div className="flex justify-center manrope-medium gap-4 flex-wrap">
                             {kitchenSizes.map(opt => (
@@ -577,7 +577,7 @@ const Step4Kitchen: React.FC<StepProps> = ({ formData, setFormData }) => {
                 return (
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
-                        <div className="hidden lg:block">
+                        <div className="home-desktop hidden lg:block">
                         <h3 className="text-xl manrope text-gray-800 mb-6">Select Kitchen Units Required</h3>
                         <p className="text-sm manrope-medium text-gray-500 mb-6">You can select multiple options.</p>
                         <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -721,7 +721,7 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
                 return (
                     <div className="text-center">
                         {/* Laptop/Desktop Version */}
-                        <div className="hidden lg:block">
+                        <div className="home-desktop hidden lg:block">
                             <h2 className="text-2xl manrope text-gray-800 mb-6">Select Material Type</h2>
                             <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
                                 {materialTypes.map(material => {
@@ -795,7 +795,7 @@ const Step5Material: React.FC<StepProps> = ({ formData, setFormData }) => {
                 return (
     <div className="text-center">
                         {/* Laptop/Desktop Version */}
-                        <div className="hidden lg:block">
+                        <div className="home-desktop hidden lg:block">
                             <h3 className="text-xl manrope text-gray-800 mb-6">Select Finish Type</h3>
                             <div className="grid grid-cols-3 manrope-medium gap-6 max-w-4xl mx-auto">
                                 {finishOptions.map(opt => {
@@ -903,7 +903,7 @@ const Step5Collections: React.FC<StepProps> = ({ formData, setFormData }) => {
     const renderSlide = () => (
     <div className="text-center">
             {/* Laptop/Desktop Version */}
-            <div className="hidden lg:block">
+            <div className="home-desktop hidden lg:block">
                 <h2 className="text-2xl manrope text-gray-800 mb-6">Choose Other Units</h2>
                 <p className="text-sm manrope-medium text-gray-500 mb-6">You can select multiple options.</p>
                 <div className="grid grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -1104,7 +1104,7 @@ export default function CalculatorSetup() {
 
         <div className="w-full max-w-4xl">
             {/* Laptop/Desktop Layout */}
-            <div className="hidden lg:block mt-24">
+            <div className="home-desktop hidden lg:block mt-24">
             {/* Progress Bar */}
             <ProgressBar steps={steps} currentStep={currentStep} />
             

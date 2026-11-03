@@ -56,7 +56,7 @@ const OfferBanner: React.FC = () => {
       
 
       {/* 2560 Version */}
-      <div className="desktop-2560 mx-auto px-20">
+      <div className="home-desktop desktop-2560 mx-auto px-20">
         <div className="relative w-[1400px] h-[340px] mb-10 mt-20 overflow-hidden rounded-3xl">
           <Image
             src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/offer%20banner%20d.png"
@@ -75,7 +75,7 @@ const OfferBanner: React.FC = () => {
       </div>
 
       {/* 1920 Version */}
-      <div className="desktop-1920 mx-auto px-18">
+      <div className="home-desktop desktop-1920 mx-auto px-18">
         <div className="relative w-full h-[340px] mb-20 mt-10 overflow-hidden rounded-3xl">
           <Image
             src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/offer%20banner%20d.png"
@@ -94,7 +94,7 @@ const OfferBanner: React.FC = () => {
       </div>
 
       {/* 1280 Version */}
-      <div className="desktop-1280 mx-auto px-13">
+      <div className="home-desktop desktop-1280 mx-auto px-13">
         <div className="relative w-full h-[280px] mb-15 overflow-hidden rounded-3xl">
           <Image
             src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/offer%20banner%20d.png"

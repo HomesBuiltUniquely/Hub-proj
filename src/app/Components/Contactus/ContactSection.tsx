@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { normalizePhoneNumber } from "@/lib/utils";
+import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -142,44 +143,22 @@ const ContactSection: React.FC = () => {
     setSubmitStatus('idle');
     setStatusMessage('');
 
-    try {
-      const response = await fetch('/api/contact-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+    fireAndForgetLeadSubmit('/api/contact-form', formData);
 
-      const result = await response.json();
-
-      if (result.success) {
-        setSubmitStatus('success');
-        setStatusMessage(result.message);
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          message: ''
-        });
-        // Reset OTP states
-        setOtpSent(false);
-        setOtp('');
-        setIsVerified(false);
-        setOtpError('');
-      } else {
-        setSubmitStatus('error');
-        setStatusMessage(result.message);
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-      setStatusMessage('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setSubmitStatus('success');
+    setStatusMessage('Thank you! Your message has been sent.');
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+    setOtpSent(false);
+    setOtp('');
+    setIsVerified(false);
+    setOtpError('');
+    setIsSubmitting(false);
   };
 
   return (
@@ -253,7 +232,7 @@ const ContactSection: React.FC = () => {
             <form onSubmit={handleSubmit} className="relative z-10 md:w-[550px] bg-transparent space-y-8 -mt-10 mr-10 pointer-events-auto">
               {/* First & Last Name */}
               <div className="flex gap-6">
-                <div className="w-1/2">
+                <div className="w-full">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">First Name*</p>
                   <input
                     name="firstName"
@@ -264,7 +243,7 @@ const ContactSection: React.FC = () => {
                   />
                 </div>
 
-                <div className="w-1/2">
+                <div className="w-full">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Last Name</p>
                   <input
                     name="lastName"
@@ -277,7 +256,8 @@ const ContactSection: React.FC = () => {
 
               {/* Email & Phone */}
               <div className="flex gap-6">
-                <div className="w-1/2">
+                {/* Email field hidden per request.
+                <div className="w-full">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Email*</p>
                   <input
                     name="email"
@@ -288,6 +268,7 @@ const ContactSection: React.FC = () => {
                     required
                   />
                 </div>
+                */}
 
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Phone Number*</p>
@@ -402,10 +383,19 @@ const ContactSection: React.FC = () => {
               </div>
 
               <div className="text-xl flex items-start gap-4 text-black manrope-medium">
-                <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M22 17.92V21a1 1 0 0 1-1.11 1A19.8 19.8 0 0 1 3 4.11 1 1 0 0 1 4 3h3.09A1 1 0 0 1 8 4a16 16 0 0 0 .66 2.3 1 1 0 0 1-.25 1L6.13 8.27a16 16 0 0 0 6.58 6.58l1-1.28a1 1 0 0 1 1-.26A16 16 0 0 0 20 19a1 1 0 0 1 .92 1z" />
+                <svg className="w-6 h-6 mt-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    fillRule="evenodd"
+                    d="M19.5 9.75a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 1.5 0v2.69l4.72-4.72a.75.75 0 1 1 1.06 1.06L16.06 9h2.69a.75.75 0 0 1 .75.75Z"
+                    clipRule="evenodd"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                    clipRule="evenodd"
+                  />
                 </svg>
-                <span>+91 889 889 1117 / 889 889 2223</span>
+                <span>07316914731</span>
               </div>
             </div>
 
@@ -520,6 +510,7 @@ const ContactSection: React.FC = () => {
 
               {/* Email & Phone */}
               <div className="flex gap-6">
+                {/* Email field hidden per request.
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Email*</p>
                   <input
@@ -531,6 +522,7 @@ const ContactSection: React.FC = () => {
                     required
                   />
                 </div>
+                */}
 
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Phone Number*</p>
@@ -645,10 +637,19 @@ const ContactSection: React.FC = () => {
               </div>
 
               <div className="text-xl flex items-start gap-4 text-black manrope-medium">
-                <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M22 17.92V21a1 1 0 0 1-1.11 1A19.8 19.8 0 0 1 3 4.11 1 1 0 0 1 4 3h3.09A1 1 0 0 1 8 4a16 16 0 0 0 .66 2.3 1 1 0 0 1-.25 1L6.13 8.27a16 16 0 0 0 6.58 6.58l1-1.28a1 1 0 0 1 1-.26A16 16 0 0 0 20 19a1 1 0 0 1 .92 1z" />
+                <svg className="w-6 h-6 mt-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    fillRule="evenodd"
+                    d="M19.5 9.75a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 1.5 0v2.69l4.72-4.72a.75.75 0 1 1 1.06 1.06L16.06 9h2.69a.75.75 0 0 1 .75.75Z"
+                    clipRule="evenodd"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                    clipRule="evenodd"
+                  />
                 </svg>
-                <span>+91 889 889 1117 / 889 889 2223</span>
+                <span>07316914731</span>
               </div>
             </div>
 
@@ -766,6 +767,7 @@ const ContactSection: React.FC = () => {
 
               {/* Email & Phone */}
               <div className="flex gap-5">
+                {/* Email field hidden per request.
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Email*</p>
                   <input
@@ -777,6 +779,7 @@ const ContactSection: React.FC = () => {
                     required
                   />
                 </div>
+                */}
                 <div className="w-1/2">
                   <p className="text-gray-700 mb-1 manrope-medium text-sm">Phone Number*</p>
                   <input
@@ -874,7 +877,7 @@ const ContactSection: React.FC = () => {
               <h2 className="text-4xl manrope text-black mb-6">Corporate Office</h2>
 
               <div className="text-xl flex items-start gap-4 text-black manrope-medium">
-                <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg className="w-13 h-13 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 21V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m8-14v2a2 2 0 1 1-4 0V5" />
                 </svg>
                 <span className="max-w-[350px]">
@@ -890,10 +893,19 @@ const ContactSection: React.FC = () => {
               </div>
 
               <div className="text-xl flex items-start gap-4 text-black manrope-medium">
-                <svg className="w-6 h-6 mt-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M22 17.92V21a1 1 0 0 1-1.11 1A19.8 19.8 0 0 1 3 4.11 1 1 0 0 1 4 3h3.09A1 1 0 0 1 8 4a16 16 0 0 0 .66 2.3 1 1 0 0 1-.25 1L6.13 8.27a16 16 0 0 0 6.58 6.58l1-1.28a1 1 0 0 1 1-.26A16 16 0 0 0 20 19a1 1 0 0 1 .92 1z" />
+                <svg className="w-6 h-6 mt-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    fillRule="evenodd"
+                    d="M19.5 9.75a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 1.5 0v2.69l4.72-4.72a.75.75 0 1 1 1.06 1.06L16.06 9h2.69a.75.75 0 0 1 .75.75Z"
+                    clipRule="evenodd"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                    clipRule="evenodd"
+                  />
                 </svg>
-                <span>+91 889 889 1117 / 889 889 2223</span>
+                <span>07316914731</span>
               </div>
             </div>
 
@@ -1002,7 +1014,7 @@ const ContactSection: React.FC = () => {
                 className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               />
 
-              {/* Email */}
+              {/* Email field hidden per request.
               <input
                 name="email"
                 type="email"
@@ -1013,6 +1025,7 @@ const ContactSection: React.FC = () => {
                 required
                 className="w-full h-[50px] rounded-full border-2 border-[#ddcdc1] pl-4 manrope-medium focus:border-[#ef0101] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               />
+              */}
 
               {/* Phone */}
               <input

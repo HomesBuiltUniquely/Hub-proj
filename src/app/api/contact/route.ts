@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { resolveLeadVerificationStatus } from '@/lib/leadVerification';
+import { isValidIndianPhone, normalizeIndianPhone } from '@/lib/phoneValidation';
 
 export async function POST(req: Request) {
   try {
@@ -12,9 +14,12 @@ export async function POST(req: Request) {
       city,
       budget,
       possession,
+      projectPossessionTimeline,
+      interiorSetup,
       whatsappConsent,
       pageUrl,
       verificationStatus,
+      otpSuccess,
       date,
       time,
       // New calculator fields (flattened)
@@ -26,16 +31,37 @@ export async function POST(req: Request) {
       material,
       // Nested calculator object (optional)
       calculator,
+      mailOnly,
+      skipEmail,
     } = body;
+
+    // Resolve aliases so landing / calculator / popup payloads all land in email
+    const resolvedInteriorPackage = city || interiorSetup || '';
+    const resolvedPossession =
+      possession || projectPossessionTimeline || '';
+    const isBudgetVal = (val?: string) => {
+      if (!val) return false;
+      const lower = val.toLowerCase();
+      return lower.includes("lakh") || lower.includes("cr") || /\b\d+\s*-\s*\d+/.test(lower);
+    };
+    const resolvedBudget = budget || (isBudgetVal(resolvedInteriorPackage) ? resolvedInteriorPackage : '') || '';
+
+    if (!isValidIndianPhone(phone)) {
+      return NextResponse.json(
+        { success: false, message: 'Phone number must be exactly 10 digits.' },
+        { status: 400 },
+      );
+    }
+    const normalizedPhone = normalizeIndianPhone(phone);
 
     console.log('API route called with data:', {
       name,
-      phone,
+      phone: normalizedPhone,
       email,
       pincode,
-      city,
+      city: resolvedInteriorPackage,
       budget,
-      possession,
+      possession: resolvedPossession,
       whatsappConsent,
       pageUrl,
       verificationStatus,
@@ -52,31 +78,174 @@ export async function POST(req: Request) {
 
     const path = (pageUrl || '').toString();
     const pathLower = path.toLowerCase();
+    const normalizedVerificationStatus = resolveLeadVerificationStatus({
+      verificationStatus,
+      otpSuccess,
+    });
+    const normalizedOtpSuccess = normalizedVerificationStatus === 'VERIFIED';
+    const hasVerificationInput =
+      typeof verificationStatus !== 'undefined' || typeof otpSuccess !== 'undefined';
+    const websiteLeadVerificationStatus = hasVerificationInput
+      ? normalizedVerificationStatus
+      : 'VERIFIED';
+    const websiteLeadOtpSuccess = hasVerificationInput ? normalizedOtpSuccess : true;
 
-    // Identify Meta lead page (best-interior-designers-in-bangalore)
+    // Identify Meta lead pages (best-interior-designers-in-bangalore and its calculator)
     const isBestInteriorBangalorePage =
       pathLower.includes('/best-interior-designers-in-bangalore') ||
       pathLower.includes('best-interior-designers-in-bangalore');
+    const isBestInteriorBangaloreCalculator =
+      pathLower.includes('/best-interior-designers-in-bangalore/calculator');
+    const isMetaLeadPage = isBestInteriorBangalorePage || isBestInteriorBangaloreCalculator;
 
     // Identify which submissions are pure Google Ads (should NOT hit WebsiteLead API)
-    // Exclude best-interior-designers-in-bangalore as it's a Meta lead, not Google Ads
     const isInteriorBangalorePage =
       (pathLower.includes('/interior-designers-in-bangalore') ||
       pathLower.includes('interior-designers-in-bangalore')) &&
-      !isBestInteriorBangalorePage; // Exclude Meta lead page
+      !isBestInteriorBangalorePage;
     const isInteriorBangaloreCalculator =
       pathLower.includes('/interior-designers-in-bangalore/calculator');
-
     const isGoogleAdsLead = isInteriorBangalorePage || isInteriorBangaloreCalculator;
 
-    // Send data to unified WebsiteLead API only for WEBSITE leads (not Google Ads landers)
-    if (!isGoogleAdsLead) {
+    /** Detected from pageUrl only — no coupling to a specific route module. */
+    const isHomeRenovationBangalorePage =
+      pathLower.includes('/home-renovation-in-bangalore') ||
+      pathLower.includes('home-renovation-in-bangalore');
+
+    // Send lead integrations unless this request is mail-only
+    if (!mailOnly && isMetaLeadPage) {
       try {
-        const websiteLeadPayload = {
+        const metaLeadPayload = {
+          name: name || '',
+          email: email || '',
+          phoneNumber: normalizedPhone,
+          pinCode: pincode || null,
+          propertyPin: pincode || null,
+          propertyType: bhkType || (isBudgetVal(resolvedInteriorPackage) ? null : resolvedInteriorPackage) || null,
+          bookASlot: date || time || null,
+          leadSource: 'Website',
+          verificationStatus: normalizedVerificationStatus,
+          otpSuccess: normalizedOtpSuccess,
+          budget: resolvedBudget || null,
+        };
+
+        console.log('Sending data to MetaLead API:', metaLeadPayload);
+
+        const metaLeadResponse = await fetch('https://hows.hubinterior.com/v1/MetaLead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(metaLeadPayload),
+        });
+
+        if (metaLeadResponse.ok) {
+          const metaLeadText = await metaLeadResponse.text();
+          console.log('MetaLead API response:', metaLeadText);
+        } else {
+          console.error('MetaLead API error:', metaLeadResponse.status, metaLeadResponse.statusText);
+        }
+      } catch (metaLeadError) {
+        console.error('Error sending to MetaLead API:', metaLeadError);
+      }
+    }
+    // Send Home1 data for Google Ads interior pages/calculator.
+    // Keep this server-side so CRM delivery does not depend on browser behavior.
+    // NOTE: HeroSection sends the dropdown selection as `city` (not `possession`).
+    else if (!mailOnly && isGoogleAdsLead) {
+      try {
+        const isBudgetVal = (val?: string) => {
+          if (!val) return false;
+          const lower = val.toLowerCase();
+          return lower.includes("lakh") || lower.includes("cr") || /\b\d+\s*-\s*\d+/.test(lower);
+        };
+        const resolvedBudget = budget || (isBudgetVal(resolvedInteriorPackage) ? resolvedInteriorPackage : '') || '';
+        const home1Payload = {
           name: name || '',
           email: email || '',
           phoneNumber: phone || '',
           propertyPin: pincode || '',
+          interiorSetup: isBudgetVal(resolvedInteriorPackage) ? '' : resolvedInteriorPackage,
+          possessionIn: resolvedPossession,
+          budget: resolvedBudget,
+          verificationStatus: normalizedVerificationStatus,
+          otpSuccess: normalizedOtpSuccess,
+        };
+
+        console.log('Sending data to Home1 API:', home1Payload);
+
+        const home1Response = await fetch('https://hows.hubinterior.com/v1/Home1', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(home1Payload),
+        });
+
+        if (home1Response.ok) {
+          const home1Text = await home1Response.text();
+          console.log('Home1 API response:', home1Text);
+        } else {
+          console.error('Home1 API error:', home1Response.status, home1Response.statusText);
+        }
+      } catch (home1Error) {
+        console.error('Error sending to Home1 API:', home1Error);
+      }
+    }
+    // Send home RENOVATION leads to Home1 instead of WebsiteLead.
+    else if (!mailOnly && isHomeRenovationBangalorePage) {
+      try {
+        const isBudgetVal = (val?: string) => {
+          if (!val) return false;
+          const lower = val.toLowerCase();
+          return lower.includes("lakh") || lower.includes("cr") || /\b\d+\s*-\s*\d+/.test(lower);
+        };
+        const resolvedBudget = budget || (isBudgetVal(resolvedInteriorPackage) ? resolvedInteriorPackage : '') || '';
+        const home1Payload = {
+          name: name || '',
+          email: email || '',
+          phoneNumber: normalizedPhone,
+          propertyPin: pincode || '',
+          interiorSetup: isBudgetVal(resolvedInteriorPackage) ? '' : resolvedInteriorPackage,
+          possessionIn: resolvedPossession,
+          budget: resolvedBudget,
+          verificationStatus: normalizedVerificationStatus,
+          otpSuccess: normalizedOtpSuccess,
+        };
+
+        console.log('Sending home renovation data to Home1 API:', home1Payload);
+
+        const home1Response = await fetch('https://hows.hubinterior.com/v1/Home1', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(home1Payload),
+        });
+
+        if (home1Response.ok) {
+          const home1Text = await home1Response.text();
+          console.log('Home1 API response:', home1Text);
+        } else {
+          console.error('Home1 API error:', home1Response.status, home1Response.statusText);
+        }
+      } catch (home1Error) {
+        console.error('Error sending home renovation to Home1 API:', home1Error);
+      }
+    }
+    // Send data to WebsiteLead API only for WEBSITE leads (not Google Ads, not Meta lead pages)
+    else if (!mailOnly && !isGoogleAdsLead) {
+      try {
+        const websiteLeadPayload = {
+          name: name || '',
+          email: email || '',
+          phoneNumber: normalizedPhone,
+          propertyPin: pincode || '',
+          interiorSetup: isBudgetVal(resolvedInteriorPackage) ? '' : resolvedInteriorPackage,
+          possessionIn: resolvedPossession,
+          budget: resolvedBudget,
+          verificationStatus: websiteLeadVerificationStatus,
+          otpSuccess: websiteLeadOtpSuccess,
         };
 
         console.log('Sending data to WebsiteLead API:', websiteLeadPayload);
@@ -90,20 +259,22 @@ export async function POST(req: Request) {
         });
 
         if (websiteLeadResponse.ok) {
-          const websiteLeadData = await websiteLeadResponse.json();
-          console.log('WebsiteLead API response:', websiteLeadData);
+          const websiteLeadText = await websiteLeadResponse.text();
+          console.log('WebsiteLead API response:', websiteLeadText);
         } else {
           console.error('WebsiteLead API error:', websiteLeadResponse.status, websiteLeadResponse.statusText);
         }
       } catch (websiteLeadError) {
         console.error('Error sending to WebsiteLead API:', websiteLeadError);
-        // Continue with email flow even if WebsiteLead API fails
       }
-    } else {
-      console.log(
-        'Skipping WebsiteLead API for Google Ads lead from path:',
-        path
-      );
+    }
+
+    // Allow callers to suppress email while still processing lead integrations.
+    if (skipEmail) {
+      return NextResponse.json({
+        success: true,
+        message: 'Lead processed successfully (email suppressed)',
+      });
     }
 
     console.log('Environment variables check:');
@@ -139,7 +310,9 @@ export async function POST(req: Request) {
 
     // ✅ Email content including all form data
     const verificationStatusText =
-      verificationStatus === 'Verified User' ? '✅ VERIFIED' : '⚠️ UNVERIFIED - NEEDS FOLLOW UP';
+      normalizedVerificationStatus === 'VERIFIED' ? '✅ VERIFIED' : '❌ UNVERIFIED';
+    const verificationStatusColor =
+      normalizedVerificationStatus === 'VERIFIED' ? 'green' : '#b45309';
 
     // Check if this is a calculator submission (has calculator data)
     const isCalculatorSubmission = !!(
@@ -164,39 +337,27 @@ export async function POST(req: Request) {
     const isHomeCalculator =
       !isInteriorCalculator && (pathLower.includes('/calculator') || pathLower.endsWith('/calculator'));
 
-    let subject = 'Google Ads Lead (Unverified)';
+    let subject = 'Google Ads Lead';
 
     // Check for Meta lead page first (best-interior-designers-in-bangalore)
     if (isBestInteriorBangalorePage) {
-      subject =
-        verificationStatus === 'Verified User'
-          ? 'Meta Lead (Verified)'
-          : 'Meta Lead (Unverified)';
+      subject = 'Meta Lead';
+    } else if (isHomeRenovationBangalorePage) {
+      // Standalone branch: only matches pageUrl; safe to remove with the renovation route later.
+      subject = 'Renovation Ads Lead';
     } else if (isInteriorCalculator || isInteriorBangalorePage) {
-      subject =
-        verificationStatus === 'Verified User'
-          ? 'Google Ads Lead (Verified)'
-          : 'Google Ads Lead (Unverified)';
+      subject = 'Google Ads Lead';
     } else if (isHubCalculator) {
-      subject =
-        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+      subject = 'Website Lead';
     } else if (isHomeCalculator) {
-      subject =
-        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+      subject = 'Website Lead';
     } else if (isContactPage) {
-      subject =
-        verificationStatus === 'Verified User'
-          ? 'Lead from Website(Verified)'
-          : 'Lead from Website (Unverified)';
+      subject = 'Lead from Website';
     } else if (isCalculatorSubmission) {
       // If calculator data is present but URL didn't match known routes, default to Website Lead
-      subject =
-        verificationStatus === 'Verified User' ? 'Website Lead (Verified)' : 'Website Lead (Unverified)';
+      subject = 'Website Lead';
     } else {
-      subject =
-        verificationStatus === 'Verified User'
-          ? 'Google Ads Lead (Verified)'
-          : 'Google Ads Lead (Unverified)';
+      subject = 'Google Ads Lead';
     }
 
     const renderJSON = (value: unknown) => {
@@ -208,34 +369,23 @@ export async function POST(req: Request) {
       }
     };
 
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER, // You can change this to a team email
-      subject: subject,
-      html: `
-        <h3>Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name || 'Not provided'}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-        <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
-        <p><strong>Interior Setup:</strong> ${city || 'Not provided'}</p>
-        <p><strong>Possession Timeline:</strong> ${possession || budget || 'Not provided'}</p>
-        <p><strong>Preferred Date:</strong> ${date ? (date.includes('-') ? date : `Dec-${date}`) : 'Not provided'}</p>
-        <p><strong>Preferred Time:</strong> ${time || 'Not provided'}</p>
-        <p><strong>WhatsApp Consent:</strong> ${
-          typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'
-        }</p>
-        <p><strong>Verification Status:</strong> <span style="color: ${
-          verificationStatus === 'Verified User' ? 'green' : 'red'
-        }; font-weight: bold;">${verificationStatusText}</span></p>
-        <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${
-          pageUrl || 'Not provided'
-        }</a></p>
-        ${
-          verificationStatus !== 'Verified User'
-            ? '<p style="color: red; font-weight: bold;">⚠️ IMPORTANT: This user did not verify their phone number. Please follow up to verify their details.</p>'
-            : ''
-        }
+    const renovationLeadDetailsHtml = isHomeRenovationBangalorePage
+      ? `
+        <p><strong>Requirements:</strong> ${resolvedInteriorPackage || 'Not provided'}</p>
+        <p><strong>Renovation budget:</strong> ${budget || 'Not provided'}</p>
+      `
+      : '';
+
+    const defaultLeadDetailsHtml = !isHomeRenovationBangalorePage
+      ? `
+        <p><strong>Interior Package:</strong> ${resolvedInteriorPackage || 'Not provided'}</p>
+        <p><strong>Budget:</strong> ${budget || 'Not provided'}</p>
+        <p><strong>Project Possession Timeline:</strong> ${resolvedPossession || 'Not provided'}</p>
+      `
+      : '';
+
+    const calculatorSectionHtml = isCalculatorSubmission
+      ? `
         <hr/>
         <h3>Selections (Calculator)</h3>
         <p><strong>BHK Type:</strong> ${bhkType || (calculator?.bhkType ?? 'Not provided')}</p>
@@ -259,17 +409,42 @@ export async function POST(req: Request) {
         <pre style="background:#f6f6f6;padding:10px;border-radius:8px;">${renderJSON(
           material || calculator?.material
         )}</pre>
+      `
+      : '';
+
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER, // You can change this to a team email
+      subject: subject,
+      html: `
+        <h3>Contact Form Submission</h3>
+        <p><strong>Name:</strong> ${name || 'Not provided'}</p>
+        <p><strong>Phone:</strong> ${normalizedPhone || 'Not provided'}</p>
+        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+        <p><strong>Pincode:</strong> ${pincode || 'Not provided'}</p>
+        ${renovationLeadDetailsHtml}
+        ${defaultLeadDetailsHtml}
+        <p><strong>Preferred Date:</strong> ${date ? (date.includes('-') ? date : `Dec-${date}`) : 'Not provided'}</p>
+        <p><strong>Preferred Time:</strong> ${time || 'Not provided'}</p>
+        <p><strong>WhatsApp Consent:</strong> ${
+          typeof whatsappConsent === 'boolean' ? (whatsappConsent ? 'Yes' : 'No') : 'Not provided'
+        }</p>
+        <p><strong>Verification Status:</strong> <span style="color: ${verificationStatusColor}; font-weight: bold;">${verificationStatusText}</span></p>
+        <p><strong>Page URL:</strong> <a href="${pageUrl || '#'}" target="_blank">${
+          pageUrl || 'Not provided'
+        }</a></p>
+        ${calculatorSectionHtml}
       `,
     };
 
     console.log('Sending email with data (flattened + calculator):', {
       name,
-      phone,
+      phone: normalizedPhone,
       email,
       pincode,
-      city,
+      city: resolvedInteriorPackage,
       budget,
-      possession,
+      possession: resolvedPossession,
       whatsappConsent,
       pageUrl,
       verificationStatus,

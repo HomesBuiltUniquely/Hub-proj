@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -8,53 +8,59 @@ import NavMore from "../NavMore";
 import { useRouter } from "next/navigation";
 import OverlapNavBar from "../OverlapNavBar";
 
-
-
-
-
 const ContactHeader: React.FC = () => {
+  const router = useRouter();
 
-    const router = useRouter();
-
-    const handleClick = () => {
-        router.push("/");
-    };
-
-    const handleGetEstimate = () => {
-        router.push('/GetEstimate');
-    };
-
-    const calculate = () => {
-    router.push('/Calculator');
+  const handleClick = () => {
+    router.push("/");
   };
 
+  const handleGetEstimate = () => {
+    router.push("/GetEstimate");
+  };
 
+  const calculate = () => {
+    router.push("/Calculator");
+  };
 
-    return (
-
-        <div>
-            <style jsx>{`
+  return (
+    <div>
+      <style jsx>{`
         /* Visibility controls for mobile variants */
         .mobile-360plus,
-        .mobile-300 { display: none; }
+        .mobile-300 {
+          display: none;
+        }
 
         /* Show 360–480px mobile variant */
         @media (min-width: 360px) and (max-width: 480px) {
-          .mobile-360plus { display: block; }
+          .mobile-360plus {
+            display: block;
+          }
           /* Center the floating menu */
-          .mk-mobile-360 .menu { left: 50%; transform: translateX(-50%) ; width: 90%; height: 12% }
+          .mk-mobile-360 .menu {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 12%;
+          }
         }
 
         /* Show 300–359px compact mobile variant */
         @media (min-width: 300px) and (max-width: 359px) {
-          .mobile-300 { display: block; }
+          .mobile-300 {
+            display: block;
+          }
           /* Center the floating menu */
-          .mk-mobile-300 .menu { left: 50%; transform: translateX(-50%); width: 90% }
+          .mk-mobile-300 .menu {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+          }
         }
       `}</style>
 
-
-            <style jsx>{`
+      <style jsx>{`
         /* Hide both by default */
         .desktop-1280,
         .desktop-1920,
@@ -69,173 +75,44 @@ const ContactHeader: React.FC = () => {
           }
         }
 
-        
-
-         /* Show 1920px layout for large desktops (1441px) */
-        @media (min-width: 1441px)  and (max-width: 1920px) {
+        /* Show 1920px layout for large desktops (1441px) */
+        @media (min-width: 1441px) and (max-width: 1920px) {
           .desktop-1920 {
             display: block !important;
           }
         }
 
-           /* Show 1920px layout for large desktops (>1920px) */
-        @media (min-width: 1921px)  {
+        /* Show 1920px layout for large desktops (>1920px) */
+        @media (min-width: 1921px) {
           .desktop-2560 {
             display: block !important;
           }
         }
-
       `}</style>
 
-            {/* Desktop Version */}
+      {/* Desktop Version */}
 
-            {/* 2560 Version */}
-            <div>
-                <div className="desktop-2560  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20RH.png')" }}>
-                    {/* Navbar */}
-                    <div className="flex items-center justify-between -mt-15">
-                        <div onClick={handleClick} className="cursor-pointer">
-                            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-2 -ml-2" />
-                        </div>
-                         <div className="hidden md:flex items-center gap-12">
-            {/* NAV BAR — unchanged */}
-            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
-              <OfferingsDropdown textColor="text-white" />
-              <ExploreRoomsDropdown textColor="text-white" />
-              <NavMore textColor="text-white" />
+      {/* 2560 Version */}
+      <div>
+        <div
+          className="desktop-2560  hidden md:block w-[1400px] h-[900px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative"
+          style={{
+            backgroundImage:
+              "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/pooja+unit/pooja_unit_header/pooja_interior_design.png')",
+          }}
+        >
+          {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image
+                src="/redlogo.png"
+                alt="HUB Interior Logo"
+                width={250}
+                height={100}
+                className="w-[250px] h-full -mt-2 -ml-2"
+              />
             </div>
-
-            {/* CTA — unchanged */}
-            <button
-              onClick={handleGetEstimate}
-              className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
-            >
-              BOOK CONSULTATION
-
-              <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
-                <img src="/free.png" alt="Free" className="w-full h-full" />
-                <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
-                  FREE
-                </span>
-              </span>
-            </button>
-          </div>
-                    </div>
-                    {/* Hero content */}
-
-                    <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
-                        <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-                            Pooja unit interiors
-                        </h1>
-
-                        <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-                            Elegant pooja unit designs that bring peace, devotion, and harmony to your home.
-                        </p>
-
-                        <div className="flex gap-4">
-                            <button
-                                onClick={calculate}
-                                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
-                            >
-                                Get free quote
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            {/* 1920 Version */}
-
-            <div className="desktop-1920">
-                <div className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative" style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20RH.png')" }}>
-                    {/* Navbar */}
-                    <div className="flex items-center justify-between -mt-15">
-                        <div onClick={handleClick} className="cursor-pointer">
-                            <Image src="/redlogo.png" alt="HUB Interior Logo" width={250} height={100} className="w-[250px] h-full -mt-3 ml-2" />
-                        </div>
-                         <div className="hidden md:flex items-center gap-12">
-            {/* NAV BAR — unchanged */}
-            <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
-              <OfferingsDropdown textColor="text-white" />
-              <ExploreRoomsDropdown textColor="text-white" />
-              <NavMore textColor="text-white" />
-            </div>
-
-            {/* CTA — unchanged */}
-            <button
-              onClick={handleGetEstimate}
-              className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
-            >
-              BOOK CONSULTATION
-
-              <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
-                <img src="/free.png" alt="Free" className="w-full h-full" />
-                <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
-                  FREE
-                </span>
-              </span>
-            </button>
-          </div>
-                    </div>
-                    {/* Hero content */}
-                    <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
-                        <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-                            Pooja unit interiors
-                        </h1>
-
-                        <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-                            Elegant pooja unit designs that bring peace, devotion, and harmony to your home.
-                        </p>
-
-                        <div className="flex gap-4">
-                            <button
-                                onClick={calculate}
-                                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
-                            >
-                                Get free quote
-                            </button>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
-                    Your master bedroom is where your day starts and ends. It is a space for your dreams, memories, and rest. At HUB Interior, we design master bedrooms in Bengaluru that match your lifestyle and feelings. We focus on warm lighting, calming colors, custom wardrobes, and smart layouts to create a comfortable space just for you. We aim to make a sanctuary that feels like home—a place where love, peace, and happiness thrive.
-                </div>
-
-            </div>
-
-
-
-            {/* 1280px Desktop Layout */}
-
-            <div className="desktop-1280">
-                <div className="hidden md:flex justify-center">
-                    {/* Inner container with background */}
-                    <div
-                        className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
-                        style={{ backgroundImage: "url('https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20RH.png')" }}
-                    >
-                        {/* Navbar */}
-                        <div className="flex items-center justify-between px-8">
-                            {/* Logo */}
-                            <div onClick={handleClick} className="cursor-pointer">
-                                <Image
-                                    src="/redlogo.png"
-                                    alt="HUB Interior Logo"
-                                    width={230}
-                                    height={250}
-                                    className="w-[full] h-[full] -mt-12 -ml-8"
-                                />
-                            </div>
-
-                            {/* Center Navigation */}
-                           <div className="hidden md:flex -mt-12 items-center gap-12">
-
-
+            <div className="hidden md:flex items-center gap-12">
               {/* NAV BAR — unchanged */}
               <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
                 <OfferingsDropdown textColor="text-white" />
@@ -246,10 +123,9 @@ const ContactHeader: React.FC = () => {
               {/* CTA — unchanged */}
               <button
                 onClick={handleGetEstimate}
-                className="relative bg-[#ef0101] mr-1 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
               >
                 BOOK CONSULTATION
-
                 <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
                   <img src="/free.png" alt="Free" className="w-full h-full" />
                   <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
@@ -257,128 +133,286 @@ const ContactHeader: React.FC = () => {
                   </span>
                 </span>
               </button>
-
             </div>
-                        </div>
+          </div>
+          {/* Hero content */}
 
-                        {/* Hero content */}
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+              Pooja unit interiors
+            </h1>
 
-                        <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
-                            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
-                                Pooja unit interiors
-                            </h1>
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+              Elegant pooja unit designs that bring peace, devotion, and harmony
+              to your home.
+            </p>
 
-                            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
-                                Elegant pooja unit designs that bring peace, devotion, and harmony to your home.
-                            </p>
-
-                            <div className="flex gap-4">
-                                <button
-                                    onClick={calculate}
-                                    className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
-                                >
-                                    Get free quote
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+            <div className="flex gap-4">
+              <button
+                onClick={calculate}
+                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
+              >
+                Get free quote
+              </button>
             </div>
-
-
-
-
-
-            {/* ===== MOBILE VERSION ===== */}
-
-            {/* Mobile Version (360px to 480px) */}
-            <div className="md:hidden px-4 mk-mobile-360 mobile-360plus mt-3 mb-10">
-                <div className="relative h-[450] w-[full] ">
-                    {/* Rounded image only */}
-                    <div className="absolute inset-0 rounded-4xl overflow-hidden">
-                        <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20MH.png"
-                            alt="pooja Unit"
-                            fill
-                            priority
-                            className="object-center"
-                        />
-                        {/* gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    </div>
-
-                    {/* top logo */}
-                    <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
-                        <Image src="/redlogo.png" alt="HUB Interior Logo" width={90} height={50} className="cursor-pointer" />
-                    </div>
-
-
-
-                    {/* text + cta */}
-
-                    <div className="absolute bottom-10 left-4 right-4 text-white">
-                        <h2 className="wulkan-display-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-                            Pooja Unit Interiors
-                        </h2>
-                        <p className="mt-2 text-[13px] manrope-medium opacity-90">
-                            Elegant pooja unit designs that bring peace, devotion, and harmony to your home.
-                        </p>
-                    </div>
-                    {/* CTA overlapping, positioned above image */}
-                    <div className="absolute left-6 -bottom-5 z-20">
-                        <button onClick={calculate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
-                            Get free quote
-                        </button>
-                    </div>
-                    <OverlapNavBar />
-                </div>
-            </div>
-
-
-            {/* Mobile Version (300px to 359px) */}
-            <div className="md:hidden p-3 mk-mobile-300 mobile-300 mb-10">
-                <div className="relative h-[450] w-[100%]  mt-3">
-                    {/* Rounded image only */}
-                    <div className="absolute inset-0 rounded-4xl overflow-hidden">
-                        <Image
-                            src="https://urmwhawodjntegbbmnls.supabase.co/storage/v1/object/public/Hubinterior.img/Pooja%20MH.png"
-                            alt="pooja Unit"
-                            fill
-                            priority
-                            className="object-center"
-                        />
-                        {/* gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    </div>
-
-                    {/* top logo */}
-                    <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
-                        <Image src="/redlogo.png" alt="HUB Interior Logo" width={82} height={50} className="cursor-pointer" />
-                    </div>
-
-                    {/* text + cta */}
-                    <div className="absolute bottom-10 left-4 right-4 text-white">
-                        <h2 className="wulkan-display-bold  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-                            Pooja Unit Interiors
-                        </h2>
-                        <p className="mt-2 text-[13px] manrope-medium opacity-90">
-                            Elegant pooja unit designs that bring peace, devotion, and harmony to your home.
-                        </p>
-                    </div>
-                    {/* CTA overlapping, positioned above image */}
-                    <div className="absolute left-6 -bottom-5 z-20">
-                        <button onClick={calculate} className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20">
-                            Get free quote
-                        </button>
-                    </div>
-                    <OverlapNavBar />
-                </div>
-            </div>
-
+          </div>
         </div>
-    )
+      </div>
+
+      {/* 1920 Version */}
+
+      <div className="desktop-1920">
+        <div
+          className="hidden md:block w-[full] max-w-[1920px] h-[950px] mx-auto  rounded-3xl overflow-hidden  bg-cover  bg-center relative"
+          style={{
+            backgroundImage:
+              "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/pooja+unit/pooja_unit_header/pooja_interior_design.png')",
+          }}
+        >
+          {/* Navbar */}
+          <div className="flex items-center justify-between -mt-15">
+            <div onClick={handleClick} className="cursor-pointer">
+              <Image
+                src="/redlogo.png"
+                alt="HUB Interior Logo"
+                width={250}
+                height={100}
+                className="w-[250px] h-full -mt-3 ml-2"
+              />
+            </div>
+            <div className="hidden md:flex items-center gap-12">
+              {/* NAV BAR — unchanged */}
+              <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
+                <OfferingsDropdown textColor="text-white" />
+                <ExploreRoomsDropdown textColor="text-white" />
+                <NavMore textColor="text-white" />
+              </div>
+
+              {/* CTA — unchanged */}
+              <button
+                onClick={handleGetEstimate}
+                className="relative bg-[#ef0101] mr-15 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+              >
+                BOOK CONSULTATION
+                <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                  <img src="/free.png" alt="Free" className="w-full h-full" />
+                  <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                    FREE
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+          {/* Hero content */}
+          <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+            <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+              Pooja unit interiors
+            </h1>
+
+            <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+              Elegant pooja unit designs that bring peace, devotion, and harmony
+              to your home.
+            </p>
+
+            <div className="flex gap-4">
+              <button
+                onClick={calculate}
+                className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
+              >
+                Get free quote
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="hidden md:block w-[1000px] text-lg manrope-medium text-center mt-20 rounded-3xl relative mx-auto">
+          Your master bedroom is where your day starts and ends. It is a space
+          for your dreams, memories, and rest. At HUB Interior, we design master
+          bedrooms in Bengaluru that match your lifestyle and feelings. We focus
+          on warm lighting, calming colors, custom wardrobes, and smart layouts
+          to create a comfortable space just for you. We aim to make a sanctuary
+          that feels like home—a place where love, peace, and happiness thrive.
+        </div>
+      </div>
+
+      {/* 1280px Desktop Layout */}
+
+      <div className="desktop-1280">
+        <div className="hidden md:flex justify-center">
+          {/* Inner container with background */}
+          <div
+            className="w-[1240px] h-[800px] rounded-3xl overflow-hidden bg-cover bg-center relative shadow-md"
+            style={{
+              backgroundImage:
+                "url('https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/pooja+unit/pooja_unit_header/pooja_interior_design.png')",
+            }}
+          >
+            {/* Navbar */}
+            <div className="flex items-center justify-between px-8">
+              {/* Logo */}
+              <div onClick={handleClick} className="cursor-pointer">
+                <Image
+                  src="/redlogo.png"
+                  alt="HUB Interior Logo"
+                  width={230}
+                  height={250}
+                  className="w-[full] h-[full] -mt-12 -ml-8"
+                />
+              </div>
+
+              {/* Center Navigation */}
+              <div className="hidden md:flex -mt-12 items-center gap-12">
+                {/* NAV BAR — unchanged */}
+                <div className="bg-gradient-to-r from-transparent via-black/25 to-transparent backdrop-blur-md border-1 rounded-3xl w-[480px] h-[45px] justify-center items-center text-[18px] flex gap-12 manrope text-white tracking-widest ">
+                  <OfferingsDropdown textColor="text-white" />
+                  <ExploreRoomsDropdown textColor="text-white" />
+                  <NavMore textColor="text-white" />
+                </div>
+
+                {/* CTA — unchanged */}
+                <button
+                  onClick={handleGetEstimate}
+                  className="relative bg-[#ef0101] mr-1 hover:bg-[#ebd457] text-white h-[45px] w-[270px] rounded-4xl manrope shadow-lg shadow-black/50 hover:shadow-2xl text-[18px] tracking-wide text-left pl-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+                >
+                  BOOK CONSULTATION
+                  <span className="absolute -top-4 right-1 w-[60px] h-[60px]">
+                    <img src="/free.png" alt="Free" className="w-full h-full" />
+                    <span className="absolute inset-0 flex items-center justify-center wulkan-display-bold text-white text-[10px]">
+                      FREE
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Hero content */}
+
+            <div className="flex flex-col items-start justify-start  pb-20 text-white text-left mt-70 ml-15">
+              <h1 className="w-[1200px] text-5xl lg:text-6xl wulkan-display-bold mb-3 drop-shadow-lg">
+                Pooja unit interiors
+              </h1>
+
+              <p className="w-[1200px] text-2xl manrope-medium mb-6 drop-shadow-lg">
+                Elegant pooja unit designs that bring peace, devotion, and
+                harmony to your home.
+              </p>
+
+              <div className="flex gap-4">
+                <button
+                  onClick={calculate}
+                  className="bg-yellow-300 text-black px-6 py-3 rounded-full manrope shadow"
+                >
+                  Get free quote
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ===== MOBILE VERSION ===== */}
+
+      {/* Mobile Version (360px to 480px) */}
+      <div className="md:hidden px-4 mk-mobile-360 mobile-360plus mt-3 mb-10">
+        <div className="relative h-[450] w-[full] ">
+          {/* Rounded image only */}
+          <div className="absolute inset-0 rounded-4xl overflow-hidden">
+            <Image
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/pooja+unit/pooja_unit_header/pooja_interior_design.png"
+              alt="pooja Unit"
+              fill
+              priority
+              className="object-center"
+            />
+            {/* gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          </div>
+
+          {/* top logo */}
+          <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
+            <Image
+              src="/redlogo.png"
+              alt="HUB Interior Logo"
+              width={90}
+              height={50}
+              className="cursor-pointer"
+            />
+          </div>
+
+          {/* text + cta */}
+
+          <div className="absolute bottom-10 left-4 right-4 text-white">
+            <h2 className="wulkan-display-bold text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+              Pooja Unit Interiors
+            </h2>
+            <p className="mt-2 text-[13px] manrope-medium opacity-90">
+              Elegant pooja unit designs that bring peace, devotion, and harmony
+              to your home.
+            </p>
+          </div>
+          {/* CTA overlapping, positioned above image */}
+          <div className="absolute left-6 -bottom-5 z-20">
+            <button
+              onClick={calculate}
+              className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20"
+            >
+              Get free quote
+            </button>
+          </div>
+          <OverlapNavBar />
+        </div>
+      </div>
+
+      {/* Mobile Version (300px to 359px) */}
+      <div className="md:hidden p-3 mk-mobile-300 mobile-300 mb-10">
+        <div className="relative h-[450] w-[100%]  mt-3">
+          {/* Rounded image only */}
+          <div className="absolute inset-0 rounded-4xl overflow-hidden">
+            <Image
+              src="https://hubinterior-quote-2026.s3.ap-south-2.amazonaws.com/pooja+unit/pooja_unit_header/pooja_interior_design.png"
+              alt="pooja Unit"
+              fill
+              priority
+              className="object-center"
+            />
+            {/* gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          </div>
+
+          {/* top logo */}
+          <div className="absolute top-2 -mt-7 -mx-3 " onClick={handleClick}>
+            <Image
+              src="/redlogo.png"
+              alt="HUB Interior Logo"
+              width={82}
+              height={50}
+              className="cursor-pointer"
+            />
+          </div>
+
+          {/* text + cta */}
+          <div className="absolute bottom-10 left-4 right-4 text-white">
+            <h2 className="wulkan-display-bold  text-4xl leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+              Pooja Unit Interiors
+            </h2>
+            <p className="mt-2 text-[13px] manrope-medium opacity-90">
+              Elegant pooja unit designs that bring peace, devotion, and harmony
+              to your home.
+            </p>
+          </div>
+          {/* CTA overlapping, positioned above image */}
+          <div className="absolute left-6 -bottom-5 z-20">
+            <button
+              onClick={calculate}
+              className="bg-yellow-300 text-black px-5 py-2 rounded-full manrope-medium shadow-md shadow-black/20"
+            >
+              Get free quote
+            </button>
+          </div>
+          <OverlapNavBar />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ContactHeader;
