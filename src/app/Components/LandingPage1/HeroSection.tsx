@@ -28,6 +28,73 @@ type HeroSectionsProps = {
   submitApiUrl?: string;
 };
 
+type HeroLeadPayload = {
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  budget: string;
+  pincode: string;
+  whatsappConsent: boolean;
+  pageUrl: string;
+  verificationStatus: "VERIFIED" | "UNVERIFIED";
+  otpSuccess: boolean;
+};
+
+const OTP_PENDING_UNVERIFIED_LEAD_KEY = "hubOtpPendingUnverifiedLead";
+
+function readPendingUnverifiedLead(): HeroLeadPayload | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = sessionStorage.getItem(OTP_PENDING_UNVERIFIED_LEAD_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw) as HeroLeadPayload;
+  } catch {
+    return null;
+  }
+}
+
+function writePendingUnverifiedLead(payload: HeroLeadPayload) {
+  if (typeof window === "undefined") return;
+  try {
+    sessionStorage.setItem(OTP_PENDING_UNVERIFIED_LEAD_KEY, JSON.stringify(payload));
+  } catch {
+    // ignore quota / private mode failures
+  }
+}
+
+function clearPendingUnverifiedLead() {
+  if (typeof window === "undefined") return;
+  try {
+    sessionStorage.removeItem(OTP_PENDING_UNVERIFIED_LEAD_KEY);
+  } catch {
+    // ignore
+  }
+}
+
+function postLeadKeepalive(submitApiUrl: string, payload: HeroLeadPayload) {
+  const body = JSON.stringify(payload);
+  try {
+    if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
+      const blob = new Blob([body], { type: "application/json" });
+      if (navigator.sendBeacon(submitApiUrl, blob)) {
+        return;
+      }
+    }
+  } catch {
+    // fall through to fetch
+  }
+
+  fetch(submitApiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body,
+    keepalive: true,
+  }).catch((error) => {
+    console.error("Background lead submit failed:", error);
+  });
+}
+
 export default function HeroSections({
   submitApiUrl = "/api/contact",
 }: HeroSectionsProps) {
@@ -55,6 +122,13 @@ export default function HeroSections({
   const unverifiedMailSentRef = useRef(false);
   /** True only while a 2-minute OTP wait is counting down (not a manual timer reset). */
   const otpExpiryArmedRef = useRef(false);
+  /** User closed popup / left page before finishing OTP — blocks late VERIFIED submits. */
+  const otpAbandonedRef = useRef(false);
+  const otpSentRef = useRef(false);
+  const otpVerifiedRef = useRef(false);
+  const verifyAbortRef = useRef<AbortController | null>(null);
+  const latestUnverifiedPayloadRef = useRef<HeroLeadPayload | null>(null);
+  const submitApiUrlRef = useRef(submitApiUrl);
 
   // Function to scroll to calculator section
   const scrollToCalculator = () => {
@@ -152,9 +226,110 @@ export default function HeroSections({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    submitApiUrlRef.current = submitApiUrl;
+  }, [submitApiUrl]);
+
+  useEffect(() => {
+    otpSentRef.current = otpSent;
+  }, [otpSent]);
+
+  useEffect(() => {
+    otpVerifiedRef.current = otpVerified;
+  }, [otpVerified]);
+
+  // Keep a fresh UNVERIFIED payload for close/reload flushes (avoid stale closures).
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    // Already verified or already flushed as UNVERIFIED — do not re-queue.
+    if (!otpSent || otpVerified || unverifiedMailSentRef.current) {
+      if (otpVerified || unverifiedMailSentRef.current) {
+        latestUnverifiedPayloadRef.current = null;
+        clearPendingUnverifiedLead();
+      }
+      return;
+    }
+    if (!formData.name || !formData.phone || !selectedPincode) {
+      latestUnverifiedPayloadRef.current = null;
+      return;
+    }
+
+    const payload: HeroLeadPayload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      city: selectedCity,
+      budget: selectedCity || "",
+      pincode: selectedPincode,
+      whatsappConsent: whatsappConsent,
+      pageUrl: window.location.href,
+      verificationStatus: "UNVERIFIED",
+      otpSuccess: false,
+    };
+    latestUnverifiedPayloadRef.current = payload;
+    writePendingUnverifiedLead(payload);
+  }, [
+    otpSent,
+    otpVerified,
+    formData.name,
+    formData.email,
+    formData.phone,
+    selectedCity,
+    selectedPincode,
+    whatsappConsent,
+  ]);
+
+  // If prior visit abandoned OTP mid-flow (reload/close), flush UNVERIFIED once.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const pending = readPendingUnverifiedLead();
+    if (!pending?.phone || !pending?.name) return;
+    clearPendingUnverifiedLead();
+    postLeadKeepalive(submitApiUrlRef.current, {
+      ...pending,
+      verificationStatus: "UNVERIFIED",
+      otpSuccess: false,
+      pageUrl: pending.pageUrl || window.location.href,
+    });
+  }, []);
+
+  // Close tab / reload while OTP popup is open → always UNVERIFIED, never VERIFIED.
+  useEffect(() => {
+    const abandonAndFlushUnverified = () => {
+      if (!otpSentRef.current || otpVerifiedRef.current) return;
+      otpAbandonedRef.current = true;
+      verifyAbortRef.current?.abort();
+      if (unverifiedMailSentRef.current) return;
+      const payload = latestUnverifiedPayloadRef.current || readPendingUnverifiedLead();
+      if (!payload?.phone || !payload?.name) return;
+      unverifiedMailSentRef.current = true;
+      clearPendingUnverifiedLead();
+      postLeadKeepalive(submitApiUrlRef.current, {
+        ...payload,
+        verificationStatus: "UNVERIFIED",
+        otpSuccess: false,
+      });
+    };
+
+    window.addEventListener("pagehide", abandonAndFlushUnverified);
+    window.addEventListener("beforeunload", abandonAndFlushUnverified);
+    return () => {
+      window.removeEventListener("pagehide", abandonAndFlushUnverified);
+      window.removeEventListener("beforeunload", abandonAndFlushUnverified);
+    };
+  }, []);
+
   // Auto-verify OTP when user has typed 4+ digits in the popup
   useEffect(() => {
-    if (showOtpModal && otpSent && !otpVerified && otp.length >= 4 && !isPendingOtpSms && !isOtpVerifying) {
+    if (
+      showOtpModal &&
+      otpSent &&
+      !otpVerified &&
+      !otpAbandonedRef.current &&
+      otp.length >= 4 &&
+      !isPendingOtpSms &&
+      !isOtpVerifying
+    ) {
       handleOtpSubmit();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -180,6 +355,11 @@ export default function HeroSections({
       alert("Please enter the OTP");
       return;
     }
+    if (otpAbandonedRef.current || otpVerifiedRef.current) return;
+
+    verifyAbortRef.current?.abort();
+    const abortController = new AbortController();
+    verifyAbortRef.current = abortController;
 
     setIsOtpVerifying(true);
     try {
@@ -189,15 +369,23 @@ export default function HeroSections({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: cleanedPhone, otp }),
+        signal: abortController.signal,
       });
 
       const data = await response.json();
 
+      // User closed popup / reloaded while verify was in flight — never mark VERIFIED.
+      if (otpAbandonedRef.current || abortController.signal.aborted) {
+        return;
+      }
+
       if (response.ok && data.success) {
         setOtpVerified(true);
+        otpVerifiedRef.current = true;
         setOtp("");
         setShowOtpModal(false);
         otpExpiryArmedRef.current = false;
+        clearPendingUnverifiedLead();
         handleFinalSubmit(true);
         return;
       } else {
@@ -208,9 +396,15 @@ export default function HeroSections({
         alert(data?.message || "Invalid OTP. Please try again.");
       }
     } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") {
+        return;
+      }
       console.error("Error verifying OTP:", error);
       alert("Failed to verify OTP. Please try again.");
     } finally {
+      if (verifyAbortRef.current === abortController) {
+        verifyAbortRef.current = null;
+      }
       setIsOtpVerifying(false);
     }
   };
@@ -270,11 +464,15 @@ export default function HeroSections({
     setIsSendingOtpAuto(true);
     setIsPendingOtpSms(true);
     setOtpSent(true);
+    otpSentRef.current = true;
     setShowOtpModal(true);
     setOtpTimerSeconds(0);
     setOtpVerified(false);
+    otpVerifiedRef.current = false;
     setOtp("");
     otpExpiryArmedRef.current = false;
+    otpAbandonedRef.current = false;
+    unverifiedMailSentRef.current = false;
 
     try {
       const response = await fetch("/api/send-msg91-otp", {
@@ -348,7 +546,7 @@ export default function HeroSections({
     }
   };
 
-  const buildLeadPayload = (isVerified: boolean) => ({
+  const buildLeadPayload = (isVerified: boolean): HeroLeadPayload => ({
     name: formData.name,
     email: formData.email,
     phone: formData.phone,
@@ -357,25 +555,33 @@ export default function HeroSections({
     pincode: selectedPincode,
     whatsappConsent: whatsappConsent,
     pageUrl: window.location.href,
-    verificationStatus: isVerified ? ("VERIFIED" as const) : ("UNVERIFIED" as const),
+    verificationStatus: isVerified ? "VERIFIED" : "UNVERIFIED",
     otpSuccess: isVerified,
   });
 
   const sendLeadInBackground = (isVerified: boolean) => {
-    fetch(submitApiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(buildLeadPayload(isVerified)),
-      keepalive: true,
-    }).catch((error) => {
-      console.error("Background lead submit failed:", error);
-    });
+    const payload = buildLeadPayload(isVerified);
+    if (!isVerified) {
+      clearPendingUnverifiedLead();
+    }
+    postLeadKeepalive(submitApiUrl, payload);
   };
 
   const sendUnverifiedMailIfNeeded = () => {
-    if (otpVerified || unverifiedMailSentRef.current) return;
+    if (otpVerifiedRef.current || unverifiedMailSentRef.current) return;
+    otpAbandonedRef.current = true;
+    verifyAbortRef.current?.abort();
     unverifiedMailSentRef.current = true;
-    sendLeadInBackground(false);
+    const payload =
+      latestUnverifiedPayloadRef.current ||
+      buildLeadPayload(false);
+    latestUnverifiedPayloadRef.current = payload;
+    clearPendingUnverifiedLead();
+    postLeadKeepalive(submitApiUrl, {
+      ...payload,
+      verificationStatus: "UNVERIFIED",
+      otpSuccess: false,
+    });
   };
 
   // After 2 minutes with no OTP, send unverified email (stay on the form)
@@ -393,6 +599,8 @@ export default function HeroSections({
   }, [otpTimerSeconds, otpSent, otpVerified]);
 
   const handleModalClose = () => {
+    otpAbandonedRef.current = true;
+    verifyAbortRef.current?.abort();
     setShowOtpModal(false);
     setOtp("");
     otpExpiryArmedRef.current = false;
@@ -401,24 +609,34 @@ export default function HeroSections({
 
   /** Reset OTP state so user can correct their phone number and trigger a fresh OTP */
   const handleEditPhone = () => {
+    verifyAbortRef.current?.abort();
     setOtpSent(false);
+    otpSentRef.current = false;
     setOtpVerified(false);
+    otpVerifiedRef.current = false;
     setShowOtpModal(false);
     setOtp("");
     setOtpTimerSeconds(0);
     setIsSendingOtpAuto(false);
     setIsPendingOtpSms(false);
     otpExpiryArmedRef.current = false;
+    otpAbandonedRef.current = false;
     unverifiedMailSentRef.current = false;
+    clearPendingUnverifiedLead();
+    latestUnverifiedPayloadRef.current = null;
   };
 
   /** Thank-you only after a verified OTP. */
   const handleFinalSubmit = (isVerified: boolean) => {
     if (!isVerified) return;
+    // Close/reload already abandoned this attempt — do not send VERIFIED.
+    if (otpAbandonedRef.current) return;
     if (heroSubmitLockRef.current) return;
     heroSubmitLockRef.current = true;
     setIsSubmitting(true);
 
+    clearPendingUnverifiedLead();
+    latestUnverifiedPayloadRef.current = null;
     sendLeadInBackground(true);
 
     saveLeadContactToSession({
@@ -436,7 +654,9 @@ export default function HeroSections({
     setWhatsappConsent(true);
     setFormData({ name: "", email: "", phone: "" });
     setOtpSent(false);
+    otpSentRef.current = false;
     setOtpVerified(false);
+    otpVerifiedRef.current = false;
     setShowOtpModal(false);
     setOtp("");
     setIsSubmitting(false);
@@ -1425,9 +1645,8 @@ export default function HeroSections({
               <button
                 type="button"
                 onClick={handleModalClose}
-                disabled={isOtpVerifying}
                 aria-label="Close phone verification"
-                className="shrink-0 text-[20px] leading-none text-gray-500 hover:text-gray-800 disabled:opacity-50"
+                className="shrink-0 text-[20px] leading-none text-gray-500 hover:text-gray-800"
               >
                 ×
               </button>
