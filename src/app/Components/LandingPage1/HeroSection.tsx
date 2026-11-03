@@ -39,9 +39,12 @@ type HeroLeadPayload = {
   pageUrl: string;
   verificationStatus: "VERIFIED" | "UNVERIFIED";
   otpSuccess: boolean;
+  /** Faster abandon flushes — CRM only, skip slow Gmail path on unload. */
+  skipEmail?: boolean;
 };
 
 const OTP_PENDING_UNVERIFIED_LEAD_KEY = "hubOtpPendingUnverifiedLead";
+const HOME1_CRM_URL = "https://hows.hubinterior.com/v1/Home1";
 
 function readPendingUnverifiedLead(): HeroLeadPayload | null {
   if (typeof window === "undefined") return null;
@@ -73,25 +76,37 @@ function clearPendingUnverifiedLead() {
 }
 
 function postLeadKeepalive(submitApiUrl: string, payload: HeroLeadPayload) {
-  const body = JSON.stringify(payload);
-  try {
-    if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
-      const blob = new Blob([body], { type: "application/json" });
-      if (navigator.sendBeacon(submitApiUrl, blob)) {
-        return;
-      }
-    }
-  } catch {
-    // fall through to fetch
-  }
-
+  // Prefer fetch+keepalive over sendBeacon: Next.js often fails to parse Beacon JSON bodies.
   fetch(submitApiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body,
+    body: JSON.stringify(payload),
     keepalive: true,
   }).catch((error) => {
     console.error("Background lead submit failed:", error);
+  });
+}
+
+/** Direct CRM backup on abandon (same pattern as pre-popup OTP flow). */
+function postUnverifiedHome1Keepalive(payload: HeroLeadPayload) {
+  fetch(HOME1_CRM_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: payload.name || "",
+      email: payload.email || "",
+      phoneNumber: payload.phone || "",
+      propertyPin: payload.pincode || "",
+      interiorSetup: payload.city || "",
+      possessionIn: "",
+      budget: payload.budget || "",
+      // CRM-safe: never send literal "UNVERIFIED" (matches includes("VERIFIED")).
+      verificationStatus: "No OTP",
+      otpSuccess: false,
+    }),
+    keepalive: true,
+  }).catch((error) => {
+    console.error("Background Home1 unverified submit failed:", error);
   });
 }
 
@@ -285,12 +300,15 @@ export default function HeroSections({
     const pending = readPendingUnverifiedLead();
     if (!pending?.phone || !pending?.name) return;
     clearPendingUnverifiedLead();
-    postLeadKeepalive(submitApiUrlRef.current, {
+    const unverifiedPayload: HeroLeadPayload = {
       ...pending,
       verificationStatus: "UNVERIFIED",
       otpSuccess: false,
+      skipEmail: true,
       pageUrl: pending.pageUrl || window.location.href,
-    });
+    };
+    postLeadKeepalive(submitApiUrlRef.current, unverifiedPayload);
+    postUnverifiedHome1Keepalive(unverifiedPayload);
   }, []);
 
   // Close tab / reload while OTP popup is open → always UNVERIFIED, never VERIFIED.
@@ -304,11 +322,15 @@ export default function HeroSections({
       if (!payload?.phone || !payload?.name) return;
       unverifiedMailSentRef.current = true;
       clearPendingUnverifiedLead();
-      postLeadKeepalive(submitApiUrlRef.current, {
+      const unverifiedPayload: HeroLeadPayload = {
         ...payload,
         verificationStatus: "UNVERIFIED",
         otpSuccess: false,
-      });
+        skipEmail: true,
+      };
+      postLeadKeepalive(submitApiUrlRef.current, unverifiedPayload);
+      // Direct CRM backup — unload often kills slow /api/contact before Home1 runs.
+      postUnverifiedHome1Keepalive(unverifiedPayload);
     };
 
     window.addEventListener("pagehide", abandonAndFlushUnverified);
@@ -318,22 +340,6 @@ export default function HeroSections({
       window.removeEventListener("beforeunload", abandonAndFlushUnverified);
     };
   }, []);
-
-  // Auto-verify OTP when user has typed 4+ digits in the popup
-  useEffect(() => {
-    if (
-      showOtpModal &&
-      otpSent &&
-      !otpVerified &&
-      !otpAbandonedRef.current &&
-      otp.length >= 4 &&
-      !isPendingOtpSms &&
-      !isOtpVerifying
-    ) {
-      handleOtpSubmit();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [otp, showOtpModal]);
 
   // 2 min timer: on expiry show Resend
   useEffect(() => {
@@ -567,7 +573,11 @@ export default function HeroSections({
     postLeadKeepalive(submitApiUrl, payload);
   };
 
-  const sendUnverifiedMailIfNeeded = () => {
+  const sendUnverifiedMailIfNeeded = (options?: {
+    skipEmail?: boolean;
+    /** Direct Home1 backup — use on unload where /api/contact may be killed mid-flight. */
+    directHome1?: boolean;
+  }) => {
     if (otpVerifiedRef.current || unverifiedMailSentRef.current) return;
     otpAbandonedRef.current = true;
     verifyAbortRef.current?.abort();
@@ -577,11 +587,16 @@ export default function HeroSections({
       buildLeadPayload(false);
     latestUnverifiedPayloadRef.current = payload;
     clearPendingUnverifiedLead();
-    postLeadKeepalive(submitApiUrl, {
+    const unverifiedPayload: HeroLeadPayload = {
       ...payload,
       verificationStatus: "UNVERIFIED",
       otpSuccess: false,
-    });
+      skipEmail: options?.skipEmail === true,
+    };
+    postLeadKeepalive(submitApiUrl, unverifiedPayload);
+    if (options?.directHome1) {
+      postUnverifiedHome1Keepalive(unverifiedPayload);
+    }
   };
 
   // After 2 minutes with no OTP, send unverified email (stay on the form)
@@ -1658,18 +1673,37 @@ export default function HeroSections({
                 : `Enter the 4-digit OTP sent to ${normalizePhoneNumber(formData.phone)}`}
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <input
                 type="text"
                 inputMode="numeric"
                 autoComplete="one-time-code"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 4))}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    void handleOtpSubmit();
+                  }
+                }}
                 placeholder="Enter OTP"
                 maxLength={4}
                 disabled={isPendingOtpSms || isOtpVerifying}
                 className="h-[42px] w-[140px] shrink-0 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-700 placeholder-gray-400 manrope-medium outline-none focus:border-gray-400 disabled:bg-gray-100 disabled:text-gray-400"
               />
+              <button
+                type="button"
+                onClick={() => void handleOtpSubmit()}
+                disabled={
+                  isPendingOtpSms ||
+                  isOtpVerifying ||
+                  otp.length < 4 ||
+                  otpAbandonedRef.current
+                }
+                className="h-[42px] rounded-lg bg-[#1a2744] px-4 text-sm text-white manrope-medium transition-colors hover:bg-[#24345a] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isOtpVerifying ? "Verifying…" : "Verify"}
+              </button>
               <button
                 type="button"
                 onClick={handleResendOtp}
