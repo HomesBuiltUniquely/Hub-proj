@@ -76,20 +76,20 @@ function clearPendingUnverifiedLead() {
 }
 
 function postLeadKeepalive(submitApiUrl: string, payload: HeroLeadPayload) {
-  // Prefer fetch+keepalive over sendBeacon: Next.js often fails to parse Beacon JSON bodies.
-  fetch(submitApiUrl, {
+  return fetch(submitApiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
     keepalive: true,
   }).catch((error) => {
     console.error("Background lead submit failed:", error);
+    return null;
   });
 }
 
-/** Direct CRM backup on abandon (same pattern as pre-popup OTP flow). */
+/** Direct CRM backup on abandon (same pattern as working Harsh unload flow). */
 function postUnverifiedHome1Keepalive(payload: HeroLeadPayload) {
-  fetch(HOME1_CRM_URL, {
+  return fetch(HOME1_CRM_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -100,13 +100,13 @@ function postUnverifiedHome1Keepalive(payload: HeroLeadPayload) {
       interiorSetup: payload.city || "",
       possessionIn: "",
       budget: payload.budget || "",
-      // CRM-safe: never send literal "UNVERIFIED" (matches includes("VERIFIED")).
-      verificationStatus: "No OTP",
+      verificationStatus: "UNVERIFIED",
       otpSuccess: false,
     }),
     keepalive: true,
   }).catch((error) => {
     console.error("Background Home1 unverified submit failed:", error);
+    return null;
   });
 }
 
@@ -264,15 +264,21 @@ export default function HeroSections({
       }
       return;
     }
-    if (!formData.name || !formData.phone || !selectedPincode) {
+    if (!formData.name || !formData.phone) {
+      latestUnverifiedPayloadRef.current = null;
+      return;
+    }
+
+    const phone = normalizePhoneNumber(formData.phone);
+    if (phone.length !== 10) {
       latestUnverifiedPayloadRef.current = null;
       return;
     }
 
     const payload: HeroLeadPayload = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone,
       city: selectedCity,
       budget: selectedCity || "",
       pincode: selectedPincode,
@@ -299,16 +305,18 @@ export default function HeroSections({
     if (typeof window === "undefined") return;
     const pending = readPendingUnverifiedLead();
     if (!pending?.phone || !pending?.name) return;
-    clearPendingUnverifiedLead();
+    // Leave pending until posts are queued; clear after scheduling.
     const unverifiedPayload: HeroLeadPayload = {
       ...pending,
+      phone: normalizePhoneNumber(pending.phone),
       verificationStatus: "UNVERIFIED",
       otpSuccess: false,
       skipEmail: true,
       pageUrl: pending.pageUrl || window.location.href,
     };
-    postLeadKeepalive(submitApiUrlRef.current, unverifiedPayload);
-    postUnverifiedHome1Keepalive(unverifiedPayload);
+    clearPendingUnverifiedLead();
+    void postLeadKeepalive(submitApiUrlRef.current, unverifiedPayload);
+    void postUnverifiedHome1Keepalive(unverifiedPayload);
   }, []);
 
   // Close tab / reload while OTP popup is open → always UNVERIFIED, never VERIFIED.
@@ -318,19 +326,23 @@ export default function HeroSections({
       otpAbandonedRef.current = true;
       verifyAbortRef.current?.abort();
       if (unverifiedMailSentRef.current) return;
-      const payload = latestUnverifiedPayloadRef.current || readPendingUnverifiedLead();
+
+      const payload =
+        latestUnverifiedPayloadRef.current || readPendingUnverifiedLead();
       if (!payload?.phone || !payload?.name) return;
+
       unverifiedMailSentRef.current = true;
-      clearPendingUnverifiedLead();
       const unverifiedPayload: HeroLeadPayload = {
         ...payload,
+        phone: normalizePhoneNumber(payload.phone),
         verificationStatus: "UNVERIFIED",
         otpSuccess: false,
         skipEmail: true,
+        pageUrl: payload.pageUrl || window.location.href,
       };
-      postLeadKeepalive(submitApiUrlRef.current, unverifiedPayload);
-      // Direct CRM backup — unload often kills slow /api/contact before Home1 runs.
-      postUnverifiedHome1Keepalive(unverifiedPayload);
+      clearPendingUnverifiedLead();
+      void postLeadKeepalive(submitApiUrlRef.current, unverifiedPayload);
+      void postUnverifiedHome1Keepalive(unverifiedPayload);
     };
 
     window.addEventListener("pagehide", abandonAndFlushUnverified);
@@ -479,6 +491,20 @@ export default function HeroSections({
     otpExpiryArmedRef.current = false;
     otpAbandonedRef.current = false;
     unverifiedMailSentRef.current = false;
+    // Snapshot immediately so close/reload before React effects still has a payload.
+    latestUnverifiedPayloadRef.current = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: cleanedPhone,
+      city: selectedCity,
+      budget: selectedCity || "",
+      pincode: selectedPincode,
+      whatsappConsent,
+      pageUrl: window.location.href,
+      verificationStatus: "UNVERIFIED",
+      otpSuccess: false,
+    };
+    writePendingUnverifiedLead(latestUnverifiedPayloadRef.current);
 
     try {
       const response = await fetch("/api/send-msg91-otp", {
@@ -553,9 +579,9 @@ export default function HeroSections({
   };
 
   const buildLeadPayload = (isVerified: boolean): HeroLeadPayload => ({
-    name: formData.name,
-    email: formData.email,
-    phone: formData.phone,
+    name: formData.name.trim(),
+    email: formData.email.trim(),
+    phone: normalizePhoneNumber(formData.phone),
     city: selectedCity,
     budget: selectedCity || "",
     pincode: selectedPincode,
@@ -565,6 +591,14 @@ export default function HeroSections({
     otpSuccess: isVerified,
   });
 
+  const snapshotUnverifiedPayload = (): HeroLeadPayload | null => {
+    const payload = buildLeadPayload(false);
+    if (!payload.name || payload.phone.length !== 10) return null;
+    latestUnverifiedPayloadRef.current = payload;
+    writePendingUnverifiedLead(payload);
+    return payload;
+  };
+
   const sendLeadInBackground = (isVerified: boolean) => {
     const payload = buildLeadPayload(isVerified);
     if (!isVerified) {
@@ -573,30 +607,47 @@ export default function HeroSections({
     postLeadKeepalive(submitApiUrl, payload);
   };
 
-  const sendUnverifiedMailIfNeeded = (options?: {
+  /**
+   * Close popup / timer / reload / tab close → always store as UNVERIFIED.
+   * Posts /api/contact + direct Home1 (working Harsh pattern) so CRM still gets the lead
+   * even if one path fails.
+   */
+  const sendUnverifiedMailIfNeeded = async (options?: {
     skipEmail?: boolean;
-    /** Direct Home1 backup — use on unload where /api/contact may be killed mid-flight. */
-    directHome1?: boolean;
   }) => {
     if (otpVerifiedRef.current || unverifiedMailSentRef.current) return;
+
     otpAbandonedRef.current = true;
     verifyAbortRef.current?.abort();
-    unverifiedMailSentRef.current = true;
+
     const payload =
       latestUnverifiedPayloadRef.current ||
-      buildLeadPayload(false);
-    latestUnverifiedPayloadRef.current = payload;
+      readPendingUnverifiedLead() ||
+      snapshotUnverifiedPayload();
+
+    if (!payload?.name || !payload?.phone) {
+      console.error("Unverified lead skipped: missing name/phone snapshot");
+      return;
+    }
+
+    unverifiedMailSentRef.current = true;
     clearPendingUnverifiedLead();
+
     const unverifiedPayload: HeroLeadPayload = {
       ...payload,
+      phone: normalizePhoneNumber(payload.phone),
       verificationStatus: "UNVERIFIED",
       otpSuccess: false,
       skipEmail: options?.skipEmail === true,
+      pageUrl: payload.pageUrl || window.location.href,
     };
-    postLeadKeepalive(submitApiUrl, unverifiedPayload);
-    if (options?.directHome1) {
-      postUnverifiedHome1Keepalive(unverifiedPayload);
-    }
+
+    latestUnverifiedPayloadRef.current = unverifiedPayload;
+
+    await Promise.allSettled([
+      postLeadKeepalive(submitApiUrl, unverifiedPayload),
+      postUnverifiedHome1Keepalive(unverifiedPayload),
+    ]);
   };
 
   // After 2 minutes with no OTP, send unverified email (stay on the form)
@@ -608,7 +659,7 @@ export default function HeroSections({
       otpExpiryArmedRef.current
     ) {
       otpExpiryArmedRef.current = false;
-      sendUnverifiedMailIfNeeded();
+      void sendUnverifiedMailIfNeeded();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [otpTimerSeconds, otpSent, otpVerified]);
@@ -619,7 +670,7 @@ export default function HeroSections({
     setShowOtpModal(false);
     setOtp("");
     otpExpiryArmedRef.current = false;
-    sendUnverifiedMailIfNeeded();
+    void sendUnverifiedMailIfNeeded();
   };
 
   /** Reset OTP state so user can correct their phone number and trigger a fresh OTP */

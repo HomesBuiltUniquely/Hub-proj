@@ -86,8 +86,6 @@ export async function POST(req: Request) {
       otpSuccess,
     });
     const normalizedOtpSuccess = normalizedVerificationStatus === 'VERIFIED';
-    // CRM must receive "Verified User" / "No OTP" — never the literal "UNVERIFIED"
-    // (CRM substring checks for "VERIFIED" wrongly treat "UNVERIFIED" as verified).
     const crmVerificationStatus = toCrmVerificationStatus(
       normalizedVerificationStatus,
     );
@@ -96,7 +94,7 @@ export async function POST(req: Request) {
     // Missing verification input = not OTP-verified. Never default to VERIFIED.
     const websiteLeadVerificationStatus = hasVerificationInput
       ? crmVerificationStatus
-      : 'No OTP';
+      : 'UNVERIFIED';
     const websiteLeadOtpSuccess = hasVerificationInput ? normalizedOtpSuccess : false;
 
     // Identify Meta lead pages (best-interior-designers-in-bangalore and its calculator)

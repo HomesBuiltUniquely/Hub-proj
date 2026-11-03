@@ -1,12 +1,5 @@
 export type VerificationStatus = "VERIFIED" | "UNVERIFIED";
 
-/**
- * CRM-facing values. Do NOT send the literal "UNVERIFIED" to Home1/MetaLead —
- * several CRM checks use includes("VERIFIED"), which wrongly matches "UNVERIFIED".
- * Historical working values: "Verified User" / "No OTP".
- */
-export type CrmVerificationStatus = "Verified User" | "No OTP";
-
 function normalizeStatusValue(value: unknown): string {
   if (typeof value !== "string") {
     return "";
@@ -19,10 +12,11 @@ export function getVerificationStatus(otpSuccess: boolean): VerificationStatus {
   return otpSuccess ? "VERIFIED" : "UNVERIFIED";
 }
 
+/** Home1/MetaLead accepted values that actually store leads. */
 export function toCrmVerificationStatus(
   status: VerificationStatus,
-): CrmVerificationStatus {
-  return status === "VERIFIED" ? "Verified User" : "No OTP";
+): VerificationStatus {
+  return status;
 }
 
 export function resolveLeadVerificationStatus(lead: {
