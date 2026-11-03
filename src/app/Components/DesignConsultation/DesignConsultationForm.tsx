@@ -6,7 +6,6 @@ import { Pincode } from "../LandingPage1/Pincode";
 import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 import {
   getConsultationDateBounds,
-  getConsultationDateOptions,
   isConsultationDateInRange,
   isPreferredSlotAvailable,
   preferredSlots,
@@ -115,7 +114,6 @@ function FormSection({
   isSubmitting: boolean;
 }) {
   const { minDate, maxDate } = getConsultationDateBounds();
-  const dateOptions = getConsultationDateOptions();
   const [showSlotHint, setShowSlotHint] = useState(false);
   const isSlotSelectEnabled = Boolean(selectedDate);
 
@@ -303,7 +301,6 @@ function FormSection({
 
       <div className="mt-4 grid grid-cols-2 gap-4">
         <div className="relative">
-          {/* Desktop: native date picker with min/max */}
           <input
             type="date"
             value={selectedDate}
@@ -311,38 +308,17 @@ function FormSection({
             min={minDate}
             max={maxDate}
             aria-label="Select Date"
-            className={`hidden lg:block ${inputClass} [color-scheme:light] ${
+            className={`${inputClass} [color-scheme:light] ${
               !selectedDate
                 ? "[&::-webkit-datetime-edit]:text-transparent [&::-webkit-datetime-edit]:opacity-0"
                 : ""
             }`}
           />
-          {/* Mobile: only next 15 days are listed/selectable */}
-          <select
-            value={selectedDate}
-            onChange={(e) => handleDateChange(e.target.value)}
-            aria-label="Select Date"
-            className={`lg:hidden ${inputClass} appearance-none ${
-              !selectedDate ? "text-[#9AA1AE]" : ""
-            }`}
-          >
-            <option value="">Select Date</option>
-            {dateOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
           {!selectedDate && (
-            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope hidden lg:block">
+            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope">
               Select Date
             </span>
           )}
-          <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#9AA1AE] lg:hidden">
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </span>
         </div>
         <div
           className="relative group"
