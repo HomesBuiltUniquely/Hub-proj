@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { normalizePhoneNumber } from "@/lib/utils";
 import { Pincode } from "../LandingPage1/Pincode";
 import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
+import ConsultationDatePicker from "../ConsultationDatePicker";
 import {
-  getConsultationDateBounds,
   isConsultationDateInRange,
   isPreferredSlotAvailable,
   preferredSlots,
@@ -113,7 +113,6 @@ function FormSection({
   onSubmit: () => void;
   isSubmitting: boolean;
 }) {
-  const { minDate, maxDate } = getConsultationDateBounds();
   const [showSlotHint, setShowSlotHint] = useState(false);
   const isSlotSelectEnabled = Boolean(selectedDate);
 
@@ -300,26 +299,12 @@ function FormSection({
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-4">
-        <div className="relative">
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => handleDateChange(e.target.value)}
-            min={minDate}
-            max={maxDate}
-            aria-label="Select Date"
-            className={`${inputClass} [color-scheme:light] ${
-              !selectedDate
-                ? "[&::-webkit-datetime-edit]:text-transparent [&::-webkit-datetime-edit]:opacity-0"
-                : ""
-            }`}
-          />
-          {!selectedDate && (
-            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope">
-              Select Date
-            </span>
-          )}
-        </div>
+        <ConsultationDatePicker
+          value={selectedDate}
+          onChange={handleDateChange}
+          className={inputClass}
+          placeholder="Select Date"
+        />
         <div
           className="relative group"
           onMouseLeave={() => setShowSlotHint(false)}

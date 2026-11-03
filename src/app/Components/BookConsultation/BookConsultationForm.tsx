@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
+import ConsultationDatePicker from "../ConsultationDatePicker";
 import {
-  getConsultationDateBounds,
   isConsultationDateInRange,
   isPreferredSlotAvailable,
   preferredSlots,
@@ -87,7 +87,6 @@ function FormSection({
   setFloorPlanFile: (v: File | null) => void;
   onSubmit: () => void;
 }) {
-  const { minDate, maxDate } = getConsultationDateBounds();
   const isSlotSelectEnabled = Boolean(selectedDate);
   const [showSlotHint, setShowSlotHint] = useState(false);
   const [fileError, setFileError] = useState("");
@@ -129,11 +128,6 @@ function FormSection({
 
   const inputClass =
     "h-[58px] w-full text-black rounded-[14px] border-2 border-transparent bg-[#F4F6F9] px-5 text-[15px] font-medium text-[#24262B] transition-all duration-300 focus:border-[#EF2B2D] focus:bg-white focus:ring-4 focus:ring-[#EF2B2D]/10 outline-none placeholder:text-[#9AA1AE] shadow-sm hover:bg-[#EAEFF5] manrope";
-  const dateInputStyle = {
-    color: selectedDate ? "#24262B" : "#9AA1AE",
-    WebkitTextFillColor: selectedDate ? "#24262B" : "#9AA1AE",
-    colorScheme: "light" as const,
-  };
 
   return (
     <form
@@ -182,27 +176,12 @@ function FormSection({
       </div>
 
       <div className="mt-5 grid grid-cols-2 gap-4">
-        <div className="relative">
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => handleDateChange(e.target.value)}
-            min={minDate}
-            max={maxDate}
-            aria-label="Select Date"
-            className={`${inputClass} [color-scheme:light] ${
-              !selectedDate
-                ? "[&::-webkit-datetime-edit]:text-transparent [&::-webkit-datetime-edit]:opacity-0"
-                : ""
-            }`}
-            style={dateInputStyle}
-          />
-          {!selectedDate && (
-            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope">
-              Select Date
-            </span>
-          )}
-        </div>
+        <ConsultationDatePicker
+          value={selectedDate}
+          onChange={handleDateChange}
+          className={inputClass}
+          placeholder="Select Date"
+        />
         <div
           className="relative group"
           onMouseLeave={() => setShowSlotHint(false)}
