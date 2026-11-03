@@ -6,6 +6,7 @@ import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
 import {
   getConsultationDateBounds,
+  getConsultationDateOptions,
   isConsultationDateInRange,
   isPreferredSlotAvailable,
   preferredSlots,
@@ -88,9 +89,23 @@ function FormSection({
   onSubmit: () => void;
 }) {
   const { minDate, maxDate } = getConsultationDateBounds();
+  const dateOptions = getConsultationDateOptions();
   const isSlotSelectEnabled = Boolean(selectedDate);
   const [showSlotHint, setShowSlotHint] = useState(false);
   const [fileError, setFileError] = useState("");
+
+  const handleDateChange = (nextDate: string) => {
+    if (nextDate && !isConsultationDateInRange(nextDate)) {
+      alert("Please select a date within the next 15 days.");
+      setSelectedDate("");
+      setPreferredSlot("");
+      return;
+    }
+    setSelectedDate(nextDate);
+    if (preferredSlot && !isPreferredSlotAvailable(preferredSlot, nextDate)) {
+      setPreferredSlot("");
+    }
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -170,37 +185,47 @@ function FormSection({
 
       <div className="mt-5 grid grid-cols-2 gap-4">
         <div className="relative">
+          {/* Desktop: native date picker with min/max */}
           <input
             type="date"
             value={selectedDate}
-            onChange={(e) => {
-              const nextDate = e.target.value;
-              if (nextDate && !isConsultationDateInRange(nextDate)) {
-                alert("Please select a date within the next 15 days.");
-                setSelectedDate("");
-                setPreferredSlot("");
-                return;
-              }
-              setSelectedDate(nextDate);
-              if (preferredSlot && !isPreferredSlotAvailable(preferredSlot, nextDate)) {
-                setPreferredSlot("");
-              }
-            }}
+            onChange={(e) => handleDateChange(e.target.value)}
             min={minDate}
             max={maxDate}
             aria-label="Select Date"
-            className={`${inputClass} [color-scheme:light] ${
+            className={`hidden lg:block ${inputClass} [color-scheme:light] ${
               !selectedDate
                 ? "[&::-webkit-datetime-edit]:text-transparent [&::-webkit-datetime-edit]:opacity-0"
                 : ""
             }`}
             style={dateInputStyle}
           />
+          {/* Mobile: only next 15 days are listed/selectable */}
+          <select
+            value={selectedDate}
+            onChange={(e) => handleDateChange(e.target.value)}
+            aria-label="Select Date"
+            className={`lg:hidden ${inputClass} appearance-none ${
+              !selectedDate ? "text-[#9AA1AE]" : ""
+            }`}
+          >
+            <option value="">Select Date</option>
+            {dateOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
           {!selectedDate && (
-            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope">
+            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope hidden lg:block">
               Select Date
             </span>
           )}
+          <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#9AA1AE] lg:hidden">
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </span>
         </div>
         <div
           className="relative group"

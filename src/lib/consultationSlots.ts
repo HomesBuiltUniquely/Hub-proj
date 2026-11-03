@@ -31,6 +31,24 @@ export function getConsultationDateBounds(now = new Date()) {
   };
 }
 
+/** Only the next 15 selectable dates — used on mobile where native min/max is unreliable. */
+export function getConsultationDateOptions(now = new Date()) {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  return Array.from({ length: 15 }, (_, index) => {
+    const date = new Date(today);
+    date.setDate(today.getDate() + index);
+    const value = formatDateForInput(date);
+    const label = date.toLocaleDateString("en-IN", {
+      weekday: "short",
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+    return { value, label };
+  });
+}
+
 export function isConsultationDateInRange(
   selectedDate: string,
   now = new Date()
