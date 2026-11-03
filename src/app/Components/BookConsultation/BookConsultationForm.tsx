@@ -5,7 +5,8 @@ import { useSearchParams } from "next/navigation";
 import HeaderSection from "./Header";
 import BenefitsSection from "./Benefits";
 import {
-  formatDateForInput,
+  getConsultationDateBounds,
+  isConsultationDateInRange,
   isPreferredSlotAvailable,
   preferredSlots,
 } from "@/lib/consultationSlots";
@@ -86,12 +87,7 @@ function FormSection({
   setFloorPlanFile: (v: File | null) => void;
   onSubmit: () => void;
 }) {
-  const today = new Date();
-  const maxSelectableDate = new Date(today);
-  maxSelectableDate.setDate(today.getDate() + 14);
-
-  const minDate = formatDateForInput(today);
-  const maxDate = formatDateForInput(maxSelectableDate);
+  const { minDate, maxDate } = getConsultationDateBounds();
   const isSlotSelectEnabled = Boolean(selectedDate);
   const [showSlotHint, setShowSlotHint] = useState(false);
   const [fileError, setFileError] = useState("");
@@ -179,6 +175,12 @@ function FormSection({
             value={selectedDate}
             onChange={(e) => {
               const nextDate = e.target.value;
+              if (nextDate && !isConsultationDateInRange(nextDate)) {
+                alert("Please select a date within the next 15 days.");
+                setSelectedDate("");
+                setPreferredSlot("");
+                return;
+              }
               setSelectedDate(nextDate);
               if (preferredSlot && !isPreferredSlotAvailable(preferredSlot, nextDate)) {
                 setPreferredSlot("");
@@ -186,11 +188,16 @@ function FormSection({
             }}
             min={minDate}
             max={maxDate}
-            className={`${inputClass} [color-scheme:light]`}
+            aria-label="Select Date"
+            className={`${inputClass} [color-scheme:light] ${
+              !selectedDate
+                ? "[&::-webkit-datetime-edit]:text-transparent [&::-webkit-datetime-edit]:opacity-0"
+                : ""
+            }`}
             style={dateInputStyle}
           />
           {!selectedDate && (
-            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope lg:hidden">
+            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope">
               Select Date
             </span>
           )}
@@ -419,6 +426,10 @@ export default function BookConsultationForm() {
   const handleBookConsultationSubmit = async () => {
     if (!selectedDate || !preferredSlot || !propertyName) {
       alert("Please fill date, preferred slot and property details.");
+      return;
+    }
+    if (!isConsultationDateInRange(selectedDate)) {
+      alert("Please select a date within the next 15 days.");
       return;
     }
     if (!isPreferredSlotAvailable(preferredSlot, selectedDate)) {

@@ -5,7 +5,8 @@ import { normalizePhoneNumber } from "@/lib/utils";
 import { Pincode } from "../LandingPage1/Pincode";
 import { fireAndForgetLeadSubmit } from "@/lib/postLeadSubmitRedirect";
 import {
-  formatDateForInput,
+  getConsultationDateBounds,
+  isConsultationDateInRange,
   isPreferredSlotAvailable,
   preferredSlots,
 } from "@/lib/consultationSlots";
@@ -112,18 +113,8 @@ function FormSection({
   onSubmit: () => void;
   isSubmitting: boolean;
 }) {
-  const [minDate, setMinDate] = useState("");
-  const [maxDate, setMaxDate] = useState("");
+  const { minDate, maxDate } = getConsultationDateBounds();
   const [showSlotHint, setShowSlotHint] = useState(false);
-
-  useEffect(() => {
-    const today = new Date();
-    const maxSelectableDate = new Date(today);
-    maxSelectableDate.setDate(today.getDate() + 14);
-    setMinDate(formatDateForInput(today));
-    setMaxDate(formatDateForInput(maxSelectableDate));
-  }, []);
-
   const isSlotSelectEnabled = Boolean(selectedDate);
 
   const inputClass =
@@ -302,6 +293,12 @@ function FormSection({
             value={selectedDate}
             onChange={(e) => {
               const nextDate = e.target.value;
+              if (nextDate && !isConsultationDateInRange(nextDate)) {
+                alert("Please select a date within the next 15 days.");
+                setSelectedDate("");
+                setPreferredSlot("");
+                return;
+              }
               setSelectedDate(nextDate);
               if (preferredSlot && !isPreferredSlotAvailable(preferredSlot, nextDate)) {
                 setPreferredSlot("");
@@ -309,10 +306,15 @@ function FormSection({
             }}
             min={minDate}
             max={maxDate}
-            className={`${inputClass} [color-scheme:light]`}
+            aria-label="Select Date"
+            className={`${inputClass} [color-scheme:light] ${
+              !selectedDate
+                ? "[&::-webkit-datetime-edit]:text-transparent [&::-webkit-datetime-edit]:opacity-0"
+                : ""
+            }`}
           />
           {!selectedDate && (
-            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope lg:hidden">
+            <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[15px] font-medium text-[#9AA1AE] manrope">
               Select Date
             </span>
           )}
@@ -504,6 +506,10 @@ export default function DesignConsultationForm() {
     }
     if (!selectedDate) {
       alert("Please select a preferred date.");
+      return false;
+    }
+    if (!isConsultationDateInRange(selectedDate)) {
+      alert("Please select a date within the next 15 days.");
       return false;
     }
     if (!preferredSlot) {
