@@ -167,11 +167,13 @@ export async function POST(req: Request) {
           return lower.includes("lakh") || lower.includes("cr") || /\b\d+\s*-\s*\d+/.test(lower);
         };
         const resolvedBudget = budget || (isBudgetVal(resolvedInteriorPackage) ? resolvedInteriorPackage : '') || '';
+        // Home1 auto-marks VERIFIED when propertyPin is present (backend rule),
+        // even if otpSuccess/verificationStatus say UNVERIFIED. Omit pin until OTP passes.
         const home1Payload = {
           name: name || '',
           email: email || '',
           phoneNumber: normalizedPhone || phone || '',
-          propertyPin: pincode || '',
+          propertyPin: normalizedOtpSuccess ? pincode || null : null,
           interiorSetup: isBudgetVal(resolvedInteriorPackage) ? '' : resolvedInteriorPackage,
           possessionIn: resolvedPossession,
           budget: resolvedBudget,

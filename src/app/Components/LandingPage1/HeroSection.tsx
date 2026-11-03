@@ -96,7 +96,8 @@ function postUnverifiedHome1Keepalive(payload: HeroLeadPayload) {
       name: payload.name || "",
       email: payload.email || "",
       phoneNumber: payload.phone || "",
-      propertyPin: payload.pincode || "",
+      // Must be null: Home1 auto-VERIFIES whenever propertyPin is present.
+      propertyPin: null,
       interiorSetup: payload.city || "",
       possessionIn: "",
       budget: payload.budget || "",
